@@ -1,0 +1,499 @@
+
+\documentclass[a4paper,12pt]{article}
+
+\renewcommand{\thesection}{\arabic{section}.}
+
+\providecommand{\RR}{{\rm R}}
+\providecommand{\RRR}{\RR^3}
+\providecommand{\RRRR}{\RR^{1,3}}
+\providecommand{\half}{{\textstyle{1\over2}}}
+
+\providecommand{\polje}{\phi}
+\providecommand{\polR}{\polje_{HV}}
+\providecommand{\polA}{\polje_A}
+\providecommand{\Polje}{\Phi}
+
+\providecommand{\akcija}{I}
+\providecommand{\akcijaR}{\akcija_{HV}}
+\providecommand{\akcijaA}{\akcija_A}
+
+\providecommand{\Lag}{{\cal L}}
+\providecommand{\Lagf}{\Lag_{0}}
+\providecommand{\Lagi}{V}
+\providecommand{\LagR}{\Lag_{HV}}
+\providecommand{\LagA}{\Lag_A}
+\providecommand{\LagRf}{\Lag_{HV0}}
+\providecommand{\LagAf}{\Lag_{A0}}
+
+\providecommand{\prop}{\widetilde{\Delta}}
+\providecommand{\propF}{\prop_F}
+\providecommand{\propA}{\prop_A}
+\providecommand{\propU}{\prop_U}
+\providecommand{\propR}{\prop_{HV}}
+\providecommand{\unreg}{f_{HV}}
+\providecommand{\altreg}{f_{A}}
+
+\providecommand{\Gf}{G^{(n)}}
+\providecommand{\GfZ}{\Gf_Z}
+\providecommand{\GfR}{\Gf_{HV}}
+\providecommand{\GfA}{\Gf_A}
+
+\providecommand{\SmR}{S_{HV}}
+\providecommand{\SmA}{S_A}
+
+\title{Framework for finite alternative theories to a quantum field theory}
+\author{Marijan Ribari\v c and Luka \v Su\v ster\v si\v c\thanks{Corresponding author. Phone +386 1 477 3258; fax +386 1 423 1569; electronic address: \tt luka.sustersic@ijs.si\rm} \\Jo\v zef Stefan Institute, p.p.3000, 1001 Ljubljana, Slovenia }
+\date{}
+
+
+\usepackage{useful_macros}
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The proposed framework is intended to faciliate the search for Lagrangian-based regularizations that introduce only such coefficients which are not regarded as formal auxiliary parameters that will eventually be got rid of during renormalization. Using the path-integral formalism, we put forward a new framework for such finite, alternative quantum theories to a given quantum field theory that have no formal auxiliary parameters. The corresponding alternative, perturbative Green functions are acceptably regularized perturbative expansions of the original Green functions, causal, and imply no unphysical free particles. To demonstrate that the proposed framework is feasible, we provide an alternative to the quantum field theory with \myHighlight{$\polje^4$}\coordHE{} interaction.
+\end{abstract}
+
+
+\vfill
+Suggested short title: Framework for finite alternative theories ...
+\vfill
+PACS number: 11.90.+t \hfill UDC 5.30.145.7
+\vfill
+Keywords: finite quantum theory, realistic regularization
+\vfill\eject
+
+\section{Introduction}
+\label{secintro}
+
+In this paper, we will put forward a framework for constructing such alternative theories to a given quantum field theory (QFT) that provide solutions to the problem of ultraviolet divergencies \it without using formal, auxiliary parameters. \rm For simplicity, we will consider in some detail solely the case of the QFT of a single, self-interacting real scalar field \myHighlight{$\polje(x)$}\coordHE{} with \myHighlight{$\polje^4$}\coordHE{} interaction. In this case, the conventional, QFT, connected \myHighlight{$n$}\coordHE{}-point Green functions scaled by a positive coefficient \myHighlight{$Z^{-n/2}$}\coordHE{}, \myHighlight{$\GfZ(x_1,\ldots, x_n)$}\coordHE{}, can be formally expressed as functional derivatives of a generating functional, i.e.,
+\begin{equation}\coord{}\boxEquation{
+  \GfZ(x_1,\ldots, x_n) = \left. { (-i)^{n} \delta^n \ln Z[J] \over\delta J(x_1) \cdots \delta J(x_n) }\, \right|_{J = 0} 
+  \label{Greendef}
+}{
+  \GfZ(x_1,\ldots, x_n) = \left. { (-i)^{n} \delta^n \ln Z[J] \over\delta J(x_1) \cdots \delta J(x_n) }\, \right|_{J = 0} 
+  }{ecuacion}\coordE{}\end{equation}
+with the generating functional
+\begin{equation}\coord{}\boxEquation{
+   Z[J] = \int \prod_{x} d\polje(x) \, e^{ i \akcija[\polje,J] } \,,
+  \label{genfunc}
+}{
+   Z[J] = \int \prod_{x} d\polje(x) \, e^{ i \akcija[\polje,J] } \,,
+  }{ecuacion}\coordE{}\end{equation}
+where the action functional
+\begin{equation}\coord{}\boxEquation{
+   \akcija[\polje,J] = \int d^4x \Bigl ( \Lagf(\polje, \partial_\mu \polje) - \Lagi(\polje) + \polje J \Bigr) \,;
+   \label{QFTaction}
+}{
+   \akcija[\polje,J] = \int d^4x \Bigl ( \Lagf(\polje, \partial_\mu \polje) - \Lagi(\polje) + \polje J \Bigr) \,;
+   }{ecuacion}\coordE{}\end{equation}
+the QFT free-field Lagrangian 
+\begin{equation}\coord{}\boxEquation{
+   \Lagf = - \half (\partial_\mu \polje)^2 - \half m^2 \polje^2 \,;
+   \label{QFTfreelagr}
+}{
+   \Lagf = - \half (\partial_\mu \polje)^2 - \half m^2 \polje^2 \,;
+   }{ecuacion}\coordE{}\end{equation}
+the interaction Lagrangian
+\begin{equation}\coord{}\boxEquation{
+   \Lagi(\polje) = {\lambda \over 4!} \polje^4 + {Z^2\lambda_0 -\lambda \over 4!} \polje^4 + {Z - 1\over 2} (\partial_\mu \polje)^2 
+               + {Z m_0^2 - m^2\over 2} \polje^2 \,;
+   \label{QFTintlagr}
+}{
+   \Lagi(\polje) = {\lambda \over 4!} \polje^4 + {Z^2\lambda_0 -\lambda \over 4!} \polje^4 + {Z - 1\over 2} (\partial_\mu \polje)^2 
+               + {Z m_0^2 - m^2\over 2} \polje^2 \,;
+   }{ecuacion}\coordE{}\end{equation}
+\myHighlight{$m^2$}\coordHE{}, \myHighlight{$m_0^2$}\coordHE{}, \myHighlight{$\lambda$}\coordHE{}, and \myHighlight{$\lambda_0$}\coordHE{} are positive coefficients; the external source \myHighlight{$J(x)$}\coordHE{} is an arbitrary, real scalar field; we use the \myHighlight{$(-1, 1, 1, 1)$}\coordHE{} metric. An expression for the QFT scattering matrix of the quantum system, characterized by the action functional \myHighlight{$\akcija[\polje,J]$}\coordHE{}, can be obtained in terms of \myHighlight{$\GfZ$}\coordHE{} by means of the Lehmann-Symanzik-Zimmermann (LSZ) reduction formula, see e.g. Sec.~10.3 in \cite{Weinberg}.
+
+We can formally rewrite the generating functional (\ref{genfunc}) as
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+   Z[J] &=& \exp \left \{ -i \int d^4x \rightCoord{}\, \Lagi( -i\delta/ \delta J ) \right \} \nonumber\rightCoord{}\\
+&&\leftCoord{} \qquad\times \int \prod_{\rightCoord{}x} d\polje(x) \rightCoord{}\, \exp \Bigl \{ i \int d^4x \left( \Lagf(\polje, \partial_\mu \polje) + \polje J \Bigr) \right\} \rightCoord{}\,.\rightCoord{}
+  \label{genfuncexp}
+\rightCoord{}}{0mm}{2}{8}{
+   Z[J] &=& \exp \left \{ -i \int d^4x \, \Lagi( -i\delta/ \delta J ) \right \} \\
+&& \qquad\times \int \prod_{x} d\polje(x) \, \exp \Bigl \{ i \int d^4x \left( \Lagf(\polje, \partial_\mu \polje) + \polje J \Bigr) \right\} \,.
+  }{1}\coordE{}\end{eqnarray}
+Let \myHighlight{$\polje_c(x)$}\coordHE{} be the Feynman-Stueckelberg solution to the Euler-Lagrange equations of the action \myHighlight{$\akcija[\polje,J]$}\coordHE{} with \myHighlight{$\Lagi = 0$}\coordHE{}. On changing the variable of functional integrals in (\ref{genfuncexp}) from \myHighlight{$\polje$}\coordHE{} to \myHighlight{$\polje - \polje_c$}\coordHE{}, (\ref{genfuncexp}) can formally be written as
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+   Z[J] &=& N \rightCoord{}\, \exp \left \{ -i \int d^4x \rightCoord{}\, \Lagi( -i\delta/ \delta J ) \right \} \nonumber \rightCoord{}\\
+&&\leftCoord{} \qquad\times  \exp \left \{ i \int d^4x d^4y \rightCoord{}\, \half J(x) \Delta_F(x-y) J(y) \right \}  \rightCoord{}\,,
+   \label{genfunctrans}
+\rightCoord{}}{0mm}{2}{7}{
+   Z[J] &=& N \, \exp \left \{ -i \int d^4x \, \Lagi( -i\delta/ \delta J ) \right \} \\
+&& \qquad\times  \exp \left \{ i \int d^4x d^4y \, \half J(x) \Delta_F(x-y) J(y) \right \}  \,,
+   }{1}\coordE{}\end{eqnarray}
+where \myHighlight{$N$}\coordHE{} is a \myHighlight{$J$}\coordHE{}-independent factor, irrelevant for the calculation of perturbative expansions of \myHighlight{$\GfZ$}\coordHE{}, and the Feynman propagator \myHighlight{$\Delta_F(x)$}\coordHE{} is defined by the relation
+\begin{equation}\coord{}\boxEquation{
+   \polje_c(x) = \int  d^4y\, \Delta_F(x-y) J(y) \,,
+   \label{propdefin}
+}{
+   \polje_c(x) = \int  d^4y\, \Delta_F(x-y) J(y) \,,
+   }{ecuacion}\coordE{}\end{equation}
+see e.g.~Sec.~1.2 and App.~B in \cite{Cheng}. By (\ref{propdefin}), (\ref{QFTaction}), and (\ref{QFTfreelagr}), the propagator \myHighlight{$\Delta_F(x)$}\coordHE{} is the Fourier transform of 
+\begin{equation}\coord{}\boxEquation{
+   \propF(k) = {1 \over k^2 + m^2 - i\epsilon} \qquad\hbox{with}\quad \epsilon \searrow 0 \,.
+   \label{origprop}
+}{
+   \propF(k) = {1 \over k^2 + m^2 - i\epsilon} \qquad\hbox{with}\quad \epsilon \searrow 0 \,.
+   }{ecuacion}\coordE{}\end{equation}
+
+We can obtain the perturbative expansions of \myHighlight{$\GfZ$}\coordHE{} by replacing \myHighlight{$Z[J]$}\coordHE{} in (\ref{Greendef}) with (\ref{genfunctrans}), and then expanding in powers of the four coupling coefficients \myHighlight{$\lambda$}\coordHE{}, \myHighlight{$Z^2\lambda_0 -\lambda$}\coordHE{}, \myHighlight{$Z - 1$}\coordHE{}, and \myHighlight{$Z m_0^2 - m^2$}\coordHE{}. These expansions lead to the conventional Feynman rules for this theory \cite{Weinberg,Cheng}. In general, integrals over independent loops diverge, and perturbative expansions of \myHighlight{$\GfZ$}\coordHE{} are not well defined. Regularizing such divergent integrals in perturbative expansions of \myHighlight{$\GfZ$}\coordHE{}, and then using a renormalization scheme and removing the cut-off and its auxiliary parameters, we can calculate the perturbative expansion of the QFT scattering matrix by the LSZ reduction formula. There is an infinite variety of \it acceptable regularizations \rm, i.e. such that the above procedure yields the same, renormalization-scheme-dependent, QFT result.
+
+There is a widespread opinion that ultraviolet divergencies encountered in perturbative expansions of Green functions of the standard model are due to \it the inadequate description of ultra-high-energy phenomena by the present Lagrangian. \rm Which suggests that we should modify this Lagrangian to get rid of ultraviolet divergences. However, as noted e.g. in \cite{Weinberg}, in a QFT each complete, momentum-space, spin 0 Feynman propagator has the K\"all\'en-Lehman spectral representation with a non-negative spectral function, i.e., it is equal to
+\begin{equation}\coord{}\boxEquation{
+   \int_0^\infty {\rho(s)\over k^2 + s - i\epsilon}\, ds
+   \label{Kahlenrep}
+}{
+   \int_0^\infty {\rho(s)\over k^2 + s - i\epsilon}\, ds
+   }{ecuacion}\coordE{}\end{equation}
+with some \myHighlight{$\rho(s) \ge 0$}\coordHE{}. That implies that in a QFT, also a complete spin 0 propagator cannot vanish faster than \myHighlight{$\propF(k)$}\coordHE{} as \myHighlight{$| k^2 | \to \infty $}\coordHE{}. So it follows that in a QFT we can regularize none of the perturbative expansions of Green functions by modifying its Lagrangian. \it Some departure from the conventional framework of QFTs seems necessary to this end, but of course, it has to be compatible with the experimentally verified perturbative results of QFTs. \rm Which presents a sixty-years-old theoretical problem (see e.g. Sec.~1.3 in \cite{Weinberg}, and \cite{Villars}).
+
+We believe that there is a Lagrangian-based theory of fundamental interactions such that we can regard perturbative expansions of its Green functions as acceptably regularized perturbative expansions of the Green functions of the standard model. However, up to now each candidate for such a theory that provides a non-perturbative regularization abandons some of the conventional properties of models in contemporary physics. Though upon removal of a cut-off during renormalization, these properties are restored in perturbative results. E.g., every version of the Pauli-Villars method proposed so far introduces auxiliary, unphysical particles with negative metric or wrong statistics; lattice regularization is based on discrete space-time; and string theories need to introduce additional space-time dimensions to avoid anomalies.
+
+We intend to alleviate this conceptually displeasing situation where models have expected properties only when the cut-off is removed. To this end, we will generalize the 't Hooft-Veltman, Lagrangian-based version of the Pauli-Villars method (HV method), see Sec.~5 in \cite{Hooft}, to a continuous infinity of auxiliary fields but without introducing additional, \it auxiliary free particles. \rm We will \it argue \rm on the analogy of the above path-integral formalism (\ref{Greendef})--(\ref{origprop}). The key will be the LSZ reduction formula as, in general, \it it does not imply a direct connection between the number of free fields and the number of free particles. \rm 
+
+For any given QFT, we will introduce a new, Lagrangian-based framework for constructing finite, alternative quantum theories to a QFT (FAQTs) such that: (i)~The action functional, \myHighlight{$\akcijaA$}\coordHE{}, would equal the QFT action functional were it not for its free-field Lagrangian. (ii)~\myHighlight{$\akcijaA$}\coordHE{} \it is local in space-time and invariant under inhomogeneous Lorentz transformations. \rm (iii)~The FAQT connected \myHighlight{$n$}\coordHE{}-point Green functions, \myHighlight{$\GfA$}\coordHE{}, are defined by \myHighlight{$\akcijaA$}\coordHE{} through a generating functional on the analogy of (\ref{Greendef}). (iv)~The FAQT scattering matrix, \myHighlight{$\SmA$}\coordHE{}, is defined in terms of \myHighlight{$\GfA$}\coordHE{} by the means of the LSZ reduction formula, and \it all of its coefficients are regarded as observable quantities. \rm (v)~Free particles of a FAQT, which are determined by the poles of \myHighlight{$G^{(2)}_A$}\coordHE{}, are \it the same \rm as the free particles of the QFT: there are no additional, unphysical, auxiliary particles. (vi)~Perturbative expansions of \myHighlight{$\GfA$}\coordHE{} can be regarded as such acceptably regularized perturbative expansions of the QFT Green functions that are \it invariant under the same symmetry transformations as the QFT scattering matrix. \rm Hence, each FAQT provides at least as adequate a perturbative description as the QFT.
+
+In Sec.~\ref{secunireg} we give a short description of the HV method for a single, self-interacting real scalar field in terms of the generating functional. In the HV method,  't Hooft and Veltman (i)~introduced a countable set of auxiliary fields, (ii)~altered only the QFT free-field Lagrangian, and (iii)~introduced Feynman-like rules that equal the conventional Feynman rules but for an altered propagator, which we label as the HV propagator. We could use the HV method to construct FAQTs were it not for its auxiliary, unphysical free particles.
+
+In Sec.~\ref{sechighvar} we collate those properties of a HV propagator that are essential for an acceptable covariant regularization. We regard as \it an alternative \rm to \myHighlight{$\propF$}\coordHE{} each HV propagator that has these properties but no additional singularities which imply additional, free particles.
+
+In Sec.~\ref{secproof} we give an example of how one may generalize the HV method to a continuous infinity of auxiliary fields so that the corresponding HV propagator is an alternative to \myHighlight{$\propF$}\coordHE{}. So we construct a Lorentz invariant FAQT to the QFT of a single, self-interacting real scalar field. Thereby we show that the generalized HV method actually provides a feasible framework for constructing FAQTs to a QFT.
+
+\section{Method of unitary regulators}
+\label{secunireg}
+
+'t Hooft and Veltman invented, in addition to dimensional regularization, also the method of unitary regulators (HV method), which is a Lagrangian-based Pauli-Villars method with a discrete spectrum of auxiliary masses (see Secs.~2 and 5-8 in \cite{Hooft}). It seems that the HV method  has not been much noticed since we found no reference to it in Science Citation Index, though their report \cite{Hooft} itself has over 200 citations. Here we give an outline of a new, \it non-perturbative formulation \rm of the HV method in terms of a generating functional in the case of a single, self-interacting real scalar field with the QFT action functional \myHighlight{$\akcija[\polje,J]$}\coordHE{}.
+
+\it (a) The HV connected \myHighlight{$n$}\coordHE{}-point Green functions. \rm Using a countable set of auxiliary real scalar fields \myHighlight{$\polje_i(x)$}\coordHE{}, \myHighlight{$i = 1, 2, \ldots$}\coordHE{}, we define the \it HV action functional: \rm
+\begin{equation}\coord{}\boxEquation{
+   \akcijaR[\polje_i,J] = \int d^4x \, \Bigl( \LagRf(\polje_i, \partial_\mu \polje_i) - \Lagi(\polR) + \polR J \Bigr) \,,
+   \label{Raction}
+}{
+   \akcijaR[\polje_i,J] = \int d^4x \, \Bigl( \LagRf(\polje_i, \partial_\mu \polje_i) - \Lagi(\polR) + \polR J \Bigr) \,,
+   }{ecuacion}\coordE{}\end{equation}
+where the HV free-field Lagrangian
+\begin{equation}\coord{}\boxEquation{
+   \LagRf = - \half \sum_{i} c_i^{-1} \left ( (\partial_\mu \polje_i)^2 + \Lambda M_i^2 \polje_i^2 \right ) \quad\hbox{and}\quad
+   \polR(x) = \sum_i \polje_i \,,
+   \label{Rfreelagr}
+}{
+   \LagRf = - \half \sum_{i} c_i^{-1} \left ( (\partial_\mu \polje_i)^2 + \Lambda M_i^2 \polje_i^2 \right ) \quad\hbox{and}\quad
+   \polR(x) = \sum_i \polje_i \,,
+   }{ecuacion}\coordE{}\end{equation}
+with \myHighlight{$M_i$}\coordHE{} and \myHighlight{$c_i$}\coordHE{} real coefficients such that 
+\begin{equation}\coord{}\boxEquation{
+   \Lambda M_1^2 = m^2 \,, \quad c_1 = 1 \,, \quad \sum_i c_i = 0 \,, \quad \sum_i M_i^2 c_i = 0 \,, \quad \sum_i | c_i | < \infty \,,
+   \label{concpogoj}
+}{
+   \Lambda M_1^2 = m^2 \,, \quad c_1 = 1 \,, \quad \sum_i c_i = 0 \,, \quad \sum_i M_i^2 c_i = 0 \,, \quad \sum_i | c_i | < \infty \,,
+   }{ecuacion}\coordE{}\end{equation}
+and \myHighlight{$\Lambda$}\coordHE{} is a positive cut-off parameter. We may regard \myHighlight{$\akcijaR[\polje_i,J]$}\coordHE{} as being obtained from \myHighlight{$\akcija[\polje,J]$}\coordHE{} by first replacing the field \myHighlight{$\polje$}\coordHE{} with the sum \myHighlight{$\polR$}\coordHE{} of auxiliary fields \myHighlight{$\polje_i$}\coordHE{}, and then modifying \myHighlight{$\akcija$}\coordHE{} by replacing \myHighlight{$\Lagf$}\coordHE{} with a Lorentz-invariant alteration \myHighlight{$\LagRf$}\coordHE{}. So in \myHighlight{$\akcijaR$}\coordHE{} \it all fields \myHighlight{$\polje_i(x)$}\coordHE{} have the same external source \myHighlight{$J(x)$}\coordHE{} \rm contrary to QFT formalism.
+
+We define the HV connected \myHighlight{$n$}\coordHE{}-point Green functions, \myHighlight{$\GfR$}\coordHE{}, through functional derivatives (\ref{Greendef}) of the generating functional
+\begin{equation}\coord{}\boxEquation{
+   Z_{HV}[J] = \int \prod_{x,i} d\polje_i(x) \, e^{ i\akcijaR(\polje_i, J) } \,.
+  \label{unigenfunc}
+}{
+   Z_{HV}[J] = \int \prod_{x,i} d\polje_i(x) \, e^{ i\akcijaR(\polje_i, J) } \,.
+  }{ecuacion}\coordE{}\end{equation}
+And we define the HV scattering matrix, \myHighlight{$\SmR$}\coordHE{}, in terms of \myHighlight{$\GfR$}\coordHE{} by means of the LSZ reduction formula (see e.g. Sec.~10.3 in \cite{Weinberg}, and Sec.~2.5 in \cite{Hooft}).
+
+\it (b) Perturbative expansions. \rm We change the variables of functional integrals in (\ref{unigenfunc}) from \myHighlight{$\polje_i$}\coordHE{} to \myHighlight{$\polje_i - \polje_{ic}$}\coordHE{}, where \myHighlight{$\polje_{ic}(x)$}\coordHE{} are solutions to the Euler-Lagrange equations of the action functional \myHighlight{$\akcijaR$}\coordHE{} with \myHighlight{$\Lagi = 0$}\coordHE{}. We then formally obtain
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+   Z_{HV}[J] &=& N_{HV} \rightCoord{}\, \exp \left \{ -i \int d^4x \rightCoord{}\, \Lagi( -i\delta/ \delta J ) \right \} \nonumber\rightCoord{}\\
+&&\leftCoord{} \qquad\times  \exp \left \{ i \int d^4x d^4y \rightCoord{}\, \half J(x) \Delta_{HV}(x-y) J(y) \right \}  \rightCoord{}\,,
+   \label{unigenfunctrans}
+\rightCoord{}}{0mm}{2}{7}{
+   Z_{HV}[J] &=& N_{HV} \, \exp \left \{ -i \int d^4x \, \Lagi( -i\delta/ \delta J ) \right \} \\
+&& \qquad\times  \exp \left \{ i \int d^4x d^4y \, \half J(x) \Delta_{HV}(x-y) J(y) \right \}  \,,
+   }{1}\coordE{}\end{eqnarray}
+where \myHighlight{$N_{HV}$}\coordHE{} is a \myHighlight{$J$}\coordHE{}-independent factor, and the \it HV propagator \rm \myHighlight{$\Delta_{HV}(x)$}\coordHE{} is defined by the relation
+\begin{equation}\coord{}\boxEquation{
+   \sum_i \polje_{ic}(x) = \int d^4y\, \Delta_{HV}(x-y) J(y) \,.
+   \label{regpropdef}
+}{
+   \sum_i \polje_{ic}(x) = \int d^4y\, \Delta_{HV}(x-y) J(y) \,.
+   }{ecuacion}\coordE{}\end{equation}
+We choose such solutions \myHighlight{$\polje_{ic}(x)$}\coordHE{} that \myHighlight{$\Delta_{HV}(x)$}\coordHE{} is the Fourier transform of
+\begin{equation}\coord{}\boxEquation{
+   \propR(k) = \unreg(k^2 - i\epsilon) \propF(k) \qquad\hbox{with}\quad \epsilon \searrow 0 \,,
+   \label{propdiff}
+}{
+   \propR(k) = \unreg(k^2 - i\epsilon) \propF(k) \qquad\hbox{with}\quad \epsilon \searrow 0 \,,
+   }{ecuacion}\coordE{}\end{equation}
+where \it the regularizing factor \rm
+\begin{equation}\coord{}\boxEquation{
+   \unreg(z) =  1 + (z + m^2 ) \sum_{i=2} {c_i \over z + \Lambda M_i^2} \,.
+   \label{unireg}
+}{
+   \unreg(z) =  1 + (z + m^2 ) \sum_{i=2} {c_i \over z + \Lambda M_i^2} \,.
+   }{ecuacion}\coordE{}\end{equation}
+By (\ref{propdiff})--(\ref{unireg}), the HV propagator \myHighlight{$\propR(k)$}\coordHE{} is a \it linear combination \rm of the Feynman propagators of the HV free-field Lagrangian \myHighlight{$\LagRf$}\coordHE{}; and \myHighlight{$\propR = O(|k^2|^{-3})$}\coordHE{} as \myHighlight{$|k^2| \to \infty$}\coordHE{}, by (\ref{concpogoj}).
+
+Expanding expression (\ref{unigenfunctrans}) in terms of the four coupling coefficients \myHighlight{$\lambda$}\coordHE{}, \myHighlight{$Z^2\lambda_0 -\lambda$}\coordHE{}, \myHighlight{$Z - 1$}\coordHE{}, and \myHighlight{$Z m_0^2 - m^2$}\coordHE{} in \myHighlight{$\Lagi(\polR)$}\coordHE{}, we obtain through (\ref{Greendef}) the perturbative expansions of \myHighlight{$\GfR$}\coordHE{}; the resulting expressions lead to the Feynman-like rules for the perturbative calculation of \myHighlight{$\GfR$}\coordHE{}. In particular, the perturbative expansions of \myHighlight{$\GfR$}\coordHE{} are calculated by the same sums over the Feynman diagrams as the perturbative expansions of \myHighlight{$\GfZ$}\coordHE{}, but with the Feynman propagator \myHighlight{$\propF(k)$}\coordHE{} replaced with the HV propagator \myHighlight{$\propR(k)$}\coordHE{} whereas the vertices remain unchanged, by (\ref{genfunctrans}) and (\ref{unigenfunctrans}). 't Hooft and Veltman \cite{Hooft} obtained such regularized perturbative expansion of \myHighlight{$\GfZ$}\coordHE{} by applying the Feynman rules to the Lagrangian  \myHighlight{$\LagRf - \Lagi$}\coordHE{}. Due to the form of the interaction and source terms, they could sum up various contributions to yield the above perturbative expansion of \myHighlight{$\GfR$}\coordHE{}.
+
+Now let us consider the limiting values of the perturbative expansions of the HV connected Green functions \myHighlight{$\GfR$}\coordHE{} when we remove the regularization by limiting the cut-off parameter \myHighlight{$\Lambda \to \infty$}\coordHE{}. To calculate these limiting values, we: (i)~use the Bogoliubov-Parasiouk-Hepp-Zimmermann method; (ii)~assume that \myHighlight{$Z$}\coordHE{}, \myHighlight{$m_0$}\coordHE{} and \myHighlight{$\lambda_0$}\coordHE{} are power series in \myHighlight{$\lambda$}\coordHE{}, with coefficients that depend on \myHighlight{$\Lambda$}\coordHE{}; and (iii)~determine these coefficients so that, order by order of \myHighlight{$\lambda$}\coordHE{}, perturbative expansions of \myHighlight{$\GfR$}\coordHE{} with respect to \myHighlight{$\lambda$}\coordHE{} tend towards finite values as \myHighlight{$\Lambda \to \infty$}\coordHE{}, see e.g. Sec.~2.2 in \cite{Cheng}. As, by (\ref{concpogoj}), the regularization factor \myHighlight{$\unreg$}\coordHE{} is such that
+\begin{displaymath}\coord{}\boxMath{
+   \sup_{|z| < z_0} |\unreg^{(n)}(z) - \delta_{n0}| \to 0 \quad{\rm as} \quad \Lambda \to \infty \quad\hbox{for any}\quad z_0 > 0 , \quad n = 0,1,\ldots, 
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+and
+\begin{equation}\coord{}\boxEquation{
+   \sup_{\Lambda > \Lambda_0} \sup_{z > 0} | z^n \unreg^{(n)} (z)| < \infty \qquad\hbox{for a} \quad\Lambda_0 > 0 ,\quad n = 0,1,\ldots, 
+   \label{regucond0}
+}{
+   \sup_{\Lambda > \Lambda_0} \sup_{z > 0} | z^n \unreg^{(n)} (z)| < \infty \qquad\hbox{for a} \quad\Lambda_0 > 0 ,\quad n = 0,1,\ldots, 
+   }{ecuacion}\coordE{}\end{equation}
+the perturbative expansions of \myHighlight{$\GfR$}\coordHE{} tend towards the corresponding renormalized perturbative expansions of \myHighlight{$\GfZ$}\coordHE{} as \myHighlight{$\Lambda \to \infty$}\coordHE{}. As a consequence, the perturbative expansions of \myHighlight{$\GfR$}\coordHE{} are an acceptable regularization of the perturbative expansions of \myHighlight{$\GfZ$}\coordHE{}.
+
+The perturbative expansions of \myHighlight{$\GfR$}\coordHE{} are causal, free of ultraviolet divergencies, and the corresponding perturbative expansion of \myHighlight{$\SmR$}\coordHE{} is unitary to all orders in the coupling coefficients; but it involves unphysical particles \cite{Hooft}. In particular, the zero-order term in the perturbative expansion of \myHighlight{$G_{HV}^{(2)}$}\coordHE{} equals the HV propagator \myHighlight{$\propR(k)$}\coordHE{}. So the poles of \myHighlight{$\propR(k)$}\coordHE{} determine the properties of free particles of the HV scattering matrix \myHighlight{$\SmR$}\coordHE{}: (i)~the position of the pole determines the mass of the particle, and (ii)~when the residue is negative, the particle is considered unphysical (a ghost), since then transition probabilities can be negative in the tree order \cite{Hooft}. So, the HV scattering matrix \myHighlight{$\SmR$}\coordHE{} predicts free scalar particles with masses \myHighlight{$M_i$}\coordHE{} that are unphysical when \myHighlight{$c_i < 0$}\coordHE{}. By (\ref{concpogoj}), the above regularization of \myHighlight{$\GfZ$}\coordHE{} by the HV method introduces additional free particles, at least one of which is unphysical.
+
+\section{Alternatives to the QFT propagator}
+\label{sechighvar}
+
+We do not need the additional poles of the HV propagator \myHighlight{$\propR(k)$}\coordHE{} by themselves for an acceptable regularization of perturbative expansions of \myHighlight{$\GfZ$}\coordHE{}. As some of them correspond to unphysical free particles we would prefer a HV method with such a HV propagator that has properties sufficient for an acceptable regularization of perturbative expansions of \myHighlight{$\GfZ$}\coordHE{} but no additional singularities. We will refer to such a HV propagator as an \it alternative \rm to the QFT spin \myHighlight{$0$}\coordHE{} propagator \myHighlight{$\propF(k)$}\coordHE{} and denote it by \myHighlight{$\propA(k)$}\coordHE{} provided
+\begin{equation}\coord{}\boxEquation{
+   \propA(k) = \altreg(k^2 - i\epsilon) \propF(k) \qquad \hbox{with}\quad \epsilon \searrow 0 \,,
+   \label{alternative}
+}{
+   \propA(k) = \altreg(k^2 - i\epsilon) \propF(k) \qquad \hbox{with}\quad \epsilon \searrow 0 \,,
+   }{ecuacion}\coordE{}\end{equation}
+where: (i)~the regularizing factor \myHighlight{$\altreg(z)$}\coordHE{} does not depend on \myHighlight{$\epsilon$}\coordHE{}, and is an analytic function of complex variable \myHighlight{$z$}\coordHE{} except somewhere along the segment \myHighlight{$z \le z_d < -m^2$}\coordHE{} of the negative real axis. (ii)~\myHighlight{$\altreg(-m^2) = 1$}\coordHE{}. (iii)~\myHighlight{$\altreg(z)$}\coordHE{} is real on the positive real axis; so \myHighlight{$\altreg^*(z) = \altreg(z^*)$}\coordHE{}. (iv)~\myHighlight{$\sup_z (1 + |z|^{3/2}) | \altreg(z)| < \infty$}\coordHE{}. So all integrals over independent loops converge, and also the Wick rotation is possible. (v)~The coefficients of \myHighlight{$\altreg(z)$}\coordHE{} can be made to depend on some cut-off parameter \myHighlight{$\Lambda$}\coordHE{} so that for any \myHighlight{$\Lambda \ge \Lambda_0 > 0$}\coordHE{} the regularizing factor \myHighlight{$\altreg$}\coordHE{} has properties (i)--(iv) and satisfies relations (\ref{regucond0}).
+
+By (i)-(v), we can regard \myHighlight{$\propF$}\coordHE{} as a covariant, low-energy approximation to its alternative \myHighlight{$\propA$}\coordHE{}; the coefficients of \myHighlight{$\propA$}\coordHE{} can be chosen to make this low-energy approximation as accurate as desired.
+
+Using Cauchy's integral formula we can conclude that each \myHighlight{$\propA(k)$}\coordHE{} admits the K\"all\'en-Lehman representation (\ref{Kahlenrep}) with the spectral function
+\begin{equation}\coord{}\boxEquation{
+   \rho(s) = \delta(s-m^2) - \pi^{-1} (m^2 -s)^{-1} \lim_{y \to 0} \Im \altreg(-s + iy) \,,
+   \label{KLrho}
+}{
+   \rho(s) = \delta(s-m^2) - \pi^{-1} (m^2 -s)^{-1} \lim_{y \to 0} \Im \altreg(-s + iy) \,,
+   }{ecuacion}\coordE{}\end{equation}
+\myHighlight{$s, y > 0$}\coordHE{}. By (i)-(iv), \myHighlight{$\rho(s)$}\coordHE{} is real, \myHighlight{$\rho(s) = O(s^{-5/2})$}\coordHE{} as \myHighlight{$s \to \infty$}\coordHE{}, and
+\begin{equation}\coord{}\boxEquation{
+   \int_0^\infty s^\ell \rho(s)\, ds = 0 \qquad\hbox{for}\quad \ell = 0, 1;
+   \label{KLcon}
+}{
+   \int_0^\infty s^\ell \rho(s)\, ds = 0 \qquad\hbox{for}\quad \ell = 0, 1;
+   }{ecuacion}\coordE{}\end{equation}
+so \myHighlight{$\rho(s)$}\coordHE{} is changing sign, in contrast with the spectral function in QFT. By (\ref{Kahlenrep}) and (\ref{KLrho}), we may regard \myHighlight{$\propA$}\coordHE{} as a sum of \myHighlight{$\propF$}\coordHE{} and of a Pauli-Villars regulator with a continuous spectrum of auxiliary masses \cite{Pauli}.
+
+Following 't Hooft and Veltman \cite{Hooft}, we can show that by replacing the QFT propagator \myHighlight{$\propF$}\coordHE{} in the perturbative expansions of \myHighlight{$\GfZ$}\coordHE{} with its alternative \myHighlight{$\propA$}\coordHE{} we obtain acceptably regularized, covariant, and causal expressions that equal the perturbative expansions of \myHighlight{$\GfA$}\coordHE{}. Which result, by means of the LSZ reduction formula, in a covariant and unitary perturbative scattering matrix \myHighlight{$\SmA$}\coordHE{} that is without additional free particles but may involve additional, unphysical particles generated by the interaction \cite{Hooft}. However, as there are no additional particles at \myHighlight{$\Lagi = 0$}\coordHE{}, there also are no additional particles in a vicinity of \myHighlight{$\Lagi = 0$}\coordHE{} if the zeroes of \myHighlight{$(G_A^{(2)})^{-1}$}\coordHE{} are continuous functions of the coupling coefficients in this vicinity. However, it is an open question when this is so.
+
+In the next section we will generalize the HV method to auxiliary fields having a continuous, four-vector index so that the sum in the definition (\ref{unireg}) of the regularizing factor \myHighlight{$\unreg(k^2)$}\coordHE{} is replaced with an integral that has no poles as a function of \myHighlight{$k^2$}\coordHE{}. Thereby we will avoid the additional free particles implied through the LSZ reduction formula by the additional poles of \myHighlight{$\propR(k)$}\coordHE{}. So we will be able to demonstrate the existence of such a local and invariant action functional that the corresponding (in the sense of (\ref{genfunc})--(\ref{genfunctrans})) propagator is an alternative to \myHighlight{$\propF$}\coordHE{}. Each such action functional defines a FAQT, as specified in Sec.~\ref{secintro}, to the QFT of a single, self-interacting real scalar field.
+
+\section{An example}
+\label{secproof}
+
+One may wonder whether it is possible to generalize the HV method so that the HV propagator \myHighlight{$\propR$}\coordHE{} is an alternative to \myHighlight{$\propF$}\coordHE{}, and thus construct a FAQT to the QFT of a single, self-interacting real scalar field with action functional (\ref{QFTaction}). The following action functional (\ref{Aakcija}) demonstrates that this is possible and so provides an \it example \rm of such a FAQT as specified in Secs.~\ref{secintro} and \ref{sechighvar}.
+
+We introduce infinitely many auxiliary real scalar fields with a continuous, real four-vector index \myHighlight{$p$}\coordHE{}, \myHighlight{$\Polje(x,p)$}\coordHE{}; their weighted sum
+\begin{equation}\coord{}\boxEquation{
+   \polA(x) = \int d^4p\, f(p^2) \Polje(x,p) \,;
+   \label{tranpolje}
+}{
+   \polA(x) = \int d^4p\, f(p^2) \Polje(x,p) \,;
+   }{ecuacion}\coordE{}\end{equation}
+and the FAQT free-field Lagrangian 
+\begin{equation}\coord{}\boxEquation{
+   \LagAf =  \half \int d^4p\,\Polje(x,-p)[ p^\mu \partial_\mu + t(p^2) ] \Polje(x, p) + q \polA^2 \,,
+   \label{AfreeLagr}
+}{
+   \LagAf =  \half \int d^4p\,\Polje(x,-p)[ p^\mu \partial_\mu + t(p^2) ] \Polje(x, p) + q \polA^2 \,,
+   }{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$q$}\coordHE{} is a real coefficient; \myHighlight{$f(y)$}\coordHE{} and \myHighlight{$t(y)$}\coordHE{} are real functions of real \myHighlight{$y$}\coordHE{}, yet to be specified, such that \myHighlight{$f^2(y)/t(y)$}\coordHE{} is finite at \myHighlight{$y = 0$}\coordHE{}; and the integral
+\begin{equation}\coord{}\boxEquation{
+   \int d^4p \dots \;\; = -i \lim_{y\to \infty} \int_{-iy}^{iy} dp^0 \int _{p^2 \le y^2} d^3{\bf  p} \dots \;\; \,.
+   \label{traninte}
+}{
+   \int d^4p \dots \;\; = -i \lim_{y\to \infty} \int_{-iy}^{iy} dp^0 \int _{p^2 \le y^2} d^3{\bf  p} \dots \;\; \,.
+   }{ecuacion}\coordE{}\end{equation}
+A possible physical significance of such a FAQT free-field Lagrangian is considered in \cite{mi001}.
+
+We construct the FAQT action functional \myHighlight{$\akcijaA$}\coordHE{} by replacing \myHighlight{$\Lagf$}\coordHE{} with \myHighlight{$\LagAf$}\coordHE{}, and \myHighlight{$\polje$}\coordHE{} with \myHighlight{$\polA$}\coordHE{} in the QFT action functional \myHighlight{$\akcija$}\coordHE{}; i.e.,
+\begin{equation}\coord{}\boxEquation{
+   \akcijaA[\Polje, J] = \int d^4x \, \left [ \LagAf(\Polje, \partial_\mu\Polje) - \Lagi(\polA) + \polA J \right ] \,.
+  \label{Aakcija}
+}{
+   \akcijaA[\Polje, J] = \int d^4x \, \left [ \LagAf(\Polje, \partial_\mu\Polje) - \Lagi(\polA) + \polA J \right ] \,.
+  }{ecuacion}\coordE{}\end{equation}
+Note that we do not introduce an external source for each individual, auxiliary real scalar field \myHighlight{$\Polje(x,p)$}\coordHE{}, but only for the combination \myHighlight{$\polA$}\coordHE{} that appears in the interaction Lagrangian \myHighlight{$-V$}\coordHE{}. The FAQT action functional \myHighlight{$\akcijaA$}\coordHE{} is \it real, quadratic, local in spacetime, and invariant under the inhomogeneous Lorentz transformations \rm
+\begin{equation}\coord{}\boxEquation{
+   x \to L x + a \,, \quad   
+   p \to L p \,, \quad   
+   \Polje(x,p) \to \Polje(L x + a, L p) \,, \quad
+   J(x) \to J(L x + a) \,.
+   \label{lorentztrans}
+}{
+   x \to L x + a \,, \quad   
+   p \to L p \,, \quad   
+   \Polje(x,p) \to \Polje(L x + a, L p) \,, \quad
+   J(x) \to J(L x + a) \,.
+   }{ecuacion}\coordE{}\end{equation}
+
+We define the FAQT connected \myHighlight{$n$}\coordHE{}-point Green functions, \myHighlight{$\GfA$}\coordHE{}, by functional derivatives (\ref{Greendef}) of the generating functional
+\begin{equation}\coord{}\boxEquation{
+   Z_A[J] = \int \prod_{x,p} d\Polje(x,p) e^{ i \akcijaA [\Polje, J] } \,.
+  \label{Agenfunc}
+}{
+   Z_A[J] = \int \prod_{x,p} d\Polje(x,p) e^{ i \akcijaA [\Polje, J] } \,.
+  }{ecuacion}\coordE{}\end{equation}
+And we define the FAQT scattering matrix, \myHighlight{$\SmA$}\coordHE{}, in terms of \myHighlight{$\GfA$}\coordHE{} by means of the LSZ reduction formula.
+
+We change the variables of functional integrals in (\ref{Agenfunc}) from \myHighlight{$\Polje(x,p)$}\coordHE{} to \myHighlight{$\Polje(x,p) - \Polje_c(x,p)$}\coordHE{}, where \myHighlight{$\Polje_c(x,p)$}\coordHE{} is a solution to the Euler-Lagrange equations of the FAQT action \myHighlight{$I_A$}\coordHE{} with \myHighlight{$\Lagi = 0$}\coordHE{}. So we can  formally write the generating functional (\ref{Agenfunc}) as
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+   Z_A[J] &=& N_A \rightCoord{}\, \exp \left \{ -i \int d^4x \rightCoord{}\, \Lagi( -i \delta/ \delta J ) \right \} \nonumber\rightCoord{}\\
+&&\leftCoord{} \qquad\times  \exp \left \{ i \int d^4x d^4y \rightCoord{}\, \half J(x) \Delta(x-y) J(y) \right \}  \rightCoord{}\,, \rightCoord{}
+   \label{Agenfunctrans}
+\rightCoord{}}{0mm}{2}{8}{
+   Z_A[J] &=& N_A \, \exp \left \{ -i \int d^4x \, \Lagi( -i \delta/ \delta J ) \right \} \\
+&& \qquad\times  \exp \left \{ i \int d^4x d^4y \, \half J(x) \Delta(x-y) J(y) \right \}  \,, 
+   }{1}\coordE{}\end{eqnarray}
+where \myHighlight{$N_A$}\coordHE{} is a \myHighlight{$J$}\coordHE{}-independent factor, and the propagator \myHighlight{$\Delta(x)$}\coordHE{} is defined by the relation
+\begin{equation}\coord{}\boxEquation{
+   \int d^4p f(p^2) \Polje_c(x,p) = \int d^4y \, \Delta(x-y) J(y) \,.
+   \label{tranpropdef}
+}{
+   \int d^4p f(p^2) \Polje_c(x,p) = \int d^4y \, \Delta(x-y) J(y) \,.
+   }{ecuacion}\coordE{}\end{equation}
+We can choose \cite{mi002} such a solution \myHighlight{$\Polje_c(x,p)$}\coordHE{} that the Fourier transform of \myHighlight{$\Delta(x)$}\coordHE{} is
+\begin{equation}\coord{}\boxEquation{
+   \prop(k) = { - I(k^2 - i\epsilon) \over 2q I(k^2 - i\epsilon) + 1 } \qquad \hbox{with}\quad \epsilon \searrow 0  \,,
+   \label{tranprop}
+}{
+   \prop(k) = { - I(k^2 - i\epsilon) \over 2q I(k^2 - i\epsilon) + 1 } \qquad \hbox{with}\quad \epsilon \searrow 0  \,,
+   }{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$I(z)$}\coordHE{} is the analytic function of the complex variable \myHighlight{$z$}\coordHE{} equal to
+\begin{equation}\coord{}\boxEquation{
+   2\pi^2 \int_0^\infty dy\, f^2(y) [ y/ t(y) ] \left( \sqrt{1 + z y/ t^2(y)} + 1 \right) ^{-1} \qquad\hbox{for}\quad z > 0 \,.
+   \label{imnr}
+}{
+   2\pi^2 \int_0^\infty dy\, f^2(y) [ y/ t(y) ] \left( \sqrt{1 + z y/ t^2(y)} + 1 \right) ^{-1} \qquad\hbox{for}\quad z > 0 \,.
+   }{ecuacion}\coordE{}\end{equation}
+
+We can choose such \myHighlight{$q$}\coordHE{}, \myHighlight{$f(y)$}\coordHE{}, and \myHighlight{$t(y)$}\coordHE{} that the propagator \myHighlight{$\prop(k)$}\coordHE{} becomes an alternative to \myHighlight{$\propF$}\coordHE{}; and so the action functional \myHighlight{$I_A$}\coordHE{} defines such a FAQT as specified in Secs.~\ref{secintro} and \ref{sechighvar}. To show by a simple example that this is feasible: (i)~Let 
+\begin{equation}\coord{}\boxEquation{
+   t(y) = (-1)^j v_j \sqrt{y} \qquad\hbox{for}\qquad y \in [j-1,j) \,, \quad j= 1, 2, 3, 4, 
+   \label{examplet}
+}{
+   t(y) = (-1)^j v_j \sqrt{y} \qquad\hbox{for}\qquad y \in [j-1,j) \,, \quad j= 1, 2, 3, 4, 
+   }{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$v_j = [ 1 + (2j - 5)\eta)] \Lambda $}\coordHE{}, \myHighlight{$\Lambda \ge \Lambda_0 > m/(1 - 3\eta)$}\coordHE{}, and \myHighlight{$ \eta \in (0, 1/3)$}\coordHE{}. (ii)~Let 
+\begin{equation}\coord{}\boxEquation{
+   q = { - m^2 r_1 \over 2r_1 + m^2 r_{-1} } \,, \qquad \hbox{with}\quad r_n = \sum_{j=1}^4 d_j ( v_j^2 - m^2 )^{n/2} 
+   \label{exampleq}
+}{
+   q = { - m^2 r_1 \over 2r_1 + m^2 r_{-1} } \,, \qquad \hbox{with}\quad r_n = \sum_{j=1}^4 d_j ( v_j^2 - m^2 )^{n/2} 
+   }{ecuacion}\coordE{}\end{equation}  
+and \myHighlight{$d_j = (-1)^j (4 - |2j - 5|)$}\coordHE{}. (iii)~Let \myHighlight{$f(y)$}\coordHE{} be such that 
+\begin{equation}\coord{}\boxEquation{
+   2\pi^2 \int_{j-1}^j f^2(y) \sqrt{y} \, dy = { |d_j | m^2 \over 2 q r_1 } \,, \quad j= 1, 2, 3, 4,
+   \label{examplef}
+}{
+   2\pi^2 \int_{j-1}^j f^2(y) \sqrt{y} \, dy = { |d_j | m^2 \over 2 q r_1 } \,, \quad j= 1, 2, 3, 4,
+   }{ecuacion}\coordE{}\end{equation}
+and let \myHighlight{$f(y) = 0$}\coordHE{} for \myHighlight{$y > 4$}\coordHE{}. In such a case, we can check by inspection that: (i)
+\begin{equation}\coord{}\boxEquation{
+   \prop(k) = \altreg(k^2 - i\epsilon ) \propF(k)  \,, 
+   \label{alternative2}
+}{
+   \prop(k) = \altreg(k^2 - i\epsilon ) \propF(k)  \,, 
+   }{ecuacion}\coordE{}\end{equation}
+with the regularization factor
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+   \altreg(z) & = &   \Big [ \sum_{\rightCoord{}j=1}^{\leftCoord{}4} d_j ( \sqrt{v_j^2 + z} + v_j )^{-1} \Big ] \Big/ \Big [ 2q \sum_{\rightCoord{}j=1}^{\leftCoord{}4} d_j ( \sqrt{v_j^2 - m^2} + v_j )^{-1}
+         \nonumber \rightCoord{}\\
+&&\leftCoord{}\qquad \times ( \sqrt{v_j^2 + z} + v_j )^{-1} ( \sqrt{v_j^2 + z} + \sqrt{v_j^2 - m^2}\rightCoord{}\,\rightCoord{}\, )^{-1} \Big ] \rightCoord{}\,.\rightCoord{}
+   \label{tranpropexample}
+\rightCoord{}}{0mm}{4}{9}{
+   \altreg(z) & = &   \Big [ \sum_{j=1}^{4} d_j ( \sqrt{v_j^2 + z} + v_j )^{-1} \Big ] \Big/ \Big [ 2q \sum_{j=1}^{4} d_j ( \sqrt{v_j^2 - m^2} + v_j )^{-1}
+         \\
+&&\qquad \times ( \sqrt{v_j^2 + z} + v_j )^{-1} ( \sqrt{v_j^2 + z} + \sqrt{v_j^2 - m^2}\,\, )^{-1} \Big ] \,.
+   }{1}\coordE{}\end{eqnarray}
+(ii)~\myHighlight{$\altreg(z)$}\coordHE{} is an analytic function of \myHighlight{$z$}\coordHE{} except along the segment \myHighlight{$z \le z_d$}\coordHE{}, \myHighlight{$z_d = - \Lambda^2 (1 -3\eta)^2 < -m^2 $}\coordHE{}, of the negative real axis for each \myHighlight{$\eta \in (1/3 - 0.047, 1/3)$}\coordHE{}; to infer this, we take into account that \myHighlight{$\Re \sqrt z \ge 0$}\coordHE{} and that \myHighlight{$\Lambda/(\sqrt{v_j^2 - m^2} + v_j) \to  \infty$}\coordHE{} as \myHighlight{$\eta \nearrow 1/3$}\coordHE{} only if \myHighlight{$j = 1$}\coordHE{}. 
+
+(iii)~\myHighlight{$\altreg(z)$}\coordHE{} is real for \myHighlight{$z \ge - v_1^2$}\coordHE{}, \myHighlight{$\altreg(-m^2) = 1$}\coordHE{}, \myHighlight{$\sup_z (1 + |z|^{3/2}) |\altreg(z)| < \infty$}\coordHE{}, and relations (\ref{regucond0}) are satisfied. Thus, \myHighlight{$\prop(k)$}\coordHE{} is an alternative to \myHighlight{$\propF(k)$}\coordHE{}, with \myHighlight{$\Lambda \ge \Lambda_0 $}\coordHE{} as a cut-off parameter. 
+
+Note that there are infinitely many functions \myHighlight{$f(y)$}\coordHE{} and \myHighlight{$t(y)$}\coordHE{} that result in the same alternative, (\ref{alternative2})--(\ref{tranpropexample}), to the propagator \myHighlight{$\propF(k)$}\coordHE{}.
+
+On the analogy with alternatives to the spin 0 Feynman propagator, we have defined also alternatives to the spin \myHighlight{$\half$}\coordHE{} Feynman propagator and to the Feynman propagator in unitary gauge for massive spin 1 bosons, and provided an example of the corresponding FAQT free-field Lagrangians \cite{mi003}: We used them to construct an example of a FAQT to QED with massive photons in the unitary gauge.
+
+Similarly we can demonstrate that there are FAQTs to the standard model. However, it is an open question what properties the free-field Lagrangian of a FAQT to the standard model must have to make this theory: (i)~without additional particles created by the interaction; (ii)~of interest for the study of non-perturbative phenomena, cf. \cite{Gupta}, and (iii)~a better way of extracting physical data from the interaction Lagrangian of the standard model. In this connection it is not of primary importance how convenient are the resulting, acceptably regularized Green functions for further calculations---the main concern of all regularizations so far, cf. \cite{Deminov}.
+
+\section{Some comparisons between the FAQT and QFT formalisms}
+\label{seccomp}
+
+From the preceding examples we note the following differences and similarities between the FAQT and QFT formalisms:
+
+(a)~K\"all\'en-Lehman representation (\ref{Kahlenrep}) with the spectral function (\ref{KLrho}) of the FAQT propagator \myHighlight{$\propA$}\coordHE{} defined by (\ref{tranprop}) is a consequence of assumptions about the FAQT action functional \myHighlight{$I_A$}\coordHE{}. These classical  assumptions do not imply the QFT premises on which the K\"all\'en-Lehman representation (\ref{Kahlenrep}) with a non-negative spectral function is based in QFTs, and do not contradict the positivity postulates of quantum mechanics, cf. Sec.~10.7 in \cite{Weinberg}.
+
+(b)~According to Buchholz and Haag \cite{Buchholz} one can take as a postulate that each QFT ``is completely described by a finite number of covariant fields (each having a finite number of components)''. However, in constructing a FAQT we replace  each QFT field with a field that has a continuous infinity of components---an essential difference characteristic also of string theories.
+
+(c)~If we replace the FAQT free-field Lagrangian \myHighlight{$\LagAf$}\coordHE{} in the FAQT action functional \myHighlight{$\akcijaA$}\coordHE{} with the QFT  free-field Lagrangian \myHighlight{$\Lagf$}\coordHE{} with \myHighlight{$\polje=\polA$}\coordHE{}, the resulting action functional becomes equivalent to the QFT action functional \myHighlight{$\akcija$}\coordHE{} as far as the connected Green functions are concerned. So we may take that QFT of a single, self-interacting real scalar field and the FAQT based on \myHighlight{$\akcijaA$}\coordHE{} actually differ only in their free-field Lagrangian densities. The interaction and source parts of the FAQT action functional \myHighlight{$\akcijaA$}\coordHE{} are completely determined by the corresponding parts of the QFT action functional \myHighlight{$\akcija$}\coordHE{}.
+
+(d)~Contrary to the QFT free-field Lagrangian, \it a FAQT free-field Lagrangian by itself does not specify the free particles of a FAQT; \rm and the number of FAQT free particles is finite whereas the number of FAQT free fields is not.
+
+\section{Summary}
+\label{secsummary}
+
+In this paper: (i)~we have put forward a framework for constructing such \it finite alternative quantum theories \rm (FAQTs) to a QFT that respect \it the conventional premises of theoretical physics, \rm and (ii)~we have given an example to prove that this framework is feasible.
+
+The basic premises of the proposed mathematical framework for constructing a FAQT to a given QFT are that:
+\begin{itemize}
+\item[(i)]A FAQT can be characterized by a local, invariant action functional.
+\item[(ii)]The FAQT, connected \myHighlight{$n$}\coordHE{}-point Green functions are defined by functional derivatives of a generating functional. They are invariant under the same symmetry transformations as the QFT scattering matrix.
+\item[(iii)]The FAQT scattering matrix is defined in terms of the FAQT Green functions by means of the LSZ reduction formula. Its coefficients are regarded as observable quantities: it has \it no auxiliary parameters. \rm
+\item[(iv)]The FAQT free particles are the same as the QFT ones.
+\item[(v)]Perturbative expansions of the FAQT Green functions may be regarded as such acceptably, covariantly regularized perturbative expansions of the QFT Green functions that do not depend on auxiliary parameters.
+\end{itemize}
+So each FAQT contains all perturbative results of the QFT in question. In particular, in the asymptote of a negligible cut-off the perturbative expansion of the FAQT scattering matrix equals that of the QFT scattering matrix.
+
+We construct a FAQT to a QFT as follows:
+\begin{itemize}
+\item[(i)]We take the QFT Lagrangian and introduce external sources to form the action functional we need to specify its QFT connected Green functions through the generating functional.
+\item[(ii)]In the QFT action functional, we replace each field but the external sources with an average over a continuous infinity of auxiliary fields of the same kind.
+\item[(iii)]We replace the QFT free-field Lagrangian with such a local free-field Lagrangian that the resulting action functional becomes a FAQT action functional as specified above.
+\end{itemize}
+In such a case, the Feynman-like rules for calculating the FAQT Green functions are similar to the ones of the QFT in question: only the QFT propagators are replaced with FAQT propagators, which are determined through the FAQT action functional without the interaction part.
+
+By providing an example in terms of functions defined in the eight-dimensional space \myHighlight{$\RRRR \times \RRRR$}\coordHE{}, we have shown in Sec.~\ref{secproof} that the above framework, based on the path-integral formalism, is feasible.
+
+\section*{Acknowledgement}
+
+We are grateful to Matja\v z Polj\v sak for many helpful remarks and discussions.
+
+\vfill\eject
+\begin{thebibliography}{99}
+
+\bibitem{Weinberg}S. Weinberg, \it The Quantum Theory of Fields, \rm Cambridge University Press, Cambridge (1995), Vol. I.
+
+\bibitem{Cheng}T.-P. Cheng, L.-F. Li, \it Gauge Theory of Elementary Particle Physics, \rm Claredon Press, Oxford (1992).
+
+\bibitem{Villars}F. Villars, in M. Fierz and V. F. Weisskopf (Eds.), \it Theoretical Physics in the Twentieth Century, \rm Interscience Publishers, New York (1960), p.~78; C. J. Isham, A. Salam, J. Strathdee, Phys. Rev. D \bf 5 \rm (1972) 2548;  T. Y. Cao, S. S. Schweber, Synthese \bf 97 \rm (1993) 33; L. M. Brown (Ed.), \it Renormalization, \rm Springer-Verlag, New York (1993).
+
+\bibitem{Hooft}G. 't Hooft, M. Veltman, \it Diagrammar, \rm CERN report 73-9 (1973); reprinted in G. 't Hooft, \it Under the Spell of  Gauge Principle, \rm World Scientific, Singapore (1994).
+
+\bibitem{Pauli}W. Pauli, F. Villars, Rev. Mod. Phys. \bf 21 \rm (1949) 434.
+
+\bibitem{mi001}M. Ribari\v c, L. \v Su\v ster\v si\v c, hep-th/9810138; Fizika (Zagreb) B \bf 8 \rm (1999) 441.
+
+\bibitem{mi002}M. Ribari\v c, L. \v Su\v ster\v si\v c, Fund. Phys. Lett. \bf 7 \rm (1994) 531.
+
+\bibitem{mi003}M. Ribari\v c, L. \v Su\v ster\v si\v c, hep-th/0010209; Fizika (Zagreb) B\bf 10 \rm (2001) 73.
+
+\bibitem{Gupta}M. Asorey, F. Falceto, Phys. Rev. D \bf 54 \rm (1996) 5290.
+
+\bibitem{Deminov}M. M. Deminov, A. A. Slavnov, Phys. Lett. B \bf 501 \rm (2001) 297.
+
+\bibitem{Veltman}M. Veltman, \it Diagrammatica, \rm Cambridge University Press, Cambridge (1994).
+
+\bibitem{Buchholz}D. Buchholz, R. Haag, J. Math. Phys. \bf 41 \rm (2000) 3674.
+
+\end{thebibliography}
+
+\end{document}
+
+
+\bye

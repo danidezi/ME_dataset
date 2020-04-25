@@ -1,0 +1,2800 @@
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{amscd,amsmath,amsfonts,amssymb}
+\usepackage[dvips]{epsfig}
+
+\providecommand{\proj}{\mc{P}_{\!\!\omega}}
+\providecommand{\embin}{{\hookrightarrow}}
+\providecommand{\GL}{{\text{GL}}}
+
+\providecommand{\Complex}{\mathbb{C}}
+\providecommand{\Integer}{\mathbb{Z}}
+\providecommand{\Natural}{\mathbb{N}}
+
+\providecommand{\smat}{\begin{smallmatrix}}
+\providecommand{\stam}{\end{smallmatrix}}
+\providecommand{\mat}{\begin{pmatrix}}
+\providecommand{\tam}{\end{pmatrix}}
+\providecommand{\tr}{\text{tr}}
+
+\providecommand{\mf}{\mathfrak} % Text in frak-style
+\providecommand{\mc}{\mathcal} % Text in cal-style
+\def\Inv{\text{\rm Inv}} 
+\def\Iso{\Psi}
+\def\sG{H^\omega} % The relevant subgroup
+\def\iG{G^\omega} % The invariant subgroup
+\def\sg{\mf{h}^\omega} % The relevant subalgebra
+\def\ig{\mf{g}^\omega} % The invariant subalgebra
+\def\bL{\mc{B}} % The symbol for the set of boundary labels
+\def\areps{P_k^+} % Set of affine reps
+\def\reps{P^+} % set of reps
+\def\tareps{\bL^\omega_k} % Set of affine fractional sym. weights
+\def\treps{\bL^\omega} % Set of fractional sym weights
+\def\sareps{\Sigma_k^\omega} % Set of symmetric affine weights
+\def\sreps{\Sigma^\omega} % Set of symmetric weights
+\def\Hom{{\text{\rm Hom}}} % Symbol for set of homomorphisms
+\def\End{{\text{\rm End}}} % symbol for set of endomorphisms
+\def\Mat{{\text{\rm Mat}}} % symbol for set of matrices
+\def\tT{{\rm T}} % Lie algebra generator
+\def\tR{{\rm R}} % Representation matrix
+\def\tK{{\rm K}} % Doubly covariant function
+
+\def\U{{\mathcal U}}
+\def\tCS{{\rm CS}}
+\def\cS{{\mathcal S}}
+\def\tF{{\rm F}}
+\def\tf{{f}}
+\def\tA{{\rm A}} 
+\def\tL{{\rm L}}
+\def\astk{\, , \, } 
+\def\rmY{{\rm Y}}
+\def\ik{{\sf k}}
+\def\om{\omega}
+\def\QC{\mathbb{C}}
+\def\asg{{\hat{\mf{g}}}}
+\def\bz{{\bar z}}
+\def\pl{\partial}
+\def\bj{{\bar \jmath}} 
+\def\bJ{{\bar J}} 
+\def\bpl{\bar \partial} 
+\def\bT{{\bar T}}
+\def\Ad{{\rm Ad}}
+\def\ad{{\rm ad}}
+\def\id{{\rm id}}
+\def\st{{\mathcal T}}
+\def\C{{\mathcal C}} 
+\def\rank{{\rm rank\,}}
+\def\QZ{\mathbb{Z}}
+\def\bZ{\QZ}
+\def\a{\alpha}
+\def\b{\beta} 
+\def\c{\gamma} 
+
+   \textwidth15cm
+   \oddsidemargin+.7cm
+  \evensidemargin+.7cm
+
+
+\title{\bf Non-commutative gauge theory \\[3mm]  
+ \bf of twisted D-branes}
+
+\author{{\sc Anton Yu.\ Alekseev}\\[3mm] 
+Universit{\'e} de Gen{\`e}ve, Section de math{\'e}matiques\\ 
+2-4, rue du Li{\`e}vre, CH 1211 Gen{\`e}ve 24, Switzerland\\
+\& ITP Uppsala University, S--75108 Uppsala, Sweden\\[2mm]
+{\em Anton.Alekseev@math.unige.ch} \vspace*{3mm}
+\and
+{\sc Stefan Fredenhagen, Thomas Quella}\\
+ {\sc and Volker Schomerus} \\[3mm] 
+MPI f{\"u}r Gravitationsphysik, Albert-Einstein-Institut\\
+Am M{\"u}hlenberg 1, D-14476 Golm, Germany\\[2mm]  
+{\em stefan@aei.mpg.de}\quad 
+{\em quella@aei.mpg.de} \\
+ {\em vschomer@aei.mpg.de}}
+
+\date{\medskip\small September 19, version to appear in Nucl.\ Phys.\ B}
+  
+
+  
+\usepackage{useful_macros}
+\begin{document}
+
+\maketitle
+\baselineskip16pt 
+  
+\begin{abstract}
+In this work we propose new non-commutative gauge theories that 
+describe the dynamics of branes localized along twisted conjugacy 
+classes on group manifolds. Our proposal is based on a careful 
+analysis of the exact microscopic solution and it generalizes 
+the matrix models (``fuzzy gauge theories'') that are used to 
+study e.g.\  the bound state formation of point-like branes in a 
+curved background. We also construct a large number of classical 
+solutions and interpret them in terms of condensation processes 
+on branes localized along twisted conjugacy classes.
+\end{abstract}
+
+\vspace*{-20cm}\noindent AEI-2002-027\hfill hep-th/0205123
+
+\newpage
+  
+\section{Introduction}
+
+Branes on group manifolds have received a lot of attention 
+throughout the last years. Even though the group manifold 
+of \myHighlight{$SU(2) \cong S^3$}\coordHE{} is the only one that can appear directly 
+as part of a string background (e.g.\ in the background of 
+NS5-branes), other group manifolds provide simple toy models 
+for studying the behavior of branes in curved backgrounds. In 
+fact, the symmetry of group manifolds allows to control string 
+perturbation theory beyond the supergravity regime and hence 
+it renders investigations of brane spectra and brane dynamics 
+at finite curvature possible. Moreover, group manifolds are the 
+starting point for coset and orbifold constructions and thereby 
+allow to obtain many less symmetric string backgrounds.%
+\smallskip
+
+Open strings on group manifolds are modeled with the help 
+of the Wess-Zumino-Witten (WZW) theory on the upper half 
+\myHighlight{$\Sigma = \{ \Im z \geq 0\}$}\coordHE{} of the complex plane. Boundary 
+conditions giving rise to a consistent open string spectrum 
+were first proposed by Cardy \cite{Cardy:1989ir} but their 
+geometric interpretation in terms of brane geometry was only 
+uncovered much later in \cite{Alekseev:1998mc}. There it was 
+shown that Cardy's boundary theories describe branes that 
+wrap certain integer conjugacy classes on the group manifold 
+\myHighlight{$G$}\coordHE{} (see also \cite{Gawedzki:1999bq,Stanciu:1999id}). 
+\smallskip
+
+The Born-Infeld action has been used in \cite{Bachas:2000ik,
+Pawelczyk:2000ah} to explain the stability of such branes in 
+a weakly curved background (see also \cite{Bordalo:2001ec}
+for more general cases). Once several branes are placed on 
+a group manifold, they tend to form new bound states. These 
+dynamics are described by non-commutative gauge theories on 
+the quantized (``fuzzy'') conjugacy classes. The latter were 
+derived from the exact boundary conformal field theory in 
+\cite{Alekseev:1999bs}. Even though these actions are 
+applicable only at large level \myHighlight{$k$}\coordHE{}, many of the condensation 
+processes they encode are known to possess a deformation to 
+finite \myHighlight{$k$}\coordHE{} (see \cite{Alekseev:2000jx,Fredenhagen:2000ei}).     
+\medskip
+  
+Branes localized along conjugacy classes are not the 
+only ones that admit an exact solution. In \cite{Birke:1999ik} 
+Birke, Fuchs and Schweigert constructed the open string 
+spectrum for new sets of branes that were shown later 
+to be localized along so-called twisted conjugacy 
+classes \cite{Felder:1999ka}. These extra series of branes 
+come associated with non-trivial outer automorphisms 
+\myHighlight{$\omega_G$}\coordHE{} of the group \myHighlight{$G$}\coordHE{}. 
+\medskip
+
+In the present work we aim at understanding the dynamical 
+properties of such twisted D-branes on group manifolds.  
+After a brief introduction to the geometry and conformal 
+field theory of maximally symmetric branes on group 
+manifolds, we will use the microscopic information on 
+open string spectra to construct the space of functions 
+on all these branes in the limit where the level \myHighlight{$k$}\coordHE{} is 
+sent to infinity. We show that the space of functions 
+can be equipped with an associative and non-commutative 
+product. For non-trivial twists \myHighlight{$\omega_G \neq \id$}\coordHE{}, the 
+geometry of these branes is not just a simple matrix 
+geometry as in the case of branes on conjugacy classes
+but is based on a certain algebra of {\em matrix valued
+functions} on the group.
+The associated gauge theories are then easily obtained by 
+copying the computations from \cite{Alekseev:1999bs}. In 
+the final section we analyze classical solutions. Most 
+importantly, we shall establish that for a given 
+twist \myHighlight{$\omega_G$}\coordHE{}, all the branes appear as bound 
+states from stacks of one distinguished elementary 
+twisted brane. This is analogous to the situation of branes 
+wrapping ordinary conjugacy classes which can all be 
+built from condensates of point-like branes 
+\cite{Alekseev:2000fd} (see also \cite{Hashimoto:2001xy,
+Hikida:2001py}) by some analogue of Myers dielectric 
+effect \cite{Myers:1999ps}. Let us remark 
+that the new condensation processes we find are  
+consistent with the charge conservation laws  
+proposed in \cite{Fredenhagen:2000ei}.  
+
+
+\section{D-branes on group manifolds}
+
+This section is devoted to the description of maximally 
+symmetric branes on group manifolds. Following \cite{Alekseev:1998mc,
+Felder:1999ka}, we will begin with a brief review of their classical 
+geometry. Then, in the second subsection, we shall present 
+some basic results on the boundary conformal field theory 
+of such branes.    
+
+\subsection{The geometry of branes on group manifolds}
+
+Strings on the group manifold of a simple and simply connected 
+group~\myHighlight{$G$}\coordHE{} are described by the WZW-model. Its action is evaluated on 
+fields \myHighlight{$g: \Sigma \to G$}\coordHE{} taking values in~\myHighlight{$G$}\coordHE{} and it involves 
+one (integer) coupling constant \myHighlight{$k$}\coordHE{}, which is known as the ``level''. 
+For our purposes it is most convenient to think of \myHighlight{$k$}\coordHE{} as controlling 
+the size (in string units) of the background. Large values of \myHighlight{$k$}\coordHE{} 
+correspond to a large volume of the group manifold. When dealing 
+with open strings at tree level, the 2-dimensional world sheet 
+\myHighlight{$\Sigma$}\coordHE{} is taken to be the upper half plane \myHighlight{$\Sigma = \{ z \in 
+\QC | \Im z \geq 0\}$}\coordHE{}. 
+\smallskip
+
+Along the boundary of this world sheet we need to impose some 
+boundary condition. Here we shall analyze boundary conditions 
+that preserve the full bulk symmetry of the model, i.e.\ the 
+affine algebra \myHighlight{$\asg_k$}\coordHE{}. These boundary conditions are formulated 
+in terms of the chiral currents 
+\begin{equation}\coord{}\boxEquation{
+ J (z) \ = \ k \, g^{-1}(z,\bz) \pl g(z,\bz ) \ \ \  , \ \ \ 
+   \bJ (\bz) \ = \ -k \, \bpl g(z,\bz ) \, g^{-1}(z,\bz)\ \ .
+}{
+ J (z) \ = \ k \, g^{-1}(z,\bz) \pl g(z,\bz ) \ \ \  , \ \ \ 
+   \bJ (\bz) \ = \ -k \, \bpl g(z,\bz ) \, g^{-1}(z,\bz)\ \ .
+}{ecuacion}\coordE{}\end{equation}
+Note that \myHighlight{$J$}\coordHE{} and \myHighlight{$\bJ$}\coordHE{} take values in the finite dimensional 
+Lie algebra \myHighlight{$\mf{g}$}\coordHE{} of the group~\myHighlight{$G$}\coordHE{}. Along the real line we glue 
+the holomorphic and the anti-holomorphic currents  according to 
+\begin{equation}\coord{}\boxEquation{
+  \label{glue}  
+  J(z) \ = \ \Lambda \bJ(\bz)  \ \ \ 
+  \text{ for all } \ \ \ z = \bz 
+}{
+  J(z) \ = \ \Lambda \bJ(\bz)  \ \ \ 
+  \text{ for all } \ \ \ z = \bz 
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\Lambda$}\coordHE{} is an appropriate automorphism of the current  
+algebra \myHighlight{$\asg_k$}\coordHE{} (see e.g.\ \cite{Recknagel:1998sb}). The choice of 
+\myHighlight{$\Lambda$}\coordHE{} is restricted by the requirement of conformal 
+invariance which means that \myHighlight{$T(z) = \bT(\bz)$}\coordHE{} all along the 
+boundary. Here \myHighlight{$T, \bT$}\coordHE{} are the non-vanishing components
+of the stress energy tensor. They can be obtained, as usual,
+through the Sugawara construction.
+\smallskip
+
+The allowed automorphisms \myHighlight{$\Lambda$}\coordHE{} of the affine Lie algebra~\myHighlight{$\asg_k$}\coordHE{}
+are easily classified. They are all of the form 
+\begin{equation}\coord{}\boxEquation{
+  \label{Lam}
+  \Lambda \ = \ \Omega \circ \Ad_g \ \ 
+  \text{ for some } \  g \in G \ \ . 
+}{
+  \Lambda \ = \ \Omega \circ \Ad_g \ \ 
+  \text{ for some } \  g \in G \ \ . 
+}{ecuacion}\coordE{}\end{equation}
+Here, \myHighlight{$\Ad_g$}\coordHE{} denotes the adjoint action of the group element 
+\myHighlight{$g$}\coordHE{} on the current algebra \myHighlight{$\asg_k$}\coordHE{}. It is induced in the 
+obvious way from the adjoint action of~\myHighlight{$G$}\coordHE{} on the finite 
+dimensional Lie algebra \myHighlight{$\mf{g}$}\coordHE{}. The automorphism \myHighlight{$\Omega$}\coordHE{} 
+does not come from conjugation with some element \myHighlight{$g$}\coordHE{}. More 
+precisely, it is an outer automorphism of the current 
+algebra. Such outer automorphisms \myHighlight{$\Omega = \Omega_\omega$}\coordHE{} 
+come with symmetries \myHighlight{$\omega$}\coordHE{} of the Dynkin diagram of the 
+finite dimensional Lie algebra \myHighlight{$\mf{g}$}\coordHE{}. One may show that 
+the choice of \myHighlight{$\omega$}\coordHE{} and \myHighlight{$g \in G$}\coordHE{} in eq.~\eqref{Lam} 
+exhausts all possibilities for the gluing automorphism
+\myHighlight{$\Lambda$}\coordHE{} (see e.g.~\cite{Kac:1990}). 
+\medskip
+
+So far, our discussion of the admissible types of gluing 
+automorphisms \myHighlight{$\Lambda$}\coordHE{} has been fairly abstract. It is 
+possible, however, to associate some concrete geometry 
+with each choice of \myHighlight{$\Lambda$}\coordHE{}. This was initiated in 
+\cite{Alekseev:1998mc} for \myHighlight{$\omega = \id$}\coordHE{} and extended to 
+non-trivial symmetries \myHighlight{$\omega \neq \id$}\coordHE{} in \cite{Felder:1999ka} 
+(see also \cite{Gawedzki:1999bq}, \cite{Stanciu:1999id}). 
+\smallskip
+
+Let us assume first that the element \myHighlight{$g$}\coordHE{} in eq.~\eqref{Lam}
+coincides with the group unit \myHighlight{$g = e$}\coordHE{}. This means that \myHighlight{$\Lambda
+= \Omega = \Omega_\omega$}\coordHE{} is determined by \myHighlight{$\omega$}\coordHE{} alone. The
+diagram symmetry \myHighlight{$\omega$}\coordHE{} induces an (outer) automorphism 
+\myHighlight{$\omega$}\coordHE{} of the finite dimensional Lie algebra \myHighlight{$\mf{g}$}\coordHE{} through 
+the unique correspondence between vertices of the Dynkin diagram 
+and simple roots. After exponentiation, \myHighlight{$\omega$}\coordHE{} furnishes
+an automorphism \myHighlight{$\omega_G$}\coordHE{} of the group~\myHighlight{$G$}\coordHE{}. One can show that 
+the gluing conditions~\eqref{glue} force the string ends to 
+stay on one of the following \myHighlight{$\omega$}\coordHE{}-twisted conjugacy 
+classes
+$$\coord{}\boxMath{ C^\omega_u \ := \ \{\,  h u\,  \omega_G(h^{-1})\ |\ h \in G 
+\, \} \ \ . }{dollar}{0pt}\coordE{}$$
+The subsets \myHighlight{$C^\omega_u \subset G$}\coordHE{} are parametrized 
+by equivalence classes of group elements \myHighlight{$u$}\coordHE{} where the 
+equivalence relation between two elements \myHighlight{$u,v \in G$}\coordHE{} is
+given by: \myHighlight{$u \sim_\omega v$}\coordHE{} iff \myHighlight{$v \in C^\omega_u$}\coordHE{}. Note 
+that this parameter space \myHighlight{$\U^\omega$}\coordHE{} of equivalence classes
+is not a manifold, i.e.\ it contains singular points.  
+\smallskip
+
+To describe the topology of \myHighlight{$C^\omega_u$}\coordHE{} and the parameter 
+space \myHighlight{$\U^\omega$}\coordHE{} (at least locally), we need some more 
+notation. By construction, the action of \myHighlight{$\omega$}\coordHE{} on 
+\myHighlight{$\mf{g}$}\coordHE{} can be restricted to an action on the Cartan subalgebra \myHighlight{$\st$}\coordHE{}. 
+We shall denote the subspace of elements which are invariant 
+under the action of \myHighlight{$\omega$}\coordHE{} by \myHighlight{$\st^\omega \subset \st$}\coordHE{}. 
+Elements in \myHighlight{$\st^\omega$}\coordHE{} generate a torus \myHighlight{$T^\omega \subset G$}\coordHE{}. 
+One may show that the generic \myHighlight{$\omega$}\coordHE{}-twisted conjugacy class
+\myHighlight{$\C^\omega_u$}\coordHE{} looks like the quotient \myHighlight{$G/T^\omega$}\coordHE{}. Hence, 
+the dimension of the generic submanifolds \myHighlight{$\C^\omega_u$}\coordHE{} 
+is \myHighlight{$\dim G - \dim T^\omega$}\coordHE{} and the parameter space has
+dimension \myHighlight{$\dim \st^\omega$}\coordHE{} almost everywhere.
+In other words, there are \myHighlight{$\dim \st^\omega$}\coordHE{} 
+directions transverse to a generic twisted conjugacy 
+class. This implies that the branes associated with the 
+trivial diagram automorphism \myHighlight{$\omega = \id$}\coordHE{} have the largest 
+number of transverse directions. It is given by the rank of 
+the Lie algebra. 
+\smallskip 
+
+As we shall see below, not all these submanifolds \myHighlight{$C^\omega_u$}\coordHE{} 
+can be wrapped by branes on group manifolds. There exists some 
+integrality requirement that can be understood in various ways, 
+e.g.\ as quantization condition within a semiclassical analysis 
+\cite{Alekseev:1998mc} of the brane's stability 
+\cite{Bachas:2000ik, Pawelczyk:2000ah, Bordalo:2001ec}.
+This implies that there is only a finite set of 
+allowed branes (if \myHighlight{$k$}\coordHE{} is finite). The number of branes depends 
+on the volume of the group measured in string units. 
+\smallskip
+
+Let us become somewhat more explicit for \myHighlight{$G = SU(N)$}\coordHE{}. The 
+simplest case is certainly \myHighlight{$N=2$}\coordHE{} because there exists no 
+non-trivial diagram automorphism \myHighlight{$\omega$}\coordHE{}. The conjugacy 
+classes \myHighlight{$C^\id_u$}\coordHE{} are 2-spheres \myHighlight{$S^2 \subset S^3 \cong 
+SU(2)$}\coordHE{} for generic points \myHighlight{$u$}\coordHE{} and they consist of a 
+single point when \myHighlight{$u = \pm e$}\coordHE{} in the center of \myHighlight{$SU(2)$}\coordHE{}.  
+More generally, the formulas \myHighlight{$\dim SU(N) = (N-1)(N+1)$}\coordHE{} and 
+\myHighlight{$\rank SU(N) = (N-1)$}\coordHE{} show that the generic submanifolds 
+\myHighlight{$C^\id_u$}\coordHE{} have dimension \myHighlight{$\dim C^\id_u = (N-1)N$}\coordHE{}.
+In addition, there are singular cases, \myHighlight{$N$}\coordHE{} of which are associated
+with elements \myHighlight{$u$}\coordHE{} in the center \myHighlight{$\bZ_N \subset SU(N)$}\coordHE{}. The 
+corresponding submanifolds \myHighlight{$C^\id_u$}\coordHE{} are 0-dimensional. 
+Note that all the submanifolds \myHighlight{$C^\id_u$}\coordHE{} are even 
+dimensional. Similarly, the generic manifolds \myHighlight{$C^\omega_u$}\coordHE{} 
+for the non-trivial diagram symmetry \myHighlight{$\omega$}\coordHE{} have 
+dimension \myHighlight{$\dim C^\omega_u = (N-1)(N+1/2)$}\coordHE{} for odd N 
+and \myHighlight{$\dim C^\omega_u = N^{2}-N/2-1$}\coordHE{} whenever 
+\myHighlight{$N$}\coordHE{} is even. For some exceptional values of 
+\myHighlight{$u$}\coordHE{}, the dimension can be lower.
+For a complete discussion we refer the reader
+to~\cite{Stanciu:2001vw}.
+\medskip
+
+So far we restricted ourselves to \myHighlight{$\Lambda=\Omega_\omega$}\coordHE{} being 
+a diagram automorphism. As we stated before, the general case 
+is obtained by admitting an additional inner automorphism of 
+the form \myHighlight{$\Ad_g$}\coordHE{}. Geometrically, the latter corresponds to rigid 
+translations on the group induced from the left action of \myHighlight{$g$}\coordHE{} 
+on the group manifold (see e.g.\ \cite{Recknagel:1998ih, Recknagel:1998ut}).
+The freedom of 
+translating branes on~\myHighlight{$G$}\coordHE{} does not lead to any new charges or
+to essentially new physics and 
+we shall not consider it any further, i.e.\ we shall assume 
+\myHighlight{$g = e$}\coordHE{} in what follows. 
+
+\subsection{\label{sc:CFT}The conformal field theory description}
+
+  The branes we considered in the previous subsection may be described
+through an exactly solvable conformal field theory. In particular, 
+there exists a detailed knowledge about their open string spectra
+based on the work of Cardy \cite{Cardy:1989ir} and of Birke, Fuchs 
+and Schweigert \cite{Birke:1999ik}. 
+\medskip
+
+We shall use \myHighlight{$\alpha,\beta,\ldots\in\tareps$}\coordHE{} to label
+different conformal boundary conditions of the boundary conformal 
+field theories associated with the gluing conditions eq.~\eqref{glue}
+on the currents. The set \myHighlight{$\tareps$}\coordHE{} depends on the choice of the diagram
+automorphism~\myHighlight{$\omega$}\coordHE{} and on the level~\myHighlight{$k$}\coordHE{}. For the trivial diagram
+automorphism \myHighlight{$\omega=\id$}\coordHE{}, \myHighlight{$\bL^\id_k = \areps$}\coordHE{} coincides with
+the set of primaries of the affine Kac-Moody algebra \myHighlight{$\asg_k$}\coordHE{}. 
+The latter is well known to form a subset in the space~\myHighlight{$\reps$}\coordHE{} 
+of dominant integral weights which label equivalence classes of 
+irreducible representations for the finite dimensional 
+Lie algebra \myHighlight{$\mf{g}$}\coordHE{}. To keep notations simple, we will not 
+distinguish in notation between elements of~\myHighlight{$\reps$}\coordHE{} and~\myHighlight{$\areps$}\coordHE{}
+and denote them both by capital letters \myHighlight{$A,B,C,\ldots$}\coordHE{}
+
+The automorphism \myHighlight{$\omega$}\coordHE{} generates a map \myHighlight{$\omega_k:\areps
+\rightarrow\areps$}\coordHE{}. In fact, given an irreducible representation 
+\myHighlight{$\tau$}\coordHE{} of \myHighlight{$\mf{g}$}\coordHE{}, we can define another representation by 
+composition \myHighlight{$\tau\circ\omega$}\coordHE{}. The class of \myHighlight{$\tau \circ \omega$}\coordHE{} 
+is independent of the choice of \myHighlight{$\tau \in [\tau]$}\coordHE{} and so we obtain 
+a map \myHighlight{$\omega:\reps\rightarrow\reps$}\coordHE{}. The latter descends to 
+the subset \myHighlight{$\areps\subset\reps$}\coordHE{}. A weight \myHighlight{$A\in\areps$}\coordHE{} is said 
+to be (\myHighlight{$\omega$}\coordHE{}-)symmetric if it is invariant under the action of 
+\myHighlight{$\omega$}\coordHE{}, i.e.\ if \myHighlight{$\omega(A)=A$}\coordHE{}. According to the results of 
+\cite{Cardy:1989ir, Birke:1999ik}, the labels~\myHighlight{$\alpha$}\coordHE{} for 
+branes associated with the diagram automorphism \myHighlight{$\omega$}\coordHE{} take 
+values in a certain subset~\myHighlight{$\tareps\subset\treps=\proj(P^+)$}\coordHE{}
+of dominant fractional symmetric weights. Here \myHighlight{$\proj =
+\frac{1}{N}\bigl(1+\cdots+\omega^{N-1}\bigr) $}\coordHE{} is the projection of weights 
+onto their (\myHighlight{$\omega$}\coordHE{}-)symmetric part with~\myHighlight{$N$}\coordHE{} denoting the order 
+of~\myHighlight{$\omega$}\coordHE{}. Finally let us briefly mention that the number of boundary
+conditions~\myHighlight{$\alpha\in\tareps$}\coordHE{} is equal to the number of symmetric
+weights in~\myHighlight{$\areps$}\coordHE{}. On the other hand, \myHighlight{$\tareps\neq\proj(P_k^+)$}\coordHE{} 
+in contrast to what one might expect naively. We will not need these 
+details here and refer the interested reader to~\cite{Birke:1999ik} (see 
+also~\cite{Quella:2002wi}). Our considerations below will mostly 
+take place in the limiting regime of large level \myHighlight{$k$}\coordHE{} where we can 
+identify \myHighlight{$\treps_{\infty}=\treps=\proj(P^+)$}\coordHE{}. 
+\smallskip
+
+Before we continue to outline the conformal field theory 
+results let us briefly summarize some conventions we will
+be using in the limit~\myHighlight{$k\rightarrow\infty$}\coordHE{}. In this case, 
+the fractional symmetric weights which label boundary 
+conditions can be described explicitly by
+\begin{equation}\coord{}\boxEquation{
+\treps\ =\ \Bigl\{\alpha=\sum\lambda_i\omega_i\:\Bigl|\:
+\lambda_i=\lambda_{\omega(i)}\:,\: l_i\lambda_i\in\Natural_0\Bigr\}\ \ .
+}{
+\treps\ =\ \Bigl\{\alpha=\sum\lambda_i\omega_i\:\Bigl|\:
+\lambda_i=\lambda_{\omega(i)}\:,\: l_i\lambda_i\in\Natural_0\Bigr\}\ \ .
+}{ecuacion}\coordE{}\end{equation}
+The numbers~\myHighlight{$l_i$}\coordHE{} denote the length of the orbit of the
+fundamental weights~\myHighlight{$\omega_i$}\coordHE{} under the automorphism~\myHighlight{$\omega$}\coordHE{}.
+A distinguished element of this set of fractional symmetric
+weights is \myHighlight{$\rho_\omega=(1/l_1,1/l_2,\cdots)\in\treps$}\coordHE{}. It can 
+be considered as a twisted counterpart of the Weyl vector 
+\myHighlight{$\rho=(1,1,\cdots)\in\reps$}\coordHE{}. Under the assumption of infinite 
+level~\myHighlight{$k$}\coordHE{}, the representations of~\myHighlight{$\mf{g}$}\coordHE{} and~\myHighlight{$\asg_k$}\coordHE{} are 
+both labeled by the same set~\myHighlight{$\reps$}\coordHE{}. With the identifications 
+of this section in mind, we will always assume that we fix the 
+weights before we let the level run to infinity.
+\medskip
+
+Our main goal now is to explain the open string spectra that come
+with the maximally symmetric branes on group manifolds. For a pair 
+of boundary labels \myHighlight{$\alpha,\beta\in\tareps$}\coordHE{} associated with the 
+same diagram automorphism \myHighlight{$\omega$}\coordHE{}, the partition function is of 
+the form
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:CFTSpectrum}
+  Z^\omega_{\a \b}(q) \ 
+  = \ \sum_{A\in\areps} {\bigl(n_A^\omega\bigr)_\alpha}^\beta\,\chi_A (q) \ \ . 
+}{
+  Z^\omega_{\a \b}(q) \ 
+  = \ \sum_{A\in\areps} {\bigl(n_A^\omega\bigr)_\alpha}^\beta\,\chi_A (q) \ \ . 
+}{ecuacion}\coordE{}\end{equation}
+Here, \myHighlight{$\chi_A(q)$}\coordHE{} denote the characters of the current algebra 
+\myHighlight{$\asg_k$}\coordHE{} and \myHighlight{$\a,\b\in\tareps$}\coordHE{}. Their appearance in the expansion 
+\eqref{eq:CFTSpectrum} reflects the fact that all the (twisted) 
+conjugacy classes admit an obvious action of the Lie group~\myHighlight{$G$}\coordHE{} 
+by (twisted) conjugation. Consistency requires the numbers 
+\myHighlight{${\bigl(n_A^\omega\bigr)_\alpha}^\beta$}\coordHE{} to be non-negative integers. 
+\smallskip
+
+There exists a very simple argument due to Behrend et
+al.~\cite{Behrend:1999bn, Behrend:1998fd} 
+which shows that the matrices~\myHighlight{${\bigl(n_A^\omega\bigr)_\alpha}^\beta$}\coordHE{} give 
+rise to a representation of the fusion algebra of~\myHighlight{$\asg_k$}\coordHE{}. This 
+means that they obey the relations 
+\begin{equation}\coord{}\boxEquation{
+ \label{nfus}
+  \sum_{\b\in\tareps} {\bigl(n_A^\omega\bigr)_\alpha}^\beta \ 
+    {\bigl(n_B^\omega\bigr)_\beta}^\gamma \ = \ 
+    \sum_{C\in\areps} {N_{AB}}^{C} {\bigl(n_C^\omega\bigr)_\alpha}^\gamma\ \ , 
+}{
+ \sum_{\b\in\tareps} {\bigl(n_A^\omega\bigr)_\alpha}^\beta \ 
+    {\bigl(n_B^\omega\bigr)_\beta}^\gamma \ = \ 
+    \sum_{C\in\areps} {N_{AB}}^{C} {\bigl(n_C^\omega\bigr)_\alpha}^\gamma\ \ , 
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{${N_{AB}}^C$}\coordHE{} are the fusion rules of the current algebra~\myHighlight{$\asg_k$}\coordHE{}. 
+The argument of~\cite{Behrend:1999bn, Behrend:1998fd} starts from a general
+Ansatz for the boundary state assigned to \myHighlight{$\alpha\in\tareps$}\coordHE{}.
+Using world sheet duality, one can express the matrices~\myHighlight{$n_A^\omega$}\coordHE{} in 
+terms of the coefficients of the boundary states and the modular 
+matrix~\myHighlight{$S$}\coordHE{} for the current algebra~\myHighlight{$\asg_k$}\coordHE{}. The general form 
+of this expression is then sufficient to check the relations \eqref{nfus}
+(see \cite{Behrend:1999bn, Behrend:1998fd} for details). 
+\smallskip
+ 
+The expression for the matrices \myHighlight{$n_A^\omega$}\coordHE{} that is given 
+in~\cite{Birke:1999ik, Fuchs:1999zi} resembles the familiar 
+Verlinde formula,  
+\begin{equation}\coord{}\boxEquation{
+  \label{annuluscf}
+  {\bigl(n_A^\omega\bigr)_\alpha}^\beta \ = \ 
+\sum_{\substack{\lambda\in\areps\\\omega(\lambda)=\lambda}}
+\frac{\bar{S}^{\omega}_{\lambda\beta}S^{\omega}_{\lambda \alpha}
+S_{\lambda A }}{S_{\lambda\, 0}} \ \ \ \text{ for } \ \ \  
+\a,\b \in \bL^\om_k \ \ \text{ and } \ \ A \in\areps\ \ .  
+}{
+  {\bigl(n_A^\omega\bigr)_\alpha}^\beta \ = \ 
+\sum_{\substack{\lambda\in\areps\\\omega(\lambda)=\lambda}}
+\frac{\bar{S}^{\omega}_{\lambda\beta}S^{\omega}_{\lambda \alpha}
+S_{\lambda A }}{S_{\lambda\, 0}} \ \ \ \text{ for } \ \ \  
+\a,\b \in \bL^\om_k \ \ \text{ and } \ \ A \in\areps\ \ .  
+}{ecuacion}\coordE{}\end{equation}
+It contains a unitary matrix \myHighlight{$S^{\omega}$}\coordHE{} whose entries  
+\myHighlight{$S^\om_{\lambda \a}$}\coordHE{} are indexed by two \myHighlight{$\omega$}\coordHE{}-symmetric labels 
+\myHighlight{$\lambda\in\areps, \alpha\in\tareps$}\coordHE{}, i.e.\ they obey \myHighlight{$\omega(\lambda)= 
+\lambda$}\coordHE{} and \myHighlight{$\omega(\a)=\a$}\coordHE{}. When \myHighlight{$\om = \id$}\coordHE{}, the matrix \myHighlight{$S^\om$}\coordHE{}
+coincides with the usual \myHighlight{$S$}\coordHE{}-matrix so that Verlinde's 
+formula~\cite{Verlinde:1988sn} implies  
+$$\coord{}\boxMath{ {\bigl(n_A^\omega\bigr)_\alpha}^\beta \ = \ 
+{N_{A \a}}^{\b} \ \ \ \text{ for all }
+   \ \ \a,\b,A\in\areps=\bL_k^\id\ \ .}{dollar}{0pt}\coordE{}$$
+This reproduces Cardy's results on the boundary partition
+functions \cite{Cardy:1989ir}. For non-trivial automorphism \myHighlight{$\om$}\coordHE{}, 
+the matrix \myHighlight{$S^\om$}\coordHE{} describes modular transformations of 
+twined characters. An explicit formula for \myHighlight{$S^\om$}\coordHE{} can be
+found in~\cite{Birke:1999ik}
+\begin{equation}\coord{}\boxEquation{
+  S_{\lambda\alpha}^\omega \ \sim\ \sum_{w\in W_\omega}\ 
+  \epsilon_\omega(w) \exp\Bigl(-\frac{2\pi i}{k+g^\vee}
+  \bigl(w(\lambda+\rho),\alpha+\rho_\omega\bigr)\Bigr)\ \ .
+}{
+  S_{\lambda\alpha}^\omega \ \sim\ \sum_{w\in W_\omega}\ 
+  \epsilon_\omega(w) \exp\Bigl(-\frac{2\pi i}{k+g^\vee}
+  \bigl(w(\lambda+\rho),\alpha+\rho_\omega\bigr)\Bigr)\ \ .
+}{ecuacion}\coordE{}\end{equation}
+Here, \myHighlight{$W_\omega \subset W$}\coordHE{} is the \myHighlight{$\omega$}\coordHE{}-invariant part in the Weyl group
+of~\myHighlight{$\mf{g}$}\coordHE{}. As~\myHighlight{$W_\omega$}\coordHE{} can be considered as the Weyl group of another
+Lie algebra~\cite{Fuchs:1996zr} it comes with a natural sign
+function~\myHighlight{$\epsilon_\om$}\coordHE{}.    
+\medskip 
+
+There exists a generalized state-field correspondence that 
+associates to every highest weight state~\myHighlight{$A\in\areps$}\coordHE{} in 
+the Hilbert space~\eqref{eq:CFTSpectrum} of the \myHighlight{$(\alpha,\beta)$}\coordHE{}
+boundary conformal field theory a boundary 
+primary field~\myHighlight{$\psi_A^{(\a\b)}$}\coordHE{} living between boundaries
+\myHighlight{$\alpha,\beta\in\tareps$}\coordHE{}. The general structure of the 
+boundary operator product expansion (OPE) is given by
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:BOPE}
+  \psi_A^{(\alpha\beta)}(x)\, \psi_B^{(\beta\gamma)}(y)
+  \ \sim\ \sum_{C}\, (x-y)^{h_C-h_A-h_B}
+    \, C_{AB}^{(\alpha\beta\gamma)\:C}\psi_C^{(\alpha\gamma)}(y)
+  \quad\text{ for }\quad x<y
+}{
+  \psi_A^{(\alpha\beta)}(x)\, \psi_B^{(\beta\gamma)}(y)
+  \ \sim\ \sum_{C}\, (x-y)^{h_C-h_A-h_B}
+    \, C_{AB}^{(\alpha\beta\gamma)\:C}\psi_C^{(\alpha\gamma)}(y)
+  \quad\text{ for }\quad x<y
+}{ecuacion}\coordE{}\end{equation}
+where the numbers~\myHighlight{$h_A$}\coordHE{} denote the conformal weights of the
+fields which, in the case at hand, are given by
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:ConformalWeights}
+  h_A\ =\ \frac{C_A}{2(k+g^\vee)}\ \ .
+}{
+  h_A\ =\ \frac{C_A}{2(k+g^\vee)}\ \ .
+}{ecuacion}\coordE{}\end{equation}
+Here, \myHighlight{$C_A$}\coordHE{} is the quadratic Casimir of the representation~\myHighlight{$A\in\areps$}\coordHE{}
+(see eq.~\eqref{eq:QuadraticCasimir} below) and~\myHighlight{$g^\vee$}\coordHE{} denotes the
+dual Coxeter number of~\myHighlight{$\mf{g}$}\coordHE{}. For a consistent conformal 
+field theory, the 
+structure constants~\myHighlight{$C_{AB}^{(\alpha\beta\gamma)C}$}\coordHE{} have to 
+satisfy so-called sewing constraints~\cite{Lewellen:1992tb}
+(see also \cite{Pradisi:1996yd,Runkel:1998pm,Runkel:1999dz}). 
+One of these constraints expresses the associativity of the OPE, 
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:SewingConstraints}
+  C_{AB}^{(\alpha\beta\gamma)E}\, C_{CD}^{(\gamma\delta\alpha)E^+}
+  \, C_{EE^+}^{(\alpha\gamma\alpha)0}
+  \ =\ \sum_H\,  C_{BC}^{(\beta\gamma\delta)H}\, 
+  C_{AH}^{(\alpha\beta\delta)D^+}\, C_{D^+D}^{(\alpha\delta\alpha)0}
+  \quad\tF_{HE}\left[\begin{smallmatrix}B&C\\A&D\end{smallmatrix}
+\right]\quad
+}{
+  C_{AB}^{(\alpha\beta\gamma)E}\, C_{CD}^{(\gamma\delta\alpha)E^+}
+  \, C_{EE^+}^{(\alpha\gamma\alpha)0}
+  \ =\ \sum_H\,  C_{BC}^{(\beta\gamma\delta)H}\, 
+  C_{AH}^{(\alpha\beta\delta)D^+}\, C_{D^+D}^{(\alpha\delta\alpha)0}
+  \quad\tF_{HE}\left[\begin{smallmatrix}B&C\\A&D\end{smallmatrix}
+\right]\quad
+}{ecuacion}\coordE{}\end{equation}
+where the symbol \myHighlight{${\rm F}$}\coordHE{} denotes the fusing matrix. For
+the \myHighlight{$\asg_k$}\coordHE{}-WZW model, this fusing-matrix is closely related 
+to the \myHighlight{$6j$}\coordHE{}--symbol of the corresponding quantum group at 
+\myHighlight{$(k+g^\vee)^{th}$}\coordHE{} root of unity. In the limit~\myHighlight{$k\to\infty$}\coordHE{}, it 
+thus reduces to the \myHighlight{$6j$}\coordHE{}--symbol of~\myHighlight{$\mf{g}$}\coordHE{}. Solutions of 
+the sewing constraints for the standard case \myHighlight{$\omega_G = \id$}\coordHE{} 
+can be found in~\cite{Runkel:1998pm, Alekseev:1999bs, Felder:1999ka, 
+Behrend:1999bn}. The boundary OPE for non-trivially twisted 
+branes, on the other hand, is not yet known. Our results
+below implicitly contain these solutions in the limit 
+\myHighlight{$k \rightarrow \infty$}\coordHE{}.  
+\medskip
+
+The spectrum of ordinary conjugacy classes can be explained 
+in detail. For simplicity, we shall restrict to 
+\myHighlight{$G = SU(2)$}\coordHE{}. In this case, generic conjugacy classes are 
+2-spheres and the space of functions thereon is spanned 
+by spherical harmonics \myHighlight{$Y^{j/2}_m, |m| \leq j/2$}\coordHE{} and \myHighlight{$j = 
+0,2,4,\dots$}\coordHE{}\footnote{To be consistent with our 
+treatment of other groups below, we use a convention in which 
+the representations are labeled by Dynkin labels rather than spins.}  
+The space of spherical harmonics is precisely 
+reproduced by ground states in the boundary theory 
+\myHighlight{$\alpha$}\coordHE{} when we send \myHighlight{$\a$}\coordHE{} (and hence \myHighlight{$k$}\coordHE{}) to infinity. 
+For finite \myHighlight{$\a$}\coordHE{}, the angular momentum \myHighlight{$j$}\coordHE{} is cut off at a 
+finite value \myHighlight{$j = \min(2\a, 2k-2\a) \leq 2 \a$}\coordHE{}. This means
+that the brane's world-volume is ``fuzzy'', since resolving 
+small distances would require large angular momenta. The
+relation between branes on \myHighlight{$SU(2)$}\coordHE{} and the familiar non-%
+commutative fuzzy 2-spheres \cite{Hoppe:1989gk, Madore:1992bw}
+was fully analyzed 
+in~\cite{Alekseev:1999bs} and it provides a very important  
+example of an open string non-commutative geometry that goes 
+beyond the familiar case of branes in flat space~\cite{Douglas:1998fm,
+Chu:1998qz, Schomerus:1999ug}. 
+The analysis of \cite{Alekseev:1999bs} goes much beyond the study
+of partition functions as it employs detailed information
+on the operator product expansions of open string vertex
+operators based on \cite{Runkel:1998pm}. Using the results in 
+\cite{Felder:1999ka, Felder:1999cv, Felder:1999mq} it is
+easy to generalize all these remarks 
+on ordinary conjugacy classes to other groups (see also 
+\cite{Hoppe:1989gk} for more details and explicit formulas on 
+fuzzy conjugacy classes).  
+\smallskip
+
+Twisted conjugacy classes are more difficult to understand. 
+This is related to the fact that they are never ``small''. More
+precisely, it is not possible to fit a generic twisted conjugacy 
+class into an arbitrarily small neighborhood of the group identity 
+unless the twist \myHighlight{$\omega$}\coordHE{} is trivial. This implies that the 
+spectrum of angular momenta in \myHighlight{$Z_{\a\a}^\om$}\coordHE{} is not cut off 
+before it reaches the obvious large momentum cut-off that is 
+set by the volume of the group, i.e.\ by the level \myHighlight{$k$}\coordHE{}. For
+large \myHighlight{$\a\in\tareps$}\coordHE{} (and large \myHighlight{$k$}\coordHE{}) the ground states in the boundary 
+theory span the space of functions on the generic twisted conjugacy 
+classes \myHighlight{$C^\om_u$}\coordHE{} \cite{Felder:1999ka}. The non-commutative geometry 
+associated with twisted conjugacy classes with finite \myHighlight{$\a$}\coordHE{}, however, 
+was unknown and it is the main subject of the next section.     
+
+\section{Non-commutative geometry and gauge theory}
+
+The existing information on the open string spectra of twisted 
+D-branes on group manifolds can be turned into a proposal for 
+the algebra of functions on these branes. The algebras turn out 
+to be non-commutative due to the presence of a non-vanishing B-field. 
+In the second subsection we shall spell out gauge theories that 
+encode the dynamics of twisted D-branes.     
+
+\subsection{The world-volume algebra}
+
+According to the procedure suggested in \cite{Schomerus:1999ug,
+Alekseev:1999bs} (see also \cite{Frohlich:1993es,
+Frohlich:1995mr} 
+for similar proposals in case of closed strings), the world-volume 
+geometry of branes can be read off from the correlators of boundary 
+operators in the decoupling regime~\myHighlight{$k \rightarrow \infty$}\coordHE{}
+\footnote{When taking the limit \myHighlight{$k\to \infty $}\coordHE{}, we keep the open string
+data stable. In particular, the low energy spectrum of open string modes
+does not change. A limit where the closed string data is kept stable
+instead has been considered in~\cite{Felder:1999ka}.}. Note that 
+the conformal dimensions~\eqref{eq:ConformalWeights} of the boundary 
+fields vanish in this limit so that the operator product expansion
+\eqref{eq:BOPE} becomes independent of the world sheet coordinates.
+In particular, all conformal families in the boundary theory contribute 
+to the massless sector and thus to the gauge theory which governs the 
+low energy dynamics of the D-branes we are studying. The program we 
+have just sketched has been carried out successfully for the 
+untwisted branes on compact group manifolds. In case of~\myHighlight{$A_1$}\coordHE{}, 
+this leads to the well known fuzzy spheres~\cite{Madore:1992bw, 
+Alekseev:1999bs}. We will now describe the generalization to 
+arbitrary \myHighlight{$\omega$}\coordHE{}-twisted D-branes on compact simply-connected
+simple group manifolds~\myHighlight{$G$}\coordHE{}. Note that all simple Lie groups of 
+ADE~type (except from \myHighlight{$A_1$}\coordHE{}) admit non-trivial outer automorphisms.
+
+\begin{table}
+\centerline{\begin{tabular}{cccccc}
+  \myHighlight{$\mf{g}$}\coordHE{} & order & \myHighlight{$\ig$}\coordHE{} & \myHighlight{$x_e$}\coordHE{} & \myHighlight{$G$}\coordHE{} & \myHighlight{$\iG$}\coordHE{} \\\hline
+  \myHighlight{$A_2$}\coordHE{} & 2 & \myHighlight{$A_1$}\coordHE{} & 4 & \myHighlight{$SU(3)$}\coordHE{} & \myHighlight{$SO(3)$}\coordHE{} \\
+  \myHighlight{$A_{2n-1}$}\coordHE{} & 2 & \myHighlight{$C_n$}\coordHE{} & 1 & \myHighlight{$SU(2n)$}\coordHE{} & \myHighlight{$Sp(2n,\Complex)\cap SU(2n)$}\coordHE{} \\
+  \myHighlight{$A_{2n}$}\coordHE{} & 2 & \myHighlight{$B_n$}\coordHE{} & 2 & \myHighlight{$SU(2n+1)$}\coordHE{} & \myHighlight{$SO(2n+1)$}\coordHE{} \\
+  \myHighlight{$D_4$}\coordHE{} & 3 & \myHighlight{$G_2$}\coordHE{} & 1& \myHighlight{$Spin (8)=\widetilde{SO}(8)$}\coordHE{} & \myHighlight{$\widetilde{G}_2$}\coordHE{} \\
+  \myHighlight{$D_n$}\coordHE{} & 2 & \myHighlight{$B_{n-1}$}\coordHE{} & 1& \myHighlight{$Spin (2n)=\widetilde{SO}(2n)$}\coordHE{} & \myHighlight{$Spin (2n-1)
+  =\widetilde{SO}(2n-1)$}\coordHE{} \\
+  \myHighlight{$E_6$}\coordHE{} & 2 & \myHighlight{$F_4$}\coordHE{} & 1 & \myHighlight{$\widetilde{E}_6$}\coordHE{} & \myHighlight{$\widetilde{F}_4$}\coordHE{}
+\end{tabular}}
+  \caption{\label{tb:Overview}Simple Lie algebras, groups and data
+           related to outer automorphisms.}
+\end{table}
+
+In section~\ref{sc:CFT} we explained that all possible 
+\myHighlight{$\omega$}\coordHE{}-twisted D-branes are labeled by the set~\myHighlight{$\treps$}\coordHE{} of 
+fractional symmetric weights of~\myHighlight{$\mf{g}$}\coordHE{}. In this section we 
+propose an alternative in which the same boundary conditions 
+are labeled by representations~\myHighlight{$\reps_{\iG}$}\coordHE{} of the invariant
+subgroup~\myHighlight{$\iG=\{g\in G\:|\:\omega(g)=g\}$}\coordHE{}. Let us stress that 
+we use representations of the group \myHighlight{$\iG$}\coordHE{} and not of its Lie
+algebra. The two sets of representations agree only if
+\myHighlight{$\iG$}\coordHE{} is simply-connected. This is the case for all Lie algebras 
+but the \myHighlight{$A_{2n}$}\coordHE{} series where \myHighlight{$\iG=SO(2n+1)$}\coordHE{} and \myHighlight{$\reps_{\iG}=
+\bigl\{A\in\reps_{\iG}\bigl|A_n\text{ even}\bigl\}$}\coordHE{}. An overview 
+over the relevant groups and Lie algebras can be found 
+in Table~\ref{tb:Overview}. It is far from obvious that such a
+labeling of twisted boundary conditions through representations 
+of the invariant subgroup exists. But as we explain in 
+Appendix~\ref{sc:Correspondence} one can indeed construct a 
+structure preserving map \myHighlight{$\Iso:\reps_{\iG}
+\rightarrow\treps$}\coordHE{} between the set of irreducible representations 
+of~\myHighlight{$\iG$}\coordHE{} and the boundary labels for \myHighlight{$\omega$}\coordHE{}-twisted branes.
+For this reason, we will henceforth use both kinds of labels
+\myHighlight{$a=\Iso^{-1}(\alpha),b=\Iso^{-1}(\beta),\ldots$}\coordHE{} 
+equivalently when referring to boundary conditions\footnote{The map
+\myHighlight{$\Iso $}\coordHE{} specifies the way in which we treat the boundary labels 
+while sending \myHighlight{$k$}\coordHE{} to infinity. We refer the reader to
+Appendix~\ref{sc:Correspondence} for details.}.
+\smallskip 
+
+Once the existence of \myHighlight{$\Iso$}\coordHE{} is established, we can 
+formulate our proposal for the world-volume algebra. To this 
+end, let~\myHighlight{$V_a,V_b$}\coordHE{} be two representation spaces for irreducible
+representations~\myHighlight{$a,b\in\reps_{\iG}\cong\treps$}\coordHE{} of \myHighlight{$\iG$}\coordHE{}. As we
+will argue below, the relevant algebraic structure governing 
+strings stretching between two D-branes of type~\myHighlight{$a$}\coordHE{} and~\myHighlight{$b$}\coordHE{},
+respectively, is given by 
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:DBraneModule}
+  \mc{A}^{(a,b)}\cong  \Inv_{\iG}\Bigl(\mc{F}^{(a,b)}\Bigr) \ \ \
+  \text{ where } \ \ \ 
+  \mc{F}^{(a,b)}\ :=\ \mc{F}(G)\otimes \Hom(V_a,V_b)\ \ .
+}{
+  \mc{A}^{(a,b)}\cong  \Inv_{\iG}\Bigl(\mc{F}^{(a,b)}\Bigr) \ \ \
+  \text{ where } \ \ \ 
+  \mc{F}^{(a,b)}\ :=\ \mc{F}(G)\otimes \Hom(V_a,V_b)\ \ .
+}{ecuacion}\coordE{}\end{equation}
+Here \myHighlight{$\mc{F}(G)$}\coordHE{} denotes the algebra of functions on the group~\myHighlight{$G$}\coordHE{}
+and \myHighlight{$\Hom(V_a,V_b)$}\coordHE{} is the vector space of linear transformations 
+from~\myHighlight{$V_a$}\coordHE{} to~\myHighlight{$V_b$}\coordHE{}. The auxiliary space \myHighlight{$\mc{F}^{(a,b)}$}\coordHE{} can be 
+regarded as a vector space of matrix valued functions on the 
+group~\myHighlight{$G$}\coordHE{}. It carries an action of the product group \myHighlight{$G\times\iG$}\coordHE{}
+defined by 
+\begin{equation}\coord{}\boxEquation{
+  \tA^{(g,h)}(g^\prime) \ =\ \tR_b(h)\tA(g^{-1}g^\prime h)
+  \tR_a(h)^{-1},
+}{
+  \tA^{(g,h)}(g^\prime) \ =\ \tR_b(h)\tA(g^{-1}g^\prime h)
+  \tR_a(h)^{-1},
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\tR_a(h)\in\GL(V_a),\tR_b(h)\in\GL(V_b)$}\coordHE{} are 
+the representation matrices of~\myHighlight{$h$}\coordHE{}. In our construction of 
+\myHighlight{$\mc{A}^{(a,b)}$}\coordHE{}, we restrict to matrix valued functions
+\myHighlight{$\Inv_{\iG}\bigl(\mc{F}^{(a,b)}\bigr)$}\coordHE{}
+which are invariant under the action of \myHighlight{$\{\id\}\times\iG\subset G \times \iG$}\coordHE{}.
+Let us note that this leaves us with an action of \myHighlight{$G$}\coordHE{} on the space
+\myHighlight{$\mc{A}^{(a,b)}$}\coordHE{} of \myHighlight{$\iG$}\coordHE{} invariants.
+The latter will become important later on. 
+\smallskip
+
+We can realize the \myHighlight{$G$}\coordHE{}-module \myHighlight{$\mc{A}^{(a,b)}$}\coordHE{} explicitly in terms 
+of \myHighlight{$\iG$}\coordHE{}-equivariant functions on the group \myHighlight{$G$}\coordHE{}, 
+\begin{equation}\coord{}\boxEquation{
+\label{eq:BraneAlgebra}
+  \mc{A}^{(a,b)}
+  \ \cong\ \Bigl\{ \tA \in \mc{F}^{(a,b)} \Bigl|
+   \tA(gh)=\tR_b(h)^{-1}\tA(g)\tR_a(h)\text{ for }h\in \iG\Bigr\}.
+}{
+\mc{A}^{(a,b)}
+  \ \cong\ \Bigl\{ \tA \in \mc{F}^{(a,b)} \Bigl|
+   \tA(gh)=\tR_b(h)^{-1}\tA(g)\tR_a(h)\text{ for }h\in \iG\Bigr\}.
+}{ecuacion}\coordE{}\end{equation}
+When the two involved representations are trivial, i.e.\ \myHighlight{$a=b=0$}\coordHE{},
+elements of \myHighlight{$\mc{A}^{(a,b)}$}\coordHE{} are simply invariant under right 
+translations with respect to \myHighlight{$\iG\subset G$}\coordHE{}.
+\smallskip
+
+There exists more structure on the spaces \myHighlight{$\mc{A}^{(a,b)}$}\coordHE{} if 
+\myHighlight{$a=b$}\coordHE{}. In fact, \myHighlight{$\mc{A}^{(a)} = \mc{A}^{(a,a)}$}\coordHE{} inherits an 
+associative product from the pointwise multiplication of elements 
+in \myHighlight{$\mc{F}^{(a,a)}$}\coordHE{}. This turns the subspace \myHighlight{$\mc{A}^{(a)}$}\coordHE{}   
+of \myHighlight{$\iG$}\coordHE{}-invariants into an associative matrix algebra. 
+\smallskip 
+
+The constructions we have outlined so far may easily be generalized
+to arbitrary superpositions of D-branes. To this end we replace 
+the irreducible representations~\myHighlight{$V_a,V_b$}\coordHE{} in~\eqref{eq:DBraneModule} 
+by reducible ones. Let \myHighlight{$V_{Q}$}\coordHE{} be such a reducible representation, 
+i.e. \myHighlight{$V_{Q}\cong\oplus Q^a V_a$}\coordHE{}. It represents a superposition 
+of \myHighlight{$\sum Q^a$}\coordHE{} D-branes in which \myHighlight{$Q^a$}\coordHE{} branes of type \myHighlight{$a\in
+\reps_{\iG}\cong\treps$}\coordHE{} are placed on top of each other. 
+Strings ending on such a brane configuration~\myHighlight{$Q$}\coordHE{} give rise to 
+an algebra \myHighlight{$\mc{A}^{(Q)}=\mc{A}^{(Q,Q)}$}\coordHE{} analogous to~\eqref{eq:DBraneModule}. 
+For a stack of \myHighlight{$N$}\coordHE{}~identical branes of type~\myHighlight{$a\in\reps_{\iG}
+\cong\treps$}\coordHE{}, the constructions specialize and produce the 
+typical Chan-Paton factors, 
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:BraneStackAlgebra}
+  \mc{A}^{N(a)}
+  \ \cong\ \Inv_{\iG}\Bigl(\mc{F}^{(a,a)}\Bigr) \otimes \Mat(N)
+  \ \ . 
+}{
+  \mc{A}^{N(a)}
+  \ \cong\ \Inv_{\iG}\Bigl(\mc{F}^{(a,a)}\Bigr) \otimes \Mat(N)
+  \ \ . 
+}{ecuacion}\coordE{}\end{equation}
+Obviously, the left translation of the group \myHighlight{$G$}\coordHE{} turns this into 
+a \myHighlight{$G$}\coordHE{}-module with trivial action of \myHighlight{$G$}\coordHE{} on~\myHighlight{$\Mat(N)$}\coordHE{}.
+\medskip 
+
+
+This concludes the formulation of our proposal for the algebra 
+of ``functions on twisted D-branes''. There exist two different
+kinds of evidence which we can use to motivate and support our 
+claim. Let us begin with a simple semiclassical argument. It 
+is not difficult to see that a twisted conjugacy class ``close to'' 
+the twisted conjugacy class of the group unit can be represented 
+in the form \myHighlight{$C^\omega = G \times_{\iG} C'$}\coordHE{}. Here, \myHighlight{$C'$}\coordHE{} is a 
+conjugacy class of \myHighlight{$\iG$}\coordHE{} ``close to'' the group unit and \myHighlight{$\iG$}\coordHE{} 
+acts on \myHighlight{$G$}\coordHE{} by multiplications on the right. In other words, 
+\myHighlight{$C^\omega$}\coordHE{} can be considered as a bundle over \myHighlight{$G/\iG$}\coordHE{} with 
+fiber \myHighlight{$C'$}\coordHE{}. In the \myHighlight{$k\to \infty$}\coordHE{} limit, we keep \myHighlight{$C'$}\coordHE{} small by
+rescaling its radius. As discussed in \cite{Alekseev:1999bs}, 
+\myHighlight{$C'$}\coordHE{} then turns into a co-adjoint orbit. At the same time, the 
+volume of \myHighlight{$G/\iG$}\coordHE{} grows with \myHighlight{$k$}\coordHE{} so that the corresponding Poisson 
+bi-vector scales down. Hence, the \myHighlight{$G/\iG$}\coordHE{} part of \myHighlight{$C^\omega$}\coordHE{} 
+becomes classical. After quantization, we obtain a bundle with 
+non-commutative fibers. While the co-adjoint orbits turn 
+into \myHighlight{$\Hom(V_a,V_a)$}\coordHE{}, the base \myHighlight{$G/\iG$}\coordHE{} stays classical in 
+agreement with our claim for \myHighlight{$a = b$}\coordHE{}.  
+\smallskip
+
+More substantial support comes from the exact CFT results 
+described in the last section. In particular, we shall 
+confront the formula~\eqref{eq:BraneAlgebra} with the 
+CFT-spectrum of boundary fields~\eqref{eq:CFTSpectrum}. 
+Before we carry out the details, let us note that the  
+sewing constraints~\eqref{eq:SewingConstraints} are 
+automatically satisfied by our construction if we manage
+to show that the spectra match. In fact, associativity is
+manifest in our proposal and it is the only content of the 
+sewing constraints when we send the level \myHighlight{$k$}\coordHE{} to infinity. 
+\smallskip
+
+Hence, it remains to discuss the spectrum of open strings.
+The CFT description provides an expression eq.~\eqref{eq:CFTSpectrum}
+for the spectrum of strings stretching between D-branes of 
+type~\myHighlight{$\alpha,\beta\in\tareps$}\coordHE{} in terms of characters of
+\myHighlight{$\asg_k$}\coordHE{} which explicitly shows the \myHighlight{$G$}\coordHE{}-module structure 
+of the space of ground states that emerges in the limit 
+\myHighlight{$k\rightarrow\infty$}\coordHE{}. We claim that in this limit, the \myHighlight{$G$}\coordHE{}-module 
+of ground states is isomorphic to the \myHighlight{$G$}\coordHE{}-module \myHighlight{$\mc{A}^{(a,b)}$}\coordHE{} 
+where \myHighlight{$a=\Iso^{-1}(\alpha)$}\coordHE{} and \myHighlight{$b=\Iso^{-1}(\beta)$}\coordHE{} 
+are the pre-images of the boundary labels \myHighlight{$\a$}\coordHE{} and \myHighlight{$\b$}\coordHE{} under the 
+map \myHighlight{$\Iso: P^+_{\iG} \rightarrow \tareps$}\coordHE{} (see above). We 
+will prove this by decomposing  \myHighlight{$\mc{A}^{(a,b)}$}\coordHE{} into irreducibles. 
+To do so, let us note that there is a canonical isomorphism \myHighlight{$\Hom(V,W)
+\cong V^\ast\otimes W$}\coordHE{}. Furthermore, we may apply the Peter-Weyl 
+theorem to decompose the algebra \myHighlight{$\mc{F}(G)$}\coordHE{} with respect to the 
+regular action of \myHighlight{$G\times G$}\coordHE{} into
+\begin{equation*}\coord{}\boxEquation{
+  \mc{F}(G)\ \cong \ {\bigoplus}_{A}\, U_A^\ast\otimes U_A
+}{
+  \mc{F}(G)\ \cong \ {\bigoplus}_{A}\, U_A^\ast\otimes U_A
+}{ecuacion}\coordE{}\end{equation*}
+where~\myHighlight{$A$}\coordHE{} runs over all irreducible representations of~\myHighlight{$G$}\coordHE{}
+and the two factors of~\myHighlight{$G\times G$}\coordHE{} act on the two vector spaces
+\myHighlight{$U_A^\ast,U_A$}\coordHE{}, respectively. To make contact with our definition of 
+\myHighlight{$\mc{A}^{(a,b)}$}\coordHE{}, we have to restrict the right regular \myHighlight{$G$}\coordHE{}~action 
+to the subgroup~\myHighlight{$\iG$}\coordHE{}, which leaves us with the 
+\myHighlight{$G \times \iG$}\coordHE{}-module 
+\begin{equation*}\coord{}\boxEquation{
+  \mc{F}(G)\ \cong \ {\bigoplus}_{A,c}\, {b_A}^c\, U_A^\ast\otimes V_c\ \ .
+}{
+  \mc{F}(G)\ \cong \ {\bigoplus}_{A,c}\, {b_A}^c\, U_A^\ast\otimes V_c\ \ .
+}{ecuacion}\coordE{}\end{equation*}
+The numbers~\myHighlight{${b_A}^c\in\Natural_0$}\coordHE{} are the so-called {\em branching 
+coefficients} which count the multiplicity of the \myHighlight{$\iG$}\coordHE{}-module~\myHighlight{$V_c$}\coordHE{} 
+in~\myHighlight{$U_A$}\coordHE{}. Combining these remarks we arrive at 
+\begin{equation*}\coord{}\boxEquation{
+  \mc{F}^{(a,b)}
+  \ \cong\  \bigoplus_{A,c}\, {b_A}^c\, U_A^\ast
+   \otimes V_c\otimes V_a^\ast\otimes V_b \ \ . 
+}{
+  \mc{F}^{(a,b)}
+  \ \cong\  \bigoplus_{A,c}\, {b_A}^c\, U_A^\ast
+   \otimes V_c\otimes V_a^\ast\otimes V_b \ \ . 
+}{ecuacion}\coordE{}\end{equation*}
+It remains now to find the invariants under the \myHighlight{$\iG$}\coordHE{}-action. 
+Note that \myHighlight{$\iG$}\coordHE{} acts on the last three tensor factors. The 
+number of invariants in the triple tensor product of irreducible 
+representations is simply given by the fusion rules \myHighlight{${N_{cb}}^a$}\coordHE{} 
+of \myHighlight{$\iG$}\coordHE{}. Hence, as a \myHighlight{$G$}\coordHE{}-module, we have shown that  
+\begin{equation*}\coord{}\boxEquation{
+  \mc{A}^{(a,b)}
+  \ \cong \ \bigoplus_{A,c}\, {b_A}^c{N_{cb}}^a\, U_A^\ast
+}{
+  \mc{A}^{(a,b)}
+  \ \cong \ \bigoplus_{A,c}\, {b_A}^c{N_{cb}}^a\, U_A^\ast
+}{ecuacion}\coordE{}\end{equation*}
+This decomposition is now to be compared with the formula 
+\eqref{eq:CFTSpectrum} for the CFT partition functions.
+A careful analysis shows that both decompositions agree 
+in the limit~\myHighlight{$k\to\infty$}\coordHE{} provided one uses the appropriate 
+identification map \myHighlight{$\Iso$}\coordHE{}, i.e.\ 
+\begin{equation}\coord{}\boxEquation{ \label{magform} 
+  {\bigl(n_A^\omega\bigr)_\alpha}^\beta
+  \ = \ \sum_{c}\, {b_{A}}^c\, {N_{ca}}^b
+}{ {\bigl(n_A^\omega\bigr)_\alpha}^\beta
+  \ = \ \sum_{c}\, {b_{A}}^c\, {N_{ca}}^b
+}{ecuacion}\coordE{}\end{equation} 
+where the indices are related by \myHighlight{$\alpha=\Iso(a)$}\coordHE{} and
+\myHighlight{$\beta=\Iso(b)$}\coordHE{}.
+The proof is quite technical and not relevant for the further 
+developments in this paper. It can be found in Appendix 
+\ref{sc:Correspondence}. Let us only mention at this 
+place that our proof takes some benefit of results found
+in~\cite{Quella:2001wh,Quella:2002wi}.
+\smallskip
+
+As a simple cross-check we consider the case of trivial automorphism
+\myHighlight{$\omega=\id$}\coordHE{} where we can make contact to well known results (see  
+\cite{Alekseev:1999bs}). First we observe that the construction 
+above simplifies considerably since \myHighlight{$\iG \cong G$}\coordHE{}. This implies 
+that all the lower case labels can be replaced by capital letters.
+In particular, the boundary conditions are now labeled by 
+representations of~\myHighlight{$G$}\coordHE{} itself which is a well established fact. 
+The corresponding \myHighlight{$G$}\coordHE{}-module structure is now given by
+\begin{equation*}\coord{}\boxEquation{
+  \mc{A}^{(A,B)}
+  \ \cong \ \bigoplus_C \, {N_{A^+B}}^{C} \, U_{C}\ \ .
+}{
+  \mc{A}^{(A,B)}
+  \ \cong \ \bigoplus_C \, {N_{A^+B}}^{C} \, U_{C}\ \ .
+}{ecuacion}\coordE{}\end{equation*}
+This is in complete agreement with the known CFT results in
+{\em Cardy's case}~\cite{Cardy:1989ir}.%
+\medskip%
+
+We close this section with an interesting side-remark. Since we 
+were interested in the analysis of twisted branes, our presentation 
+has focused on the subgroup \myHighlight{$\iG$}\coordHE{} in \myHighlight{$G$}\coordHE{}. The right hand side of 
+our central formula \eqref{magform}, however, gives rise
+to an infinite-dimensional analogue of a NIM-rep\footnote{{\bf N}on-negative
+{\bf I}nteger valued {\bf M}atrix {\bf Rep}resentation.} for the fusion
+algebra\footnote{The latter is obtained from the fusion algebra of the WZW
+model in the limit \myHighlight{$k\rightarrow \infty$}\coordHE{}.} of the Lie group \myHighlight{$G$}\coordHE{} and any choice
+of a subgroup \myHighlight{$H \embin G$}\coordHE{}.
+This has been discussed extensively in \cite{Quella:2001wh} where also
+the connection of the \myHighlight{$k\to\infty$}\coordHE{} limit of NIM-reps for twisted boundary
+conditions in WZW models to these NIM-reps has been established.
+Recently, new explicit expressions for NIM-reps of twisted D-branes have been
+proposed in \cite{Petkova:2002yj,Gaberdiel:2002qa} for finite level \myHighlight{$k$}\coordHE{}.
+They bear some similarity with our formula \eqref{magform} but generically
+do not involve branching coefficients of the invariant subgroup \myHighlight{$\iG$}\coordHE{}.
+Where they do, i.e. for the \myHighlight{$A_n$}\coordHE{}-series in \cite{Petkova:2002yj} as well as
+the \myHighlight{$D_n$}\coordHE{}-series and the \myHighlight{$A_{2n}$}\coordHE{}-series in \cite{Gaberdiel:2002qa},
+they reduce to relation \eqref{magform} in the limit \myHighlight{$k\to\infty$}\coordHE{}.
+It seems to us that so far a systematic understanding of the proper
+choice for the relevant subgroup is only available at infinite level.
+
+\subsection{The non-commutative gauge theory}
+
+Equipped with the exact solution of the boundary WZW~model in the
+limit~\myHighlight{$k\rightarrow\infty$}\coordHE{}, we are finally prepared to calculate 
+the low-energy effective action for massless open string modes. 
+Compared to the case of D-branes in flat space with background 
+\myHighlight{$B$}\coordHE{}-field which leads to a Yang-Mills theory on a non-commutative 
+space~\cite{Seiberg:1999vs}, there are two important changes in 
+the computation. First, the non-commutative Moyal-Weyl product 
+gets replaced by the product of \myHighlight{$\iG$}\coordHE{}-equivariant matrix valued 
+functions~\eqref{eq:BraneStackAlgebra} described in the previous
+subsection. Moreover, there appears a new term \myHighlight{${f_{\mu\nu}}^{\sigma} 
+J_\sigma$}\coordHE{} in the operator product expansion of the currents. This 
+term leads to an extra contribution of the form  \myHighlight{$f_{\mu\nu\sigma}
+\tA^\mu\tA^\nu\tA^\sigma$}\coordHE{} in the scattering amplitude of three 
+massless open string modes. Consequently, the resulting effective 
+action is not only given by Yang-Mills theory on a non-commutative space 
+but also involves a Chern-Simons like term.% 
+\smallskip%
+
+
+For~\myHighlight{$N$}\coordHE{} branes of type~\myHighlight{$a\in\reps_{\iG}\cong\treps$}\coordHE{} on top of each 
+other, the fields~\myHighlight{$\tA^\mu(g)$}\coordHE{} are elements of~\myHighlight{$\mc{A}^{N(a)}$}\coordHE{}, i.e.
+they are functions on~\myHighlight{$G$}\coordHE{} with values in \myHighlight{$\End(V_a)\otimes \Mat(N)$}\coordHE{} 
+and equivariance property as formulated in eq.~\eqref{eq:BraneAlgebra}.
+We denote the dimension of~\myHighlight{$V_a$}\coordHE{} by~\myHighlight{$d_a$}\coordHE{}.
+The results of the computation~\cite{Alekseev:2000fd} may easily be 
+transferred to the new situation and can be summarized in the 
+following action
+\begin{equation}\coord{}\boxEquation{
+  \label{effact}
+  \cS_{N(a)}\ =\  \cS_{{\rm YM}} + \cS_{{\rm CS}}\
+     =\frac{\pi^2}{k^2d_aN}\
+      \Biggl(\frac{1}{4}\ \int\tr \left( \tF_{\mu\nu} \ \tF^{\mu\nu} \right) 
+             - \frac{i}{2}\  \int\tr \left( \tf^{\mu\nu\sigma}\; \tCS_{\mu\nu\sigma}
+      \right)\Biggr)
+}{
+  \cS_{N(a)}\ =\  \cS_{{\rm YM}} + \cS_{{\rm CS}}\
+     =\frac{\pi^2}{k^2d_aN}\
+      \Biggl(\frac{1}{4}\ \int\tr \left( \tF_{\mu\nu} \ \tF^{\mu\nu} \right) 
+             - \frac{i}{2}\  \int\tr \left( \tf^{\mu\nu\sigma}\; \tCS_{\mu\nu\sigma}
+      \right)\Biggr)
+}{ecuacion}\coordE{}\end{equation}
+ where we defined the ``curvature form'' \myHighlight{$\tF_{\mu\nu}$}\coordHE{} by the expression     
+\begin{equation}\coord{}\boxEquation{
+  \label{fieldstr}
+  \tF_{\mu\nu}(\tA)\, = \,   
+   i\, \tL_\mu \tA_\nu - i\, \tL_\nu \tA_\mu + i \,[ \tA_\mu \astk \tA_\nu] 
+   +  \tf_{\mu\nu\sigma} \tA^\sigma
+}{
+  \tF_{\mu\nu}(\tA)\, = \,   
+   i\, \tL_\mu \tA_\nu - i\, \tL_\nu \tA_\mu + i \,[ \tA_\mu \astk \tA_\nu] 
+   +  \tf_{\mu\nu\sigma} \tA^\sigma
+}{ecuacion}\coordE{}\end{equation}
+and a non-commutative analogue of the Chern-Simons form by 
+\begin{equation}\coord{}\boxEquation{
+  \label{CSform}
+  \tCS_{\mu\nu\sigma}(\tA)\, = \, \tL_\mu \tA_\nu \, \tA_\sigma 
+                   + \frac{1}{3}\; \tA_\mu \, [ \tA_\nu \astk \tA_\sigma]
+                   - \frac{i}{2}\; \tf_{\mu\nu\rho}\; \tA^\rho \, \tA_\sigma \ \ .
+}{
+  \tCS_{\mu\nu\sigma}(\tA)\, = \, \tL_\mu \tA_\nu \, \tA_\sigma 
+                   + \frac{1}{3}\; \tA_\mu \, [ \tA_\nu \astk \tA_\sigma]
+                   - \frac{i}{2}\; \tf_{\mu\nu\rho}\; \tA^\rho \, \tA_\sigma \ \ .
+}{ecuacion}\coordE{}\end{equation}
+Gauge invariance of \eqref{effact} under  the infinitesimal 
+gauge transformations
+\begin{equation}\coord{}\boxEquation{
+\label{eq:GaugeTrafos}
+ \delta\tA_\mu  \ = \ i\,\tL_\mu \Lambda \ +\  i\, [\, \tA_\mu\, ,\, 
+    \Lambda\, ]  \ \ \ \text{ for } \ \ \ \Lambda \in 
+    \mc{A}^{N(a)} 
+}{
+\delta\tA_\mu  \ = \ i\,\tL_\mu \Lambda \ +\  i\, [\, \tA_\mu\, ,\, 
+    \Lambda\, ]  \ \ \ \text{ for } \ \ \ \Lambda \in 
+    \mc{A}^{N(a)} 
+}{ecuacion}\coordE{}\end{equation}
+follows by straightforward computation. The operator \myHighlight{$\tL$}\coordHE{} is the 
+usual Lie derivative as defined in \eqref{eq:LieDerivative} below.
+Note that the ``mass term'' 
+in the Chern-Simons form~\eqref{CSform} guarantees the gauge 
+invariance of \myHighlight{$\cS_{{\rm CS}}$}\coordHE{}. On the other hand, the effective 
+action~\eqref{effact} is the unique combination of \myHighlight{$\cS_{\rm YM}$}\coordHE{} 
+and \myHighlight{$\cS_{\rm CS}$}\coordHE{} in which mass terms cancel. 
+\smallskip
+
+In contrast to earlier work, the trace is now normalized by 
+\myHighlight{$\tr(\id)=d_aN$}\coordHE{}. Moreover, we use conventions in which only pure 
+Lie algebraic quantities appear. The remaining part of this 
+section is devoted to presenting these conventions which 
+follow~\cite{Fuchs:1995}. Indices are raised and lowered 
+using the Killing form
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:KillingForm}
+  \kappa(x,y)\ =\ \tr(\ad_x\circ\ad_y)\hspace{2cm}
+  \kappa^{\mu\nu}\ =\ \frac{1}{I_\theta}\:\kappa(\:\tT^\mu,\tT^\nu\:)
+   \ =\ \frac{1}{I_\theta}\:f^{\mu\rho\sigma}\:{f^{\nu}}_{\rho\sigma}
+ \ \ .
+}{
+  \kappa(x,y)\ =\ \tr(\ad_x\circ\ad_y)\hspace{2cm}
+  \kappa^{\mu\nu}\ =\ \frac{1}{I_\theta}\:\kappa(\:\tT^\mu,\tT^\nu\:)
+   \ =\ \frac{1}{I_\theta}\:f^{\mu\rho\sigma}\:{f^{\nu}}_{\rho\sigma}
+ \ \ .
+}{ecuacion}\coordE{}\end{equation}
+Here, \myHighlight{$I_B$}\coordHE{} denotes the Dynkin index of a representation~\myHighlight{$B\in\reps$}\coordHE{}
+and \myHighlight{$\tT^\mu$}\coordHE{} are the generators of \myHighlight{$\mf{g}$}\coordHE{} satisfying
+\begin{equation}\coord{}\boxEquation{ 
+\label{eq:LieAlgebra} 
+[\tT^\mu,\tT^\nu] \ =\ i{f^{\mu\nu}}_\sigma\tT^\sigma\ \ .  
+}{ 
+[\tT^\mu,\tT^\nu] \ =\ i{f^{\mu\nu}}_\sigma\tT^\sigma\ \ .  
+}{ecuacion}\coordE{}\end{equation}   
+For the adjoint representation~\myHighlight{$\theta$}\coordHE{} of~\myHighlight{$\mf{g}$}\coordHE{} 
+entering~\eqref{eq:KillingForm}, the Dynkin index may also be 
+expressed by the quadratic Casimir and by the dual Coxeter number 
+according to \myHighlight{$I_\theta=C_\theta=2g^\vee$}\coordHE{}. The quadratic Casimir 
+and the index of an  arbitrary representation~\myHighlight{$B\in\reps$}\coordHE{} with
+dimension~\myHighlight{$d_B$}\coordHE{} are given by
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:QuadraticCasimir}
+  C_B \ =\ (B,B+2\rho)
+  \qquad\qquad\text{ and }\qquad\qquad I_B\ =\ 
+  \frac{d_B}{\dim\mf{g}}\, C_B\ \ .
+}{
+  C_B \ =\ (B,B+2\rho)
+  \qquad\qquad\text{ and }\qquad\qquad I_B\ =\ 
+  \frac{d_B}{\dim\mf{g}}\, C_B\ \ .
+}{ecuacion}\coordE{}\end{equation}
+It will be of particular importance for us to evaluate 
+the quadratic Casimir in a given representation~\myHighlight{$B \in 
+\reps$}\coordHE{} according to 
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:RepQuadraticCasimir}
+  \tr\:\tR_B(\tT^\mu)\tR_B(\tT^\nu)\:=\:I_B\:\kappa^{\mu\nu}\ \ .
+}{
+  \tr\:\tR_B(\tT^\mu)\tR_B(\tT^\nu)\:=\:I_B\:\kappa^{\mu\nu}\ \ .
+}{ecuacion}\coordE{}\end{equation}
+Finally, let us note that the \myHighlight{$G$}\coordHE{}-action on the 
+algebra~\myHighlight{$\mc{A}^{N(a)}$}\coordHE{} allows us to define the derivatives
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:LieDerivative}
+  \tL^\mu\tA(g)
+  \ =\ \frac{1}{i}
+   \frac{\text{d}}{\text{d}t}\Bigl(\tA(e^{-it\tT^\mu}g)\Bigr)\Bigr|_{t=0}
+}{
+  \tL^\mu\tA(g)
+  \ =\ \frac{1}{i}
+   \frac{\text{d}}{\text{d}t}\Bigl(\tA(e^{-it\tT^\mu}g)\Bigr)\Bigr|_{t=0}
+}{ecuacion}\coordE{}\end{equation}
+for~\myHighlight{$A\in\mc{A}^{N(a)}$}\coordHE{}. These Lie derivatives appear in the 
+construction of the action above and they satisfy the same 
+Lie algebra relations as in eq.~\eqref{eq:LieAlgebra}. 
+
+For a calculation in the next section we will also need derivatives on
+functions \myHighlight{$\tK: G\to \Mat(N)$}\coordHE{} which are defined via the group action on the
+argument from the right,
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:RightDerivative}
+  \tL^{\!\tR\mu}\tK(g)
+  \ =\ \frac{1}{i}
+   \frac{\text{d}}{\text{d}t}\Bigl(\tK\bigl(ge^{it\tT^\mu}\bigr)\Bigr)\Bigr|_{t=0}\ \ .
+}{
+  \tL^{\!\tR\mu}\tK(g)
+  \ =\ \frac{1}{i}
+   \frac{\text{d}}{\text{d}t}\Bigl(\tK\bigl(ge^{it\tT^\mu}\bigr)\Bigr)\Bigr|_{t=0}\ \ .
+}{ecuacion}\coordE{}\end{equation}
+The connection between the different derivatives
+\eqref{eq:LieDerivative},\eqref{eq:RightDerivative} is given by the adjoint
+representation of \myHighlight{$G$}\coordHE{},
+\begin{equation}\coord{}\boxEquation{
+\tL_{\mu}\tK(g)\ =\ - \text{Ad}(g^{-1}){_{\mu}}^{\nu} \ 
+\tL^{\!\tR}_{\nu} \tK(g)\ \ .
+}{
+\tL_{\mu}\tK(g)\ =\ - \text{Ad}(g^{-1}){_{\mu}}^{\nu} \ 
+\tL^{\!\tR}_{\nu} \tK(g)\ \ .
+}{ecuacion}\coordE{}\end{equation}
+
+\section{Condensates of branes on group manifolds}
+
+The study of classical solutions of the non-commutative gauge 
+theories constructed in the previous sections provides insights
+into the dynamics of twisted branes on group manifolds. In the 
+first subsection we shall exhibit a rather large class of 
+solutions. The symmetry preserving solutions are then interpreted
+geometrically in the second subsection. In particular, we shall 
+see that all twisted D-branes appear as bound states from stacks 
+of a distinguished elementary twisted brane.   
+
+\subsection{\label{sc:Solutions}Classical solutions}
+
+A simple  variation of the action~\eqref{effact} with respect to 
+the gauge fields allows us to derive the following equations of 
+motion, 
+\begin{equation}\coord{}\boxEquation{
+\label{eom}
+\tL^{\mu}\tF_{\mu\nu}+[\tA^{\mu},\tF_{\mu\nu}]\ =\ 0 \ \ ,
+}{
+\tL^{\mu}\tF_{\mu\nu}+[\tA^{\mu},\tF_{\mu\nu}]\ =\ 0 \ \ ,
+}{ecuacion}\coordE{}\end{equation}
+which express that the curvature has to be covariantly constant.
+Note that the space of gauge fields, and hence the equations 
+of motions, depends on the brane configuration we are looking at.
+\smallskip 
+
+Solutions to the equations \eqref{eom} describe condensation processes 
+on a brane configuration \myHighlight{$Q$}\coordHE{} which drive the whole system into 
+another configuration \myHighlight{$Q'$}\coordHE{}. 
+To identify the latter, we have two different types of information
+at our disposal. On the one hand, we can compare the tension of 
+D-branes in the final configuration \myHighlight{$Q^\prime$}\coordHE{} with the value of the 
+action \myHighlight{$\cS_Q(\tA)$}\coordHE{}  at the classical solution \myHighlight{$\tA(g)$}\coordHE{}. On the other 
+hand, we can look at fluctuations around the chosen solution and 
+compare their dynamics with the low energy effective theory 
+\myHighlight{$\cS_{Q^\prime}$}\coordHE{} of the brane configuration \myHighlight{$Q^\prime$}\coordHE{}. In formulas, 
+this means that 
+\begin{equation}\coord{}\boxEquation{\label{fluctuation}
+\cS_{Q} (\tA+\delta \tA)\ \overset{!}{=}\  \cS_{Q} (\tA) + 
+\cS_{Q^\prime} (\delta \tA) \ \ \ \text{ with } \ \ \
+\cS_Q(\tA) \ \overset{!}{=} \ \ln \frac{g_{Q^\prime}}{g_Q} 
+\ \ . 
+}{\cS_{Q} (\tA+\delta \tA)\ \overset{!}{=}\  \cS_{Q} (\tA) + 
+\cS_{Q^\prime} (\delta \tA) \ \ \ \text{ with } \ \ \
+\cS_Q(\tA) \ \overset{!}{=} \ \ln \frac{g_{Q^\prime}}{g_Q} 
+\ \ . 
+}{ecuacion}\coordE{}\end{equation}
+The second requirement expresses the comparison of tensions in 
+terms of the g-factors of the involved  conformal field theories
+(see e.g.\ \cite{Alekseev:2000fd} for more details). All equalities  
+must hold to the order in \myHighlight{$(1/k)$}\coordHE{} that we used when constructing 
+the effective actions. We say that the brane configuration \myHighlight{$Q$}\coordHE{} decays
+into \myHighlight{$Q'$}\coordHE{} if \myHighlight{$Q'$}\coordHE{} has lower mass, i.e.\ whenever \myHighlight{$g_{Q'}<g_{Q}$}\coordHE{}. 
+
+In terms of the world-sheet description, each classical solution of the
+effective action is linked to a conformal boundary perturbation in the
+CFT of the brane configuration \myHighlight{$Q$}\coordHE{}. Adding the corresponding boundary
+terms to the original theory causes the boundary condition to change
+so that we end up with the boundary conformal field theory of another
+brane configuration \myHighlight{$Q'$}\coordHE{}. Recall, however, that all these statements
+only apply to a limiting regime in which the level \myHighlight{$k$}\coordHE{} is sent to infinity.
+\smallskip
+
+We are especially interested in processes that connect maximally
+symmetric configurations of D-branes, i.e.\ those configurations 
+for which the spectrum decomposes into representations of~\myHighlight{$\asg_k$}\coordHE{}. 
+For such configurations we know the low energy effective actions 
+so that we are able to compare them with the dynamics of fluctuations. 
+We shall argue that solutions possessing a \myHighlight{$G$}\coordHE{}-symmetric fluctuation 
+spectrum are associated with gauge fields \myHighlight{$\tA(g)$}\coordHE{} whose curvature 
+is proportional to the identity, or equivalently 
+\begin{equation}\coord{}\boxEquation{\label{symmsol}
+[\tF_{\mu\nu} (\tA),\:\cdot\:]\ =\ 0 \ \ .
+}{[\tF_{\mu\nu} (\tA),\:\cdot\:]\ =\ 0 \ \ .
+}{ecuacion}\coordE{}\end{equation}
+The \myHighlight{$G$}\coordHE{}-module structure of the fluctuation spectrum around the 
+solution can be characterized by the simple rule  
+\begin{equation}\coord{}\boxEquation{\label{derivatives}
+\tL^{Q^\prime}_{\mu}\ := \ \tL^{Q}_{\mu}+[\tA_{\mu},\:\cdot\:]\ \ .
+}{\tL^{Q^\prime}_{\mu}\ := \ \tL^{Q}_{\mu}+[\tA_{\mu},\:\cdot\:]\ \ .
+}{ecuacion}\coordE{}\end{equation}
+Our notation suggests that we want to think of \myHighlight{$\tL^{Q^\prime}_\mu$}\coordHE{} 
+as derivative associated with some new brane configuration \myHighlight{$Q^\prime$}\coordHE{}. 
+Note, however, that by construction it acts on on the space \myHighlight{$\mc{A}^
+{(Q)}$}\coordHE{} of gauge fields on \myHighlight{$Q$}\coordHE{}. To check our claims, we must show that 
+the derivatives \eqref{derivatives} satisfy the Lie algebra 
+commutation relations and that the action for the fluctuation 
+fields involves these new derivatives rather than \myHighlight{$\tL^Q$}\coordHE{}. With 
+the Ansatz~\eqref{derivatives} it is easy to show that 
+\begin{equation*}\coord{}\boxEquation{
+[\tL^{Q^\prime}_{\mu},\tL^{Q^\prime}_{\nu}] \ =\ 
+i\,{f_{\mu\nu}}^{\sigma}\tL^{Q^\prime}_{\sigma}-i\,[\tF_{\mu\nu}
+(\tA),\:\cdot\:]\ \ . 
+}{
+[\tL^{Q^\prime}_{\mu},\tL^{Q^\prime}_{\nu}] \ =\ 
+i\,{f_{\mu\nu}}^{\sigma}\tL^{Q^\prime}_{\sigma}-i\,[\tF_{\mu\nu}
+(\tA),\:\cdot\:]\ \ . 
+}{ecuacion}\coordE{}\end{equation*}
+Furthermore, the expansion of the action around the solution 
+\myHighlight{$\tA(g)$}\coordHE{} reads 
+\begin{equation*}\coord{}\boxEquation{
+\cS_{Q} (\tA+\delta \tA) \ =\ \cS_{Q} (\tA)+\cS_{Q^\prime} 
+(\delta \tA)+\frac{i}{2}\,\tr\bigl([\tF_{\mu\nu} (\tA),\delta 
+\tA^{\mu}]\delta \tA^{\nu}
+\bigr) \ \ .
+}{
+\cS_{Q} (\tA+\delta \tA) \ =\ \cS_{Q} (\tA)+\cS_{Q^\prime} 
+(\delta \tA)+\frac{i}{2}\,\tr\bigl([\tF_{\mu\nu} (\tA),\delta 
+\tA^{\mu}]\delta \tA^{\nu}
+\bigr) \ \ .
+}{ecuacion}\coordE{}\end{equation*}
+In a slight abuse of notation we have denoted the action 
+for the fluctuation fields \myHighlight{$\delta \tA_\mu \in \mc{A}^{(Q)}$}\coordHE{} 
+by \myHighlight{$S_{Q^\prime}$}\coordHE{}. For the moment, this only means that 
+all derivatives \myHighlight{$\tL^Q$}\coordHE{} are replaced by \myHighlight{$\tL^{Q^\prime}$}\coordHE{}.   
+As one reads off from the previous equation, gauge fields 
+satisfying \eqref{symmsol} do indeed lead to a \myHighlight{$G$}\coordHE{}-symmetric 
+fluctuation spectrum. A more careful investigation shows 
+that the converse is also true, which is to say, any solution which
+produces a symmetric fluctuation spectrum is necessarily of 
+the form we have described. The crucial observation in proving this
+statement is that the relation \eqref{derivatives} 
+between the derivatives is dictated by comparing third-order 
+terms in \eqref{fluctuation}.
+\medskip
+
+Before we dive into the discussion of these symmetric solutions, let
+us briefly mention some solutions of~\eqref{eom} which break the 
+\myHighlight{$G$}\coordHE{}-symmetry. One particular type of non-symmetric solution can be
+obtained for each choice of a subalgebra~\myHighlight{$\mf{h}$}\coordHE{} in \myHighlight{$\mf{g}$}\coordHE{}. We 
+label the subalgebra generators by \myHighlight{$i,j,\ldots$}\coordHE{}, the directions 
+orthogonal to~\myHighlight{$\mf{h}$}\coordHE{} by \myHighlight{$r,s,\ldots$}\coordHE{} Now let~\myHighlight{$\tR$}\coordHE{} be a \myHighlight{$d_{\tR}$}\coordHE{}-%
+dimensional representation of \myHighlight{$\mf{h}$}\coordHE{}. Then the equations of motion 
+for a stack of~\myHighlight{$d_{\tR}$}\coordHE{} identical branes possess a constant solution 
+of the form \myHighlight{$\tA^{i}=\id \otimes \tR(\tT^i)$}\coordHE{} and  \myHighlight{$\tA^{r}=0$}\coordHE{}, where
+\myHighlight{$\id$}\coordHE{} is the identity matrix in the space-time degrees of freedom. 
+The curvature of these solutions is given by \myHighlight{$\tF_{ij}=0$}\coordHE{}, \myHighlight{$\tF_{ir}=0$}\coordHE{}
+and \myHighlight{$\tF_{rs}={f_{rs}}^{i}\tR(\tT_i)$}\coordHE{}. Obviously, this solution does 
+not satisfy~\eqref{symmsol} and hence it breaks the \myHighlight{$G$}\coordHE{}-symmetry. One
+can identify solutions of this type with some of the symmetry 
+breaking boundary theories that were obtained in \cite{Quella:2002ct}. The
+associated boundary states preserve the affine Lie algebra of \myHighlight{$H$}\coordHE{} 
+along with the coset chiral algebra for \myHighlight{$G/H$}\coordHE{}.  
+\medskip
+
+There is another more trivial class of constant solutions which break 
+the \myHighlight{$G$}\coordHE{}-symmetry. In fact, any set of commuting constant matrices~\myHighlight{$\tA_{\mu}$}\coordHE{} 
+is  a solution to~\eqref{eom}. The corresponding curvature is given 
+by \myHighlight{$\tF_{\mu\nu}={f_{\mu\nu}}^{\sigma}\tA_{\sigma}$}\coordHE{}, so that in general
+\myHighlight{$[\tF_{\mu\nu},\:\cdot\:]\neq 0$}\coordHE{}. The solutions have vanishing action 
+and allow for an easy geometric interpretation~\cite{Recknagel:1998ih,
+Alekseev:2000fd}:  
+they describe translations of the branes in the group manifold. It is 
+not surprising that these translations break the symmetry, unless the 
+whole stack is translated at once. In the latter case, the fields \myHighlight{$\tA$}\coordHE{} 
+and thus \myHighlight{$\tF$}\coordHE{} are multiples of the identity as it should be the case 
+for a symmetric solution. Let us observe that uniform translations on the 
+group manifold are a rather trivial operation, and we are only interested
+in analyzing solutions ``up to translations''. One can show that it suffices 
+to study solutions with traceless fields \myHighlight{$\tA(g)$}\coordHE{}. From these it is possible
+to generate any other solution by a uniform translation.
+\medskip 
+
+After this digression we come back to the study of symmetric solutions. 
+It follows from the last remark in the previous paragraph that there is
+no loss in restricting ourselves to symmetric solutions with vanishing 
+curvature \myHighlight{$\tF=0$}\coordHE{}. Let us now start with a stack of~\myHighlight{$N$}\coordHE{} branes 
+corresponding to the trivial representation \myHighlight{$0\in P_{\iG}^+$}\coordHE{}
+of \myHighlight{$\iG$}\coordHE{}. A whole class of solutions of~\eqref{eom} with~\myHighlight{$\tF=0$}\coordHE{} can 
+be constructed out of a function \myHighlight{$\tK:G\to\GL(N)$}\coordHE{} satisfying
+\begin{equation}\coord{}\boxEquation{
+  \label{solution}
+  \begin{split}
+  \tK(gh)&\ =\ \tK(g)\tR(h)\qquad\text{ for all }\qquad 
+   h\in\iG\qquad\text{ by }\\[2mm] 
+  \tA_{\mu}(g)&\ :=\ -(\tL_{\mu}\tK)(g)\tK(g)^{-1}
+  \ =\ \tK(g)(\tL_{\mu}\tK^{-1}) (g)
+  \end{split}
+}{
+  \begin{split}
+  \tK(gh)&\ =\ \tK(g)\tR(h)\qquad\text{ for all }\qquad 
+   h\in\iG\qquad\text{ by }\\[2mm] 
+  \tA_{\mu}(g)&\ :=\ -(\tL_{\mu}\tK)(g)\tK(g)^{-1}
+  \ =\ \tK(g)(\tL_{\mu}\tK^{-1}) (g)
+  \end{split}
+}{split}\coordE{}\end{equation}
+with~\myHighlight{$\tR$}\coordHE{} being an \myHighlight{$N$}\coordHE{}-dimensional representation of~\myHighlight{$\iG$}\coordHE{}.
+The first property guarantees the necessary invariance property
+\myHighlight{$\tA(gh)=\tA(g)$}\coordHE{} of the physical fields~\myHighlight{$\tA(g)$}\coordHE{}. Moreover, the 
+curvature of these gauge fields vanishes because 
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \tF_{\mu\nu}
+&\leftCoord{}=& \rightCoord{}\, i\rightCoord{}\,\tL_{\mu}\tA_{\nu}-i\tL_{\nu}\tA_{\mu} + i\rightCoord{}\,[\tA_{\mu},\tA_{\nu}]
+     \leftCoord{}+ {f_{\mu\nu}}^{\sigma}\tA_{\sigma}\\\leftCoord{}[2mm]
+&\leftCoord{}=& -i\rightCoord{}\,\tL_{\mu}\bigl(\tL_{\nu}\tK \rightCoord{}\, \tK^{-1}\bigr)
+      \leftCoord{}+i\rightCoord{}\,\tL_{\nu} \bigl(\tL_{\mu}\tK\rightCoord{}\,\tK^{-1}\bigr)\\\leftCoord{}[1mm]
+&&\leftCoord{} \ \ \ \ -i\rightCoord{}\,\bigl(\tL_\mu\tK\rightCoord{}\,\tL_\nu\tK^{-1}-\tL_\nu\tK\rightCoord{}\,\tL_\mu\tK^{-1}\bigr)
+     \leftCoord{}- {f_{\mu\nu}}^{\sigma}\tL_{\sigma}\tK\rightCoord{}\,\tK^{-1}\\\leftCoord{}[2mm] 
+&\leftCoord{}=& -i\rightCoord{}\,[\tL_{\mu},\tL_{\nu}]\tK\rightCoord{}\,\tK^{-1}-{f_{\mu\nu}}^{\sigma}
+  \tL_{\sigma}\tK\rightCoord{}\,\tK^{-1}\ = \ 0  \ \ .\rightCoord{}
+\rightCoord{}}{0mm}{11}{17}{
+  \tF_{\mu\nu}
+&=& \, i\,\tL_{\mu}\tA_{\nu}-i\tL_{\nu}\tA_{\mu} + i\,[\tA_{\mu},\tA_{\nu}]
+     + {f_{\mu\nu}}^{\sigma}\tA_{\sigma}\\[2mm]
+&=& -i\,\tL_{\mu}\bigl(\tL_{\nu}\tK \, \tK^{-1}\bigr)
+      +i\,\tL_{\nu} \bigl(\tL_{\mu}\tK\,\tK^{-1}\bigr)\\[1mm]
+&& \ \ \ \ -i\,\bigl(\tL_\mu\tK\,\tL_\nu\tK^{-1}-\tL_\nu\tK\,\tL_\mu\tK^{-1}\bigr)
+     - {f_{\mu\nu}}^{\sigma}\tL_{\sigma}\tK\,\tK^{-1}\\[2mm] 
+&=& -i\,[\tL_{\mu},\tL_{\nu}]\tK\,\tK^{-1}-{f_{\mu\nu}}^{\sigma}
+  \tL_{\sigma}\tK\,\tK^{-1}\ = \ 0  \ \ .
+}{1}\coordE{}\end{eqnarray*}
+We should mention at this point that~\myHighlight{$\tF=0$}\coordHE{} is precisely the 
+integrability condition of the linear system \myHighlight{$\tL^{\mu}\tK=-\tA^{\mu}
+\tK$}\coordHE{} so that any solution to \myHighlight{$\tF = 0$}\coordHE{} is of the form~\eqref{solution}.
+The covariance law \myHighlight{$\tK(gh)=\tK(g)\tR(h)$}\coordHE{} for \myHighlight{$h\in\iG$}\coordHE{} is then
+necessary to ensure the invariance property~\myHighlight{$\tA(gh)=\tA(g)$}\coordHE{}
+for~\myHighlight{$h\in\iG$}\coordHE{}. Consistency implies that~\myHighlight{$\tR(h)$}\coordHE{} satisfies the 
+representation property. 
+\smallskip 
+
+Our formula \eqref{solution} for symmetric solutions leaves us 
+with the problem to find a \myHighlight{$\GL(N,\mathbb{C})$}\coordHE{} valued function 
+satisfying the covariance condition \myHighlight{$\tK (gh)=\tK(g)\tR(h)$}\coordHE{} 
+for \myHighlight{$h \in \iG$}\coordHE{}. As we shall argue now, such a function does 
+always exist. 
+\smallskip
+
+To begin with, let us rephrase the existence of \myHighlight{$\tK$}\coordHE{} in the 
+language of vector bundles. For a given representation \myHighlight{$\tR$}\coordHE{}, 
+we consider the vector bundle \myHighlight{$E\to G/\iG$}\coordHE{}. Here \myHighlight{$E$}\coordHE{} is the 
+associated bundle \myHighlight{$G\times_{\iG}V^\Complex_\tR$}\coordHE{} which consists 
+of pairs \myHighlight{$(g,v)$}\coordHE{} along with the identification \myHighlight{$(g,v)\sim
+\bigl(gh,v\,\tR(h)\bigr)$}\coordHE{}. Suppose now that we are given the 
+function \myHighlight{$\tK: G\to\GL(N)$}\coordHE{}. By construction, the \myHighlight{$N$}\coordHE{} row-vectors 
+\myHighlight{$k_i(g)$}\coordHE{} are linearly independent and satisfy \myHighlight{$k_i(gh) =k_i(g)
+\tR(h)$}\coordHE{}. In other words, they provide a linearly independent 
+set of global sections of~\myHighlight{$E$}\coordHE{}, i.e.\ a global trivialization. 
+The converse is also true. Hence, the existence of \myHighlight{$\tK$}\coordHE{} is 
+equivalent to the triviality of \myHighlight{$E$}\coordHE{}. 
+\smallskip
+
+It is well known that the bundle \myHighlight{$G \times_{\iG} V_\tR$}\coordHE{} is 
+trivial if the representation \myHighlight{$\tR$}\coordHE{} of \myHighlight{$\iG$}\coordHE{} can 
+be obtained by restricting a representation of \myHighlight{$G$}\coordHE{}. This 
+condition is too strong for our purposes. Note, 
+however, that we construct our bundle \myHighlight{$E$}\coordHE{} with the 
+complexified space \myHighlight{$V_\tR^\Complex$}\coordHE{} and this makes a huge 
+difference. In fact, \myHighlight{$E$}\coordHE{} turns out to be trivial for all 
+representations \myHighlight{$\tR$}\coordHE{}. 
+\smallskip
+
+The proof proceeds in two steps. First one shows that all the 
+bundles \myHighlight{$E$}\coordHE{} are stably equivalent to a trivial bundle. Since 
+stable equivalence is preserved under tensoring representations
+of \myHighlight{$\iG$}\coordHE{}, one can concentrate on the fundamental representations
+and hence reduce the problem to a finite number of checks which 
+have to be performed case-by-case. Passing from stable equivalence 
+to isomorphism is possible if the rank of the bundle is sufficiently 
+large compared to the dimension of the base manifold. Again, this 
+has to be decided by going through all the cases separately. The 
+details of this proof can be found in Appendix B.   
+\smallskip 
+
+After these remarks on the existence of \myHighlight{$\tK$}\coordHE{}, let us briefly address 
+the issue of uniqueness. On the face of it, formula \eqref{solution} 
+seems to provide a very large 
+set of solutions with many continuous parameters. For a given 
+representation \myHighlight{$\tR $}\coordHE{}, however, all these solutions are gauge 
+equivalent. To see this, let \myHighlight{$\tK ,\tA $}\coordHE{} and \myHighlight{$\tK',\tA'$}\coordHE{} be 
+two such solutions with a covariance law involving the same \myHighlight{$\tR$}\coordHE{}.  
+Then we find 
+\begin{equation}\coord{}\boxEquation{
+\tA_{\mu}'\ =\ U\tA_{\mu }U^{-1} - (\tL _{\mu }U)U^{-1}
+}{
+\tA_{\mu}'\ =\ U\tA_{\mu }U^{-1} - (\tL _{\mu }U)U^{-1}
+}{ecuacion}\coordE{}\end{equation}
+with \myHighlight{$U=\tK'\,\tK^{-1}$}\coordHE{}, i.e.\ \myHighlight{$\tA $}\coordHE{} and \myHighlight{$\tA'$}\coordHE{} are related by a 
+gauge transformation \myHighlight{$U$}\coordHE{} (note that this requires invariance of our
+theory under global gauge transformations which is granted as long
+as we do not consider the automorphism of order \myHighlight{$3$}\coordHE{}).
+In conclusion, our discussion in this 
+subsection provides for each \myHighlight{$\tR$}\coordHE{} a unique solution with vanishing
+curvature.
+\medskip
+
+The case of~\myHighlight{$\tK\equiv\tR$}\coordHE{} being a representation of~\myHighlight{$G$}\coordHE{} can be 
+considered as a special example of our general construction as 
+it may be restricted to a (reducible) representation of~\myHighlight{$\iG$}\coordHE{}. 
+The corresponding field~\myHighlight{$\tA(g)$}\coordHE{} turns out to be constant and 
+it is given by 
+\begin{equation*}\coord{}\boxEquation{
+  \tA^{\mu} \ =\ \tR(\tT^{\mu})
+}{
+  \tA^{\mu} \ =\ \tR(\tT^{\mu})
+}{ecuacion}\coordE{}\end{equation*}
+where~\myHighlight{$\tT^{\mu}$}\coordHE{} are generators of the Lie algebra~\myHighlight{$\mf{g}$}\coordHE{}. 
+It is easy to see that all constant solutions to~\myHighlight{$\tF=0$}\coordHE{} have this 
+form. This class of solutions and the corresponding brane processes 
+have already been discussed in~\cite{Fredenhagen:2000ei}. In the 
+case of untwisted branes, these solutions form a complete set of 
+solutions for a stack of branes of type~\myHighlight{$0\in P_{G}^+$}\coordHE{}. For twisted 
+branes, however, we just presented new non-constant solutions which 
+give rise to new brane processes.
+
+\subsection{\label{sc:Interpretation}Interpretation of the solutions}
+
+In the last section we presented a large number of new stationary points 
+for the action of~\myHighlight{$N=d_a$}\coordHE{} branes of type~\myHighlight{$0\in P_{\iG}^+\cong\treps$}\coordHE{}. 
+Here,~\myHighlight{$d_a$}\coordHE{} is the dimension of an irreducible representation~\myHighlight{$\tR_a$}\coordHE{} 
+of~\myHighlight{$\iG$}\coordHE{}. We shall present evidence that such solutions correspond to 
+processes of the type
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:ConjectureDynamic}
+  \text{Stack of }d_a\text{ branes of type }0\in P_{\iG}^+
+  \quad\longrightarrow\quad\text{ single brane of type }a\in P_{\iG}^+
+\ \ . 
+}{
+  \text{Stack of }d_a\text{ branes of type }0\in P_{\iG}^+
+  \quad\longrightarrow\quad\text{ single brane of type }a\in P_{\iG}^+
+\ \ . 
+}{ecuacion}\coordE{}\end{equation}
+Any twisted D-brane can be obtained as a condensate of a stack of
+elementary branes of type \myHighlight{$0\in P_{\iG}^+$}\coordHE{}. This implies in particular 
+that any two configurations whose corresponding representations of 
+\myHighlight{$\iG$}\coordHE{} have the same dimension can be related by a process. A similar 
+observation has been made for untwisted
+branes~\cite{Alekseev:2000fd, Fredenhagen:2000ei} and the new
+processes might provide further insights to the contribution 
+of twisted D-branes to the twisted K-groups which seem to 
+describe the D-brane charges on group manifolds
+(see~\cite{Bouwknegt:2000qt,Fredenhagen:2000ei,Maldacena:2001xj}).
+\smallskip
+
+According to eq.~\eqref{fluctuation}, there are essentially two 
+checks that we must perform in order to test the 
+conjecture~\eqref{eq:ConjectureDynamic}. We will compare the 
+value of the action at the solution to the CFT-prediction 
+below and start with an analysis of the fluctuations around 
+the solution. 
+\smallskip
+
+The general form of the fluctuation spectrum follows from the 
+discussion in section~\ref{sc:Solutions} and is summarized in 
+eq.~\eqref{fluctuation}.
+It is implicitly contained in the \myHighlight{$G$}\coordHE{}-action entering the derivatives
+\eqref{derivatives} which we used to compute the
+action \myHighlight{$\cS_{Q'}(\delta \tA)$}\coordHE{} of the fluctuation fields. But as
+we have stressed earlier, the fields \myHighlight{$\delta \tA$}\coordHE{} are elements of 
+the algebra \myHighlight{$\mc{A}^{d_a(0)}$}\coordHE{}. Let us be precise and introduce 
+a new symbol \myHighlight{$\widetilde{\mc{A}}^{d_a(0)}$}\coordHE{} for the \myHighlight{$G$}\coordHE{}-module 
+\myHighlight{$\bigl(\mc{A}^{d_a(0)},\tL_{Q^\prime}\bigr)$}\coordHE{}. Our aim then is to identify 
+the functional \myHighlight{$\cS_{Q'}(\delta \tA)$}\coordHE{} on \myHighlight{$\widetilde{\mc{A}}^{d_a(0)}$}\coordHE{} 
+with the action functional \myHighlight{$\cS_{(a)}$}\coordHE{} on \myHighlight{$\mc{A}^{(a)}$}\coordHE{} which 
+governs the dynamics of a brane of type \myHighlight{$(a)$}\coordHE{}. This comes down 
+to providing a \myHighlight{$G$}\coordHE{}-module isomorphism \myHighlight{$\Phi$}\coordHE{} between 
+\myHighlight{$\widetilde{\mc{A}}^{d_a(0)}$}\coordHE{} and \myHighlight{$\mc{A}^{(a)}$}\coordHE{}. In particular, 
+the derivatives have to match,
+\begin{equation*}\coord{}\boxEquation{
+\Phi\bigl(\widetilde{\tL}_\mu^{d_a(0)}\ \delta \tA\bigr)\ =\ \tL_\mu^{(a)}
+\ \Phi(\delta \tA)\ .
+}{
+\Phi\bigl(\widetilde{\tL}_\mu^{d_a(0)}\ \delta \tA\bigr)\ =\ \tL_\mu^{(a)}
+\ \Phi(\delta \tA)\ .
+}{ecuacion}\coordE{}\end{equation*}
+Such an isomorphism can be obtained with the help of the function \myHighlight{$\tK$}\coordHE{} 
+from which we constructed our solution,
+\begin{equation*}\coord{}\boxEquation{
+\Phi(\delta \tA)(g)\ =\ \tK^{-1} (g)
+  \, \delta \tA(g) \, \tK (g) \ \in \mc{A}^{(a)} \ . 
+}{
+\Phi(\delta \tA)(g)\ =\ \tK^{-1} (g)
+  \, \delta \tA(g) \, \tK (g) \ \in \mc{A}^{(a)} \ . 
+}{ecuacion}\coordE{}\end{equation*}
+One can check that the action of the derivatives \myHighlight{$\tL_\mu^{(a)}$}\coordHE{} 
+on \myHighlight{$\mc{A}^{(a)}$}\coordHE{} precisely coincides with the action of the shifted
+derivatives on \myHighlight{$\widetilde{\mc{A}}^{d_a(0)}$}\coordHE{},
+$$\coord{}\boxMath{\widetilde{\tL}_\mu^{d_a(0)} \ =\ \tL_\mu^{d_a(0)}+
+ [\tA_\mu,\:\cdot\:]\ \overset{\Phi}{\cong}\ \tL_\mu^{(a)}\ \ ,}{dollar}{0pt}\coordE{}$$ 
+where the shift is given by our solution
+\myHighlight{$\tA_{\mu}=-\tL_{\mu}\tK\:\tK(g)^{-1}$}\coordHE{} of the 
+equations of motion. Thus we have proved that the theory of fluctuations 
+around our solution coincides with \myHighlight{$\cS_{(a)}$}\coordHE{} as we anticipated in 
+eq.~\eqref{eq:ConjectureDynamic}.  
+\medskip
+
+Our second check involves a comparison between the value of the action 
+at the solution and the g-factors of a CFT description. For technical 
+reasons, we restrict ourselves to automorphisms \myHighlight{$\omega$}\coordHE{} of order~\myHighlight{$2$}\coordHE{}, 
+thereby excluding only the case of triality for \myHighlight{$D_4$}\coordHE{}. The existence of
+\myHighlight{$\omega$}\coordHE{} 
+implies strong constraints on the form of the structure constants. To 
+be specific, by diagonalization of \myHighlight{$\omega$}\coordHE{}, we may choose a basis 
+in which only the constants \myHighlight{$f_{ijk}, f_{rsi}$}\coordHE{} and cyclic permutations 
+thereof do not vanish. Here, \myHighlight{$i,j,k,\ldots$}\coordHE{} denote indices for elements 
+in the invariant subalgebra~\myHighlight{$\ig$}\coordHE{} and \myHighlight{$r,s,t,\ldots$}\coordHE{} label directions 
+orthogonal to~\myHighlight{$\ig$}\coordHE{}. We are now able to compute 
+the action using no more than the properties of the solution we have 
+specified. For a solution with \myHighlight{$\tF =0$}\coordHE{}, the action reduces to
+\[\coord{}\boxMath{
+\cS_{d_a(0)}(\tA) \ = \ \kappa f^{\mu \nu \sigma }\int\tr\:\tA_\mu
+\tA_\nu \tA_\sigma 
+}{corchetes}{0pt}\coordE{}\]
+with \myHighlight{$\kappa = i \pi^2/ 6k^2 d_a$}\coordHE{}. We now express the solution 
+\eqref{solution} in terms of the right derivatives
+\eqref{eq:RightDerivative}, 
+$$\coord{}\boxMath{
+  \tA_{\mu }\ =\ \Ad
+   (g^{-1}){_{\mu }}^{\nu }\bigl(\tL^{\!\tR }_{\nu }
+ \tK\bigr)\tK^{-1}\ \ . 
+}{dollar}{0pt}\coordE{}$$
+Since we have to contract the \myHighlight{$\tA_\mu$}\coordHE{}s with \myHighlight{$f^{\mu \nu \sigma }$}\coordHE{}, 
+the adjoint action of \myHighlight{$G$}\coordHE{} can be dropped to obtain 
+\[\coord{}\boxMath{
+\cS_{d_a(0)}(\tA) \ = \ \kappa f^{\mu \nu \sigma }\int\tr\:\tA'_\mu
+\tA'_\nu \tA'_\sigma
+}{corchetes}{0pt}\coordE{}\]
+with \myHighlight{$\tA '_{\mu }=\tK^{-1}(\tL ^{\!\tR }_{\mu }\tK)$}\coordHE{}. Our previous
+remarks on the form of the structures constants suggest to split this
+formula for the action into two terms 
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:AuxAction}
+  \cS_{d_a(0)}(\tA) \ = \ \kappa f^{ijk}\int\tr\:\tA'_i\tA'_j\tA'_k
+   +3 \kappa f^{rsi}\int\tr\:\tA'_r\tA'_s\tA'_i\ \ .
+}{
+  \cS_{d_a(0)}(\tA) \ = \ \kappa f^{ijk}\int\tr\:\tA'_i\tA'_j\tA'_k
+   +3 \kappa f^{rsi}\int\tr\:\tA'_r\tA'_s\tA'_i\ \ .
+}{ecuacion}\coordE{}\end{equation}
+The first term can be computed 
+easily since \myHighlight{$\tA'_{i}(g)=\tR_a(\tT_i)$}\coordHE{}. 
+As for the second term, one proceeds by expressing the gauge field
+components \myHighlight{$\tA'_r(g)$}\coordHE{} through \myHighlight{$\tK(g)$}\coordHE{}. Integration by parts and 
+use of the anti-symmetry of the structure constants results in 
+$$\coord{}\boxMath{ \cS_{d_a(0)} (\tA) \ = \ \kappa f^{ijk}\int\tr\:
+   \tR_a(\tT_i)\tR_a(\tT_j)\tR_a(\tT_k)
+   +\frac{3\kappa }{2} 
+   f^{rsi}\int\tr\: \tK^{-1}[\tL^{\!\tR }_r,\tL^{\!\tR }_s]\tK\:\tR_a(\tT_i)
+\ \ . }{dollar}{0pt}\coordE{}$$ 
+Because of the constraints on the structure constants, the commutator 
+of the derivatives lies in the direction of~\myHighlight{$\ig$}\coordHE{} so that we obtain 
+a factor \myHighlight{$i{f_{rs}}^j\tR_a(\tT_j)$}\coordHE{} within the trace. After a bit of algebra 
+using eqs.~\eqref{eq:KillingForm}, \eqref{eq:QuadraticCasimir} 
+and~\eqref{eq:RepQuadraticCasimir}, the two terms in the expression for 
+the action can be combined into the following result 
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:EnergyEff}
+  \cS_{d_a(0)}(\tA)\ =\ 
+-\frac{\pi^2}{12k^2}\frac{C_a}{x_{e}}\Biggl(3C_\theta
+-2\frac{C_{\bar{\theta}}}{x_{e}}\Biggr)\ \ .
+}{
+  \cS_{d_a(0)}(\tA)\ =\ 
+-\frac{\pi^2}{12k^2}\frac{C_a}{x_{e}}\Biggl(3C_\theta
+-2\frac{C_{\bar{\theta}}}{x_{e}}\Biggr)\ \ .
+}{ecuacion}\coordE{}\end{equation}
+The numbers~\myHighlight{$C_a,C_\theta,C_{\bar{\theta}}$}\coordHE{} are the quadratic Casimirs 
+of the representation~\myHighlight{$a$}\coordHE{} of \myHighlight{$\ig$}\coordHE{} and of the adjoint representations 
+of \myHighlight{$\mf{g},\:\ig$}\coordHE{}, respectively (\myHighlight{$\theta,\bar{\theta}$}\coordHE{} are the highest 
+roots). The constant \myHighlight{$x_{e}$}\coordHE{} denotes the embedding index
+of the embedding \myHighlight{$\ig \hookrightarrow \mf{g}$}\coordHE{}. It appears
+due to different normalization of the quadratic 
+forms~\myHighlight{$\kappa_{\ig}$}\coordHE{} and~\myHighlight{${\kappa_{\mf{g}}|_{\ig}}$}\coordHE{}.
+It turns out that the value of the action~\eqref{eq:EnergyEff} 
+is always negative.
+\smallskip
+
+As we recalled before, this result for the value of the action must 
+be compared with the difference between two logarithms of the 
+g-factors~\cite{Affleck:1991tk} in the CFT-description. For the 
+branes \myHighlight{$(a)$}\coordHE{}, the g-factor is given by \cite[eq.\ (4.2)]{Behrend:1999bn}
+\begin{equation}\coord{}\boxEquation{
+g_{(a)}\ = \frac{S_{0\Iso(a)}^\omega}{\sqrt{S_{00}}}
+}{
+g_{(a)}\ = \frac{S_{0\Iso(a)}^\omega}{\sqrt{S_{00}}}
+}{ecuacion}\coordE{}\end{equation}
+where we explicitly used the identification~\myHighlight{$\Iso:P_{\iG}^+\to\treps$}\coordHE{} 
+to emphasize that the second argument of the twisted S~matrix is a 
+fractional symmetric weight. This leads to the following 
+expression for the logarithm of ratio of g-factors  
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:Energygfac}
+  \ln\frac{g_{(a)}}{d_ag_{(0)}}
+  \ = \ \ln\frac{S_{0\Iso(a)}^\omega}{d_aS_{0\Iso (0)}^\omega}
+  \ =\ -\frac{\pi^2}{12k^2}\,\frac{\dim\mf{g}}{\dim\ig}\,\frac{C_a}{x_{e}}\,C_\theta\ \ .
+}{
+  \ln\frac{g_{(a)}}{d_ag_{(0)}}
+  \ = \ \ln\frac{S_{0\Iso(a)}^\omega}{d_aS_{0\Iso (0)}^\omega}
+  \ =\ -\frac{\pi^2}{12k^2}\,\frac{\dim\mf{g}}{\dim\ig}\,\frac{C_a}{x_{e}}\,C_\theta\ \ .
+}{ecuacion}\coordE{}\end{equation}
+To derive this result one shows first
+that the quotient in the argument of the
+logarithm is an ordinary character of \myHighlight{$\ig$}\coordHE{},
+\[\coord{}\boxMath{
+  \frac{S^{\omega}_{0\Iso(a)}}{S^{\omega}_{0\Iso (0)}}\ = \
+  \chi_a\biggl(-\frac{2\pi i}{k+g^\vee}\frac{1}{x_e}\mc{P}(\rho)\biggr) \ \ .
+}{corchetes}{0pt}\coordE{}\]
+Using (a generalized
+version of) the asymptotic expansion in~\cite[eq.\ (13.175)]{FrancescoCFT}
+one then  recovers~\eqref{eq:Energygfac} to lowest order in~\myHighlight{$1/k$}\coordHE{}.
+\smallskip
+
+Although it is not obvious, formula~\eqref{eq:Energygfac} agrees with 
+the previous expression~\eqref{eq:EnergyEff} for the value of the 
+effective action at the solution which was obtained under the 
+assumption that~\myHighlight{$\omega$}\coordHE{} is an order~\myHighlight{$2$}\coordHE{} automorphism. 
+This can be checked with the help of Table~\ref{tb:Overview} and well 
+known Lie algebra data (see for example~\cite[p.\ 44]{Fuchs:1995}).
+To summarize we have shown (except for the case \myHighlight{$G_2\embin D_4$}\coordHE{}) that
+our solutions describe processes of the type~\eqref{eq:ConjectureDynamic}.
+
+\section{Conclusions and Outlook}
+
+In this work we have extended the previous analysis of brane 
+dynamics \cite{Alekseev:1999bs,Alekseev:2000fd,Alekseev:2000wg} 
+to brane configurations of all maximally symmetric branes on 
+group manifolds including the so-called twisted D-branes. In 
+particular, we exploited the CFT data to construct the algebra 
+of gauge fields on such branes and provided a formula for the 
+effective action. Moreover, we found a large number of solutions 
+and their geometric interpretation. The new condensation processes 
+turn out to be consistent with the charge conservation laws 
+formulated in~\cite{Fredenhagen:2000ei} (see also 
+\cite{Maldacena:2001xj}). In particular they suggest that the charge 
+of an arbitrary \myHighlight{$\omega$}\coordHE{}-twisted D-brane of type~\myHighlight{$a\in\reps_{\iG}
+\cong\treps$}\coordHE{} is given by the dimension of the group 
+representation~\myHighlight{$a$}\coordHE{}.
+\medskip 
+
+All this analysis is performed in the limiting regime where 
+the level \myHighlight{$k$}\coordHE{} is sent to infinity. It would be interesting to 
+investigate how the described condensation processes deform 
+when we go to finite values of the level~\myHighlight{$k$}\coordHE{}. For constant
+gauge fields, such deformations have been studied in 
+\cite{Alekseev:2000jx,Fredenhagen:2000ei} based on the 
+``absorption of the boundary spin''-principle (see 
+\cite{Affleck:1991by,Affleck:1991iv}). These investigations 
+lead to very strong constraints on the structure of the charges 
+that are carried by untwisted D-branes. For non-trivial~\myHighlight{$\omega$}\coordHE{}, 
+however, constant condensates provide only a small number of 
+processes which are difficult to evaluate. The bound state 
+formation \eqref{eq:ConjectureDynamic} we found in the last 
+section of this paper suggests some obvious extensions that 
+might place the analysis of conservation laws for twisted and 
+untwisted D-branes on an equal footing. 
+
+Geometrically, the situations with finite~\myHighlight{$k$}\coordHE{} are associated 
+with a non-vanishing NSNS 3-form H-field. As has been argued 
+in \cite{Alekseev:1999bs,Cornalba:2001sm,Hayasaka:2001an} 
+this might lead to new phenomena in the world-volume geometry.
+For branes on group manifolds they seem to be related to 
+quantum groups or appropriate modifications thereof 
+(see \cite{Alekseev:1999bs,Alekseev:1995rn,Pawelczyk:2002kd}). 
+\medskip
+
+Let us also mention that the results we have obtained here can 
+be of direct relevance for the study of branes in coset models
+that has recently attracted some attention~\cite{Stanciu:1998sk,  
+Fredenhagen:2001nc,Maldacena:2001ky,Gawedzki:2001ye,Elitzur:2001qd,
+Fredenhagen:2001kw}. In fact, it was shown in \cite{Fredenhagen:2001nc,
+Fredenhagen:2001kw} that many results on the dynamics of branes on group 
+manifolds descend to cosets through some reduction procedure. The 
+main ideas of this reduction are not specific to trivial gluing 
+conditions and generalize immediately to twisted branes in coset 
+theories. Finally, following the ideas of \cite{Maldacena:2001ky,
+Quella:2002ct}, the coset construction is an essential tool to obtain  
+symmetry breaking boundary conditions e.g.\ on group manifolds. It 
+is therefore tempting to conclude that a combination of all these 
+results can provide a rather exhaustive picture of brane dynamics
+on group manifolds, even when we go beyond maximally symmetric 
+branes.  
+
+
+\subsection*{Acknowledgements}
+
+We would like to thank V.\ Braun, G.\ Moore, I.\ Runkel and 
+Ch.\ Schweigert  for their comments and useful discussions. 
+The work of T.Q.\ and S.F.\ was supported by the 
+Studienstiftung des deutschen Volkes. Part of the research was done 
+during a stay of T.Q.\ at the University of Geneva which was supported
+by the Swiss National Science Foundation. 
+
+\newpage
+\begin{appendix}
+
+\section{\label{sc:Correspondence}Correspondence between boundary 
+labels and representations}
+
+  The aim of this section is to provide the correspondence between exactly 
+  solvable boundary conditions and representations of the invariant subgroup
+  \myHighlight{$\iG$}\coordHE{}. This is needed to relate the results of the more geometric 
+  picture to those of CFT. We will proceed in the first subsection by comparing
+  the explicit expressions for the NIM-reps~\eqref{annuluscf} to recent results
+  for branching coefficients of arbitrary semi-simple Lie
+  algebras~\cite{Quella:2001wh}. We are thus able to distinguish a
+  certain subalgebra \myHighlight{$\sg$}\coordHE{} and identify boundary labels with
+  representations of \myHighlight{$\sg$}\coordHE{} such that we get a purely Lie algebra theoretic
+  expression for the NIM-reps in the limit \myHighlight{$k\to\infty$}\coordHE{}. In almost all cases
+  \myHighlight{$\sg$}\coordHE{} is given by the invariant subalgebra \myHighlight{$\ig$}\coordHE{} and we also have
+  \myHighlight{$P_{\iG}^+=P_{\ig}^+$}\coordHE{}. The only case where this procedure does not work
+  is \myHighlight{$\mf{g}=A_{2n}$}\coordHE{} where we are lead to the orbit Lie algebra \myHighlight{$\sg=C_n$}\coordHE{}
+  and not to the invariant subalgebra \myHighlight{$\ig=B_n$}\coordHE{}.
+  It was argued in~\cite{Quella:2001wh}, however, that in
+  this specific case a second identification is possible which leads to the
+  invariant subalgebra.
+  We reserve a second subsection to review
+  these results and to discuss the case of \myHighlight{$A_{2n}$}\coordHE{} in detail. Note that
+  results closely related to those presented in this section have also been
+  found independently in~\cite{Petkova:2002yj,Gaberdiel:2002qa} for finite \myHighlight{$k$}\coordHE{}
+  using different methods. In all cases for which such a finite \myHighlight{$k$}\coordHE{} extension
+  exists, i.e. for the \myHighlight{$A_n$}\coordHE{}-series in \cite{Petkova:2002yj} as well as the
+  \myHighlight{$D_n$}\coordHE{}-series and the \myHighlight{$A_{2n}$}\coordHE{}-series
+  in \cite{Gaberdiel:2002qa}, our results may also be recovered from the
+  existing literature by taking \myHighlight{$k$}\coordHE{} to infinity.
+  Let us emphasize, however, that in the cases of \myHighlight{$A_{2n-1}$}\coordHE{},
+  \myHighlight{$D_4$}\coordHE{} (triality) and \myHighlight{$E_6$}\coordHE{} our treatment seems to indicate stronger
+  statements, i.e. larger subgroups, for finite \myHighlight{$k$}\coordHE{} than those proposed
+  in \cite{Gaberdiel:2002qa}. The geometrical
+  interpretation of these results which was described in the main text and the
+  identification of the invariant subgroup as the relevant structure seem to
+  be new. The results of this appendix have already been announced in
+  \cite{Quella:2001wh} where they were used to derive new
+  representations for branching coefficients.
+
+\subsection{The generic correspondence}
+
+In this first subsection we propose an identification of boundary labels
+with representations of a distinguished subalgebra \myHighlight{$\sg$}\coordHE{} of \myHighlight{$\mf{g}$}\coordHE{} such
+that formula~\eqref{magform} is satisfied for the embedding \myHighlight{$\sg\embin\mf{g}$}\coordHE{}
+after taking the limit \myHighlight{$k\to\infty$}\coordHE{}.
+Neither is obvious that this will work a priori
+nor is clear which subalgebra one should take. Starting from certain
+assumptions we will first derive a set of consistency relations.
+Afterwards we will show that for each \myHighlight{$\mf{g}$}\coordHE{} there is indeed a unique solution
+\myHighlight{$\sg$}\coordHE{} to these consistency equations and that in most cases it is given by the
+invariant subalgebra \myHighlight{$\ig$}\coordHE{}.
+
+Let us begin our discussion with a few general remarks about embeddings
+of Lie algebras.  
+Any embedding map \myHighlight{$\iota:\sg\hookrightarrow\mf{g}$}\coordHE{} 
+induces a ``projection'' (or rather ``restriction'') in weight space 
+\myHighlight{$\mc{P}:L_w^{(\mf{g})}\rightarrow L_w^{(\sg)}$}\coordHE{}. A representation 
+is completely defined by its character, i.e.\ by the weight system 
+of the given highest weight. Under the projection~\myHighlight{$\mc{P}$}\coordHE{}, this 
+weight system is mapped to a sum of weight systems of highest 
+weights of the subalgebra. This process may be summarized in the 
+decomposition formula \myHighlight{$U_A=\oplus_c {b_A}^cV_c$}\coordHE{} of modules (both
+sides considered as modules of \myHighlight{$\sg$}\coordHE{}) where
+we introduced the so called branching 
+coefficients~\myHighlight{${b_A}^c\in\Natural_0$}\coordHE{}.
+\smallskip
+
+\begin{table}
+\centerline{\begin{tabular}{ccccc}
+  \myHighlight{$\mf{g}$}\coordHE{} & order & \myHighlight{$\ig$}\coordHE{} & orbit Lie 
+    algebra~\myHighlight{$\breve{\mf{g}}$}\coordHE{} & relevant subalgebra~\myHighlight{$\sg$}\coordHE{} \\\hline
+  \myHighlight{$A_2$}\coordHE{} & 2 & \myHighlight{$A_1\,(x_e=4)$}\coordHE{} & \myHighlight{$A_1$}\coordHE{} & \myHighlight{$A_1\,(x_e=1)$}\coordHE{} \\
+  \myHighlight{$A_{2n-1}$}\coordHE{} & 2 & \myHighlight{$C_n$}\coordHE{} & \myHighlight{$B_n$}\coordHE{} & \myHighlight{$C_n$}\coordHE{} \\
+  \myHighlight{$A_{2n}$}\coordHE{} & 2 & \myHighlight{$B_n$}\coordHE{} & \myHighlight{$C_n$}\coordHE{} & \myHighlight{$C_n\embin A_{2n-1}$}\coordHE{} \\
+  \myHighlight{$D_4$}\coordHE{} & 3 & \myHighlight{$G_2$}\coordHE{} & \myHighlight{$G_2$}\coordHE{} & \myHighlight{$G_2\embin B_3$}\coordHE{} \\
+  \myHighlight{$D_n$}\coordHE{} & 2 & \myHighlight{$B_{n-1}$}\coordHE{} & \myHighlight{$C_{n-1}$}\coordHE{} & \myHighlight{$B_{n-1}$}\coordHE{} \\
+  \myHighlight{$E_6$}\coordHE{} & 2 & \myHighlight{$F_4$}\coordHE{} & \myHighlight{$F_4$}\coordHE{} & \myHighlight{$F_4$}\coordHE{}
+\end{tabular}}
+  \caption{\label{tb:OverviewAppendix}More data
+  related to outer automorphisms of simple Lie algebras.}
+\end{table}
+  
+It is now important to specify  which structure our identification 
+of boundary labels and representations is supposed to preserve. Let 
+\myHighlight{$\langle\treps\rangle$}\coordHE{} be the integer linear span of the set of 
+boundary conditions~\myHighlight{$\treps$}\coordHE{}, i.e.\ the full lattice generated by
+elements of~\myHighlight{$\treps$}\coordHE{}. Both the lattice~\myHighlight{$\langle\treps\rangle$}\coordHE{} and 
+the weight lattice~\myHighlight{$L_w^{(\sg)}$}\coordHE{} permit an action of Weyl groups. 
+In the first case this group is given by the symmetric part
+\myHighlight{$W_{\omega}=\{w\in W_{\mf{g}}|\omega\circ w=w\circ\omega\}$}\coordHE{} of 
+the Weyl group of~\myHighlight{$\mf{g}$}\coordHE{} and in the other case it is naturally 
+given by~\myHighlight{$W_{\sg}$}\coordHE{}. Furthermore, in both cases we have a projection
+\myHighlight{$\mc{P}:L_w^{(\mf{g})}\rightarrow L_w^{(\sg)}$}\coordHE{} and
+\myHighlight{$\proj:L_w^{(\mf{g})}\rightarrow\langle\treps\rangle$}\coordHE{},
+respectively. The latter is given by the projection \myHighlight{$\proj
+=\frac{1}{N}(1+\omega+\cdots+\omega^{N-1})$}\coordHE{} onto the symmetric part
+of the weights, \myHighlight{$N$}\coordHE{} being the order of \myHighlight{$\omega$}\coordHE{}.
+As we will see, we have to find an isomorphism \myHighlight{$\Iso:L_w^{(\sg)}
+\rightarrow \langle\treps\rangle$}\coordHE{} between the fractional lattice 
+generated by the boundary conditions and the weight lattice of the 
+subalgebra which preserves all of these structures. In particular
+it should be accompanied with an isomorphism
+\myHighlight{$\Iso:W_{\sg}\to W_\omega$}\coordHE{} of the corresponding Weyl groups.
+To summarize, we 
+have to find a subalgebra~\myHighlight{$\sg$}\coordHE{} and a functor-like map~\myHighlight{$\Iso$}\coordHE{} such
+that the diagrams~\eqref{eq:CommDiagram} commute. It turns out
+that the answer for both~\myHighlight{$\sg$}\coordHE{} and~\myHighlight{$\Iso$}\coordHE{} is unique.
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:CommDiagram}
+\begin{CD}
+  L_w^{(\mf{g})} @>{\mc{P}}>> L_w^{(\sg)} &\hspace{2.5cm}&  L_w^{(\sg)} @>w\in W_{\sg}>> L_w^{(\sg)}\\
+  @VV{=}V @VV{\Iso}V  @VV{\Iso}V @VV{\Iso}V\\
+  L_w^{(\mf{g})} @>{\proj}>> \langle\treps\rangle &\hspace{2.5cm}& \langle\treps\rangle @>\Iso(w)\in W_\omega>>\langle\treps\rangle
+\end{CD}
+}{
+  \begin{CD}
+  L_w^{(\mf{g})} @>{\mc{P}}>> L_w^{(\sg)} &\hspace{2.5cm}&  L_w^{(\sg)} @>w\in W_{\sg}>> L_w^{(\sg)}\\
+  @VV{=}V @VV{\Iso}V  @VV{\Iso}V @VV{\Iso}V\\
+  L_w^{(\mf{g})} @>{\proj}>> \langle\treps\rangle &\hspace{2.5cm}& \langle\treps\rangle @>\Iso(w)\in W_\omega>>\langle\treps\rangle
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+In the following we restrict ourselves to some non-trivial outer
+automorphism~\myHighlight{$\omega\neq\id$}\coordHE{} since our statements become trivial
+otherwise.
+\smallskip
+
+Remember that we only consider the limit \myHighlight{$k\rightarrow\infty$}\coordHE{}.
+For \myHighlight{$\alpha=\Iso(a),\:\beta=\Iso(b)$}\coordHE{} we want to
+proof the equality
+\begin{equation*}\coord{}\boxEquation{
+  {\bigl(n_A^\omega\bigr)_{\beta}}^{\alpha}
+  \ =\ \sum_c {b_A}^c {N_{cb}}^a
+}{
+  {\bigl(n_A^\omega\bigr)_{\beta}}^{\alpha}
+  \ =\ \sum_c {b_A}^c {N_{cb}}^a
+}{ecuacion}\coordE{}\end{equation*}
+where the last expression contains some branching coefficients for
+\myHighlight{$\sg\hookrightarrow\mf{g}$}\coordHE{} and the tensor product coefficients of
+the subalgebra. This relation explicitly assumes the existence of the
+bijection \myHighlight{$\Iso:a\in P_{\sg}^+\leftrightarrow\alpha\in\treps$}\coordHE{}
+conjectured above. Using a result of~\cite{Quella:2002wi}
+and a useful identity for 
+branching coefficients (which is related to~\cite{Klimyk:1967}, see 
+however~\cite{Quella:2001wh} for a recent proof using affine 
+Kac-Moody algebra techniques) we may write
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:NIMrepComparison}
+  \begin{split}
+  {\bigl(n_A^\omega\bigr)_{\beta}}^{\alpha}
+  &\ =\ \sum_{B\in\text{wts}(A),w\in W_{\omega}}\epsilon_{\omega}(w)
+  \delta_{\alpha,w(\mathcal{P}_{\omega}B+\beta+\rho_\omega)-\rho_\omega}\\[2mm]
+  \sum_c {b_A}^c {N_{cb}}^a
+  &\ =\ \sum_{B\in\text{wts}(A),w\in W_{\sg}}\epsilon(w)
+  \delta_{a,w(\mathcal{P}B+b+\rho)-\rho}\ \ .
+  \end{split}
+}{
+  \begin{split}
+  {\bigl(n_A^\omega\bigr)_{\beta}}^{\alpha}
+  &\ =\ \sum_{B\in\text{wts}(A),w\in W_{\omega}}\epsilon_{\omega}(w)
+  \delta_{\alpha,w(\mathcal{P}_{\omega}B+\beta+\rho_\omega)-\rho_\omega}\\[2mm]
+  \sum_c {b_A}^c {N_{cb}}^a
+  &\ =\ \sum_{B\in\text{wts}(A),w\in W_{\sg}}\epsilon(w)
+  \delta_{a,w(\mathcal{P}B+b+\rho)-\rho}\ \ .
+  \end{split}
+}{split}\coordE{}\end{equation}
+The abbreviation \myHighlight{$B\in\text{wts}(A)$}\coordHE{} means that~\myHighlight{$B$}\coordHE{} runs over all weights
+in the weight system of~\myHighlight{$A$}\coordHE{}. Both expressions are obviously equal to each  
+other if the bijection~\myHighlight{$\Iso$}\coordHE{} is structure preserving, i.e.
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \Iso(\rho)&=&\rho_\omega\\\leftCoord{}[2mm] 
+  \Iso\circ\mc{P}&=&\mc{P}_{\omega}\\\leftCoord{}[2mm] 
+  \Iso(wa)&=&\Iso(w)\Iso(a)\ \ . \rightCoord{}
+\rightCoord{}}{0mm}{3}{3}{
+  \Iso(\rho)&=&\rho_\omega\\[2mm] 
+  \Iso\circ\mc{P}&=&\mc{P}_{\omega}\\[2mm] 
+  \Iso(wa)&=&\Iso(w)\Iso(a)\ \ . 
+}{1}\coordE{}\end{eqnarray*}
+The last condition already constrains the possible subalgebras to
+a large extent. Indeed, the Weyl group~\myHighlight{$W_\omega$}\coordHE{} can be described as
+the Weyl group of the so-called orbit Lie algebra of~\myHighlight{$\mf{g}$}\coordHE{} with 
+respect to the automorphism~\myHighlight{$\omega$}\coordHE{} (see~\cite{Fuchs:1996zr}).
+In some special cases this orbit Lie algebra coincides with the 
+invariant subalgebra~\myHighlight{$\ig$}\coordHE{} while it does not for the whole~\myHighlight{$A_{n}$}\coordHE{} 
+and~\myHighlight{$D_n$}\coordHE{} series. A survey of these relations can be found in 
+Table~\ref{tb:OverviewAppendix} which in part has been taken 
+from~\cite{Birke:1999ik}. Note however that the Weyl groups 
+of~\myHighlight{$B_n$}\coordHE{} and~\myHighlight{$C_n$}\coordHE{} are isomorphic to each other (see 
+e.g.~\cite[p.~74]{Fuchs:1995}) which can most easily be seen 
+by treating them as abstract Coxeter groups. Thus by imposing
+the last constraint we only have to decide which of possibly two
+subalgebras - the orbit Lie algebra or the invariant subalgebra -
+and which specific kind of embedding we should take. This choice 
+is uniquely determined by the other two conditions. In the cases 
+of~\myHighlight{$A_{2n-1}$}\coordHE{} and~\myHighlight{$D_n$}\coordHE{} the orbit Lie algebra not even is a 
+subalgebra so that this possibility is ruled out immediately.
+\smallskip
+
+We will show in the most simple example of the Lie algebra~\myHighlight{$A_2$}\coordHE{}
+how this procedure works and then state only results for all the 
+other cases. Let us consider \myHighlight{$\mf{g}=A_2$}\coordHE{} with outer automorphism
+\myHighlight{$\omega(a_1,a_2)=(a_2,a_1)$}\coordHE{}. The relevant subalgebra is given 
+by \myHighlight{$\sg=A_1$}\coordHE{} and the projection to fractional symmetric weights 
+- which describe the boundary conditions of the theory - reads 
+\myHighlight{$\mc{P}_{\omega}(a_1,a_2)=\frac{1}{2}(a_1+a_2,a_1+a_2)$}\coordHE{}. There 
+are two inequivalent embeddings \myHighlight{$A_1\hookrightarrow A_2$}\coordHE{} given by
+projections \myHighlight{$\mc{P}_{x_e}(a_1,a_2)=\sqrt{x_e}(a_1+a_2)$}\coordHE{} with embedding 
+index~\myHighlight{$x_e=1$}\coordHE{} and~\myHighlight{$x_e=4$}\coordHE{} respectively~\cite[p.~534]{FrancescoCFT}.
+Imposing the first condition we see that
+\begin{equation}\coord{}\boxEquation{
+  \Iso\circ\mc{P}_{x_e}(a_1,a_2)
+ \  =\ \sqrt{x_e}\:\Iso(a_1+a_2)\ \ .
+}{
+  \Iso\circ\mc{P}_{x_e}(a_1,a_2)
+ \  =\ \sqrt{x_e}\:\Iso(a_1+a_2)\ \ .
+}{ecuacion}\coordE{}\end{equation}
+This only equals \myHighlight{$\mc{P}_{\omega}(a_1,a_2)$}\coordHE{} for
+\begin{equation}\coord{}\boxEquation{
+  \Iso(a)\ =\ \frac{1}{2\sqrt{x_e}}(a,a)\ \ .
+}{
+  \Iso(a)\ =\ \frac{1}{2\sqrt{x_e}}(a,a)\ \ .
+}{ecuacion}\coordE{}\end{equation}
+The condition \myHighlight{$\Iso(\rho)=\rho_\omega=\frac{1}{2}(1,1)$}\coordHE{} forces
+us to use the projection with \myHighlight{$x_e=1$}\coordHE{}. One can also check explicitly that 
+the Weyl groups correspond to each other. This is the first example
+where the relevant subalgebra is not given by the invariant subalgebra
+(which has embedding index~\myHighlight{$x_e=4$}\coordHE{}) but by the orbit Lie algebra. The 
+same statement holds for the whole \myHighlight{$A_{2n}$}\coordHE{}~series as we will see. As 
+mentioned already the results of this section are summarized in 
+Table~\ref{tb:OverviewAppendix}.
+\smallskip
+
+One can  treat the whole ADE series using a case by case study. Let us
+emphasize that we use the labeling conventions for weights which can 
+be found in~\cite[p.~540]{FrancescoCFT}. The projections have been 
+found using~\cite[p.~57-61]{McKayPateraRand:1990} and the programs 
+LiE~\cite{LiE} and SimpLie~\cite{SimpLie}. Note that LiE uses a 
+different labeling convention for the weights. For a useful table of 
+branching rules see also \cite{McKayPatera:1981}.
+\begin{enumerate}
+\item The case of~\myHighlight{$A_{2n-1}$}\coordHE{} is straightforward. The relevant subalgebra
+is given by the invariant subalgebra \myHighlight{$C_n\embin A_{2n-1}$}\coordHE{}. This is a
+maximal embedding and the identification reads
+\[\coord{}\boxMath{
+  \proj
+  \ =\ \frac{1}{2}\left(\smat1&&&&&&1\\&\diagdown&&&&\diagup
+  \\&&1&&1&&\\&&&2\\&&1&&1&&\\&\diagup&&&&\diagdown\\1&&&&&&1\stam\right)
+  \ =\ \frac{1}{2}\left(\smat1&\\&\diagdown\\&&1\\&&&2\\&&1\\&\diagup
+  \\1\stam\right)\left(\smat1&&&&1\\&\diagdown&&\diagup\\&&1\stam\right)
+  \ =\ \Iso\circ\mc{P}\ \ .
+}{corchetes}{0pt}\coordE{}\]
+
+\item The case \myHighlight{$A_{2n}$}\coordHE{} is exceptional. Here the relevant subalgebra
+  is given by the orbit Lie algebra which can be described by the sequence
+  of maximal embeddings \myHighlight{$C_n\embin A_{2n-1}\embin A_{2n}$}\coordHE{}
+  (for \myHighlight{$n=1$}\coordHE{} we have \myHighlight{$A_1\embin A_2$}\coordHE{}). The identification reads
+\[\coord{}\boxMath{
+  \proj
+  \ =\ \frac{1}{2}\left(\smat1&&&&&1\\&\diagdown&&&\diagup
+ \\&&1&1&&\\&&1&1&&\\&\diagup&&&\diagdown\\1&&&&&1\stam\right)
+  \ =\ \frac{1}{2}\left(\smat1&\\&\diagdown\\&&1\\&&1\\&\diagup
+  \\1\stam\right)\left(\smat1&&&&&1\\&\diagdown&&&\diagup\\&&1&1\stam\right)
+  \ =\ \Iso\circ\mc{P}\ \ .
+}{corchetes}{0pt}\coordE{}\]
+  There is a second identification related to the subalgebra
+  \myHighlight{$B_n\embin A_{2n}$}\coordHE{} which will be discussed in the next
+  subsection and which is the relevant one for the main part of the paper.
+
+\item The order~\myHighlight{$3$}\coordHE{} diagram automorphism of~\myHighlight{$D_4$}\coordHE{} leads to the sequence
+  of maximal embeddings~\myHighlight{$G_2\embin B_3\embin D_4$}\coordHE{} and to the
+  identification
+\[\coord{}\boxMath{
+  \proj
+  \ =\ \frac{1}{3}\left(\smat1&0&1&1\\0&3&0&0\\1&0&1&1\\1&0&1&1\stam\right)
+  \ =\ \frac{1}{3}\left(\smat0&1\\3&0\\0&1\\0&1\stam\right)\left(\smat0&1&0&0\\1&0&1&1\stam\right)
+  \ =\ \Iso\circ\mc{P}\ \ .
+}{corchetes}{0pt}\coordE{}\]
+
+\item For the order~\myHighlight{$2$}\coordHE{} automorphism of the \myHighlight{$D$}\coordHE{}-series one obtains the
+  maximal embedding \myHighlight{$B_{n-1}\embin D_{n}$}\coordHE{} and
+\[\coord{}\boxMath{
+  \proj
+  \ =\ \frac{1}{2}\left(\smat2\\&\diagdown\\&&2\\&&&1&1\\&&&1&1\stam\right)
+  \ =\ \frac{1}{2}\left(\smat2&\\&\diagdown\\&&2\\&&&1\\&&&1\stam\right)
+  \left(\smat1\\&\diagdown&\\&&1\\&&&1&1\stam\right)
+  \ =\ \Iso\circ\mc{P}\ \ .
+}{corchetes}{0pt}\coordE{}\]
+
+\item Also the last case \myHighlight{$E_6$}\coordHE{} behaves regular and yields the maximal
+  embedding \myHighlight{$F_4\embin E_6$}\coordHE{} with
+\[\coord{}\boxMath{
+  \proj
+  =\frac{1}{2}\left(\smat1&0&0&0&1&0\\0&1&0&1&0&0\\0&0&2&0&0&0\\0&1&0&1&0&0\\1&0&0&0&1&0\\0&0&0&0&0&2\stam\right)
+  =\frac{1}{2}\left(\smat0&0&0&1\\0&0&1&0\\0&2&0&0\\0&0&1&0\\0&0&0&1\\2&0&0&0\stam\right)\left(\smat0&0&0&0&0&1\\0&0&1&0&0&0\\0&1&0&1&0&0\\1&0&0&0&1&0\stam\right)
+  =\Iso\circ\mc{P}.
+}{corchetes}{0pt}\coordE{}\]
+\end{enumerate}
+
+  These considerations show that in all cases but \myHighlight{$A_{2n}$}\coordHE{} we may identify
+  the boundary labels with representations of the invariant subgroup \myHighlight{$\iG$}\coordHE{}.
+  Let us emphasize that it is possible to identify the set of Lie algebra
+  representations \myHighlight{$P_{\ig}^+$}\coordHE{} with the set of group representations \myHighlight{$P_{\iG}^+$}\coordHE{}
+  in these cases as the corresponding groups \myHighlight{$\iG$}\coordHE{} are all simply-connected.
+  A detailed discussion of the identification one should use in the
+  exceptional case of \myHighlight{$A_{2n}$}\coordHE{} is postponed to the next subsection.
+
+\subsection{The special case \myHighlight{$A_{2n}$}\coordHE{}}
+
+  In the last section it was shown that under certain natural and
+  well-motivated assumptions the relevant subalgebra \myHighlight{$\sg$}\coordHE{} in the case of
+  \myHighlight{$A_{2n}$}\coordHE{} which describes the boundary labels is uniquely given by the
+  orbit Lie algebra \myHighlight{$C_n$}\coordHE{} and not by the
+  invariant subalgebra \myHighlight{$B_n$}\coordHE{}. This contradicts, however, our geometrical
+  intuition as we are expecting the invariant subalgebra (or even better
+  the invariant subgroup) to be the relevant structure.
+  In~\cite{Quella:2001wh}, however, it was argued that one is lead to
+  the invariant subalgebra by taking a different inductive limit, i.e.\ an
+  identification which involves the level \myHighlight{$k$}\coordHE{} explicitly. Indeed, in
+  writing~\eqref{eq:NIMrepComparison} we already took a very special limit
+  implicitly. That taking the limit \myHighlight{$k\to\infty$}\coordHE{} may have nontrivial effects
+  can already be seen from simple current symmetries in fusion rules. In this
+  limit all simple current symmetries get lost and it becomes important on
+  which ``branch'' of the simple current orbits one sits while taking the
+  limit. There is also another point on which we have not been careful enough
+  in the last subsection. The geometric picture suggests that we should work
+  with representations of the invariant sub{\em group}, not necessarily with
+  those of the invariant sub{\em algebra}. These two sets may differ as can
+  easily be seen from the familiar example of \myHighlight{$SO(3)$}\coordHE{} which only allows
+  \myHighlight{$SU(2)$}\coordHE{} representations of integer spin. Note that the automorphism
+  \myHighlight{$\omega$}\coordHE{} in the case of \myHighlight{$SU(3)$}\coordHE{} is just given by charge conjugation and
+  that \myHighlight{$SO(3)$}\coordHE{} exactly is the invariant subgroup. Similar remarks hold
+  for the whole series \myHighlight{$SO(2N+1)\subset SU(2N+1)$}\coordHE{}, i.e.\ the whole
+  \myHighlight{$A_{2n}$}\coordHE{} series. All this
+  should be reflected in the new identification in a certain way.
+
+  Let us review the new identification of~\cite{Quella:2001wh} and see
+  whether it fits our requirements. The construction only works for even
+  values of the level \myHighlight{$k$}\coordHE{}. This fact may be reminiscent of the \myHighlight{$D$}\coordHE{}-series
+  modular invariants of \myHighlight{$SU(2)$}\coordHE{} describing a \myHighlight{$SO(3)$}\coordHE{} WZW model. Therefore
+  we will assume \myHighlight{$k$}\coordHE{} to be even in what follows. This restriction will not
+  be relevant in the limit \myHighlight{$k\to\infty$}\coordHE{}. The labels for the
+  twisted boundary conditions in the WZW model based on \myHighlight{$A_{2n}$}\coordHE{} are given by
+  half-integer symmetric weights \myHighlight{$\alpha$}\coordHE{} of~\myHighlight{$A_{2n}$}\coordHE{}. To be more specific, the
+  Dynkin labels have to satisfy the relations \myHighlight{$2\alpha_i\in\Natural_0$}\coordHE{},
+  \myHighlight{$\alpha_i=\alpha_{2n+1-i}$}\coordHE{} and \myHighlight{$\sum_{i=0}^n\alpha_i\leq k/4$}\coordHE{}. These
+  labels may be interpreted as labels of the invariant subalgebra \myHighlight{$B_n$}\coordHE{}
+  of \myHighlight{$A_{2n}$}\coordHE{}. The map from weights of \myHighlight{$B_n$}\coordHE{} to
+  the boundary labels is given by~\cite{Quella:2001wh}
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:NewId}
+  \Iso\bigl(a_1,\cdots,a_n\bigr)
+  \,=\,\frac{1}{4}\,\Bigl(2a_{n-1}\,,\,\cdots,\,2a_1\,,\,k-2\sum_{i=1}^{n-1}a_i-a_n\,,\,\cdots,\,2a_{n-1}\Bigr)\ \ .
+}{
+  \Iso\bigl(a_1,\cdots,a_n\bigr)
+  \,=\,\frac{1}{4}\,\Bigl(2a_{n-1}\,,\,\cdots,\,2a_1\,,\,k-2\sum_{i=1}^{n-1}a_i-a_n\,,\,\cdots,\,2a_{n-1}\Bigr)\ \ .
+}{ecuacion}\coordE{}\end{equation}
+  Note that this map involves \myHighlight{$k$}\coordHE{} explicitly and is only well-defined for
+  weights whose last Dynkin label \myHighlight{$a_n$}\coordHE{} is even. This last condition 
+  has two interpretations.
+  From the group theoretical point of view it restricts to representations
+  of the Lie algebra \myHighlight{$B_n$}\coordHE{} which may be integrated to single-valued
+  representations of the group \myHighlight{$SO(2n+1)$}\coordHE{}. From the Lie algebra point of view
+  it corresponds to the
+  branching selection rule of the embedding \myHighlight{$B_n\hookrightarrow A_{2n}$}\coordHE{}.
+  The relevant projection for this embedding reads
+  \myHighlight{$\mc{P}\bigl(i_1,\cdots,i_{2n}\bigr)
+   =\bigl(i_1+i_{2n},i_2+i_{2n-1},\cdots,2(i_n+i_{n+1})\bigr)$}\coordHE{}.
+  
+Actually, there is a geometric reason why we should use a
+\myHighlight{$k$}\coordHE{}-dependent identification map in the case of \myHighlight{$A_{2n}$}\coordHE{}. 
+In the limit \myHighlight{$k\to \infty $}\coordHE{}, the
+twisted conjugacy classes in the vicinity of 
+the group unit have boundary labels
+close to \myHighlight{$(0,\dots,0 ,k/4,k/4,0,\dots ,0)$}\coordHE{}. This can be inferred from
+an analysis of brane geometry seen by closed strings \cite{Felder:1999ka}.
+
+Let us summarize these results.
+  Using the new identification map~\eqref{eq:NewId} we 
+can identify the labels of twisted branes in \myHighlight{$SU (2n+1)$}\coordHE{}
+sitting close to the group unit
+  with representations of the invariant subgroup \myHighlight{$\iG\hookrightarrow G$}\coordHE{}.
+  In particular this identification knows about the fact that
+  certain representations of \myHighlight{$\ig$}\coordHE{} may not be lifted to representations of
+  \myHighlight{$\iG$}\coordHE{} and drops them from the set of boundary labels.
+  
+
+\section{Proof of bundle triviality}
+In this appendix we will prove that all complexified vector bundles
+\myHighlight{$G\times_{\iG} V_{R}^{\Complex } $}\coordHE{} over the base manifold \myHighlight{$G/\iG $}\coordHE{} associated
+to representations \myHighlight{$V_{R}$}\coordHE{} of \myHighlight{$\iG $}\coordHE{} are trivial. Here, \myHighlight{$G$}\coordHE{} is any
+simple simply-connected compact Lie group and \myHighlight{$\iG $}\coordHE{} the subgroup invariant
+under a diagram automorphism. All possible cases are summarized in
+table~\ref{tb:Overview} on page~\pageref{tb:Overview}.
+\smallskip 
+
+Before we start with the actual proof, let us note that 
+representations \myHighlight{$V_{R}$}\coordHE{} which arise by restricting  
+representations of \myHighlight{$G$}\coordHE{} to \myHighlight{$\iG $}\coordHE{} always lead to trivial bundles. We
+will use this extensively to proof the triviality of all other
+bundles.
+\smallskip
+
+The proof can be devided into five parts. We will first present these 
+five main statements and then enter the detailed discussion of the 
+single steps.
+\bigskip 
+
+\noindent
+{\bf Statement 1:} Consider the K-ring \myHighlight{$K_{\Complex } (G/\iG )$}\coordHE{} of complex 
+vector bundles over the base manifold \myHighlight{$G/\iG $}\coordHE{}. The map \myHighlight{$\mc{K}:V_{R}\to K 
+(G\times_{\iG} V_{R}^{\Complex })$}\coordHE{} which sends a representation \myHighlight{$V_{R}$}\coordHE{} of 
+\myHighlight{$\iG $}\coordHE{} to the K-class of its associated complexified vector bundle, is a 
+\textit{ring homomorphism} from the representation ring \myHighlight{${\rm Rep} (\iG )$}\coordHE{} 
+to \myHighlight{$K_{\Complex } (G/\iG )$}\coordHE{}.
+\bigskip
+
+\noindent
+{\bf Statement 2:} The representation ring of \myHighlight{$\iG $}\coordHE{} is a polynomial ring 
+on the fundamental representations, \myHighlight{${\rm Rep} (\iG)=\Integer [V_{\omega 
+_{1}},\dots ,V_{\omega _{r}}]$}\coordHE{}, \myHighlight{$r=\rank \iG $}\coordHE{}.\\
+Therefore any K-class of a bundle \myHighlight{$G\times_{\iG} V_{R}^{\Complex } $}\coordHE{} can be
+expressed as a polynomial in the K-classes of \myHighlight{$G\times_{\iG } 
+V_{\omega_{i}}^{\Complex } $}\coordHE{}.
+\bigskip 
+
+\noindent
+{\bf Statement 3:} All complexified vector bundles associated to
+fundamental representations of \myHighlight{$\iG $}\coordHE{} have trivial K-class, \myHighlight{$K
+(G\times_{\iG} V_{\omega _{i}}^{\Complex })=0$}\coordHE{}, i.e.\ all these 
+bundles are stably equivalent to trivial bundles.\\
+From the previous remark it follows then that all bundles \myHighlight{$G
+\times_{\iG} V_{R}^{\Complex } $}\coordHE{} are stably equivalent to trivial 
+bundles.
+\bigskip
+
+\noindent
+{\bf Statement 4:} Two stably equivalent 
+complex vector bundles of rank \myHighlight{$d$}\coordHE{} over a
+base manifold of dimension \myHighlight{$n$}\coordHE{} satisfying 
+\myHighlight{$2d\geq n$}\coordHE{} are isomorphic.
+\bigskip
+
+\noindent
+{\bf Statement 5:}
+All representations \myHighlight{$V_{R}$}\coordHE{} that are not a restriction of
+a representation of \myHighlight{$G$}\coordHE{} obey the inequality
+\begin{equation}\coord{}\boxEquation{\label{eq:rankdimension}
+2\cdot \dim V_{R} \geq \dim G/\iG \ \ .
+}{2\cdot \dim V_{R} \geq \dim G/\iG \ \ .
+}{ecuacion}\coordE{}\end{equation}
+We had seen that all bundles are stably equivalent to trivial bundles,
+from the last two statements we can thus conclude that all bundles are 
+trivial. This ends the main line of argumentation. Note that it was 
+important that we considered complexified vector bundles, otherwise 
+there would appear a much stronger inequality in statement 4 which in 
+many cases could not be fulfilled any more.
+\medskip 
+
+Let us now take a closer look at the single statements. The first
+statement follows from the fact that the bundles associated to the
+tensor product of two representations \myHighlight{$V_{R}\otimes V_{R'}$}\coordHE{} is the
+tensor product of the associated bundles,
+\[\coord{}\boxMath{
+G\times_{\iG} (V_{R}\otimes V_{R'}) \ \simeq \ ( G\times_{\iG} V_{R}
+)\ \otimes_{G/\iG }\ ( G\times_{\iG} V_{R'}) \ \ .
+}{corchetes}{0pt}\coordE{}\]
+Statement 2 is a structure theorem which can be found e.g. in
+\cite[Theorem~23.24]{FultonHarris}.
+\smallskip
+
+The third statement is much more technical. We have to check its
+validity case by case. We know that restrictions of
+representations of \myHighlight{$G$}\coordHE{} give rise to trivial bundles and thus to
+trivial K-classes. Studying the appearance of fundamental
+representations in the decomposition of \myHighlight{$G$}\coordHE{}-representations, we deduce
+in an inductive way that all fundamental representations of \myHighlight{$\iG $}\coordHE{}
+correspond to bundles of trivial K-classes.
+Let us discuss the way it works in an example.
+\smallskip
+
+\myHighlight{$B_{3}\embin D_{4}$}\coordHE{}: The fundamental representations of \myHighlight{$B_{3}$}\coordHE{} have
+the dimensions 7, 8 and 21. The first fundamental representation of
+\myHighlight{$D_{4}$}\coordHE{} is 8-dimensional and decomposes as \myHighlight{$8\to 7+1$}\coordHE{}. The
+corresponding bundle is trivial, as well as the bundle associated to
+the trivial representation 1, hence the bundle associated to the
+7-dimensional representation is stably equivalent to a trivial bundle.
+The next fundamental representation of \myHighlight{$D_{4}$}\coordHE{} decomposes as \myHighlight{$28\to
+21+7$}\coordHE{} so that we find by an analogous argument as above that the
+bundle associated to the fundamental 21 of \myHighlight{$B_{3}$}\coordHE{} is stably equivalent
+to a trivial bundle. The remaining 8-dimensional fundamental representation of
+\myHighlight{$B_{3}$}\coordHE{} is the restriction of one of the 8-dimensional representations
+of \myHighlight{$D_{4}$}\coordHE{} and thus gives rise to a trivial bundle.\smallskip
+
+In a similar way we will prove statement 3 for all cases at the end of
+this section. But before
+we do so, we want to discuss the last two statements. 
+After we have shown that the fundamental and thus all representations
+give rise to bundles which are stably equivalent to trivial bundles,
+we want to show that they are actually really trivial.
+Statement 4 is a theorem that can be found e.g.\ in \cite[Theorem
+9.1.5]{Husemoller} which tells us that ``s-equivalent'' and ``isomorphic''
+have the same meaning if the rank of the bundles is high enough.
+The last statement 5 ensures that all our bundles indeed comply with 
+this requirement, hence they are trivial. To prove this statement
+we determine for all cases the lowest-dimensional representation
+not arising as a restriction of a \myHighlight{$G$}\coordHE{}-representation. We show then that
+these satisfy the inequality \eqref{eq:rankdimension}. 
+
+As an example take again \myHighlight{$B_{3}\embin D_{4}$}\coordHE{}. The lowest dimensional
+non-trivial representation has dimension 7 which is not a restriction
+of a representation of \myHighlight{$D_{4}$}\coordHE{}. The base manifold has dimension \myHighlight{$\dim
+D_{4}-\dim B_{3}=28-21=7$}\coordHE{}. As \myHighlight{$2\cdot 7=14\geq 7$}\coordHE{}, the inequality holds.
+
+We will now show the validity of this statement for all cases together
+with statement 3 in a case-by-case study. \bigskip 
+
+\begin{itemize}
+\item \myHighlight{$B_{n}\embin A_{2n}\quad [SO (2n+1)\subset SU (2n+1)]$}\coordHE{}:\\
+Decomposition of fundamental representations of \myHighlight{$A_{2n}$}\coordHE{} (Dynkin label
+notation):
+\[\coord{}\boxMath{
+\setlength{\arraycolsep}{0mm}
+\begin{array}{p{8mm}p{5mm}p{18mm}cp{8mm}p{9mm}c}
+$(0\dotfill$&\multicolumn{2}{c}{$1\dotfill
+0)$}&\ \ \ \longrightarrow\ \ \ &$(0\dotfill$&$1\dotfill 0)$&\quad\quad  i<n\\
+&$i$& & & &$i$ \\[1mm]
+\multicolumn{2}{l}{$(0\dotfill$} &$1\dotfill 0)$&\ \ \longrightarrow\
+\ &\multicolumn{2}{l}{$(0\dotfill 2)$}\\
+& &$n$& & & 
+\end{array}
+}{corchetes}{0pt}\coordE{}\]
+All fundamental weights of \myHighlight{$SO (2n+1)$}\coordHE{} are restrictions of fundamental
+representations of \myHighlight{$SU (2n+1)$}\coordHE{}. \myHighlight{$\Rightarrow $}\coordHE{}~{\bf Statement~3}
+
+The lowest dimensional representation not obtained from a restriction
+is the representation \myHighlight{$(20\dots 0)$}\coordHE{} of \myHighlight{$B_{n}$}\coordHE{} with dimension
+\myHighlight{$2n^{2}+3n$}\coordHE{}.
+The base manifold has dimension \myHighlight{$\dim SU (2n+1) - \dim SO
+(2n+1)=2n^{2}+3n$}\coordHE{}, so inequality \eqref{eq:rankdimension}
+holds. \myHighlight{$\Rightarrow $}\coordHE{}~{\bf Statement~5}
+
+\item \myHighlight{$C_{n}\embin A_{2n-1}\quad [Sp (2n)\subset SU (2n)]$}\coordHE{}:\\
+Decomposition of fundamental weights of \myHighlight{$A_{2n-1}$}\coordHE{}:
+\[\coord{}\boxMath{
+\setlength{\arraycolsep}{0mm}
+\begin{array}{p{13mm}p{20mm}cp{13mm}p{10mm}cp{11mm}p{12mm}c}
+\multicolumn{2}{l}{$(1\dotfill 0)$}&\ \ \ \longrightarrow\ \ \ 
+&\multicolumn{2}{l}{$(1\dotfill 0)$}\\[1mm]
+\multicolumn{2}{l}{$(01\dotfill 0)$}&\longrightarrow 
+&\multicolumn{2}{l}{$(01\dotfill 0)$}&\ \oplus\ 
+&\multicolumn{2}{l}{$(0\dotfill 0)$}\\[1mm]
+\multicolumn{2}{l}{$(001\dotfill 0)$}&\longrightarrow 
+&\multicolumn{2}{l}{$(001\dotfill 0)$}&\oplus 
+&\multicolumn{2}{l}{$(1\dotfill 0)$}\\[3mm]
+$(0\dotfill $&$1\dotfill 0)$&\longrightarrow 
+&$(0\dotfill$&$1\dotfill 0)$&\oplus 
+&$(0\dotfill$&$1\dotfill 0)$&\ \oplus \dots \\
+ &$i$& & &$i$& & &\makebox[2mm]{$i-2$}& \\
+\multicolumn{2}{c}{(i\leq n)} & 
+&\multicolumn{6}{c}{\dots \oplus 
+\left\{\begin{array}{ll}\makebox[23mm]{$(1\dotfill 0)$}&
+\ \ \ i\text{ odd}\\
+\makebox[23mm]{$(0\dotfill 0)$}&\ \ \ i\text{ even}
+\end{array} \right. 
+}
+\end{array}
+}{corchetes}{0pt}\coordE{}\]
+Proceeding inductively, we see that all bundles associated to
+fundamental representations of \myHighlight{$C_{n}$}\coordHE{} have trivial
+K-class. \myHighlight{$\Rightarrow $}\coordHE{}~{\bf Statement~3}
+
+The lowest dimensional representation that cannot be 
+obtained from a restriction
+is \myHighlight{$(010 \dots 0)$}\coordHE{} and has dimension \myHighlight{$2n^{2}-n-1$}\coordHE{}. The base manifold
+has dimension \myHighlight{$\dim SU (2n)-\dim Sp (2n)=2n^{2}-n-1$}\coordHE{}. 
+\myHighlight{$\Rightarrow $}\coordHE{}~{\bf Statement~5}
+
+\item \myHighlight{$B_{n-1}\embin D_{n}\quad [Spin (2n-1)\subset Spin (2n)]$}\coordHE{}:\\
+Decomposition of fundamental representations of \myHighlight{$D_{n}$}\coordHE{}:
+\[\coord{}\boxMath{
+\setlength{\arraycolsep}{0mm}
+\begin{array}{p{13mm}p{10mm}cp{13mm}p{10mm}cp{11mm}p{12mm}}
+\multicolumn{2}{l}{(10\dotfill0)}&\ \ \ \longrightarrow\ \ \ 
+&\multicolumn{2}{l}{(10\dotfill0)}&\ \ \oplus \ \ 
+&\multicolumn{2}{l}{(0\dotfill0)}\\[1mm]
+\multicolumn{2}{l}{(01\dotfill0)}&\ \ \ \longrightarrow\ \ \ 
+&\multicolumn{2}{l}{(01\dotfill0)}&\ \ \oplus \ \ 
+&\multicolumn{2}{l}{(10\dotfill0)}\\[3mm]
+$(0\dotfill$&$1\dotfill0)$&\longrightarrow
+&$(0\dotfill$&$1\dotfill0)$& \oplus 
+&$(0\dotfill$&$1\dotfill0)$\\
+&\makebox[0cm][l]{$i\ \ (i<n-1)$}& & &$i$& & &\makebox[2mm]{$i-1$}\\[2mm]
+\multicolumn{2}{l}{\begin{array}{p{23mm}}
+$(0\dotfill10)$\\[1mm] 
+$(0\dotfill01)$
+\end{array}}&
+\begin{array}{c}
+\rotatebox{-30}{$\longrightarrow$} \\[1mm] \rotatebox{30}{$\longrightarrow$}
+\end{array}&
+\multicolumn{2}{l}{(0\dotfill 1)}
+\end{array}
+}{corchetes}{0pt}\coordE{}\]
+\myHighlight{$\Rightarrow $}\coordHE{}~{\bf Statement~3}
+
+The lowest dimensional non-trivial representation of \myHighlight{$B_{n-1}$}\coordHE{} is
+\myHighlight{$(10\dots 0)$}\coordHE{} and has dimension \myHighlight{$2n-1$}\coordHE{}. The dimension of the base
+manifold is \myHighlight{$\dim Spin (2n)-\dim Spin
+(2n-1)=2n-1$}\coordHE{}. \myHighlight{$\Rightarrow $}\coordHE{}~{\bf Statement~5}
+
+\item \myHighlight{$F_{4}\embin E_{6}$}\coordHE{}:\\
+Decomposition of representations of \myHighlight{$E_{6}$}\coordHE{}:
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+\leftCoord{}(000010)&\longrightarrow & (0001)\oplus (0000)\rightCoord{}\\\leftCoord{}
+\leftCoord{}(000001)&\longrightarrow & (1000)\oplus (0001)\rightCoord{}\\\leftCoord{}
+\leftCoord{}(000100)& \longrightarrow & (0010)\oplus (1000)\oplus (0001) \rightCoord{} 
+\rightCoord{}}{0mm}{6}{5}{
+(000010)&\longrightarrow & (0001)\oplus (0000)\\
+(000001)&\longrightarrow & (1000)\oplus (0001)\\
+(000100)& \longrightarrow & (0010)\oplus (1000)\oplus (0001)  
+}{1}\coordE{}\end{eqnarray*}
+So we see that the three fundamental representations \myHighlight{$(1000)$}\coordHE{},
+\myHighlight{$(0010)$}\coordHE{}, \myHighlight{$(0001)$}\coordHE{} of \myHighlight{$F_{4}$}\coordHE{} give rise to bundles of vanishing
+K-class. From the tensor product
+\[\coord{}\boxMath{
+(0001)\otimes (1000)\ =\ (0001)\oplus (0010)\oplus (1001)
+}{corchetes}{0pt}\coordE{}\]
+we can deduce that the same is valid for \myHighlight{$(1001)$}\coordHE{}.
+
+Now we look at the decomposition
+\[\coord{}\boxMath{
+(001000)\ \longrightarrow\ (0100)\oplus (1001)\oplus (0010)\oplus
+(0010)\oplus (1000)
+}{corchetes}{0pt}\coordE{}\]
+and we find a vanishing K-class also for the fourth 
+fundamental representation \myHighlight{$(0100)$}\coordHE{}. \myHighlight{$\Rightarrow $}\coordHE{}~{\bf Statement~3}
+
+The lowest dimensional representation of \myHighlight{$F_{4}$}\coordHE{} is \myHighlight{$(0001)$}\coordHE{} and has
+dimension 26. The dimension of the base manifold is \myHighlight{$\dim E_{6}-\dim
+F_{4}=26$}\coordHE{}. \myHighlight{$\Rightarrow $}\coordHE{}~{\bf Statement~5} 
+
+\item \myHighlight{$G_{2}\embin D_{4}$}\coordHE{}:\\
+Decompositions of representations of \myHighlight{$D_{4}$}\coordHE{}:
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+\leftCoord{}(1000)& \longrightarrow & (01)\oplus (00)\rightCoord{}\\\leftCoord{}
+\leftCoord{}(0100)& \longrightarrow & (10)\oplus (01)\oplus (01) \rightCoord{}
+\rightCoord{}}{0mm}{4}{4}{
+(1000)& \longrightarrow & (01)\oplus (00)\\
+(0100)& \longrightarrow & (10)\oplus (01)\oplus (01) 
+}{1}\coordE{}\end{eqnarray*} 
+\myHighlight{$\Rightarrow $}\coordHE{}~{\bf Statement~3}
+
+The lowest dimensional non-trivial representation of \myHighlight{$G_{2}$}\coordHE{} is
+\myHighlight{$(01)$}\coordHE{} and has dimension 7. The base manifold has dimension \myHighlight{$\dim
+D_{4}-\dim G_{2}=28-14=14$}\coordHE{}. \myHighlight{$\Rightarrow $}\coordHE{}~{\bf Statement~5}
+\end{itemize}
+\end{appendix}
+
+\newpage
+
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{Cardy:1989ir}
+J.~L. Cardy, {\it Boundary conditions, fusion rules and the {Verlinde}
+  formula},  {\em Nucl. Phys.} {\bf B324} (1989) 581.
+%%CITATION = NUPHA,B324,581;%%
+
+\bibitem{Alekseev:1998mc}
+A.~Yu.~Alekseev and V.~Schomerus, {\it {D-branes} in the {WZW} model},  {\em
+  Phys. Rev.} {\bf D60} (1999) 061901
+  [\href{http://arXiv.org/abs/hep-th/9812193}{{\tt hep-th/9812193}}].
+%%CITATION = HEP-TH 9812193;%%
+
+\bibitem{Gawedzki:1999bq}
+K.~Gawedzki, {\it Conformal field theory: {A} case study},
+  \href{http://arXiv.org/abs/hep-th/9904145}{{\tt hep-th/9904145}}.
+%%CITATION = HEP-TH 9904145;%%
+
+\bibitem{Stanciu:1999id}
+S.~Stanciu, {\it D-branes in group manifolds},  {\em JHEP} {\bf 01} (2000) 025
+  [\href{http://arXiv.org/abs/hep-th/9909163}{{\tt hep-th/9909163}}].
+%%CITATION = HEP-TH 9909163;%%
+
+\bibitem{Bachas:2000ik}
+C.~Bachas, M.~R. Douglas and C.~Schweigert, {\it Flux stabilization of
+  {D-branes}},  {\em JHEP} {\bf 05} (2000) 048
+  [\href{http://arXiv.org/abs/hep-th/0003037}{{\tt hep-th/0003037}}].
+%%CITATION = HEP-TH 0003037;%%
+
+\bibitem{Pawelczyk:2000ah}
+J.~Pawelczyk, {\it {SU(2)} {WZW} {D-branes} and their noncommutative geometry
+  from {DBI} action},  {\em JHEP} {\bf 08} (2000) 006
+  [\href{http://arXiv.org/abs/hep-th/0003057}{{\tt hep-th/0003057}}].
+%%CITATION = HEP-TH 0003057;%%
+
+\bibitem{Bordalo:2001ec}
+P.~Bordalo, S.~Ribault and C.~Schweigert, {\it Flux stabilization in compact
+  groups},  {\em JHEP} {\bf 10} (2001) 036
+  [\href{http://arXiv.org/abs/hep-th/0108201}{{\tt hep-th/0108201}}].
+%%CITATION = HEP-TH 0108201;%%
+
+\bibitem{Alekseev:1999bs}
+A.~Yu.~Alekseev, A.~Recknagel and V.~Schomerus, {\it Non-commutative
+  world-volume geometries: {Branes} on {SU(2)} and fuzzy spheres},  {\em JHEP}
+  {\bf 09} (1999) 023 [\href{http://arXiv.org/abs/hep-th/9908040}{{\tt
+  hep-th/9908040}}].
+%%CITATION = HEP-TH 9908040;%%
+
+\bibitem{Alekseev:2000jx}
+A.~Yu.~Alekseev and V.~Schomerus, {\it {RR} charges of {D2-branes} in the {WZW}
+  model},  \href{http://arXiv.org/abs/hep-th/0007096}{{\tt hep-th/0007096}}.
+%%CITATION = HEP-TH 0007096;%%
+
+\bibitem{Fredenhagen:2000ei}
+S.~Fredenhagen and V.~Schomerus, {\it Branes on group manifolds, gluon
+  condensates, and twisted {K-theory}},  {\em JHEP} {\bf 04} (2001) 007
+  [\href{http://arXiv.org/abs/hep-th/0012164}{{\tt hep-th/0012164}}].
+%%CITATION = HEP-TH 0012164;%%
+
+\bibitem{Birke:1999ik}
+L.~Birke, J.~Fuchs and C.~Schweigert, {\it Symmetry breaking boundary
+  conditions and {WZW} orbifolds},  {\em Adv. Theor. Math. Phys.} {\bf 3}
+  (1999) 671--726 [\href{http://arXiv.org/abs/hep-th/9905038}{{\tt
+  hep-th/9905038}}].
+%%CITATION = HEP-TH 9905038;%%
+
+\bibitem{Felder:1999ka}
+G.~Felder, J.~{Fr\"ohlich}, J.~Fuchs and C.~Schweigert, {\it The geometry of
+  {WZW} branes},  {\em J. Geom. Phys.} {\bf 34} (2000) 162--190
+  [\href{http://arXiv.org/abs/hep-th/9909030}{{\tt hep-th/9909030}}].
+%%CITATION = HEP-TH 9909030;%%
+
+\bibitem{Alekseev:2000fd}
+A.~Yu.~Alekseev, A.~Recknagel and V.~Schomerus, {\it Brane dynamics in
+  background fluxes and non-commutative geometry},  {\em JHEP} {\bf 05} (2000)
+  010 [\href{http://arXiv.org/abs/hep-th/0003187}{{\tt hep-th/0003187}}].
+%%CITATION = HEP-TH 0003187;%%
+
+\bibitem{Hashimoto:2001xy}
+K.~Hashimoto and K.~Krasnov, {\it D-brane solutions in non-commutative gauge
+  theory on fuzzy sphere},  {\em Phys. Rev.} {\bf D64} (2001) 046007
+  [\href{http://arXiv.org/abs/hep-th/0101145}{{\tt hep-th/0101145}}].
+%%CITATION = HEP-TH 0101145;%%
+
+\bibitem{Hikida:2001py}
+Y.~Hikida, M.~Nozaki and Y.~Sugawara, {\it Formation of spherical {D2-brane}
+  from multiple {D0-branes}},  {\em Nucl. Phys.} {\bf B617} (2001) 117--150
+  [\href{http://arXiv.org/abs/hep-th/0101211}{{\tt hep-th/0101211}}].
+%%CITATION = HEP-TH 0101211;%%
+
+\bibitem{Myers:1999ps}
+R.~C. Myers, {\it Dielectric-branes},  {\em JHEP} {\bf 12} (1999) 022
+  [\href{http://arXiv.org/abs/hep-th/9910053}{{\tt hep-th/9910053}}].
+%%CITATION = HEP-TH 9910053;%%
+
+\bibitem{Recknagel:1998sb}
+A.~Recknagel and V.~Schomerus, {\it D-branes in {Gepner} models},  {\em Nucl.
+  Phys.} {\bf B531} (1998) 185--225
+  [\href{http://arXiv.org/abs/hep-th/9712186}{{\tt hep-th/9712186}}].
+%%CITATION = HEP-TH 9712186;%%
+
+\bibitem{Kac:1990}
+V.~G. Kac, {\em Infinite Dimensional {Lie} Algebras}.
+\newblock Cambridge University Press, Cambridge, 1990.
+
+\bibitem{Stanciu:2001vw}
+S.~Stanciu, {\it An illustrated guide to {D-branes} in {SU(3)}},
+  \href{http://arXiv.org/abs/hep-th/0111221}{{\tt hep-th/0111221}}.
+%%CITATION = HEP-TH 0111221;%%
+
+\bibitem{Recknagel:1998ih}
+A.~Recknagel and V.~Schomerus, {\it Boundary deformation theory and moduli
+  spaces of {D}-branes},  {\em Nucl. Phys.} {\bf B545} (1999) 233
+  [\href{http://arXiv.org/abs/hep-th/9811237}{{\tt hep-th/9811237}}].
+%%CITATION = NUPHA,B545,233;%%
+
+\bibitem{Recknagel:1998ut}
+A.~Recknagel and V.~Schomerus, {\it Moduli spaces of {D-branes} in
+  {CFT-backgrounds}},  {\em Fortsch. Phys.} {\bf 48} (2000) 195
+  [\href{http://arXiv.org/abs/hep-th/9903139}{{\tt hep-th/9903139}}].
+%%CITATION = HEP-TH 9903139;%%
+
+\bibitem{Quella:2002wi}
+T.~Quella, I.~Runkel and C.~Schweigert, {\it An algorithm for twisted fusion
+  rules},  \href{http://arXiv.org/abs/math.qa/0203133}{{\tt math.qa/0203133}}.
+  To appear in Adv. Theor. Math. Phys.
+%%CITATION = MATH.QA 0203133;%%
+
+\bibitem{Behrend:1999bn}
+R.~E. Behrend, P.~A. Pearce, V.~B. Petkova and J.-B. Zuber, {\it Boundary
+  conditions in rational conformal field theories},  {\em Nucl. Phys.} {\bf
+  B570} (2000) 525--589 [\href{http://arXiv.org/abs/hep-th/9908036}{{\tt
+  hep-th/9908036}}].
+%%CITATION = HEP-TH 9908036;%%
+
+\bibitem{Behrend:1998fd}
+R.~E. Behrend, P.~A. Pearce, V.~B. Petkova and J.-B. Zuber, {\it On the
+  classification of bulk and boundary conformal field theories},  {\em Phys.
+  Lett.} {\bf B444} (1998) 163 [\href{http://arXiv.org/abs/hep-th/9809097}{{\tt
+  hep-th/9809097}}].
+%%CITATION = HEP-TH 9809097;%%
+
+\bibitem{Fuchs:1999zi}
+J.~Fuchs and C.~Schweigert, {\it Symmetry breaking boundaries. {I: General}
+  theory},  {\em Nucl. Phys.} {\bf B558} (1999) 419
+  [\href{http://arXiv.org/abs/hep-th/9902132}{{\tt hep-th/9902132}}].
+%%CITATION = HEP-TH 9902132;%%
+
+\bibitem{Verlinde:1988sn}
+E.~Verlinde, {\it Fusion rules and modular transformations in 2-{D} conformal
+  field theory},  {\em Nucl. Phys.} {\bf B300} (1988) 360.
+%%CITATION = NUPHA,B300,360;%%
+
+\bibitem{Fuchs:1996zr}
+J.~Fuchs, B.~Schellekens and C.~Schweigert, {\it From {Dynkin} diagram
+  symmetries to fixed point structures},  {\em Commun. Math. Phys.} {\bf 180}
+  (1996) 39--98 [\href{http://arXiv.org/abs/hep-th/9506135}{{\tt
+  hep-th/9506135}}].
+%%CITATION = HEP-TH 9506135;%%
+
+\bibitem{Lewellen:1992tb}
+D.~C. Lewellen, {\it Sewing constraints for conformal field theories on
+  surfaces with boundaries},  {\em Nucl. Phys.} {\bf B372} (1992) 654--682.
+%%CITATION = NUPHA,B372,654;%%
+
+\bibitem{Pradisi:1996yd}
+G.~Pradisi, A.~Sagnotti and Y.~S. Stanev, {\it Completeness conditions for
+  boundary operators in {2D} conformal field theory},  {\em Phys. Lett.} {\bf
+  B381} (1996) 97--104 [\href{http://arXiv.org/abs/hep-th/9603097}{{\tt
+  hep-th/9603097}}].
+%%CITATION = HEP-TH 9603097;%%
+
+\bibitem{Runkel:1998pm}
+I.~Runkel, {\it Boundary structure constants for the {A-series} {Virasoro}
+  minimal models},  {\em Nucl. Phys.} {\bf B549} (1999) 563
+  [\href{http://arXiv.org/abs/hep-th/9811178}{{\tt hep-th/9811178}}].
+%%CITATION = HEP-TH 9811178;%%
+
+\bibitem{Runkel:1999dz}
+I.~Runkel, {\it Structure constants for the {D-series} {Virasoro} minimal
+  models},  {\em Nucl. Phys.} {\bf B579} (2000) 561
+  [\href{http://arXiv.org/abs/hep-th/9908046}{{\tt hep-th/9908046}}].
+%%CITATION = HEP-TH 9908046;%%
+
+\bibitem{Hoppe:1989gk}
+J.~Hoppe, {\it Diffeomorphism groups, quantization and {\myHighlight{$SU(\infty)$}\coordHE{}}},  {\em
+  Int. J. Mod. Phys.} {\bf A4} (1989) 5235.
+%%CITATION = IMPAE,A4,5235;%%
+
+\bibitem{Madore:1992bw}
+J.~Madore, {\it The fuzzy sphere},  {\em Class. Quant. Grav.} {\bf 9} (1992)
+  69--88.
+%%CITATION = CQGRD,9,69;%%
+
+\bibitem{Douglas:1998fm}
+M.~R. Douglas and C.~Hull, {\it D-branes and the noncommutative torus},  {\em
+  JHEP} {\bf 02} (1998) 008 [\href{http://arXiv.org/abs/hep-th/9711165}{{\tt
+  hep-th/9711165}}].
+%%CITATION = JHEPA,9802,008;%%
+
+\bibitem{Chu:1998qz}
+C.-S. Chu and P.-M. Ho, {\it Noncommutative open string and {D-brane}},  {\em
+  Nucl. Phys.} {\bf B550} (1999) 151
+  [\href{http://arXiv.org/abs/hep-th/9812219}{{\tt hep-th/9812219}}].
+%%CITATION = HEP-TH 9812219;%%
+
+\bibitem{Schomerus:1999ug}
+V.~Schomerus, {\it D-branes and deformation quantization},  {\em JHEP} {\bf 06}
+  (1999) 030 [\href{http://arXiv.org/abs/hep-th/9903205}{{\tt
+  hep-th/9903205}}].
+%%CITATION = JHEPA,9906,030;%%
+
+\bibitem{Felder:1999cv}
+G.~Felder, J.~{Fr\"ohlich}, J.~Fuchs and C.~Schweigert, {\it Conformal boundary
+  conditions and three-dimensional topological field theory},  {\em Phys. Rev.
+  Lett.} {\bf 84} (2000) 1659 [\href{http://arXiv.org/abs/hep-th/9909140}{{\tt
+  hep-th/9909140}}].
+%%CITATION = HEP-TH 9909140;%%
+
+\bibitem{Felder:1999mq}
+G.~Felder, J.~{Fr\"ohlich}, J.~Fuchs and C.~Schweigert, {\it Correlation
+  functions and boundary conditions in {RCFT} and three-dimensional topology},
+  \href{http://arXiv.org/abs/hep-th/9912239}{{\tt hep-th/9912239}}.
+%%CITATION = HEP-TH 9912239;%%
+
+\bibitem{Frohlich:1993es}
+J.~{Fr\"ohlich} and K.~Gawedzki, {\it Conformal field theory and geometry of
+  strings},  \href{http://arXiv.org/abs/hep-th/9310187}{{\tt hep-th/9310187}}.
+%%CITATION = HEP-TH 9310187;%%
+
+\bibitem{Frohlich:1995mr}
+J.~{Fr\"ohlich}, O.~Grandjean and A.~Recknagel, {\it Supersymmetric quantum
+  theory, non-commutative geometry, and gravitation},
+  \href{http://arXiv.org/abs/hep-th/9706132}{{\tt hep-th/9706132}}.
+%%CITATION = HEP-TH 9706132;%%
+
+\bibitem{Quella:2001wh}
+T.~Quella, {\it Branching rules of semi-simple {Lie} algebras using affine
+  extensions},  {\em J. Phys.} {\bf A35} (2002) 3743--3754
+  [\href{http://arXiv.org/abs/math-ph/0111020}{{\tt math-ph/0111020}}].
+%%CITATION = MATH-PH 0111020;%%
+
+\bibitem{Petkova:2002yj}
+V.~B. Petkova and J.~B. Zuber, {\it Boundary conditions in charge conjugate
+  {sl(N)} {WZW} theories},  \href{http://arXiv.org/abs/hep-th/0201239}{{\tt
+  hep-th/0201239}}.
+%%CITATION = HEP-TH 0201239;%%
+
+\bibitem{Gaberdiel:2002qa}
+M.~R. Gaberdiel and T.~Gannon, {\it Boundary states for {WZW} models},  {\em
+  Nucl. Phys.} {\bf B639} (2002) 471--501
+  [\href{http://arXiv.org/abs/hep-th/0202067}{{\tt hep-th/0202067}}].
+%%CITATION = HEP-TH 0202067;%%
+
+\bibitem{Seiberg:1999vs}
+N.~Seiberg and E.~Witten, {\it String theory and noncommutative geometry},
+  {\em JHEP} {\bf 09} (1999) 032
+  [\href{http://arXiv.org/abs/hep-th/9908142}{{\tt hep-th/9908142}}].
+%%CITATION = JHEPA,9909,032;%%
+
+\bibitem{Fuchs:1995}
+J.~Fuchs, {\em {Affine Lie algebras and quantum groups}}.
+\newblock Cambridge Monographs on Mathematical Physics. Cambridge University
+  Press, Cambridge, 1995.
+
+\bibitem{Quella:2002ct}
+T.~Quella and V.~Schomerus, {\it Symmetry breaking boundary states and defect
+  lines},  {\em JHEP} {\bf 06} (2002) 028
+  [\href{http://arXiv.org/abs/hep-th/0203161}{{\tt hep-th/0203161}}].
+%%CITATION = HEP-TH 0203161;%%
+
+\bibitem{Bouwknegt:2000qt}
+P.~Bouwknegt and V.~Mathai, {\it {D-branes}, {B-fields} and twisted
+  {K-theory}},  {\em JHEP} {\bf 03} (2000) 007
+  [\href{http://arXiv.org/abs/hep-th/0002023}{{\tt hep-th/0002023}}].
+%%CITATION = JHEPA,0003,007;%%
+
+\bibitem{Maldacena:2001xj}
+J.~Maldacena, G.~W. Moore and N.~Seiberg, {\it D-brane instantons and
+  {K-theory} charges},  {\em JHEP} {\bf 11} (2001) 062
+  [\href{http://arXiv.org/abs/hep-th/0108100}{{\tt hep-th/0108100}}].
+%%CITATION = HEP-TH 0108100;%%
+
+\bibitem{Affleck:1991tk}
+I.~Affleck and A.~W.~W. Ludwig, {\it Universal noninteger 'ground state
+  degeneracy' in critical quantum systems},  {\em Phys. Rev. Lett.} {\bf 67}
+  (1991) 161--164.
+%%CITATION = PRLTA,67,161;%%
+
+\bibitem{FrancescoCFT}
+P.~Di~Francesco, P.~Mathieu and D.~Senechal, {\em {Conformal Field Theory}}.
+\newblock Graduate Texts in Contemporary Physics. Springer, New York, 1999.
+
+\bibitem{Alekseev:2000wg}
+A.~Yu.~Alekseev, A.~Recknagel and V.~Schomerus, {\it Open strings and
+  noncommutative geometry of branes on group manifolds},  {\em Mod. Phys.
+  Lett.} {\bf A16} (2001) 325--336
+  [\href{http://arXiv.org/abs/hep-th/0104054}{{\tt hep-th/0104054}}].
+%%CITATION = HEP-TH 0104054;%%
+
+\bibitem{Affleck:1991by}
+I.~Affleck and A.~W.~W. Ludwig, {\it The {Kondo} effect, conformal field theory
+  and fusion rules},  {\em Nucl. Phys.} {\bf B352} (1991) 849--862.
+%%CITATION = NUPHA,B352,849;%%
+
+\bibitem{Affleck:1991iv}
+I.~Affleck and A.~W.~W. Ludwig, {\it Critical theory of overscreened {Kondo}
+  fixed points},  {\em Nucl. Phys.} {\bf B360} (1991) 641--696.
+%%CITATION = NUPHA,B360,641;%%
+
+\bibitem{Cornalba:2001sm}
+L.~Cornalba and R.~Schiappa, {\it Nonassociative star product deformations for
+  {D-brane} worldvolumes in curved backgrounds},  {\em Commun. Math. Phys.}
+  {\bf 225} (2002) 33--66 [\href{http://arXiv.org/abs/hep-th/0101219}{{\tt
+  hep-th/0101219}}].
+%%CITATION = HEP-TH 0101219;%%
+
+\bibitem{Hayasaka:2001an}
+K.~Hayasaka and R.~Nakayama, {\it An associative and noncommutative product for
+  the low energy effective theory of a {D-brane} in curved backgrounds and
+  bi-local fields},  {\em Nucl. Phys.} {\bf B624} (2002) 307--326
+  [\href{http://arXiv.org/abs/hep-th/0109125}{{\tt hep-th/0109125}}].
+%%CITATION = HEP-TH 0109125;%%
+
+\bibitem{Alekseev:1995rn}
+A.~Yu.~Alekseev and V.~Schomerus, {\it Representation theory of {Chern-Simons}
+  observables},  {\em Duke Math. Journal} {\bf 85} (1996) 447--510
+  [\href{http://arXiv.org/abs/q-alg/9503016}{{\tt q-alg/9503016}}].
+%%CITATION = Q-ALG 9503016;%%
+
+\bibitem{Pawelczyk:2002kd}
+J.~Pawelczyk and H.~Steinacker, {\it A quantum algebraic description of
+  {D-branes} on group manifolds},
+  \href{http://arXiv.org/abs/hep-th/0203110}{{\tt hep-th/0203110}}.
+%%CITATION = HEP-TH 0203110;%%
+
+\bibitem{Stanciu:1998sk}
+S.~Stanciu, {\it D-branes in {Kazama-Suzuki} models},  {\em Nucl. Phys.} {\bf
+  B526} (1998) 295--310 [\href{http://arXiv.org/abs/hep-th/9708166}{{\tt
+  hep-th/9708166}}].
+%%CITATION = HEP-TH 9708166;%%
+
+\bibitem{Fredenhagen:2001nc}
+S.~Fredenhagen and V.~Schomerus, {\it Brane dynamics in {CFT} backgrounds},
+  \href{http://arXiv.org/abs/hep-th/0104043}{{\tt hep-th/0104043}}.
+%%CITATION = HEP-TH 0104043;%%
+
+\bibitem{Maldacena:2001ky}
+J.~Maldacena, G.~W. Moore and N.~Seiberg, {\it Geometrical interpretation of
+  {D-branes} in gauged {WZW} models},  {\em JHEP} {\bf 07} (2001) 046
+  [\href{http://arXiv.org/abs/hep-th/0105038}{{\tt hep-th/0105038}}].
+%%CITATION = HEP-TH 0105038;%%
+
+\bibitem{Gawedzki:2001ye}
+K.~Gawedzki, {\it Boundary {WZW}, {G/H}, {G/G} and {CS} theories},
+  \href{http://arXiv.org/abs/hep-th/0108044}{{\tt hep-th/0108044}}.
+%%CITATION = HEP-TH 0108044;%%
+
+\bibitem{Elitzur:2001qd}
+S.~Elitzur and G.~Sarkissian, {\it D-branes on a gauged {WZW} model},  {\em
+  Nucl. Phys.} {\bf B625} (2002) 166--178
+  [\href{http://arXiv.org/abs/hep-th/0108142}{{\tt hep-th/0108142}}].
+%%CITATION = HEP-TH 0108142;%%
+
+\bibitem{Fredenhagen:2001kw}
+S.~Fredenhagen and V.~Schomerus, {\it D-branes in coset models},  {\em JHEP}
+  {\bf 02} (2002) 005 [\href{http://arXiv.org/abs/hep-th/0111189}{{\tt
+  hep-th/0111189}}].
+%%CITATION = HEP-TH 0111189;%%
+
+\bibitem{Klimyk:1967}
+A.~Klimyk, {\it Multiplicities of weights of representations and multiplicities
+  of representations of semisimple lie algebras},  {\em Soviet Math. Dokl.}
+  {\bf 8} (1967) 1531--1534. Published originally in Dokl. Akad. Nauk SSSR,
+  vol. 177 (1967), No. 5, 1001-1004 (in Russian).
+
+\bibitem{McKayPateraRand:1990}
+W.~G. McKay, J.~Patera and D.~W. Rand, {\em Tables of representations of simple
+  {Lie} algebras}, vol.~I.
+\newblock Centre de Recherches Mathematiques, Montreal, 1990.
+
+\bibitem{LiE}
+A.~M. Cohen, M.~van Leeuwen and B.~Lisser, {\it {LiE}},  1996.
+\newblock This computer program can be obtained from
+  http://young.sp2mi.univ-poitiers.fr/\textasciitilde marc/LiE/.
+
+\bibitem{SimpLie}
+R.~V. Moody, J.~Patera and D.~W. Rand, {\it {SimpLie}},  2000.
+\newblock This computer program can be obtained from
+  http://omega.CRM.UMontreal.CA/\textasciitilde rand/simpLie.html.
+
+\bibitem{McKayPatera:1981}
+W.~G. McKay and J.~Patera, {\em Tables of dimensions, indices, and branching
+  rules for representations of simple {Lie} algebras}.
+\newblock Marcel Dekker, Inc., New York, 1981.
+
+\bibitem{FultonHarris}
+W.~Fulton and J.~Harris, {\em Representation theory: A first course}.
+\newblock No.~129 in Graduate texts in mathematics. Springer, 1991.
+
+\bibitem{Husemoller}
+D.~Husemoller, {\em Fibre Bundles}.
+\newblock No.~20 in Graduate texts in mathematics. Springer, third~ed., 1994.
+
+\end{thebibliography}\endgroup
+
+
+\end{document}
+
+
+\bye

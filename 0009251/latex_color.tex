@@ -1,0 +1,848 @@
+
+\documentclass[a4paper,12pt,twoside]{article}
+\usepackage{a4wide}
+\usepackage[centertags]{amsmath}
+\usepackage{amsfonts}
+\usepackage{rotating}
+
+%
+
+\linespread{1.3}
+
+
+%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%
+
+\numberwithin{equation}{section}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\let\rho\varrho
+\let\phi\varphi
+\providecommand{\I}{\text{I}}       % Einheitsmatrix
+
+
+
+\providecommand{\Spin}{\text{Spin}} % Spin(r,s)
+\providecommand{\Pin}{\text{Pin}}   % Pin(r,s)
+\providecommand{\Gl}{\text{Gl}}     % Gl(n,K)
+\providecommand{\Sl}{\text{Sl}}     % Sl(n,K)
+\providecommand{\SO}{\text{SO}}     % SO(n)
+\providecommand{\pU}{\text{U}  }     % U
+\providecommand{\pE}{\text{E}  }     % E
+\providecommand{\pH}{\text{H}  }     % H
+\providecommand{\pT}{\text{T}  }     % T
+
+
+
+
+\providecommand{\mR}{\mathbb{R}}
+\providecommand{\mC}{\mathbb{C}}
+\providecommand{\mZ}{\mathbb{Z}}
+
+\providecommand{\fA}{\mathfrak{A}}
+\providecommand{\fG}{\mathfrak{G}}
+\providecommand{\fH}{\mathfrak{H}}
+
+\providecommand{\cA}{\mathcal{A}}
+\providecommand{\cF}{\mathcal{F}}
+\providecommand{\cR}{\mathcal{R}}
+
+
+\providecommand{\CP}{{\mC P}}
+
+\providecommand{\Dd}{\text{d}}      % Diferentations "d"
+\providecommand{\DD}{\text{D}}      % Gross "D"
+\providecommand{\Dp}{\partial}      % Partielle Differentation
+\providecommand{\Di}{\Dd}           % Integrations "d"
+\providecommand{\Dv}{\delta}        % Variations delta
+\providecommand{\Dpi}{\DD}          % Pfadintegral "D"
+
+
+\providecommand{\auf}{\rightarrow}
+\providecommand{\lauf}{\longrightarrow}
+
+
+\providecommand{\Dt}[3]{\left.\frac{\Dp #1}{\Dp #2}\right|_{#3}}
+\providecommand{\DDt}[4]{\left.\frac{\Dp^2 #1}{\Dp #2 \Dp #3}\right|_{#4}}
+
+
+\DeclareMathOperator{\Lie}{Lie}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\ind}{ind}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\ch}{ch}
+
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Ad}{Ad}
+
+\DeclareMathOperator{\Kern}{Kern}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Lin}{Lin}
+
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\rot}{rot}
+
+
+
+\newenvironment{Not}{\par\parindent=0pt{\it Notation:}}{\par}
+\providecommand{\qed}{\ \hfill \myHighlight{$\Box$}\coordHE{}\par}
+\newenvironment{Bew}{\par\parindent=0pt{\it Beweis:}}{\qed}
+\newtheorem{Satz}{Satz}[section]
+
+
+
+\providecommand\DDS{\text{\hbox to 0pt{/\hss}D}}
+\providecommand\DpS{\text{\hbox to 0pt{/\hss}}\partial}
+
+\providecommand{\foo}{{\bf X}\marginpar{\hfil{\LARGE\bf X}\hfil}}
+
+\usepackage{useful_macros}
+\begin{document}
+
+\begin{titlepage}
+
+\noindent\hfill hep-th/0009251
+
+
+\vfill
+
+\begin{center}
+  \begin{center}
+    \Huge On Fractional Instanton Numbers in Six Dimensional Heterotic
+    \myHighlight{$\pE_8 \times \pE_8$}\coordHE{} Orbifolds
+  \end{center}
+
+
+  \vspace{1.5cm}
+
+  Jan O. Conrad\footnote{E-mail: conrad@th.physik.uni-bonn.de}
+
+  \smallskip
+
+  {\it Physikalisches Institut, Universit\"at Bonn\\
+    Nu\ss{}allee 12, D-53115 Bonn, Germany}
+    
+
+  \vfill
+
+  {\bf Abstract}
+  
+  \bigskip
+
+  \parbox{0.9\textwidth}{%
+    We derive the precise relation between level matching condition
+    and fractional instanton numbers in six dimensional, abelian and
+    supersymmetric orbifolds of \myHighlight{$\pE_8 \times \pE_8$}\coordHE{} heterotic string
+    theory. The fractional part of the two \myHighlight{$\pE_8$}\coordHE{} instanton numbers
+    is explicitly calculated in terms of the gauge twist.  This
+    relation is then used to show that the classification of these
+    orbifolds can be given in terms of flat bundles away from the
+    orbifold singularities under the only constraint that the sum of
+    the fractional parts of the gauge instanton numbers match the
+    fractional part of the gravitational instanton number locally at
+    every fixed point. This directly carries over to M-theory on
+    \myHighlight{$S^1/\mZ_2$}\coordHE{}.}
+
+\end{center}
+
+\vfill
+
+\end{titlepage}
+
+\section{Introduction and Summary}
+
+
+Since the \myHighlight{$\pE_8 \times \pE_8$}\coordHE{} heterotic string theory has been
+related to M-theory on \myHighlight{$S^1/\mZ_2$}\coordHE{} for the first time \cite{HWI,HWII}
+(see also \cite{HetTypeI}) some effort has been made to describe
+heterotic orbifolds in this setting \cite{Stieberger, OvrutI,
+  Kaplunovsky, OvrutII}. However, in the phenomenologically
+interesting case of compactification to four dimensions our
+understanding is still extremely limited (see \cite{KaplSUSY2K}) and
+even in the much simpler case of six noncompact dimensions only some
+models have been treated successfully, whereas a large class of models
+still lacks a fully satisfying description \cite{Kaplunovsky}.
+
+In the present paper we focus on symmetric, abelian and perturbative
+orbifolds of the \myHighlight{$\pE_8 \times \pE_8$}\coordHE{} heterotic string in six
+dimensions preserving 8 supersymmetries as described in \cite{OrbI,
+  OrbII} (without discrete torsion).
+
+At first, we consider a single fixed point in an arbitrary model
+located at the origin of \myHighlight{$\mC^2$}\coordHE{}. Associated to it is a generator
+\myHighlight{$(r,\gamma)$}\coordHE{} of \myHighlight{$\mZ_N$}\coordHE{} consisting of a rotation \myHighlight{$r$}\coordHE{} acting like
+\myHighlight{$\exp(2\pi i \Phi_i)$}\coordHE{} on the complex coordinate \myHighlight{$Z^i$}\coordHE{} and a gauge
+shift \myHighlight{$\gamma$}\coordHE{} acting like \myHighlight{$\exp(2\pi i \beta^I_1 H^1_I) \exp(2\pi i
+\beta_2^I H^2_I)$}\coordHE{} where the \myHighlight{$H_I^{1,2}$}\coordHE{} are the eight generators of
+the Cartan subalgebra in the adjoint representation of
+\myHighlight{$\pE_8^{(1,2)}$}\coordHE{}. The \myHighlight{$H_I$}\coordHE{} will be normalized such that the \myHighlight{$\pE_8$}\coordHE{}
+lattice \myHighlight{$\Lambda_8$}\coordHE{} is given by the vectors \myHighlight{$p^I = (n_1, \ldots, n_8)$}\coordHE{}
+and \myHighlight{$p^I = (\tfrac{1}{2} + n_1, \ldots, \tfrac{1}{2} + n_8)$}\coordHE{} with \myHighlight{$n_i
+\in \mZ$}\coordHE{} and \myHighlight{$\sum_i n_i \in 2\mZ$}\coordHE{}. This implies that \myHighlight{$q^I_{1,2} =
+N\beta^I_{1,2}$}\coordHE{} is a lattice vector.
+
+Consistency of the model requires the so called level
+matching condition
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:level}
+  \Phi^2 = \beta_1^2 + \beta_2^2 \mod \frac{2}{N}
+}{
+  \Phi^2 = \beta_1^2 + \beta_2^2 \mod \frac{2}{N}
+}{ecuacion}\coordE{}\end{equation}
+to be satisfied \cite{OrbII,Vafa:1986wx}. It has long been suspected
+\cite{PrivNilles, Aldazabal}\footnote{%
+  In case of the \myHighlight{$\Spin(32)/\mZ_2$}\coordHE{} string theory such issues have been
+  analyzed in \cite{Berkooz,Intriligator}. See also \cite{Aldazabal}.
+  }, that this condition corresponds to the well known
+relation\footnote{All traces for the gauge group will be in the
+  adjoint representation.}
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:GreenSchwarz}
+  \tr R^2 = \frac{1}{30} \tr F_1^2 + \frac{1}{30} \tr F_2^2
+}{
+  \tr R^2 = \frac{1}{30} \tr F_1^2 + \frac{1}{30} \tr F_2^2
+}{ecuacion}\coordE{}\end{equation}
+required by the Green-Schwarz mechanism \cite{GreenSchwarz} (\myHighlight{$\Dd H =
+\tr R^2 - 1/30 \tr F^2$}\coordHE{}) and the perturbativity of the orbifold (\myHighlight{$H =
+0$}\coordHE{}). However, for example by inspecting the different \myHighlight{$\mZ_3$}\coordHE{}
+orbifolds by trial and error, naive application leads to
+inconsistencies.
+
+Our main result, to be shown in section~\ref{Calc}, is that for an
+\myHighlight{$\pE_8$}\coordHE{} bundle that corresponds to a shrunken instanton on a \myHighlight{$\mZ_N$}\coordHE{}
+orbifold singularity the fractional part of the instanton number is
+given by\footnote{In analogy to the \myHighlight{$\Spin{32}/\mZ_2$}\coordHE{} case this
+  relation has already been used in \cite{Aldazabal}. See the footnote
+  in section \ref{INos} on how the \myHighlight{$\pE_8$}\coordHE{} instanton number is related
+  to that of \myHighlight{$\Spin(16)$}\coordHE{}.}
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:Main}
+  I = - \frac{1}{60} \frac{1}{8\pi^2} \int_U \tr F^2
+  = \frac{N}{2} \beta^2
+  \pmod 1
+}{
+  I = - \frac{1}{60} \frac{1}{8\pi^2} \int_U \tr F^2
+  = \frac{N}{2} \beta^2
+  \pmod 1
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\beta$}\coordHE{} is defined as above. The rotation \myHighlight{$r$}\coordHE{} is given by
+\myHighlight{$\Phi=(1/N,-1/N)$}\coordHE{} and \myHighlight{$U$}\coordHE{} is a small neighbourhood surrounding the
+shrunken instanton. Using this result \eqref{eq:level} translates into
+the requirement that locally the sum of the fractional parts of the
+gauge instanton numbers match the fractional part of the gravitational
+instanton number (which is \myHighlight{$1/N$}\coordHE{}):
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:level2}
+  - \frac{1}{2} \frac{1}{8\pi^2} \int_U \tr R^2 =
+  - \frac{1}{60} \frac{1}{8\pi^2} \int_U \tr F_1^2
+  - \frac{1}{60} \frac{1}{8\pi^2} \int_U \tr F_2^2
+  \pmod 1
+}{
+  - \frac{1}{2} \frac{1}{8\pi^2} \int_U \tr R^2 =
+  - \frac{1}{60} \frac{1}{8\pi^2} \int_U \tr F_1^2
+  - \frac{1}{60} \frac{1}{8\pi^2} \int_U \tr F_2^2
+  \pmod 1
+}{ecuacion}\coordE{}\end{equation}
+Even though this might look trivial from a weak coupling perspective,
+in light of M-theory on \myHighlight{$S^1/\mZ_2$}\coordHE{} \eqref{eq:Main} fixes the
+fractional instanton numbers on each \myHighlight{$\mZ_2$}\coordHE{} fixed point seperately.
+Therefore the distribution of the integer part on the two \myHighlight{$\mZ_2$}\coordHE{}
+fixed points is not directly given by \eqref{eq:Main} and has to be
+investigated by different methods \cite{Stieberger, OvrutI,
+  Kaplunovsky, OvrutII}.
+
+Turning to global aspects of the orbifold we define it in the usual
+way \cite{OrbII} (for an introduction see \cite{Nilles} or \cite{Pol},
+chapter 16) and explicitly allow for quantized Wilson lines.
+Abstractly the orbifold is \myHighlight{$O = \mC^2/S$}\coordHE{} where \myHighlight{$S$}\coordHE{}, the space group,
+is generated by affine transformations \myHighlight{$D : x \mapsto rx + h$}\coordHE{}.  To
+include the gauge degrees of freedom we augment \myHighlight{$D$}\coordHE{} by a gauge
+transformation \myHighlight{$\gamma_D$}\coordHE{} and require that the map \myHighlight{$\gamma : S \auf
+\pE_8 \times \pE_8$}\coordHE{} is a group homomorphism. Furthermore we require
+that all \myHighlight{$\gamma_D$}\coordHE{} commute with each other. This restricts the map
+\myHighlight{$\gamma$}\coordHE{} quite severely and especially implies that each \myHighlight{$\gamma_D$}\coordHE{}
+generates a cyclic subgroup of \myHighlight{$\pE_8$}\coordHE{}. Given a fixed point \myHighlight{$Dx_0 =
+x_0$}\coordHE{} of some \myHighlight{$D$}\coordHE{} with \myHighlight{$Dx=rx+h$}\coordHE{} the twist is generated by \myHighlight{$(r,
+\gamma_D)$}\coordHE{} which has to fulfill \eqref{eq:level}.
+
+To see that \myHighlight{$\gamma$}\coordHE{} defines a flat gauge bundle consider
+\myHighlight{$\mC^2-F$}\coordHE{} where \myHighlight{$F$}\coordHE{} is the set of all fixed points of \myHighlight{$S$}\coordHE{}.  Since, by
+supersymmetry, \myHighlight{$F$}\coordHE{} consists of isolated fixed points only the
+fundamental group \myHighlight{$\pi_1$}\coordHE{} of \myHighlight{$\mC^2-F$}\coordHE{} is zero and \myHighlight{$\mC^2-F$}\coordHE{} is the
+universal covering space of \myHighlight{$(\mC^2-F)/S = O-F$}\coordHE{}, that is, the orbifold
+with the fixed points taken out. This implies (see, for example
+\cite{Bredon}, Chapter III) that \myHighlight{$\pi_1$}\coordHE{} of \myHighlight{$O-F$}\coordHE{} is isomorphic to \myHighlight{$S$}\coordHE{}
+and the map \myHighlight{$\gamma$}\coordHE{} provides a homomorphism of \myHighlight{$\pi_1(O-F)$}\coordHE{} to the
+gauge group.  This is nothing but the data of a flat gauge
+bundle\footnote{%
+  Since on a flat bundle parallel translation around closed paths
+  (with a fixed staring point) is invariant under continous
+  deformations of the path, every class in \myHighlight{$\pi_1$}\coordHE{} corresponds to
+  precisely one group element. Since concatenation of two pathes
+  corresponds to group multiplication this is a homomorphism from
+  \myHighlight{$\pi_1$}\coordHE{} to the gauge group.} on \myHighlight{$O-F$}\coordHE{} (up to gauge transformations).
+
+In conclusion, we have shown that the orbifolds in our class
+correspond to all possible flat \myHighlight{$\pE_8 \times \pE_8$}\coordHE{} bundles on the
+orbifold \myHighlight{$\mC^2/S$}\coordHE{} with the fixed points taken out under the only
+restriction that the sum of the fractional parts of the gauge
+instanton numbers (computed from the flat bundle data via
+\eqref{eq:level}) match the fractional part of the gravitational one
+locally for every fixed point. Since the fractional instanton numbers
+are computed seperately for every \myHighlight{$\pE_8$}\coordHE{}, this classification fully
+applies to M-theory on \myHighlight{$S^1/\mZ_2$}\coordHE{}.
+
+Moreover, \eqref{eq:Main} allows to calculate the fractional part of
+an \myHighlight{$\pE_8$}\coordHE{} instanton number for any instanton sitting on a (possibly
+blown up) orbifold singularity as long as the gauge bundle approaches
+a flat bundle away from the singularity.
+
+
+
+\section{Fractional Instanton Numbers}
+\label{Calc}
+
+
+This section is devoted to the derivation of equation \eqref{eq:Main}.
+We consider the situation of an \myHighlight{$\pE_8$}\coordHE{} instanton localized in the
+interior of a real four-manifold\footnote{%
+  To be precise, we require \myHighlight{$M$}\coordHE{} to be orientable, compact and
+  connected with a connected boundary.  } \myHighlight{$M$}\coordHE{} with boundary \myHighlight{$L$}\coordHE{}, that
+is we treat the gauge bundle as being flat on \myHighlight{$L$}\coordHE{}. We start by showing
+that the fractional part of the instanton number depends only on the
+isomorphism class of the bundle on \myHighlight{$L$}\coordHE{}. After that we construct one
+explicit element of that class corresponding to the given data and
+finally compute the fractional instanton number of that
+element\footnote{%
+  More mathematically speaking in step two we construct a bundle map
+  from the Hopf fibration \myHighlight{$S^3 \lauf S^2$}\coordHE{} to \myHighlight{$\pE_8 \lauf \pE_8/T^8$}\coordHE{}
+  with \myHighlight{$T^8$}\coordHE{} a maximal torus of \myHighlight{$\pE_8$}\coordHE{} and in step three we calculate
+  the image of the fundamental cycle of \myHighlight{$S^3$}\coordHE{} under that map by a
+  spectral sequence.}.
+
+The first two steps are mostly standard (see for example
+\cite{Spanier, Steenrod}) whereas the third one requires a bit more
+technology (see especially \cite{BottTu} chapter~III and \cite{Bott}).
+
+\subsection{Basic Facts}
+
+The instanton number is defined as (a discussion of the normalization
+can be found in \cite{Atiyah:1978wi})
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:INo}
+  I = - \frac{1}{60} \frac{1}{8\pi^2} \int_M \tr F^2
+}{
+  I = - \frac{1}{60} \frac{1}{8\pi^2} \int_M \tr F^2
+}{ecuacion}\coordE{}\end{equation}
+with the trace in the adjoint representation. Since \myHighlight{$\pE_8$}\coordHE{} is
+semi-simple the first nontrivial homotopy group is \myHighlight{$\pi_3(\pE_8) =
+\mZ$}\coordHE{}.  This implies, due to the presence of the boundary, that the bundle
+is trivial on \myHighlight{$M$}\coordHE{}. This can be seen as follows: a possible obstruction
+in constructing a section of a principal \myHighlight{$\pE_8$}\coordHE{}-bundle on \myHighlight{$M$}\coordHE{} (and
+thereby showing triviality of the bundle) is given by an nonzero
+element of \myHighlight{$H^4(M,\mZ)$}\coordHE{}. Since \myHighlight{$M$}\coordHE{} is an orientable and compact
+manifold with boundary, we have by duality \myHighlight{$H^4 (M,\mZ) \simeq H_0 (M,
+\Dp M, \mZ) = 0$}\coordHE{}. (see for example \cite{Steenrod} part~III, or
+\cite{Witten:1986bt} for a nice introduction) \eqref{eq:INo} now
+reads
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:INo2}
+  I = - \frac{1}{30} \frac{1}{8\pi^2} \int_L
+  \tr \left( AF - \frac{1}{3} A^3 \right)
+  = \frac{1}{3\cdot 60} \frac{1}{8\pi^2} \int_L \tr A^3
+}{
+  I = - \frac{1}{30} \frac{1}{8\pi^2} \int_L
+  \tr \left( AF - \frac{1}{3} A^3 \right)
+  = \frac{1}{3\cdot 60} \frac{1}{8\pi^2} \int_L \tr A^3
+}{ecuacion}\coordE{}\end{equation}
+
+To make contact to the situation studied in the introduction we have
+to take \myHighlight{$L = S^3/\mZ_N$}\coordHE{} (a lens space) with \myHighlight{$\pi_1(L) = \mZ_N$}\coordHE{}. By
+the same reasoning as in the introduction, \myHighlight{$S^3$}\coordHE{} is the covering space
+of \myHighlight{$L$}\coordHE{} and \myHighlight{$(r,\gamma)$}\coordHE{} specifies a flat bundle on \myHighlight{$L$}\coordHE{}.  Moreover, by
+pulling back the bundle via the covering map \myHighlight{$\pi : S^3 \auf
+S^3/\mZ_N$}\coordHE{} we get a bundle on \myHighlight{$S^3$}\coordHE{} on which \myHighlight{$A$}\coordHE{} can be gauge
+transformed to \myHighlight{$A'=0$}\coordHE{} because \myHighlight{$\pi_1(S^3)=0$}\coordHE{}. Denoting the gauge
+transformation by \myHighlight{$g: S^3 \auf \pE_8$}\coordHE{} we get \myHighlight{$A = g^{-1} A' g + g^{-1}
+\Dd g = g^{-1} \Dd g$}\coordHE{}.  Plugging that into \eqref{eq:INo2} we get \myHighlight{$I =
+I_S/N$}\coordHE{} with \myHighlight{$I_S$}\coordHE{} defined by
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:INo3}
+  I_S = \frac{1}{3\cdot 60} \frac{1}{8\pi^2}
+  \int_{S^3} \tr (g^{-1}\Dd g)^3
+}{
+  I_S = \frac{1}{3\cdot 60} \frac{1}{8\pi^2}
+  \int_{S^3} \tr (g^{-1}\Dd g)^3
+}{ecuacion}\coordE{}\end{equation}
+Of course \myHighlight{$g$}\coordHE{} represents an element of \myHighlight{$\pi_3(\pE_8)$}\coordHE{} which is
+identified with \myHighlight{$\mZ$}\coordHE{} by \eqref{eq:INo3} (see again
+\cite{Atiyah:1978wi}).  This especially shows that \myHighlight{$I$}\coordHE{} is a multiple
+of \myHighlight{$1/N$}\coordHE{}.
+
+To show that \myHighlight{$I_S$}\coordHE{} changes by a multiple of \myHighlight{$N$}\coordHE{} when the bundle on \myHighlight{$L$}\coordHE{}
+is gauge transformed we consider two flat connections \myHighlight{$A_1$}\coordHE{} and \myHighlight{$A_2$}\coordHE{}
+on \myHighlight{$L$}\coordHE{}, both corresponding to the same generator \myHighlight{$(r,\gamma)$}\coordHE{}. Since
+both bundles are isomorphic we have \myHighlight{$A_2 = h^{-1} A_1 h + h^{-1} \Dd
+h$}\coordHE{} for some \myHighlight{$h : L \auf \pE_8$}\coordHE{}. Now \myHighlight{$h$}\coordHE{} can be lifted to \myHighlight{$S^3$}\coordHE{} giving
+\myHighlight{$h_S = h \circ \pi$}\coordHE{} and we get \myHighlight{$A_2 = g_2^{-1} \Dd g_2 = h_S^{-1}
+g_1^{-1} (\Dd g_1) h_S + h_S^{-1} \Dd h_S = (g_1 h_S)^{-1} \Dd (g_1
+h_S)$}\coordHE{}. But since the pointwise product \myHighlight{$g \cdot g'$}\coordHE{} for two elements
+of \myHighlight{$\pi_3$}\coordHE{} of a Lie group \myHighlight{$G$}\coordHE{} corresponds to the group addition of the
+elements \myHighlight{$g_2 = g_1 + h_S$}\coordHE{}.
+
+To proceed, we note that, since \myHighlight{$\pi_3$}\coordHE{} is the first nontrivial
+homotopy class of \myHighlight{$\pE_8$}\coordHE{}, by the Hurewicz isomorphism \myHighlight{$\pi_3(\pE_8)$}\coordHE{}
+is isomorphic to \myHighlight{$H_3(\pE_8, \mZ)$}\coordHE{} and further by the universal
+coefficient theorem to \myHighlight{$H^3(\pE_8, \mZ)$}\coordHE{} because, by the same argument
+we have \myHighlight{$H^1 = H^2 = H_1 = H_2 = 0$}\coordHE{}. Therefore the instanton number
+\myHighlight{$I_S$}\coordHE{} is given by the pullback via \myHighlight{$g$}\coordHE{} of the generator \myHighlight{$\omega$}\coordHE{} of
+\myHighlight{$H^3(\pE_8, \mZ)$}\coordHE{} evaluated on the fundamental cycle \myHighlight{$C_S$}\coordHE{} of \myHighlight{$S^3$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:Ino4}
+  I_S = g^* \omega (C_S)
+}{
+  I_S = g^* \omega (C_S)
+}{ecuacion}\coordE{}\end{equation}
+Since \myHighlight{$\pi : S^3 \auf L$}\coordHE{} is \myHighlight{$N$}\coordHE{} to one we have \myHighlight{$\pi_* C_S = N C_L$}\coordHE{}
+with \myHighlight{$C_L$}\coordHE{} the fundamental cycle of \myHighlight{$L$}\coordHE{}. This immediately yields \myHighlight{$h_S^*
+\omega (C_S) = \pi^* h^* \omega (C_S) = h^* \omega (\pi_* C_S)
+= N h^* \omega (C_L) \in N \mZ$}\coordHE{}.
+
+\subsection{Construction of the Bundle}
+
+We now construct a bundle on \myHighlight{$S^3$}\coordHE{} simply by constructing the map \myHighlight{$g$}\coordHE{},
+which we require to obey \myHighlight{$g(rx) = \gamma g(x)$}\coordHE{}. This bundle will
+obviously be the pullback of a bundle on \myHighlight{$L$}\coordHE{} that fulfills our
+requirements.
+
+To construct \myHighlight{$g$}\coordHE{} (and for the final step) we will need some basic
+facts about lens spaces (see \cite{BottTu}, \S~18). As above we define
+\myHighlight{$L$}\coordHE{} by the fibration \myHighlight{$\mZ_N \lauf S^3 \overset{\pi}{\lauf} L$}\coordHE{} where
+\myHighlight{$S^3$}\coordHE{} is identified with the unit sphere in \myHighlight{$\mC^2$}\coordHE{} and the generator
+of \myHighlight{$\mZ_N$}\coordHE{} acts on \myHighlight{$S^3$}\coordHE{} like
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:ZN}
+  e^{2\pi i/N} : (Z^1,Z^2) \mapsto (e^{2\pi i/N} Z^1, e^{2\pi i/N} Z^2)
+}{
+  e^{2\pi i/N} : (Z^1,Z^2) \mapsto (e^{2\pi i/N} Z^1, e^{2\pi i/N} Z^2)
+}{ecuacion}\coordE{}\end{equation}
+This action is of course compatible with the \myHighlight{$\pU(1)$}\coordHE{} action on \myHighlight{$S^3$}\coordHE{} (where
+\myHighlight{$\pU(1)$}\coordHE{} is identified with the unit circle in \myHighlight{$\mC$}\coordHE{})
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:U1}
+  (Z^1,Z^2) \mapsto (\lambda Z^1, \lambda Z^2)
+  \qquad
+  \lambda \in S^1 \subset \mC
+}{
+  (Z^1,Z^2) \mapsto (\lambda Z^1, \lambda Z^2)
+  \qquad
+  \lambda \in S^1 \subset \mC
+}{ecuacion}\coordE{}\end{equation}
+and we get the Hopf-fibration \myHighlight{$S^1 \lauf S^3 \overset{\pi_S}{\lauf}
+\CP^1 \simeq S^2$}\coordHE{}. Now since \myHighlight{$\mZ_N \subset \pU(1)$}\coordHE{} the \myHighlight{$\pU(1)$}\coordHE{}
+action descends to an action on \myHighlight{$L$}\coordHE{} and we have
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:BundleMap}
+  \begin{matrix}
+    S^1 & \lauf & S^3 & \overset{\pi_S}{\lauf} & S^2 \\
+        &       & \hbox to 0pt {$\hss\pi$} \downarrow
+        && \hbox to 0pt {$\hss\id$} \downarrow \\
+    S^1 & \lauf & L & \overset{\pi_L}{\lauf} & S^2 \\
+  \end{matrix}
+}{
+  \begin{matrix}
+    S^1 & \lauf & S^3 & \overset{\pi_S}{\lauf} & S^2 \\
+        &       & \hbox to 0pt {$\hss\pi$} \downarrow
+        && \hbox to 0pt {$\hss\id$} \downarrow \\
+    S^1 & \lauf & L & \overset{\pi_L}{\lauf} & S^2 \\
+  \end{matrix}
+}{ecuacion}\coordE{}\end{equation}
+In this diagram \myHighlight{$\pi$}\coordHE{} is a bundle map which is \myHighlight{$N$}\coordHE{} to one on the
+standard fibre.
+
+This can be made more explicit by identifying \myHighlight{$S^2$}\coordHE{} with a cylinder \myHighlight{$I
+\times S^1$}\coordHE{} where at both ends of the interval \myHighlight{$S^1$}\coordHE{} is identified to
+a point. We parametrize \myHighlight{$I \times S^1$}\coordHE{} by \myHighlight{$(\rho,\Psi)$}\coordHE{} where \myHighlight{$\rho
+\in \left[ 0, \tfrac{\pi}{2} \right], \Psi \in \left[ 0, 2\pi
+\right[$}\coordHE{}. To write down the bundle explicitly we divide \myHighlight{$S^2$}\coordHE{} into
+upper (\myHighlight{$D^2_+$}\coordHE{}) and lower (\myHighlight{$D^2_-$}\coordHE{}) hemisphere. Using \myHighlight{$(Z^1, Z^2) =
+(\cos \rho \; e^{i\phi_1}, \sin \rho \; e^{i\phi_2})$}\coordHE{} we write
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:VS}
+  \begin{aligned}
+    D^2_+ &:& \rho &\geq \tfrac{\pi}{4}
+    \qquad & \phi_2&=\phi_+ \qquad & \phi_1=\phi_+ - \Psi \\
+    D^2_- &:& \rho &\leq \tfrac{\pi}{4}
+    \qquad & \phi_1&=\phi_- \qquad & \phi_2=\phi_- + \Psi \\
+  \end{aligned}
+}{
+  \begin{aligned}
+    D^2_+ &:& \rho &\geq \tfrac{\pi}{4}
+    \qquad & \phi_2&=\phi_+ \qquad & \phi_1=\phi_+ - \Psi \\
+    D^2_- &:& \rho &\leq \tfrac{\pi}{4}
+    \qquad & \phi_1&=\phi_- \qquad & \phi_2=\phi_- + \Psi \\
+  \end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+Therefore \myHighlight{$\lambda = e^{i\phi} \in \pU(1)$}\coordHE{} acts like \myHighlight{$\phi_- \mapsto
+\phi_- + \phi, \; \phi_+ \mapsto \phi_+ + \phi$}\coordHE{} and the fibre \myHighlight{$S^1$}\coordHE{} is
+parametrized by \myHighlight{$\phi_-, \phi_+ \in \left[ 0, 2\pi \right[$}\coordHE{}.
+
+Since on the equator \myHighlight{$\phi_+ = \phi_- + \Psi$}\coordHE{} the sphere \myHighlight{$S^3$}\coordHE{} as a
+bundle ist made of two trivial \myHighlight{$S^1$}\coordHE{} bundles on the hemispheres
+clutched together by the generator of \myHighlight{$\pi_1(S^1)$}\coordHE{}. Analogously, by
+\eqref{eq:BundleMap}, the clutching function of \myHighlight{$L$}\coordHE{} is \myHighlight{$N \in
+\pi_1(S^1)$}\coordHE{}.
+
+To simplify the construction of \myHighlight{$g$}\coordHE{} we insert a cylinder \myHighlight{$C = I \times
+S^1$}\coordHE{} parametrized by \myHighlight{$(x,\Psi)$}\coordHE{}, \myHighlight{$x \in [0 , 1], \Psi \in \left[ 0,
+  2\pi \right[$}\coordHE{} between the hemispheres by attatching \myHighlight{$D^2_+$}\coordHE{} at \myHighlight{$x=1$}\coordHE{}
+and \myHighlight{$D^2_-$}\coordHE{} at \myHighlight{$x=0$}\coordHE{}.  This is extended to the bundle by parametrizing
+the fibre as \myHighlight{$\phi_+$}\coordHE{} as on \myHighlight{$D^2_+$}\coordHE{}. Therefore the bundle is now
+clutched nontrivially at \myHighlight{$x=0$}\coordHE{} and trivially at \myHighlight{$x=1$}\coordHE{}.
+
+Finally we define \myHighlight{$g(\rho,\Psi,\phi_+) = g_+(\rho,\Psi,\phi_+) =
+e^{iqH\phi_+}$}\coordHE{} on \myHighlight{$D^2_+$}\coordHE{} and \myHighlight{$g(\rho,\Psi,\phi_-) =
+g_-(\rho,\Psi,\phi_-) = e^{iqH\phi_-}$}\coordHE{} on \myHighlight{$D^2_-$}\coordHE{}.  This yields
+\begin{equation}\coord{}\boxEquation{
+  \begin{array}{lll}
+    g(x=0,\Psi,\phi_+)
+    &= g_-(\rho=\tfrac{\pi}{4},\Psi,\phi_+ - \Psi)
+    &= e^{iqH(\phi_+ - \Psi)} \\
+    g(x=1,\Psi,\phi_+)
+    &= g_+(\rho=\tfrac{\pi}{4},\Psi,\phi_+)
+    &= e^{iqH\phi_+}
+  \end{array}
+}{
+  \begin{array}{lll}
+    g(x=0,\Psi,\phi_+)
+    &= g_-(\rho=\tfrac{\pi}{4},\Psi,\phi_+ - \Psi)
+    &= e^{iqH(\phi_+ - \Psi)} \\
+    g(x=1,\Psi,\phi_+)
+    &= g_+(\rho=\tfrac{\pi}{4},\Psi,\phi_+)
+    &= e^{iqH\phi_+}
+  \end{array}
+}{ecuacion}\coordE{}\end{equation}
+on the cylinder \myHighlight{$C$}\coordHE{} and \myHighlight{$g$}\coordHE{} can be extended to \myHighlight{$g(x, \Psi, \phi_+) =
+e^{iqH\phi_+}$}\coordHE{} at \myHighlight{$\Psi=0,2\pi$}\coordHE{}.
+
+\myHighlight{$g$}\coordHE{} at \myHighlight{$\phi_+=0$}\coordHE{} is now defined on the boundary of the square \myHighlight{$0\leq
+x \leq 1, \; 0 \leq \Psi \leq 2\pi$}\coordHE{} (the identification of \myHighlight{$\Psi=0$}\coordHE{}
+with \myHighlight{$\Psi=2\pi$}\coordHE{} plays no role in the consideration) and the only
+nontrivial step in the construction is to extend this definition to
+the interior of the square. Topologically this is the same as to
+extend a map \myHighlight{$g : S^1 \auf \pU(1) \subset \pE_8$}\coordHE{} with \myHighlight{$S^1 = \Dp D^2$}\coordHE{}
+to the whole of \myHighlight{$D^2$}\coordHE{}. Therefore we consider the fibration \myHighlight{$\pU(1)
+\lauf \pE_8 \lauf \pE_8/\pU(1)$}\coordHE{} where \myHighlight{$\pU(1)$}\coordHE{} is the subgroup of
+\myHighlight{$\pE_8$}\coordHE{} generated from \myHighlight{$e^{iqH\phi}$}\coordHE{}. The relative homotopy sequence
+of this fibration contains the following part
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:RelHom}
+  \ldots \lauf \pi_2(\pE_8) = 0 \lauf \pi_2 (\pE_8, \pU(1))
+  \overset{\Dp}{\lauf}
+  \pi_1(\pU(1)) \lauf \pi_1(\pE_8) = 0 \lauf \ldots
+}{
+  \ldots \lauf \pi_2(\pE_8) = 0 \lauf \pi_2 (\pE_8, \pU(1))
+  \overset{\Dp}{\lauf}
+  \pi_1(\pU(1)) \lauf \pi_1(\pE_8) = 0 \lauf \ldots
+}{ecuacion}\coordE{}\end{equation}
+Since the sequence is exact the map \myHighlight{$\Dp$}\coordHE{} is an isomorphism and \myHighlight{$g$}\coordHE{}
+can be extended to \myHighlight{$\phi=0$}\coordHE{} in \myHighlight{$C$}\coordHE{}. Finally we define \myHighlight{$g$}\coordHE{} on the whole
+of \myHighlight{$C$}\coordHE{} by \myHighlight{$g(x,\Psi,\phi_+) = e^{iqH\phi_+} g(x,\Psi,\phi_+=0)$}\coordHE{}.
+
+
+\subsection{Calculation of the Instanton Number}
+\label{INos}
+
+\providecommand{\dt}{\begin{rotate}{-30} \myHighlight{$\xrightarrow{\ \ \ \ \ }$}\coordHE{} \end{rotate}}
+
+
+As the map \myHighlight{$g$}\coordHE{} constructed in the last section actually fulfills
+\myHighlight{$g(e^{i\phi}Z^i)= e^{iqH\phi} g(Z^i)$}\coordHE{} it is a bundle map from \myHighlight{$S^3$}\coordHE{} to
+\myHighlight{$\pE_8$}\coordHE{} which especially provides a homomorhism from the (cohomology)
+spectral sequence of the former to that of the latter\footnote{It can
+  be easily seen that we could restrict ourselves to a map to
+  \myHighlight{$\Spin(16)$}\coordHE{} at this point: by acting with the Weyl group we can map
+  \myHighlight{$q$}\coordHE{} into the \myHighlight{$\Spin(16)$}\coordHE{} sublattice of \myHighlight{$\pE_8$}\coordHE{}. Since
+  \myHighlight{$\pi_1(\Spin(16))=0$}\coordHE{} all steps of the last section apply as before
+  and we are left with a pure \myHighlight{$\Spin(16)$}\coordHE{} bundle. This then allows to
+  compute the instanton number with the formulas given in
+  \cite{Intriligator, Aldazabal}. However, we will proceed in a
+  different way, since our calculation gives the instanton number
+  (including the integer part) for gauge bundles satisfying
+  \myHighlight{$g(e^{i\phi}Z^i)= e^{iqH\phi} g(Z^i)$}\coordHE{}.  }.
+
+We start by writing down the standard example of the spectral sequence
+of the Hopf fibration. The \myHighlight{$E_2$}\coordHE{} term is given by \myHighlight{$E_2^{p,q} = H^p
+(S^2) \otimes H^q (S^1)$}\coordHE{}, explicitly:
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:E2S}
+  E_2 = \;
+  \begin{array}{c|ccc}
+    1 & \mZ/a_S \dt & 0 & \mZ/a_Sb \\
+    0 & \mZ/1       & 0 & \mZ/b \\
+    \hline
+      &  0          & 1 & 2 \\
+  \end{array}
+}{
+  E_2 = \;
+  \begin{array}{c|ccc}
+    1 & \mZ/a_S \dt & 0 & \mZ/a_Sb \\
+    0 & \mZ/1       & 0 & \mZ/b \\
+    \hline
+      &  0          & 1 & 2 \\
+  \end{array}
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$p,q$}\coordHE{} label columns and rows and the diagonal arrow denotes the
+map \myHighlight{$\Dd_2$}\coordHE{}. By \myHighlight{$H/h$}\coordHE{} we denote the group \myHighlight{$H$}\coordHE{} generated by \myHighlight{$h$}\coordHE{}. As the
+sequence stops at \myHighlight{$E_3$}\coordHE{} we have \myHighlight{$E_3 \simeq H^*(S^3) = (\mZ/1, 0, 0,
+\mZ/c_S)$}\coordHE{} with \myHighlight{$c_S = a_S b$}\coordHE{}. This implies that \myHighlight{$\Dd_2$}\coordHE{} is an
+isomorphism from \myHighlight{$E_2^{0,1}$}\coordHE{} to \myHighlight{$E_2^{2,0}$}\coordHE{}.
+
+We now turn to the spectral sequence of the fibration \myHighlight{$T^8 \lauf \pE_8
+\lauf \pE_8/T^8$}\coordHE{} where \myHighlight{$T^8$}\coordHE{} is a maximal torus of \myHighlight{$\pE_8$}\coordHE{} containing
+the \myHighlight{$\pU(1)$}\coordHE{} generated from the elements \myHighlight{$e^{iqH\phi}$}\coordHE{}. First we need
+to verify that the base is simply connected. This is clear from the
+homotopy sequence
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:EHomotopy}
+  \ldots \lauf \pi_1(\pE_8) =0 \lauf \pi_1(\pE_8/T^8) \lauf
+  \pi_0(T^8) = \{*\} \lauf \cdots 
+}{
+  \ldots \lauf \pi_1(\pE_8) =0 \lauf \pi_1(\pE_8/T^8) \lauf
+  \pi_0(T^8) = \{*\} \lauf \cdots 
+}{ecuacion}\coordE{}\end{equation}
+(\myHighlight{$\pi_0$}\coordHE{} is not a group here and consists only of the (arbitrary) base
+point \myHighlight{$*$}\coordHE{}). Furthermore, as shown by Morse theoretic methods in
+\cite{Bott}, the base is torsion free and \myHighlight{$H^{2n+1} (\pE_8/T^8) = 0$}\coordHE{}
+for \myHighlight{$n \in \mZ$}\coordHE{}. With this information the \myHighlight{$E_2$}\coordHE{} term is\footnote{%
+  Addition and multiplication of groups are written with respect to the
+  operations \myHighlight{$\oplus$}\coordHE{} and \myHighlight{$\otimes$}\coordHE{} on abelian groups, i.e.\ \myHighlight{$2\mZ =
+  \mZ \oplus \mZ$}\coordHE{}, \myHighlight{$\mZ^2 = \mZ \otimes \mZ$}\coordHE{}.}
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:E2}
+  E_2 = \;
+  \begin{array}{c|ccccc}
+    3 & 56\mZ      &   &          &   & \\
+    2 & 28\mZ \dt  & 0 &          &   & \\
+    1 & 8\mZ  \dt  & 0 & 64\mZ\dt &   & \\
+    0 & \mZ        & 0 & 8\mZ     & 0 & 35\mZ \\
+    \hline
+      &  0         & 1 & 2        & 3 & 4      \\
+  \end{array}
+}{
+  E_2 = \;
+  \begin{array}{c|ccccc}
+    3 & 56\mZ      &   &          &   & \\
+    2 & 28\mZ \dt  & 0 &          &   & \\
+    1 & 8\mZ  \dt  & 0 & 64\mZ\dt &   & \\
+    0 & \mZ        & 0 & 8\mZ     & 0 & 35\mZ \\
+    \hline
+      &  0         & 1 & 2        & 3 & 4      \\
+  \end{array}
+}{ecuacion}\coordE{}\end{equation}
+This can be seen as follows: Firstly, we note that \myHighlight{$H^*(T^8) = (\mZ,
+8\mZ, 28\mZ, 56\mZ, \ldots)$}\coordHE{}. Secondly, since \myHighlight{$H^*(\pE_8) = (\mZ/1, 0, 0,
+\mZ/\omega, \text{higher groups})$}\coordHE{} by Hurewicz \myHighlight{$E_3$}\coordHE{} must be trivial
+for degree 1 and 2. Therefore, again \myHighlight{$\Dd_2 : E_2^{0,1} \auf
+E_2^{2,0}$}\coordHE{} is an isomorphism. This implies, since by the K\"unneth
+formula \myHighlight{$H^*(T^8) = (H^*(S^1)) ^8$}\coordHE{} (with respect to \myHighlight{$\otimes$}\coordHE{}), that
+all maps \myHighlight{$\Dd_2$}\coordHE{} from the first to the third column are invertible.
+
+Moreover, since \myHighlight{$\Dd_3$}\coordHE{} maps everything to zero all elements of
+\myHighlight{$H^*(\pE_8)$}\coordHE{} up to degree three are given by \myHighlight{$E_3$}\coordHE{} up to degree three.
+However, because \myHighlight{$\Dd_2$}\coordHE{} from the first to the third column is
+invertible, the only nonvanishing element up to degree three of \myHighlight{$E_3$}\coordHE{}
+must be \myHighlight{$E_3^{2,1} = \mZ/\omega$}\coordHE{}. This implies \myHighlight{$E_2^{4,0} = 35\mZ$}\coordHE{}.
+
+This can independently be verified by calculating \myHighlight{$H^*(\pE_8/T^8)$}\coordHE{} as
+described in \cite{Bott}: the dimension of \myHighlight{$H^{2n}(\pE_8/T^8)$}\coordHE{} is
+given by the number of elements of the Weyl group which change the
+sign of precisely \myHighlight{$q$}\coordHE{} of the positive roots. This can be computed
+easily, since, for a given Weyl reflection \myHighlight{$\sigma$}\coordHE{}, \myHighlight{$q$}\coordHE{} is given by
+the length of \myHighlight{$\sigma$}\coordHE{} (see for example \cite{Humphreys} section
+10.3), i.e.\ the (minimal) number of simple Weyl reflections \myHighlight{$\sigma$}\coordHE{}
+can be composed of \myHighlight{$\sigma = \sigma_{\alpha_1} \cdot \ldots \cdot
+\sigma_{\alpha_q}$}\coordHE{}. For \myHighlight{$q=1$}\coordHE{} there are 8 simple roots so
+\myHighlight{$H^2(\pE_8/T^8) = 8\mZ$}\coordHE{}. For \myHighlight{$q=2$}\coordHE{} there are \myHighlight{$8\cdot 7/2 + 7 = 35$}\coordHE{}
+combinations, because simple Weyl reflections of two simple roots which
+are not connected by a line in the Dynkin diagram commute. So
+\myHighlight{$H^4(\pE_8/T^8) = 35\mZ$}\coordHE{}.
+
+Explicitly we denote the generators of \myHighlight{$H^1(T^8)$}\coordHE{} by \myHighlight{$a^i, i=1,
+\ldots, 8$}\coordHE{} and those of \myHighlight{$H^2(\pE_8/T^8)$}\coordHE{} by \myHighlight{$b^i = \Dd_2 a^i$}\coordHE{}. As
+\myHighlight{$E_2^{0,2} = H^2(T^8)$}\coordHE{} is generated by the 28 elements \myHighlight{$a^i a^j$}\coordHE{} with
+\myHighlight{$i<j$}\coordHE{} their image under \myHighlight{$\Dd_2$}\coordHE{} in \myHighlight{$E_2^{2,1}$}\coordHE{} is given by the
+elements \myHighlight{$\Dd_2 (a^i a^j) = b^i a^j - a^i b^j = - a^i b^j + a^j
+b^i$}\coordHE{}.
+
+To calculate \myHighlight{$\omega$}\coordHE{} we write all elements in terms of an euclidian
+basis \myHighlight{$A_I$}\coordHE{} of the real homology \myHighlight{$H_1(T^8,\mR)$}\coordHE{} and its dual \myHighlight{$a^I$}\coordHE{} in
+\myHighlight{$H^1(T^8,\mR)$}\coordHE{}. We choose the basis such that it is compatible with
+the lattice \myHighlight{$\Lambda_8$}\coordHE{} given in the introduction.  Then \myHighlight{$\omega$}\coordHE{} can
+be written as \myHighlight{$\omega = w_{IJ} a^I b^J$}\coordHE{} where \myHighlight{$w_{IJ}$}\coordHE{} is a symmetric
+matrix, because the image of \myHighlight{$\Dd_2$}\coordHE{} consists of all elements \myHighlight{$w_{IJ}
+a^I b^J$}\coordHE{} with antisymmetric \myHighlight{$w_{IJ}$}\coordHE{}.  Under an element \myHighlight{$T$}\coordHE{} of the Weyl
+group \myHighlight{$w$}\coordHE{} is transformed to \myHighlight{$T^{-1} w T$}\coordHE{} (\myHighlight{$T$}\coordHE{} is an orthogonal
+matrix). As \myHighlight{$w$}\coordHE{} must be invariant unter the Weyl group, which acts
+irreducible on a vector, by Schur's lemma, \myHighlight{$\omega= w \delta_{IJ} a^I
+b^J$}\coordHE{}.
+
+We now turn to the calculation of the instanton number.  By
+construction \myHighlight{$g$}\coordHE{} maps the fundamental cycle \myHighlight{$A_S$}\coordHE{} of the \myHighlight{$S^1$}\coordHE{} fiber
+of the Hopf fibration to \myHighlight{$q^I A_I$}\coordHE{}. This implies
+\begin{equation}\coord{}\boxEquation{
+  g^* a^I (A_S) = a^I (g_* A_S) = a^I (q^J A_J) = q^I
+}{
+  g^* a^I (A_S) = a^I (g_* A_S) = a^I (q^J A_J) = q^I
+}{ecuacion}\coordE{}\end{equation}
+and therefore \myHighlight{$g^* a^I = q^I a_S$}\coordHE{}. Finally we have
+\begin{equation}\coord{}\boxEquation{
+  \begin{split}
+    I_S = g^* \omega (C_S)
+    &= w \delta_{IJ} \; (g^* a^I \; g^* b^J) (C_S)
+    = w \delta_{IJ} \; (g^* a^I \; g^* (\Dd_2 a^J)) (C_S) \\
+    &= w \delta_{IJ} \; (g^* a^I \; \Dd_2 (g^* a^J)) (C_S)
+    = w \delta_{IJ} \; (q^I a_S \; q^J \Dd_2 a_S) (C_S) \\
+    &= w \delta_{IJ} \; q^I q^J \; (a_S b) (C_S)
+    = w q^2
+  \end{split}
+}{
+  \begin{split}
+    I_S = g^* \omega (C_S)
+    &= w \delta_{IJ} \; (g^* a^I \; g^* b^J) (C_S)
+    = w \delta_{IJ} \; (g^* a^I \; g^* (\Dd_2 a^J)) (C_S) \\
+    &= w \delta_{IJ} \; (g^* a^I \; \Dd_2 (g^* a^J)) (C_S)
+    = w \delta_{IJ} \; (q^I a_S \; q^J \Dd_2 a_S) (C_S) \\
+    &= w \delta_{IJ} \; q^I q^J \; (a_S b) (C_S)
+    = w q^2
+  \end{split}
+}{split}\coordE{}\end{equation}
+To normalize this equation we compare to the standard embedding
+\myHighlight{$I_S=1$}\coordHE{}, \myHighlight{$q^I=(1,1,0,\ldots)$}\coordHE{} resulting in \myHighlight{$w=1/2$}\coordHE{}. Therefore we have
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:Final}
+  I = \frac{I_S}{N} = \frac{1}{2N} q^2 = \frac{N}{2} \beta^2 \pmod 1
+}{
+  I = \frac{I_S}{N} = \frac{1}{2N} q^2 = \frac{N}{2} \beta^2 \pmod 1
+}{ecuacion}\coordE{}\end{equation}
+
+
+
+\section*{Acknowledgements}
+
+This work was supported by the European Programs HPRN-CT-2000-00131,
+HPRN-CT-2000-00148 and HPRN-CT-2000-00152.  I would like to thank
+S.~F\"orste, G.~Honecker. H.~Klemm, R.~Schreyer, M.~Walter,
+K.~Wendland, M.~Zucker and especially H.-P.~Nilles for many fruitful
+discussions. I also thank A.~Font and A.~Uranga for bringing
+\cite{Aldazabal} to my attention.
+
+
+\begin{thebibliography}{xx}
+  
+\bibitem{HWI} P. Ho\v{r}ava, E. Witten, ``Heterotic and type I string
+  dynamics from eleven dimensions'', Nucl. Phys. {\bf B460} (1996) 506
+  
+\bibitem{HWII} P. Ho\v{r}ava, E. Witten, ``Eleven-dimensional
+  supergravity on a manifold with boundary'', Nucl. Phys. {\bf B475}
+  (1996) 94
+  
+\bibitem{HetTypeI} J.~Polchinski and E.~Witten, ``Evidence for
+  Heterotic - Type I String Duality,'' Nucl.\ Phys.\ {\bf B460} (1996)
+  525 [hep-th/9510169].
+  
+\bibitem{Stieberger} S.~Stieberger, ``(0,2) heterotic gauge couplings
+  and their M-theory origin'', Nucl.\ Phys.\ {\bf B541} (1999) 109
+  [hep-th/9807124].
+  
+\bibitem{OvrutI} M.~Faux, D.~L\"ust and B.~A.~Ovrut, ``Intersecting
+  orbifold planes and local anomaly cancellation in M-theory'', Nucl.\ 
+  Phys.\ {\bf B554} (1999) 437 [hep-th/9903028].
+  
+\bibitem{Kaplunovsky} V.~Kaplunovsky, J.~Sonnenschein, S.~Theisen and
+  S.~Yankielowicz, ``On the duality between perturbative heterotic
+  orbifolds and M-theory on T(4)/Z(N)'', hep-th/9912144.
+  
+\bibitem{OvrutII} M.~Faux, D.~L\"ust and B.~A.~Ovrut, ``Local anomaly
+  cancellation, M-theory orbifolds and phase-transitions'',
+  hep-th/0005251.
+  
+\bibitem{KaplSUSY2K} V.~Kaplunovsky, ``Heterotic orbifolds in
+  M-theory'', talk given at SUSY2K CERN 26~June till 1~July~2000,
+  http://wwwth.cern.ch/susy2k
+  
+\bibitem{OrbI} L.~Dixon, J.~A.~Harvey, C.~Vafa and E.~Witten,
+  ``Strings On Orbifolds,'' Nucl.\ Phys.\ {\bf B261} (1985) 678.
+  
+\bibitem{OrbII} L.~Dixon, J.~A.~Harvey, C.~Vafa and E.~Witten,
+  ``Strings On Orbifolds. 2,'' Nucl.\ Phys.\ {\bf B274} (1986) 285.
+
+\bibitem{PrivNilles} H.-P.~Nilles, private communication.
+  
+\bibitem{Berkooz} M.~Berkooz, R.~G.~Leigh, J.~Polchinski,
+  J.~H.~Schwarz, N.~Seiberg and E.~Witten, ``Anomalies, Dualities, and
+  Topology of D=6 N=1 Superstring Vacua,'' Nucl.\ Phys.\ {\bf B475}
+  (1996) 115 [hep-th/9605184].
+  
+\bibitem{Intriligator} K.~Intriligator, ``RG fixed points in six
+  dimensions via branes at orbifold singularities,'' Nucl.\ Phys.\ 
+  {\bf B496} (1997) 177 [hep-th/9702038].
+  
+\bibitem{Aldazabal} G.~Aldazabal, A.~Font, L.~E.~Ibanez, A.~M.~Uranga
+  and G.~.~Violero, ``Non-perturbative heterotic D = 6,4, N = 1
+  orbifold vacua,'' Nucl.\ Phys.\ {\bf B519} (1998) 239
+  [hep-th/9706158].
+
+\bibitem{Vafa:1986wx} C.~Vafa, ``Modular Invariance And Discrete
+  Torsion On Orbifolds,'' Nucl.\ Phys.\ {\bf B273} (1986) 592.
+
+\bibitem{GreenSchwarz} M.~B.~Green and J.~H.~Schwarz, ``Anomaly
+  Cancellations In Supersymmetric D = 10 Gauge Theory and Superstring
+  Theory,'' Phys.\ Lett.\ {\bf B149} (1984) 117.
+
+\bibitem{Bredon} G.~E.~Bredon, ``Topology and Geometry'', Springer, 1993.
+
+\bibitem{Nilles} H.~Nilles, ``Strings On Orbifolds: An
+  Introduction,'' CERN-TH-4918/87
+
+\bibitem{Pol} J.~P.~Polchinski, ``String Theory'', Vols. I and II,
+  Cambridge, 1998.
+  
+\bibitem{Spanier} E.~H.~Spanier, ``Algebraic Topology'', McGraw-Hill, 1966.
+
+\bibitem{Steenrod} N.~E.~Steenrod, ``The topology of fibre bundles'',
+  Princeton, 1960.
+
+\bibitem{BottTu} R.~Bott and L.~W.~Tu, ``Differential Forms in
+  Algebraic Topology'', Springer, 1982.
+  
+\bibitem{Bott} M.~R.~Bott, ``An Application of the Morse Theory to the
+  Topology of Lie-Groups'', Bull.\ Soc.\ math.\ France {\bf 84} (1956)
+  251.
+
+\bibitem{Humphreys} J.~E.~Humphreys, ``Introduction to Lie Algebras
+  and Representation Theory'', Springer, 1972.
+  
+\bibitem{APSII} M.~F.~Atiyah, V.~K.~Patodi and I.~M.~Singer,
+  ``Spectral Asymmetry And Riemannian Geometry 2,'' Proc.\ Cambridge
+  Phil.\ Soc.\ {\bf 78} (1976) 405.
+  
+\bibitem{Atiyah:1978wi} M.~F.~Atiyah, N.~J.~Hitchin and I.~M.~Singer,
+  ``Selfduality In Four-Dimensional Riemannian Geometry,'' Proc.\ 
+  Roy.\ Soc.\ Lond.\ {\bf A362} (1978) 425.
+  
+\bibitem{Witten:1986bt} E.~Witten, ``Topological Tools In
+  Ten-Dimensional Physics,'' Int.\ J.\ Mod.\ Phys.\ {\bf A1} (1986)
+  39.
+
+\end{thebibliography}
+\end{document}
+
+\bye

@@ -1,0 +1,358 @@
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,amsfonts,amsbsy,amssymb,amsthm,amstext,amscd}
+\usepackage[psamsfonts]{eucal}
+\usepackage{latexsym}
+\usepackage{indentfirst,tabularx}
+\def\seteps#1#2#3#4{\vskip#3\relax\noindent\hskip#1\relax
+ \special{eps:#4 x=#2, y=#3}}
+\def\centereps#1#2#3{\vskip#2\relax\centerline{\hbox to#1{\special
+{psfile=#3}\hfill}}}
+\addtolength{\oddsidemargin}{-0.5cm}
+\addtolength{\evensidemargin}{-0.5cm}
+\textwidth 6 truein
+\textheight 8 truein
+\renewcommand{\baselinestretch}{2}
+\tolerance = 10000
+\parindent 0.5 truein
+\providecommand{\emi}[1]{{\bf #1}\index{#1}}
+\providecommand{\mi}[1]{#1\index{#1}}
+\providecommand{\field}[1]{\mathbb{#1}}
+\providecommand{\R}{\field{R}}
+\providecommand{\h}{\field{H}}
+\providecommand{\Z}{\field{Z}}
+\providecommand{\con}{\overline}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{thm}{Theorem}
+\renewcommand{\u}{\textit}
+\renewcommand{\-}{\myHighlight{$\dfrac{\quad\enspace}{\quad}$}\coordHE{}}
+\DeclareMathOperator{\cosec}{cosec}
+
+
+
+\usepackage{useful_macros}
+\begin{document}
+\begin{titlepage}
+\setlength{\baselineskip}{16pt}
+\begin{center}
+\vskip 1in
+{\large \textbf{AdS/CFT FOR NON-BOUNDARY MANIFOLDS}}
+\vskip 1in
+Brett McInnes
+\break
+Department of Mathematics\\
+National University of Singapore\\
+10, Kent Ridge Cresent, Singapore 119260\\
+email : matmcinn@nus.edu.sg\\
+\vskip 1in
+ABSTRACT
+\end{center}
+
+In its Euclidean formulation, the AdS/CFT correspondence begins as a study of Yang-Mills conformal field theories on the sphere, \myHighlight{$S^4$}\coordHE{}. It has been successfully extended, however, to \myHighlight{$S^1\times S^3$}\coordHE{} and to the torus \myHighlight{$T^4$}\coordHE{}. It is natural to hope that it can be made to work for \u{any} manifold on which it is possible to define a stable Yang-Mills conformal field theory. We consider a possible classification of such manifolds, and show how to deal with the most obvious objection : the existence of manifolds which cannot be represented as boundaries. We confirm Witten's suggestion that this can be done with the help of a brane in the bulk.
+
+
+
+
+\end{titlepage}
+\setlength{\baselineskip}{20pt}
+
+\renewcommand{\thesection}{\Roman{section}}
+\section{\large INTRODUCTION}
+In its original formulation, the AdS/CFT correspondence \cite{1} allows us to study Yang-Mills conformal field theories on \myHighlight{$S^4$}\coordHE{} in terms of an \myHighlight{$S^5$}\coordHE{} compactification of string theory on the hyperbolic space \myHighlight{$H^5$}\coordHE{}. [We use the Euclidean approach throughout; \myHighlight{$S^n$}\coordHE{} is the \myHighlight{$n$}\coordHE{}-sphere with the standard Riemmanian metric and conformal structure, and \myHighlight{$H^n$}\coordHE{} is the open ball \myHighlight{$B^n$}\coordHE{} endowed with the metric of constant sectional curvature equal to -1.] The transition from the gravitational theory in the ``bulk'' to a non-gravitational theory is effected by a geometric scheme in which \myHighlight{$S^4$}\coordHE{} appears as ``infinity'' for \myHighlight{$H^5$}\coordHE{}. The obvious way \- but, we shall argue, \u{not} the only way \- to formulate this concretely is to regard \myHighlight{$S^4$}\coordHE{} as the \u{boundary} of the closed ball \myHighlight{$\overline{B}^5$}\coordHE{}, after the manner of Penrose compactifications \cite{2} in general relativity.
+
+It is generally agreed that AdS/CFT reflects some very deep property of these conformal field theories. If this is so, then surely the correspondence must work for manifolds other than \myHighlight{$S^4$}\coordHE{}. This idea \cite{3} has led to some remarkable insights. For example, replacing \myHighlight{$S^4$}\coordHE{} by \myHighlight{$S^1\times S^3$}\coordHE{}, we immediately note that there are at least \u{two} candidates for the bulk, \myHighlight{$B^2\times S^3$}\coordHE{} and \myHighlight{$S^1\times B^4$}\coordHE{}. The conformal field theory partition function is then naturally defined by a sum of contributions from \myHighlight{$B^2\times S^3$}\coordHE{} and \myHighlight{$S^1\times B^4$}\coordHE{}, which leads to a large \myHighlight{$N$}\coordHE{} phase transition related to black hole thermodynamics \cite{3}. Thus AdS/CFT can indeed be pushed beyond \myHighlight{$S^4$}\coordHE{}. The obvious question now is : how far can it be pushed ? Are there manifolds for which AdS/CFT definitely does not work? If so, can one classify the manifolds for which it does? In short, what are the ``outer limits'' for AdS/CFT?
+
+The ideal answer to the first of these questions would be : it works for every compact conformal manifold of dimension less than 11 on which a physically sensible CFT can be defined. Our objective in this work is not, of course, to ``prove'' such a grandiose assertion; our purpose, instead, is to formulate ``physically sensible'' in a precise way, and to answer the most obvious objection to this claim : how can it be true of a CFT defined on a compact manifold which is \u{not} the boundary of any manifold-with-boundary?
+
+This question was already raised in \cite{3}, where it was suggested that an answer would involve introducing ``branes or stringy impurities of some kind'' into the bulk. We will argue here that \u{this is indeed precisely the correct answer}, and that AdS/CFT does have a chance of working even in this extreme case. Clearly, this will involve a more general formulation of the relationship between the bulk and ``infinity'' than is usually considered. We will see that recent important results on the geometry of ``infinity'' \cite{4}, \cite{5} can be interpreted physically as results on the nature of the matter content of the bulk.
+
+We begin in section II by discussing a criterion, hinted at in \cite{3} and stated explicitly in \cite{6}, for a Yang-Mills CFT to be physically reasonable. This leads us, with the aid of the Kazdan-Warner classification \cite{7}, to a precise proposal as to the kinds of manifolds for which AdS/CFT should be expected to work. Among these are some manifolds which cannot be represented as boundaries, and so cannot be Penrose conformal infinity for any bulk. This leads us, in section III, to generalise the concept of conformal infinity in such a way that ``infinity'' is a hypersurface in a compact \u{manifold}, instead of a boundary of a manifold-with-boundary. Finally, in section IV, we use geometric techniques to prove that the bulk must, if ``infinity'' is not a boundary, contain some kind of ``brane or stringy impurity'', and to investigate the nature of these ``impurities''.
+
+\section{\large THE STABILITY CONDITION FOR THE CFT}
+
+It is pointed out in \cite{3} that the convergence of the path integral for the Yang-Mills CFT is non-trivial \- it depends on the geometry of the underlying manifold. Convergence is not a problem for \myHighlight{$S^4$}\coordHE{} with its standard conformal structure, but, as one moves away from this simplest case, one expects the good behaviour of the CFT to become increasingly questionable. We therefore need to know which properties of \myHighlight{$S^4$}\coordHE{} are essential and which are not. (Throughout this section, all manifolds have dimension \myHighlight{$\geq 3$}\coordHE{}.)
+
+As a conformal manifold (that is, a manifold on which one is given an equivalence class of conformally related metrics, as is appropriate for the study of conformal field theories), \myHighlight{$S^4$}\coordHE{} is distinguished by being \u{conformally flat}, and also by having a conformal structure represented by an Einstein metric. We wish to argue that neither of these properties is essential. Against conformal flatness we adduce the following evidence (apart from the fact that it is obviously an extremely severe restriction and would eliminate too many interesting manifolds). We shall see later that there is a compact manifold of the form \myHighlight{$\R^4/\Gamma$}\coordHE{}, where \myHighlight{$\Gamma$}\coordHE{} is of course infinite but discrete, which is a boundary, but on which it is impossible to define a physically reasonable Yang-Mills CFT. \u{This is true for every conformal structure on} \myHighlight{$\R^4/\Gamma$}\coordHE{}. And yet there is a conformally flat conformal structure on this manifold. Evidently the conformal flatness condition has little or no physical significance. Against the Einstein condition we have still stronger evidence, as follows. For any four-dimensional Einstein manifold \myHighlight{$M$}\coordHE{}, the Euler characteristic is given by (\cite{8}. page 161)
+\begin{equation}\coord{}\boxEquation{
+\chi(M)=\dfrac{1}{8\pi^2}\int_M(\norm{U}^2+\norm{W}^2) dV,
+}{
+\chi(M)=\dfrac{1}{8\pi^2}\int_M(\norm{U}^2+\norm{W}^2) dV,
+}{ecuacion}\coordE{}\end{equation} 
+where \myHighlight{$U$}\coordHE{} is the irreducible component of the curvature tensor determined by the scalar curvature, and \myHighlight{$W$}\coordHE{} is the Weyl tensor. Since \myHighlight{$\chi(S^1\times S^3)=0$}\coordHE{}, an Einstein metric on \myHighlight{$S^1\times S^3$}\coordHE{} would necessarily be flat, an impossibility since \myHighlight{$S^1\times S^3$}\coordHE{} is not covered by \myHighlight{$\R^4$}\coordHE{}. So there is no Einstein metric of any kind on \myHighlight{$S^1\times S^3$}\coordHE{}, including non-product metrics. (This is just the simplest of several non-existence results of this kind; see \cite{9}.) Thus the Einstein condition would rule out \myHighlight{$S^1\times S^3$}\coordHE{} \- which, as we saw in the Introduction, is one of the most important examples of a manifold to which AdS/CFT \u{can} be extended.
+
+Having abandoned constraints on the components of the curvature tensor determined by the Weyl and Ricci tensors, we turn naturally to its last remaining component, \myHighlight{$U$}\coordHE{}. The proper criterion \cite{3},\cite{6} is as follows. Let \myHighlight{$N^n$}\coordHE{} be a compact manifold with a conformal structure \myHighlight{$[g^N]$}\coordHE{}. The conformal Laplacian, obviously the physically relevant operator here, is \cite{10}
+\begin{equation}\coord{}\boxEquation{
+L_{g^N}=-\Delta_{g^N} +\dfrac{n-2}{4(n-1)}R(g^N),
+}{
+L_{g^N}=-\Delta_{g^N} +\dfrac{n-2}{4(n-1)}R(g^N),
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\Delta_{g^N}$}\coordHE{} is the usual Laplacian, \myHighlight{$n=\dim(N^n)$}\coordHE{}, and \myHighlight{$R(g^N)$}\coordHE{} is the scalar curvature. It is well known that \myHighlight{$L_{g^N}$}\coordHE{} is an elliptic operator with discrete real spectrum bounded from below. Let \myHighlight{$\mu_1(g^N)$}\coordHE{} be the first eigenvalue. Then the Yang-Mills CFT will be \u{stable} if \myHighlight{$\mu_1(g^N)>0$}\coordHE{}, and sometimes when \myHighlight{$\mu_1(g^N)=0$}\coordHE{}, but it is \u{unstable} if \myHighlight{$\mu_1(g^N)<0$}\coordHE{}. This criterion can be stated more usefully as follows. By Schoen's solution \cite{11} of the Yamabe problem, \myHighlight{$[g^N]$}\coordHE{} contains a \u{Yamabe metric} \myHighlight{$g^N_Y$}\coordHE{} which, by definition, is such that \myHighlight{$R(g^N_Y)$}\coordHE{} is \u{constant} on \myHighlight{$N^n$}\coordHE{}. This constant is given by
+\begin{equation}\coord{}\boxEquation{
+R(g^N_Y)=\frac{4(n-1)}{n-2}\mu_1(g^N_Y).
+}{
+R(g^N_Y)=\frac{4(n-1)}{n-2}\mu_1(g^N_Y).
+}{ecuacion}\coordE{}\end{equation}
+The stability condition can therefore be expressed in terms of the sign of the scalar curvature. For example, \myHighlight{$S^4$}\coordHE{} with its usual metric has constant positive scalar curvature, so one can construct a stable CFT using \u{this} metric. However, \myHighlight{$S^4$}\coordHE{} also has \u{another} metric which \- surprisingly \- has constant \u{negative} scalar curvature. The CFT will of course be unstable if this metric is used. 
+
+Now in fact Kazdan and Warner \cite{7} have given a classification of manifolds according to the behaviour of the scalar curvature. The following theorem is basic.
+\begin{thm}[Kazdan-Warner]
+Every compact connected manifold \myHighlight{$M^n$}\coordHE{}, \myHighlight{$n\geq 3$}\coordHE{}, falls into precisely one of the following  three classes.
+\begin{enumerate}
+\item \myHighlight{$P$}\coordHE{} : Every smooth function on \myHighlight{$M^n$}\coordHE{} is the scalar curvature of some metric on \myHighlight{$M^n$}\coordHE{}.
+\item \myHighlight{$Z$}\coordHE{} : A smooth function on \myHighlight{$M^n$}\coordHE{} is the scalar curvature of some metric if and only if it is either negative at some point or it is identically zero.
+\item \myHighlight{$N$}\coordHE{} : A smooth function is the scalar curvature of some metric on \myHighlight{$M^n$}\coordHE{} if and only if it is negative at some point.
+\end{enumerate}
+\end{thm}
+To see how to use this theorem, observe for example that since \myHighlight{$S^4$}\coordHE{} admits a metric of positive scalar curvature, it cannot be in \myHighlight{$Z$}\coordHE{} or \myHighlight{$N$}\coordHE{}; hence it is in \myHighlight{$P$}\coordHE{}; hence \u{every} smooth function on \myHighlight{$S^4$}\coordHE{} is the scalar curvature of some metric; hence indeed there is a metric on \myHighlight{$S^4$}\coordHE{} with constant negative scalar curvature, another with identically zero scalar curvature, and so on. Again, the torus \myHighlight{$T^4$}\coordHE{} accepts a flat metric, so it is not in \myHighlight{$N$}\coordHE{}; since it is ``enlargeable'' (\cite{12}, page 306), it admits \u{no} metric of positive scalar curvature, so it cannot be in \myHighlight{$P$}\coordHE{}; hence it is in \myHighlight{$Z$}\coordHE{}. Finally, consider a compact 4-dimensional manifold which accepts a metric of constant negative sectional curvature. Such a manifold has the structure \myHighlight{$\R^4/\Gamma$}\coordHE{}, for some discrete freely acting group \myHighlight{$\Gamma$}\coordHE{} with no subgroup of the form \myHighlight{$\Z\oplus\Z\oplus\Z\oplus\Z$}\coordHE{}. (\myHighlight{$\R^4/\Gamma$}\coordHE{} is said to be homotopically atoroidal.) This manifold, too, is enlargeable, so it admits no metric of positive scalar curvature. Nor, however, does it admit a metric of zero scalar curvature, for such a metric on an enlargeable manifold must be flat, but \myHighlight{$\R^4/\Gamma$}\coordHE{} is not covered by \myHighlight{$T^4$}\coordHE{}. Hence it is in \myHighlight{$N$}\coordHE{}. This is the example mentioned earlier : its metric of constant negative sectional curvature is conformally flat (and so its Hirzebruch signature is zero; the signature being, in four dimensions, an isomorphism (\cite{12} page 92) from the oriented cobordism group to \myHighlight{$\Z$}\coordHE{}, the manifold is a boundary) and yet \u{every} conformal class on \myHighlight{$\R^4/\Gamma$}\coordHE{} is represented by a Yamabe metric of negative scalar curvature, so conformal flatness certainly does not ensure satisfactory physical behaviour.
+
+It is important to realise that the Kazdan-Warner classification is a classification of \u{manifolds} \- that is, the class to which a space belongs depends only on its topology and differentiable structure. (For this second point, note that \myHighlight{$S^9$}\coordHE{} with its usual differentiable structure belongs to \myHighlight{$P$}\coordHE{}, but with a certain exotic differentiable structure \cite{13}, it belongs to \myHighlight{$N$}\coordHE{}. The stability of these conformal field theories in nine (and ten) dimensions can therefore depend on the choice of differentiable structure.) Clearly it is not possible to define a stable CFT on a manifold in class \myHighlight{$N$}\coordHE{} \u{no matter which conformal structure we use}. The instability is \u{not} a geometric phenomenon for manifolds in class \myHighlight{$N$}\coordHE{}; it is due to their differential topology. For manifolds in class \myHighlight{$P$}\coordHE{}, by contrast, there is always a metric which makes the CFT stable, but there is also another metric which makes it unstable. (Notice that the Kazdan-Warner theorem implies that \u{every} compact manifold of dimension greater than two admits a metric of constant negative scalar curvature.) Hence, once it is known that a manifold is in \myHighlight{$P$}\coordHE{}, the question of stability becomes a geometric question. (The reader should be aware that deciding the Kazdan-Warner class of a manifold can be non-trivial :  for example, simply connected six-dimensional Calabi-Yau manifolds are all in \myHighlight{$P$}\coordHE{}, \u{not} \myHighlight{$Z$}\coordHE{}.)
+
+What of class \myHighlight{$Z$}\coordHE{}? In all known examples, these manifolds behave like manifolds in class \myHighlight{$P$}\coordHE{}. For example, \myHighlight{$T^4$}\coordHE{} with its flat metric admits a CFT which is perfectly well-behaved \cite{14}. The same appears to be true of manifolds and orbifolds of the form \myHighlight{$T^4/\Delta$}\coordHE{}, where \myHighlight{$\Delta$}\coordHE{} is a finite group of isometries of \myHighlight{$T^4$}\coordHE{}. (All such manifolds/orbifolds are in \myHighlight{$Z$}\coordHE{}, since a metric of positive scalar curvature on \myHighlight{$T^4/\Delta$}\coordHE{} would pull back to a metric of positive scalar curvature on \myHighlight{$T^4$}\coordHE{}.) Since \myHighlight{$K3$}\coordHE{} can be regarded as a resolution of a \myHighlight{$T^4$}\coordHE{} orbifold, we expect that the same is true in this case also. (That \myHighlight{$K3$}\coordHE{} is in \myHighlight{$Z$}\coordHE{} follows from the theorem of Lichnerowicz; see \cite{12}.) It is reasonable to conjecture that Kazdan-Warner class \myHighlight{$Z$}\coordHE{} is indeed like class \myHighlight{$P$}\coordHE{} : that is, for each manifold in \myHighlight{$Z$}\coordHE{}, there is a conformal structure such that the CFT is stable, while there are of course other conformal structures such that the CFT is unstable.
+
+Throughout this discussion, we have not assumed that ``infinity'', the compact manifold on which our CFT is defined, is \u{connected}. There is of course a well-defined stable CFT on \myHighlight{$T^4+S^4$}\coordHE{}, the disjoint union of \myHighlight{$T^4$}\coordHE{} and \myHighlight{$S^4$}\coordHE{}, though the two separate conformal field theories are very different and are decoupled.  Now there exists a non-compact five-dimensional spin manifold \myHighlight{$M^5$}\coordHE{} such that \myHighlight{$T^4+S^4$}\coordHE{} is the boundary of a connected manifold-with-boundary \myHighlight{$\overline{M}^5$}\coordHE{} having \myHighlight{$M^5$}\coordHE{} as interior. How can AdS/CFT work in this case? How can \u{one} interior be ``dual'' to \u{two} different, decoupled conformal field theories? This question was raised in \cite{4}. The simplest response to this paradox is just to declare that AdS/CFT should \u{not} be expected to work for disconnected boundaries (with an exception to be discussed below). In practical terms, this is of course a very minor limitation, since \myHighlight{$T^4$}\coordHE{} and \myHighlight{$S^4$}\coordHE{} are each boundaries, of \myHighlight{$\overline{B}^2\times T^3$}\coordHE{} and \myHighlight{$\overline{B}^5$}\coordHE{} respectively, so the separate conformal field theories can be studied by two applications of ordinary AdS/CFT. 
+
+We can now state what we hope to be the full range of AdS/CFT. The claim is that AdS/CFT should work for \u{every compact connected infinity manifold} (or perhaps orbifold, etc) \u{of suitable dimension which does not belong to Kazdan-Warner} \u{class \myHighlight{$N$}\coordHE{}}. By ``suitable dimension'' we mean simply that the bulk should be of dimension 10 or 11, or lower if there is a compactification.
+
+So far, we have concentrated on the conditions to be satisfied by the differential topology and geometry of ``infinity'', without concerning ourselves with the details of the physical fields there. This is justifiable, in that the theory at ``infinity'' is avowedly non-gravitational. For precisely this reason, care should be exercised before imposing geometric conditions on the \u{bulk}. Often one assumes that the bulk is an Einstein manifold of Ricci curvature \myHighlight{$-n$}\coordHE{}, but, while this is legitimate \cite{15} if ``infinity'' is \myHighlight{$S^n$}\coordHE{} and the conformal structure is not too far from the standard one, it should only be regarded as an approximation in other cases. In more general investigations \cite{16} the metric is only required to be asymptotically Einstein; no particular fall-off rate is assumed, and the metric is certainly \u{not} required to be complete \- indeed, in many applications it is definitely incomplete. Our attitude is that conditions on the metric in a \u{gravitational} theory should be dictated by the theory itself, not imposed externally. In short, we shall impose no requirements on the bulk metric.
+
+As is observed already in \cite{3}, there is an obvious, strong objection to the idea that AdS/CFT works whenever the CFT is stable (that is, for connected compact manifolds of Kazdan-Warner classes \myHighlight{$P$}\coordHE{} and \myHighlight{$Z$}\coordHE{}) : many manifolds are not boundaries. For example, no compact connected four-dimensional manifold is a boundary if its signature is not zero \cite{17}. We now deal with this objection.
+
+\section{\large INFINITY IS JUST ANOTHER BRANE}
+
+Let \myHighlight{$\hat{M}^{n+1}$}\coordHE{} be a compact \myHighlight{$(n+1)$}\coordHE{}-dimensional manifold containing a smooth compact boundaryless hypersurface \myHighlight{$N^n$}\coordHE{}. Fix a Riemannian metric \myHighlight{$g^M$}\coordHE{} on \myHighlight{$M^{n+1}=\hat{M}^{n+1}-N^n$}\coordHE{} and assume that there exists an ``infinity function'' f on \myHighlight{$\hat{M}^{n+1}$}\coordHE{}. This is a smooth function which is positive on \myHighlight{$M^{n+1}$}\coordHE{} and vanishes to first order on \myHighlight{$N^n$}\coordHE{}, such that \myHighlight{$f^2g^M$}\coordHE{} extends continuously to \myHighlight{$N^n$}\coordHE{}. If such a function exists, then \myHighlight{$N^n$}\coordHE{} is ``infinitely far from'' points in \myHighlight{$M^{n+1}$}\coordHE{}, and \myHighlight{$g^M$}\coordHE{} induces a conformal structure (not a Riemannian structure) on \myHighlight{$N^n$}\coordHE{}. (Note that \myHighlight{$M^{n+1}$}\coordHE{} need not be complete.) In such a case, we shall say that \myHighlight{$N^n$}\coordHE{} is an \u{infinity hypersurface} for \myHighlight{$\hat{M}^{n+1}$}\coordHE{} with respect to \myHighlight{$g^M$}\coordHE{}.
+
+This definition is of course motivated by the formal definition \cite{15} of a Penrose conformal boundary, which is the more usual arena for AdS/CFT. Indeed, any compact manifold-with-boundary with the boundary ``at infinity'' can be re-interpreted in the above way : simply take two copies, and (adjusting the boundary orientation suitably) identify them along the boundary. The result will be a compact \u{manifold} with an infinity hypersurface at the former location of the boundary. One can also do this by beginning with distinct manifolds-with-boundary having diffeomorphic boundaries. For example, \myHighlight{$\overline{B}^2\times S^3$}\coordHE{} can be joined to \myHighlight{$S^1\times \overline{B}^4$}\coordHE{} along their common \myHighlight{$S^1\times S^3$}\coordHE{} boundary, and so the process of summing over distinct interiors \cite{3} can be implemented in a concrete way. Heuristically, there may well be advantages in dethroning ``infinity'' from its privileged position at the boundary, and thinking of it as ``just another brane'', one which happens to be infinitely far away; and certainly compact \u{manifolds} are preferable to manifolds-with-boundaries.
+
+Clearly, AdS/CFT can be formulated in this language. Notice, however, that the infinity hypersurfaces obtained in this way have a special property : \myHighlight{$N^n$}\coordHE{} separates \myHighlight{$M^{n+1}$}\coordHE{} into disconnected pieces. By considering infinity hypersurfaces which do not have this effect, we obtain something new. The following family of examples is particularly enlightening.
+
+Let \myHighlight{$P^n$}\coordHE{} be connected, compact, \myHighlight{$n$}\coordHE{}-dimensional manifold with a Riemannian metric \myHighlight{$g^P=g^P_{ij}dx^i\otimes dx^j$}\coordHE{} and Ricci curvature \myHighlight{$Ric(g^P)=R^P_{ij}dx^i\otimes dx^j$}\coordHE{}. Let \myHighlight{$\hat{M}^{n+1}=S^1\times P^n$}\coordHE{} with \myHighlight{$S^1$}\coordHE{} parametrised by \myHighlight{$\theta$}\coordHE{} running from \myHighlight{$0$}\coordHE{} to \myHighlight{$2\pi$}\coordHE{}, and let \myHighlight{$M^{n+1}$}\coordHE{} be obtained from \myHighlight{$\hat{M}^{n+1}$}\coordHE{} by deleting all points with \myHighlight{$\theta=0$}\coordHE{}. Define a metric \myHighlight{$g^M$}\coordHE{} on \myHighlight{$M^{n+1}$}\coordHE{} by
+\begin{equation}\coord{}\boxEquation{
+g^M=\cosec^2(\frac{\theta}{2})[\frac{1}{4}d\theta\otimes d\theta + g^P_{ij}dx^i\otimes dx^j].
+}{
+g^M=\cosec^2(\frac{\theta}{2})[\frac{1}{4}d\theta\otimes d\theta + g^P_{ij}dx^i\otimes dx^j].
+}{ecuacion}\coordE{}\end{equation}
+Here the function \myHighlight{$f$}\coordHE{} is \myHighlight{$\sin(\dfrac{\theta}{2})$}\coordHE{}, which is positive in \myHighlight{$(0,2\pi)$}\coordHE{} and vanishes to first order at \myHighlight{$\theta=0$}\coordHE{}, where there is a single copy of \myHighlight{$P^n$}\coordHE{}. The infinity hypersurface does not separate \myHighlight{$M^{n+1}$}\coordHE{} into disconnected components. The Ricci tensor of this metric is, in an obvious notation,
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}(R^{\leftCoord{}M})^\theta_\theta&=-n,\rightCoord{}\\
+\leftCoord{}(R^{\leftCoord{}M})^{\leftCoord{}i}_j&=-n\delta^{\leftCoord{}i}_j+\sin^{\leftCoord{}2}(\frac{\leftCoord{}\theta}{\rightCoord{}2})[(R^{\leftCoord{}P})^{\leftCoord{}i}_j+(n-1)\delta^{\leftCoord{}i}_j],
+}{0mm}{11}{3}{
+(R^{M})^\theta_\theta&=-n,\\
+(R^{M})^{i}_j&=-n\delta^{i}_j+\sin^{2}(\frac{\theta}{2})[(R^{P})^{i}_j+(n-1)\delta^{i}_j],
+}{0}\coordE{}\end{align}
+all other components being zero. We have expressed the Ricci tensor in \myHighlight{$(1,1)$}\coordHE{} form in order to be able to discuss \u{invariant} quantities, namely the \u{eigenvalue functions} of the Ricci curvature. (The \myHighlight{$(0,2)$}\coordHE{} components diverge near \myHighlight{$\theta=0$}\coordHE{}, but this is merely a coordinate effect.) As \myHighlight{$P^n$}\coordHE{} is compact, the eigenvalue functions of \myHighlight{$Ric(g^P)$}\coordHE{} are bounded, and hence so are those of \myHighlight{$Ric(g^M)$}\coordHE{}. For example, if \myHighlight{$P^n$}\coordHE{} is Ricci-flat, the eigenvalue functions of \myHighlight{$Ric(g^M)$}\coordHE{} are bounded above by \myHighlight{$-1$}\coordHE{} and below by their asymptotic value, \myHighlight{$-n$}\coordHE{}.
+
+\begin{figure}
+\centereps{10cm}{5cm}{b4.eps}
+\caption{Manifold with infinity hypersurface}
+\end{figure}
+The structure of this space (Figure 1) is clear : the infinity hypersurface is really one, connected copy of \myHighlight{$P^n$}\coordHE{}, and the bulk \myHighlight{$M^{n+1}$}\coordHE{} is just an open submanifold. However, we can (``perversely'') re-interpret the structure of \myHighlight{$M^{n+1}$}\coordHE{}as follows. Instead of the compact \u{manifold} \myHighlight{$S^1\times P^n$}\coordHE{}, let us consider the compact manifold-with-boundary \myHighlight{$[0,2\pi]\times P^n$}\coordHE{} obtained by artificially distinguishing \myHighlight{$\theta=2\pi$}\coordHE{} from \myHighlight{$\theta=0$}\coordHE{}. Now formula (4) still defines a Riemannian metric on the interior, \myHighlight{$(0,2\pi)\times P^n$}\coordHE{}. If we insist on setting asunder what belongs together, we can regard \myHighlight{$[0,2\pi]\times P^n$}\coordHE{} as the Penrose compactification of \myHighlight{$M^{n+1}$}\coordHE{}; the boundary now consists of \u{two} copies of \myHighlight{$P^n$}\coordHE{}, one each at \myHighlight{$\theta=0$}\coordHE{} and \myHighlight{$\theta=2\pi$}\coordHE{}. We can lend colour to this imposture by changing coordinates. Let \myHighlight{$x$}\coordHE{} be defined by
+\begin{equation*}\coord{}\boxEquation{
+\cosh(x)=\cosec(\frac{\theta}{2})
+}{
+\cosh(x)=\cosec(\frac{\theta}{2})
+}{ecuacion}\coordE{}\end{equation*}
+with \myHighlight{$x\leq0$}\coordHE{} for \myHighlight{$\theta\leq\pi$}\coordHE{}, and \myHighlight{$x\geq0$}\coordHE{} for \myHighlight{$\theta\geq\pi$}\coordHE{}. A short calculation reveals
+\begin{equation}\coord{}\boxEquation{
+g^M=dx\otimes dx + \cosh^2(x)g^P_{ij}dx^i\otimes dx^j,
+}{
+g^M=dx\otimes dx + \cosh^2(x)g^P_{ij}dx^i\otimes dx^j,
+}{ecuacion}\coordE{}\end{equation}
+again suggesting two distinct ``infinities'', one at ``\myHighlight{$x=-\infty$}\coordHE{}'', the other at ``\myHighlight{$x=+\infty$}\coordHE{}''. (See \cite{8} page 268 and note that \myHighlight{$g^M$}\coordHE{} is Einstein if \myHighlight{$Ric(g^P)=-(n-1)g^P$}\coordHE{}.)
+
+In short, \myHighlight{$M^{n+1}$}\coordHE{} does not ``know'' whether it is an open submanifold of a compact \u{manifold}, or the interior of a compact manifold-with-boundary. However, the difference, from a physical point of view, is substantial. For the manifold-with-boundary interpretation leads us to a disconnected boundary, and so to the Witten-Yau paradox discussed previously. The ``infinity hypersurface'' interpretation is both more natural and more physically acceptable.
+
+The metric (4) has no particular physical significance; it was chosen to make the above point. In general, we can take a compact manifold \myHighlight{$\hat{M}^{n+1}$}\coordHE{} with an infinity hypersurface \myHighlight{$N^n$}\coordHE{}, and ``split'' it along \myHighlight{$N^n$}\coordHE{} to obtain a compact manifold-with-boundary having boundary components \myHighlight{$N^n_1$}\coordHE{}, \myHighlight{$N^n_2$}\coordHE{}, and so on, with each component diffeomorphic to \myHighlight{$N^n$}\coordHE{}. We can then deform a conformal structure on \myHighlight{$N^n_2$}\coordHE{} through physically acceptable conformal structures to obtain a boundary component which is of course still diffeomorphic, but perhaps no longer isometric, to \myHighlight{$N^n$}\coordHE{}. It would clearly be absurd to disallow the original manifold on the grounds that it can so artificially be brought into conflict with the Witten-Yau paradox. On the contrary, when we are presented with a metric like (7), representing the interior of a manifold-with-boundary with essentially identical boundary components, our first move should be to make the appropriate identifications and return to the more natural infinity hypersurface interpretation (corresponding to (4)). Of course, if the boundary components are not mutually diffeomorphic (or if they are, but their conformal structures can only be deformed to each other by passing through ``unstable'' conformal structures) then the paradox will lead to genuine difficulties.
+
+These remarks bring us to our main application.
+
+\section{\large MANIFOLDS WHICH ARE NOT BOUNDARIES}
+
+Suppose that we wish to study a Yang-Mills CFT  on some compact manifold \myHighlight{$N^n$}\coordHE{} (such as a four-manifold with non-zero signature) which simply cannot be expressed as the boundary of some manifold-with-boundary. We now have a strategy : represent two copies of \myHighlight{$N^n$}\coordHE{} as a disconnected conformal boundary, and identify them to realise it as an infinity hypersurface in some compact manifold. The CFT should then be dual to some string theory in this ``bulk''. As we shall see, this can always be done; the only point at issue is whether the bulk admits a physically reasonable geometry.
+
+When we say that a certain compact manifold \myHighlight{$N^n$}\coordHE{} is not a boundary, we mean ``not a boundary by itself''. It is always possible to find a compact manifold \myHighlight{$Q^n$}\coordHE{} such that \myHighlight{$N^n+(-Q^n)$}\coordHE{} \u{is} a boundary of a connected \myHighlight{$(n+1)$}\coordHE{}-dimensional space. (We consider only oriented manifolds; \myHighlight{$-Q^n$}\coordHE{} results from reversing orientation.) One says that \myHighlight{$N^n$}\coordHE{} and \myHighlight{$Q^n$}\coordHE{} are \u{cobordant} \cite{17}. In general, this will not solve our problem, because it will lead to the Witten-Yau paradox. However, if we choose \myHighlight{$Q^n=N^n$}\coordHE{}, then we can represent \myHighlight{$N^n$}\coordHE{} as a connected infinity hypersurface by performing a topological identification. Unfortunately, this seems a somewhat arbitrary proceeding, because there are many other choices for \myHighlight{$Q^n$}\coordHE{} \- cobordant manifolds can be very different. We should ask whether the choice \myHighlight{$Q^n=N^n$}\coordHE{} can be motivated on \u{physical} grounds.
+
+Before discussing this, let us consider the concept of \u{spin cobordism}. Let \myHighlight{$\overline{M}^{n+1}$}\coordHE{} be a compact manifold-with-boundary with interior \myHighlight{$M^{n+1}$}\coordHE{}. If \myHighlight{$M^{n+1}$}\coordHE{} is a spin manifold, a given spin structure induces a spin structure on the boundary in a canonical way (\cite{12}, page 90). Now spin manifolds \myHighlight{$N^n$}\coordHE{} and \myHighlight{$Q^n$}\coordHE{} are \u{spin} cobordant if there exists a compact manifold-with-boundary \myHighlight{$\overline{M}^{n+1}$}\coordHE{} having \myHighlight{$N^n+(-Q^n)$}\coordHE{} as boundary, and having an interior with a spin structure that induces the given spin structures on \myHighlight{$N^n$}\coordHE{} and \myHighlight{$-Q^n$}\coordHE{}. Clearly spin cobordism is the appropriate cobordism theory for physical applications. The spin cobordism equivalence classes in a given dimension form an abelian group, \myHighlight{$\Omega^{spin}_n$}\coordHE{}. In low dimensions they are (\cite{12}, page 92):
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\Omega^{\leftCoord{}spin}_1&=\Z_2,&\Omega^{\leftCoord{}spin}_2&=\Z_2,\rightCoord{}\\
+\leftCoord{}\Omega^{\leftCoord{}spin}_3&=0,&\Omega^{\leftCoord{}spin}_4&=\Z, \nonumber\rightCoord{}\\
+\leftCoord{}\Omega^{\leftCoord{}spin}_5&=0,&\Omega^{\leftCoord{}spin}_6&=0,\nonumber\rightCoord{}\\
+\leftCoord{}\Omega^{\leftCoord{}spin}_7&=0,&\Omega^{\leftCoord{}spin}_8&=\Z\oplus\Z.\nonumber
+}{0mm}{12}{4}{
+\Omega^{spin}_1&=\Z_2,&\Omega^{spin}_2&=\Z_2,\\
+\Omega^{spin}_3&=0,&\Omega^{spin}_4&=\Z, \nonumber\\
+\Omega^{spin}_5&=0,&\Omega^{spin}_6&=0,\nonumber\\
+\Omega^{spin}_7&=0,&\Omega^{spin}_8&=\Z\oplus\Z.\nonumber
+}{0}\coordE{}\end{align}
+
+Let us apply these results. The two-dimensional case is instructive, and we begin with it. The group \myHighlight{$\Omega^{spin}_2$}\coordHE{} is generated by the torus \myHighlight{$T^2$}\coordHE{}. This space has several spin structures, and one of them is not induced by any spin structure on the interior, \myHighlight{$B^2\times S^1$}\coordHE{}; so \myHighlight{$T^2$}\coordHE{} with this spin structure is not a \u{spin} boundary (though of course it is a boundary as an \u{oriented} surface.) Now let \myHighlight{$Q^2$}\coordHE{} be spin cobordant to \myHighlight{$T^2$}\coordHE{}, and set up a conformal field theory on \myHighlight{$T^2+(-Q^2)$}\coordHE{}. As usual, we require stability, meaning that the scalar curvature \- the Gaussian curvature \- of \myHighlight{$Q^2$}\coordHE{} must be positive or zero. But if it is positive, the Gauss-Bonnet theorem identifies \myHighlight{$Q^2$}\coordHE{} as \myHighlight{$S^2$}\coordHE{}, which is not spin cobordant to \myHighlight{$T^2$}\coordHE{} with this spin structure. Thus \myHighlight{$Q^2$}\coordHE{} is forced, by the stability condition, to be just another copy of \myHighlight{$T^2$}\coordHE{}. We are thus invited to perform the appropriate identification and to study the CFT on \myHighlight{$T^2$}\coordHE{} by regarding it as an infinity hypersurface in a compact three-dimensional manifold.
+
+This example gives us hope that the CFT stability condition might constrain the choice of \myHighlight{$Q^n$}\coordHE{} in higher dimensions, and in fact this is correct for the important case of \myHighlight{$n=4$}\coordHE{}. Suppose that \myHighlight{$N^4$}\coordHE{} is a compact connected 4-manifold which admits a stable CFT but which is not a spin boundary. It is known that \myHighlight{$\Omega^{spin}_4$}\coordHE{} is generated by \myHighlight{$K3$}\coordHE{}, so \myHighlight{$N^4$}\coordHE{} is spin cobordant to \myHighlight{$m$}\coordHE{} disjoint copies of \myHighlight{$K3$}\coordHE{}, where \myHighlight{$m$}\coordHE{} could be negative but cannot, by hypothesis, be zero. Now the \myHighlight{$\hat{A}$}\coordHE{} genus is a spin corbordism invariant (\cite{12}. pages 92, 298) and since \myHighlight{$\hat{A}(K3)=2$}\coordHE{}, we see that \myHighlight{$\hat{A}(N^4)\not=0$}\coordHE{}. By the theorem of Lichnerowicz (\cite{12}, page 161) there is \u{no} metric of positive scalar curvature on \myHighlight{$N^4$}\coordHE{}. Suppose that \myHighlight{$Q^4$}\coordHE{} is spin cobordant to \myHighlight{$N^4$}\coordHE{}, so that \myHighlight{$N^4+(-Q^4)$}\coordHE{} is a spin boundary; then all of the above applies equally to \myHighlight{$Q^4$}\coordHE{}.
+
+The stability of the CFT on \myHighlight{$N^4+(-Q^4)$}\coordHE{} now demands that both \myHighlight{$N^4$}\coordHE{} and \myHighlight{$Q^4$}\coordHE{} admit metrics of zero scalar curvature. Now since \myHighlight{$\hat{A}(N^4)$}\coordHE{} and \myHighlight{$\hat{A}(Q^4)$}\coordHE{} are non-zero, both admit non-trivial harmonic spinors; but spinors on a compact spin manifold which are harmonic with respect to a scalar-flat metric must in fact be \u{parallel} (\cite{12}, page 161). The existence of non-trivial parallel spinors forces the spin holonomy group of a manifold to be \u{special}; it also forces the Ricci tensor to vanish \cite{18}. Now the spin holonomy groups of (not necessarily simply connected) compact Ricci-flat Riemannian spin manifolds have been classified \cite{19} and so we can conclude that the metrics on \myHighlight{$N^4$}\coordHE{} and \myHighlight{$Q^4$}\coordHE{} are either flat (which would contradict the non-vanishing of \myHighlight{$\hat{A}(N^4)$}\coordHE{} and \myHighlight{$\hat{A}(Q^4)$}\coordHE{}) or of spin holonomy precisely \myHighlight{$SU(2)$}\coordHE{}. (By ``precisely'', we mean that the full, global holonomy group (both linear and spin) is \myHighlight{$SU(2)$}\coordHE{}, not just the identity component. There are four-manifolds with disconnected linear holonomy groups having \myHighlight{$SU(2)$}\coordHE{} as identity component, but these are \u{not} spin manifolds.) But every compact four-manifold of holonomy precisely \myHighlight{$SU(2)$}\coordHE{} is diffeomorphic to a finite number of copies of \myHighlight{$K3$}\coordHE{} (see \cite{8}, page 365). Since \myHighlight{$\hat{A}(K3)=2$}\coordHE{}, we see that \myHighlight{$m_1$}\coordHE{} copies of \myHighlight{$K3$}\coordHE{} are spin cobordant to \myHighlight{$M_2$}\coordHE{} copies only if \myHighlight{$m_1=m_2$}\coordHE{}, and so, since \myHighlight{$N^4$}\coordHE{} is connected, \myHighlight{$Q^4$}\coordHE{} must be diffeomorphic to it. Finally, the moduli space of Einstein metrics on \myHighlight{$K3$}\coordHE{} is connected (\cite{8}, page 366), and since the total scalar curvature is locally constant as a function on moduli space (\cite{8}, page 352), the \myHighlight{$SU(2)$}\coordHE{} metric on \myHighlight{$Q^4$}\coordHE{} can be deformed through scalar-flat metrics so that \myHighlight{$Q^4$}\coordHE{} is isometric to \myHighlight{$N^4$}\coordHE{}. Regarding \myHighlight{$N^4+(-Q^4)$}\coordHE{} as the boundary of a compact manifold-with-boundary \myHighlight{$\overline{M}^5$}\coordHE{}, we can search for an appropriate metric \myHighlight{$g^M$}\coordHE{} on \myHighlight{$M^5$}\coordHE{} such that \myHighlight{$N^4+(-Q^4)$}\coordHE{} is the conformal boundary (see below). Performing the identification as usual, we now have \myHighlight{$N^4$}\coordHE{} as an infinity hypersurface in a five-dimensional compact manifold, and we can begin to explore AdS/CFT for \myHighlight{$N^4$}\coordHE{}, despite the fact that it is not a boundary.
+
+In dimension 8, the situation is much more complex. The group \myHighlight{$\Omega^{spin}_8=\Z\oplus \Z$}\coordHE{} is generated by the quaternionic projective space \myHighlight{$\h P^2$}\coordHE{} and by any Joyce manifold \myHighlight{$J_8$}\coordHE{} of holonomy \myHighlight{$Spin(7)$}\coordHE{} (see \cite{20}). As \myHighlight{$\h P^2$}\coordHE{} is the symplectic homogeneous space \myHighlight{$\dfrac{Sp(3)}{Sp(1)\times Sp(2)}$}\coordHE{}, it admits a metric of positive scalar curvature, and so, therefore, does any simply connected eight-manifold which is spin cobordant to it or to any finite number of copies of it (\cite{12}, page 299). On the other hand, there are scalar-flat metrics on the various candidates for \myHighlight{$J_8$}\coordHE{} and on many topologically distinct manifolds spin cobordant to \myHighlight{$J_8$}\coordHE{} (such as manifolds of linear holonomy \myHighlight{$SU(4)\triangleleft\Z_2$}\coordHE{}) and to multiple copies of it (such as Calabi-Yau and hyperK\"{a}hler manifolds). Thus if \myHighlight{$N^8$}\coordHE{} is a non-boundary eight-manifold, there are many candidates for \myHighlight{$Q^8$}\coordHE{} and there is no good physical justification for selecting \myHighlight{$Q^8=N^8$}\coordHE{}. Perhaps this indicates some kind of pathology afflicting AdS/CFT for conformal field theories on manifolds of dimension greater than seven.
+
+\section{\large THE BRANE IN THE BULK}
+
+Let \myHighlight{$\hat{M}^5=S^1\times P^4$}\coordHE{}, where \myHighlight{$P^4$}\coordHE{} is a non-boundary four-manifold with a scalar-flat metric. We saw above that in fact \myHighlight{$P^4$}\coordHE{} is Ricci-flat, so if we use equation (4) to define a metric \myHighlight{$g^M$}\coordHE{} on \myHighlight{$M^5$}\coordHE{}, then the Ricci tensor of \myHighlight{$g^M$}\coordHE{} satisfies, by equation (5) and (6),
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}(R^{\leftCoord{}M})^\theta_\theta&=-n,\rightCoord{}\\
+\leftCoord{}(R^{\leftCoord{}M})^{\leftCoord{}i}_j&=-n\delta^{\leftCoord{}i}_j+(n-1)\sin^{\leftCoord{}2}(\frac{\leftCoord{}\theta}{\rightCoord{}2})\delta^{\leftCoord{}i}_j.
+}{0mm}{9}{3}{
+(R^{M})^\theta_\theta&=-n,\\
+(R^{M})^{i}_j&=-n\delta^{i}_j+(n-1)\sin^{2}(\frac{\theta}{2})\delta^{i}_j.
+}{0}\coordE{}\end{align}
+Thus \myHighlight{$M^5$}\coordHE{} is not an Einstein manifold except ``near infinity''.
+
+Now although we should be prepared ultimately to consider non-Einstein metrics on the bulk, we might prefer to begin with Einstein metrics and then to consider perturbations around them. One can of course do this for \myHighlight{$S^4$}\coordHE{} and for \myHighlight{$S^1\times S^3$}\coordHE{}; but can one do it for infinities which are not boundaries? The following very remarkable theorem, which follows straightforwardly from results of Witten-Yau \cite{4} and Cai-Galloway \cite{5}, is relevant.
+\begin{thm}[Witten-Yau-Cai-Galloway]
+Let \myHighlight{$\hat{M}^{n+1}$}\coordHE{} be a compact \myHighlight{$(n+1)$}\coordHE{}-dimensional manifold admitting an infinity hypersurface \myHighlight{$N^n$}\coordHE{} with respect to a Riemannian metric \myHighlight{$g^M$}\coordHE{} on the complement (which we assume to be orientable). Suppose that \myHighlight{$N^n$}\coordHE{} corresponds to a non-trivial element of the homology group \myHighlight{$H_n(\hat{M}^{n+1},\Z)$}\coordHE{} and that the induced conformal structure on \myHighlight{$N^n$}\coordHE{} is represented by a Yamabe metric of positive or zero scalar curvature. Then the equation \myHighlight{$Ric(g^M)=-ng^M$}\coordHE{} requires \myHighlight{$g^M$}\coordHE{} to be an \u{incomplete} metric.
+\end{thm}
+
+This result means that, in the case at hand, any attempt to force the bulk to be Einstein everywhere will merely cause the metric to develop some kind of pathology. [We require
+all metrics to be differentiable, so incompleteness includes failures of differentiability.]
+In physical terms, we can think of \myHighlight{$Ric(g^M)=-ng^M$}\coordHE{} as characterising the vacuum, and of the ``pathology'' as some kind of localised matter, \u{such as a brane}. The theorem then simply means that the presence of a non-boundary infinity hypersurface entails the existence of some such object in the bulk.
+
+An example will be helpful. Let \myHighlight{$P^4$}\coordHE{} be a compact non-boundary four-manifold with a scalar-flat (hence, Ricci-flat) metric \myHighlight{$g^P$}\coordHE{}. Let \myHighlight{$\hat{M}^5=S^1\times P^4$}\coordHE{}, with \myHighlight{$S^1$}\coordHE{} now parametrised by \myHighlight{$\theta$}\coordHE{} in \myHighlight{$(-\pi,\pi])$}\coordHE{} (not 0 to \myHighlight{$2\pi$}\coordHE{} as before). Take \myHighlight{$M^5$}\coordHE{} to be \myHighlight{$(S^1-\{0\})\times P^4$}\coordHE{}, let \myHighlight{$\delta$}\coordHE{} satisfy \myHighlight{$0<\delta<\pi$}\coordHE{}, and define a metric \myHighlight{$g^M_\delta$}\coordHE{} by
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}g^{\leftCoord{}M}_\delta&=\theta^{-2}(d\theta\otimes d\theta +g^{\leftCoord{}P}),&& \theta\in (0,\delta)\cup (-\delta,0), \rightCoord{}\\
+&\leftCoord{}=h(\theta)(d\theta\otimes d\theta +g^{\leftCoord{}P}),&& \text{elsewhere.}
+}{0mm}{5}{2}{
+g^{M}_\delta&=\theta^{-2}(d\theta\otimes d\theta +g^{P}),&& \theta\in (0,\delta)\cup (-\delta,0), \\
+&=h(\theta)(d\theta\otimes d\theta +g^{P}),&& \text{elsewhere.}
+}{0}\coordE{}\end{align} 
+Here \myHighlight{$h(\theta)$}\coordHE{} is a function which interpolates continuously and smoothly between the two ``\myHighlight{$\theta^{-2}$}\coordHE{} regions''. Clearly this manifold has a single, connected infinity hypersurface at \myHighlight{$\theta=0$}\coordHE{}. Just as for the metric given by equation (4), however, we can make \myHighlight{$\theta=0$}\coordHE{} seem disconnected by changing coordinates :
+\begin{equation*}\coord{}\boxEquation{
+\theta=\begin{cases}\pi e^{-x},&x\geq0,0<\theta<\delta;\\
+-\pi e^{x},& x<0,-\delta<\theta<0,\end{cases}
+}{
+\theta=\begin{cases}\pi e^{-x},&x\geq0,0<\theta<\delta;\\
+-\pi e^{x},& x<0,-\delta<\theta<0,\end{cases}
+}{ecuacion}\coordE{}\end{equation*}
+for the metric becomes \myHighlight{$dx\otimes dx+\pi^{-2} e^{2\abs{x}}g^P$}\coordHE{}, with infinities apparently at \myHighlight{$x=\pm \infty$}\coordHE{}. Notice the formal similarities to the Randall-Sundrum \cite{21} metric, which has \myHighlight{$e^{-2\abs{x}}$}\coordHE{} instead of \myHighlight{$e^{2\abs{x}}$}\coordHE{}, and where \myHighlight{$g^P$}\coordHE{} would be flat, not just Ricci-flat. In fact, however, a simple calculation shows that the ``pseudo-Randall-Sundrum metric'' \myHighlight{$dx\otimes dx + \pi^{-2}e^{2\abs{x}}g^P$}\coordHE{} is an Einstein metric as long as \myHighlight{$g^P$}\coordHE{} is Ricci-flat \- it does \u{not} need \myHighlight{$g^P$}\coordHE{} to be flat (see \cite{8}, page 268). So we have 
+\begin{equation}\coord{}\boxEquation{
+Ric(g^M_\delta)=-4g^M_\delta, \qquad \theta\in (0,\delta)\cup(-\delta,0).
+}{
+Ric(g^M_\delta)=-4g^M_\delta, \qquad \theta\in (0,\delta)\cup(-\delta,0).
+}{ecuacion}\coordE{}\end{equation}
+That is, \myHighlight{$g^M_\delta$}\coordHE{} is precisely Einstein outside the immediate neighbourhood of \myHighlight{$\theta=\pi$}\coordHE{}.
+
+The Randall-Sundrum metric has a pathology at \myHighlight{$x=0$}\coordHE{} because of the absolute value function \myHighlight{$\abs{x}$}\coordHE{} in \myHighlight{$e^{-2\abs{x}}$}\coordHE{}, due to the presence of a brane. Clearly the pseudo-Randall-Sundrum metric has the same property, and the WYCG theorem asserts that setting \myHighlight{$\delta=0$}\coordHE{} will cause \myHighlight{$g^M_\delta$}\coordHE{} to become incomplete at \myHighlight{$\delta=\pi$}\coordHE{}. That is indeed the case, since the connection coefficient \myHighlight{$\Gamma^\theta_{\theta\theta}$}\coordHE{}, for example, is discontinuous there. However, this shows that the pathologies required by the theorem can be rather mild \- one should not think of them as singularities, but rather as branes. If \myHighlight{$\delta$}\coordHE{} is not zero but extremely small, then equation (13) is satisfied everywhere in \myHighlight{$M^5$}\coordHE{} except in an extremely thin slice. Inside that slice, the metric is given by (12), and, turning the WYCG theorem around, we deduce that (13) is certainly \u{not} satisfied everywhere in the slice. Again, this is evidence that some kind of localised matter is present.
+
+If we now relax the condition that \myHighlight{$g^M$}\coordHE{} be an Einstein metric, we can hope to learn
+more about the nature of the matter whose existence is necessitated by this interpretation
+of ``infinity''. Set 
+\begin{equation}\coord{}\boxEquation{
+Ric(g^M)=-ng^M+S(g^M),
+}{
+Ric(g^M)=-ng^M+S(g^M),
+}{ecuacion}\coordE{}\end{equation}
+so that the tensor \myHighlight{$S$}\coordHE{} measures the failure of \myHighlight{$g^M$}\coordHE{} to be Einstein. In the Lorentzian case,
+one could try to impose sign conditions on \myHighlight{$S$}\coordHE{} by means of the strong energy condition
+\cite{10}, but that is not appropriate in the Euclidean regime. [The Euclidean counterpart
+of a Lorentzian metric which satisfies the strong energy condition need not obey any sign
+condition; consider for example the Euclidean version of a FRW dust metric, where the
+Ricci curvature is unbounded both above and below.] Nevertheless, even in the Euclidean
+case, \myHighlight{$S$}\coordHE{} does have non-negative eigenvalue functions \u{for certain kinds of matter}, 
+such as scalar fields with positive potentials. Thus, the sign of \myHighlight{$S$}\coordHE{} can give general
+information on the kind of matter which causes a given metric to be non-Einstein. The
+following theorem is therefore relevant. [The proof is again a straightforward consequence 
+of results of Cai and Galloway \cite{5}].
+\begin{thm}[Cai-Galloway]
+Let all conditions be as in the WYCG theorem, except that \myHighlight{$Ric(g^M)=-ng^M$}\coordHE{} is weakened to the condition that all of the eigenvalues of \myHighlight{$S(g^M)$}\coordHE{} decay no more slowly than inverse-quartically (see \cite{5} for details) towards infinity. Then \u{either} \myHighlight{$g^M$}\coordHE{} is incomplete \u{or} some eigenvalue function of \myHighlight{$S(g^M)$}\coordHE{} takes a value strictly less than \myHighlight{$0$}\coordHE{}.
+\end{thm}
+[Notice that the metric (4) escapes the conclusions of this theorem because its Ricci
+tensor does not tend to \myHighlight{$-ng^M$}\coordHE{} quickly enough.] Thus, for example, if the metric given by
+(11) and (12) is forced to be complete by an appropriate choice of \myHighlight{$h(\theta)$}\coordHE{}, then
+\myHighlight{$h(\theta)$}\coordHE{} must be such that some eigenvalue of the Ricci tensor falls below \myHighlight{$-4$}\coordHE{}, which
+is the value outside the slice.
+
+The above theorem leads us to ask: what kind of matter has an \myHighlight{$S$}\coordHE{}-tensor with negative
+eigenvalues? For example, can p-branes give rise to fields with such an \myHighlight{$S$}\coordHE{}-tensor? The
+answer is yes, as we now show. Consider the following action.
+\begin{equation*}\coord{}\boxEquation{
+\int [R+\lambda-\frac{1}{2}(\nabla\phi)^2-\frac{1}{2(p+2)!}e^{a\phi}F^2]dvol,
+}{
+\int [R+\lambda-\frac{1}{2}(\nabla\phi)^2-\frac{1}{2(p+2)!}e^{a\phi}F^2]dvol,
+}{ecuacion}\coordE{}\end{equation*}
+where \myHighlight{$R$}\coordHE{} is the scalar curvature, \myHighlight{$\lambda$}\coordHE{} is a constant to be chosen, \myHighlight{$\phi$}\coordHE{} is a scalar
+field, \myHighlight{$a$}\coordHE{} is a constant, and \myHighlight{$F$}\coordHE{} is a \myHighlight{$(p+2)$}\coordHE{}-form derived from a potential in the usual
+way. Now p-brane solutions of the corresponding Euler-Lagrange equations are studied in
+\cite{22}. A particularly interesting sub-class of \u{non-singular} solutions is obtained
+when \myHighlight{$\phi$}\coordHE{} and \myHighlight{$a$}\coordHE{} can consistently be set equal to zero, so that only \myHighlight{$F$}\coordHE{} contributes to
+\myHighlight{$S$}\coordHE{}. This is possible [see \cite{22}, end of section 3.2] for
+\begin{equation*}\coord{}\boxEquation{
+(n,p) = (4,1), (5,1), (9,3),
+}{
+(n,p) = (4,1), (5,1), (9,3),
+}{ecuacion}\coordE{}\end{equation*}
+that is, for strings in 5 and 6 dimensions, and for 3-branes in 10 dimensions. Selecting
+\myHighlight{$\lambda$}\coordHE{} so that the coefficient of \myHighlight{$g^M$}\coordHE{} is \myHighlight{$-n$}\coordHE{} [as in (14)], we obtain in this case,
+relative to a coordinate basis,
+\begin{equation*}\coord{}\boxEquation{
+S_{\mu\nu}=\frac{1}{2(p+1)!}[F_{\mu...}F_{\nu}^{...}-\frac{p+1}{(p+2)(n-1)}F^2g_{\mu\nu}],
+}{
+S_{\mu\nu}=\frac{1}{2(p+1)!}[F_{\mu...}F_{\nu}^{...}-\frac{p+1}{(p+2)(n-1)}F^2g_{\mu\nu}],
+}{ecuacion}\coordE{}\end{equation*}
+[see \cite{22}, section 2.1], and so [recalling that the space is \myHighlight{$(n+1)$}\coordHE{}-dimensional]
+we have
+\begin{equation*}\coord{}\boxEquation{
+g^{\mu\nu}S_{\mu\nu}=\frac{(n-2p-3)F^2}{2(p+2)!(n-1)}.
+}{
+g^{\mu\nu}S_{\mu\nu}=\frac{(n-2p-3)F^2}{2(p+2)!(n-1)}.
+}{ecuacion}\coordE{}\end{equation*}
+
+Now for a 3-brane in 10 dimensions this vanishes, so \myHighlight{$S$}\coordHE{} is traceless. For a non-trivial
+solution, this means that \u{some eigenvalue of S must indeed be negative somewhere}. For
+a string in 5 dimensions, the trace is negative, while for a string in 6 dimensions it
+vanishes; in both cases, \myHighlight{$S$}\coordHE{} is again forced to have eigenvalues which are negative somewhere.
+For all of these solutions, \myHighlight{$F$}\coordHE{} decays towards infinity as [\cite{22},section 4] 
+\myHighlight{$1/r^{(n-p-1)}$}\coordHE{}, so \myHighlight{$S$}\coordHE{} decays at least as rapidly as \myHighlight{$1/r^4$}\coordHE{}, as required by the above 
+theorem. In short, the theorem is at least consistent with the hypothesis that some kind
+of p-brane is present.
+
+We can summarise as follows. The WYCG and Cai-Galloway theorems imply that the presence
+of a topologically non-trivial infinity hypersurface imposes conditions on the geometry
+of the bulk. We argue that those conditions suggest that the bulk has been contaminated
+with ``branes or stringy impurities of some kind'', precisely as predicted in \cite{3}.
+
+\section{\large CONCLUSION}
+
+We have argued that the problem of formulating AdS/CFT for manifolds which are not boundaries suggests that we need an alternative framework, which does away with the need to deal with manifolds-with-boundaries. This framework, which uses compact manifolds with infinity hypersurfaces, may find uses even for cases where infinity \u{can} be represented as a boundary. For example, it could be interesting to investigate a CFT on the four-torus \myHighlight{$T^4$}\coordHE{} by thinking of it as a submanifold of \myHighlight{$T^5$}\coordHE{}. Using the metric (11) above with \myHighlight{$\delta=0$}\coordHE{}, we obtain an Einstein (in fact, a locally (Euclidean) AdS) space with a ``pseudo-Randall-Sundrum'' brane at the antipode to infinity.
+
+In this work, we have followed the usual practice, relating the CFT to a gravitational theory in \u{one} more dimension. As string and \myHighlight{$M$}\coordHE{} theories are defined in 10 or 11 dimensions, however, this really just means that we are considering products, like \myHighlight{$AdS_5\times S^5$}\coordHE{}, for the bulk. Presumably a generic bulk will not have this special structure, but a 10-dimensional manifold-with-boundary does not have a four-dimensional boundary. As a boundary cannot itself have a boundary, one cannot work stepwise down to four dimensions within the ``infinity as a boundary'' interpretation. By contrast, one can easily consider a four-dimensional submanifold in a generic compact 10-dimensional manifold endowed with a metric which puts that submanifold ``infinitely far'' from the points in the bulk. It would be interesting to develop AdS/CFT in this more general setting.
+
+
+
+
+\begin{thebibliography}{4} 
+
+\bibitem{1} O. Aharony, S.S. Gubser, J.Maldacena, H.Ooguri, Y. Oz, \emph{Large N Field Theories, String Theory and Gravity}, Phys. Rept. {\bf 323} (2000) 183 [hep-th/9905111].
+\bibitem{2} R. Penrose and W. Rindler, \emph{Spinors and Spacetime, Cambridge University Press, 1986.}
+\bibitem{3} E. Witten, \emph{Anti de Sitter Space and Holography, Adv. Theor. Math. Phys. {\bf 2} (1998) 253 [hep-th/9802150].}
+\bibitem{4} E. Witten and S.T. Yau, \emph{Connectedness of the Boundary in the AdS/CFT Correspondence [hep-th/9910245].}
+\bibitem{5} M. Cai and G.J. Galloway, \emph{Boundaries of Zero Scalar Curvature in the AdS/CFT Correspondence [hep-th/0003046].}
+\bibitem{6} N. Seiberg and E. Witten, \emph{The D1/D5 System and Singular CFT, JHEP {\bf 9904} (1999) 017 [hep-th/9903224].}
+\bibitem{7} J.L. Kazdan and F.W. Warner, \emph{A Direct Approach to the Determination of Gaussian and Scalar Curvature Functions, Invent. Math. {\bf 28} (1975) 227.}
+\bibitem{8} A.L. Besse, \emph{Einstein Manifolds, Springer-Verlag, 1987.}
+\bibitem{9} C. LeBrun, \emph{Ricci Curvature, Minimal Volumes, and Seiberg-Witten Theory [math. DG/0003068].}
+\bibitem{10} R.M. Wald, \emph{General Relativity, Chicago University Press, 1984.}
+\bibitem{11} R. Schoen, \emph{Conformal Deformation of a Riemannian Metric to Constant Scalar Curvature, J. Diff. Geom. {\bf 20} (1984) 479.}
+\bibitem{12} H.B. Lawson and M.L. Michelson, \emph{Spin Geometry, Princeton Mathematical Series 38, Princeton University Press, 1989.}
+\bibitem{13} N. Hitchin, \emph{Harmonic Spinors, Adv. Math. {\bf 14} (1974) 1.}
+\bibitem{14} R.C. Myers, \emph{Stress Tensors and Casimir Energies in the AdS/CFT Correspondence [hep-th/9903203].}
+\bibitem{15} C.R. Graham and J. Lee, \emph{Einstein Metrics with Prescribed Conformal Infinity on the Ball, Adv. Math. {\bf 87} (1991) 186.}
+\bibitem{16} S.S. Gubser, \emph{Curvature Singularities : the Good, the Bad, and the Naked [hep-th/0002160].}
+\bibitem{17} J.W. Milnor and J.D. Stasheff, \emph{Characteristic Classes. Annals of Mathematics Studies 76, Princeton University Press, 1974.}
+\bibitem{18} A. Futaki, \emph{Scalar-Flat Closed Manifolds Not Admitting Positive Scalar Curvature Metrics, Invent. Math. {\bf 112} (1993) 23.}
+\bibitem{19} B. McInnes, \emph{Spin Holonomy of Einstein Manifolds, Commun. Math. Phys. {\bf 203} (1999) 349.}
+\bibitem{20} D. Joyce, \emph{Compact 8-manifolds with Holonomy Spin(7), Invent. Math. {\bf 123} (1996) 507.}
+\bibitem{21} L. Randall and R. Sundrum, \emph{A Large Mass Hierarchy From a Small Extra Dimension, Phys. Rev. Lett. {\bf 83} (1999) 3370 [hep-th/9905221].}
+\bibitem{22} K. S. Stelle, \emph{Lectures on Supergravity p-branes [hep-th/9701088].}
+\end{thebibliography}
+\end{document}
+
+\bye

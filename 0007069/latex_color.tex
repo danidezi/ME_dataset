@@ -1,0 +1,1735 @@
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,amsfonts}
+\textwidth 16cm
+\oddsidemargin 0cm
+\evensidemargin 0cm
+\textheight  24cm
+\topmargin  -15mm
+\numberwithin{equation}{section}
+%%%%%%%%% macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\providecommand{\Cb}{{\mathbb C}}
+\providecommand{\Cx}{{\mathbb C}^{\times}}
+\providecommand{\Ncal}{{\cal N}}
+\providecommand{\del}{\partial}
+\providecommand{\chN}{{\rm ch}^{\rm (NS)}}
+\providecommand{\chtN}{\widetilde{\rm ch}^{\rm (NS)}}
+\providecommand{\chR}{{\rm ch}^{\rm (R)}}
+\providecommand{\chtR}{\widetilde{\rm ch}^{\rm (R)}}
+\providecommand{\deltam}[2]{\delta^{\rm mod\;#2}_{#1}}
+\providecommand{\ch}{\hat{c}}
+\providecommand{\tr}{{\rm tr}}
+\providecommand{\Th}{\Theta}
+\providecommand{\Zb}{{\mathbb Z}}
+\providecommand{\e}[1]{\,{\bf e}\!\left[#1\right]}
+\providecommand{\fN}{f}
+\providecommand{\ft}{\tilde{f}}
+\providecommand{\fR}{f^{\rm(R)}}
+\providecommand{\Rb}{{\mathbb R}}
+\providecommand{\lcm}{{\rm lcm}}
+\providecommand{\mt}{\underset{\widetilde{}}{\mu}}
+\providecommand{\nt}{\underset{\widetilde{}}{\nu}}
+\providecommand{\bt}[1]{\underset{\widetilde{}}{\beta_{#1}}}
+\providecommand{\gt}{\underset{\widetilde{}}{\gamma_{0}}}
+\providecommand{\lb}{\bar{\ell}}
+\providecommand{\mtb}{\bar{\mt}}
+\providecommand{\taub}{\bar{\tau}}
+\providecommand{\lambdab}{\bar{\lambda}}
+\providecommand{\nn}{\nonumber}
+\providecommand{\Zh}{\hat{Z}}
+\providecommand{\Gh}{\hat{G}}
+\providecommand{\gh}{\hat{g}}
+\providecommand{\Tr}{{\rm Tr}}
+\renewcommand{\atop}[2]{%
+\genfrac{}{}{0pt}{}{#1}{#2}}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+\usepackage{useful_macros}
+\begin{document}
+\baselineskip 3.3ex
+
+%%%%%%  title page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% JHEP no pachimon
+%
+%
+\providecommand{\KUCPlogo}{\hbox{\lower 1.4ex\hbox{\Huge\boldmath \myHighlight{$\cal K$}\coordHE{}}
+\kern -1.15em {\sffamily \bfseries\large\ UCP}
+\put(-27.5,-6){\tiny\it preprint}
+}}
+\providecommand{\preprintnumber}{KUCP-0162 \\
+ {\tt hep-th/0007069}}
+
+\thispagestyle{empty}
+\hbox{\raise 0.3ex\KUCPlogo\hspace{11cm}
+\parbox[b]{4cm}{\preprintnumber}}
+\noindent\hbox{\raise 1.5 ex \hbox{\rule{\textwidth}{0.3pt}}}
+
+\vspace{20mm}\noindent
+{\sffamily \bfseries \LARGE \boldmath
+%% title%%
+ Gepner-like Description
+of a String Theory\\ on a 
+Noncompact Singular Calabi-Yau Manifold
+}
+
+\vspace{0.5cm}\noindent
+\rule{\textwidth}{1pt}
+
+\vspace{2cm}
+
+\noindent
+{\sffamily \bfseries \large Satoshi Yamaguchi}
+
+\vspace{5mm}
+\noindent
+\hspace{0.7cm} \parbox{140mm}{\it
+Graduate School of Human and Environmental Studies,
+Kyoto University, Yoshida-Nihonmatsu-cho,
+Sakyo-ku, Kyoto 606-8501, Japan.
+
+\vspace*{3mm}
+E-mail: {\tt yamaguch@phys.h.kyoto-u.ac.jp}
+}
+
+\vspace{30mm}
+
+\noindent
+{\sc Abstract:\ \ }
+We investigate a Gepner-like superstring model described by a combination
+of multiple minimal models and an \myHighlight{$\Ncal=2$}\coordHE{} Liouville theory.
+This model is thought to be equivalent to the superstring theory
+on a singular noncompact Calabi-Yau manifold. We construct the modular
+invariant partition function of this model, and confirm the validity of
+an appropriate GSO projection.
+We also calculate the elliptic genus and Witten index of
+the model. We find that the elliptic genus is factorised into
+a rather trivial factor and a non-trivial one, 
+ and the non-trivial one has the information on
+the positively curved base manifold of the cone.
+
+%%%% Key words
+%
+
+\newpage
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+The correspondence between a string theory on a K\"ahler manifold
+ and an \myHighlight{$\Ncal=2$}\coordHE{} Landau-Ginzburg theory
+is interesting and is very largely investigated
+\cite{Gep87,Gep88,Vaf89,IV90}. But, the most results are
+limited to the cases of compact Calabi-Yau manifolds.
+Recently, it is conjectured that
+in the case of a noncompact Calabi-Yau manifold, the associated
+CFT consists of an \myHighlight{$\Ncal=2$}\coordHE{} Liouville theory and a
+Landau-Ginzburg theory
+\cite{GKP9907}.
+They claimed that when the
+Calabi-Yau \myHighlight{$n$}\coordHE{}-fold \myHighlight{$X$}\coordHE{} is written as a hypersurface
+ \myHighlight{$F(z_1,\dots,z_{n+1})=0$}\coordHE{} in \myHighlight{$\Cb^{n+1}$}\coordHE{}
+by a quasi-homogeneous polynomial \myHighlight{$F$}\coordHE{}, 
+then the string theory on \myHighlight{$X$}\coordHE{} is equivalent to the CFT on
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \Rb_{\phi}\times S^1 \times LG(W=F).\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+&& \Rb_{\phi}\times S^1 \times LG(W=F).
+}{1}\coordE{}\end{eqnarray*}
+Here \myHighlight{$\Rb_{\phi}$}\coordHE{} is a real line parametrized by \myHighlight{$\phi$}\coordHE{}
+with linear dilaton background and
+ \myHighlight{$LG(W=F)$}\coordHE{} is the IR theory of the Landau-Ginzburg model with
+the superpotential \myHighlight{$F$}\coordHE{}. In this case, the background charge \myHighlight{$Q$}\coordHE{} 
+of \myHighlight{$\Rb_{\phi}$}\coordHE{} is
+determined by a condition of the total central charge.
+From the condition that \myHighlight{$Q$}\coordHE{} is a non-zero real number, we find
+that the base manifold \myHighlight{$X/\Cx$}\coordHE{} should be curved positively.
+
+The boson with linear dilaton background is strongly coupled
+in the region \myHighlight{$\phi\to -\infty$}\coordHE{}, so we should introduce
+the Liouville potential or consider an \myHighlight{$SL(2)/U(1)$}\coordHE{} Kazama-Suzuki
+model to avoid the strong coupling singularity
+\cite{OV9511,GK9909,GK9911}. But we do not care about this point
+in this paper.
+
+In \cite{ABKS9808,GKP9907,GK9909,GK9911}, they also claim that
+the string theory on this singular noncompact Calabi-Yau
+manifold \myHighlight{$X$}\coordHE{} is holographic dual to the ``little string theory''.
+
+In the case of a compact Calabi-Yau manifold, 
+the string theory is ``solved'' in the description
+of Gepner model in a special point of the moduli space.
+We want to describe also the string theory on the noncompact 
+Calabi-Yau manifold \myHighlight{$X$}\coordHE{} by the Gepner-like solvable model.
+If we can do it successfully, it will be possible to analyze
+more deeply
+a noncompact Calabi-Yau manifold and the little string theory.
+
+In \cite{ES0002}, they treat the string theories with ADE simple
+singularities.
+ They construct the modular invariant
+ partition functions, and show the consistency of these string theories.
+
+In this paper, we consider more general cases, in which the
+Landau-Ginzburg part is described by a direct product of
+a number of minimal models.
+A typical example of ours is the Calabi-Yau \myHighlight{$n$}\coordHE{}-fold \myHighlight{$X$}\coordHE{}
+described in the form
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}z_1^{N_1}+z_2^{N_2}+\dots+z_{n+1}^{N_{n+1}}=0, \mbox{ in }\Cb^{n+1}.\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+&&z_1^{N_1}+z_2^{N_2}+\dots+z_{n+1}^{N_{n+1}}=0, \mbox{ in }\Cb^{n+1}.
+}{1}\coordE{}\end{eqnarray*}
+We construct the modular invariant partition functions and show the 
+string theory actually exists consistently in these cases. 
+We also calculate
+the elliptic genus, and find that it is factorised into
+ two parts --- a rather trivial one
+and a rather non-trivial one.
+We analyze the non-trivial one in detail,
+and find that it has the information 
+on the cohomology of the positively curved 
+base manifold \myHighlight{$X/\Cx$}\coordHE{} except the elements
+generated by cup products of a K\"ahler form.
+
+The organization of this paper is as follows. In the next section,
+we explain the setup and review the correspondence between
+a noncompact Calabi-Yau manifold and an \myHighlight{$\Ncal=2$}\coordHE{} Liouville theory
+ \myHighlight{$\times$}\coordHE{} Landau-Ginzburg theory. In section \ref{Sec3}, we
+construct the modular invariant partition function.
+In section \ref{Sec4}, we calculate the elliptic genus and compare it with
+the geometric property of the associated
+ Calabi-Yau manifold \myHighlight{$X$}\coordHE{}. In the last
+section, we summarize the results and discuss the problems and prospects.
+In Appendix A. we collect some useful equations of theta functions and
+characters that we use in this paper.
+
+\section{The string theory on a 
+noncompact singular Calabi-Yau manifold}\label{Sec2}
+
+We consider the string compactification to a noncompact, singular
+Calabi-Yau \myHighlight{$n$}\coordHE{}-fold \myHighlight{$X$}\coordHE{}. The total target space is
+expressed by a direct product of a \myHighlight{$d$}\coordHE{} dimensional flat spacetime
+and the manifold \myHighlight{$X$}\coordHE{}
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \Rb^{d-1,1}\times X. \rightCoord{}\label{TargetManifold}
+\rightCoord{}}{0mm}{1}{3}{
+&& \Rb^{d-1,1}\times X. }{1}\coordE{}\end{eqnarray}
+Here, \myHighlight{$n$}\coordHE{} is related to \myHighlight{$d$}\coordHE{} by the constraint on the total
+ dimension \myHighlight{$2n+d=10$}\coordHE{}.
+
+For simplicity, we concentrate the case that the noncompact
+ singular Calabi-Yau manifold \myHighlight{$X$}\coordHE{} is realized as the 
+hypersurface in \myHighlight{$\Cb^{n+1}$}\coordHE{} determined by the algebraic equation
+with a quasi homogeneous polynomial \myHighlight{$F$}\coordHE{}
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ F(z_1,\dots,z_{n+1})=0.\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+ F(z_1,\dots,z_{n+1})=0.
+}{1}\coordE{}\end{eqnarray*}
+By the term ``quasi-homogeneous'',
+we mean that the polynomial \myHighlight{$F$}\coordHE{} satisfies
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+ F(\lambda^{r_1}z_1,\dots,\lambda^{r_{n+1}}z_{n+1})=
+\lambda F(z_1,\dots,z_{n+1}),\rightCoord{}\label{QuasiHomogeneous}
+\rightCoord{}}{0mm}{1}{3}{
+ F(\lambda^{r_1}z_1,\dots,\lambda^{r_{n+1}}z_{n+1})=
+\lambda F(z_1,\dots,z_{n+1}),}{1}\coordE{}\end{eqnarray}
+for some exponents \myHighlight{$\{r_j\}$}\coordHE{} and for an arbitrary \myHighlight{$\lambda\in \Cx$}\coordHE{}.
+
+This manifold \myHighlight{$X$}\coordHE{} is singular at \myHighlight{$(z_1,\dots,z_{n+1})=(0,\dots,0)$}\coordHE{}.
+If we consider the manifold \myHighlight{$(X-{(0,\dots,0)})/\Cx$}\coordHE{},
+where the action of \myHighlight{$\Cx$}\coordHE{} is \myHighlight{$(z_1,\dots,z_{n+1})\to
+(\lambda^{r_1}z_1,\dots,\lambda^{r_{n+1}}z_{n+1})$}\coordHE{} with the exponents
+\myHighlight{$\{r_j\}$}\coordHE{} of (\ref{QuasiHomogeneous}), then we get a compact manifold.
+We denote this compact manifold simply as \myHighlight{$X/\Cx$}\coordHE{} and call it
+``the base manifold of \myHighlight{$X$}\coordHE{}''.
+
+It is conjectured in \cite{GKP9907} that the string theory 
+on the space (\ref{TargetManifold}) is equivalent
+to the theory including flat spacetime \myHighlight{$\Rb^{d-1,1}$}\coordHE{}, a line with
+the linear dilation background \myHighlight{$\Rb_{\phi}$}\coordHE{}, \myHighlight{$S^1$}\coordHE{}, and the Landau-Ginzburg
+theory with a superpotential \myHighlight{$W=F$}\coordHE{};
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \Rb^{d-1,1}\times \Rb_{\phi} \times S^1 \times LG(W=F).\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+  \Rb^{d-1,1}\times \Rb_{\phi} \times S^1 \times LG(W=F).
+}{1}\coordE{}\end{eqnarray*} 
+
+The part \myHighlight{$(\Rb_{\phi} \times S^1)$}\coordHE{} has a world sheet \myHighlight{$\Ncal=2$}\coordHE{}
+superconformal symmetry. 
+Let \myHighlight{$\phi$}\coordHE{} be the parameter of \myHighlight{$\Rb_{\phi}$}\coordHE{} , \myHighlight{$Y$}\coordHE{} be the parameter of
+\myHighlight{$S^1$}\coordHE{}, and \myHighlight{$\psi^{+},\psi^{-}$}\coordHE{} be the fermionic part 
+of \myHighlight{$(\Rb_{\phi} \times S^1)$}\coordHE{}.
+The \myHighlight{$\Ncal=2$}\coordHE{} superconformal currents are written in terms of
+ the above fields
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} T=-\frac12(\del Y)^2-\frac12(\del\phi)^2-\frac Q2 \del^2 \phi
+\leftCoord{}-\frac12(\psi^{+}\del\psi^{-}-\del \psi^{+}\psi^{-}),\nn\rightCoord{}\\
+&&\leftCoord{}G^{\pm}=-\frac{\leftCoord{}1}{\rightCoord{}\sqrt 2}\psi^{\pm}(i\del Y\pm\del\phi)\mp
+\frac{\leftCoord{}Q}{\rightCoord{}\sqrt2}\del\psi^{\pm},\nn\rightCoord{}\\
+&&\leftCoord{} J=\psi^{+}\psi^{-}- Qi\del Y. \rightCoord{}\label{LiouvilleSCA}
+\rightCoord{}}{0mm}{6}{7}{
+&& T=-\frac12(\del Y)^2-\frac12(\del\phi)^2-\frac Q2 \del^2 \phi
+-\frac12(\psi^{+}\del\psi^{-}-\del \psi^{+}\psi^{-}),\nn\\
+&&G^{\pm}=-\frac{1}{\sqrt 2}\psi^{\pm}(i\del Y\pm\del\phi)\mp
+\frac{Q}{\sqrt2}\del\psi^{\pm},\nn\\
+&& J=\psi^{+}\psi^{-}- Qi\del Y. }{1}\coordE{}\end{eqnarray}
+The associated central charge of this algebra is \myHighlight{$\ch(=c/3)=1+Q^2$}\coordHE{}.
+
+In this paper, we consider the case in which the Landau-Ginzburg
+theory with superpotential \myHighlight{$W=F$}\coordHE{} can be described by a direct product of
+ \myHighlight{$\Ncal=2$}\coordHE{} minimal models.
+Let \myHighlight{$M_{G,N}$}\coordHE{} be the minimal model
+corresponding to simply laced Lie algebra 
+\myHighlight{$G=A,D,E$}\coordHE{} with dual Coxeter number \myHighlight{$N$}\coordHE{}.
+We consider the theory in the following;
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \Rb^{d-1,1}\times \Rb_{\phi} \times S^1 \times M_{G_1,N_1}\times
+\dots\times M_{G_R,N_R},
+\rightCoord{}}{0mm}{1}{2}{
+&& \Rb^{d-1,1}\times \Rb_{\phi} \times S^1 \times M_{G_1,N_1}\times
+\dots\times M_{G_R,N_R},
+}{1}\coordE{}\end{eqnarray*}
+where \myHighlight{$R$}\coordHE{} is the number of the minimal models. The cases with \myHighlight{$R=1$}\coordHE{}
+are treated in \cite{ES0002} and \myHighlight{$R=0$}\coordHE{} in \cite{Miz0003,Kut9110}
+
+A typical example is the case that all \myHighlight{$G_j$}\coordHE{} are \myHighlight{$A$}\coordHE{} type. In this example,
+the quasi-homogeneous polynomial is written as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} F(z)=z_1^{N_1}+\dots+z_{R}^{N_R}+z_{R+1}^{2}+\dots+z_{n+1}^2.\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+&& F(z)=z_1^{N_1}+\dots+z_{R}^{N_R}+z_{R+1}^{2}+\dots+z_{n+1}^2.
+}{1}\coordE{}\end{eqnarray*}
+
+The background charge of \myHighlight{$\Rb_{\phi}$}\coordHE{} is determined by the criticality
+condition. To cancel the conformal
+anomaly, the total central charge is to be \myHighlight{$0$}\coordHE{}. The central charge of the
+ghost sector is \myHighlight{$-15$}\coordHE{}, so the total central charge of the 
+matter sector is to be \myHighlight{$15$}\coordHE{}. 
+The central charge of the flat spacetime is \myHighlight{$3/2$}\coordHE{} for each pair
+of a boson and a fermion, 
+and that of the \myHighlight{$\Rb_{\phi}\times S^1$}\coordHE{} is \myHighlight{$3+3Q^2$}\coordHE{} as
+mentioned above, and that of a minimal model \myHighlight{$M_{G,N}$}\coordHE{} is
+\myHighlight{$\frac{3(N-2)}{N}$}\coordHE{}. Therefore, the criticality
+condition leads to the equation
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \frac{\leftCoord{}3d}{\rightCoord{}2}+3+3Q^2+\sum_{\rightCoord{}j=1}^{\leftCoord{}{}\leftCoord{}R}\frac{\leftCoord{}3(N_j-2)}{\rightCoord{}N_j}=15.\rightCoord{}
+\rightCoord{}}{0mm}{5}{6}{
+&& \frac{3d}{2}+3+3Q^2+\sum_{j=1}^{{}R}\frac{3(N_j-2)}{N_j}=15.
+}{1}\coordE{}\end{eqnarray*}
+From this criticality condition, we obtain the value of \myHighlight{$Q^2$}\coordHE{} as
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} Q^2=4-\frac d2 -\sum_{\rightCoord{}j\rightCoord{}}\frac{\leftCoord{}(N_j-2)}{\rightCoord{}N_j}.\rightCoord{}\label{CritCond1}
+\rightCoord{}}{0mm}{2}{6}{
+&& Q^2=4-\frac d2 -\sum_{j}\frac{(N_j-2)}{N_j}.}{1}\coordE{}\end{eqnarray}
+By the condition \myHighlight{$Q^2>0$}\coordHE{} for a real number \myHighlight{$Q$}\coordHE{},
+the right-hand side should be positive;
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+ \leftCoord{}4-\frac d2 -\sum_{\rightCoord{}j\rightCoord{}}\frac{\leftCoord{}(N_j-2)}{\rightCoord{}N_j}>0. \rightCoord{}\label{FDCondition}
+\rightCoord{}}{0mm}{3}{6}{
+ 4-\frac d2 -\sum_{j}\frac{(N_j-2)}{N_j}>0. }{1}\coordE{}\end{eqnarray}
+It is equivalent to
+a condition that the singularity is in finite distance in
+the moduli space of deformation of singular Calabi-Yau
+manifold \myHighlight{$X$}\coordHE{} \cite{GKP9907,GVW9906}. 
+In view of the base manifold \myHighlight{$X/\Cx$}\coordHE{},
+the finite distance condition is equivalent to that \myHighlight{$X/\Cx$}\coordHE{}
+is positively curved.
+
+\section{Modular invariant partition function}\label{Sec3}
+
+Now, let us construct the modular invariant partition function.
+We take the light-cone gauge, then the associated
+ CFT to consider is
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \Rb^{d-2}\times \Rb_{\phi} \times S^1 \times M_{G_1,N_1}\times
+\dots\times M_{G_R,N_R}.\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+&& \Rb^{d-2}\times \Rb_{\phi} \times S^1 \times M_{G_1,N_1}\times
+\dots\times M_{G_R,N_R}.
+}{1}\coordE{}\end{eqnarray*}
+
+The toroidal partition function can be separated into 2 parts:
+the one \myHighlight{$Z_{GSO}$}\coordHE{} concerning to the GSO projection and the
+other \myHighlight{$Z_0$}\coordHE{} not concerning to it. We construct
+ the total partition function \myHighlight{$Z$}\coordHE{} as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ Z=\int \frac{\leftCoord{}d^2\tau}{\rightCoord{}\tau_2^2}Z_0(\tau,\taub)Z_{GSO}(\tau,\taub),
+\rightCoord{}}{0mm}{2}{3}{
+ Z=\int \frac{d^2\tau}{\tau_2^2}Z_0(\tau,\taub)Z_{GSO}(\tau,\taub),
+}{1}\coordE{}\end{eqnarray*}
+where \myHighlight{$\tau=\tau_1+i\tau_2$}\coordHE{} is the moduli parameter of the torus,
+and \myHighlight{$d^2\tau/\tau_2^2$}\coordHE{} is the modular invariant measure.
+
+First, we study the rather easy part \myHighlight{$Z_0$}\coordHE{}, then we investigate
+the rather complicated part \myHighlight{$Z_{GSO}$}\coordHE{}.
+
+\subsection{GSO independent part of the partition function}
+
+In this subsection, we discuss the \myHighlight{$Z_0$}\coordHE{} : the GSO independent part.
+It is completely the same as that in \cite{ES0002}.
+
+The \myHighlight{$Z_0$}\coordHE{} includes the contribution from
+the flat spacetime bosonic coordinates \myHighlight{$X^I,\ (I=2,\dots,d-1)$}\coordHE{} 
+and the linear dilation \myHighlight{$\phi$}\coordHE{}.
+
+The partition function of each flat spacetime
+boson is represented
+by the Dedekind eta function \myHighlight{$\eta(\tau)$}\coordHE{} as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}\frac{\leftCoord{}1}{\rightCoord{}\sqrt{\tau_2}|\eta(\tau)|^2}.\rightCoord{}
+\rightCoord{}}{0mm}{2}{4}{
+&&\frac{1}{\sqrt{\tau_2}|\eta(\tau)|^2}.
+}{1}\coordE{}\end{eqnarray*}
+
+The partition function of \myHighlight{$\phi$}\coordHE{} is defined as
+\myHighlight{$Z_L=\Tr q^{L_0-c_L/24}\bar q^{\bar L_0-c_L/24},
+\ (q=\exp(2\pi i\tau),c_L=1+3Q^2)$}\coordHE{} in the canonical formalism.
+Here the trace is taken over delta function normalizable
+primary fields
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+ \exp(ip\phi), \quad p=-\frac{\leftCoord{}iQ}{\rightCoord{}2}+\ell, \quad \ell\in \Rb, \rightCoord{}
+\label{PrincipleSeries}
+\rightCoord{}}{0mm}{2}{4}{
+ \exp(ip\phi), \quad p=-\frac{iQ}{2}+\ell, \quad \ell\in \Rb, 
+}{1}\coordE{}\end{eqnarray}
+and their excitations by oscillators. 
+Then we obtain \myHighlight{$Z_L$}\coordHE{} as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ Z_{L}&=&\frac{\leftCoord{}1}{\rightCoord{}|\prod_{\rightCoord{}n=1}(1-q^n)|^2}\int dp
+\exp\left[-4\pi\tau_2\left(\frac12 p^2+\frac i2 pQ-\frac{\leftCoord{}1+3Q^2}{\rightCoord{}24}\right)
+\right]\rightCoord{}\\
+&\leftCoord{}=& \frac{\leftCoord{}1}{\rightCoord{}\sqrt{\tau_2}|\eta(\tau)|^2},
+\rightCoord{}}{0mm}{5}{7}{
+ Z_{L}&=&\frac{1}{|\prod_{n=1}(1-q^n)|^2}\int dp
+\exp\left[-4\pi\tau_2\left(\frac12 p^2+\frac i2 pQ-\frac{1+3Q^2}{24}\right)
+\right]\\
+&=& \frac{1}{\sqrt{\tau_2}|\eta(\tau)|^2},
+}{1}\coordE{}\end{eqnarray*}
+where the region of the integral of \myHighlight{$p$}\coordHE{} is as 
+(\ref{PrincipleSeries}).
+As a result, the partition function of \myHighlight{$\phi$}\coordHE{} is the same as that
+of an ordinary boson. So we obtain \myHighlight{$Z_0$}\coordHE{} as the
+partition function of effectively \myHighlight{$(d-1)$}\coordHE{} free bosons;
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} Z_0=\left(\frac{\leftCoord{}1}{\rightCoord{}\sqrt{\tau_2}|\eta(\tau)|^2}\right)^{d-1}.\rightCoord{}
+\rightCoord{}}{0mm}{2}{4}{
+&& Z_0=\left(\frac{1}{\sqrt{\tau_2}|\eta(\tau)|^2}\right)^{d-1}.
+}{1}\coordE{}\end{eqnarray*}
+
+The primary fields of (\ref{PrincipleSeries})
+correspond to ``Principal continuous series'' in terms 
+of the representation
+of \myHighlight{$SL(2)$}\coordHE{}. To include the other sectors is an interesting problem
+and is postponed as a future work.
+
+\subsection{GSO dependent part of the partition function
+: \myHighlight{$d=2,6$}\coordHE{} cases}
+
+Now, let us proceed to the GSO dependent part \myHighlight{$Z_{GSO}$}\coordHE{}. 
+In this subsection, we treat \myHighlight{$d=2,6$}\coordHE{} cases.
+
+This part includes \myHighlight{$(d-2)$}\coordHE{} flat 
+spacetime fermions \myHighlight{$\psi^{I},\ (I=2,\dots,d-1)$}\coordHE{} 
+, two free fermions \myHighlight{$\psi^{\phi},\psi^{Y}$}\coordHE{}
+associated to \myHighlight{$\Rb_{\phi}\times S^1$}\coordHE{}, minimal models
+\myHighlight{$M_{G_1,N_1},\dots,M_{G_R,N_R}$}\coordHE{} , and an \myHighlight{$S^1$}\coordHE{} boson \myHighlight{$Y$}\coordHE{}. 
+We combine the 
+\myHighlight{$d$}\coordHE{} free fermions \myHighlight{$\psi^{I},\ (I=2,\dots,d-1) ,\psi^{\phi}$}\coordHE{} and 
+\myHighlight{$\psi^{Y}$}\coordHE{}
+and construct the affine Lie algebra \myHighlight{$\widehat{SO(d)}_{1}$}\coordHE{}. 
+The Verma module of \myHighlight{$\widehat{SO(d)}_{1}$}\coordHE{}
+is characterized by an integer \myHighlight{$s_0=0,1,2,3$}\coordHE{} , which labels
+the representations of \myHighlight{$SO(d)$}\coordHE{}, that is scalar, spinor, vector, and cospinor,
+respectively.
+
+Let us turn to Verma modules of \myHighlight{$\Ncal=2$}\coordHE{} minimal models.
+The Verma module of an \myHighlight{$\Ncal=2$}\coordHE{} minimal model
+is specified with three indices \myHighlight{$(\ell,m,s)$}\coordHE{}, which satisfy
+the following conditions\cite{Gep88}
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \ell=0,\dots,N-2,\nn\rightCoord{}\\
+&&\leftCoord{} m=0,\dots,2N-1,\nn\rightCoord{}\\
+&&\leftCoord{} s=0,1,2,3,\nn\rightCoord{}\\
+&&\leftCoord{} \ell+m+s\equiv 0 \mod 2. \rightCoord{}\label{EvenCondition}
+\rightCoord{}}{0mm}{4}{6}{
+&& \ell=0,\dots,N-2,\nn\\
+&& m=0,\dots,2N-1,\nn\\
+&& s=0,1,2,3,\nn\\
+&& \ell+m+s\equiv 0 \mod 2. }{1}\coordE{}\end{eqnarray}
+We denote  \myHighlight{$\chi^{\ell,s}_m(\tau,z)$}\coordHE{} as the character
+of the Verma module labeled by the set \myHighlight{$(\ell,m,s)$}\coordHE{}.
+Some properties of this character is collected in Appendix A.
+
+The Verma module of the whole GSO dependent parts is specified by
+the index \myHighlight{$s_0$}\coordHE{} of \myHighlight{$\widehat{SO(d)}_{1}$}\coordHE{} representation,
+the indices \myHighlight{$(\ell_j,m_j,s_j),\ (j=1,\dots,R)$}\coordHE{} of the minimal models,
+and the \myHighlight{$S^1$}\coordHE{} momentum \myHighlight{$p$}\coordHE{}.
+We combine these indices except \myHighlight{$p$}\coordHE{} into two vectors \myHighlight{$\lambda,\mu$}\coordHE{}.
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \lambda:=(\ell_1,\dots,\ell_R), \rightCoord{}\\
+&&\leftCoord{} \mu:=(s_0;s_1,\dots,s_R;m_1,\dots,m_R).\rightCoord{}
+\rightCoord{}}{0mm}{2}{4}{
+&& \lambda:=(\ell_1,\dots,\ell_R), \\
+&& \mu:=(s_0;s_1,\dots,s_R;m_1,\dots,m_R).
+}{1}\coordE{}\end{eqnarray*}
+We shall introduce the inner product between \myHighlight{$\mu$}\coordHE{} and \myHighlight{$\mu'$}\coordHE{}
+as in \cite{Gep88}
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ \mu\bullet\mu':=-\frac d2 \frac{\leftCoord{}s_0s_0'}{\rightCoord{}4}-\sum_{\rightCoord{}j=1}^{\leftCoord{}{}\leftCoord{}R} \frac{\leftCoord{}s_j s_j'}{\rightCoord{}4}
+\leftCoord{}+\sum_{\rightCoord{}j=1}^{\leftCoord{}{}\leftCoord{}R}\frac{\leftCoord{}m_jm_j'}{\rightCoord{}2N_j}.\rightCoord{}\\\leftCoord{}
+\rightCoord{}}{0mm}{10}{8}{
+ \mu\bullet\mu':=-\frac d2 \frac{s_0s_0'}{4}-\sum_{j=1}^{{}R} \frac{s_j s_j'}{4}
++\sum_{j=1}^{{}R}\frac{m_jm_j'}{2N_j}.\\
+}{1}\coordE{}\end{eqnarray*}
+Also it is convenient to 
+introduce special vectors \myHighlight{$\beta_0,\beta_j\;(j=1,\dots,R)$}\coordHE{}
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \beta_0:=(1;1,\dots,1;1,\dots,1),\rightCoord{}\\
+&&\leftCoord{} \beta_j:=(2;0,\dots,0,\underset{\underset{S_j}{\wedge}}{2}
+\leftCoord{},0,\dots0;0,\dots,0).\rightCoord{}\\\leftCoord{}
+\rightCoord{}}{0mm}{4}{4}{
+&& \beta_0:=(1;1,\dots,1;1,\dots,1),\\
+&& \beta_j:=(2;0,\dots,0,\underset{\underset{S_j}{\wedge}}{2}
+,0,\dots0;0,\dots,0).\\
+}{1}\coordE{}\end{eqnarray*}
+Here the \myHighlight{$\beta_0$}\coordHE{} is the vector with all components \myHighlight{$1$}\coordHE{}, and \myHighlight{$\beta_j$}\coordHE{} is 
+the vector with \myHighlight{$s_0$}\coordHE{} and \myHighlight{$s_j$}\coordHE{} components \myHighlight{$2$}\coordHE{} and the others zero.
+
+With these notations, the criticality condition (\ref{CritCond1}) can 
+be written in a rather simple form as 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} Q^2=4(1+\beta_0\bullet\beta_0).  \rightCoord{}\label{CritCond2}
+\rightCoord{}}{0mm}{1}{3}{
+&& Q^2=4(1+\beta_0\bullet\beta_0).  }{1}\coordE{}\end{eqnarray}
+When we define an integer \myHighlight{$K:=\lcm(2,N_j)$}\coordHE{}, \myHighlight{$KQ^2$}\coordHE{} is shown to be
+an even integer because of the equations
+ (\ref{CritCond1}) and (\ref{CritCond2}). 
+Therefore, it is convenient to define an integer \myHighlight{$J$}\coordHE{} by the equation
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} J :=2K(1+\beta_0\bullet\beta_0)\quad(=K Q^2/2).\rightCoord{}\label{DefJ}
+\rightCoord{}}{0mm}{1}{3}{
+&& J :=2K(1+\beta_0\bullet\beta_0)\quad(=K Q^2/2).}{1}\coordE{}\end{eqnarray}
+In terms of \myHighlight{$J$}\coordHE{}, the finite distance condition (\ref{FDCondition}) can
+be expressed as \myHighlight{$J>0$}\coordHE{}.
+
+Now, let us consider the character of the Verma module \myHighlight{$(\lambda,\mu,p)$}\coordHE{},
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \chi^{\lambda}_{\mu}(\tau) \frac{\leftCoord{}q^{\frac12 p^2}}{\rightCoord{}\eta(\tau)},
+\rightCoord{}}{0mm}{2}{3}{
+&& \chi^{\lambda}_{\mu}(\tau) \frac{q^{\frac12 p^2}}{\eta(\tau)},
+}{1}\coordE{}\end{eqnarray*}
+where \myHighlight{$\chi^{\lambda}_{\mu}(\tau)$}\coordHE{} is the product of
+ characters of the minimal models and
+the \myHighlight{$\widehat{SO(d)}_1$}\coordHE{} character \myHighlight{$\chi_{s_0}(\tau)$}\coordHE{} of the
+\myHighlight{$s_0$}\coordHE{} representation
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ \chi^{\lambda}_{\mu}(\tau):=\chi_{s_0}(\tau)\chi_{m_1}^{\ell_1,s_1}(\tau)
+\dots\chi_{m_R}^{\ell_R,s_R}(\tau).\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+ \chi^{\lambda}_{\mu}(\tau):=\chi_{s_0}(\tau)\chi_{m_1}^{\ell_1,s_1}(\tau)
+\dots\chi_{m_R}^{\ell_R,s_R}(\tau).
+}{1}\coordE{}\end{eqnarray*}
+
+In this character, \myHighlight{$\chi^{\lambda}_{\mu}(\tau)$}\coordHE{} has good modular
+properties, but \myHighlight{$q^{\frac12 p^2}/\eta(\tau)$}\coordHE{} has bad ones.
+So, we will sum up the characters with respect to
+ certain values of \myHighlight{$p$}\coordHE{} and
+make the
+modular properties good \cite{Miz0003}\cite{ES0002}.
+
+Let us consider the GSO projection. 
+By the GSO projection, 
+we pick up the states with odd integral \myHighlight{$U(1)$}\coordHE{} charges of the \myHighlight{$\Ncal=2$}\coordHE{}
+superconformal symmetry.
+The \myHighlight{$U(1)$}\coordHE{} charge of the states in the above Verma module is expressed as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ \leftCoord{}2\beta_0\bullet\mu+pQ=-\frac d2 \frac{\leftCoord{}s_0}{\rightCoord{}2}-\sum_{\rightCoord{}j\rightCoord{}} \frac{\leftCoord{}s_j}{\rightCoord{}2}
+\leftCoord{}+\sum_{\rightCoord{}j\rightCoord{}}\frac{\leftCoord{}m_j}{\rightCoord{}N_j}+pQ. \rightCoord{}\\\leftCoord{}
+\rightCoord{}}{0mm}{7}{10}{
+ 2\beta_0\bullet\mu+pQ=-\frac d2 \frac{s_0}{2}-\sum_{j} \frac{s_j}{2}
++\sum_{j}\frac{m_j}{N_j}+pQ. \\
+}{1}\coordE{}\end{eqnarray*}
+From the condition that this \myHighlight{$U(1)$}\coordHE{} charge must be an odd integer
+ \myHighlight{$(2u+1)$}\coordHE{} with \myHighlight{$u\in \Zb$}\coordHE{},
+the \myHighlight{$S^1$}\coordHE{} momentum \myHighlight{$p$}\coordHE{} is written as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} p(u)=\frac 1Q\left(2u+1-2\beta_0\bullet\mu \right).\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+&& p(u)=\frac 1Q\left(2u+1-2\beta_0\bullet\mu \right).
+}{1}\coordE{}\end{eqnarray*}
+If we sum up the characters for all \myHighlight{$u\in \Zb$}\coordHE{}, we obtain the theta
+function with a fractional level\cite{ES0002}, 
+which does not have good modular properties.
+So we perform the following trick.
+
+Let us write \myHighlight{$u=Jv+w$}\coordHE{} with integers \myHighlight{$v,w$}\coordHE{} and sum up the characters
+for \myHighlight{$v\in \Zb$}\coordHE{}. Then the sum leads to the following theta function
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \sum_{\rightCoord{}v\in \Zb}
+ q^{\frac12 p(u=Jv+w)^2}=\Th_{-2K\beta_0\bullet\mu+K(2w+1),KJ}(\tau).\rightCoord{}
+\label{GSOCondition0}
+\rightCoord{}}{0mm}{1}{4}{
+&& \sum_{v\in \Zb}
+ q^{\frac12 p(u=Jv+w)^2}=\Th_{-2K\beta_0\bullet\mu+K(2w+1),KJ}(\tau).
+}{1}\coordE{}\end{eqnarray}
+Note that \myHighlight{$-2K\beta_0\bullet\mu+K(2w+1)$}\coordHE{} is an integer, and the above
+theta function has good modular properties.
+
+Now, including oscillator modes and other sectors, 
+we can define the building blocks
+\myHighlight{$f^{\lambda}_{\mt}(\tau)$}\coordHE{} by
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}f^{\lambda}_{\mt}(\tau):=\chi^{\lambda}_{\mu}(\tau)
+\Th_{M,KJ}(\tau)/\eta(\tau),\rightCoord{}\\
+&&\leftCoord{} \mt:=(\mu,M), \ M\in \Zb_{2KJ}.\rightCoord{}
+\rightCoord{}}{0mm}{2}{4}{
+&&f^{\lambda}_{\mt}(\tau):=\chi^{\lambda}_{\mu}(\tau)
+\Th_{M,KJ}(\tau)/\eta(\tau),\\
+&& \mt:=(\mu,M), \ M\in \Zb_{2KJ}.
+}{1}\coordE{}\end{eqnarray*}
+We should use only the building
+blocks \myHighlight{$f^{\lambda}_{\mt}$}\coordHE{} with the conditions
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} M=-2K\beta_0\bullet\mu+K(2w+1) \mbox{ for }{}^{\exists} w \in \Zb,
+\label{GSOCondition}\rightCoord{}\\
+&&\leftCoord{} s_0\equiv s_1 \equiv \dots \equiv s_R \mod 2 .\rightCoord{}
+\label{SpinCondition}
+\rightCoord{}}{0mm}{2}{4}{
+&& M=-2K\beta_0\bullet\mu+K(2w+1) \mbox{ for }{}^{\exists} w \in \Zb,
+\\
+&& s_0\equiv s_1 \equiv \dots \equiv s_R \mod 2 .
+}{1}\coordE{}\end{eqnarray}
+The condition (\ref{GSOCondition}) comes 
+from the formula of (\ref{GSOCondition0}), and
+the condition (\ref{SpinCondition}) implies that 
+the boundary condition of the fermionic currents are the same in
+all the sub-theories, i.e. they must be all in the NS sector, 
+or all in the R sector.
+
+The modular invariant partition function can be systematically
+obtained by ``the beta method''\cite{Gep88}.
+
+The inner product between of two vectors \myHighlight{$\mt,\mt'$}\coordHE{} is defined as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ \mt\bullet\mt':=\mu\bullet\mu'-\frac{\leftCoord{}MM'}{\rightCoord{}2KJ}. \rightCoord{}
+\rightCoord{}}{0mm}{2}{4}{
+ \mt\bullet\mt':=\mu\bullet\mu'-\frac{MM'}{2KJ}. 
+}{1}\coordE{}\end{eqnarray*}
+We also extend the vectors \myHighlight{$\beta_0,\beta_j$}\coordHE{} to \myHighlight{$\bt{0},\bt{j}$}\coordHE{}
+as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \bt{0}:=(\beta_0,-J),\rightCoord{}\\
+&&\leftCoord{} \bt{j}:=(\beta_j,0),\rightCoord{}\\\leftCoord{}
+\rightCoord{}}{0mm}{3}{4}{
+&& \bt{0}:=(\beta_0,-J),\\
+&& \bt{j}:=(\beta_j,0),\\
+}{1}\coordE{}\end{eqnarray*}
+and evaluate the inner products of these \myHighlight{$\bt{0},\bt{j}$}\coordHE{} vectors
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \bt{0}\bullet\bt{0}=\beta_0\bullet\beta_0-\frac{\leftCoord{}J^2}{\rightCoord{}2KJ}=-1,\nn\rightCoord{}\\
+&&\leftCoord{}\bt{j}\bullet \bt{j}=\beta_j\bullet\beta_j=-\frac d2-1, \nn\rightCoord{}\\
+&&\leftCoord{} \bt{j}\bullet \bt{0}=\frac12\left(-\frac d2-1\right). \rightCoord{}\label{BetaBeta}
+\rightCoord{}}{0mm}{4}{6}{
+&& \bt{0}\bullet\bt{0}=\beta_0\bullet\beta_0-\frac{J^2}{2KJ}=-1,\nn\\
+&&\bt{j}\bullet \bt{j}=\beta_j\bullet\beta_j=-\frac d2-1, \nn\\
+&& \bt{j}\bullet \bt{0}=\frac12\left(-\frac d2-1\right). }{1}\coordE{}\end{eqnarray}
+Note that \myHighlight{$\bt{0}\bullet\bt{0}$}\coordHE{} is an odd integer,
+\myHighlight{$\bt{j}\bullet \bt{j}$}\coordHE{} are even integers (Recall that we consider
+the cases \myHighlight{$d=2,6$}\coordHE{}), and \myHighlight{$\bt{j}\bullet \bt{0}$}\coordHE{} are integers.
+Using these special vectors, the conditions 
+(\ref{GSOCondition}) and (\ref{SpinCondition})
+are written in a simple form
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} 2\bt{0}\bullet\mt\in 2\Zb+1,\nn\rightCoord{}\\
+&&\leftCoord{} \bt{j}\bullet\mt \in \Zb.\rightCoord{}\label{BetaConditions}
+\rightCoord{}}{0mm}{2}{4}{
+&& 2\bt{0}\bullet\mt\in 2\Zb+1,\nn\\
+&& \bt{j}\bullet\mt \in \Zb.}{1}\coordE{}\end{eqnarray}
+We call this condition ``the beta condition''.
+
+Using these notations, and the modular transformation laws of
+theta functions and \myHighlight{$\Ncal=2$}\coordHE{} characters written in
+the Appendix A, we can calculate the modular transformation
+laws of \myHighlight{$f_{\mt}^{\lambda}$}\coordHE{} as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}f_{\mt}^{\lambda}(\tau+1)=\e{\sum_{\rightCoord{}j\rightCoord{}}\frac{\leftCoord{}\ell_j(\ell_j+1)}{\rightCoord{}4N_j}-\frac12 \mt\bullet\mt-\frac1{24}\left(\sum_{\rightCoord{}j}\frac{\leftCoord{}N_j-2}{\rightCoord{}N_j}+\frac d2+1\right)}
+f_{\mt}^{\lambda}(\tau),\rightCoord{}\\
+&&\leftCoord{}f_{\mt}^{\lambda}(-1/\tau)=
+\sum_{\rightCoord{}\lambda',\mt'}^{\leftCoord{}{}\leftCoord{}\rm even}
+A_{\lambda\lambda'}\left(\prod_j\frac{\leftCoord{}1}{\rightCoord{}\sqrt{8N_j}}\right)
+\frac{\leftCoord{}1}{\rightCoord{}\sqrt{8KJ}}\e{\mt\bullet\mt'}f_{\mt'}^{\lambda'}(\tau),
+\rightCoord{}}{0mm}{8}{11}{
+&&f_{\mt}^{\lambda}(\tau+1)=\e{\sum_{j}\frac{\ell_j(\ell_j+1)}{4N_j}-\frac12 \mt\bullet\mt-\frac1{24}\left(\sum_{j}\frac{N_j-2}{N_j}+\frac d2+1\right)}
+f_{\mt}^{\lambda}(\tau),\\
+&&f_{\mt}^{\lambda}(-1/\tau)=
+\sum_{\lambda',\mt'}^{{}\rm even}
+A_{\lambda\lambda'}\left(\prod_j\frac{1}{\sqrt{8N_j}}\right)
+\frac{1}{\sqrt{8KJ}}\e{\mt\bullet\mt'}f_{\mt'}^{\lambda'}(\tau),
+}{1}\coordE{}\end{eqnarray*}
+where  the sums of the \myHighlight{$\lambda',\mu'$}\coordHE{}
+are taken only for the range (\ref{EvenCondition}) and for
+\myHighlight{$M=0,\dots,2KJ-1$}\coordHE{}.
+Especially we must impose the condition \myHighlight{$\ell_j+m_j+s_j\equiv0\mod 2$}\coordHE{}
+for each minimal model.
+\myHighlight{$A_{\lambda\lambda'}$}\coordHE{} is the products of the \myHighlight{$\widehat{SU(2)}_{N_j-2}$}\coordHE{}
+ S matrices \myHighlight{$A^{(N_j)}_{\ell_j\ell_j'}$}\coordHE{};
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+  A_{\lambda\lambda'}
+\leftCoord{}=\prod_j A^{(N_j)}_{\ell_j\ell_j'}
+\leftCoord{}=\prod_j\sqrt{\frac{\leftCoord{}2}{\rightCoord{}N_j}}\sin \pi
+\frac{\leftCoord{}(\ell_j+1)(\ell'_j+1)}{\rightCoord{}N_j},
+\rightCoord{}}{0mm}{5}{4}{
+  A_{\lambda\lambda'}
+=\prod_j A^{(N_j)}_{\ell_j\ell_j'}
+=\prod_j\sqrt{\frac{2}{N_j}}\sin \pi
+\frac{(\ell_j+1)(\ell'_j+1)}{N_j},
+}{1}\coordE{}\end{eqnarray*}
+and we use
+here and the rest of this paper the notation \myHighlight{$\e{x}=\exp(2\pi i x)$}\coordHE{}.
+
+Let us note that if a vector \myHighlight{$\mt$}\coordHE{} satisfies the beta condition
+(\ref{BetaConditions}), the vector \myHighlight{$\mt+b_0\bt{0}+\sum_jb_j\bt{j}$}\coordHE{}
+for \myHighlight{$b_0,b_j\in\Zb,\ (j=1,\dots,R)$}\coordHE{}
+ also satisfies the beta condition by virtue of (\ref{BetaBeta}).
+Using this fact, we define the function \myHighlight{$F_{\mt}^{\lambda}$}\coordHE{}
+for \myHighlight{$(\lambda,\mt)$}\coordHE{} which satisfies the beta conditions 
+(\ref{BetaConditions}) as a sum of
+ \myHighlight{$f_{\mt+b_0\bt{0}+\sum_jb_j\bt{j}}^{\lambda}$}\coordHE{}'s as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} F_{\mu}^{\lambda}(\tau)=\sum_{\rightCoord{}b_0,b_j}(-1)^{s_0+b_0}
+f_{\mt+b_0\bt{0}+\sum_{\rightCoord{}jb_j\rightCoord{}}\bt{j}}^{\lambda}(\tau),
+\rightCoord{}}{0mm}{1}{5}{
+&& F_{\mu}^{\lambda}(\tau)=\sum_{b_0,b_j}(-1)^{s_0+b_0}
+f_{\mt+b_0\bt{0}+\sum_{jb_j}\bt{j}}^{\lambda}(\tau),
+}{1}\coordE{}\end{eqnarray*}
+where the sum is taken for \myHighlight{$b_0\in \Zb_{2K}$}\coordHE{} and \myHighlight{$b_j\in \Zb_2$}\coordHE{}.
+The sign \myHighlight{$(-1)^{s_0+b_0}$}\coordHE{} is \myHighlight{$(-1)$}\coordHE{} for the Ramond sector.
+ 
+These functions have very good modular properties. Especially
+by S transformation, the functions are mixed among those which
+satisfy the beta condition;
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} F_{\mt}^{\lambda}(\tau+1)=
+\e{\sum_{\rightCoord{}j\rightCoord{}}\frac{\leftCoord{}\ell_j(\ell_j+1)}{\rightCoord{}4N_j}
+\leftCoord{}-\frac12 \mt\bullet\mt-\frac1{24}\left(\sum_{\rightCoord{}j}\frac{\leftCoord{}N_j-2}{\rightCoord{}N_j}+\frac d2+1\right)}F_{\mt}^{\lambda}(\tau),\rightCoord{}\\
+&&\leftCoord{} F_{\mt}^{\lambda}(-1/\tau)=\sum_{\rightCoord{}\lambda',\mt'}^{\leftCoord{}{}\leftCoord{}\rm even,beta}
+A_{\lambda\lambda'}\left(\prod_j\frac{\leftCoord{}1}{\rightCoord{}\sqrt{8N_j}}\right)
+\frac{\leftCoord{}1}{\rightCoord{}\sqrt{8KJ}}\e{\mt\bullet\mt'}(-1)^{s_0+s_0'}
+F_{\mt'}^{\lambda'}(\tau),
+\rightCoord{}}{0mm}{9}{11}{
+&& F_{\mt}^{\lambda}(\tau+1)=
+\e{\sum_{j}\frac{\ell_j(\ell_j+1)}{4N_j}
+-\frac12 \mt\bullet\mt-\frac1{24}\left(\sum_{j}\frac{N_j-2}{N_j}+\frac d2+1\right)}F_{\mt}^{\lambda}(\tau),\\
+&& F_{\mt}^{\lambda}(-1/\tau)=\sum_{\lambda',\mt'}^{{}\rm even,beta}
+A_{\lambda\lambda'}\left(\prod_j\frac{1}{\sqrt{8N_j}}\right)
+\frac{1}{\sqrt{8KJ}}\e{\mt\bullet\mt'}(-1)^{s_0+s_0'}
+F_{\mt'}^{\lambda'}(\tau),
+}{1}\coordE{}\end{eqnarray*}
+where the sums of \myHighlight{$\lambda',\mt'$}\coordHE{} is taken for 
+restricted subclass that satisfies
+the conditions (\ref{EvenCondition}) 
+and the beta condition (\ref{BetaConditions}).
+
+With this function \myHighlight{$F_{\mu}^{\lambda}$}\coordHE{}, 
+we obtain the modular invariant \myHighlight{$Z_{GSO}$}\coordHE{}
+as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}Z_{GSO}(\tau,\taub) = \frac{\leftCoord{}1}{\rightCoord{}4^R\times 2K}\sum_{\rightCoord{}\lambda,\lambdab,\mt}^{\leftCoord{}{}\leftCoord{}\rm even,beta}
+L_{\lambda\lambdab}F_{\mt}^{\lambda}(\tau)\bar F_{\mt}^{\lambdab}(\taub),\rightCoord{}\\\leftCoord{}
+\rightCoord{}}{0mm}{5}{5}{
+&&Z_{GSO}(\tau,\taub) = \frac{1}{4^R\times 2K}\sum_{\lambda,\lambdab,\mt}^{{}\rm even,beta}
+L_{\lambda\lambdab}F_{\mt}^{\lambda}(\tau)\bar F_{\mt}^{\lambdab}(\taub),\\
+}{1}\coordE{}\end{eqnarray*}
+where \myHighlight{$L_{\lambda\lambdab}=\prod_jL_{\ell_j\bar\ell_j}^{(G_j,N_j-2)}$}\coordHE{} is 
+the product of \myHighlight{$G_j=A,D,E$}\coordHE{} type modular invariants
+of \myHighlight{$\widehat{SU(2)}_{N_j-2}$}\coordHE{} \cite{CIZ87,CIZ87CMP,Kat87}.
+
+We can check the modular invariance of the above partition function.
+
+We expect from spacetime supersymmetry that the partition function
+vanishes, or equivalently \myHighlight{$F_{\mt}^{\lambda}(\tau)=0$}\coordHE{}. It is a
+future work to check that it actually vanishes.
+
+Here, we find a solution, but it may not be the only solution, and
+there can be some variety of modular invariant partition function.
+Actually, for \myHighlight{$R=1$}\coordHE{} case, there are many other solutions
+associated with the other modular invariants of the theta system
+\cite{ES0002}.
+
+\subsection{GSO dependent part of the partition function : \myHighlight{$d=4$}\coordHE{} case}
+
+In this subsection, we comment on the \myHighlight{$d=4$}\coordHE{} case.
+To construct the modular invariant partition function in
+the \myHighlight{$d=4$}\coordHE{} case, we combine the four fermions to
+construct the affine currents
+\myHighlight{$\widehat{SO(2)}_1\times \widehat{SO(2)}_1$}\coordHE{} and
+label the the Verma module by indices \myHighlight{$s_{-1}$}\coordHE{} and \myHighlight{$s_0$}\coordHE{}.
+Then, the modular invariant partition function can be 
+constructed in almost the same way as the \myHighlight{$d=2,6$}\coordHE{} cases.
+
+First we define the vectors \myHighlight{$\mt$}\coordHE{}'s and the inner product
+between them as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \mt:=(s_{-1},s_0;s_1,\dots,s_R;m_1,\dots,m_R;M),\rightCoord{}\\
+&&\leftCoord{} \mt\bullet\mt':=-\frac{\leftCoord{}s_{-1}s_{-1}'}{4}-\frac{\leftCoord{}s_{0}s_{0}'}{\rightCoord{}4}
+\leftCoord{}-\sum_{\rightCoord{}j}\frac{\leftCoord{}s_{j}s_{j}'}{4}+\sum_{\rightCoord{}j}\frac{\leftCoord{}m_jm_j'}{\rightCoord{}2N_j}
+\leftCoord{}-\frac{\leftCoord{}MM'}{\rightCoord{}2KJ}. \rightCoord{}
+\rightCoord{}}{0mm}{9}{9}{
+&& \mt:=(s_{-1},s_0;s_1,\dots,s_R;m_1,\dots,m_R;M),\\
+&& \mt\bullet\mt':=-\frac{s_{-1}s_{-1}'}{4}-\frac{s_{0}s_{0}'}{4}
+-\sum_{j}\frac{s_{j}s_{j}'}{4}+\sum_{j}\frac{m_jm_j'}{2N_j}
+-\frac{MM'}{2KJ}. 
+}{1}\coordE{}\end{eqnarray*}
+It is convenient to introduce  special vectors \myHighlight{$\bt{0}$}\coordHE{}, \myHighlight{$\bt{j}$}\coordHE{} and
+\myHighlight{$\bt{-1}$}\coordHE{}
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \bt{0}=(1,1;1,\dots,1;1,\dots,1;M),\rightCoord{}\\
+&&\leftCoord{} \bt{j}=(0,2;0,\dots,0,\underset{\underset{S_j}{\wedge}}{2}
+\leftCoord{},0,\dots,0;0,\dots,0;0),\ (j=1,\dots,R),\rightCoord{}\\
+&&\leftCoord{} \bt{-1}=(2,2;0,\dots,0;0,\dots,0;0).\rightCoord{}\\\leftCoord{}
+\rightCoord{}}{0mm}{5}{5}{
+&& \bt{0}=(1,1;1,\dots,1;1,\dots,1;M),\\
+&& \bt{j}=(0,2;0,\dots,0,\underset{\underset{S_j}{\wedge}}{2}
+,0,\dots,0;0,\dots,0;0),\ (j=1,\dots,R),\\
+&& \bt{-1}=(2,2;0,\dots,0;0,\dots,0;0).\\
+}{1}\coordE{}\end{eqnarray*}
+Using these vectors, we can construct the building blocks
+ \myHighlight{$f^{\lambda}_{\mt}(\tau)$}\coordHE{} as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}f^{\lambda}_{\mt}(\tau):=
+\chi_{s_{-1}}(\tau)\chi_{s_{0}}(\tau)\chi_{m}^{\ell_1,s_1}(\tau)
+\dots \chi_{m}^{\ell_R,s_R}(\tau)
+\Th_{M,KJ}(\tau)/\eta(\tau),
+\rightCoord{}}{0mm}{1}{2}{
+&&f^{\lambda}_{\mt}(\tau):=
+\chi_{s_{-1}}(\tau)\chi_{s_{0}}(\tau)\chi_{m}^{\ell_1,s_1}(\tau)
+\dots \chi_{m}^{\ell_R,s_R}(\tau)
+\Th_{M,KJ}(\tau)/\eta(\tau),
+}{1}\coordE{}\end{eqnarray*}
+where \myHighlight{$\chi_{s_{-1}}(\tau)$}\coordHE{} and \myHighlight{$\chi_{s_{0}}(\tau)$}\coordHE{} 
+are \myHighlight{$\widehat{SO(2)}_1$}\coordHE{}
+characters. Then the GSO conditions and the condition
+of fermionic sectors are
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} 2\bt{0}\bullet \mt\in 2 \Zb+1,\qquad
+ \bt{j}\bullet \mt \in \Zb,\qquad
+ \bt{-1}\bullet \mt  \in \Zb, \rightCoord{}\label{BetaCondition4}
+\rightCoord{}}{0mm}{1}{3}{
+&& 2\bt{0}\bullet \mt\in 2 \Zb+1,\qquad
+ \bt{j}\bullet \mt \in \Zb,\qquad
+ \bt{-1}\bullet \mt  \in \Zb, }{1}\coordE{}\end{eqnarray}
+and we can construct the modular invariant partition function
+by the beta method in this case.
+Next we introduce the function \myHighlight{$F_{\mt}^{\lambda}(\tau)$}\coordHE{} as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} F_{\mt}^{\lambda}(\tau)=\sum_{\rightCoord{}b_0\in\Zb_{2K},b_j\in\Zb_2,b_{-1}\in\Zb_2}
+\leftCoord{}(-1)^{b_0+s_0}
+f_{\mt+b_0\bt{0}+\sum_{\rightCoord{}j\rightCoord{}} b_j\bt{j}+b_{-1}\bt{-1}}^{\lambda}(\tau),
+\rightCoord{}}{0mm}{2}{5}{
+&& F_{\mt}^{\lambda}(\tau)=\sum_{b_0\in\Zb_{2K},b_j\in\Zb_2,b_{-1}\in\Zb_2}
+(-1)^{b_0+s_0}
+f_{\mt+b_0\bt{0}+\sum_{j} b_j\bt{j}+b_{-1}\bt{-1}}^{\lambda}(\tau),
+}{1}\coordE{}\end{eqnarray*}
+then we obtain
+the GSO dependent part of the modular invariant partition function 
+\myHighlight{$Z_{GSO}$}\coordHE{}
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}Z_{GSO}(\tau,\taub) = 
+\frac{\leftCoord{}1}{\rightCoord{}4^R\times 4K}\sum_{\rightCoord{}\lambda,\lambdab,\mt}^{\leftCoord{}{}\leftCoord{}\rm even,beta}
+L_{\lambda\lambdab}F_{\mt}^{\lambda}(\tau)\bar F_{\mt}^{\lambdab}(\taub).\rightCoord{}\\\leftCoord{}
+\rightCoord{}}{0mm}{5}{5}{
+&&Z_{GSO}(\tau,\taub) = 
+\frac{1}{4^R\times 4K}\sum_{\lambda,\lambdab,\mt}^{{}\rm even,beta}
+L_{\lambda\lambdab}F_{\mt}^{\lambda}(\tau)\bar F_{\mt}^{\lambdab}(\taub).\\
+}{1}\coordE{}\end{eqnarray*}
+We can check the modular invariance of the above partition function.
+
+\section{Elliptic genus}\label{Sec4}
+
+In this section, we calculate the elliptic genus of the theory
+\cite{KYY9306}. The definition of the elliptic genus is
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} Z(\tau,\taub,z):=\Tr_{RR}(-1)^{F}q^{L_0-c/24}\bar q^{\bar L_0-c/24}y^{J_0},
+\rightCoord{}}{0mm}{1}{2}{
+&& Z(\tau,\taub,z):=\Tr_{RR}(-1)^{F}q^{L_0-c/24}\bar q^{\bar L_0-c/24}y^{J_0},
+}{1}\coordE{}\end{eqnarray*}
+where the trace is taken for the RR states, and \myHighlight{$y=\exp(2\pi iz)$}\coordHE{}. This
+elliptic genus has the following modular properties;
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} Z(\tau+1,\taub+1,z)=Z(\tau,\taub,-z)=Z(\tau,\taub,z),\nn\rightCoord{}\\
+&&\leftCoord{} Z(-1/\tau,-1/\taub,z/\tau)=\e{\frac{\leftCoord{}\ch}{\rightCoord{}2}\frac{\leftCoord{}z^2}{\rightCoord{}\tau}} \rightCoord{}
+Z(\tau,\taub,z). \rightCoord{}\label{EllipticModular}
+\rightCoord{}}{0mm}{4}{7}{
+&& Z(\tau+1,\taub+1,z)=Z(\tau,\taub,-z)=Z(\tau,\taub,z),\nn\\
+&& Z(-1/\tau,-1/\taub,z/\tau)=\e{\frac{\ch}{2}\frac{z^2}{\tau}} 
+Z(\tau,\taub,z). }{1}\coordE{}\end{eqnarray}
+
+Here, we omit the contribution from the flat space time and
+consider only the internal part describing
+the Calabi-Yau \myHighlight{$n$}\coordHE{}-fold \myHighlight{$X$}\coordHE{}. We calculate its elliptic genus and
+the Witten index, and discuss its geometrical interpretation.
+
+Let us consider again ``the criticality condition'', in other
+words ``the Calabi-Yau condition'' of \myHighlight{$X$}\coordHE{}.
+Here the total \myHighlight{$\ch$}\coordHE{} should be \myHighlight{$n$}\coordHE{} because we want the theory
+that describes a Calabi-Yau \myHighlight{$n$}\coordHE{}-fold. Therefore, the total \myHighlight{$\ch$}\coordHE{} of 
+the \myHighlight{$\Ncal=2$}\coordHE{} Liouville and the minimal models should satisfy
+the relations
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+ n=\ch=1+Q^2+\sum_{\rightCoord{}j\rightCoord{}}\frac{\leftCoord{}N_j-2}{\rightCoord{}N_j}.\rightCoord{}\label{CalabiYauCondition}
+\rightCoord{}}{0mm}{2}{6}{
+ n=\ch=1+Q^2+\sum_{j}\frac{N_j-2}{N_j}.}{1}\coordE{}\end{eqnarray}
+
+We introduce the following
+vectors with \myHighlight{$R$}\coordHE{} components \myHighlight{$\{m_j\}$}\coordHE{}, and the inner product between them as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \nu:=(m_1,\dots,m_R),\rightCoord{}\\
+&&\leftCoord{} \nu\bullet\nu':=\sum_{\rightCoord{}j\rightCoord{}}\frac{\leftCoord{}m_jm_j'}{\rightCoord{}2N_j}.\rightCoord{}\\\leftCoord{}
+\rightCoord{}}{0mm}{4}{7}{
+&& \nu:=(m_1,\dots,m_R),\\
+&& \nu\bullet\nu':=\sum_{j}\frac{m_jm_j'}{2N_j}.\\
+}{1}\coordE{}\end{eqnarray*}
+We also introduce the special vector \myHighlight{$\gamma_0$}\coordHE{} with all components \myHighlight{$2$}\coordHE{}
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}\gamma_0:=(2,\dots,2).\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+&&\gamma_0:=(2,\dots,2).
+}{1}\coordE{}\end{eqnarray*}
+With these notations, the condition
+(\ref{CalabiYauCondition}) becomes
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} Q^2=n-1-R+\gamma_0\bullet\gamma_0.\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+&& Q^2=n-1-R+\gamma_0\bullet\gamma_0.
+}{1}\coordE{}\end{eqnarray*}
+Next we let \myHighlight{$N:=\lcm(N_j)$}\coordHE{}, and define \myHighlight{$J$}\coordHE{} as
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \frac{\leftCoord{}2J}{\rightCoord{}N}:=Q^2. \rightCoord{}\label{DefJ2}
+\rightCoord{}}{0mm}{2}{4}{
+&& \frac{2J}{N}:=Q^2. }{1}\coordE{}\end{eqnarray}
+In this paper, we concentrate only the case that \myHighlight{$(n-1-R)$}\coordHE{} is even, then
+in this case, \myHighlight{$J$}\coordHE{} is an integer. In terms of \myHighlight{$J$}\coordHE{}, the finite distance
+condition \myHighlight{$Q^2>0$}\coordHE{} can be written as \myHighlight{$J>0$}\coordHE{}.
+
+Because we want a Calabi-Yau CFT, we have to pick up only the states with
+integral \myHighlight{$U(1)$}\coordHE{} charges. This condition is realized as the condition
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \gamma_0\bullet\nu+pQ \in \Zb. \rightCoord{}\label{GammaCondition0}
+\rightCoord{}}{0mm}{1}{3}{
+&& \gamma_0\bullet\nu+pQ \in \Zb. }{1}\coordE{}\end{eqnarray}
+From this, \myHighlight{$p$}\coordHE{} can be written with an arbitrary
+integer \myHighlight{$u$}\coordHE{}
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} p=\frac 1Q \left(u-\gamma_0\bullet\nu\right).\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+&& p=\frac 1Q \left(u-\gamma_0\bullet\nu\right).
+}{1}\coordE{}\end{eqnarray*}
+Following the same manner as in the previous section, 
+we let \myHighlight{$u=2Jv+w$}\coordHE{} and sum up for \myHighlight{$v\in\Zb$}\coordHE{}. It leads to the
+theta function
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}\sum_{\rightCoord{}v\in\Zb}q^{\frac12p^2}y^{pQ}=
+\Th_{N(w-\gamma_0\bullet\nu),NJ}(\tau,2z/N).\rightCoord{}
+\rightCoord{}}{0mm}{1}{4}{
+&&\sum_{v\in\Zb}q^{\frac12p^2}y^{pQ}=
+\Th_{N(w-\gamma_0\bullet\nu),NJ}(\tau,2z/N).
+}{1}\coordE{}\end{eqnarray*}
+Note that \myHighlight{$N(w-\gamma_0\bullet\nu)$}\coordHE{} is an integer and
+\myHighlight{$\Th_{N(w-\gamma_0\bullet\nu),NJ}(\tau,2z/N)$}\coordHE{} has good modular
+properties.
+
+Collecting these, we define the building blocks \myHighlight{$g_{\nt}^{\lambda}$}\coordHE{} as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} g_{\nt}^{\lambda}(\tau,z):=\sum_{\rightCoord{}s_0,s_j=1,3}
+\chi_{\mu}^{\lambda}(\tau,z)
+\frac{\leftCoord{}\Th_{M,NJ}(\tau,2z/N)}{\rightCoord{}\eta(\tau)}
+\leftCoord{}(-1)^{-\frac{\leftCoord{}s_0}{\rightCoord{}2}-\sum_{\rightCoord{}j\rightCoord{}}\frac{\leftCoord{}s_j}{\rightCoord{}2}
+\leftCoord{}+\gamma_0\bullet\nu+\frac{\leftCoord{}M}{\rightCoord{}N}},
+\rightCoord{}}{0mm}{7}{9}{
+&& g_{\nt}^{\lambda}(\tau,z):=\sum_{s_0,s_j=1,3}
+\chi_{\mu}^{\lambda}(\tau,z)
+\frac{\Th_{M,NJ}(\tau,2z/N)}{\eta(\tau)}
+(-1)^{-\frac{s_0}{2}-\sum_{j}\frac{s_j}{2}
++\gamma_0\bullet\nu+\frac{M}{N}},
+}{1}\coordE{}\end{eqnarray*}
+where \myHighlight{$\nt:=(\nu,M)$}\coordHE{}. In the sign
+ \myHighlight{$(-1)^{J_0}=(-1)^{-\frac{s_0}{2}-\sum_j\frac{s_j}{2}
++\gamma_0\bullet\nu+\frac{M}{N}}$}\coordHE{} , the part
+ \myHighlight{$(-\frac{s_0}{2}-\sum_j\frac{s_j}{2})$}\coordHE{} represents contributions 
+of ordinary \myHighlight{$U(1)$}\coordHE{} charges
+ from the indices \myHighlight{$s_0,s_j$}\coordHE{}, and the rest
+ \myHighlight{$\gamma_0\bullet\nu+\frac{M}{N}=w=u-2Jv$}\coordHE{} reflects contributions from
+the indices \myHighlight{$m_j$}\coordHE{} and \myHighlight{$S^1$}\coordHE{} momentum.
+
+Let us define the inner product between \myHighlight{$\nt$}\coordHE{} and \myHighlight{$\nt'$}\coordHE{} as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \nt\bullet\nt':=\nu\bullet\nu'-\frac{\leftCoord{}MM'}{\rightCoord{}2NJ}, \rightCoord{}
+\rightCoord{}}{0mm}{2}{4}{
+&& \nt\bullet\nt':=\nu\bullet\nu'-\frac{MM'}{2NJ}, 
+}{1}\coordE{}\end{eqnarray*}
+and the special vector
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \gt=(\gamma_0,-2J).\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+&& \gt=(\gamma_0,-2J).
+}{1}\coordE{}\end{eqnarray*}
+We also introduce the functions \myHighlight{$I_{m}^{\ell}$}\coordHE{} and \myHighlight{$I_{\nu}^{\lambda}$}\coordHE{}
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} I_{m}^{\ell}(\tau,z):=\chi_{m}^{\ell,1}(\tau,z)
+\leftCoord{}-\chi_{m}^{\ell,3}(\tau,z),\rightCoord{}\\
+&&\leftCoord{} I_{\nu}^{\lambda}(\tau,z):=I_{m_1}^{\ell_1}(\tau,z)
+\dots I_{m_R}^{\ell_R}(\tau,z).\rightCoord{}
+\rightCoord{}}{0mm}{3}{4}{
+&& I_{m}^{\ell}(\tau,z):=\chi_{m}^{\ell,1}(\tau,z)
+-\chi_{m}^{\ell,3}(\tau,z),\\
+&& I_{\nu}^{\lambda}(\tau,z):=I_{m_1}^{\ell_1}(\tau,z)
+\dots I_{m_R}^{\ell_R}(\tau,z).
+}{1}\coordE{}\end{eqnarray*}
+With these notations, the building blocks \myHighlight{$g_{\nt}^{\lambda}$}\coordHE{} can be
+written as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ g_{\nt}^{\lambda}(\tau,z)
+\leftCoord{}=\frac{\leftCoord{}\theta_1(\tau,z)}{\rightCoord{}\eta(\tau)}I_{\nu}^{\lambda}(\tau,z)
+\frac{\leftCoord{}\Th_{M,NJ}(\tau,2z/N)}{\rightCoord{}\eta(\tau)}(-1)^{\gt\bullet\nt},
+\rightCoord{}}{0mm}{4}{4}{
+ g_{\nt}^{\lambda}(\tau,z)
+=\frac{\theta_1(\tau,z)}{\eta(\tau)}I_{\nu}^{\lambda}(\tau,z)
+\frac{\Th_{M,NJ}(\tau,2z/N)}{\eta(\tau)}(-1)^{\gt\bullet\nt},
+}{1}\coordE{}\end{eqnarray*}
+where we omit the overall irrelevant phase.
+The condition (\ref{GammaCondition0}) can be rewritten as
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \gt\bullet\nt\in \Zb,\rightCoord{}\label{GammaCondition}
+\rightCoord{}}{0mm}{1}{3}{
+&& \gt\bullet\nt\in \Zb,}{1}\coordE{}\end{eqnarray}
+and again we call this condition ``the beta condition''.
+
+Now, we construct elliptic genus 
+using the above building blocks \myHighlight{$g_{\nt}^{\lambda}$}\coordHE{} 
+which satisfy the condition (\ref{GammaCondition}).
+
+Note that if \myHighlight{$\nt$}\coordHE{} satisfies the beta condition, then \myHighlight{$\nt+b_0\gt$}\coordHE{} 
+for \myHighlight{$b_0\in \Zb$}\coordHE{} also
+satisfies the beta condition, because
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \gt\bullet\gt=\gamma_0\bullet\gamma_0-\frac{\leftCoord{}2J}{\rightCoord{}N}=-(n-1-R),
+\rightCoord{}}{0mm}{2}{3}{
+&& \gt\bullet\gt=\gamma_0\bullet\gamma_0-\frac{2J}{N}=-(n-1-R),
+}{1}\coordE{}\end{eqnarray*}
+is an integer.
+\footnote{
+Actually, it is an even integer. Remember that we concentrate the case
+in which \myHighlight{$(n-1-R)$}\coordHE{} is an even integer.}
+Here we used the definition of \myHighlight{$J$}\coordHE{} (\ref{DefJ2}).
+So let us define the new functions \myHighlight{$G_{\nt}^{\ell}$}\coordHE{}
+ as follows;
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} G_{\nt}^{\ell}(\tau,z)=\sum_{\rightCoord{}b_0\in \Zb_{N}}
+g_{\nt+b_0\gt}^{\lambda}(\tau,z),
+\rightCoord{}}{0mm}{1}{3}{
+&& G_{\nt}^{\ell}(\tau,z)=\sum_{b_0\in \Zb_{N}}
+g_{\nt+b_0\gt}^{\lambda}(\tau,z),
+}{1}\coordE{}\end{eqnarray*}
+where \myHighlight{$\nt$}\coordHE{} satisfies the beta condition (\ref{GammaCondition}).
+Then, from the modular properties of \myHighlight{$g_{\nt}^{\lambda}$}\coordHE{}
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} g_{\nt}^{\lambda}(\tau+1,z)=
+\e{\sum_{\rightCoord{}j\rightCoord{}}\frac{\leftCoord{}\ell_j(\ell_j+1)}{\rightCoord{}4N_j}-\frac12 \nt\bullet\nt
+\leftCoord{}+\frac{\leftCoord{}R+1}{\rightCoord{}8}-\frac1{24}\left(\sum_{\rightCoord{}j}\frac{\leftCoord{}N_j-2}{\rightCoord{}N_j}+2\right)}
+g_{\nt}^{\lambda}(\tau,z),\rightCoord{}\\
+&&\leftCoord{} g_{\nt}^{\lambda}(-1/\tau,z/\tau)=(-i)^R \e{\frac n2 \frac{\leftCoord{}z^2}{\rightCoord{}\tau}}
+\leftCoord{}\\&\leftCoord{}&\hspace{2cm}\times
+\sum_{\rightCoord{}\lambda',\nt'}^{\leftCoord{}{}\leftCoord{}\rm even}
+A_{\lambda\lambda'}\frac{\leftCoord{}1}{\rightCoord{}\prod_j\sqrt{2N_j}}
+\frac{\leftCoord{}1}{\rightCoord{}\sqrt{2NJ}}\e{\nt\bullet\nt'}(-1)^{\gt\bullet(\nt-\nt')} \rightCoord{}
+g_{\nt'}^{\lambda'}(\tau,z),
+\rightCoord{}}{0mm}{13}{14}{
+&& g_{\nt}^{\lambda}(\tau+1,z)=
+\e{\sum_{j}\frac{\ell_j(\ell_j+1)}{4N_j}-\frac12 \nt\bullet\nt
++\frac{R+1}{8}-\frac1{24}\left(\sum_{j}\frac{N_j-2}{N_j}+2\right)}
+g_{\nt}^{\lambda}(\tau,z),\\
+&& g_{\nt}^{\lambda}(-1/\tau,z/\tau)=(-i)^R \e{\frac n2 \frac{z^2}{\tau}}
+\\&&\hspace{2cm}\times
+\sum_{\lambda',\nt'}^{{}\rm even}
+A_{\lambda\lambda'}\frac{1}{\prod_j\sqrt{2N_j}}
+\frac{1}{\sqrt{2NJ}}\e{\nt\bullet\nt'}(-1)^{\gt\bullet(\nt-\nt')} 
+g_{\nt'}^{\lambda'}(\tau,z),
+}{1}\coordE{}\end{eqnarray*}
+\myHighlight{$G_{\nt}^{\ell}$}\coordHE{} have very good modular properties;
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} G_{\nt}^{\lambda}(\tau+1,z)=
+\e{\sum_{\rightCoord{}j\rightCoord{}}\frac{\leftCoord{}\ell_j(\ell_j+1)}{\rightCoord{}4N_j}-\frac12 \nt\bullet\nt
+\leftCoord{}+\frac{\leftCoord{}R+1}{\rightCoord{}8}-\frac1{24}\left(\sum_{\rightCoord{}j}\frac{\leftCoord{}N_j-2}{\rightCoord{}N_j}+2\right)}
+G_{\nt}^{\lambda}(\tau,z),\rightCoord{}\\
+&&\leftCoord{} G_{\nt}^{\lambda}(-1/\tau,z/\tau)=(-i)^R \e{\frac n2 \frac{\leftCoord{}z^2}{\rightCoord{}\tau}}
+\leftCoord{}\\&\leftCoord{}&\hspace{2cm}\times
+\sum_{\rightCoord{}\lambda',\nt'}^{\leftCoord{}{}\leftCoord{}\rm even,beta}
+A_{\lambda\lambda'}\frac{\leftCoord{}1}{\rightCoord{}\prod_j\sqrt{2N_j}}
+\frac{\leftCoord{}1}{\rightCoord{}\sqrt{2NJ}}\e{\nt\bullet\nt'}(-1)^{\gt\bullet(\nt-\nt')} \rightCoord{}
+G_{\nt'}^{\lambda'}(\tau,z).\rightCoord{}
+\rightCoord{}}{0mm}{13}{15}{
+&& G_{\nt}^{\lambda}(\tau+1,z)=
+\e{\sum_{j}\frac{\ell_j(\ell_j+1)}{4N_j}-\frac12 \nt\bullet\nt
++\frac{R+1}{8}-\frac1{24}\left(\sum_{j}\frac{N_j-2}{N_j}+2\right)}
+G_{\nt}^{\lambda}(\tau,z),\\
+&& G_{\nt}^{\lambda}(-1/\tau,z/\tau)=(-i)^R \e{\frac n2 \frac{z^2}{\tau}}
+\\&&\hspace{2cm}\times
+\sum_{\lambda',\nt'}^{{}\rm even,beta}
+A_{\lambda\lambda'}\frac{1}{\prod_j\sqrt{2N_j}}
+\frac{1}{\sqrt{2NJ}}\e{\nt\bullet\nt'}(-1)^{\gt\bullet(\nt-\nt')} 
+G_{\nt'}^{\lambda'}(\tau,z).
+}{1}\coordE{}\end{eqnarray*}
+Using these functions, we obtain the elliptic genus in the following
+form;
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} Z(\tau,\taub,z)=\frac1{2^{R}N} \rightCoord{}
+\frac{\leftCoord{}1}{\rightCoord{}\sqrt{\tau_2}|\eta(\tau)|^2}
+\sum_{\rightCoord{}\lambda,\lambdab,\nt}^{\leftCoord{}{}\leftCoord{}\rm even,beta}
+L_{\lambda\lambdab}G_{\nt}^{\lambda}(\tau,z)\bar G_{\nt}^{\lambdab}(\taub,0).\rightCoord{}
+\rightCoord{}}{0mm}{4}{6}{
+&& Z(\tau,\taub,z)=\frac1{2^{R}N} 
+\frac{1}{\sqrt{\tau_2}|\eta(\tau)|^2}
+\sum_{\lambda,\lambdab,\nt}^{{}\rm even,beta}
+L_{\lambda\lambdab}G_{\nt}^{\lambda}(\tau,z)\bar G_{\nt}^{\lambdab}(\taub,0).
+}{1}\coordE{}\end{eqnarray*}
+Here \myHighlight{$L_{\lambda\lambdab}$}\coordHE{} is the product of \myHighlight{$\widehat{SU(2)}$}\coordHE{} modular
+invariants, and the factor \myHighlight{$1/\sqrt{\tau_2}|\eta(\tau)|^2$}\coordHE{} is
+contribution of \myHighlight{$\phi$}\coordHE{}. 
+We can check that the above elliptic genus has the right modular
+properties (\ref{EllipticModular}) with \myHighlight{$\ch=n$}\coordHE{}.
+
+Actually, this elliptic genus is \myHighlight{$0$}\coordHE{} because it has an overall factor
+\myHighlight{$\bar\theta_1(\taub,0)=0$}\coordHE{}.
+\subsection{Hodge number and Witten index}
+To get some nontrivial information from the above elliptic genus,
+we factor out the trivial parts and define \myHighlight{$\Zh$}\coordHE{} by the equations
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} Z(\tau,\taub,z)= \rightCoord{}
+\frac{\leftCoord{}\theta_1(\tau,z)\bar\theta_1(\tau,0)}{\rightCoord{}\sqrt{\tau_2}|\eta(\tau)|^6}
+\Zh(\tau,\taub,z),\rightCoord{}\\
+&&\leftCoord{} \Zh(\tau,\taub,z)=\frac1{2^{R}N} \rightCoord{}
+\sum_{\rightCoord{}\lambda,\lambdab,\nt}^{\leftCoord{}{}\leftCoord{}\rm even,beta}
+L_{\lambda\lambdab}\Gh_{\nt}^{\lambda}(\tau,z)
+\bar{\Gh}_{\nt}^{\lambdab}(\taub,0),\rightCoord{}\\
+&&\leftCoord{} \Gh_{\nt}^{\lambda}(\tau,z)=\sum_{\rightCoord{}b_0\in \Zb_{N}}
+\gh_{\nt+b_0\gt}^{\lambda}(\tau,z),\rightCoord{}\\
+&&\leftCoord{} \gh_{\nt}^{\lambda}(\tau,z)=I_{\nu}^{\lambda}(\tau,z)
+\Th_{M,NJ}(\tau,2z/N)(-1)^{\gt\bullet\nt},
+\rightCoord{}}{0mm}{7}{10}{
+&& Z(\tau,\taub,z)= 
+\frac{\theta_1(\tau,z)\bar\theta_1(\tau,0)}{\sqrt{\tau_2}|\eta(\tau)|^6}
+\Zh(\tau,\taub,z),\\
+&& \Zh(\tau,\taub,z)=\frac1{2^{R}N} 
+\sum_{\lambda,\lambdab,\nt}^{{}\rm even,beta}
+L_{\lambda\lambdab}\Gh_{\nt}^{\lambda}(\tau,z)
+\bar{\Gh}_{\nt}^{\lambdab}(\taub,0),\\
+&& \Gh_{\nt}^{\lambda}(\tau,z)=\sum_{b_0\in \Zb_{N}}
+\gh_{\nt+b_0\gt}^{\lambda}(\tau,z),\\
+&& \gh_{\nt}^{\lambda}(\tau,z)=I_{\nu}^{\lambda}(\tau,z)
+\Th_{M,NJ}(\tau,2z/N)(-1)^{\gt\bullet\nt},
+}{1}\coordE{}\end{eqnarray*}
+
+Now, we take the limit
+\myHighlight{$\tau\to i \infty$}\coordHE{} and consider the ground states.
+In this limit, \myHighlight{$\Th_{M,NJ}$}\coordHE{} becomes
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ \Th_{M,NJ}(i\infty,z)=\deltam{M}{NJ},
+\rightCoord{}}{0mm}{1}{2}{
+ \Th_{M,NJ}(i\infty,z)=\deltam{M}{NJ},
+}{1}\coordE{}\end{eqnarray*}
+so, the \myHighlight{$\Gh$}\coordHE{}'s can be evaluated as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}\Gh_{\nt}^{\lambda}=
+\begin{cases} \rightCoord{}
+I_{\nu+\frac{\leftCoord{}M}{\rightCoord{}2J}\gamma_0}^{\lambda}(i\infty,z)  & (M\equiv 0 \mod 2J), \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & (\mbox{others}). \rightCoord{}
+\end{cases} \rightCoord{}
+\rightCoord{}}{0mm}{4}{7}{
+&&\Gh_{\nt}^{\lambda}=
+\begin{cases} 
+I_{\nu+\frac{M}{2J}\gamma_0}^{\lambda}(i\infty,z)  & (M\equiv 0 \mod 2J), \\
+0 & (\mbox{others}). 
+\end{cases} 
+}{1}\coordE{}\end{eqnarray*}
+Then, \myHighlight{$\Zh$}\coordHE{} is expressed in the formula
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ \lim_{\tau\to i \infty}\Zh=\frac1{2^{R}N}
+\sum_{\rightCoord{}\lambda,\lambdab,\nt}^{\leftCoord{}{}\leftCoord{}\rm even,beta}\deltam{M}{2J}
+L_{\lambda\lambdab}
+I_{\nu+\frac{\leftCoord{}M}{\rightCoord{}2J}\gamma_0}^{\lambda}(i\infty,z)
+\bar I_{\nu+\frac{\leftCoord{}M}{\rightCoord{}2J}\gamma_0}^{\lambdab}(-i\infty,0).\rightCoord{}
+\rightCoord{}}{0mm}{5}{6}{
+ \lim_{\tau\to i \infty}\Zh=\frac1{2^{R}N}
+\sum_{\lambda,\lambdab,\nt}^{{}\rm even,beta}\deltam{M}{2J}
+L_{\lambda\lambdab}
+I_{\nu+\frac{M}{2J}\gamma_0}^{\lambda}(i\infty,z)
+\bar I_{\nu+\frac{M}{2J}\gamma_0}^{\lambdab}(-i\infty,0).
+}{1}\coordE{}\end{eqnarray*}
+When we replace the \myHighlight{$\nu+\frac{M}{2J}\gamma_0$}\coordHE{} by \myHighlight{$\nu$}\coordHE{}, then we can
+perform the sum of \myHighlight{$M\in \Zb_{2NJ}$}\coordHE{}.
+Moreover, from the fact
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ I_{m_j}^{\ell_j}(-i\infty,z)
+\leftCoord{}=\deltam{m_j-\ell_j-1}{2N_j}\;y^{\frac{\leftCoord{}\ell+1}{\rightCoord{}N}-\frac12}
+\leftCoord{}-\deltam{m_j+\ell_j+1}{2N_j}\;y^{-\frac{\leftCoord{}\ell+1}{\rightCoord{}N}+\frac12},
+\rightCoord{}}{0mm}{5}{4}{
+ I_{m_j}^{\ell_j}(-i\infty,z)
+=\deltam{m_j-\ell_j-1}{2N_j}\;y^{\frac{\ell+1}{N}-\frac12}
+-\deltam{m_j+\ell_j+1}{2N_j}\;y^{-\frac{\ell+1}{N}+\frac12},
+}{1}\coordE{}\end{eqnarray*}
+it can be seen that the even condition \myHighlight{$\ell_j+m_j\equiv 1 \mod{2}$}\coordHE{}
+is included in this factor.
+We obtain a formula of the \myHighlight{$\Zh$}\coordHE{} in this limit
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ \lim_{\tau\to i \infty}\Zh=\frac1{2^{R}}
+\sum_{\rightCoord{}\nu}^{\leftCoord{}{}\leftCoord{}\rm beta}
+\prod_j \left[
+\sum_{\rightCoord{}\ell_j,\bar\ell_j}
+L^{(N_j)}_{\ell_j\bar\ell_j}
+I_{m_j}^{\ell_j}(i\infty,z)
+I_{m_j}^{\bar\ell_j}(-i\infty,0)
+\right] \rightCoord{}
+\leftCoord{}. \rightCoord{}
+\rightCoord{}}{0mm}{4}{6}{
+ \lim_{\tau\to i \infty}\Zh=\frac1{2^{R}}
+\sum_{\nu}^{{}\rm beta}
+\prod_j \left[
+\sum_{\ell_j,\bar\ell_j}
+L^{(N_j)}_{\ell_j\bar\ell_j}
+I_{m_j}^{\ell_j}(i\infty,z)
+I_{m_j}^{\bar\ell_j}(-i\infty,0)
+\right] 
+. 
+}{1}\coordE{}\end{eqnarray*}
+
+So far, we treat rather general cases, but from now, 
+we take an example and restrict ourselves to calculations in the example.
+We consider the example which satisfies all the following conditions.
+\begin{itemize}
+ \item All minimal models are A type. 
+So, \myHighlight{$L_{\lambda\lambdab}=\delta_{\lambda\lambdab}$}\coordHE{}.
+ \item \myHighlight{$R=n+1$}\coordHE{}.
+ \item \myHighlight{$N_1=N_2=\dots=N_R=N$}\coordHE{}.
+\end{itemize}
+In other words, this example is 
+the case where the associated Calabi-Yau manifold \myHighlight{$X$}\coordHE{} is
+ the hypersurface of the form
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} z_1^N+z_2^N+\dots+z_{n+1}^N=0 \mbox{ in } \Cb^{n+1}.\rightCoord{}
+\label{BaseEquation}
+\rightCoord{}}{0mm}{1}{3}{
+&& z_1^N+z_2^N+\dots+z_{n+1}^N=0 \mbox{ in } \Cb^{n+1}.
+}{1}\coordE{}\end{eqnarray}
+We can write the finite distance condition as
+\myHighlight{$N<n+1$}\coordHE{}, which is equivalent to the condition that 
+first Chern number of \myHighlight{$X/\Cx$}\coordHE{} is positive.
+In this case, nontrivial factor of the elliptic genus
+can be calculated as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \lim_{\tau\to i \infty}\Zh=\frac1{2^R}
+\sum_{\rightCoord{}\nu}^{\leftCoord{}{}\leftCoord{}\rm beta}\prod_j \left[
+\sum_{\rightCoord{}\ell_j}
+\left(\deltam{m_j-\ell_j-1}{2N_j}\;y^{\frac{\leftCoord{}\ell+1}{\rightCoord{}N}-\frac12}
+\leftCoord{}-\deltam{m_j+\ell_j+1}{2N_j}\;y^{-\frac{\leftCoord{}\ell+1}{\rightCoord{}N}+\frac12}\right)
+\left(\deltam{m_j+\ell_j+1}{2N_j}-\deltam{m_j-\ell_j-1}{2N_j}\right)
+\right]\rightCoord{}\\
+&&\leftCoord{} \hspace{1.5cm}= \rightCoord{}
+\frac{\leftCoord{}y^{-\frac{\leftCoord{}n+1}{\rightCoord{}2}}}{\rightCoord{}2^R} \rightCoord{}
+\sum_{\rightCoord{}\nu}^{\leftCoord{}{}\leftCoord{}\rm beta}\prod_j \left[
+\sum_{\rightCoord{}\ell_j}
+\left(\deltam{m_j-\ell_j-1}{2N_j}\;y^{\frac{\leftCoord{}\ell+1}{\rightCoord{}N}}
+\leftCoord{}+\deltam{m_j+\ell_j+1}{2N_j}\;y^{-\frac{\leftCoord{}\ell+1}{\rightCoord{}N}+1}\right)
+\right]. \rightCoord{}
+\rightCoord{}}{0mm}{14}{16}{
+&& \lim_{\tau\to i \infty}\Zh=\frac1{2^R}
+\sum_{\nu}^{{}\rm beta}\prod_j \left[
+\sum_{\ell_j}
+\left(\deltam{m_j-\ell_j-1}{2N_j}\;y^{\frac{\ell+1}{N}-\frac12}
+-\deltam{m_j+\ell_j+1}{2N_j}\;y^{-\frac{\ell+1}{N}+\frac12}\right)
+\left(\deltam{m_j+\ell_j+1}{2N_j}-\deltam{m_j-\ell_j-1}{2N_j}\right)
+\right]\\
+&& \hspace{1.5cm}= 
+\frac{y^{-\frac{n+1}{2}}}{2^R} 
+\sum_{\nu}^{{}\rm beta}\prod_j \left[
+\sum_{\ell_j}
+\left(\deltam{m_j-\ell_j-1}{2N_j}\;y^{\frac{\ell+1}{N}}
++\deltam{m_j+\ell_j+1}{2N_j}\;y^{-\frac{\ell+1}{N}+1}\right)
+\right]. 
+}{1}\coordE{}\end{eqnarray*}
+When we put \myHighlight{$m_j=a_j+Nb_j,\ \ (b_j=0,-1;\ a_j=0,1,\dots N-1)$}\coordHE{}, then 
+beta condition becomes
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ \sum_{\rightCoord{}j\rightCoord{}} a_j\equiv 0 \mod N.\rightCoord{}
+\rightCoord{}}{0mm}{1}{5}{
+ \sum_{j} a_j\equiv 0 \mod N.
+}{1}\coordE{}\end{eqnarray*}
+We obtain the \myHighlight{$\Zh$}\coordHE{} in this limit
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}\lim_{\tau\to i \infty}\Zh=\sum_{\rightCoord{}p=1}^{\leftCoord{}{}\leftCoord{}n}h_p y^{p-\frac{\leftCoord{}n+1}{\rightCoord{}2}},\rightCoord{}\\
+&&\leftCoord{} h_p:=\sum_{\rightCoord{}
+\atop{a_j=1,\dots,N-1,}{\sum_{\rightCoord{}ja_j=pN}\rightCoord{}}
+\rightCoord{}}1=\sum_{\rightCoord{}i=0}^{\leftCoord{}p(-1)^i}\binom{n+1}{i}\binom{(p-i)(N-1)+p-1}{n}.\rightCoord{}
+\rightCoord{}}{0mm}{6}{11}{
+&&\lim_{\tau\to i \infty}\Zh=\sum_{p=1}^{{}n}h_p y^{p-\frac{n+1}{2}},\\
+&& h_p:=\sum_{
+\atop{a_j=1,\dots,N-1,}{\sum_{ja_j=pN}}
+}1=\sum_{i=0}^{p(-1)^i}\binom{n+1}{i}\binom{(p-i)(N-1)+p-1}{n}.
+}{1}\coordE{}\end{eqnarray*}
+We show several examples of \myHighlight{$h_p$}\coordHE{} for lower \myHighlight{$n,N$}\coordHE{} in Table \ref{TableHP}.
+\begin{table}
+\begin{center}
+ \begin{tabular}[t]{|c||c|c|c|}\hline
+ \multicolumn{4}{|c|}{\myHighlight{$n=3$}\coordHE{}}\\\hline\hline
+ \myHighlight{$N\backslash p$}\coordHE{} &1 &2 &3 \\ \hline\hline
+ 3 &0 &6 &0 \\ \hline
+ 4 &1 &19 &1 \\ \hline
+ \end{tabular}
+ \begin{tabular}[t]{|c||c|c|c|c|}\hline
+ \multicolumn{5}{|c|}{\myHighlight{$n=4$}\coordHE{}}\\\hline\hline
+ \myHighlight{$N\backslash p$}\coordHE{} &1 &2 &3 &4 \\ \hline\hline
+ 3 &0 &5 &5 &0 \\ \hline
+ 4 &0 &30 &30 &0 \\ \hline
+ 5 &1 &101 &101 &1 \\ \hline
+ \end{tabular}
+ \begin{tabular}[t]{|c||c|c|c|c|c|}\hline
+ \multicolumn{6}{|c|}{\myHighlight{$n=5$}\coordHE{}}\\\hline\hline
+ \myHighlight{$N\backslash p$}\coordHE{} &1 &2 &3 &4 &5 \\ \hline\hline
+ 3 &0 &1 &20 &1 &0 \\ \hline
+ 4 &0 &21 &141 &21 &0 \\ \hline
+ 5 &0 &120 &580 &120 &0 \\ \hline 
+ 6 &1 &426 &1751 &426 &1 \\ \hline
+\end{tabular}
+\end{center}
+\caption{The values of the coefficients \myHighlight{$h_p$}\coordHE{} for 
+\myHighlight{$n=3,4,5,\ N=3,\dots,n+1$}\coordHE{}. 
+We include the \myHighlight{$N=n+1$}\coordHE{} case in the table, 
+despite it is suppressed by the finite distance condition.
+}\label{TableHP}
+\end{table}
+These coefficients \myHighlight{$h_p$}\coordHE{}
+seem to coincide with the middle dimensional Hodge numbers of \myHighlight{$X/\Cx$}\coordHE{}
+except for the cohomology elements generated by cup products of a
+K\"ahler form of \myHighlight{$X/\Cx$}\coordHE{}, on which we mention below.
+ 
+In our model, the Witten index can also be calculated as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \lim_{\tau\to i \infty,z\to 0}\Zh=\sum_{\rightCoord{}p=1}^{\leftCoord{}{}\leftCoord{}n} h_p\rightCoord{}\\
+&&\leftCoord{}\hspace{2cm}=(-1)^{n+1}\left[1+\frac{\leftCoord{}(1-N)^{n+1}-1}{\rightCoord{}N} \rightCoord{}
+\right]\rightCoord{}\\
+&&\leftCoord{}\hspace{2cm}=(-1)^{n+1}\left[n+1+\frac{\leftCoord{}(1-N)^{n+1}-1}{\rightCoord{}N}-n\right]. \rightCoord{}
+\rightCoord{}}{0mm}{7}{9}{
+&& \lim_{\tau\to i \infty,z\to 0}\Zh=\sum_{p=1}^{{}n} h_p\\
+&&\hspace{2cm}=(-1)^{n+1}\left[1+\frac{(1-N)^{n+1}-1}{N} 
+\right]\\
+&&\hspace{2cm}=(-1)^{n+1}\left[n+1+\frac{(1-N)^{n+1}-1}{N}-n\right]. 
+}{1}\coordE{}\end{eqnarray*}
+On the other hand, the Euler number of
+the \myHighlight{$(n-1)$}\coordHE{}-dimensional manifold \myHighlight{$X/\Cx$}\coordHE{} is expressed in the formula
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \chi_{X/\Cx}=n+1+\frac{\leftCoord{}(1-N)^{n+1}-1}{\rightCoord{}N}.\rightCoord{}
+\rightCoord{}}{0mm}{2}{4}{
+&& \chi_{X/\Cx}=n+1+\frac{(1-N)^{n+1}-1}{N}.
+}{1}\coordE{}\end{eqnarray*}
+The Witten index of the CFT almost coincide with the Euler number
+\myHighlight{$\chi_{X/\Cx}$}\coordHE{} of \myHighlight{$X/\Cx$}\coordHE{}.
+One of the differences of the two is the sign \myHighlight{$(-1)^{n+1}$}\coordHE{}, but
+this is not relevant. Except this difference of the sign, 
+the Witten index is smaller by \myHighlight{$n$}\coordHE{} than the Euler number of \myHighlight{$X/\Cx$}\coordHE{}
+in our case. 
+This difference may correspond to
+the cohomology elements generated by cup products of the K\"ahler
+form of \myHighlight{$X/\Cx$}\coordHE{}. On \myHighlight{$X$}\coordHE{}, these cohomology elements are absent because
+they appear when we take the quotient of \myHighlight{$X$}\coordHE{} by \myHighlight{$\Cx$}\coordHE{}. 
+This seems the reason why the Witten index is smaller by \myHighlight{$n$}\coordHE{} than
+the Euler number of \myHighlight{$X/\Cx$}\coordHE{}.
+\section{Conclusion and discussion}
+We construct the toroidal partition function of the string theory
+described by the combination of an \myHighlight{$\Ncal=2$}\coordHE{} Liouville theory
+and multiple \myHighlight{$\Ncal=2$}\coordHE{} minimal models. 
+This partition function is actually modular invariant, and we can conclude
+that the theory exists consistently.
+
+This string theory is thought to describe the string on
+a noncompact singular Calabi-Yau manifold.
+To check this proposition,
+we also calculate the elliptic genus of this theory
+and the Witten index.
+
+The Euler number defined from
+non-trivial factor of the Witten index in the CFT 
+seems to be that of the non-vanishing 
+elements of the cohomology.
+In the case of a singular manifold, there are
+vanishing elements of the cohomology, which are supported on
+the singular point and reflect the structure of singularities.
+
+The fact that
+the vanishing elements of the cohomology cannot be seen,
+is probably related
+to our method of construction in which we include
+only the states in ``principal continuous series'' of the
+\myHighlight{$SL(2)$}\coordHE{} theory.
+If we can include some ``discrete series''
+(but it is difficult\cite{KS0001})
+, the structure of the singularities
+might be seen in the CFT.
+
+Another reason is 
+that we treat the \myHighlight{$\Ncal=2$}\coordHE{} Liouville theory as free field theory in
+this paper.
+It is mentioned in \cite{ES0009} that if we treat appropriately
+the effect of Liouville potential, the Witten index does not
+vanish and gives the Euler number including the vanishing elements of
+the cohomology.
+In this paper, since we treat the case of \myHighlight{$\mu=0$}\coordHE{} and not deformed
+singularity, the vanishing elements of the cohomology actually 
+vanish and it is consistent with the vanishing Witten index.
+
+We may not be able to use our result to 
+analyze the structure of the singularities,
+but we can use it to analyze the string on the 
+positively curved manifold \myHighlight{$X/\Cx$}\coordHE{}. Especially it is
+interesting to analyze the D-branes wrapped on infinite cycle
+in this noncompact Calabi-Yau manifold through the recipes of
+ boundary states in the CFT \cite{EGKRS0005,Ler0006,LLS0006,ES0009}
+ as the case of the ordinary Gepner models
+\cite{RS9712,BDLR9906,NN0001,Sug0003A}.
+
+\subsection*{Acknowledgement}
+
+I would like to thank Tsuneo Uematsu and Katsuyuki Sugiyama
+for useful discussions and encouragements.
+I would also like to thank to the organizers 
+of Summer Institute 2000 at Yamanashi,
+Japan, 7-21 August, 2000, and the participants of it, especially,
+Michihiro Naka, Masatoshi Nozaki, Yuji Sato and Yuji Sugawara
+for useful discussions.
+
+This work is supported in part by JSPS Research Fellowships for
+Young Scientists.
+
+\newpage
+\section*{Appendix A. \ \ \ Theta functions and characters}
+We use the following notations in this  paper.
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}\e{x}:=\exp(2\pi i x),\rightCoord{}\\
+&&\leftCoord{}\deltam{m}{N}:= \rightCoord{}
+\begin{cases} \rightCoord{}
+ \leftCoord{}1 & (m\equiv 0 \mod N),\rightCoord{}\\\leftCoord{}
+ \leftCoord{}0 & ({\rm others}), \rightCoord{}
+\end{cases} \rightCoord{}
+\rightCoord{}}{0mm}{5}{8}{
+&&\e{x}:=\exp(2\pi i x),\\
+&&\deltam{m}{N}:= 
+\begin{cases} 
+ 1 & (m\equiv 0 \mod N),\\
+ 0 & ({\rm others}), 
+\end{cases} 
+}{1}\coordE{}\end{eqnarray*}
+where \myHighlight{$m$}\coordHE{} and \myHighlight{$N$}\coordHE{} are integers.
+The useful formula is
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}\sum_{\rightCoord{}j\in \Zb_N}\e{\frac{\leftCoord{}jm}{\rightCoord{}N}}=N\deltam{m}{\rightCoord{}N},
+\rightCoord{}}{0mm}{2}{5}{
+&&\sum_{j\in \Zb_N}\e{\frac{jm}{N}}=N\deltam{m}{N},
+}{1}\coordE{}\end{eqnarray*}
+where \myHighlight{$m$}\coordHE{} and \myHighlight{$N$}\coordHE{} are integers.
+
+The SU(2) classical theta functions are defined as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \Th_{m,k}(\tau,z)=\sum_{\rightCoord{}n\in \Zb}q^{k\left(n+\frac{\leftCoord{}m}{\rightCoord{}2k}\right)^2}
+ y^{k\left(n+\frac{\leftCoord{}m}{\rightCoord{}2k}\right)},\rightCoord{}\\\leftCoord{}
+\rightCoord{}}{0mm}{4}{6}{
+&& \Th_{m,k}(\tau,z)=\sum_{n\in \Zb}q^{k\left(n+\frac{m}{2k}\right)^2}
+ y^{k\left(n+\frac{m}{2k}\right)},\\
+}{1}\coordE{}\end{eqnarray*}
+where \myHighlight{$q:=\e{\tau},y:=\e{z}$}\coordHE{}.
+The Jacobi's theta functions are also defined as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \theta_{1}(\tau,z):=i\sum_{\rightCoord{}n\in \Zb}(-1)^n q^{\left(n-\frac{\leftCoord{}1}{\rightCoord{}2}\right)^2}
+ y^{\left(n-\frac{\leftCoord{}1}{\rightCoord{}2}\right)}, \rightCoord{}
+ \theta_{2}(\tau,z):=\sum_{\rightCoord{}n\in \Zb} q^{\left(n-\frac{\leftCoord{}1}{\rightCoord{}2}\right)^2}
+ y^{\left(n-\frac{\leftCoord{}1}{\rightCoord{}2}\right)},\rightCoord{}\\
+&&\leftCoord{} \theta_{3}(\tau,z):=\sum_{\rightCoord{}n\in \Zb} q^{n^2}y^{n},\hspace{2.7cm}
+ \theta_{4}(\tau,z):=\sum_{\rightCoord{}n\in \Zb}(-1)^n q^{n^2}y^{n}.\rightCoord{}\\\leftCoord{}
+\rightCoord{}}{0mm}{7}{13}{
+&& \theta_{1}(\tau,z):=i\sum_{n\in \Zb}(-1)^n q^{\left(n-\frac{1}{2}\right)^2}
+ y^{\left(n-\frac{1}{2}\right)}, 
+ \theta_{2}(\tau,z):=\sum_{n\in \Zb} q^{\left(n-\frac{1}{2}\right)^2}
+ y^{\left(n-\frac{1}{2}\right)},\\
+&& \theta_{3}(\tau,z):=\sum_{n\in \Zb} q^{n^2}y^{n},\hspace{2.7cm}
+ \theta_{4}(\tau,z):=\sum_{n\in \Zb}(-1)^n q^{n^2}y^{n}.\\
+}{1}\coordE{}\end{eqnarray*}
+Two kinds of theta functions are related by equations
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} 2\Th_{0,2}=\theta_3+\theta_4 ,\ 2\Th_{1,2}=\theta_2+i\theta_1, \rightCoord{}\\
+&&\leftCoord{} 2\Th_{2,2}=\theta_3-\theta_4 ,\ 2\Th_{3,2}=\theta_2-i\theta_1.\rightCoord{}
+\rightCoord{}}{0mm}{2}{4}{
+&& 2\Th_{0,2}=\theta_3+\theta_4 ,\ 2\Th_{1,2}=\theta_2+i\theta_1, \\
+&& 2\Th_{2,2}=\theta_3-\theta_4 ,\ 2\Th_{3,2}=\theta_2-i\theta_1.
+}{1}\coordE{}\end{eqnarray*}
+
+The Dedekind \myHighlight{$\eta$}\coordHE{} function is represented as an infinite product
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ \eta(\tau):=q^{\frac1{24}}\prod_{\rightCoord{}n=1}^{\leftCoord{}\infty}(1-q^n).\rightCoord{}
+\rightCoord{}}{0mm}{2}{4}{
+ \eta(\tau):=q^{\frac1{24}}\prod_{n=1}^{\infty}(1-q^n).
+}{1}\coordE{}\end{eqnarray*}
+
+The character \myHighlight{$\chi_s(\tau,z),\ s=0,1,2,3$}\coordHE{} 
+of \myHighlight{$\widehat{SO(d)}_1$}\coordHE{} for \myHighlight{$d/2 \in 2\Zb+1$}\coordHE{} can be
+expressed as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \chi_0(\tau,z)=\frac{\leftCoord{}\theta_3(\tau,z)^{d/2}
+\leftCoord{}+\theta_3(\tau,z)^{d/2}}{2\eta(\tau)^{d/2}},\rightCoord{}\\
+&&\leftCoord{} \chi_1(\tau,z)=\frac{\leftCoord{}\theta_2(\tau,z)^{d/2}
+\leftCoord{}+(i\theta_1(\tau,z))^{d/2}}{2\eta(\tau)^{d/2}},\rightCoord{}\\
+&&\leftCoord{} \chi_2(\tau,z)=\frac{\leftCoord{}\theta_3(\tau,z)^{d/2}
+\leftCoord{}-\theta_3(\tau,z)^{d/2}}{2\eta(\tau)^{d/2}},\rightCoord{}\\
+&&\leftCoord{} \chi_3(\tau,z)=\frac{\leftCoord{}\theta_2(\tau,z)^{d/2}
+\leftCoord{}-(i\theta_1(\tau,z))^{d/2}}{2\eta(\tau)^{d/2}}.\rightCoord{}
+\rightCoord{}}{0mm}{12}{6}{
+&& \chi_0(\tau,z)=\frac{\theta_3(\tau,z)^{d/2}
++\theta_3(\tau,z)^{d/2}}{2\eta(\tau)^{d/2}},\\
+&& \chi_1(\tau,z)=\frac{\theta_2(\tau,z)^{d/2}
++(i\theta_1(\tau,z))^{d/2}}{2\eta(\tau)^{d/2}},\\
+&& \chi_2(\tau,z)=\frac{\theta_3(\tau,z)^{d/2}
+-\theta_3(\tau,z)^{d/2}}{2\eta(\tau)^{d/2}},\\
+&& \chi_3(\tau,z)=\frac{\theta_2(\tau,z)^{d/2}
+-(i\theta_1(\tau,z))^{d/2}}{2\eta(\tau)^{d/2}}.
+}{1}\coordE{}\end{eqnarray*}
+
+Let us denote the character of 
+a Verma module \myHighlight{$(\ell,m,s)$}\coordHE{} in the level \myHighlight{$(N-2)$}\coordHE{} minimal model 
+as \myHighlight{$\chi_m^{\ell,s}(\tau,z)$}\coordHE{}. This character satisfies equivalence
+relations
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ \chi_m^{\ell,s}=\chi_{m+2N}^{\ell,s}=\chi_m^{\ell,s+4}
+\leftCoord{}=\chi_{m+N}^{N-2-\ell,s+2}.\rightCoord{}
+\rightCoord{}}{0mm}{2}{3}{
+ \chi_m^{\ell,s}=\chi_{m+2N}^{\ell,s}=\chi_m^{\ell,s+4}
+=\chi_{m+N}^{N-2-\ell,s+2}.
+}{1}\coordE{}\end{eqnarray*}
+The explicit form of this character is written in \cite{Gep88}.
+
+We collect the modular properties of these functions.
+Under the T transformations, they behave as
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \Th_{m,k}(\tau+1,z)=\e{\frac{\leftCoord{}m^2}{\rightCoord{}4k}}\Th_{m,k}(\tau,z),\rightCoord{}\\
+&&\leftCoord{} \theta_1(\tau+1,z)=\e{\tfrac18}\theta_1(\tau,z), 
+ \qquad \theta_2(\tau+1,z)=\e{\tfrac18}\theta_2(\tau,z),\rightCoord{}\\
+&&\leftCoord{} \theta_3(\tau+1,z)=\theta_4(\tau,z), 
+ \qquad \theta_4(\tau+1,z)=\theta_3(\tau,z),\rightCoord{}\\
+&&\leftCoord{} \eta(\tau+1)=\e{1/24}\eta(\tau),\rightCoord{}\\
+&&\leftCoord{} \chi_s(\tau+1,z)=\e{\frac{\leftCoord{}s^2}{\rightCoord{}8}-\frac{\leftCoord{}d}{\rightCoord{}48}}\chi_s(\tau,z),\rightCoord{}\\
+&&\leftCoord{} \chi_m^{\ell,s}(\tau+1,z)=\e{\frac{\leftCoord{}\ell(\ell+2)}{\rightCoord{}4N}-\frac{\leftCoord{}m^2}{\rightCoord{}4N}
+\leftCoord{}+\frac{\leftCoord{}s^2}{\rightCoord{}8}-\frac{\leftCoord{}N-2}{\rightCoord{}8N}}\chi_m^{\ell,s}(\tau,z),
+\rightCoord{}}{0mm}{14}{14}{
+&& \Th_{m,k}(\tau+1,z)=\e{\frac{m^2}{4k}}\Th_{m,k}(\tau,z),\\
+&& \theta_1(\tau+1,z)=\e{\tfrac18}\theta_1(\tau,z), 
+ \qquad \theta_2(\tau+1,z)=\e{\tfrac18}\theta_2(\tau,z),\\
+&& \theta_3(\tau+1,z)=\theta_4(\tau,z), 
+ \qquad \theta_4(\tau+1,z)=\theta_3(\tau,z),\\
+&& \eta(\tau+1)=\e{1/24}\eta(\tau),\\
+&& \chi_s(\tau+1,z)=\e{\frac{s^2}{8}-\frac{d}{48}}\chi_s(\tau,z),\\
+&& \chi_m^{\ell,s}(\tau+1,z)=\e{\frac{\ell(\ell+2)}{4N}-\frac{m^2}{4N}
++\frac{s^2}{8}-\frac{N-2}{8N}}\chi_m^{\ell,s}(\tau,z),
+}{1}\coordE{}\end{eqnarray*}
+and for S transformations, they have modular properties
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}\Th_{m,k}(-1/\tau,z/\tau)=
+\sqrt{-i\tau}\e{\frac{\leftCoord{}k}{\rightCoord{}4}\frac{\leftCoord{}z^2}{\rightCoord{}\tau}} \rightCoord{}
+\sum_{\rightCoord{}m'\in \Zb_{2k}}\frac{\leftCoord{}1}{\rightCoord{}\sqrt{2k}}\e{-\frac{\leftCoord{}mm'}{\rightCoord{}2k}}
+\Th_{m',k}(\tau,z),\rightCoord{}\\
+&&\leftCoord{}\theta_1(-1/\tau,z/\tau)=-i\sqrt{-i\tau}\e{\frac12 \frac{\leftCoord{}z^2}{\rightCoord{}\tau}}
+\theta_1(\tau,z),
+\qquad \theta_2(-1/\tau,z/\tau)=\sqrt{-i\tau}\e{\frac12 \frac{\leftCoord{}z^2}{\rightCoord{}\tau}}
+\theta_4(\tau,z),\rightCoord{}\\
+&&\leftCoord{}\theta_3(-1/\tau,z/\tau)=\sqrt{-i\tau}\e{\frac12 \frac{\leftCoord{}z^2}{\rightCoord{}\tau}}
+\theta_3(\tau,z),
+\qquad \theta_4(-1/\tau,z/\tau)=\sqrt{-i\tau}\e{\frac12 \frac{\leftCoord{}z^2}{\rightCoord{}\tau}}
+\theta_2(\tau,z),\rightCoord{}\\
+&&\leftCoord{} \eta(-1/\tau)=\sqrt{-i\tau}\eta(\tau),\rightCoord{}\\
+&&\leftCoord{}\chi_s(-1/\tau,z/\tau)=\e{\frac{\leftCoord{}d}{\rightCoord{}4}\frac{\leftCoord{}z^2}{\rightCoord{}\tau}}
+\sum_{\rightCoord{}s'=0}^{\leftCoord{}{}\leftCoord{}3}\frac 12 \e{-\frac d2 \frac{\leftCoord{}ss'}{\rightCoord{}4}}\chi_{s'}(\tau,z),\rightCoord{}\\
+&&\leftCoord{} \chi_m^{\ell,s}(-1/\tau,z/\tau)=
+\e{\frac{\leftCoord{}N-2}{\rightCoord{}2N}\frac{\leftCoord{}z^2}{\rightCoord{}\tau}} \rightCoord{}
+\frac{\leftCoord{}1}{\rightCoord{}\sqrt{8N}} \sum_{\rightCoord{}\ell,m,s}^{\leftCoord{}{}\leftCoord{}\rm even}
+A_{\ell\ell'}\e{-\frac{\leftCoord{}ss'}{\rightCoord{}4}+\frac{\leftCoord{}mm'}{\rightCoord{}2N}}
+\chi_{m'}^{\ell',s'}(\tau,z),\rightCoord{}\\
+&&\leftCoord{}A_{\ell\ell'}=\sqrt{\frac2N}\sin\left[\pi\frac{\leftCoord{}(\ell+1)(\ell'+1)}{\rightCoord{}N}\right],
+\rightCoord{}}{0mm}{28}{30}{
+&&\Th_{m,k}(-1/\tau,z/\tau)=
+\sqrt{-i\tau}\e{\frac{k}{4}\frac{z^2}{\tau}} 
+\sum_{m'\in \Zb_{2k}}\frac{1}{\sqrt{2k}}\e{-\frac{mm'}{2k}}
+\Th_{m',k}(\tau,z),\\
+&&\theta_1(-1/\tau,z/\tau)=-i\sqrt{-i\tau}\e{\frac12 \frac{z^2}{\tau}}
+\theta_1(\tau,z),
+\qquad \theta_2(-1/\tau,z/\tau)=\sqrt{-i\tau}\e{\frac12 \frac{z^2}{\tau}}
+\theta_4(\tau,z),\\
+&&\theta_3(-1/\tau,z/\tau)=\sqrt{-i\tau}\e{\frac12 \frac{z^2}{\tau}}
+\theta_3(\tau,z),
+\qquad \theta_4(-1/\tau,z/\tau)=\sqrt{-i\tau}\e{\frac12 \frac{z^2}{\tau}}
+\theta_2(\tau,z),\\
+&& \eta(-1/\tau)=\sqrt{-i\tau}\eta(\tau),\\
+&&\chi_s(-1/\tau,z/\tau)=\e{\frac{d}{4}\frac{z^2}{\tau}}
+\sum_{s'=0}^{{}3}\frac 12 \e{-\frac d2 \frac{ss'}{4}}\chi_{s'}(\tau,z),\\
+&& \chi_m^{\ell,s}(-1/\tau,z/\tau)=
+\e{\frac{N-2}{2N}\frac{z^2}{\tau}} 
+\frac{1}{\sqrt{8N}} \sum_{\ell,m,s}^{{}\rm even}
+A_{\ell\ell'}\e{-\frac{ss'}{4}+\frac{mm'}{2N}}
+\chi_{m'}^{\ell',s'}(\tau,z),\\
+&&A_{\ell\ell'}=\sqrt{\frac2N}\sin\left[\pi\frac{(\ell+1)(\ell'+1)}{N}\right],
+}{1}\coordE{}\end{eqnarray*}
+where the sum \myHighlight{$\sum_{\ell,m,s}^{\rm even}$}\coordHE{} means that 
+ \myHighlight{$\ell+m+s \equiv 0\mod 2$}\coordHE{} for \myHighlight{$(\ell,m,s)$}\coordHE{}.
+
+We use the notation \myHighlight{$f(\tau)$}\coordHE{} for a function \myHighlight{$f(\tau,z)$}\coordHE{}
+of \myHighlight{$\tau,z$}\coordHE{} with substituting \myHighlight{$z=0$}\coordHE{}
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+ f(\tau):=f(\tau,z=0). \rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+ f(\tau):=f(\tau,z=0). 
+}{1}\coordE{}\end{eqnarray*}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{Gep87}
+D.~Gepner, {\it ``{Exactly Solvable String Compactifications on Manifolds of
+  SU(N) Holonomy.}''},  {\em Phys.Lett.} {\bf B199} (1987) 380.
+
+\bibitem{Gep88}
+D.~Gepner, {\it ``{Space-Time Supersymmetry in Compactified String Theory and
+  Superconformal Models}''},  {\em Nucl.Phys.} {\bf B296} (1988) 757.
+
+\bibitem{Vaf89}
+C.~Vafa, {\it ``{String Vacua and Orbifoldized L-G Models.}''},  {\em
+  Mod.Phys.Lett.} {\bf A4} (1989) 1169.
+
+\bibitem{IV90}
+K.~Intriligator and C.~Vafa, {\it ``{Landau-Ginzburg Orbifolds}''},  {\em
+  Nucl.Phys.} {\bf B339} (1990) 95.
+
+\bibitem{GKP9907}
+A.~Giveon, D.~Kutasov, and O.~Pelc, {\it ``{Holography for Non-Critical
+  Superstrings}''},  {\em JHEP} {\bf 9910} (1999) 035,
+  [\href{http://xxx.lanl.gov/abs/hep-th/9907178}{{\tt hep-th/9907178}}].
+
+\bibitem{OV9511}
+H.~Ooguri and C.~Vafa, {\it ``{Two-Dimensional Black Hole and Singularities of
+  CY Manifolds}''},  {\em Nucl.Phys.} {\bf B463} (1996) 55,
+  [\href{http://xxx.lanl.gov/abs/hep-th/9511164}{{\tt hep-th/9511164}}].
+
+\bibitem{GK9909}
+A.~Giveon and D.~Kutasov, {\it ``{Little String Theory in a Double Scaling
+  Limit}''},  {\em JHEP} {\bf 9910} (1999) 034,
+  [\href{http://xxx.lanl.gov/abs/hep-th/9909110}{{\tt hep-th/9909110}}].
+
+\bibitem{GK9911}
+A.~Giveon and D.~Kutasov, {\it ``{Comments on Double Scaled Little String
+  Theory}''},  {\em JHEP} {\bf 0001} (2000) 023,
+  [\href{http://xxx.lanl.gov/abs/hep-th/9911039}{{\tt hep-th/9911039}}].
+
+\bibitem{ABKS9808}
+O.~Aharony, M.~Berkooz, D.~Kutasov, and N.~Seiberg, {\it ``{Linear Dilatons,
+  NS5-branes and Holography}''},  {\em JHEP} {\bf 9810} (1998) 004,
+  [\href{http://xxx.lanl.gov/abs/hep-th/9808149}{{\tt hep-th/9808149}}].
+
+\bibitem{ES0002}
+T.~Eguchi and Y.~Sugawara, {\it ``{Modular Invariance in Superstring on
+  Calabi-Yau n-fold with A-D-E Singularity}''},  {\em Nucl.Phys.} {\bf B577}
+  (2000) 3, [\href{http://xxx.lanl.gov/abs/hep-th/0002100}{{\tt
+  hep-th/0002100}}].
+
+\bibitem{Miz0003}
+S.~Mizoguchi, {\it ``{Modular Invariant Critical Superstrings on
+  Four-dimensional Minkowski Space \myHighlight{$\times$}\coordHE{} Two-dimensional Black Hole}''},
+  {\em JHEP} {\bf 0004} (2000) 014,
+  [\href{http://xxx.lanl.gov/abs/hep-th/0003053}{{\tt hep-th/0003053}}].
+
+\bibitem{Kut9110}
+D.~Kutasov, {\it ``{Some Properties of (Non) Critical Strings}''},
+  \href{http://xxx.lanl.gov/abs/hep-th/9110041}{{\tt hep-th/9110041}}.
+
+\bibitem{GVW9906}
+S.~Gukov, C.~Vafa, and E.~Witten, {\it ``{CFT's From Calabi-Yau Four-folds}''},
+   {\em Nucl.Phys.} {\bf B584} (2000) 69,
+  [\href{http://xxx.lanl.gov/abs/hep-th/9906070}{{\tt hep-th/9906070}}].
+
+\bibitem{CIZ87}
+A.~Cappelli, C.~Itzykson, and J.-B.Zuber, {\it ``{Modular Invariant Partition
+  Function in Two-Dimensions}''},  {\em Nucl.Phys.} {\bf B280} (1987) 445.
+
+\bibitem{CIZ87CMP}
+A.~Cappelli, C.~Itzykson, and J.-B.Zuber, {\it ``{The ADE Classification of
+  Minimal and \myHighlight{$A_1^{(1)}$}\coordHE{} Conformal Invariant Theories}''},  {\em
+  Commun.Math.Phys.} {\bf 113} (1987) 1.
+
+\bibitem{Kat87}
+A.~Kato, {\it ``{Classification of Modular Invariant Partition Functions in
+  Two-Dimensions}''},  {\em Mod.Phys.Lett.} {\bf A2} (1987) 585.
+
+\bibitem{KYY9306}
+T.~Kawai, Y.~Yamada, and S.-K. Yang, {\it ``{Elliptic Genera and N=2
+  Superconformal Field Theory}''},  {\em Nucl. Phys.} {\bf B414} (1994) 191,
+  [\href{http://xxx.lanl.gov/abs/hep-th/9306096}{{\tt hep-th/9306096}}].
+
+\bibitem{KS0001}
+A.~Kato and Y.~Satoh, {\it ``{Modular invariance of string theory on
+  AdS\myHighlight{${}_3$}\coordHE{}}''},  {\em Phys.Lett.} {\bf B486} (2000) 306,
+  [\href{http://xxx.lanl.gov/abs/hep-th/0001063}{{\tt hep-th/0001063}}].
+
+\bibitem{ES0009}
+T.~Eguchi and Y.~Sugawara.
+\newblock Talk at the meeting of the Physical Society of Japan, Sep. 2000.
+
+\bibitem{EGKRS0005}
+S.~Elitzur, A.~Giveon, D.~Kutasov, E.~Rabinovici, and G.~Sarkissian, {\it
+  ``{D-Branes in the Background of NS Fivebranes}''},  {\em JHEP} {\bf 0008}
+  (2000) 046, [\href{http://xxx.lanl.gov/abs/hep-th/0005052}{{\tt
+  hep-th/0005052}}].
+
+\bibitem{Ler0006}
+W.~Lerche, {\it ``{On a Boundary CFT Description of Nonperturbative N=2
+  Yang-Mills Theory}''},  \href{http://xxx.lanl.gov/abs/hep-th/0006100}{{\tt
+  hep-th/0006100}}.
+
+\bibitem{LLS0006}
+W.~Lerche, A.~Lutken, and C.~Schweigert, {\it ``{D-Branes on ALE Spaces and the
+  ADE Classification of Conformal Field Theories}''},
+  \href{http://xxx.lanl.gov/abs/hep-th/0006247}{{\tt hep-th/0006247}}.
+
+\bibitem{RS9712}
+A.~Recknagel and V.~Schomerus, {\it ``{D-branes in Gepner models}''},  {\em
+  Nucl.Phys.} {\bf B531} (1998) 185,
+  [\href{http://xxx.lanl.gov/abs/hep-th/9712186}{{\tt hep-th/9712186}}].
+
+\bibitem{BDLR9906}
+I.~Brunner, M.~R. Douglas, A.~Lawrence, and C.~Romelsberger, {\it ``{D-branes
+  on the Quintic}''},  {\em JHEP} {\bf 0008} (2000) 015,
+  [\href{http://xxx.lanl.gov/abs/hep-th/9906200}{{\tt hep-th/9906200}}].
+
+\bibitem{NN0001}
+M.~Naka and M.~Nozaki, {\it ``{Boundary states in Gepner models}''},  {\em
+  JHEP} {\bf 0005} (2000) 027,
+  [\href{http://xxx.lanl.gov/abs/hep-th/0001037}{{\tt hep-th/0001037}}].
+
+\bibitem{Sug0003A}
+K.~Sugiyama, {\it ``{Comments on Central Charge of Topological Sigma Model with
+  Calabi-Yau Target Space}''},
+  \href{http://xxx.lanl.gov/abs/hep-th/0003166}{{\tt hep-th/0003166}}.
+
+\end{thebibliography}\endgroup
+
+\end{document}
+
+\bye

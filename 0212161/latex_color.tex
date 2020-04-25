@@ -1,0 +1,891 @@
+
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{latexsym,epsf,cite,epsfig,amssymb}
+
+\oddsidemargin 0in \evensidemargin 0in \textwidth 6.5in
+\topmargin -0.6in \headsep 0.3in
+\textheight 9.1in
+\footnotesep 14pt
+%%\setlength\lineskip{30pt}
+\setlength\baselineskip{100pt}
+
+
+%%%  \ltapprox and \gtapprox produce > and < signs with twiddle underneath
+\def\spose#1{\hbox to 0pt{#1\hss}}
+\def\ltapprox{\mathrel{\spose{\lower 3pt\hbox{\myHighlight{$\mathchar"218$}\coordHE{}}}
+ \raise 2.0pt\hbox{\myHighlight{$\mathchar"13C$}\coordHE{}}}}
+\def\gtapprox{\mathrel{\spose{\lower 3pt\hbox{\myHighlight{$\mathchar"218$}\coordHE{}}}
+ \raise 2.0pt\hbox{\myHighlight{$\mathchar"13E$}\coordHE{}}}}
+
+\def\case#1#2{{\textstyle\frac{#1}{#2}}}
+\def\bphi{\mbox{\boldmath \myHighlight{$\phi$}\coordHE{}}}
+
+\usepackage{useful_macros}
+\begin{document}
+\begin{titlepage}
+\begin{center}
+{\Large\bf Field-theory results for three-dimensional transitions with complex symmetries}
+\end{center}
+\vskip 1.3cm
+\centerline{
+Pasquale Calabrese,\myHighlight{$^a$}\coordHE{} 
+Andrea Pelissetto,\myHighlight{$^b$}\coordHE{} 
+Paolo Rossi,\myHighlight{$^c$}\coordHE{} 
+Ettore Vicari\myHighlight{$^{c\;*}$}\coordHE{}}
+
+\vskip 0.4cm
+\centerline{\sl  \myHighlight{$^a$}\coordHE{} Scuola Normale Superiore, Pisa, Italy} 
+\centerline{\sl  \myHighlight{$^b$}\coordHE{} Dipartimento di Fisica dell'Universit\`a di Roma I,
+                       Roma, Italy}
+\centerline{\sl  \myHighlight{$^c$}\coordHE{} Dipartimento di Fisica dell'Universit\`a di Pisa,
+                       Pisa, Italy}
+
+\vskip 0.4cm
+\begin{center}
+E-mail: {\tt calabres@df.unipi.it, Andrea.Pelissetto@roma1.infn.it,} \\
+
+{\tt Paolo.Rossi@df.unipi.it, Ettore.Vicari@df.unipi.it}
+\end{center}
+
+\vskip 1.cm
+
+\begin{abstract}
+We discuss several examples of three-dimensional critical phenomena
+that can be described by Landau-Ginzburg-Wilson \myHighlight{$\phi^4$}\coordHE{} theories.
+We present an overview of field-theoretical results
+obtained from the analysis of high-order perturbative
+series in the frameworks of the \myHighlight{$\epsilon$}\coordHE{} and of the fixed-dimension \myHighlight{$d=3$}\coordHE{}
+expansions.  In particular, we discuss 
+the stability of the O(\myHighlight{$N$}\coordHE{})-symmetric fixed
+point in a generic \myHighlight{$N$}\coordHE{}-component theory,
+the critical behaviors of randomly dilute Ising-like systems
+and frustrated spin systems with noncollinear order,
+the multicritical behavior arising from the competition
+of two distinct types of ordering with symmetry O(\myHighlight{$n_1$}\coordHE{}) and O(\myHighlight{$n_2$}\coordHE{}) 
+respectively. 
+
+\end{abstract}
+
+\vskip 5.cm
+
+\noindent
+\myHighlight{$*$}\coordHE{}
+Talk given at the International Conference of Theoretical Physics, TH2002, 
+Paris, July 22-27, 2002.
+
+\end{titlepage}
+
+\section{Introduction}
+\label{lsec-intro}
+
+In the framework of the renormalization-group (RG)
+approach to critical phenomena,
+a quantitative description of 
+many continuous phase transitions  can be obtained
+by considering an effective Landau-Ginzburg-Wilson (LGW) theory,
+containing up to fourth-order powers of the field components.
+The simplest example is the O(\myHighlight{$N$}\coordHE{})-symmetric \myHighlight{$\phi^4$}\coordHE{} theory,
+\begin{equation}\coord{}\boxEquation{
+{\cal H}_{O(N)} = \int d^d x \Bigl[ 
+{1\over 2} \sum_i (\partial_\mu \Phi_{i})^2 + 
+{1\over 2} r \sum_i \Phi_{i}^2  + 
+{1\over 4!} u \sum_{ij} \Phi_i^2 \Phi_j^2 \Bigr], 
+\label{HON}
+}{
+{\cal H}_{O(N)} = \int d^d x \Bigl[ 
+{1\over 2} \sum_i (\partial_\mu \Phi_{i})^2 + 
+{1\over 2} r \sum_i \Phi_{i}^2  + 
+{1\over 4!} u \sum_{ij} \Phi_i^2 \Phi_j^2 \Bigr], 
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\Phi$}\coordHE{} is an \myHighlight{$N$}\coordHE{}-component real field. This model
+describes several universality classes:
+the Ising one for \myHighlight{$N=1$}\coordHE{} 
+(e.g., liquid-vapor transition), the XY one for \myHighlight{$N=2$}\coordHE{}
+(e.g., superfluid transition in \myHighlight{$^4$}\coordHE{}He),
+the Heisenberg one for \myHighlight{$N=3$}\coordHE{}
+(isotropic magnets), and long self-avoiding
+walks for \myHighlight{$N\rightarrow 0$}\coordHE{}
+(dilute polymers).
+See, e.g., Refs.~\cite{review,Zinn-Justin-book} for 
+recent reviews.
+But there are  also other physically interesting 
+transitions described by LGW theories
+characterized by more complex symmetries.
+
+The general LGW Hamiltonian for an \myHighlight{$N$}\coordHE{}-component field \myHighlight{$\Phi_i$}\coordHE{}
+can be written as
+\begin{equation}\coord{}\boxEquation{
+{\cal H} = \int d^d x \Bigl[ 
+{1\over 2} \sum_i (\partial_\mu \Phi_{i})^2 + 
+{1\over 2} \sum_i r_i \Phi_{i}^2  + 
+{1\over 4!} \sum_{ijkl} u_{ijkl} \; \Phi_i\Phi_j\Phi_k\Phi_l \Bigr], 
+\label{generalH}
+}{
+{\cal H} = \int d^d x \Bigl[ 
+{1\over 2} \sum_i (\partial_\mu \Phi_{i})^2 + 
+{1\over 2} \sum_i r_i \Phi_{i}^2  + 
+{1\over 4!} \sum_{ijkl} u_{ijkl} \; \Phi_i\Phi_j\Phi_k\Phi_l \Bigr], 
+}{ecuacion}\coordE{}\end{equation}
+where the number of independent parameters \myHighlight{$r_i$}\coordHE{} and \myHighlight{$u_{ijkl}$}\coordHE{} 
+depends on the symmetry group of the theory. An interesting 
+class of models are those in which \myHighlight{$\sum_i \Phi^2_i$}\coordHE{} is the 
+only quadratic invariant polynomial.
+In this case, all \myHighlight{$r_i$}\coordHE{} are equal, \myHighlight{$r_i = r$}\coordHE{}, and 
+\myHighlight{$u_{ijkl}$}\coordHE{} satisfies the trace condition~\cite{BLZ-76}
+\myHighlight{$\sum_i u_{iikl} \propto \delta_{kl}$}\coordHE{}.
+In these models, criticality is driven by tuning the single parameter
+\myHighlight{$r$}\coordHE{}. Therefore, they describe critical phenomena characterized 
+by one (parity-symmetric) relevant parameter, 
+which often corresponds to the temperature. Of course, there is also
+(at least one) parity-odd relevant parameter that corresponds to 
+a term \myHighlight{$\sum_i h_i \Phi_i$}\coordHE{} that can be added to the Hamiltonian
+(\ref{generalH}). For symmetry reasons, criticality is observed 
+for \myHighlight{$h_i\to 0$}\coordHE{}. 
+There are several physical systems whose critical behavior 
+can be described by this type of LGW Hamiltonians with two or more quartic 
+couplings, see, e.g., Refs.~\cite{Aharony-76,review}.
+More general LGW Hamiltonians, that allow for the presence
+of independent quadratic parameters \myHighlight{$r_i$}\coordHE{}, must be considered
+to describe multicritical behaviors 
+arising from the competition of distinct types of ordering.
+A multicritical point can be observed at the intersection of 
+two critical lines with different order parameters.
+In this case the multicritical behavior is achieved
+by tuning two relevant scaling fields, which may correspond to
+the temperature and to an anisotropy parameter \cite{KNF-76}.
+
+In the field-theory (FT) approach the RG flow 
+is determined by a set of RG
+equations for the correlation functions of the order parameter.
+In the case of a continuous transition, 
+the critical behavior is determined by the stable fixed point (FP)
+of the theory, which characterizes a universality class. 
+The absence of a stable FP is instead 
+an indication for a first-order transition,
+even in those cases in which the mean-field approximation predicts
+a continuous transition.
+But, even in the presence of a stable FP,
+a first-order transition may  still occur
+for systems that are outside its attraction domain. 
+The RG flow can be studied by perturbative methods, by performing an 
+expansion in powers of \myHighlight{$\epsilon\equiv 4-d$}\coordHE{}\cite{WF-72} or a 
+fixed-dimension (FD) expansion in powers of appropriate zero-momentum
+quartic couplings \cite{Parisi-80}. 
+In these perturbative approaches,
+the computation and the resummation of high-order series
+is essential to obtain reliable results for three-dimensional transitions
+(see Refs.~\cite{Zinn-Justin-book,review} for reviews). 
+Beside improving the accuracy, in some cases high-order
+calculations turn out to be necessary to determine 
+the correct physical picture in three dimensions.
+
+In this paper we give an overview of the perturbative FT
+results obtained for a number of three-dimensional transitions 
+described by LGW Hamiltonians.
+In Sec.~\ref{onstab} we discuss the stability of the 
+O(\myHighlight{$N$}\coordHE{})-symmetric fixed point under generic perturbations in  
+three-dimensional \myHighlight{$N$}\coordHE{}-component systems.
+In Sec.~\ref{random} we discuss the critical behavior
+of Ising-like systems with quenched disorder
+effectively coupled to the energy, for instance the 
+randomly dilute Ising model.
+In Sec.~\ref{chiral} we consider frustrated spin models
+with noncollinear order, whose critical behavior is effectively described
+by an O(\myHighlight{$M$}\coordHE{})\myHighlight{$\otimes$}\coordHE{}O(\myHighlight{$N$}\coordHE{})-symmetric Hamiltonian with \myHighlight{$M=2$}\coordHE{}.
+Finally, in Sec.~\ref{multi} we discuss the predictions of 
+the O(\myHighlight{$n_1$}\coordHE{})\myHighlight{$\oplus$}\coordHE{}O(\myHighlight{$n_2$}\coordHE{})-symmetric \myHighlight{$\phi^4$}\coordHE{} theory for 
+the multicritical behavior observed near the point
+where two critical lines with symmetry O(\myHighlight{$n_1$}\coordHE{}) and O(\myHighlight{$n_2$}\coordHE{}) meet.
+
+
+\section{Stability of the O(\myHighlight{$N$}\coordHE{})-symmetric fixed point}
+\label{onstab}
+
+In order to discuss the stability of the O(\myHighlight{$N$}\coordHE{}) FP  in a 
+generic \myHighlight{$N$}\coordHE{}-component system, 
+it is convenient to consider polynomial perturbations  
+\myHighlight{$P_{m,l }^{a_1,\ldots,a_{l} }$}\coordHE{}, 
+\myHighlight{$m\ge l$}\coordHE{}, which are of degree \myHighlight{$m$}\coordHE{} in the \myHighlight{$N$}\coordHE{}-component field \myHighlight{$\Phi^a$}\coordHE{}
+and transform as the \myHighlight{$l$}\coordHE{}-spin representation of the O(\myHighlight{$N$}\coordHE{}) group.
+Explicitly formulae can be found in Ref.~\cite{CPV-02-mc}.
+In addition, one should also consider perturbations containing
+derivatives of the field. 
+At least near four dimensions, one can use
+standard RG arguments to show that, 
+beside the O(\myHighlight{$N$}\coordHE{})-symmetric terms \myHighlight{$P_{2,0}=\Phi^2$}\coordHE{} and 
+\myHighlight{$P_{4,0}=(\Phi^2)^2$}\coordHE{}, only three other perturbations should be 
+considered, \myHighlight{$P_{2,2}^{ab}$}\coordHE{}, \myHighlight{$P_{4,2}^{ab}$}\coordHE{}, and 
+\myHighlight{$P_{4,4}^{abcd}$}\coordHE{}.
+The stability properties 
+of the O(\myHighlight{$N$}\coordHE{}) FP depend on the RG dimensions \myHighlight{$y_{m,l}$}\coordHE{} of these 
+perturbations.\footnote{Note that \myHighlight{$P_{2,2}^{ab}$}\coordHE{} and 
+\myHighlight{$P_{4,4}^{abcd}$}\coordHE{} are RG eigenoperators, while \myHighlight{$P_{4,2}^{ab}$}\coordHE{} 
+must be in general properly subtracted, i.e. the 
+RG eigenoperator is \myHighlight{$P_{4,2}^{ab} + z P_{2,2}^{ab}$}\coordHE{} for a suitable value of \myHighlight{$z$}\coordHE{}.}
+
+In Table~\ref{ONstab} we report FT estimates of 
+the RG dimensions \myHighlight{$y_{m,l}$}\coordHE{}
+for \myHighlight{$N=2,3,4,5$}\coordHE{}, obtained from the analysis of six-loop FD
+and five-loop \myHighlight{$\epsilon$}\coordHE{} series 
+\cite{CPV-02,CPV-02-mc,GZ-98}.\footnote{Results obtained in 
+other theoretical approaches and in experiments  
+can be found in Refs.~\cite{CPV-02-mc,review} and references therein.}
+The quadratic perturbations \myHighlight{$P_{2,2}^{ab}$}\coordHE{} are relevant for the description of 
+the breaking of the O(\myHighlight{$N$}\coordHE{}) symmetry down to O(\myHighlight{$M$}\coordHE{})\myHighlight{$\oplus$}\coordHE{}O(\myHighlight{$N-M$}\coordHE{}).
+Since \myHighlight{$y_{2,2}>0$}\coordHE{}, they are always relevant.
+The RG dimension \myHighlight{$y_{4,2}$}\coordHE{} is negative for any \myHighlight{$N$}\coordHE{}, so that the corresponding
+spin-2 perturbation \myHighlight{$P_{4,2}^{ab}$}\coordHE{} is always irrelevant.
+On the other hand, the sign of \myHighlight{$y_{4,4}$}\coordHE{} depends on \myHighlight{$N$}\coordHE{}:
+it is clearly negative for \myHighlight{$N=2$}\coordHE{} and positive for \myHighlight{$N\ge 4$}\coordHE{}.
+For \myHighlight{$N=3$}\coordHE{} it is marginally positive, suggesting the instability
+of the O(3) FP under generic spin-4 quartic perturbations.
+Actually the stability of the O(\myHighlight{$N$}\coordHE{}) FP 
+can be inferred from the RG flow of the cubic-symmetric LGW Hamiltonian
+for an \myHighlight{$N$}\coordHE{}-component field
+\begin{equation}\coord{}\boxEquation{
+{\cal H}_{c} =  \int d^d x\, \left\{ {1\over 2} \sum_{i=1}^{N}
+      \Bigl[ (\partial_\mu \Phi_i)^2 +  r \Phi_i^2 \Bigr]  
++{1\over 4!} \Bigl[ u (\sum_i^N \Phi_i^2)^2 + v \sum_i^N \Phi_i^4 \Bigr]
+\right \} .
+\label{Hphi4cubic}
+}{
+{\cal H}_{c} =  \int d^d x\, \left\{ {1\over 2} \sum_{i=1}^{N}
+      \Bigl[ (\partial_\mu \Phi_i)^2 +  r \Phi_i^2 \Bigr]  
++{1\over 4!} \Bigl[ u (\sum_i^N \Phi_i^2)^2 + v \sum_i^N \Phi_i^4 \Bigr]
+\right \} .
+}{ecuacion}\coordE{}\end{equation}
+The point is that the cubic-symmetric 
+perturbation \myHighlight{$\sum_i \Phi_i^4$}\coordHE{}
+is a particular combination of the spin-4 operators \myHighlight{$P_{4,4}^{abcd}$}\coordHE{} and 
+of the spin-0 term \myHighlight{$P_{4,0}$}\coordHE{}.  
+The RG flow for the cubic-symmetric theory has been much investigated
+using various FT and lattice techniques \cite{review}. 
+The O(\myHighlight{$N$}\coordHE{}) FP turns out to be unstable for \myHighlight{$N>N_c$}\coordHE{} with \myHighlight{$N_c\approx 3$}\coordHE{}.
+The most accurate results have been provided by analyses of 
+high-order FT perturbative expansions, six-loop FD 
+and five-loop \myHighlight{$\epsilon$}\coordHE{} series, see e.g. Refs.~\cite{CPV-00,FHY-00},
+which find \myHighlight{$N_c\ltapprox 2.9$}\coordHE{} in three dimensions, and the existence of 
+a stable FP characterized by a reduced cubic symmetry for \myHighlight{$N\geq N_c$}\coordHE{}.
+These results imply that
+the O(\myHighlight{$N$}\coordHE{})-symmetric FP is unstable under spin-4 quartic perturbations 
+for \myHighlight{$N\ge 3$}\coordHE{},
+and can be applied to establish the stability of the O(\myHighlight{$N$}\coordHE{}) FP
+in any physical critical phenomenon that is effectively described
+by a generic LGW Hamiltonian for an \myHighlight{$N$}\coordHE{}-component 
+field.\footnote{
+Note that the condition that \myHighlight{$\sum \Phi^2_i$}\coordHE{} is the only quadratic 
+invariant forbids the presence in the Hamiltonian 
+of any spin-2 term \myHighlight{$P^{ab}_{2,2}$}\coordHE{}. Analogously,
+the trace condition \myHighlight{$\sum_i u_{iikl} \propto \delta_{kl}$}\coordHE{}
+forbids quartic polynomials transforming as the spin-2 
+representation of the O(\myHighlight{$N$}\coordHE{}) group, i.e. the operators \myHighlight{$P_{4,2}^{ab}$}\coordHE{}.}
+
+
+
+
+
+\begin{table*}
+\caption{
+Three-dimensional estimates of the RG dimensions \myHighlight{$y_{m,l}$}\coordHE{}
+from \myHighlight{$\epsilon$}\coordHE{} and  FD expansions.
+}
+\label{ONstab}
+\footnotesize
+\begin{center}
+\begin{tabular}{lclllllll}
+\hline
+\multicolumn{1}{c}{\myHighlight{$N$}\coordHE{}}&
+\multicolumn{1}{c}{}&
+\multicolumn{1}{c}{\myHighlight{$y_{2,0}=\nu^{-1}$}\coordHE{}}&
+\multicolumn{1}{c}{\myHighlight{$y_{2,2}$}\coordHE{}}&
+\multicolumn{1}{c}{\myHighlight{$\phi_T\equiv y_{2,2}\nu$}\coordHE{}}&
+\multicolumn{1}{c}{\myHighlight{$y_{4,0}$}\coordHE{}}&
+\multicolumn{1}{c}{\myHighlight{$y_{4,2}$}\coordHE{}}&
+\multicolumn{1}{c}{\myHighlight{$y_{4,4}$}\coordHE{}}&
+\multicolumn{1}{c}{\myHighlight{$\phi_{4,4}\equiv y_{4,4}\nu$}\coordHE{}}\\
+\hline
+2 &\myHighlight{$\epsilon$}\coordHE{} & 1.497(8) & 1.766(6) & 1.174(12)    & \myHighlight{$-$}\coordHE{}0.802(18) & \myHighlight{$-$}\coordHE{}0.624(10) &\myHighlight{$-$}\coordHE{}0.114(4) &\myHighlight{$-$}\coordHE{}0.077(3)\\
+  & FD        & 1.493(3) &          & 1.184(12)    & \myHighlight{$-$}\coordHE{}0.789(11) &              & \myHighlight{$-$}\coordHE{}0.103(8)&\myHighlight{$-$}\coordHE{}0.069(5) \\ \hline
+
+3 &\myHighlight{$\epsilon$}\coordHE{} & 1.419(11)& 1.790(3) & 1.260(11)& \myHighlight{$-$}\coordHE{}0.794(18) & \myHighlight{$-$}\coordHE{}0.550(14) & 0.003(4)& 0.002(3) \\ 
+  & FD        & 1.414(7) &          & 1.27(2)  & \myHighlight{$-$}\coordHE{}0.782(13) & &  0.013(6)& 0.009(4) \\ \hline
+
+4&\myHighlight{$\epsilon$}\coordHE{}  & 1.357(15)& 1.813(6) & 1.329(16)& \myHighlight{$-$}\coordHE{}0.795(30) & \myHighlight{$-$}\coordHE{}0.493(14) & 0.105(6)& 0.079(5) \\ 
+& FD          & 1.350(11)&          & 1.35(4) & \myHighlight{$-$}\coordHE{}0.774(20) & & 0.111(4)& 0.083(3)  \\ \hline
+
+5  &\myHighlight{$\epsilon$}\coordHE{} & 1.333(36) & 1.832(8) & 1.40(3) & \myHighlight{$-$}\coordHE{}0.783(26) & \myHighlight{$-$}\coordHE{}0.441(13) & 0.198(11) &  0.151(9) \\ 
+& FD & 1.312(12) & & 1.40(4) & \myHighlight{$-$}\coordHE{}0.790(15) & &  0.189(10)& 0.144(8)  \\ \hline
+
+\myHighlight{$\infty$}\coordHE{} & & 1 & 2 & 2 & \myHighlight{$-$}\coordHE{}1 & 0 & 1 & 1 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table*}
+
+
+\section{Randomly dilute Ising model}
+\label{random}
+
+In the last few decades many theoretical and experimental
+studies have investigated the critical properties
+of statistical models in the presence of quenched disorder.
+A typical example is obtained by mixing a
+uniaxial antiferromagnet with a nonmagnetic material,
+such as Fe\myHighlight{$_x$}\coordHE{}Zn\myHighlight{$_{1-x}$}\coordHE{}F\myHighlight{$_2$}\coordHE{} and Mn\myHighlight{$_x$}\coordHE{}Zn\myHighlight{$_{1-x}$}\coordHE{}F\myHighlight{$_2$}\coordHE{}.
+These materials can be modeled by the randomly dilute Ising model (RDIM)
+\begin{equation}\coord{}\boxEquation{
+{\cal H}_{\rm RDIM} = J\,\sum_{<ij>}  \rho_i \,\rho_j \; s_i s_j,
+\label{latticeH}
+}{
+{\cal H}_{\rm RDIM} = J\,\sum_{<ij>}  \rho_i \,\rho_j \; s_i s_j,
+}{ecuacion}\coordE{}\end{equation}
+where the sum is extended over all nearest-neighbor sites of a 
+lattice,
+\myHighlight{$s_i=\pm 1$}\coordHE{} are the spin variables,
+\myHighlight{$\rho_i$}\coordHE{} are uncorrelated quenched random variables, which are equal to one 
+with probability \myHighlight{$x$}\coordHE{} (the spin concentration) and zero with probability \myHighlight{$1-x$}\coordHE{}
+(the impurity concentration). 
+Above the percolation threshold of the spin concentration,
+the critical behavior of the RDIM belongs to a new 
+universality class that is distinct from the Ising universality class
+of pure systems, and that is shared by all systems with quenched
+disorder effectively coupled to the energy.
+See, e.g., Refs. \cite{Belanger-00,FHY-01,review} for recent reviews.
+
+Using the FT approach and the replica method, one arrives at
+the effective LGW Hamiltonian \myHighlight{${\cal H}_c$}\coordHE{} \cite{GL-76}, 
+cf. Eq.~(\ref{Hphi4cubic}),
+which is expected to describe the critical properties of the RDIM
+in the limit \myHighlight{$N\rightarrow 0$}\coordHE{}.
+The most precise FT results for the critical exponents
+have been obtained by analyzing the FD six-loop expansions \cite{PV-00,PS-00}.
+The major drawback of the FT perturbative approach is the non-Borel summability 
+of the series due to a more complicated analytic structure of the field theory  
+corresponding to quenched disordered models. 
+Nevertheless, series analyses seem to provide 
+sufficiently robust estimates, which are in good agreement 
+with experiments and recent Monte Carlo simulations.
+The results of the six-loop analysis 
+are reported in Table~\ref{rimexp}, where they are 
+compared with estimates obtained in Monte Carlo simulations of the RDIM 
+and in experiments on uniaxial magnets.
+The values of the exponents are definetely different
+from those of the pure Ising universality class, where, e.g.,
+\myHighlight{$\nu=0.63012(16)$}\coordHE{} \cite{CPRV-ising}.
+
+
+
+\begin{table*}
+\caption{
+Critical exponents for the RDIM universality class.}
+\label{rimexp}
+\footnotesize
+\begin{center}
+\begin{tabular}{ccllll}
+\hline
+\multicolumn{1}{c}{}& 
+\multicolumn{1}{c}{}& 
+\multicolumn{1}{c}{\myHighlight{$\gamma$}\coordHE{}}& 
+\multicolumn{1}{c}{\myHighlight{$\nu$}\coordHE{}}& 
+\multicolumn{1}{c}{\myHighlight{$\alpha$}\coordHE{}}&
+\multicolumn{1}{c}{\myHighlight{$\beta$}\coordHE{}}\\ 
+\hline  
+six-loop FD & \cite{PV-00} & 1.330(17) & 0.678(10)  & \myHighlight{$-$}\coordHE{}0.034(30) & 0.349(5)\\
+Monte Carlo & \cite{BFMMPR-98}  & 1.342(10) & 0.684(5)   & \myHighlight{$-$}\coordHE{}0.051(16) & 0.3546(28) \\
+Fe\myHighlight{$_x$}\coordHE{}Zn\myHighlight{$_{1-x}$}\coordHE{}F\myHighlight{$_2$}\coordHE{}  & \cite{Belanger-00}  & 1.31(3) & 0.69(1) & \myHighlight{$-$}\coordHE{}0.10(2) & 0.359(9) \\
+\hline
+\end{tabular}
+\end{center}
+\end{table*}
+
+
+
+Using the FT approach, one can also compute the critical exponent \myHighlight{$\phi$}\coordHE{} 
+describing the crossover from random-dilution to random-field
+critical behavior in Ising systems,
+and in particular the crossover observed in dilute anisotropic
+antiferromagnets when an external magnetic field is applied \cite{Belanger-00}.
+The crossover exponent \myHighlight{$\phi$}\coordHE{} is related to the RG dimensions of
+the quadratic operator \myHighlight{$\Phi_i\Phi_j$}\coordHE{} (\myHighlight{$i\neq j$}\coordHE{}) in the 
+limit \myHighlight{$N\rightarrow 0$}\coordHE{} \cite{Aharony-86}.
+Six-loop computations \cite{CPV-inprep}
+provide the estimate \myHighlight{$\phi=1.43(1)$}\coordHE{},
+which turns out to be in
+good agreement with the available experimental estimates,
+for example \myHighlight{$\phi=1.42(3)$}\coordHE{} for Fe\myHighlight{$_x$}\coordHE{}Zn\myHighlight{$_{1-x}$}\coordHE{}F\myHighlight{$_2$}\coordHE{} \cite{Belanger-00}.
+
+Finally, we mention that six-loop perturbative series for multicomponent
+systems with quenched disorder, taking also into account a possible
+cubic anisotropy, have been computed and analyzed in Refs.~\cite{PV-00,CPV-03}.
+
+
+\section{Frustrated spin models with noncollinear order}
+\label{chiral}
+
+In physical magnets noncollinear order is due to frustration that may arise
+either because of the special geometry of the lattice, or from the competition 
+of different kinds of interactions \cite{Kawamura-98}.
+Typical examples of systems of the first type are 
+stacked triangular antiferromagnets (STA's), 
+where magnetic ions are located at each site of 
+a three-dimensional stacked triangular lattice.
+On the basis of the structure of the ground state, 
+in an \myHighlight{$N$}\coordHE{}-component STA one expects a 
+transition associated with a breakdown of 
+the symmetry from O(\myHighlight{$N$}\coordHE{}) in the HT phase to O(\myHighlight{$N-2$}\coordHE{}) in the LT phase. 
+The nature of the transition is still controversial. In 
+particular, the question is whether the critical behavior belongs
+to a new chiral universality class, as originally conjectured by Kawamura \cite{Kawamura-88}.  
+On this issue, there is still much 
+debate, FT methods, Monte Carlo simulations, and experiments providing 
+contradictory results in many cases (see, e.g., Ref.\cite{review}
+for a recent review of results).
+Overall, experiments on STA's favor a continuous transition
+belonging to a new chiral universality class.
+
+The determination of an effective LGW Hamiltonian describing
+the critical behavior leads to
+the O(\myHighlight{$M$}\coordHE{})\myHighlight{$\otimes$}\coordHE{}O(\myHighlight{$N$}\coordHE{})-symmetric theory \cite{Kawamura-88}
+\begin{equation}\coord{}\boxEquation{
+{\cal H}_{ch}  = \int d^d x
+ \Bigl\{ {1\over2}
+      \sum_{a} \Bigl[ (\partial_\mu \phi_{a})^2 + r \phi_{a}^2 \Bigr]
++ {1\over 4!}u \Bigl( \sum_a \phi_a^2\Bigr)^2
++ {1\over 4!}  v
+\sum_{a,b} \Bigl[ ( \phi_a \cdot \phi_b)^2 - \phi_a^2\phi_b^2\Bigr]
+             \Bigr\},
+\label{LGWH}
+}{
+{\cal H}_{ch}  = \int d^d x
+ \Bigl\{ {1\over2}
+      \sum_{a} \Bigl[ (\partial_\mu \phi_{a})^2 + r \phi_{a}^2 \Bigr]
++ {1\over 4!}u \Bigl( \sum_a \phi_a^2\Bigr)^2
++ {1\over 4!}  v
+\sum_{a,b} \Bigl[ ( \phi_a \cdot \phi_b)^2 - \phi_a^2\phi_b^2\Bigr]
+             \Bigr\},
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\phi_a$}\coordHE{}, \myHighlight{$a=1,\ldots, M$}\coordHE{}, are \myHighlight{$N$}\coordHE{}-component vectors. 
+The case \myHighlight{$M=2$}\coordHE{} with \myHighlight{$v>0$}\coordHE{} describes  
+frustrated spin models with noncollinear order;
+\footnote{Negative values of \myHighlight{$v$}\coordHE{} correspond to magnets 
+with sinusoidal spin structures.}
+\myHighlight{$N=2$}\coordHE{} and \myHighlight{$N=3$}\coordHE{} correspond to
+XY and Heisenberg systems, respectively.  
+Recently the Hamiltonian (\ref{LGWH}) has been also considered
+to discuss the phase diagram of Mott insulators \cite{Sachdev-02}.
+See Refs.~\cite{Kawamura-98,review} for other applications.
+
+Six-loop calculations \cite{PRV-01} in the framework of the
+\myHighlight{$d=3$}\coordHE{} FD expansion provide a rather robust evidence
+for the existence of a new stable FP in the
+XY and Heisenberg cases corresponding to the conjectured
+chiral universality class, and  contradicting earlier studies
+based on much shorter (three-loop) series \cite{AS-94}.
+It has also been argued \cite{CPS-02} that the stable chiral FP
+is actually a focus, due to the fact that the eigenvalues of 
+its stability matrix turn out to have a nonzero imaginary part.
+The new chiral FP's found for \myHighlight{$N=2,3$}\coordHE{}
+should describe the apparently continuous transitions observed in STA's.
+The FT estimates of the critical exponents are in satisfactory agreement with
+the experimental results, including the chiral crossover exponent
+related to the chiral degrees of freedom \cite{PRV-02}. 
+We also mention that high-order FT analyses of 
+two-dimensional systems have been reported in Ref.~\cite{CP-01}.
+
+
+On the other hand, other FT studies, see, e.g., Ref. \cite{TDM-00},
+based on approximate solutions of continuous RG equations,
+do not find a stable FP, thus favoring a weak first-order transition.
+Monte Carlo simulations have not been conclusive in setting the question, 
+see, e.g., Refs.~\cite{LS-98,Itakura-01,PS-02}.
+Since all the above approaches rely on  
+different approximations and assumptions, their comparison and consistency 
+is essential before considering the issue substantially understood.
+
+
+
+
+
+\section{Multicritical behavior in O(\myHighlight{$n_1$}\coordHE{})\myHighlight{$\oplus$}\coordHE{}O(\myHighlight{$n_2$}\coordHE{}) theories}
+\label{multi}
+
+The competition of distinct types of ordering gives rise to multicritical
+behavior. More specifically, a multicritical point (MCP) is observed at the 
+intersection of two critical lines characterized by different order parameters.
+MCP's arise in several physical contexts, for instance 
+in anisotropic antiferromagnets, 
+in high-\myHighlight{$T_c$}\coordHE{} superconductors, in \myHighlight{$^4$}\coordHE{}He, etc.
+The multicritical behavior arising from the
+competition of two orderings characterized by O(\myHighlight{$n$}\coordHE{}) 
+symmetries is determined by the RG flow of  the most general
+O(\myHighlight{$n_1$}\coordHE{})\myHighlight{$\oplus$}\coordHE{}O(\myHighlight{$n_2$}\coordHE{})-symmetric
+LGW Hamiltonian involving two fields \myHighlight{$\phi_1$}\coordHE{} and \myHighlight{$\phi_2$}\coordHE{}
+with \myHighlight{$n_1$}\coordHE{} and \myHighlight{$n_2$}\coordHE{} components respectively, i.e.
+\cite{KNF-76} 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+{\rightCoord{}\leftCoord{}\cal H}_{mc} = \int d^d x \Bigl[ 
+\case{1}{2} ( \partial_\mu \phi_1)^2  + \case{1}{2} (
+\partial_\mu \phi_2)^2 + \case{1}{2} r_1 \phi_1^2  
+ \leftCoord{}+ \case{1}{2} r_2 \phi_2^2  
+\leftCoord{}+ u_1 (\phi_1^2)^2 + u_2 (\phi_2^2)^2 + w \phi_1^2\phi_2^2 \Bigr].\rightCoord{}
+\label{bicrHH} 
+\rightCoord{}}{0mm}{4}{4}{
+{\cal H}_{mc} = \int d^d x \Bigl[ 
+\case{1}{2} ( \partial_\mu \phi_1)^2  + \case{1}{2} (
+\partial_\mu \phi_2)^2 + \case{1}{2} r_1 \phi_1^2  
+ + \case{1}{2} r_2 \phi_2^2  
++ u_1 (\phi_1^2)^2 + u_2 (\phi_2^2)^2 + w \phi_1^2\phi_2^2 \Bigr].
+}{1}\coordE{}\end{eqnarray}
+The critical behavior at the MCP is determined 
+by the stable FP when both \myHighlight{$r_1$}\coordHE{} and \myHighlight{$r_2$}\coordHE{} 
+are tuned to their critical value.
+An interesting possibility is that the stable FP has O(\myHighlight{$N$}\coordHE{}) symmetry, 
+\myHighlight{$N\equiv n_1 + n_2$}\coordHE{}, so that the symmetry gets effectively enlarged  
+approaching the MCP.
+
+The phase diagram of the model with
+Hamiltonian (\ref{bicrHH}) has been investigated
+within the mean-field approximation in Ref. \cite{LF-72}.
+If the transition at the MCP is continuous, one may observe 
+either a bicritical or a tetracritical behavior.
+But it is also possible that the transition at the MCP is of first order.
+\myHighlight{$O(\epsilon)$}\coordHE{}  calculations in the framework of the 
+\myHighlight{$\epsilon$}\coordHE{} expansion \cite{KNF-76} 
+show that the isotropic O(\myHighlight{$N$}\coordHE{})-symmetric FP (\myHighlight{$N\equiv n_1 + n_2$}\coordHE{})
+is stable for \myHighlight{$N<N_c=4 + O(\epsilon)$}\coordHE{}.
+With increasing \myHighlight{$N$}\coordHE{}, a new FP named biconal FP (BFP),
+which has only O(\myHighlight{$n_1$}\coordHE{})\myHighlight{$\oplus$}\coordHE{}O(\myHighlight{$n_2$}\coordHE{}) symmetry, becomes stable. 
+Finally, for large \myHighlight{$N$}\coordHE{}, the decoupled FP (DFP)
+is the stable one. In this case, the two order parameters are 
+effectively uncoupled at the MCP, giving rise to a tetracritical 
+behavior. 
+
+The \myHighlight{$O(\epsilon)$}\coordHE{} computations provide useful indications on the 
+RG flow in three  dimensions, but a controlled 
+extrapolation to \myHighlight{$\epsilon=1$}\coordHE{} requires much longer series
+and an accurate resummation exploiting their Borel summability.
+For this purpose we have extended the \myHighlight{$\epsilon$}\coordHE{} expansion
+to \myHighlight{$O(\epsilon^5)$}\coordHE{} \cite{CPV-02-mc}.  
+A robust picture of the RG flow predicted by
+the  O(\myHighlight{$n_1$}\coordHE{})\myHighlight{$\oplus$}\coordHE{}O(\myHighlight{$n_2$}\coordHE{})-symmetric
+LGW theory can be achieved 
+by supplementing the analysis of the \myHighlight{$\epsilon$}\coordHE{} series 
+with the results for the stability of
+the O(\myHighlight{$N$}\coordHE{}) FP (cf. Sec.~\ref{onstab}),
+which were also obtained by analyzing six-loop FD series,
+and with nonperturbative arguments allowing to establish
+the stability of the DFP \cite{Aharony-02}.
+Since the Hamiltonian (\ref{bicrHH}) contains spin-4 quartic perturbations
+with respect to the O(\myHighlight{$N$}\coordHE{}) FP,
+the results for the spin-4 RG dimension \myHighlight{$y_{4,4}$}\coordHE{} 
+(cf. Table~\ref{ONstab})
+imply that the O(\myHighlight{$N$}\coordHE{}) FP is stable only for \myHighlight{$N=2$}\coordHE{}, i.e.
+when two Ising-like critical lines meet.
+It is  unstable in all cases with \myHighlight{$N\ge 3$}\coordHE{}.
+This implies that for \myHighlight{$N\ge 3$}\coordHE{} the enlargement of the symmetry 
+O(\myHighlight{$n_1$}\coordHE{})\myHighlight{$\oplus$}\coordHE{}O(\myHighlight{$n_2$}\coordHE{}) to O(\myHighlight{$N$}\coordHE{}) does not occur, unless
+an additional parameter is tuned
+beside those associated with the quadratic perturbations. 
+For \myHighlight{$N=3$}\coordHE{}, i.e. for \myHighlight{$n_1=1$}\coordHE{} and \myHighlight{$n_2=2$}\coordHE{},
+ the critical behavior at the MCP is described by the BFP,
+whose critical exponents turn out to be very close to those of
+the Heisenberg universality class.
+For \myHighlight{$N\ge 4$}\coordHE{} and for any \myHighlight{$n_1,n_2$}\coordHE{}
+the DFP is stable, implying a tetracritical behavior.
+This can also be inferred by using nonperturbative arguments 
+\cite{Aharony-02}
+that allow to determine the relevant stability eigenvalue
+from the critical exponents of the O(\myHighlight{$n_i$}\coordHE{})
+universality classes.
+
+Anisotropic antiferromagnets in a uniform magnetic field \myHighlight{$H_\parallel$}\coordHE{}
+parallel to the anisotropy axis present a MCP 
+in the \myHighlight{$T-H_\parallel$}\coordHE{} phase diagram, where two critical lines
+belonging to the XY and Ising universality classes meet \cite{KNF-76}. 
+The above results predict a multicritical behavior
+described by the BFP, contradicting the \myHighlight{$O(\epsilon)$}\coordHE{} calculations
+that suggested the stability of the O(3) FP.
+Notice that it is hard to distinguish 
+the biconal from the  O(3) critical behavior.
+For instance, the correlation-length exponent
+\myHighlight{$\nu$}\coordHE{} differs by less than 0.001 in the two cases.
+
+
+The case \myHighlight{$N=5$}\coordHE{}, \myHighlight{$n_1=2$}\coordHE{}, \myHighlight{$n_2=3$}\coordHE{} is relevant for the 
+SO(5) theory \cite{Zhang-97,ZHAHA-99} of high-\myHighlight{$T_c$}\coordHE{} superconductors,
+which proposes a description of these materials in terms of a three-component
+antiferromagnetic order parameter and 
+a \myHighlight{$d$}\coordHE{}-wave superconducting order parameter with U(1) symmetry,
+with an approximate O(5) symmetry.
+Within the SO(5) theory, it has been speculated that 
+the antiferromagnetic and superconducting transition lines meet
+at a MCP in the temperature-doping phase diagram,
+which is bicritical and shows an effectively enlarged O(5) symmetry.
+There are also recent claims in favor of the stability of the
+O(5) FP based on Monte Carlo simulations
+of three-dimensional five-component systems \cite{Hu-01}.
+Our results on the RG flow of the O(2)\myHighlight{$\oplus$}\coordHE{}O(3) theory
+show that the O(5) FP cannot describe the asymptotic critical behavior
+at the MCP, unless a further tuning of the parameters is performed.
+Therefore, the O(5) symmetry is not effectively realized at the 
+point where the antiferromagnetic and superconducting transition 
+lines meet. The multicritical behavior is either governed by the tetracritical
+decoupled fixed point or is of first-order type if the system is outside 
+its attraction domain.
+The predicted tetracritical behavior may explain a number of recent experiments
+that provided evidence of a coexistence region
+of the antiferromagnetic and superconducting phases, see, e.g., 
+Ref.~\cite{ZDS-02}.
+The O(5) FP is unstable with a crossover exponent \myHighlight{$\phi_{4,4}\approx 0.15$}\coordHE{},
+which, although rather small, is nonetheless sufficiently large  
+not to exclude the possibility of observing 
+the RG flow towards the eventual asymptotic behavior 
+for reasonable values of the reduced temperature,
+even in systems with a moderately small breaking of the O(5) symmetry,
+such as those described by the projected SO(5) model discussed in 
+Refs.~\cite{ZHAHA-99,Dorneich-etal-02}.
+
+
+
+\begin{thebibliography}{99}
+
+\bibitem{review}
+A. Pelissetto, E. Vicari, Phys. Rep. 368 (2002) 549.
+%%CITATION = PRPLC,368,549;%%
+
+\bibitem{Zinn-Justin-book} 
+J.~Zinn-Justin,
+{\em Quantum Field Theory and Critical Phenomena},
+fourth edition (Clarendon Press, Oxford, 2002).
+
+\bibitem{BLZ-76}
+E.~Br\'ezin, J.~C.~Le Guillou, J.~Zinn-Justin, in
+{\em Phase Transitions and Critical Phenomena},
+edited by C.~Domb and M.S.~Green 
+(Academic Press, New York, 1976),
+Vol.\ 6, p. 125.
+%%SLAC 
+%% @Article{Brezin:1976bp,
+%%     author    = "E. Brezin and J. C. Le Guillou and J. Zinn-Justin",
+%%     title     = "FIELD THEORETICAL APPROACH TO CRITICAL PHENOMENA",
+%%     note     = "In *Phase Transitions and Critical Phenomena, Vol.6*, London
+%%                  1976, 125-247"
+
+
+\bibitem{Aharony-76} 
+A.~Aharony, in
+{\em Phase Transitions and Critical Phenomena},
+edited by C.~Domb and M.S. Green
+(Academic Press, New York, 1976), Vol.\ 6, p. 357.
+%%SLAC 
+%% @Article{Aharony:1976br,
+%%     author    = "A. Aharony",
+%%     title     = "DEPENDENCE OF UNIVERSAL CRITICAL BEHAVIOR ON SYMMETRY AND
+%%                  RANGE OF INTERACTION",
+%%     note     = "In *Phase Transitions and Critical Phenomena, Vol.6*, London
+%%                  1976, 357-424"
+%% }
+
+\bibitem{KNF-76}
+J. M. Kosterlitz, D. R. Nelson, M. E. Fisher, 
+Phys. Rev. Lett.  33 (1974) 813;
+Phys. Rev. B  13  (1976) 412.
+%%CITATION = PRLTA,33,813;%%
+%%CITATION = PHRVA,B13,412;%%
+
+\bibitem{WF-72} K.~G.~Wilson, M.~E.~Fisher,
+Phys.\ Rev.\ Lett.\  28  (1972) 240.
+%%CITATION = PRLTA,28,240;%%
+
+\bibitem{Parisi-80}
+G.~Parisi, Carg\`{e}se Lectures (1973),
+J.\ Stat.\ Phys.\  23  (1980) 49.
+%%CITATION = JSTPB,23,49;%%
+
+\bibitem{CPV-02-mc}
+P. Calabrese, A. Pelissetto, E. Vicari,
+cond-mat/0203533; cond-mat/0209580, Phys. Rev. B in press.
+%%CITATION = COND-MAT 0203533;%%
+%%CITATION = COND-MAT 0209580;%%
+
+\bibitem{CPV-02}
+P. Calabrese, A. Pelissetto, E. Vicari, Phys. Rev. E  65 (2002) 046115.
+%%CITATION = PHRVA,E65,046115;%%
+
+
+\bibitem{GZ-98}
+R.~Guida, J.~Zinn-Justin,
+J. Phys. A 31 (1998) 8103.
+%%CITATION = JPAGB,A31,8103;%%
+
+\bibitem{CPV-00}
+J.~M. Carmona, A. Pelissetto, E. Vicari,
+Phys. Rev. B  61  (2000) 15136. 
+%%CITATION = PHRVA,B61,15136;%%
+
+\bibitem{FHY-00}
+R.~Folk, Yu.~Holovatch, T.~Yavors'kii,
+Phys. Rev. B  62 (2000) 12195; 
+(E) B  63 (2001) 189901.
+%%CITATION = PHRVA,B62,12195;%%
+
+\bibitem{Belanger-00}
+D.~P.~Belanger, 
+Brazilian J. Phys.  30  (2000)  682
+[cond-mat/0009029];
+in {\em Spin Glasses and Random Fields}, edited
+by A.~P.~Young (World Scientific, Singapore, 1998), p. 251
+[cond-mat/9706042].
+%%CITATION = COND-MAT 0009029;%%
+
+\bibitem{FHY-01}
+R.~Folk, Yu.~Holovatch, T.~Yavors'kii, cond-mat/0106468.
+%%CITATION = COND-MAT 0106468;%%
+
+\bibitem{GL-76}
+G.~Grinstein, A.~Luther,
+Phys. Rev. B  13  (1976) 1329.
+%%CITATION = PHRVA,B13,1329;%%
+
+\bibitem{PV-00}
+A.~Pelissetto, E.~Vicari, Phys. Rev. B  62  (2000) 6393.
+%%CITATION = PHRVA,B62,6393;%%
+
+\bibitem{PS-00}
+D.~V.~Pakhnin, A.~I.~Sokolov,
+Phys. Rev. B  61   (2000) 15130.
+%%CITATION = PHRVA,B61,15130;%%
+
+\bibitem{BFMMPR-98}
+H.~G.~Ballesteros, L.~A.~Fern\'andez, V.~Mart\'{\i}n-Mayor, A.~Mu\~noz~Sudupe,
+G.~Parisi, J.~J.~Ruiz-Lorenzo,
+Phys. Rev. B  58  (1998) 2740.
+%%CITATION = PHRVA,B58,2740;%%
+
+\bibitem{CPRV-ising}
+M. Campostrini, A. Pelissetto, P. Rossi, E. Vicari,
+Phys. Rev. E 65 (2002) 066127;
+E  60  (1999) 3526.
+%%CITATION = PHRVA,E60,3526;%%
+%%CITATION = PHRVA,E65,066127;%%
+
+
+\bibitem{Aharony-86}
+A. Aharony, Europhys. Lett. 1 (1986) 617.
+
+\bibitem{CPV-inprep}
+P. Calabrese, A. Pelissetto, E. Vicari, in preparation.
+
+\bibitem{CPV-03}
+P. Calabrese, A. Pelissetto, E. Vicari,
+cond-mat/0202292, Phys. Rev. B in press.
+%%CITATION = COND-MAT 0202292;%%
+
+\bibitem{Kawamura-98}
+H.~Kawamura, J. Phys.: Condens. Matter  10  (1998) 4707.
+%%CITATION = JCOME,10,4707;%%
+
+\bibitem{Kawamura-88}
+H.~Kawamura, Phys. Rev. B  38  (1988) 4916;
+(E)  B  42  (1990) 2610.
+%%CITATION = PHRVA,B38,4916;%%
+%%CITATION = PHRVA,B42,2610;%%
+
+\bibitem{Sachdev-02}
+S. Sachdev, cond-mat/0211005; cond-mat/0211027.
+%%CITATION = COND-MAT 0211005;%%
+%%CITATION = COND-MAT 0211027;%%
+
+\bibitem{PRV-01}
+A.~Pelissetto, P. Rossi, E.~Vicari,
+Phys. Rev. B  63 (2001) 140414(R);
+Nucl. Phys. B  607 (2001) 605.
+%%CITATION = PHRVA,B63,140414;%%
+%%CITATION = NUPHA,B607,605;%%
+
+\bibitem{AS-94}
+S.~A.~Antonenko, A.~I.~Sokolov, Phys. Rev. B  49  (1994) 15901.
+%%CITATION = PHRVA,B49,15901;%%
+
+\bibitem{CPS-02}
+P. Calabrese, P.~Parruccini, A.I.~Sokolov,
+Phys. Rev. B 66 (2002) 180403(R).
+%%CITATION = PHRVA,B66,180403;%%
+
+\bibitem{PRV-02}
+A.~Pelissetto, P. Rossi, E.~Vicari,
+Phys. Rev. B  65 (2002) 020403(R).
+%%CITATION = PHRVA,B65,020403;%%
+
+\bibitem{CP-01}
+P. Calabrese, P.~Parruccini, 
+Phys. Rev. B 64 (2001) 184408;
+P. Calabrese, E.~V. Orlov, P.~Parruccini, A.~I. Sokolov,
+cond-mat/0207187, Phys. Rev. B in press.
+%%CITATION = PHRVA,B64,184408;%%
+%%CITATION = COND-MAT 0207187;%%
+
+\bibitem{TDM-00}
+M.~Tissier, B.~Delamotte, D.~Mouhanna,
+Phys. Rev. Lett.  84  (2000) 5208.
+%%CITATION = PRLTA,84,5208;%%
+
+\bibitem{LS-98}
+D.~Loison, K.~D.~Schotte,
+Eur. Phys. J. B  5  (1998) 735;
+B  14  (2000) 125.
+%%CITATION = EPHJA,B5,735;%%
+%%CITATION = EPHJA,B14,125;%%
+
+\bibitem{Itakura-01}
+M. Itakura, cond-mat/0110306.
+%%CITATION = COND-MAT 0110306;%%
+
+\bibitem{PS-02}
+A. Peles, B.W. Southern, cond-mat/0209056.
+%%CITATION = COND-MAT 0209056;%%
+
+\bibitem{LF-72}
+K.-S. Liu, M. E. Fisher,
+J. Low Temp. Phys. 10 (1972) 655.
+%%CITATION = JLTPA,10,655;%%
+
+\bibitem{Aharony-02}
+A. Aharony, Phys. Rev. Lett.  88 (2002) 059703;
+cond-mat/0201576. 
+%%CITATION = PRLTA,88,059703;%%
+%%CITATION = COND-MAT 0201576;%%
+
+\bibitem{Zhang-97}
+S.-C. Zhang, Science  275 (1997)  1089.
+%%CITATION = SCIEA,275,1089;%%
+
+\bibitem{ZHAHA-99}
+S.-C. Zhang, J.-P. Hu, E. Arrigoni, W. Hanke, A. Auerbach, 
+Phys. Rev. B 60 (1999) 13070.
+%%CITATION = PHRVA,B60,13070;%%
+
+\bibitem{Hu-01}
+X. Hu, Phys. Rev. Lett.  87 (2001) 057004; 
+88 (2002) 059704.
+%%CITATION = PRLTA,87,057004;%%
+%%CITATION = PRLTA,88,059704;%%
+
+\bibitem{ZDS-02}
+Y. Zhang, E. Demler, S. Sachdev,
+Phys. Rev. B 66 (2002) 094501.
+%%CITATION = PHRVA,B66,094501;%%
+
+\bibitem{Dorneich-etal-02}
+A. Dorneich, E. Arrigoni, M. J\"ostingmeier,
+W. Hanke, S.-C. Zhang,  cond-mat/0207528.
+%%CITATION = COND-MAT 0207528;%%
+
+\end{thebibliography}
+
+\end{document}
+
+
+
+\bye

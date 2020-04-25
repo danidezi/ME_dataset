@@ -1,0 +1,683 @@
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textwidth=6.3in  \textheight=8.3in
+
+%%  Adjust these for your printer:
+\oddsidemargin=-0.0in   \topmargin=-0.20in
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newsavebox{\sboxpubnumber}
+\newsavebox{\sboxpubdate}
+\providecommand{\pubdate}[1]{\begin{lrbox}{\sboxpubdate}{#1}\end{lrbox}}
+\providecommand{\pubnumber}[1]{\begin{lrbox}{\sboxpubnumber}{\begin{tabular}{l} #1 \\
+                 \usebox{\sboxpubdate}
+                 \end{tabular}}
+                           \end{lrbox}
+                           \pubblock}
+\providecommand{\Title}[1]{\begin{center} {\Large #1 } \end{center}}
+\providecommand{\Author}[1]{\begin{center}{ \sc #1} \end{center}}
+\providecommand{\Address}[1]{\begin{center}{ \it #1} \end{center}}
+\providecommand{\andauth}{\begin{center}{and} \end{center}}
+\providecommand{\pubblock}{\rightline{
+            \usebox{\sboxpubnumber}}}
+\newenvironment{Abstract}{\begin{quotation}  }{\end{quotation}}
+\newenvironment{Presented}{\begin{quotation} \begin{center}
+             PRESENTED BY VALERIO BOZZA AT\end{center}\bigskip
+      \begin{center}\begin{large}}{\end{large}\end{center}
+      \end{quotation}}
+\providecommand{\Acknowledgements}{\bigskip  \bigskip \begin{center} \begin{large}
+             \bf ACKNOWLEDGEMENTS \end{large}\end{center}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{useful_macros}
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% START EDITING HERE!
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\pubdate{\today}                    %fill in the date
+\pubnumber{} %preprint number(s)
+
+\vfill \Title{Scalar fluctuations in dilatonic brane--worlds}
+\vfill \Author{Valerio Bozza}
+
+\Address{Dipartimento di Fisica ``E.R. Caianiello'', Universit\`a
+di Salerno \\
+         Via S. Allende, 84081 Baronissi (SA), Italy. \\
+       INFN, Sezione di
+Napoli, Gruppo Collegato di Salerno, Salerno, Italy.}
+
+\vspace{.25cm} \Author{Maurizio Gasperini} \Address{Dipartimento
+di Fisica, Universit\`a di Bari, \\ Via G. Amendola 173, 70126
+Bari, Italy.\\ INFN, Sezione di Bari, Bari, Italy.}
+
+\vspace{.25cm} \Author{Gabriele Veneziano} \Address{Theoretical
+Physics Division, CERN \\ CH-1211 Geneva 23, Switzerland.
+\\Laboratoire de Physique Th\'eorique, Universit\'e Paris Sud,
+91405 Orsay, France.} \vfill
+
+\begin{Abstract}
+We derive and solve the full set of scalar perturbation equations
+for a class of five-dimensional brane--world solutions, with a dilaton
+scalar field coupled to the bulk cosmological constant and to a 3-brane.
+The spectrum contains one localized massless scalar mode, to be
+interpreted as an effective dilaton on the brane, inducing  long--range
+scalar interactions. Two massive scalar modes yield corrections to
+Newton's law at short distances, which persist even in the limit of
+vanishing dilaton (namely, in the standard Randall--Sundrum
+configuration).
+\end{Abstract}
+\vfill
+\begin{Presented}
+    COSMO-01 \\
+    Rovaniemi, Finland, \\
+    August 29 -- September 4, 2001
+\end{Presented}
+\vfill
+\end{titlepage}
+\def\thefootnote{\fnsymbol{footnote}}
+\setcounter{footnote}{0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+In the wake of Horava--Witten heterotic M-theory \cite{HW},
+Randall and Sundrum (RS) have recently proposed a five dimensional
+model where the orbifold compactification, supplemented by a
+geometrical warp factor along the extra--dimension, is used to
+implement an effective hierarchy between the Planck mass and
+the electroweak scale \cite{RS1}. Thanks to the warp factor, on the
+other hand, it is also possible to obtain consistent configurations with
+only one brane and an infinite extra--dimension, while preserving the
+long--range behaviour of the four dimensional Newton's law \cite{RS2}.
+This is possible thanks to the dynamical localization of massless
+gravitons on the brane and a strong suppression of all massive,
+higher-dimensional modes.
+
+As a consequence of the non-factorized structure of the metric in this
+type of scenarios, the decomposition of the metric fluctuations,
+performed according to the rotational \myHighlight{$O(3)$}\coordHE{} symmetry on the brane,
+requires a generalized gauge--invariant formalism \cite{BDBL}. The
+classical and quantum analysis of metric fluctuations is of primary
+importance for understanding the possible localization of massless
+modes on the brane, as well as the nature of the possible
+short-range corrections  due to the continuum of massive modes, living
+in the bulk. Until now, the study of this problem has been mainly
+focused on the structure of tensor (i.e. transverse-traceless)
+perturbations of the bulk geometry (see \cite{CEHS} for a general
+discussion).
+
+In all string/M-theory models, however, the graviton is
+accompanied by massless scalar partners (the dilaton, the
+compactification moduli, etc.). These typically induce long-range
+interactions of gravitational strength \cite{TV}, not (yet)
+experimentally observed. The conventional  way to solve this problem
+is to assume that the scalar partners get a non-perturbative,
+SUSY-breaking mass, thus suppressing the range of the associated
+scalar interactions. However, if scalar fluctuations would not be
+confined in RS--type brane--worlds, then all corresponding interactions
+on the brane would be suppressed,  and the brane-world scenario could
+naturally solve a possible discrepancy between String/M-theories and
+experiments.
+
+Here we present the results of Ref. \cite{BGV}, where we discuss
+the localization of scalar fluctuations in a typical
+brane-world scenario of the RS type, taking into account the
+possible existence of scalar sources and scalar fields living in
+the bulk. To this purpose, we shall consider a non-compact,
+\myHighlight{$\mathbb{Z}_2$}\coordHE{}-symmetric, five-dimensional background, generated
+by a positive tension 3-brane and by a bulk dilaton field coupled
+to the brane and to the (negative) bulk energy density. We shall
+restrict ourselves to the gravi-dilaton solutions discussed in
+\cite{CLP}, which generalize the AdS\myHighlight{$_5$}\coordHE{} RS scenario in the
+presence of a bulk scalar field, and which are already known to
+guarantee the localization of tensor metric fluctuations.
+
+\section{Background equations}
+
+We consider in particular a five-dimensional scalar-tensor background
+\myHighlight{$\{g_{AB}, \phi\}$}\coordHE{}, possibly arising from the bosonic sector of a
+dimensionally reduced string/supergravity theory, and
+non-trivially coupled to a negative cosmological constant
+\myHighlight{$\Lambda$}\coordHE{} and to a 3-brane of  positive tension \myHighlight{$T_3$}\coordHE{}:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+ S=S_{\rm bulk}+
+S_{\rm brane}&=&{M_5^3}\int d^5 x \sqrt{|g|} \left( -R+\frac{\leftCoord{}1}{\rightCoord{}2}
+g^{AB} \rightCoord{}
+\partial_A \phi
+\partial_B \phi -2 \Lambda e^{\alpha_1 \phi}
+\right) \nonumber\rightCoord{}\\ &\leftCoord{}-& \frac{\leftCoord{}T_3}{\rightCoord{}2} \int d ^4 \xi
+\sqrt{|\gamma|}\left[ \gamma^{\alpha \beta} \partial_\alpha X^A
+\partial_\beta
+ X^B g_{AB}
+e^{\alpha_2 \phi} -2 \right]. \rightCoord{}\label{21}
+\rightCoord{}}{0mm}{4}{7}{
+ S=S_{\rm bulk}+
+S_{\rm brane}&=&{M_5^3}\int d^5 x \sqrt{|g|} \left( -R+\frac{1}{2}
+g^{AB} 
+\partial_A \phi
+\partial_B \phi -2 \Lambda e^{\alpha_1 \phi}
+\right) \\ &-& \frac{T_3}{2} \int d ^4 \xi
+\sqrt{|\gamma|}\left[ \gamma^{\alpha \beta} \partial_\alpha X^A
+\partial_\beta
+ X^B g_{AB}
+e^{\alpha_2 \phi} -2 \right]. }{1}\coordE{}\end{eqnarray}
+Here \myHighlight{$M_5$}\coordHE{} is the fundamental mass scale of the five-dimensional
+bulk space-time, and the parameters \myHighlight{$\alpha_1, \alpha_2$}\coordHE{} control
+the coupling of the bulk dilaton to \myHighlight{$\Lambda$}\coordHE{} and to the brane. We
+allow in general for non-minimal couplings (a single exponential
+potential for the dilaton can also be derived from the dimensional
+reduction of a suitable higher-dimensional model \cite{CLP}). The
+brane action is parameterized by the coordinates \myHighlight{$X^A(\xi)$}\coordHE{}
+describing the embedding of the brane in the bulk manifold, and by
+the auxiliary metric tensor \myHighlight{$\gamma_{\alpha \beta}(\xi)$}\coordHE{} defined
+on the four-dimensional world-volume of the brane, spanned by the
+coordinates \myHighlight{$\xi^\alpha$}\coordHE{}.
+
+In our conventions, greek indices run from \myHighlight{$0$}\coordHE{} to \myHighlight{$3$}\coordHE{}, capital
+Latin indices from \myHighlight{$0$}\coordHE{} to \myHighlight{$4$}\coordHE{}, lower-case Latin indices from \myHighlight{$1$}\coordHE{}
+to \myHighlight{$3$}\coordHE{}. For the bulk coordinates we use the notation \myHighlight{$x^A=(t,x^i,z)$}\coordHE{}.
+
+The field equations are obtained by the variation of the action
+with respect to \myHighlight{$g_{AB}$}\coordHE{}, \myHighlight{$\phi$}\coordHE{}, \myHighlight{$X^A$}\coordHE{} and
+\myHighlight{$\gamma_{\alpha\beta}$}\coordHE{}, respectively. These equations can be
+specialized to the case of a conformally flat background, with
+warp factor \myHighlight{$a(z)$}\coordHE{} and a dilaton \myHighlight{$\phi(z)$}\coordHE{}. Also, we shall look
+for \myHighlight{$\mathbb{Z}_2$}\coordHE{}--symmetric solutions, describing a flat brane
+rigidly located at \myHighlight{$z=0$}\coordHE{}, and we set
+\begin{equation}\coord{}\boxEquation{
+g_{AB}= a^2(z)\eta_{AB}, ~~~~~~ \phi = \phi(z), ~~~~~~ X^A =
+\delta^A_\mu\xi^\mu. \label{26}
+}{
+g_{AB}= a^2(z)\eta_{AB}, ~~~~~~ \phi = \phi(z), ~~~~~~ X^A =
+\delta^A_\mu\xi^\mu. }{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\eta_{AB}$}\coordHE{} is the five-dimensional Minkowski metric. The
+induced metric thus reduces to
+\begin{equation}\coord{}\boxEquation{
+\gamma_{\alpha \beta} = \delta^A_\alpha \delta^B_\beta g_{AB}~
+e^{\alpha_2 \phi},
+}{
+\gamma_{\alpha \beta} = \delta^A_\alpha \delta^B_\beta g_{AB}~
+e^{\alpha_2 \phi},
+}{ecuacion}\coordE{}\end{equation}
+while the brane equations are identically satisfied thanks to the
+\myHighlight{$\mathbb{Z}_2$}\coordHE{} symmetry.
+
+The dynamical equations are obtained from the dilaton equation,
+which becomes
+\begin{equation}\coord{}\boxEquation{
+3\frac{a'}{a}\phi'+\phi''-2\alpha_1 \Lambda a^2 e^{\alpha_1
+\phi}-2\alpha_2 T_3 a e^{2\alpha_2 \phi} \delta(z)=0 , \label{Eq
+reduced dilaton}
+}{
+3\frac{a'}{a}\phi'+\phi''-2\alpha_1 \Lambda a^2 e^{\alpha_1
+\phi}-2\alpha_2 T_3 a e^{2\alpha_2 \phi} \delta(z)=0 , }{ecuacion}\coordE{}\end{equation}
+and from the \myHighlight{$(\alpha,\beta)$}\coordHE{} and \myHighlight{$(4,4)$}\coordHE{} components of the
+Einstein equations, which give, respectively,
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} -3\frac{\leftCoord{}a''}{\rightCoord{}a} =\frac{\leftCoord{}\phi'^2}{\rightCoord{}4}+\Lambda a^2 \rightCoord{}
+e^{\alpha_1 \phi}+\frac{\leftCoord{}T_3}{\rightCoord{}2}a e^{2\alpha_2 \phi} \delta(z),
+\label{Eq G00}\\ &\leftCoord{}& -6\frac{\leftCoord{}a'^2}{\rightCoord{}a^2} = \rightCoord{}
+\leftCoord{}-\frac{\leftCoord{}\phi'^2}{\rightCoord{}4}+\Lambda a^2 e^{\alpha_1 \phi}
+ \label{Eq G44}
+\rightCoord{}}{0mm}{8}{9}{
+&& -3\frac{a''}{a} =\frac{\phi'^2}{4}+\Lambda a^2 
+e^{\alpha_1 \phi}+\frac{T_3}{2}a e^{2\alpha_2 \phi} \delta(z),
+\\ && -6\frac{a'^2}{a^2} = 
+-\frac{\phi'^2}{4}+\Lambda a^2 e^{\alpha_1 \phi}
+ }{1}\coordE{}\end{eqnarray}
+(a prime denotes differentiation with respect to \myHighlight{$z$}\coordHE{}).
+
+If we fine-tune the parameters by choosing
+\begin{equation}\coord{}\boxEquation{
+\alpha_1= 4 \alpha_2 \;,~~~ T_3 = 8 \sqrt{\Lambda/\Delta}\;,~~~
+\alpha_1^2=\Delta+\frac{8}{3}, \label{alpha rel}
+}{
+\alpha_1= 4 \alpha_2 \;,~~~ T_3 = 8 \sqrt{\Lambda/\Delta}\;,~~~
+\alpha_1^2=\Delta+\frac{8}{3}, }{ecuacion}\coordE{}\end{equation}
+where the last equation defines \myHighlight{$\Delta$}\coordHE{}, we recover a
+one-parameter family of exact domain wall solutions (hereafter,
+CLP solutions) \cite{CLP}. The solution corresponds to a brane of
+positive tension, \myHighlight{$T_3>0$}\coordHE{}, provided \myHighlight{$\Delta \leq -2$}\coordHE{}. This range
+of \myHighlight{$\Delta$}\coordHE{} guarantees a positive tension and also avoids the
+presence of naked singularities \cite{CLP}. On the other hand,
+when \myHighlight{$\alpha_1$}\coordHE{} goes to zero, i.e. when \myHighlight{$\Delta = -8/3$}\coordHE{}, the
+dilaton decouples and the background reduces to Randall-Sundrum
+one \cite{RS2}. We shall thus assume\myHighlight{${-8\over 3} \leq \Delta \leq
+-2$}\coordHE{}.
+
+\section{Scalar perturbations}
+
+We perturb to first order the full set of bulk equations, keeping
+the position of the brane fixed, \myHighlight{$\delta X^A=0$}\coordHE{}. We thus set
+\begin{equation}\coord{}\boxEquation{
+\delta g_{AB}=h_{AB}, ~~~~~~ \delta g^{AB}=-h^{AB}, ~~~~~~
+\delta\phi=\chi , ~~~~~~ \delta X^A=0, \label{Pert dil}
+}{
+\delta g_{AB}=h_{AB}, ~~~~~~ \delta g^{AB}=-h^{AB}, ~~~~~~
+\delta\phi=\chi , ~~~~~~ \delta X^A=0, }{ecuacion}\coordE{}\end{equation}
+where the indices of the perturbed fields are raised and lowered
+by the unperturbed metric, and the background fluctuations
+\myHighlight{$h_{AB}, \chi$}\coordHE{} are assumed to be inhomogeneous.
+
+We shall expand around the CLP background  in the so-called
+``generalized longitudinal gauge" \cite{BDBL}, which extends the
+longitudinal gauge of standard cosmology \cite{MBF} to the
+brane-world scenario. As discussed in \cite{BDBL}, in five
+dimensions there are four independent degrees of freedom for the
+scalar metric fluctuations: in the generalized longitudinal gauge
+they are described by the four variables \myHighlight{$\{ \varphi, \psi,
+\Gamma, W\}$}\coordHE{}, defined by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} h_{00}= 2 \varphi a^2, ~~~~~~~~~~~~~~~ h_{ij}=2\psi a^2
+\delta_{ij}, \nonumber\rightCoord{}\\ &\leftCoord{}& h_{44}= 2 \Gamma a^2, ~~~~~~~~~~~~~~~
+h_{04}=-W a^2. \rightCoord{}\label{38}
+\rightCoord{}}{0mm}{2}{4}{
+&& h_{00}= 2 \varphi a^2, ~~~~~~~~~~~~~~~ h_{ij}=2\psi a^2
+\delta_{ij}, \\ && h_{44}= 2 \Gamma a^2, ~~~~~~~~~~~~~~~
+h_{04}=-W a^2. }{1}\coordE{}\end{eqnarray}
+The perturbation of the backgraound equations leads then to the full set
+of constraints and dynamical equations governing the linearized
+evolution of the five scalar variables \myHighlight{$\{ \varphi, \psi, \Gamma,
+W,\chi\}$}\coordHE{}.
+
+In the absence of bulk sources with anisotropic stresses we
+can eliminate \myHighlight{$\varphi$}\coordHE{} from Einstein the eq. (\myHighlight{$i \not=j$}\coordHE{}), thus reducing
+the system to four scalar degrees of freedom by setting:
+\begin{equation}\coord{}\boxEquation{
+\varphi=\psi+\Gamma. \label{318}
+}{
+\varphi=\psi+\Gamma. }{ecuacion}\coordE{}\end{equation}
+As a consequence, we find that the variable \myHighlight{$W$}\coordHE{}
+decouples from the other fluctuations:
+\begin{equation}\coord{}\boxEquation{
+\square_5 W=3\left( \frac{a''}{a}-\frac{a'^2}{a^2} \right)W
+\label{319}
+}{
+\square_5 W=3\left( \frac{a''}{a}-\frac{a'^2}{a^2} \right)W
+}{ecuacion}\coordE{}\end{equation}
+but, because of the non-trivial self-interactions, \myHighlight{$W$}\coordHE{} does not freely
+propagate in the background geometry like the graviton, which
+statisfies the pure  five-dimensional D'Alembert equation
+\begin{equation}\coord{}\boxEquation{
+\square_5 h_{ij}=0 \label{Eq libera},
+}{
+\square_5 h_{ij}=0 ,
+}{ecuacion}\coordE{}\end{equation}
+ where \myHighlight{$\square_5  = \nabla_M \nabla^M$}\coordHE{}.
+
+In order to discuss the dynamics of the remaining variables \myHighlight{$\psi,
+\Gamma$}\coordHE{} and \myHighlight{$\chi$}\coordHE{}, it is now convenient to recombine their
+differential equations in an explicitly covariant way,  to obtain
+canonical evolution equation. We find :
+\begin{equation}\coord{}\boxEquation{
+\square_5 \psi = f_{\psi}(\Gamma,\chi), ~~~~~~ \square_5 \Gamma =
+f_{\Gamma}(\Gamma,\chi), ~~~~~~ \square_5 \chi =
+f_{\chi}(\Gamma,\chi),
+\label{Eq psiGammachi}
+}{
+\square_5 \psi = f_{\psi}(\Gamma,\chi), ~~~~~~ \square_5 \Gamma =
+f_{\Gamma}(\Gamma,\chi), ~~~~~~ \square_5 \chi =
+f_{\chi}(\Gamma,\chi),
+}{ecuacion}\coordE{}\end{equation}
+where the source terms
+ depend only on \myHighlight{$\Gamma$}\coordHE{} and \myHighlight{$\chi$}\coordHE{}. By introducing the fields
+\begin{equation}\coord{}\boxEquation{
+\omega_1=2\psi+ \Gamma, ~~~~~ \omega_2=6\alpha_2 \Gamma +\chi,
+~~~~~ \omega_3=\Gamma- 2\alpha_2 \chi, \label{323}
+}{
+\omega_1=2\psi+ \Gamma, ~~~~~ \omega_2=6\alpha_2 \Gamma +\chi,
+~~~~~ \omega_3=\Gamma- 2\alpha_2 \chi, }{ecuacion}\coordE{}\end{equation}
+the above system of coupled equations can be diagonalized, and the
+perturbation equations (\ref{Eq psiGammachi}) reduce to
+\begin{equation}\coord{}\boxEquation{
+\square_5 \omega_1=0, ~~~~~~ \square_5 \omega_2=0 , ~~~~~~
+\square_5 \omega_3= f_\omega (\omega_3).  \label{Eq omega}
+}{
+\square_5 \omega_1=0, ~~~~~~ \square_5 \omega_2=0 , ~~~~~~
+\square_5 \omega_3= f_\omega (\omega_3).  }{ecuacion}\coordE{}\end{equation}
+
+Together with eq. (\ref{319}), and the constraints between these
+fields coming from the Einstein equations, such decoupled
+equations describe the complete evolution of the scalar (metric +
+dilaton) fluctuations in the CLP brane-world background. Two
+variables (\myHighlight{$\omega_1, \omega_2$}\coordHE{}) are (covariantly) free on the
+background like the graviton, while the other two variables
+(\myHighlight{$\omega_3, W$}\coordHE{}) have non-trivial self-interactions.
+
+In all cases, it is convenient to introduce the corresponding ``canonical
+variables" \myHighlight{$\hat W$}\coordHE{}, \myHighlight{$\hat \omega_i$}\coordHE{} (\myHighlight{$i=1,2,3$}\coordHE{}), which have
+canonically normalized   kinetic terms \cite{MBF} in the action,
+simply by absorbing the geometric warp factor as follows:
+\begin{equation}\coord{}\boxEquation{
+W= \hat W a^{-3/2}, ~~~~~~~~~~~~~~~ \omega_i= \hat \omega_i
+a^{-3/2}. \label{328}
+}{
+W= \hat W a^{-3/2}, ~~~~~~~~~~~~~~~ \omega_i= \hat \omega_i
+a^{-3/2}. }{ecuacion}\coordE{}\end{equation}
+When the general solution is written as a  superposition of free,
+factorized plane-waves modes on the brane,
+\begin{equation}\coord{}\boxEquation{
+\hat W= \Psi_w(z)  e^{-ip_\mu x^\mu}, ~~~~~~~~~~~ \hat \omega_i=
+\Psi_i(z) e^{-ip_\mu x^\mu}
+\label{329}
+}{
+\hat W= \Psi_w(z)  e^{-ip_\mu x^\mu}, ~~~~~~~~~~~ \hat \omega_i=
+\Psi_i(z) e^{-ip_\mu x^\mu}
+}{ecuacion}\coordE{}\end{equation}
+they define the inner product of states with measure \myHighlight{$dz$}\coordHE{}, as in
+conventional one-dimensional quantum mechanics. Such a product is
+required for an appropriate definition of normalizable solutions.
+
+The allowed mass spectrum of \myHighlight{$m^2=\eta^{\mu\nu} p_\mu p_\nu$}\coordHE{}, for
+the scalar fluctuations on the brane, can then be obtained by
+solving an eigenvalue problem in the Hilbert space \myHighlight{$L^2(R)$}\coordHE{} for
+the canonical variables \myHighlight{$\Psi_w,\Psi_i$}\coordHE{}, satisfying a
+Schr\"odinger-like equation in \myHighlight{$z$}\coordHE{}, which is obtained from the
+equations (\ref{319}), (\ref{Eq omega})  for \myHighlight{$W$}\coordHE{} and \myHighlight{$\omega_i$}\coordHE{},
+and which can be written in the conventional form as:
+\begin{equation}\coord{}\boxEquation{
+\Psi_w''+\left(m^2- {\xi_w''\over \xi_w}\right)\Psi_w=0,
+~~~~~~~~~~~~ \Psi_i''+\left(m^2- {\xi_i''\over
+\xi_i}\right)\Psi_i=0. \label{330}
+}{
+\Psi_w''+\left(m^2- {\xi_w''\over \xi_w}\right)\Psi_w=0,
+~~~~~~~~~~~~ \Psi_i''+\left(m^2- {\xi_i''\over
+\xi_i}\right)\Psi_i=0. }{ecuacion}\coordE{}\end{equation}
+Here, by analogy with cosmological perturbation theory \cite{MBF},
+we have introduced four ``pump fields" \myHighlight{$\xi_w,\xi_i$}\coordHE{}, defined  as
+follows:\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{} & \xi_w=a^{\beta_w}, ~~~~~~~~~~~~
+\xi_i=a^{\beta_i},& \nonumber\rightCoord{}\\ &\leftCoord{} \beta_w=-{3\leftCoord{}\over\rightCoord{} 2},~~~
+\beta_1=\beta_2 ={3\leftCoord{}\over\rightCoord{} 2}, ~~~ \beta_3=-{1\leftCoord{}\over\rightCoord{} 2}(1+3
+\alpha_1^2)=-{3\leftCoord{}\over\rightCoord{} 2}(\Delta+3). &\rightCoord{}\label{332} }{0mm}{6}{7}{ & \xi_w=a^{\beta_w}, ~~~~~~~~~~~~
+\xi_i=a^{\beta_i},& \\ & \beta_w=-{3\over 2},~~~
+\beta_1=\beta_2 ={3\over 2}, ~~~ \beta_3=-{1\over 2}(1+3
+\alpha_1^2)=-{3\over 2}(\Delta+3). &}{1}\coordE{}\end{eqnarray}
+
+The effective potential generated by the derivatives of the pump
+fields depends on \myHighlight{$\beta_w,\beta_i$}\coordHE{}, and contains in general a
+smooth part, peaked at \myHighlight{$z=0$}\coordHE{}, plus a positive or negative
+\myHighlight{$\delta$}\coordHE{}-function contribution at the origin. We may have, in
+principle, not only volcano-like potentials, which correspond to
+the free covariant d'Alembert equation with \myHighlight{$\beta=3/2$}\coordHE{} \cite{CLP}
+(and which are known to localize gravity \cite{RS2,CEHS}), but
+also potentials that are positive everywhere and admit no bound
+states.
+
+\section{Localization of the massless modes}
+
+The general solutions of the canonical perturbation equations
+(\ref{330}) are labelled by the mass eigenvalue \myHighlight{$m$}\coordHE{}, by their
+parity with respect to \myHighlight{$z$}\coordHE{}-reflections, and by the parameters
+\myHighlight{$\beta_w,\beta_i$}\coordHE{}, which depend on the type of perturbation. To
+describe a bound state, we shall restrict such solutions to those
+with a normalizable canonical variable with respect to the measure
+\myHighlight{$dz$}\coordHE{}, namely to \myHighlight{$\Psi(z) \in L^2(R)$}\coordHE{}. Among the acceptable
+solutions, we shall finally select those satisfying all the
+constraints coming from Einstein equations. The above set of
+conditions will determine the class of brane-world backgrounds
+allowing the four-dimensional localization of long-range scalar
+interactions.
+
+Analyzing Eqs. (\ref{330}) for \myHighlight{$m=0$}\coordHE{}, we find that \myHighlight{$W$}\coordHE{} and \myHighlight{$\omega_3$}\coordHE{}
+are not normalizable. The even solutions of the free d'Alembert equation
+are instead normalizable, so we have acceptable solutions  for
+\myHighlight{$\omega_1$}\coordHE{} and \myHighlight{$\omega_2$}\coordHE{}. However, because of the constraints,
+\myHighlight{$\omega_1$}\coordHE{} is forced to vanish when \myHighlight{$W=0$}\coordHE{}, unless the fluctuations
+are static, \myHighlight{$\dot \omega_1=0$}\coordHE{}. It follows that there are two
+independent massless modes localized on the brane: one,
+\myHighlight{$\omega_2$}\coordHE{}, is propagating and the other, \myHighlight{$\omega_1$}\coordHE{},  is static.
+
+We may thus conclude that all CLP backgrounds with \myHighlight{$-8/3 \leq
+\Delta \leq -2$}\coordHE{} localize on the brane not only the massless spin-2
+degrees of freedom \cite{CLP}, but also one propagating massless
+scalar degree of freedom (\myHighlight{$\omega_2$}\coordHE{}), corresponding to a long-range
+scalar interaction generated by the dilaton field. The second
+independent massless degree of freedom localized on the brane
+(\myHighlight{$\omega_1$}\coordHE{}) is not propagating (\myHighlight{$\dot \omega_1=0$}\coordHE{}), but is essential
+to reproduce the standard long-range gravitational interaction in the
+static limit, as we shall discuss later. In the limiting case of a pure
+AdS\myHighlight{$_5$}\coordHE{} solution  (\myHighlight{$\Delta=-8/3$}\coordHE{}) the dilaton disappears from the
+background, and the dilaton fluctuation \myHighlight{$\chi=\omega_2$}\coordHE{} decouples
+from the others. The only (static) contribution to the scalar
+sector of metric fluctuations comes from \myHighlight{$\omega_1$}\coordHE{}, which
+generates the long-range Newton potential \myHighlight{$\varphi=\psi$}\coordHE{} on the
+brane.
+
+
+\section{The massive mode spectrum}
+
+The massive part of the spectrum of the canonical equations
+(\ref{330}) is not localized on the brane; it may induce
+higher-dimensional, short-range corrections to the long-range
+scalar forces, which represent physical effects from
+the fifth dimension on our brane.
+
+It is important to note that modes with negative squared mass
+(tachyons) are not included in the spectrum, as they would not
+correspond to a normalizable canonical variable (\myHighlight{$\Psi$}\coordHE{} would blow
+up in \myHighlight{$z$}\coordHE{}). Another consequence of the normalization condition is
+the mass gap between the localized massless mode and the massive
+corrections, in the limiting background with \myHighlight{$\Delta=-2$}\coordHE{} (already
+noticed in \cite{CLP} for the case of pure tensor interactions).
+
+Imposing all the constraints from Einstein equations, we find
+that, in contrast with the massless case, none of the four scalar
+fluctuations is forced to vanish. However, only two amplitudes are
+independent. By taking, for instance, \myHighlight{$\omega_2$}\coordHE{} and \myHighlight{$\omega_3$}\coordHE{} as
+independent variables, we can indeed express \myHighlight{$W$}\coordHE{} and \myHighlight{$\omega_1$}\coordHE{} in
+terms of the other fields, for all values of \myHighlight{$\Delta$}\coordHE{}.
+
+For such backgrounds we  thus have four types of
+higher-dimensional contributions to the scalar interactions on the
+brane, arising from the massive spectrum of \myHighlight{$\omega_i$}\coordHE{} and \myHighlight{$W$}\coordHE{}.
+The massive \myHighlight{$\omega_2$}\coordHE{} modes can be considered as the KK
+excitations of the effective dilaton zero--mode localized on the
+brane. The massive \myHighlight{$\omega_3$}\coordHE{} are still present even if we turn
+off the dilaton and are therefore a product of the
+extra--dimension itself. In the limiting RS case, \myHighlight{$\omega_3\equiv
+\Gamma$}\coordHE{} is the breathing mode of the fifth dimension, which
+induces short range corrections to the gravitational force.
+
+\section{Static limit and leading-order corrections}
+
+We can now compute the effective scalar-tensor interaction
+induced on the brane, in the weak field limit, by a static and
+point-like source of mass \myHighlight{$M$}\coordHE{} and dilatonic charge \myHighlight{$Q$}\coordHE{}.
+
+In our longitudinal gauge (\ref{38}), in which the decomposition
+of the metric fluctuations is based on the \myHighlight{$O(3)$}\coordHE{} symmetry of the
+spatial hypersurfaces of the brane, the energy density of a
+point-like particle only contributes to the scalar part of the
+perturbed matter stress tensor (with \myHighlight{$T_{00}$}\coordHE{} as the only
+non-vanishing component), and provides a \myHighlight{$\delta$}\coordHE{}-function source
+to the \myHighlight{$(0,0)$}\coordHE{} scalar perturbation equation. Similarly, the charge
+\myHighlight{$Q$}\coordHE{} acts as a point-like source in the dilaton perturbation
+equation.
+
+As a  consequence, we obtain three \myHighlight{$\delta$}\coordHE{}-function sources in
+the equations for the three \myHighlight{$\omega_i$}\coordHE{} fluctuations, \myHighlight{$S_i
+\delta^3(x-x')\delta(z)$}\coordHE{}, with three scalar charges \myHighlight{$S_i$}\coordHE{}, which
+are ``mixtures"  of \myHighlight{$M$}\coordHE{} and \myHighlight{$Q$}\coordHE{}, while no source term is obtained
+in the static limit for the \myHighlight{$W$}\coordHE{} fluctuation.
+
+The exact static solutions of eqs. (\ref{Eq omega}) can be easily
+obtained using the static limit of the retarded Green function
+evaluated on the brane (\myHighlight{$z=0$}\coordHE{}), i.e.
+\begin{equation}\coord{}\boxEquation{ \omega_i(x,x')= -S_i G_i (\nu,x,x'), \label{62}
+}{ \omega_i(x,x')= -S_i G_i (\nu,x,x'), }{ecuacion}\coordE{}\end{equation}
+where
+\begin{equation}\coord{}\boxEquation{
+G_i (\nu,\vec x, \vec x', z=z'=0)= \int {d^3p\over (2 \pi)^3} e^{i
+\vec p \cdot (\vec x -\vec
+x')}\left\{{\left[\psi^+_{0}(0)\right]^2\over p^2}
++\int_{m_0}^\infty dm {\left[\psi^+_{m}(0)\right]^2\over p^2+m^2}
+\right\},
+ \label{63}
+}{
+G_i (\nu,\vec x, \vec x', z=z'=0)= \int {d^3p\over (2 \pi)^3} e^{i
+\vec p \cdot (\vec x -\vec
+x')}\left\{{\left[\psi^+_{0}(0)\right]^2\over p^2}
++\int_{m_0}^\infty dm {\left[\psi^+_{m}(0)\right]^2\over p^2+m^2}
+\right\},
+ }{ecuacion}\coordE{}\end{equation}
+is the static Green function, constructed by the exact massless
+and massive eigenfunctions \myHighlight{$\psi^+_{0}(z), \psi^+_{m}(z)$}\coordHE{} of Eqs.
+(\ref{330}) (respectively). The first term in the integrand
+corresponds to the long-range forces generated by the massless
+modes, the second term to the ``short-range" corrections due to
+the massive modes, and \myHighlight{$m_0$}\coordHE{} is the lower bound for the massive
+spectrum (\myHighlight{$m_0=k/2$}\coordHE{} if \myHighlight{$\Delta=-2$}\coordHE{}, while \myHighlight{$m_0=0$}\coordHE{} if \myHighlight{$\Delta \neq
+-2 $}\coordHE{}).
+
+We should note that in the \myHighlight{$\omega_1, \omega_2$}\coordHE{} case we have to
+include both the massless and massive contributions, while in the
+\myHighlight{$\omega_3$}\coordHE{} case only the massive ones survive. Here we report the
+\myHighlight{$\omega_i$}\coordHE{} solutions in the case \myHighlight{$\Delta<-2$}\coordHE{}:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{} && \omega_1=-{S_1 A_{\nu_0}\leftCoord{}\over\rightCoord{} r} \left[1+
+B_{\nu_0}\left(1\leftCoord{}\over\rightCoord{} kr\right)^{2\nu_0-2}\right], \nonumber\rightCoord{}\\ &\leftCoord{}&
+\omega_2=-{S_2 A_{\nu_0}\leftCoord{}\over\rightCoord{} r} \left[1+ B_{\nu_0}\left(1\over
+kr\right)^{2\nu_0-2}\right], \nonumber\rightCoord{}\\ &\leftCoord{}& \omega_3=-{S_3
+A_{\nu_0}\leftCoord{}\over\rightCoord{} r} B_{\nu_0}\left(1\leftCoord{}\over\rightCoord{} kr\right)^{2\nu_0-2} ,
+\label{610}
+\rightCoord{}}{0mm}{8}{9}{ && \omega_1=-{S_1 A_{\nu_0}\over r} \left[1+
+B_{\nu_0}\left(1\over kr\right)^{2\nu_0-2}\right], \\ &&
+\omega_2=-{S_2 A_{\nu_0}\over r} \left[1+ B_{\nu_0}\left(1\over
+kr\right)^{2\nu_0-2}\right], \\ && \omega_3=-{S_3
+A_{\nu_0}\over r} B_{\nu_0}\left(1\over kr\right)^{2\nu_0-2} ,
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$\nu_0=\frac{\Delta}{2(\Delta+2)}$}\coordHE{} and the constants
+\myHighlight{$A_{\nu_0}$}\coordHE{} and \myHighlight{$B_{\nu_0}$}\coordHE{} depend, through
+\myHighlight{$\nu_0$}\coordHE{},  on the particular values of the dilaton coupling parameters,
+and are fixed by the correct normalization of the canonical ``wave
+function" \cite{BGV}.
+
+Introducing explicitly the four-dimensional gravitational constant
+\myHighlight{$G$}\coordHE{}, and going back through the transformation (\ref{323}), the
+scalar and dilaton fluctuations can finally be written in the form
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{} && \varphi =-{GM\leftCoord{}\over\rightCoord{} r}\left[1+ {2 \alpha_2\over
+\leftCoord{}1+12 \alpha_2^2} \left({Q\leftCoord{}\over\rightCoord{} M} + 2 \alpha_2\right) + {4\over
+\leftCoord{}3}B_{\nu_0} \left(1\leftCoord{}\over\rightCoord{} kr\right)^{2\nu_0-2}\right], \nonumber\rightCoord{}\\
+&&\leftCoord{} \psi =-{GM\leftCoord{}\over\rightCoord{} r}\left[1-{2 \alpha_2\leftCoord{}\over\rightCoord{} 1+12 \alpha_2^2}
+\left({Q\leftCoord{}\over\rightCoord{} M} + 2 \alpha_2\right) + {2\leftCoord{}\over\rightCoord{} 3}B_{\nu_0}
+\left(1\leftCoord{}\over\rightCoord{} kr\right)^{2\nu_0-2}\right], \nonumber\rightCoord{}\\ &\leftCoord{}& \Gamma
+\leftCoord{}=-{GM\leftCoord{}\over\rightCoord{} r}\left[{4 \alpha_2\leftCoord{}\over\rightCoord{} 1+12 \alpha_2^2} \left({Q\over
+M} + 2 \alpha_2\right) + {2\leftCoord{}\over\rightCoord{} 3}B_{\nu_0} \left(1\over
+kr\right)^{2\nu_0-2}\right], \nonumber\rightCoord{}\\ &\leftCoord{}& \chi =-{GQ\over
+r}\left[{2 \leftCoord{}\over\rightCoord{} 1+12 \alpha_2^2} \left(1+ 2\alpha_2 {M\over
+Q}\right) + {2}B_{\nu_0} \left(1\leftCoord{}\over\rightCoord{} kr\right)^{2\nu_0-2}\right],
+\label{616}
+\rightCoord{}}{0mm}{20}{18}{ && \varphi =-{GM\over r}\left[1+ {2 \alpha_2\over
+1+12 \alpha_2^2} \left({Q\over M} + 2 \alpha_2\right) + {4\over
+3}B_{\nu_0} \left(1\over kr\right)^{2\nu_0-2}\right], \\
+&& \psi =-{GM\over r}\left[1-{2 \alpha_2\over 1+12 \alpha_2^2}
+\left({Q\over M} + 2 \alpha_2\right) + {2\over 3}B_{\nu_0}
+\left(1\over kr\right)^{2\nu_0-2}\right], \\ && \Gamma
+=-{GM\over r}\left[{4 \alpha_2\over 1+12 \alpha_2^2} \left({Q\over
+M} + 2 \alpha_2\right) + {2\over 3}B_{\nu_0} \left(1\over
+kr\right)^{2\nu_0-2}\right], \\ && \chi =-{GQ\over
+r}\left[{2 \over 1+12 \alpha_2^2} \left(1+ 2\alpha_2 {M\over
+Q}\right) + {2}B_{\nu_0} \left(1\over kr\right)^{2\nu_0-2}\right],
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$G$}\coordHE{} is related to
+the five-dimensional mass scale \myHighlight{$M_5$}\coordHE{} through the appropriate
+integral over the ``warped" volume external to the brane.  It should be
+noted that the short-range corrections induced by the massive scalar
+modes have the same qualitative behaviour as in the tensor case,
+discussed in \cite{CLP}, in spite of the fact that the massive scalar
+modes have different spectra.
+
+The limiting case \myHighlight{$\Delta=-8/3$}\coordHE{} corresponds to a pure AdS\myHighlight{$_5$}\coordHE{}
+background, if there are no scalar charges on the brane. In that
+case \myHighlight{$\omega_2$}\coordHE{} exactly corresponds to the dilaton fluctuation
+\myHighlight{$\chi$}\coordHE{} (see eq. (\ref{323})), and can be consistently set to zero
+(toghether with the dilaton background) if we want to match, in
+particular, the ``standard" brane-world configuration originally
+considered by Randall and Sundrum \cite{RS2}. In this limit,
+\myHighlight{$B_{2}=1/2$}\coordHE{}, and we exactly recover previous results for the
+effective gravitational interaction on the brane \cite{27a}, i.e.
+\begin{equation}\coord{}\boxEquation{ \varphi= -{GM\over r} \left(1+ {2\over 3
+k^2r^2}\right), ~~~~~~ \psi= -{GM\over r} \left(1+ {1\over 3
+k^2r^2}\right). \label{617}
+}{ \varphi= -{GM\over r} \left(1+ {2\over 3
+k^2r^2}\right), ~~~~~~ \psi= -{GM\over r} \left(1+ {1\over 3
+k^2r^2}\right). }{ecuacion}\coordE{}\end{equation}
+
+The massless-mode  truncation reproduces in this case the static,
+weak field limit of linearized  general relativity. The massive
+tower of scalar fluctuations, however, induces deviations from
+Einstein gravity already in the static limit (as noted in
+\cite{27a}), and is the source of a short-range force due to the
+``breathing" of the fifth dimension,
+\begin{equation}\coord{}\boxEquation{ \Gamma= - {GM\over 3 r}{1\over (kr)^2}, \label{618} }{ \Gamma= - {GM\over 3 r}{1\over (kr)^2}, }{ecuacion}\coordE{}\end{equation} even
+in the absence of bulk scalar fields, and of scalar charges  for
+the matter  on the brane.
+In a more general gravi-dilaton background (\myHighlight{$\Delta \not= -8/3$}\coordHE{}),
+the static expansion (\ref{616}) describes an effective
+scalar-tensor interaction on the brane, which is potentially
+dangerous for the brane-world scenario, as it contains not only
+short-range corrections, but also long-range scalar deviations
+from general relativity (and, possibly, violations of the Einstein
+equivalence principle), even in the interaction of ordinary
+masses, i.e. for \myHighlight{$Q=0$}\coordHE{}. This seems to offer an interesting window
+to investigate the effects of the bulk geometry on the
+four-dimensional  physics of the brane.
+\section{Conclusions}
+We have analyzed the full set of coupled equations governing the
+evolution of scalar fluctuations in a dilatonic brane-world
+background, supporting a flat 3-brane rigidly located at the fixed
+point of \myHighlight{$Z_2$}\coordHE{} symmetry. We have diagonalized the system of
+dynamical equations, and found four decoupled but self-interacting
+variables representing, in a five-dimensional bulk, the four
+independent degrees of freedom of scalar excitations of the
+gravi-dilaton background.
+We have presented the exact solutions of the canonical
+perturbation equation for all the scalar degrees of freedom, and
+we have discussed, the effects of their massless and massive
+spectrum for the scalar interactions on the brane.
+For all dilaton couplings, there is  one propagating massless mode
+localized on the brane,  associated with a long-range dilatonic
+interaction in four dimensions. In addition, KK modes in the bulk
+yield short--range scalar corrections to the Newton's law. These
+corrections are present even in the RS limit where the dilaton
+vanishes, because of the breathing mode of the fifth dimension.
+Finally, we note that our results are different from those
+obtained in the case of thick branes with a confining scalar
+potential \cite{Giovannini}.
+\begin{thebibliography}{99}
+\bibitem{HW}P. Horava and E. Witten, Nucl. Phys. B {\bf 460}, 506
+(1996); Nucl. Phys. B {\bf 475}, 96 (1996).
+\bibitem{RS1} L. Randall and R. Sundrum,  Phys. Rev. Lett. {\bf 83}, 3370 (1999).
+\bibitem{RS2} L. Randall and R. Sundrum,  Phys. Rev. Lett. {\bf 83},
+4690  (1999).
+\bibitem{BDBL} C. van de Bruck, M. Dorca, R. H. Brandenberger and A.
+Lukas, Phys. Rev. D  {\bf 62}, 123515 (2000).
+\bibitem{CEHS} C. Csaki, J. Erlich, T. J. Hollowood and T. Shirman, Nucl.
+Phys. B {\bf 581}, 309 (2000).
+\bibitem{TV} T. R. Taylor and G. Veneziano, Phys Lett. B {\bf 213}, 459
+(1988).
+\bibitem{BGV} V. Bozza, M. Gasperini and G. Veneziano,
+Nucl. Phys. B. 619, 191 (2001)
+\bibitem{CLP} M. Cvetic, H. Lu and C.N. Pope,
+Phys. Rev. D {\bf 63}, 086004 (2001).
+\bibitem{MBF} V.F. Mukhanov, A.H. Feldman \& R.H. Brandenberger,
+1992, Phys. Rep. 215, 203.
+\bibitem{27a} J. Garriga \& T. Tanaka, Phys. Rev. Lett. 84,
+2778 (2000).
+\bibitem{Giovannini} M. Giovannini, these proceedings.
+\end{thebibliography}
+\end{document}
+\bye

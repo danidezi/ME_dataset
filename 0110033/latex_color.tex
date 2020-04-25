@@ -1,0 +1,379 @@
+
+%%only change the website address - 18/4/2000
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% ws-p8-50x6-00.tex : 20-11-97
+%% This Latex2e file rewritten from various sources for use in the
+%% preparation of the (smaller [8.50''x6.00'']) single-column proceedings
+%% Volume, latest version by R. Sankaran with acknowledgements to Susan
+%% Hezlet and Lukas Nellen. Please comments to:rsanka@wspc.com.sg
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{feynmp,amsbsy,latexsym,cite}
+
+\setlength{\unitlength}{1mm} \addtolength{\hoffset}{-1cm}
+\addtolength{\textwidth}{2cm}
+
+
+
+
+
+\providecommand{\ket}[1]{\vert #1 \rangle}
+\providecommand{\xb}{{\boldsymbol x}}
+\providecommand{\yb}{{\boldsymbol y}}
+\providecommand{\zb}{{\boldsymbol z}}
+\providecommand{\pb}{{\boldsymbol p}}
+\providecommand{\qb}{{\boldsymbol q}}
+\providecommand{\kbb}{{\boldsymbol k}}
+\providecommand{\vb}{{\boldsymbol v}}
+\providecommand{\bb}{{\boldsymbol v}}
+\providecommand{\abb}{{\boldsymbol a}}
+\providecommand{\psias}{\psi^\as}
+\providecommand{\Aas}{A^\as}
+\providecommand{\soft}{{\mathrm{soft}}}
+\providecommand{\bd}{{b^{\dag}}}
+\providecommand{\dd}{{d^{\dag}}}
+\providecommand{\ad}{{a^{\dag}}}
+\providecommand{\ubar}{\bar u}  %Modified
+\providecommand{\vbar}{\bar v}  %Modified
+\providecommand{\cd}{\cdot}
+\providecommand{\intx}{\int\!d^3x\;}
+\providecommand{\inty}{\int\!d^3y\;}
+\providecommand{\intz}{\int\!d^3z\;}
+\providecommand{\intp}{\int\!\frac{d^3p}{(2\pi)^3}\;}
+\providecommand{\intq}{\int\!\frac{d^3q}{(2\pi)^3}\;}
+\providecommand{\intk}{\int\!\frac{d^3k}{(2\pi)^3}\;}
+\providecommand{\intks}{\int\limits_{\soft}\!\frac{d^3k}{(2\pi)^3}\;}
+\providecommand{\intkstwo}{\int\limits_{\soft}\!\frac{d^3k}{(2\pi)^32\omega_k}\;}
+
+\providecommand{\intpqk}{\int\!\frac{d^3p\, d^3q\,
+d^3k}{(2\pi)^9}\;}
+\providecommand{\intden}{\int\!\frac{d^4k}{(2\pi)^4}}
+\providecommand{\psidirac}{\psi_D}
+\providecommand{\ecd}{{\cdot}}
+\providecommand{\dress}{{\mathrm{dress}}}
+\providecommand{\as}{{\mathrm{as}}}
+\providecommand{\ex}{{\mathrm{e}}}
+\providecommand{\pa}{\partial}
+\usepackage{useful_macros}
+\begin{document}
+
+\begin{titlepage}
+%
+%
+%
+\begin{center}{\Large{\textbf{Charged Particles: A Builder's Guide}}\footnote{Talk held by M.~Lavelle
+at the Sixth Workshop on Non-Perturbative Quantum Chromodynamics,
+Paris, June 2001. To appear in the proceedings.}}\\ [12truemm]
+\textsc{Emili Bagan}\footnote{email: bagan@ifae.es}\\
+[5truemm] \textit{Dept.~Fisica Te\`orica \&\ IFAE\\
+Edifici Cn\\
+Universitat Aut\`onoma de Barcelona\\E-08193 Bellaterra  (Barcelona)\\
+Spain\\[5truemm]}
+\textsc{Robin Horan\footnote{email: rhoran@plymouth.ac.uk}, Martin
+Lavelle}\footnote{email: mlavelle@plymouth.ac.uk} and
+\textsc{David McMullan}\footnote{email: dmcmullan@plymouth.ac.uk}\\
+[5truemm] \textit{School of Mathematics and Statistics\\ The
+University of Plymouth\\ Plymouth, PL4 8AA\\ UK}
+\\[5truemm]
+\textsc{Shogo Tanimura}\footnote{email:
+tanimura@kues.kyoto-u.ac.jp}\\[5truemm]
+Department of Engineering Physics and Mechanics\\
+Kyoto University\\
+Kyoto 606-8501\\
+Japan
+\end{center}
+
+
+\bigskip\bigskip\bigskip
+\begin{quote}
+\textbf{Abstract:} It is sometimes claimed that one cannot
+describe charged particles in gauge theories. We identify the
+root of the problem and present an explicit construction of
+charged particles. This is shown to have good perturbative
+properties and, asymptotically before and after scattering, to
+recover particle modes.
+\end{quote}
+
+
+
+\end{titlepage}
+
+
+
+\setlength{\parskip}{1.5ex plus 0.5ex minus 0.5ex}
+
+
+\section*{Introduction}
+
+The title may need some explanation -- after all it might seem obvious
+what a charged particle is. After all a free fermion field has a plane wave expansion in terms of particle
+creation and annihilation operators.  But the fermion in QED is an interacting field and this
+means that it is \emph{not} easy to describe charged particles, as the following
+quote from a classic paper\cite{Kulish:1970ut} on the infra-red
+structure of QED makes clear: \lq\lq \dots\ \textsl{the relativistic concept of a
+charged particle does not exist}\rq\rq! The aim of this talk is to explain  the problem
+that led to this statement (and similar ones) and to explicitly demonstrate how it can be solved.
+
+\section*{The Problem with Particles}
+
+Particle descriptions in field theory are based around the creation and annihilation operators
+in the plane wave expansion of free fields. In the standard LSZ approach to scattering, the assumption is made
+that the coupling constant may in some sense be \lq switched off\rq\ at large times before and after scattering.
+This is fine for some theories and toy models but, unfortunately, not for our paradigm unbroken gauge theories
+QED and QCD. The observation of hadrons, rather than quarks or gluons, in detectors
+shows this for QCD. For QED the masslessness of the photon implies a long range interaction
+which only falls off as \myHighlight{$1/r$}\coordHE{}. This is too slow to be neglected and generates the infra-red problem (see below).
+
+Kulish and Faddeev\cite{Kulish:1970ut} found the non-vanishing form of the asymptotic
+interaction Hamiltonian in QED\footnote{This work has since been extended to theories with four point
+interactions\cite{Horan:1999ba}.}. They then used this to calculate the form of the Heisenberg fields
+at asymptotically large times, \myHighlight{$t$}\coordHE{}.
+Since there is a residual interaction, the fields tended not to a plane wave but rather to
+\begin{equation}\coord{}\boxEquation{
+\psias(x)=\intp\frac1{\sqrt{2E_{\smash{p}}}}D(p,t)
+\left\{
+b(p,s)u^s(p)e^{-ip\ecd x}+
+\dd(p,s)v^s(p)e^{ip\ecd x}
+\right\}
+}{
+\psias(x)=\intp\frac1{\sqrt{2E_{\smash{p}}}}D(p,t)
+\left\{
+b(p,s)u^s(p)e^{-ip\ecd x}+
+\dd(p,s)v^s(p)e^{ip\ecd x}
+\right\}
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$D(p,t)$}\coordHE{} is an (\myHighlight{$A_\mu$}\coordHE{}) field dependent
+\textsf{d}\textmd{i}\emph{s}t\textsl{o}\texttt{r}\textit{t}\textsc{i}\textsf{o}\texttt{n} factor.
+They then concluded that these distorted plane waves imply that it is impossible to describe charged
+particles in unbroken gauge theories.
+
+This conclusion is, though, not forced upon us. Rather, since the coupling does \textit{not}
+vanish asymptotically, the matter field in the Lagrangian is not gauge invariant, \myHighlight{$\psi\to \exp(-ie\theta)\psi$}\coordHE{},
+and may not be identified with a physical particle. Indeed it may be seen that the asymptotic form of the
+vector potential is such that the commutator of particle creation and annihilation operators produces the
+correct electro-magnetic fields for a particle with the appropriate momentum. It is therefore necessary to find the
+(gauge invariant!) fields which do asymptotically tend to the particle creation/annihilation operators.
+
+
+\section*{Starting to Identify the Solution}
+
+Many years ago Dirac\cite{Dirac:1955ca} proposed
+that the combination, \myHighlight{$\mathrm{e}^{-ie\frac{\partial_iA_i}{\nabla^2}}\psi$}\coordHE{},
+should be used to describe charged particles like the electron. This was for two reasons: i) it is locally
+gauge invariant, and ii) it describes the matter field surrounded by a Coulombic field:
+\begin{equation}\coord{}\boxEquation{
+E_i(x_0,{\boldsymbol{x}})\psidirac(y)\ket0=
+-\frac {e}{4\pi}
+\frac{{\boldsymbol{x}_i-\boldsymbol{y}_i}}{\vert{\boldsymbol{x}-
+\boldsymbol{y}}\vert^3}\psidirac(y)\ket0\,.
+}{
+E_i(x_0,{\boldsymbol{x}})\psidirac(y)\ket0=
+-\frac {e}{4\pi}
+\frac{{\boldsymbol{x}_i-\boldsymbol{y}_i}}{\vert{\boldsymbol{x}-
+\boldsymbol{y}}\vert^3}\psidirac(y)\ket0\,.
+}{ecuacion}\coordE{}\end{equation}
+The only ingredients needed to obtain this result are the fundamental equal-time commutator and the standard
+three dimensional Green's function for \myHighlight{$1/\nabla^2$}\coordHE{}. We would say that this is a description of a matter field
+\textit{dressed} by an electro-magnetic field. This idea has been taken up by various authors, see, e.g.,
+\cite{Lavelle:1997ty,Horan:1998im,haller:1996} and references therein.
+Such gauge invariant fields clearly have a chance of describing physical particles, but how do we
+know which ones to use?
+
+\section*{A Systematic Approach}
+
+The extension to moving charges and, especially, QCD where our understanding is less firm, requires a more
+systematic approach to finding the correct \emph{dressing}. Writing our dressed field as \myHighlight{$h^{-1}\psi$}\coordHE{},
+we have two requirements\cite{Bagan:1998kg}
+on the dressing, \myHighlight{$h^{-1}$}\coordHE{} describing a particle moving with four-velocity \myHighlight{$u$}\coordHE{}:\\[2mm]
+\begin{center}
+\begin{minipage}{.97\linewidth}\begin{center}\fbox{\begin{minipage}{.87\linewidth}
+\begin{center}
+Local gauge invariance of \myHighlight{$h^{-1}\psi$}\coordHE{}: which implies \myHighlight{$h^{-1}\to h^{-1}U$}\coordHE{}\\[3mm]
+An additional  \emph{dressing equation}: \myHighlight{$u\cdot \partial h^{-1}=-ieh^{-1}u\cdot A$}\coordHE{}\\[1mm]
+\end{center}
+\end{minipage}}\end{center}
+\end{minipage}\\[3mm]\end{center}
+The first requirement is a bare minimum -- physical variables are gauge invariant -- but the latter
+is new. It can be motivated  by studying the form of the asymptotic interaction Hamiltonian
+in QED, and demanding that it should vanish at one point on the mass shell.
+Also, if our gauge invariant, dressed matter is to have a sharp momentum, we must demand
+\myHighlight{$u\cdot \partial (h^{-1}\Phi)=0$}\coordHE{}, and in the heavy effective
+theory the equation of motion for the matter field has the form \myHighlight{$u\cdot D\Phi=0$}\coordHE{}. Combining
+these last two equations immediately gives the dressing equation.
+
+We stress again that neither the dressing nor the matter field are physical on their own. \emph{Only
+the combination \myHighlight{$h^{-1}\psi$}\coordHE{} is locally gauge invariant and can be identified with a charged particle.}
+
+In QED we can solve these requirements and so obtain a dressing with a rich structure. The detailed
+form of the dressing can be found elsewhere, but in the static limit it becomes:
+\begin{equation}\coord{}\boxEquation{
+  h^{-1}(x)=\exp\left(i\ex\int_{-\infty}^{x^0}\!ds
+  \frac{\pa^iF_{i0}}{\nabla^2}(s,\xb)\right)
+  \exp\left(-i\ex\frac{\pa_i A_i}{\nabla^2}\right)\,,
+}{
+  h^{-1}(x)=\exp\left(i\ex\int_{-\infty}^{x^0}\!ds
+  \frac{\pa^iF_{i0}}{\nabla^2}(s,\xb)\right)
+  \exp\left(-i\ex\frac{\pa_i A_i}{\nabla^2}\right)\,,
+}{ecuacion}\coordE{}\end{equation}
+where we recognise the Dirac dressing and an additional, and separately gauge invariant structure.
+We call the Dirac term, and its generalisations to a moving charge, the minimal or \emph{soft} dressing
+and, for reasons explained below, we call the additional structure the \emph{phase} dressing.
+The minimal term is needed for gauge invariance and, as will be explained in D.~McMullan's talk, the additional
+structure contains screening effects in QED.
+
+\section*{Perturbative Tests}
+The variables which we are proposing are necessarily non-local and non-covariant. It is thus
+natural to ask whether
+they can be used in practical work. The answer is yes, as we have shown
+in a detailed series of calculations\cite{Bagan:1998kg,Bagan:1999jk}.
+For the purposes of showing the particle nature of our dressed
+fields the main point to note is that the on-shell Green's functions of these gauge invariant variables have a
+good pole structure. Recall that the usual on-shell Green's functions of QED, such as the fermion propagator,
+and the \myHighlight{$S$}\coordHE{}-matrix elements have IR divergences which are of two forms: soft divergences and (imaginary) phase
+divergences. We have shown that this rich structure meets its match in the structure of the dressing: the soft
+dressing introduces new Feynman diagrams which contain and cancel the usual soft divergences, while the additional
+phase dressing removes the usual phase divergences. We thus end up with IR finite on-shell Green's functions. We stress
+that this cancellation only takes place if the velocity parameter in the dressing and the velocity of the point of the
+mass shell where the renormalisation takes place match. In general this requires different dressings for
+different legs.
+This good pole structure is of course a necessity if we want to be able to describe
+particles\footnote{It should also be noted that this
+good IR behaviour is not accompanied by poor UV properties: we have also seen that these fields can be
+multiplicatively
+renormalised and that their composite operator behaviour is good (they do not mix\cite{Bagan:1999jk}).}.
+
+
+
+\section*{Charged Particles}
+We have seen that these variables have good perturbative properties. Now we want to return to the initial
+problem as raised by
+Kulish and Faddeev. This was, we recall,
+that the Lagrangian fermion does not asymptotically tend to a plane wave. Normally
+we would, e.g., define the large time limit
+\begin{equation}\coord{}\boxEquation{
+  b(q,s, t):=\intx\frac1{\sqrt{2E_{\smash{q}}}}u^{\dag s}(q)\psi(x)\ex^{iq\ecd
+  x}\,,
+}{
+  b(q,s, t):=\intx\frac1{\sqrt{2E_{\smash{q}}}}u^{\dag s}(q)\psi(x)\ex^{iq\ecd
+  x}\,,
+}{ecuacion}\coordE{}\end{equation}
+to extract a particle annihilation operator. But as those authors showed, one so obtains at large
+times in QED up to order \myHighlight{$e$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+  b(q,s,t)=\left\{1-e\!\!\intkstwo\!
+  \left(
+  \frac{q\cd a(k)}{q\cd k}\ex^{-it\frac{k\ecd q}{E_q}} -
+\frac{q\cd \ad(k)}{q\cd k}\ex^{it\frac{k\ecd q}{E_q}}
+  \right)\right\}b(q,s)\,,
+}{
+  b(q,s,t)=\left\{1-e\!\!\intkstwo\!
+  \left(
+  \frac{q\cd a(k)}{q\cd k}\ex^{-it\frac{k\ecd q}{E_q}} -
+\frac{q\cd \ad(k)}{q\cd k}\ex^{it\frac{k\ecd q}{E_q}}
+  \right)\right\}b(q,s)\,,
+}{ecuacion}\coordE{}\end{equation}
+which shows the distortion\footnote{Actually this exponentiates and there is a
+further factor from the phase which we do not mention here}. However,
+repeating this calculation with dressed matter yields a further structure from the soft dressing. Essentially the
+factors of \myHighlight{$\frac{q^\mu}{q\ecd k}$}\coordHE{} dotting into the vector potential
+creation and annihilation operators in the above equation are replaced by
+\begin{equation}\coord{}\boxEquation{
+  \frac{q^\mu}{q\ecd k}\to\frac{q^\mu}{q\ecd k}-\frac{V^\mu}{V\ecd k}
+  \,,
+}{
+  \frac{q^\mu}{q\ecd k}\to\frac{q^\mu}{q\ecd k}-\frac{V^\mu}{V\ecd k}
+  \,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$V^\mu=(\eta+v)^\mu(\eta-v)\cd k-k^\mu$}\coordHE{}, with \myHighlight{$u^\mu=\gamma(\eta+v)^\mu$}\coordHE{} being
+the four velocity of the charged particle. It is now fairly easy to
+see\cite{Bagan:2000mk,Bagan:1999jf} that this implies
+that the distortion vanishes at the correct point on the
+mass shell. This means that \emph{we have a particle interpretation!}
+
+\section*{Summary}
+
+Frivolously we may conclude that we are indeed entitled to call ourselves
+particle physicists. More seriously we note the following:
+\begin{itemize}
+  \item The residual interaction means that the coupling in QED does not asymptotically vanish and so
+  the matter field \emph{on its own} is never physical.
+  \item Trying to ignore this fact generates the IR problem.
+  \item Taking this interaction seriously implies:
+\begin{itemize}
+  \item we must construct \emph{gauge invariant} (dressed) descriptions of charged particles!
+\end{itemize}
+ \item Gauge invariance is not enough: we require a \emph{dressing equation} to describe charges
+ with sharp momenta.
+ \item The solutions of these two demands have gauge invariant, Green's functions which are  IR finite on-shell.
+ \item They have other good perturbative properties and we have seen that they have a particle description.
+\end{itemize}
+The extension of this programme to QCD is sketched in D.~McMullan's contribution to these proceedings,
+where it is shown that the analogue of these variables give an insight into the physics of
+screening, anti-screening and indeed confinement.
+
+
+\section*{Acknowledgments}
+This work was supported by a
+British Council/Spanish Education Ministry \textit{Acciones
+Integradas} grant, a Royal Society Joint Project grant and a PPARC
+Theory Travel Fund grant. We thank
+Kurt Haller for a discussion during this meeting.
+
+\begin{thebibliography}{10}
+
+\bibitem{Kulish:1970ut}
+P.~P. Kulish and L.~D. Faddeev, {\em Theor. Math. Phys.} \textbf{4} (1970) 745.
+%%CITATION = TMPHA,4,745;%%
+
+\bibitem{Horan:1999ba}
+R. Horan, M. Lavelle and D. McMullan, {\em J. Math. Phys.} {\bf 41} (2000) 4437.
+%%CITATION = HEP-TH 9909044;%%
+
+\bibitem{Dirac:1955ca}
+P.~A.~M. Dirac, {\em Can. J. Phys.} \textbf{33} (1955) 650.
+
+\bibitem{Lavelle:1997ty}
+M. Lavelle and D. McMullan, {\em Phys. Rept.} \textbf{279} (1997) 1.
+%%CITATION = HEP-PH 9509344;%%
+
+\bibitem{Horan:1998im}
+R. Horan, M. Lavelle and D. McMullan,
+{\em Pramana J. Phys.} \textbf{51} (1998) 317,.
+ Erratum-ibid \textbf{51} (1998) 235.
+%%CITATION = HEP-TH 9810089;%%
+
+\bibitem{haller:1996}
+M.~Belloni, L.~Chen, and K.~Haller, {\em Phys. Lett.}, \textbf{B373}  (1996) 185.
+%%CITATION = HEP-TH 9510037;%%
+
+\bibitem{Bagan:1998kg}
+E. Bagan, M. Lavelle and D. McMullan, {\em Phys. Rev.}, \textbf{D57} (1998) 4521.
+%%CITATION = HEP-TH 9712080;%%
+
+\bibitem{Bagan:1999jk}
+E. Bagan, M. Lavelle and D. McMullan, {\em  Annals Phys.}, \textbf{282} (2000) 503.
+%%CITATION = HEP-PH 9909262;%%
+
+\bibitem{Bagan:2000mk}
+E. Bagan, M. Lavelle and D. McMullan, {\em Phys. Lett.}, \textbf{B477} (2000) 396.
+%%CITATION = HEP-TH 0003087;%%
+
+\bibitem{Bagan:1999jf}
+E. Bagan, M. Lavelle and D. McMullan, {\em  Annals Phys.}, \textbf{282}  (2000) 471.
+%%CITATION = HEP-PH 9909257;%%
+
+\end{thebibliography}
+
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% End of  ws-p8-50x6-00.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bye

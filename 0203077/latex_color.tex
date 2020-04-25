@@ -1,0 +1,1439 @@
+
+\documentclass[a4paper,11pt]{article}               \def\new#1\endnew{{\bf #1}}  
+
+\textwidth=170truemm                    
+\oddsidemargin=-5truemm 
+\parindent=18pt %leaves 2cm L/R
+
+\textheight=240truemm 
+\topmargin=-30truemm    
+\parskip=7pt    %leaves 2.4 Top
+                        
+\usepackage{latexsym,amsmath,amssymb,cite}
+
+\let\bra=\langle        \let\ket=\rangle 
+
+\providecommand {\ud} {\mathrm{d}}
+\providecommand {\cF} {{\cal F}}
+\providecommand {\cA}{{\cal A}}
+\providecommand {\cD}{{\cal D}}
+\providecommand {\cJ}{{\cal J}}
+\providecommand {\cM}{{\cal M}}
+\providecommand {\cN}{{\cal N}}
+\providecommand {\cO}{{\cal O}}
+\providecommand {\cV}{{\cal V}}
+\providecommand {\cH}{{\cal H}}
+\providecommand {\cR}{{\cal R}}
+\providecommand {\cS}{{\cal S}}
+\providecommand {\bbH}{\mathbb{H}}
+\providecommand {\bbR}{\mathbb{R}}
+\providecommand {\bbZ}{\mathbb{Z}}
+\providecommand {\back}{\!\!\!\!\!\!\!\!\!\!\!\!}
+\providecommand {\Back}{\!\!\!\!\!}
+\providecommand {\im} {\mathrm{Im}}
+\providecommand {\trace} {\mathrm{Tr}}
+\providecommand {\Li} {\mathrm{Li}_2}
+\providecommand {\nprod}[1] { \circ_{\textrm{\tiny #1}} }
+\providecommand {\tri}[2] {{}_{#1}\Delta_{#2}}
+\providecommand {\tria} {~\Delta~}
+\providecommand {\indxb}[2] { {{#1}_1 \ldots {#1}_{#2}} }
+\providecommand {\indxbe}[3] { {{#1}_{#2} \ldots {#1}_{#3}} }
+\providecommand {\wprodb}[2] { dx^{{#1}_1} \wedge \ldots \wedge dx^{{#1}_{#2}} }
+\providecommand {\wprodbe}[3] { dx^{{#1}_{#2}} \wedge \ldots \wedge dx^{{#1}_{#3}} }
+    
+\def\fnote#1#2{\begingroup\def\thefootnote{#1}\footnote{#2}
+                \addtocounter{footnote}{-1}\endgroup}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{useful_macros}
+\begin{document}                \baselineskip=16pt
+\thispagestyle{empty}
+
+\begin{flushright}
+TUW--02--06\\
+ITP--UH--04/02\\
+hep-th/0203077
+\end{flushright}
+
+\vspace*{1.5cm}
+
+\begin{center}
+{\LARGE 
+{\bf Non-commutative tachyon action and D-brane geometry
+}}
+\end{center}
+
+\vspace*{5truemm}
+
+\begin{center}
+{\large Manfred Herbst,\fnote{\#}{e-mail: Manfred.Herbst@cern.ch}
+        Alexander Kling,\fnote{\myHighlight{$\,\Box$}\coordHE{}\,}{e-mail: kling@itp.uni-hannover.de}
+        Maximilian Kreuzer\fnote{\,*\,}{e-mail: kreuzer@hep.itp.tuwien.ac.at}
+}
+\end{center}
+
+{\sl 
+\begin{center}
+\myHighlight{$^{\#}$}\coordHE{} Theory Division, CERN\\
+CH-1211, Geneva 23, Switzerland\\ 
+{\myHighlight{$^{\,\Box}$}\coordHE{}\,}Institut f\"ur Theoretische Physik, Universit\"at Hannover,\\
+Appelstra\ss e 2, D-30167 Hannover, Germany\\
+\myHighlight{$^{*}$}\coordHE{}Institut f\"ur Theoretische Physik, Technische Universit\"at Wien,\\
+Wiedner Hauptstra\ss e 8-10, A-1040 Vienna, Austria 
+
+\end{center}
+}
+
+\vspace*{5mm}
+
+\begin{abstract}        \normalsize
+We analyse open 
+string correlators in non-constant background fields, including the 
+metric \myHighlight{$g$}\coordHE{}, the antisymmetric \myHighlight{$B$}\coordHE{}-field, and the gauge field \myHighlight{$A$}\coordHE{}. 
+Working with a derivative expansion for the background fields, but exact 
+in their constant parts, we obtain a tachyonic on-shell condition for the
+inserted functions and extract the kinetic term for the tachyon action. 
+The 3-point correlator yields a non-commutative tachyon potential. We 
+also find a remarkable feature of the differential structure on the
+D-brane: Although the boundary metric \myHighlight{$G$}\coordHE{} plays an essential role in the
+action, the natural connection on the D-brane is the same as in closed
+string theory, i.e. it is compatible with the bulk metric and has
+torsion \myHighlight{$H=dB$}\coordHE{}. This means, in particular, that the parallel transport
+on the brane is independent of the gauge field \myHighlight{$A$}\coordHE{}.
+\end{abstract}
+\vfill
+
+Keywords: Bosonic Strings, D-branes, Non-commutative Geometry \\[7pt]
+
+\clearpage
+\setcounter{page}{1}
+
+
+\section{Introduction}
+\label{sec:intro}
+
+The geometry on a D-brane has recently attracted much attention, as it 
+turned out to involve non-commutative structures that depend on 
+the gauge invariant combination \myHighlight{$\cF = B + (2\pi\alpha')dA$}\coordHE{} of the bulk 
+\myHighlight{$B$}\coordHE{}-field and the boundary \myHighlight{$A$}\coordHE{}-field.
+A lot of work was done in examining the effect of a constant
+\myHighlight{$B$}\coordHE{}-field in a topological decoupling limit
+\cite{Schomerus:1999ug,Seiberg:1999vs,Ardalan:1999ce,Ardalan:2000av,Chu:1999qz}.
+
+A generalization to non-constant fields was given through the 
+deformation quantization of Poisson manifolds. In that
+case, a non-commutative product can be constructed to all orders
+of derivatives out of the Poisson structure \myHighlight{$\Theta$}\coordHE{} and it 
+represents the most general form being associative
+\cite{Kontsevich:1997vb}. In open string 
+theory this product appears in the decoupling limit when the \myHighlight{$B$}\coordHE{}-field
+(or equivalently \myHighlight{$\cF$}\coordHE{}) is closed \cite{Cattaneo:2000fm}.
+
+While the closure condition is necessary for associativity, it is
+not required by
+string theory and one may ask how far one can relax it in order to 
+obtain a reasonable product. In \cite{Herbst:2001ai}
+the non-commutative product was extracted from open string off-shell
+correlators with insertions on the boundary of the disk.
+It turned out that one has to abandon the decoupling limit in order to
+retain a consistent setup. The only physical 
+condition on the non-commutative parameter \myHighlight{$\Theta$}\coordHE{}
+in first derivative order of the background fields is the on-shell 
+condition for the open
+string gauge field \myHighlight{$A$}\coordHE{} on the D-brane, i.e. the generalized Maxwell
+equation; see also \cite{Cornalba:2002sm,Ho:2000fv,Chu:2000gi,Ho:2001qk} 
+for other attempts of treating a general background field \myHighlight{$B$}\coordHE{}.
+
+Imposing this equation has the
+following consequences for the product in first derivative order 
+\cite{Herbst:2001ai}.
+Firstly, the non-commutative product of two functions equals the
+ordinary product under the integral.\footnote{
+In \cite{Herbst:2001ai} it was only shown that 
+\myHighlight{$\int f\circ g = \int g\circ f$}\coordHE{}, 
+but it is easily checked that, in fact, \myHighlight{$\int f\circ g = \int fg$}\coordHE{}.
+}
+Secondly, the product is associative up to a surface term.
+As an immediate consequence, the product of 
+an arbitrary number of functions is invariant under cyclic
+permutations under the integral up to a possible change in the
+bracket structure). The integration measure plays an important role 
+in this respect and is given by a Born-Infeld measure, 
+\myHighlight{$\sqrt{\det(g-\cF)}$}\coordHE{}. Associativity cannot be maintained and must be 
+replaced by an \myHighlight{$A_\infty$}\coordHE{}-structure \cite{Cornalba:2002sm,stasheff}. 
+Both properties are necessary to construct a reasonable action and a 
+variation principle in terms of the non-commutative
+product, the second one, to adjust the position of the variation of
+the field and the first one, to remove all derivatives from the variation.
+
+So far only the non-commutative product arising in this generalized setting
+was considered. It can be
+extracted purely from off-shell correlation functions. However, since 
+string vacua correspond to 2-d 
+conformal field theories, the correlators must finally take 
+shape of the usual simple on-shell form \cite{Polchinski:1998rq}. 
+There is some interesting information which one can gain from passing 
+to on-shell correlators and it is the intention of this 
+article to work out this information. 
+
+For this purpose we will use several results from \cite{Herbst:2001ai}
+and, therefore, inherit the
+general setting of the model considered there. The open strings move
+in a background including a general metric \myHighlight{$g$}\coordHE{} and a nontrivial \myHighlight{$B$}\coordHE{}-field 
+in the bulk and a gauge field \myHighlight{$A$}\coordHE{} on the boundary of the world sheet.
+The world sheet is taken to be the upper half complex plane. All 
+information is extracted from correlation functions using a derivative 
+expansion of the background fields, where the expansion is restricted to 
+first derivative order, but exact to all orders in the constant part of 
+\myHighlight{$\cF$}\coordHE{}.
+
+\newpage
+\noindent
+What can we learn from the on-shell correlators? 
+
+(i) As the insertions at the boundary of the disk are taken to 
+be ordinary functions of the target space coordinates \myHighlight{$X^\mu$}\coordHE{} we
+expect that the on-shell condition is tachyonic. 
+Furthermore, the equation of motion is linear in the tachyonic field
+since the insertions represent asymptotic states. We will deduce this
+linear equation from the requirement that the on-shell correlators
+must have the CFT form and thus obtain 
+the kinetic term for the effective action of the tachyon. 
+
+(ii) The explicit form of the on-shell three-point function then gives 
+us the cubic interaction of the open string tachyon potential. 
+Higher \myHighlight{$n$}\coordHE{}-point correlators are difficult to manage. Nevertheless, 
+in view of the cyclicity of the product under the integral, we are able to 
+discuss some implications for the structure of higher order 
+interactions.
+
+(iii) Working in first derivative order of the background fields is
+already sufficient to extract information about the differential structure 
+from the tachyon equation of motion. As an interesting and somewhat 
+surprising result we anticipate that, using the generalized Maxwell equation, 
+the covariant derivative on the D-brane turns out to be the same as that off 
+the brane, i.e. it is the connection compatible with the bulk metric and 
+with torsion \myHighlight{$H=dB$}\coordHE{}.
+
+The organisation of the paper is as follows.
+We start in section \ref{sec:NCP} with the introduction of some notation 
+and review the properties of the non-commutative product. In
+section \ref{sec:offshell} we calculate the full two- and three-point
+off-shell correlators using results from
+\cite{Herbst:2001ai}. Thereafter, in section \ref{sec:onshell}, we show
+that conformal invariance requires a tachyonic on-shell condition for
+the insertions of the correlators and the use of the Maxwell equation for 
+the background fields. Eventually, we investigate the potential and the 
+differential structure of the tachyonic action in section \ref{sec:tachyon} 
+and close with a general discussion of our results in section \ref{sec:disc}.
+
+
+\section{The non-commutative product}
+\label{sec:NCP}
+
+
+On the D-brane we have in addition to the so called bulk metric 
+\myHighlight{$g_{\mu\nu}$}\coordHE{}, which enters in the sigma model action, the
+boundary metric \myHighlight{$G^{\mu\nu}$}\coordHE{}. Two metrics arise because of the fact that
+on the brane one has to consider the combination
+\myHighlight{$M_{\mu\nu} = g_{\mu\nu} + \cF_{\mu\nu}$}\coordHE{} rather than the separate
+quantities \myHighlight{$g$}\coordHE{} and \myHighlight{$\cF$}\coordHE{}. Consequently, one can split the inverse of \myHighlight{$M$}\coordHE{}
+into the symmetric and antisymmetric part, i.e. 
+\myHighlight{$M^{\mu\nu} := M^{-1}{}^{\mu\nu} = G^{\mu\nu} + \Theta^{\mu\nu}$}\coordHE{}, and obtains
+the second metric \myHighlight{$G$}\coordHE{} and the antisymmetric part \myHighlight{$\Theta$}\coordHE{}, which turns out
+to be the non-commutativity parameter.\footnote{%
+  We use the convention \myHighlight{$M^{-1}{}^{\mu\nu} M_{\nu\rho} = \delta^\mu{}_\rho$}\coordHE{}.
+}
+
+The product found in \cite{Herbst:2001ai} is given to all orders in
+\myHighlight{$\Theta$}\coordHE{} and to
+first derivative order in the background fields. It reads
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:NCP}
+  f(x) \; \circ \; g(x) \;=\; f * g \rightCoord{} 
+  \Back&-&\Back \frac 1{12} \rightCoord{}
+  \Theta^{\mu\rho} \partial_\rho \Theta^{\nu\sigma} \;
+  \Bigl(\partial_\mu \partial_\nu f \;* \partial_\sigma g +
+  \partial_\sigma f \;* \partial_\mu \partial_\nu g \Bigr) +\nonumber\rightCoord{}\\
+&\leftCoord{}+& \cO\bigl((\partial\Theta)^2,\partial^2\Theta\bigr) , \rightCoord{}
+\rightCoord{}}{0mm}{2}{6}{
+  f(x) \; \circ \; g(x) \;=\; f * g  
+  \Back&-&\Back \frac 1{12} 
+  \Theta^{\mu\rho} \partial_\rho \Theta^{\nu\sigma} \;
+  \Bigl(\partial_\mu \partial_\nu f \;* \partial_\sigma g +
+  \partial_\sigma f \;* \partial_\mu \partial_\nu g \Bigr) +\\
+&+& \cO\bigl((\partial\Theta)^2,\partial^2\Theta\bigr) , 
+}{1}\coordE{}\end{eqnarray}
+where '\myHighlight{$*$}\coordHE{}' denotes the Moyal contribution to the product. The
+on-shell condition for the gauge field \myHighlight{$A$}\coordHE{} on the D-brane is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:maxwell}
+  G^{\rho\sigma}D_\rho \cF_{\sigma\mu}
+  \leftCoord{}-\frac 12 \Theta^{\rho\sigma}H_{\rho\sigma}{}^\lambda \cF_{\lambda\mu} = 0,
+\rightCoord{}}{0mm}{2}{2}{
+  G^{\rho\sigma}D_\rho \cF_{\sigma\mu}
+  -\frac 12 \Theta^{\rho\sigma}H_{\rho\sigma}{}^\lambda \cF_{\lambda\mu} = 0,
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$D_\rho$}\coordHE{} is the Christoffel connection of \myHighlight{$g$}\coordHE{}, or equivalently,
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:eom1}
+  \partial_\mu \Bigl(\sqrt{g-\cF}~\Theta^{\mu\nu}\Bigr) &=& 0.\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+  \partial_\mu \Bigl(\sqrt{g-\cF}~\Theta^{\mu\nu}\Bigr) &=& 0.
+}{1}\coordE{}\end{eqnarray}
+Imposing this equation of motion one finds %, first, 
+that the product of
+two functions equals the ordinary product under the integral,
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:ordprod}
+  \int \ud^{D} x \sqrt {\det(g\!\!-\!\!\cF)} ~f \circ g &=& \rightCoord{} 
+  \int \ud^{D} x \sqrt {\det(g\!\!-\!\!\cF)} ~f \cdot g ~, \rightCoord{}
+\rightCoord{}}{0mm}{1}{4}{
+  \int \ud^{D} x \sqrt {\det(g\!\!-\!\!\cF)} ~f \circ g &=&  
+  \int \ud^{D} x \sqrt {\det(g\!\!-\!\!\cF)} ~f \cdot g ~, 
+}{1}\coordE{}\end{eqnarray}
+and %, second, 
+that it is associative up to a surface term,
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:assocprod}
+  \int \ud^{D} x \sqrt {\det(g\!\!-\!\!\cF)} ~(f \circ  g) \circ h &=& \rightCoord{} 
+  \int \ud^{D} x \sqrt {\det(g\!\!-\!\!\cF)} ~ f \circ (g \circ  h) ~. \rightCoord{}
+\rightCoord{}}{0mm}{1}{4}{
+  \int \ud^{D} x \sqrt {\det(g\!\!-\!\!\cF)} ~(f \circ  g) \circ h &=&  
+  \int \ud^{D} x \sqrt {\det(g\!\!-\!\!\cF)} ~ f \circ (g \circ  h) ~. 
+}{1}\coordE{}\end{eqnarray}
+The trace property
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:trace}
+  \int \ud^{D} x \sqrt {\det(g\!\!-\!\!\cF)} \rightCoord{} 
+  \Bigl((...( f_1 \circ ...))\circ f_{n\!-\!1}\Bigr) \circ f_n = 
+  \int \ud^{D} x \sqrt {\det(g\!\!-\!\!\cF)} \rightCoord{} 
+  \Bigl(f_n \circ (...( f_1 \circ ... ))\Bigr)\circ f_{n\!-\!1} ~.\rightCoord{}
+\rightCoord{}}{0mm}{1}{5}{
+  \int \ud^{D} x \sqrt {\det(g\!\!-\!\!\cF)}  
+  \Bigl((...( f_1 \circ ...))\circ f_{n\!-\!1}\Bigr) \circ f_n = 
+  \int \ud^{D} x \sqrt {\det(g\!\!-\!\!\cF)}  
+  \Bigl(f_n \circ (...( f_1 \circ ... ))\Bigr)\circ f_{n\!-\!1} ~.
+}{1}\coordE{}\end{eqnarray}
+follows immediately. Although the integration measure plays an important
+role in order to derive
+these properties we will subsequently use the abbreviation
+\myHighlight{$\int _x = \int \ud^{D} x \sqrt {\det(g\!\!-\!\!\cF)}$}\coordHE{} for the integral.
+These results will extensively be used in sections
+(\ref{sec:onshell}) and (\ref{sec:tachyon}).
+
+
+\section{Off-shell correlators}
+\label{sec:offshell}
+
+
+We are now going to use several results of the appendix of 
+\cite{Herbst:2001ai} to calculate the full off-shell two- and three-point
+correlators of ordinary functions of target space coordinates \myHighlight{$X^\mu$}\coordHE{}. 
+The insertions are ordered at the boundary of the upper half plane, so
+that \myHighlight{$\tau_1 < \tau_2 < \tau_3$}\coordHE{}.
+
+\paragraph{The two-point correlator} \hspace*{-0.3cm}was already given in
+\cite{Herbst:2001ai} and we repeat the expression in a more compact form. 
+To this end we use the relation
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:Gconnect}
+  \leftCoord{}2 G^{\nu\rho} G^{\sigma\lambda} \bar \Gamma_{\rho\lambda}{}^{\mu} =
+  G^{\mu\rho} \partial_\rho G^{\nu\sigma}-
+  G^{\nu\rho} \partial_\rho G^{\sigma\mu}-
+  G^{\sigma\rho} \partial_\rho G^{\nu\mu}~,
+\rightCoord{}}{0mm}{2}{2}{
+  2 G^{\nu\rho} G^{\sigma\lambda} \bar \Gamma_{\rho\lambda}{}^{\mu} =
+  G^{\mu\rho} \partial_\rho G^{\nu\sigma}-
+  G^{\nu\rho} \partial_\rho G^{\sigma\mu}-
+  G^{\sigma\rho} \partial_\rho G^{\nu\mu}~,
+}{1}\coordE{}\end{eqnarray}
+to introduce the Christoffel connection compatible with \myHighlight{$G$}\coordHE{}. 
+With the abbreviation (\myHighlight{$\tau_{ij} = \tau_i - \tau_j$}\coordHE{})
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:triangle}
+  f \tria g := \sum _{\rightCoord{}n=0}^{\leftCoord{}\infty} 
+             \frac 1{n!} \Bigl(\frac{\leftCoord{}1}{\rightCoord{}2\pi}\Bigr)^n \rightCoord{}
+             \ln^n\tau_{21}^{-2}~G^{\mu^n\nu^n} \;
+             \bar D_{\mu^n} f \; \circ \;
+             \bar D_{\nu^n}g
+\rightCoord{}}{0mm}{3}{5}{
+  f \tria g := \sum _{n=0}^{\infty} 
+             \frac 1{n!} \Bigl(\frac{1}{2\pi}\Bigr)^n 
+             \ln^n\tau_{21}^{-2}~G^{\mu^n\nu^n} \;
+             \bar D_{\mu^n} f \; \circ \;
+             \bar D_{\nu^n}g
+}{1}\coordE{}\end{eqnarray}
+where the upper subindices of the indices mean a product of derivatives,
+\myHighlight{$\bar D_{\mu^n} := \bar D_{(\mu_1} \ldots \bar D_{\mu_n)} =\partial_{\mu^n} f - \frac {n(n-1)}{2}~\bar\Gamma_{(\mu_1\mu_2}{}^\rho \partial_{\mu_3}\ldots\partial_{\mu_n)} \partial_{\rho} f + \cO(\partial^2)$}\coordHE{}
+and a product of metrics
+\myHighlight{$G^{\mu^n\nu^n}=G^{\mu_1\nu_1}\ldots G^{\mu_n\nu_n}$}\coordHE{}. The symmetrization
+of the derivatives \myHighlight{$\bar D_{\mu}$}\coordHE{} in \myHighlight{$\bar D_{\mu^n}$}\coordHE{}
+is automatic in first order, because the partial derivatives contracted with
+\myHighlight{$G$}\coordHE{} symmetrize the \myHighlight{$\bar\Gamma$}\coordHE{}-term on the other side, i.e.
+\myHighlight{$G^{\mu\nu} \bar D_\mu f \bar D_\nu g = G^{\mu\nu} \partial_\mu f \bar D_\nu g + G^{\mu\nu} \bar D_\mu f \partial_\nu g + \cO(\partial^2)$}\coordHE{}. 
+We can then write the full two-point correlator as
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:2pCorr}
+  \bra\;:\!f[X(\tau_1)]\!: \rightCoord{}\, :\!g[X(\tau_2)]\!:\;\ket
+      \leftCoord{}\; &=& \rightCoord{} 
+  \int _x f \tria g \nonumber \rightCoord{}\\\leftCoord{}
+  \leftCoord{}+ \frac i{4\pi} \ln \tau_{21}^{-1}\int _x 
+              \Theta^{\mu\rho}\partial_\rho G^{\nu\sigma} 
+              \Back &\bigl(& \Back
+                    \partial_\nu \partial_\sigma f \tria \partial_\mu g -
+                    \partial_\mu f \tria \partial_\nu \partial_\sigma g
+              \bigr) \rightCoord{}  
+\nonumber \rightCoord{}\\\leftCoord{}
+  \leftCoord{}+ \frac i{2\pi} \ln \tau_{21}^{-1}\int _x 
+              G^{\nu\sigma}\partial_\sigma \Theta^{\rho\mu}
+              \Back &\bigl(& \Back
+                    \partial_\nu \partial_\rho f \tria \partial_\mu g -
+                    \partial_\mu f \tria \partial_\nu \partial_\rho g
+              \bigr) \rightCoord{}
+  \leftCoord{}+ \cO(\partial^2). \rightCoord{}
+\rightCoord{}}{0mm}{7}{9}{
+  \bra\;:\!f[X(\tau_1)]\!: \, :\!g[X(\tau_2)]\!:\;\ket
+      \; &=&  
+  \int _x f \tria g \\
+  + \frac i{4\pi} \ln \tau_{21}^{-1}\int _x 
+              \Theta^{\mu\rho}\partial_\rho G^{\nu\sigma} 
+              \Back &\bigl(& \Back
+                    \partial_\nu \partial_\sigma f \tria \partial_\mu g -
+                    \partial_\mu f \tria \partial_\nu \partial_\sigma g
+              \bigr)   
+\\
+  + \frac i{2\pi} \ln \tau_{21}^{-1}\int _x 
+              G^{\nu\sigma}\partial_\sigma \Theta^{\rho\mu}
+              \Back &\bigl(& \Back
+                    \partial_\nu \partial_\rho f \tria \partial_\mu g -
+                    \partial_\mu f \tria \partial_\nu \partial_\rho g
+              \bigr) 
+  + \cO(\partial^2). 
+}{1}\coordE{}\end{eqnarray}
+
+\paragraph{The three-point correlator}\hspace*{-0.3cm}
+is much more complicated. It is a
+rather tedious but straightforward work to collect all the 
+relevant terms from the appendix in \cite{Herbst:2001ai}. 
+In order to realize the structure more clearly we
+first consider the two cases, \myHighlight{$\Theta = 0$}\coordHE{} and \myHighlight{$\Theta \rightarrow \infty$}\coordHE{}
+(or, equivalently, \myHighlight{$G \rightarrow 0$}\coordHE{}). 
+For \myHighlight{$\Theta = 0$}\coordHE{}, the covariant derivative \myHighlight{$\bar D$}\coordHE{} again appears, now
+in the combination
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:DoubleDer}
+  \bar D_{\mu^n} \bar D_{\nu^m} f &=& 
+                     \partial_{\mu^n}\partial_{\nu^m} f
+\nonumber\rightCoord{}\\
+&\leftCoord{}-& \frac {\leftCoord{}n(n-1)}{\rightCoord{}2}~\bar\Gamma_{(\mu_1\mu_2}{\rightCoord{}}^\rho
+                     \partial_{\mu_3}\ldots\partial_{\mu_n)}
+                     \partial_{\nu^m} \partial_{\rho} f +
+\nonumber\rightCoord{}\\
+&\leftCoord{}-& \frac {\leftCoord{}m(m-1)}{\rightCoord{}2}~\bar\Gamma_{(\nu_1\nu_2}{\rightCoord{}}^\rho
+                     \partial_{\nu_3}\ldots\partial_{\nu_m)}
+                     \partial_{\mu^n} \partial_{\rho} f +
+\nonumber\rightCoord{}\\
+&\leftCoord{}-& mn~\bar\Gamma_{(\mu_1|(\nu_1}{}^\rho
+                     \partial_{\nu_2}\ldots\partial_{\nu_m)}
+                     \partial_{|\mu_2}\ldots\partial_{\mu_n)}
+                     \partial_{\rho} f +
+                     \cO(\partial^2). \rightCoord{}
+\rightCoord{}}{0mm}{6}{10}{
+  \bar D_{\mu^n} \bar D_{\nu^m} f &=& 
+                     \partial_{\mu^n}\partial_{\nu^m} f
+\\
+&-& \frac {n(n-1)}{2}~\bar\Gamma_{(\mu_1\mu_2}{}^\rho
+                     \partial_{\mu_3}\ldots\partial_{\mu_n)}
+                     \partial_{\nu^m} \partial_{\rho} f +
+\\
+&-& \frac {m(m-1)}{2}~\bar\Gamma_{(\nu_1\nu_2}{}^\rho
+                     \partial_{\nu_3}\ldots\partial_{\nu_m)}
+                     \partial_{\mu^n} \partial_{\rho} f +
+\\
+&-& mn~\bar\Gamma_{(\mu_1|(\nu_1}{}^\rho
+                     \partial_{\nu_2}\ldots\partial_{\nu_m)}
+                     \partial_{|\mu_2}\ldots\partial_{\mu_n)}
+                     \partial_{\rho} f +
+                     \cO(\partial^2). 
+}{1}\coordE{}\end{eqnarray}
+The correlator is given as
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:3pCorrG}
+&&\leftCoord{}\bra\;:\!f[X(\tau_1)]\!: \rightCoord{}\, :\!g[X(\tau_2)]\!:\; :\!h[X(\tau_3)]\!:\;\ket
+  \bigr|_{\Theta = 0} \; = 
+  \int _x \tri{}{}(f,g,h) + \cO(\partial^2) =
+\nonumber\rightCoord{}\\
+&&\leftCoord{}\sum _{\rightCoord{}I,J,K} \bigl( \frac 1\pi \bigr)^{I+J+K} 
+  \frac {\leftCoord{}\ln^I\tau_{21}^{-1} \ln^J\tau_{31}^{-1} \ln^K\tau_{32}^{-1}}
+        {\rightCoord{}\leftCoord{}I! J! K!} \times 
+\nonumber\rightCoord{}\\
+&&\leftCoord{}\times\int _x G^{\mu^I\nu^I}G^{\mu^J\nu^J}G^{\mu^K\nu^K} 
+         \bar D_{\mu^I\mu^J} f ~ \bar D_{\nu^I\mu^K} g ~ \bar D_{\nu^J\nu^K} h
+  \leftCoord{}+ \cO(\partial^2) . \rightCoord{}
+\rightCoord{}}{0mm}{7}{8}{
+  &&\bra\;:\!f[X(\tau_1)]\!: \, :\!g[X(\tau_2)]\!:\; :\!h[X(\tau_3)]\!:\;\ket
+  \bigr|_{\Theta = 0} \; = 
+  \int _x \tri{}{}(f,g,h) + \cO(\partial^2) =
+\\
+&&\sum _{I,J,K} \bigl( \frac 1\pi \bigr)^{I+J+K} 
+  \frac {\ln^I\tau_{21}^{-1} \ln^J\tau_{31}^{-1} \ln^K\tau_{32}^{-1}}
+        {I! J! K!} \times 
+\\
+&&\times\int _x G^{\mu^I\nu^I}G^{\mu^J\nu^J}G^{\mu^K\nu^K} 
+         \bar D_{\mu^I\mu^J} f ~ \bar D_{\nu^I\mu^K} g ~ \bar D_{\nu^J\nu^K} h
+  + \cO(\partial^2) . 
+}{1}\coordE{}\end{eqnarray}
+The triangle functional \myHighlight{$\tri{}{}(f,g,h)$}\coordHE{} in the first line is a
+generalization of (\ref{eq:triangle}) and was introduced for later
+reference. 
+In case of \myHighlight{$G \rightarrow 0$}\coordHE{} the correlator can be expressed 
+solely through
+the non-commutative product (\ref{eq:NCP}) (cf. also \cite{Cornalba:2002sm})
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:3pCorrTheta}
+  \bra\;:\!f[X_1]\!: \rightCoord{}\, :\!g[X_2]\!:\; :\!h[X_3]\!:\;\ket
+  \bigr|_{G = 0} &=& 
+  \int _x \frac 12 \Bigl\{ (f \circ g) \circ h + f \circ (g \circ h)
+\rightCoord{}\\
+&\leftCoord{}+& L(m)~\Bigl(f_1\circ (f_2\circ f_3) - (f_1\circ f_2)\circ f_3) 
+  \Bigr) \Bigr\} \rightCoord{}
+\nonumber\rightCoord{}\\
+&\leftCoord{}+& \cO(\partial^2). \rightCoord{}
+\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{3}{8}{
+  \bra\;:\!f[X_1]\!: \, :\!g[X_2]\!:\; :\!h[X_3]\!:\;\ket
+  \bigr|_{G = 0} &=& 
+  \int _x \frac 12 \Bigl\{ (f \circ g) \circ h + f \circ (g \circ h)
+\\
+&+& L(m)~\Bigl(f_1\circ (f_2\circ f_3) - (f_1\circ f_2)\circ f_3) 
+  \Bigr) \Bigr\} 
+\\
+&+& \cO(\partial^2). 
+}{1}\coordE{}\end{eqnarray}
+\myHighlight{$L(m) = \frac{6}{\pi^2}(\Li(m) - \Li(1-m))$}\coordHE{} is an antisymmetric combination
+of dilogarithms \myHighlight{$\Li(m)$}\coordHE{} with the limits \myHighlight{$L(0) = -1$}\coordHE{} and \myHighlight{$L(1) = 1$}\coordHE{}.
+The modulus \myHighlight{$m = \tau_{21}/\tau_{31}$}\coordHE{} can take the values \myHighlight{$0 \leq m \leq 1$}\coordHE{}.
+
+Since we take into account only terms to first derivative 
+order these two results can easily be completed 
+to the general case. In equations (\ref{eq:3pCorrG}) and
+(\ref{eq:3pCorrTheta}) we have included the \myHighlight{$G\partial G$}\coordHE{}- and the
+\myHighlight{$\Theta\partial\Theta$}\coordHE{}-terms, respectively. In the full correlator these
+two results combine in a natural way and add up 
+with the remaining \myHighlight{$G\partial \Theta$}\coordHE{} and \myHighlight{$\Theta\partial G$}\coordHE{} parts, so
+that we find
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:3pCorr}
+  \bra\;:\!f[X(\tau_1)]\!: \rightCoord{}\, :\!g[X(\tau_2)]\!:\; :\!h[X(\tau_3)]\!:\;\ket
+  \leftCoord{}\; = \; F[G\partial G, \Theta\partial\Theta] + \rightCoord{} 
+          F[G\partial\Theta, \Theta\partial G] + \cO(\partial^2) \rightCoord{}
+\rightCoord{}}{0mm}{2}{5}{
+  \bra\;:\!f[X(\tau_1)]\!: \, :\!g[X(\tau_2)]\!:\; :\!h[X(\tau_3)]\!:\;\ket
+  \; = \; F[G\partial G, \Theta\partial\Theta] +  
+          F[G\partial\Theta, \Theta\partial G] + \cO(\partial^2) 
+}{1}\coordE{}\end{eqnarray}
+where
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:GdGTdT}
+&&\leftCoord{}F[G\partial G, \Theta\partial\Theta] \; = \;\sum _{\rightCoord{}I,J,K} 
+  \frac {\leftCoord{}\ln^I\tau_{21}^{-1} \ln^J\tau_{31}^{-1} \ln^K\tau_{32}^{-1}}
+        {\rightCoord{}\leftCoord{}I! J! K!}\times
+\rightCoord{}\\
+&\leftCoord{}\times& \frac 1{\pi^{I+J+K}} \rightCoord{} 
+    \int _x G^{\mu^I\nu^I}G^{\mu^J\nu^J}G^{\mu^K\nu^K}
+      \frac 12 \Bigl[ \bar D_{\mu^I\mu^J}f \circ 
+      \leftCoord{}(\bar D_{\nu^I\mu^K}g \circ \bar D_{\nu^J\nu^K}h) +
+      \leftCoord{}(\bar D_{\mu^I\mu^J}f \circ \bar D_{\nu^I\mu^K}g) 
+      \circ \bar D_{\nu^J\nu^K}h 
+\nonumber\rightCoord{}\\
+&&\leftCoord{} \hspace*{3.5truecm}+~L(m)~\Bigl(\bar D_{\mu^I\mu^J}f\circ 
+                 \leftCoord{}(\bar D_{\nu^I\mu^K}g\circ \bar D_{\nu^J\nu^K}h) - 
+               \leftCoord{}(\bar D_{\mu^I\mu^J}f\circ \bar D_{\nu^I\mu^K}g)\circ 
+                \bar D_{\nu^J\nu^K}h) 
+  \Bigr) \Bigr] \rightCoord{}
+\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{10}{9}{
+  &&F[G\partial G, \Theta\partial\Theta] \; = \;\sum _{I,J,K} 
+  \frac {\ln^I\tau_{21}^{-1} \ln^J\tau_{31}^{-1} \ln^K\tau_{32}^{-1}}
+        {I! J! K!}\times
+\\
+&\times& \frac 1{\pi^{I+J+K}}  
+    \int _x G^{\mu^I\nu^I}G^{\mu^J\nu^J}G^{\mu^K\nu^K}
+      \frac 12 \Bigl[ \bar D_{\mu^I\mu^J}f \circ 
+      (\bar D_{\nu^I\mu^K}g \circ \bar D_{\nu^J\nu^K}h) +
+      (\bar D_{\mu^I\mu^J}f \circ \bar D_{\nu^I\mu^K}g) 
+      \circ \bar D_{\nu^J\nu^K}h 
+\\
+&& \hspace*{3.5truecm}+~L(m)~\Bigl(\bar D_{\mu^I\mu^J}f\circ 
+                 (\bar D_{\nu^I\mu^K}g\circ \bar D_{\nu^J\nu^K}h) - 
+               (\bar D_{\mu^I\mu^J}f\circ \bar D_{\nu^I\mu^K}g)\circ 
+                \bar D_{\nu^J\nu^K}h) 
+  \Bigr) \Bigr] 
+}{1}\coordE{}\end{eqnarray}
+and, with \myHighlight{$\partial_\mu f = f_\mu$}\coordHE{}, 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:GdTTdG}
+&&\leftCoord{} F[G\partial\Theta, \Theta\partial G] \; = \; \rightCoord{}
+\nonumber\rightCoord{}\\
+&\leftCoord{}+& \frac i{2\pi} \ln\tau_{21}^{-1}\int _x 
+              \Theta^{\rho\sigma} \partial_\sigma G^{\mu\nu}
+              \leftCoord{}[-         \tri{}{} (f_\mu, g_\nu, h_\rho)
+               \leftCoord{}-\frac 12 \tri{}{} (f_\rho, g_{\mu\nu}, h)
+               \leftCoord{}+\frac 12 \tri{}{} (f_{\mu\nu}, g_\rho, h)
+              \leftCoord{}] \rightCoord{}
+\nonumber\rightCoord{}\\
+&\leftCoord{}+& \frac i{2\pi} \ln\tau_{31}^{-1}\int _x 
+              \Theta^{\rho\sigma} \partial_\sigma G^{\mu\nu}
+              \leftCoord{}[-\tri{}{} (f_\rho, g_\mu, h_\nu)
+               \leftCoord{}+\tri{}{} (f_\mu, g_\nu, h_\rho)
+               \leftCoord{}-\frac 12 \tri{}{} (f_\rho, g, h_{\mu\nu})
+               \leftCoord{}+\frac 12 \tri{}{} (f_{\mu\nu}, g, h_\rho)
+              \leftCoord{}] \rightCoord{}
+\nonumber\rightCoord{}\\
+&\leftCoord{}+& \frac i{2\pi} \ln\tau_{32}^{-1}\int _x 
+              \Theta^{\rho\sigma} \partial_\sigma G^{\mu\nu}
+              \leftCoord{}[+\tri{}{} (f_\rho, g_\mu, h_\nu)
+               \leftCoord{}-\frac 12 \tri{}{} (f, g_\rho, h_{\mu\nu})
+               \leftCoord{}+\frac 12 \tri{}{} (f, g_{\mu\nu}, h_\rho)
+              \leftCoord{}] \rightCoord{}
+\nonumber\rightCoord{}\\
+&\leftCoord{}+& \frac i{2\pi} \ln\tau_{21}^{-1}\int _x 
+              G^{\rho\sigma} \partial_\sigma \Theta^{\mu\nu}
+              \leftCoord{}[+\tri{}{} (f_\mu, g_{\nu\rho}, h)
+               \leftCoord{}-\tri{}{} (f_{\nu\rho}, g_\mu, h)
+              \leftCoord{}] \rightCoord{}
+\nonumber\rightCoord{}\\
+&\leftCoord{}+& \frac i{2\pi} \ln\tau_{31}^{-1}\int _x 
+              G^{\rho\sigma} \partial_\sigma \Theta^{\mu\nu}
+              \leftCoord{}[+\tri{}{} (f_\mu, g_\nu, h_\rho)
+               \leftCoord{}+\tri{}{} (f_\nu, g_\rho, h_\mu)
+               \leftCoord{}-\tri{}{} (f_\rho, g_\mu, h_\nu)
+\nonumber\rightCoord{}\\
+&&\leftCoord{} ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ +\tri{}{} (f_\mu, g, h_{\nu\rho})
+               \leftCoord{}-\tri{}{} (f_{\nu\rho}, g, h_\mu)
+              \leftCoord{}] \rightCoord{}
+\nonumber\rightCoord{}\\
+&\leftCoord{}+& \frac i{2\pi} \ln\tau_{32}^{-1}\int _x 
+              G^{\rho\sigma} \partial_\sigma \Theta^{\mu\nu}
+              \leftCoord{}[+\tri{}{} (f, g_\mu, h_{\nu\rho})
+               \leftCoord{}-\tri{}{} (f, g_{\nu\rho}, h_\mu)
+              \leftCoord{}]. \rightCoord{}
+\rightCoord{}}{0mm}{33}{16}{
+  && F[G\partial\Theta, \Theta\partial G] \; = \; 
+\\
+&+& \frac i{2\pi} \ln\tau_{21}^{-1}\int _x 
+              \Theta^{\rho\sigma} \partial_\sigma G^{\mu\nu}
+              [-         \tri{}{} (f_\mu, g_\nu, h_\rho)
+               -\frac 12 \tri{}{} (f_\rho, g_{\mu\nu}, h)
+               +\frac 12 \tri{}{} (f_{\mu\nu}, g_\rho, h)
+              ] 
+\\
+&+& \frac i{2\pi} \ln\tau_{31}^{-1}\int _x 
+              \Theta^{\rho\sigma} \partial_\sigma G^{\mu\nu}
+              [-\tri{}{} (f_\rho, g_\mu, h_\nu)
+               +\tri{}{} (f_\mu, g_\nu, h_\rho)
+               -\frac 12 \tri{}{} (f_\rho, g, h_{\mu\nu})
+               +\frac 12 \tri{}{} (f_{\mu\nu}, g, h_\rho)
+              ] 
+\\
+&+& \frac i{2\pi} \ln\tau_{32}^{-1}\int _x 
+              \Theta^{\rho\sigma} \partial_\sigma G^{\mu\nu}
+              [+\tri{}{} (f_\rho, g_\mu, h_\nu)
+               -\frac 12 \tri{}{} (f, g_\rho, h_{\mu\nu})
+               +\frac 12 \tri{}{} (f, g_{\mu\nu}, h_\rho)
+              ] 
+\\
+&+& \frac i{2\pi} \ln\tau_{21}^{-1}\int _x 
+              G^{\rho\sigma} \partial_\sigma \Theta^{\mu\nu}
+              [+\tri{}{} (f_\mu, g_{\nu\rho}, h)
+               -\tri{}{} (f_{\nu\rho}, g_\mu, h)
+              ] 
+\\
+&+& \frac i{2\pi} \ln\tau_{31}^{-1}\int _x 
+              G^{\rho\sigma} \partial_\sigma \Theta^{\mu\nu}
+              [+\tri{}{} (f_\mu, g_\nu, h_\rho)
+               +\tri{}{} (f_\nu, g_\rho, h_\mu)
+               -\tri{}{} (f_\rho, g_\mu, h_\nu)
+\\
+&& ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ +\tri{}{} (f_\mu, g, h_{\nu\rho})
+               -\tri{}{} (f_{\nu\rho}, g, h_\mu)
+              ] 
+\\
+&+& \frac i{2\pi} \ln\tau_{32}^{-1}\int _x 
+              G^{\rho\sigma} \partial_\sigma \Theta^{\mu\nu}
+              [+\tri{}{} (f, g_\mu, h_{\nu\rho})
+               -\tri{}{} (f, g_{\nu\rho}, h_\mu)
+              ]. 
+}{1}\coordE{}\end{eqnarray}
+The symbol \myHighlight{$\tri{}{} (f, g, h)$}\coordHE{} is defined in equation (\ref{eq:3pCorrG}).
+
+
+\section{On-shell correlators}
+\label{sec:onshell}
+
+
+In the previous section the insertions on the disk as well as the 
+background fields are completely general, they do not satisfy
+any on-shell conditions, which are determined by the conformal
+invariance of the theory. The equations of motion for the 
+background fields are given by
+the \myHighlight{$\beta$}\coordHE{}-functions of the world sheet theory whereas
+the equations of motion for the insertions are determined by the 
+conformal transformation properties of the correlation functions.
+
+The correlators of the CFT on the disk must be invariant under 
+the global conformal group \myHighlight{$SL(2,\bbR)$}\coordHE{}. In particular, the
+2-point correlator with insertions
+at the boundary is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:CFT2point}
+  \leftCoord{}<f_1[X(\tau_1)] f_2[X(\tau_2)]> =  \frac {\leftCoord{}C_{12}}{\rightCoord{}(\tau_{21})^{2h}},
+\rightCoord{}}{0mm}{3}{3}{
+  <f_1[X(\tau_1)] f_2[X(\tau_2)]> =  \frac {C_{12}}{(\tau_{21})^{2h}},
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$h$}\coordHE{} is the conformal weight of both \myHighlight{$f_1$}\coordHE{} and \myHighlight{$f_2$}\coordHE{}.
+The correlator for operators with different weights vanishes.
+The 3-point correlator is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:CFT3point}
+   \leftCoord{}<f_1[X(\tau_1)] f_2[X(\tau_2)] f_3[X(\tau_3)]> =
+   \frac {\leftCoord{}C_{123}}
+   {\rightCoord{}\leftCoord{}\tau_{21}^{h_1+h_2-h_3}\tau_{31}^{h_3+h_1-h_2}\tau_{32}^{h_2+h_3-h_1}}
+\rightCoord{}}{0mm}{4}{3}{
+  <f_1[X(\tau_1)] f_2[X(\tau_2)] f_3[X(\tau_3)]> =
+   \frac {C_{123}}
+   {\tau_{21}^{h_1+h_2-h_3}\tau_{31}^{h_3+h_1-h_2}\tau_{32}^{h_2+h_3-h_1}}
+}{1}\coordE{}\end{eqnarray}
+The constants \myHighlight{$C_{12}$}\coordHE{} and \myHighlight{$C_{123}$}\coordHE{} are functionals of \myHighlight{$f_i(x)$}\coordHE{},
+independent of the positions \myHighlight{$\tau_i$}\coordHE{} and invariant under cyclic permutation
+of indices. For physical fields which should carry \myHighlight{$h = 1$}\coordHE{} we have
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:CFT2corrh1}
+  \leftCoord{}<f_1[X_1]~f_2[X_2]> &=&  \frac {\leftCoord{}C_{12}}{\rightCoord{}(\tau_1 - \tau_2)^{2}},
+\rightCoord{}\\\leftCoord{}
+  \label{eq:CFT3corrh1}
+  \leftCoord{}<f_1[X_1]~f_2[X_2]~f_3[X_3]> &=&
+  \frac {\leftCoord{}C_{123}}{\rightCoord{}\tau_{21}\tau_{31}\tau_{32}}.\rightCoord{}
+\rightCoord{}}{0mm}{6}{6}{
+  <f_1[X_1]~f_2[X_2]> &=&  \frac {C_{12}}{(\tau_1 - \tau_2)^{2}},
+\\
+  <f_1[X_1]~f_2[X_2]~f_3[X_3]> &=&
+  \frac {C_{123}}{\tau_{21}\tau_{31}\tau_{32}}.
+}{1}\coordE{}\end{eqnarray}
+
+On the other hand, the off-shell correlators
+in the open string background, (\ref{eq:2pCorr}) and (\ref{eq:3pCorr}),
+can be written in the following way,
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:2pointoff}
+  \leftCoord{}<f_1[X_1]~f_2[X_2]> &=&
+  \sum _{\rightCoord{}I=0}^{\leftCoord{}{}\leftCoord{}\infty} \frac {\leftCoord{}\ln^I\tau_{21}^{-2}}{\rightCoord{}I!}  F_I[f_i](\tau_i)
+\rightCoord{}\\\leftCoord{}
+  \leftCoord{}<f_1[X_1]~f_2[X_2]~f_3[X_3]> &=&
+  \sum _{\rightCoord{}I,J,K=0}^{\leftCoord{}{}\leftCoord{}\infty}
+  \frac{\leftCoord{}\ln^I\tau_{21}^{-1}\ln^J\tau_{31}^{-1}\ln^K\tau_{32}^{-1}}{\rightCoord{}I!J!K!} 
+  F_{IJK}[f_i](\tau_i)
+\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{10}{8}{
+  <f_1[X_1]~f_2[X_2]> &=&
+  \sum _{I=0}^{{}\infty} \frac {\ln^I\tau_{21}^{-2}}{I!}  F_I[f_i](\tau_i)
+\\
+  <f_1[X_1]~f_2[X_2]~f_3[X_3]> &=&
+  \sum _{I,J,K=0}^{{}\infty}
+  \frac{\ln^I\tau_{21}^{-1}\ln^J\tau_{31}^{-1}\ln^K\tau_{32}^{-1}}{I!J!K!} 
+  F_{IJK}[f_i](\tau_i)
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$F_I[f_i](\tau_i)$}\coordHE{} and \myHighlight{$F_{IJK}[f_i](\tau_i)$}\coordHE{} are functionals of
+\myHighlight{$f_i$}\coordHE{} and functions of \myHighlight{$\tau_i$}\coordHE{}. The \myHighlight{$\tau_i$}\coordHE{}-dependence arises from
+the dilogarithm in (\ref{eq:GdGTdT}) as well as from the sign
+function \myHighlight{$\epsilon(\tau_{ij})$}\coordHE{} which
+accompanies every \myHighlight{$\Theta$}\coordHE{} (cf. \cite{Herbst:2001ai}). 
+In fact, we do not see the sign function
+because of our choice of ordering, \myHighlight{$\tau_1 < \tau_2 < \tau_3$}\coordHE{}.
+
+Therefore, if 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:reduction1}
+  F_I[f_i](\tau_i) &=& F_{I-1}[f_i](\tau_i) 
+\rightCoord{}\\\leftCoord{}
+  \label{eq:reduction2}
+  F_{IJK}[f_i](\tau_i) &=& F_{(I-1)JK}[f_i](\tau_i) = 
+  F_{I(J-1)K}[f_i](\tau_i) = F_{IJ(K-1)}[f_i](\tau_i)
+\rightCoord{}}{0mm}{2}{3}{
+  F_I[f_i](\tau_i) &=& F_{I-1}[f_i](\tau_i) 
+\\
+  F_{IJK}[f_i](\tau_i) &=& F_{(I-1)JK}[f_i](\tau_i) = 
+  F_{I(J-1)K}[f_i](\tau_i) = F_{IJ(K-1)}[f_i](\tau_i)
+}{1}\coordE{}\end{eqnarray}
+is fulfilled, one can reduce all functionals in the sum to
+\myHighlight{$F_0[f_i](\tau_i)$}\coordHE{} and \myHighlight{$F_{000}[f_i](\tau_i)$}\coordHE{}, respectively.
+Furthermore, in order to reproduce the behaviour (\ref{eq:CFT2corrh1})
+and (\ref{eq:CFT3corrh1}), \myHighlight{$F_0[f_i](\tau_i)$}\coordHE{} and \myHighlight{$F_{000}[f_i](\tau_i)$}\coordHE{}
+must be constants and then determine \myHighlight{$C_{12}=F_0[f_i]$}\coordHE{} and
+\myHighlight{$C_{123}=F_{000}[f_i]$}\coordHE{}.
+However, this does not work off-shell and has to be accomplished by
+certain on-shell conditions imposed  on the insertions 
+(and of course on the background fields). We proceed in two steps and 
+first show the following theorem:
+\paragraph{Relations}\hspace*{-0.3cm}
+(\ref{eq:reduction1}) and (\ref{eq:reduction2}) require 
+that the insertions satisfy the tachyonic equation of
+motion
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:eomtachyon}
+  \square f_i - (-2\pi) f_i = 
+  \frac {\leftCoord{}1}{\rightCoord{}\sqrt{\det(g-\cF)}} ~\partial_\mu 
+  \bigl(\sqrt{\det(g-\cF)}G^{\mu\nu}\partial_\nu f_i \bigr) - (-2\pi) f_i = 0.\rightCoord{}
+\rightCoord{}}{0mm}{2}{4}{
+  \square f_i - (-2\pi) f_i = 
+  \frac {1}{\sqrt{\det(g-\cF)}} ~\partial_\mu 
+  \bigl(\sqrt{\det(g-\cF)}G^{\mu\nu}\partial_\nu f_i \bigr) - (-2\pi) f_i = 0.
+}{1}\coordE{}\end{eqnarray}
+
+
+\noindent
+\emph{Proof:} We start with the 2-point correlator. In order to get a
+scalar equation of the insertions one has to integrate by part. 
+On the other hand, if we look at S-matrix calculations 
+\cite{Polchinski:1998rq} the momentum 
+conservation (\myHighlight{$\delta^D(\Sigma k)$}\coordHE{}) comes from the integration over
+zero modes. Here we do not have a flat background and we cannot perform
+the integration in that way. Now the integration by part is the analog of
+the momentum conservation in position space. Furthermore, one can
+separate the functionals \myHighlight{$F_I$}\coordHE{} into two distinct parts,
+\myHighlight{$F_I = F_I[\Theta d\Theta] + F_I[GdG,Gd\Theta,\Theta dG]$}\coordHE{}. The former
+term comes from the first line of (\ref{eq:2pCorr}), but without the
+Christoffel symbols, the latter arises from the rest of (\ref{eq:2pCorr}).
+
+We take \myHighlight{$F_I[\Theta d\Theta]$}\coordHE{} and integrate by part in the following way
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:intpart}
+  F_I[\Theta d\Theta] &=& \Bigl(\frac{\leftCoord{}1}{\rightCoord{}2\pi}\Bigr)^I \int _x G^{\mu^I\nu^I}
+          \partial_{\mu^I} f_1 \; \circ \;\partial_{\nu^I}f_2
+\rightCoord{}\\\leftCoord{}
+    \leftCoord{}=  &-& \frac 12 \Bigl(\frac{\leftCoord{}1}{\rightCoord{}2\pi}\Bigr)^I \int _x G^{\mu^{I-1}\nu^{I-1}}
+          \partial_{\mu^{I-1}} 
+          \square f_1
+          \leftCoord{}\; \circ \; \partial_{\nu^{I-1}}f_2
+\nonumber\rightCoord{}\\
+&\leftCoord{}-& \frac 12 \Bigl(\frac{\leftCoord{}1}{\rightCoord{}2\pi}\Bigr)^I \int _x G^{\mu^{I-1}\nu^{I-1}}
+          \partial_{\mu^{I-1}} f_1
+          \leftCoord{}\; \circ \; \partial_{\nu^{I-1}}
+          \square f_2
+\nonumber\rightCoord{}\\
+&\leftCoord{}+& F'_I[GdG,Gd\Theta,\Theta dG].\rightCoord{}
+\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{10}{10}{
+  F_I[\Theta d\Theta] &=& \Bigl(\frac{1}{2\pi}\Bigr)^I \int _x G^{\mu^I\nu^I}
+          \partial_{\mu^I} f_1 \; \circ \;\partial_{\nu^I}f_2
+\\
+    =  &-& \frac 12 \Bigl(\frac{1}{2\pi}\Bigr)^I \int _x G^{\mu^{I-1}\nu^{I-1}}
+          \partial_{\mu^{I-1}} 
+          \square f_1
+          \; \circ \; \partial_{\nu^{I-1}}f_2
+\\
+&-& \frac 12 \Bigl(\frac{1}{2\pi}\Bigr)^I \int _x G^{\mu^{I-1}\nu^{I-1}}
+          \partial_{\mu^{I-1}} f_1
+          \; \circ \; \partial_{\nu^{I-1}}
+          \square f_2
+\\
+&+& F'_I[GdG,Gd\Theta,\Theta dG].
+}{1}\coordE{}\end{eqnarray}
+The last expression \myHighlight{$F'_I[GdG,Gd\Theta,\Theta dG]$}\coordHE{} combines with
+\myHighlight{$F_I[GdG,Gd\Theta,\Theta dG]$}\coordHE{}.
+Analogously, using integration by part in 
+\myHighlight{$F''_I=F'_I[GdG,Gd\Theta,\Theta dG] + F_I[GdG,Gd\Theta,\Theta dG]$}\coordHE{}, 
+the differential operator as it appears in (\ref{eq:intpart}) arises
+now in zero derivative order of the background fields, i.e.
+\myHighlight{$\square f_i = G^{\mu_I\nu_I} \partial_{\mu_I}\partial_{\nu_I} f_i$}\coordHE{},
+because \myHighlight{$F''_I$}\coordHE{} contains only terms of first derivative
+order. Now \myHighlight{$F_{I-1}[\Theta d\Theta]$}\coordHE{} is equal to the first two lines of
+(\ref{eq:intpart}) if equation (\ref{eq:eomtachyon}) holds. Proceeding 
+along the same lines one can show that 
+\myHighlight{$F_{I-1}[GdG,Gd\Theta,\Theta dG] = F''_I$}\coordHE{},
+again using (\ref{eq:eomtachyon}).
+In fact, the 2-point function does not fix the tachyonic equation uniquely.
+One can add \myHighlight{$A^{\mu^{2n+1}} \partial_{\mu^{2n+1}}f_i$}\coordHE{}, where
+\myHighlight{$n \in \bbZ$}\coordHE{} and \myHighlight{$A \sim \cO(\partial)$}\coordHE{}. By means of partial
+integration such terms would mutually cancel
+in the second and third line of (\ref{eq:intpart}). However, we will see 
+that this ambiguity is fixed by the 3-point correlator.
+
+The calculation for the 3-point correlator is similar. First we make the
+split \myHighlight{$F_{IJK}=F_{IJK}[\Theta d\Theta] + F_{IJK}[GdG,Gd\Theta,\Theta dG]$}\coordHE{}.
+Let us again look at the S-matrix calculation. There one uses the relation
+\myHighlight{$k_1 k_2 = \frac 14 (k_1-k_2-k_3)(k_2-k_1-k_3)=\frac 12(k_3^2 -k_1^2 -k_2^2)$}\coordHE{}.
+With the analogous transformation in terms of partial integrations we obtain
+from (\ref{eq:3pCorr}) and (\ref{eq:GdGTdT})
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:intpart3}
+&&\leftCoord{}F_{IJK}[\Theta d\Theta] =
+\rightCoord{}\\ 
+&\leftCoord{}=&\frac 1{\pi^{I+J+K}} \rightCoord{} 
+    \int _x G^{\mu^I\nu^I}G^{\mu^J\nu^J}G^{\mu^K\nu^K}
+      \frac 12 \Bigl[ \partial_{\mu^I\mu^J}f_1 \circ 
+      \leftCoord{}(\partial_{\nu^I\mu^K}f_2 \circ \partial_{\nu^J\nu^K}f_3) +
+      \leftCoord{}(\textrm{other bracket}) \rightCoord{}
+\nonumber\rightCoord{}\\
+&&\leftCoord{} \hspace*{3.5truecm}+~L(m)~\Bigl(\partial_{\mu^I\mu^J}f_1\circ 
+                 \leftCoord{}(\partial_{\nu^I\mu^K}f_2\circ \partial_{\nu^J\nu^K}f_3) -
+                 \leftCoord{}(\textrm{other bracket}) \rightCoord{}
+  \Bigr) \Bigr] = \rightCoord{}
+\nonumber\rightCoord{}\\
+&\leftCoord{}=&\frac 1{\pi^{I+J+K}} \rightCoord{} 
+    \int _x G^{\mu^{I-1}\nu^{I-1}}G^{\mu^J\nu^J}G^{\mu^K\nu^K}
+      \frac 14 \Bigl[ \rightCoord{} 
+      \partial_{\mu^{I-1}\mu^J}f_1 \circ 
+      \leftCoord{}(\partial_{\nu^{I-1}\mu^K}f_2 \circ \partial_{\nu^J\nu^K}\square f_3)
+\nonumber\rightCoord{}\\
+&&\leftCoord{}  \hspace*{6truecm} \rightCoord{}
+      \leftCoord{}-\partial_{\mu^{I-1}\mu^J}\square f_1 \circ 
+      \leftCoord{}(\partial_{\nu^{I-1}\mu^K}f_2 \circ \partial_{\nu^J\nu^K}f_3)
+\nonumber\rightCoord{}\\
+&&\leftCoord{}  \hspace*{6truecm} \rightCoord{}
+      \leftCoord{}-\partial_{\mu^{I-1}\mu^J}f_1 \circ 
+      \leftCoord{}(\partial_{\nu^{I-1}\mu^K}\square f_2 \circ \partial_{\nu^J\nu^K}f_3)
+\nonumber\rightCoord{}\\      
+&&\leftCoord{}  \hspace*{6truecm} \rightCoord{}
+      \leftCoord{}+(\textrm{other bracket}) \rightCoord{}
+\nonumber\rightCoord{}\\
+&&\leftCoord{} \hspace*{3.5truecm}+~L(m)~\Bigl( \rightCoord{}
+      \partial_{\mu^{I-1}\mu^J}f_1\circ 
+      \leftCoord{}(\partial_{\nu^{I-1}\mu^K}f_2\circ \partial_{\nu^J\nu^K}\square f_3)
+\nonumber\rightCoord{}\\
+&&\leftCoord{}  \hspace*{5truecm} \rightCoord{}
+      \leftCoord{}-\partial_{\mu^{I-1}\mu^J}\square f_1 \circ 
+      \leftCoord{}(\partial_{\nu^{I-1}\mu^K}f_2 \circ \partial_{\nu^J\nu^K}f_3)
+\nonumber\rightCoord{}\\
+&&\leftCoord{}  \hspace*{5truecm} \rightCoord{}
+      \leftCoord{}-\partial_{\mu^{I-1}\mu^J}f_1 \circ 
+      \leftCoord{}(\partial_{\nu^{I-1}\mu^K}\square f_2 \circ \partial_{\nu^J\nu^K}f_3)
+\nonumber\rightCoord{}\\      
+&&\leftCoord{}  \hspace*{5truecm} \rightCoord{}
+      \leftCoord{}-(\textrm{other bracket}) \rightCoord{}
+  \Bigr) \Bigr] \rightCoord{}
+\nonumber\rightCoord{}\\
+&&\leftCoord{} \hspace*{0.5truecm} +~F'_{IJK}[GdG,Gd\Theta,\Theta dG].\rightCoord{}
+\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{29}{31}{
+  &&F_{IJK}[\Theta d\Theta] =
+\\ 
+&=&\frac 1{\pi^{I+J+K}}  
+    \int _x G^{\mu^I\nu^I}G^{\mu^J\nu^J}G^{\mu^K\nu^K}
+      \frac 12 \Bigl[ \partial_{\mu^I\mu^J}f_1 \circ 
+      (\partial_{\nu^I\mu^K}f_2 \circ \partial_{\nu^J\nu^K}f_3) +
+      (\textrm{other bracket}) 
+\\
+&& \hspace*{3.5truecm}+~L(m)~\Bigl(\partial_{\mu^I\mu^J}f_1\circ 
+                 (\partial_{\nu^I\mu^K}f_2\circ \partial_{\nu^J\nu^K}f_3) -
+                 (\textrm{other bracket}) 
+  \Bigr) \Bigr] = 
+\\
+&=&\frac 1{\pi^{I+J+K}}  
+    \int _x G^{\mu^{I-1}\nu^{I-1}}G^{\mu^J\nu^J}G^{\mu^K\nu^K}
+      \frac 14 \Bigl[  
+      \partial_{\mu^{I-1}\mu^J}f_1 \circ 
+      (\partial_{\nu^{I-1}\mu^K}f_2 \circ \partial_{\nu^J\nu^K}\square f_3)
+\\
+&&  \hspace*{6truecm} 
+      -\partial_{\mu^{I-1}\mu^J}\square f_1 \circ 
+      (\partial_{\nu^{I-1}\mu^K}f_2 \circ \partial_{\nu^J\nu^K}f_3)
+\\
+&&  \hspace*{6truecm} 
+      -\partial_{\mu^{I-1}\mu^J}f_1 \circ 
+      (\partial_{\nu^{I-1}\mu^K}\square f_2 \circ \partial_{\nu^J\nu^K}f_3)
+\\      
+&&  \hspace*{6truecm} 
+      +(\textrm{other bracket}) 
+\\
+&& \hspace*{3.5truecm}+~L(m)~\Bigl( 
+      \partial_{\mu^{I-1}\mu^J}f_1\circ 
+      (\partial_{\nu^{I-1}\mu^K}f_2\circ \partial_{\nu^J\nu^K}\square f_3)
+\\
+&&  \hspace*{5truecm} 
+      -\partial_{\mu^{I-1}\mu^J}\square f_1 \circ 
+      (\partial_{\nu^{I-1}\mu^K}f_2 \circ \partial_{\nu^J\nu^K}f_3)
+\\
+&&  \hspace*{5truecm} 
+      -\partial_{\mu^{I-1}\mu^J}f_1 \circ 
+      (\partial_{\nu^{I-1}\mu^K}\square f_2 \circ \partial_{\nu^J\nu^K}f_3)
+\\      
+&&  \hspace*{5truecm} 
+      -(\textrm{other bracket}) 
+  \Bigr) \Bigr] 
+\\
+&& \hspace*{0.5truecm} +~F'_{IJK}[GdG,Gd\Theta,\Theta dG].
+}{1}\coordE{}\end{eqnarray}
+Since the dilogarithmic term is of first derivative order in background
+fields there are no contributions
+thereof in \myHighlight{$F'_{IJK}[GdG,Gd\Theta,\Theta dG]$}\coordHE{}.
+The same procedure as above shows that in view of (\ref{eq:eomtachyon})
+the first part of (\ref{eq:intpart3}) equals \myHighlight{$F_{(I-1)JK}[\Theta d\Theta]$}\coordHE{}
+and \myHighlight{$F'_{IJK}[GdG,Gd\Theta,\Theta dG] + F_{IJK}[GdG,Gd\Theta,
+\Theta dG]= F_{(I-1)JK}[GdG,Gd\Theta,\Theta dG]$}\coordHE{}. But now terms like
+\myHighlight{$A^{\mu^{2n+1}} \partial_{\mu^{2n+1}}f_i$}\coordHE{} would not cancel in
+(\ref{eq:intpart3}), so that the tachyonic equation of motion
+(\ref{eq:eomtachyon}) is unique. Relations \myHighlight{$F_{IJK} = F_{I(J-1)K}$}\coordHE{}
+and \myHighlight{$F_{IJK} = F_{IJ(K-1)}$}\coordHE{} can be shown analogously. \myHighlight{$\qquad\square$}\coordHE{}
+
+With this result we can write the correlators as
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:corrOnShell}
+  \leftCoord{}<f_1[X_1]~f_2[X_2]> &=& \frac {\leftCoord{}F_0[f_i](\tau_i)}{\rightCoord{}\tau_{21}{\rightCoord{}}^2}
+\rightCoord{}\\\leftCoord{}
+  \leftCoord{}<f_1[X_1]~f_2[X_2]~f_3[X_3]> &=&
+  \frac{\leftCoord{}F_{000}[f_i](\tau_i)}{\rightCoord{}\tau_{21}\tau_{31}\tau_{32}}
+\nonumber\rightCoord{}  
+\rightCoord{}}{0mm}{6}{7}{
+  <f_1[X_1]~f_2[X_2]> &=& \frac {F_0[f_i](\tau_i)}{\tau_{21}{}^2}
+\\
+  <f_1[X_1]~f_2[X_2]~f_3[X_3]> &=&
+  \frac{F_{000}[f_i](\tau_i)}{\tau_{21}\tau_{31}\tau_{32}}
+}{1}\coordE{}\end{eqnarray}
+with
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:corr2off}
+  F_0[f_i](\tau_i) &=& \int _x (f_1\circ f_2)~,
+\rightCoord{}\\\leftCoord{}
+  \label{eq:corr3off}
+   F_{000}[f_i](\tau_i) &=& \int _x \frac 12 \Bigl\{
+          f_1\circ (f_2\circ f_3) + (f_1\circ f_2)\circ f_3 +
+\rightCoord{}\\
+&&\leftCoord{} +~L(m)~\Bigl(f_1\circ (f_2\circ f_3) - (f_1\circ f_2)\circ f_3)\Bigr)
+\Bigr\}. \rightCoord{}
+\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{3}{6}{
+  F_0[f_i](\tau_i) &=& \int _x (f_1\circ f_2)~,
+\\
+  F_{000}[f_i](\tau_i) &=& \int _x \frac 12 \Bigl\{
+          f_1\circ (f_2\circ f_3) + (f_1\circ f_2)\circ f_3 +
+\\
+&& +~L(m)~\Bigl(f_1\circ (f_2\circ f_3) - (f_1\circ f_2)\circ f_3)\Bigr)
+\Bigr\}. 
+}{1}\coordE{}\end{eqnarray}
+
+Indeed, (\ref{eq:corr2off}) and (\ref{eq:corr3off}) are not yet position
+independent and invariant under cyclic exchange of the functions \myHighlight{$f_i$}\coordHE{}.
+Putting also the background fields on shell, i.e. using 
+the Maxwell equation (\ref{eq:eom1}), we can take advantage of
+the relations (\ref{eq:ordprod}) and (\ref{eq:assocprod}). So, we reach 
+the final result
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:corr2on}
+  \leftCoord{}<f_1[X_1]~f_2[X_2]> &=& \frac {\leftCoord{}1}{\rightCoord{}\tau_{21}{\rightCoord{}}^2} \int _x f_1\circ f_2 
+           \leftCoord{}~=~ \frac {\leftCoord{}1}{\rightCoord{}\tau_{21}{\rightCoord{}}^2} \int _x f_1\cdot f_2~,
+\rightCoord{}\\\leftCoord{}
+  \label{eq:corr3on}
+  \leftCoord{}<f_1[X_1]~f_2[X_2]~f_3[X_3]> &=&  \frac {\leftCoord{}1}{\rightCoord{}\tau_{21}\tau_{31}\tau_{32}}
+                     \int _x f_1\circ f_2\circ f_3~.\rightCoord{}
+\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{8}{10}{
+  <f_1[X_1]~f_2[X_2]> &=& \frac {1}{\tau_{21}{}^2} \int _x f_1\circ f_2 
+           ~=~ \frac {1}{\tau_{21}{}^2} \int _x f_1\cdot f_2~,
+\\
+  <f_1[X_1]~f_2[X_2]~f_3[X_3]> &=&  \frac {1}{\tau_{21}\tau_{31}\tau_{32}}
+                     \int _x f_1\circ f_2\circ f_3~.
+}{1}\coordE{}\end{eqnarray}
+
+We close this section with a remark on the ghost fields, which we have 
+totally excluded from our discussion so far.
+On the disc we have three conformal killing vectors (forming the M\"obius
+group \myHighlight{$SL(2,\bbR)$}\coordHE{}) and therefore three of
+the vertices in a correlator can be fixed in position and must be 
+accompanied by a ghost field \myHighlight{$c(\tau_i)$}\coordHE{}, the 
+others being integrated over the world sheet. The 2-point correlator has too
+few insertions in order to give a non-vanishing result in the ghost sector,
+i.e. \myHighlight{$\bra c(\tau_1)c(\tau_2) \ket_{gh} = 0$}\coordHE{}. The 3-point ghost amplitude, 
+\myHighlight{$\bra c(\tau_1)c(\tau_2)c(\tau_3) \ket_{gh} 
+        = c_{gh}~\tau_{21}\tau_{31}\tau_{32}$}\coordHE{},
+exactly cancels the position dependence of the correlator 
+(\ref{eq:CFT3corrh1}). Moreover, the M\"obius group preserves
+the cyclic order of the insertions and so we must sum over inequivalent
+orderings in the 3-point amplitude, so that we obtain\footnote{%
+  Until now we have chosen the normalization of the correlators such
+  that it reduces to an integral over the ordinary product of
+  functions for
+  \myHighlight{$\cF=0$}\coordHE{}. We reintroduce a normalization constant \myHighlight{$c = c_X c_{gh}$}\coordHE{}
+  where \myHighlight{$c_X$}\coordHE{} and \myHighlight{$c_{gh}$}\coordHE{} are the normalizations for the matter
+  and the ghost contribution, respectively. \myHighlight{$c$}\coordHE{} is fixed by unitarity
+  \cite{Polchinski:1998rq}.
+}
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:fullcorr}
+  \bra cf_1[X_1]~cf_2[X_2]~cf_3[X_3]\ket + (f_2 \leftrightarrow f_3) =
+  c~\int _x f_1\circ (f_2\circ f_3+f_3\circ f_2)~.\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+  \bra cf_1[X_1]~cf_2[X_2]~cf_3[X_3]\ket + (f_2 \leftrightarrow f_3) =
+  c~\int _x f_1\circ (f_2\circ f_3+f_3\circ f_2)~.
+}{1}\coordE{}\end{eqnarray}
+
+
+\section{Tachyonic action}
+\label{sec:tachyon}
+
+
+The results (\ref{eq:eomtachyon}) and (\ref{eq:fullcorr}) enable us to
+reconstruct the kinetic term and the cubic potential of the open
+string tachyon. The value for the coupling constant is recovered from 
+consistency with S-matrix calculations, as discussed 
+e.g. in \cite{Polchinski:1998rq}, by  
+taking the limit \myHighlight{$\Theta \rightarrow 0$}\coordHE{} and \myHighlight{$g_{\mu\nu} = \eta_{\mu\nu}$}\coordHE{}.
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:tachaction}
+  S &=& - \frac 1{2g_o^2} \int d^Dx \sqrt{g-\cF}~
+      \Bigl\{ \rightCoord{} 
+      G^{\mu\nu} \cdot \partial_\mu T \cdot \partial_\nu T -
+      \frac {\leftCoord{}1}{\rightCoord{}\alpha'} ~T \cdot T - \rightCoord{} 
+      {\rightCoord{}\leftCoord{}\sqrt \frac{\leftCoord{}8}{\rightCoord{}9\alpha'}} ~T \cdot (T \circ T) \Bigr\}~. \rightCoord{}
+\rightCoord{}}{0mm}{4}{8}{
+  S &=& - \frac 1{2g_o^2} \int d^Dx \sqrt{g-\cF}~
+      \Bigl\{  
+      G^{\mu\nu} \cdot \partial_\mu T \cdot \partial_\nu T -
+      \frac {1}{\alpha'} ~T \cdot T -  
+      {\sqrt \frac{8}{9\alpha'}} ~T \cdot (T \circ T) \Bigr\}~. 
+}{1}\coordE{}\end{eqnarray}
+It would be more natural if we write the action totally in
+terms of the non-commutative product (\ref{eq:NCP}), i.e.
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:cubicaction}
+  S = - \frac 1{2g_o^2} \int d^Dx \sqrt{g-\cF}~
+      \Back&\Bigl\{&\Back 
+      G^{\mu\nu} \circ \partial_\mu T \circ \partial_\nu T -
+      \frac {\leftCoord{}1}{\rightCoord{}\alpha'} ~T \circ T - \rightCoord{} 
+      {\rightCoord{}\leftCoord{}\sqrt \frac{\leftCoord{}8}{\rightCoord{}9\alpha'}} ~T\circ T\circ T \Bigr\}. \rightCoord{}
+\rightCoord{}}{0mm}{4}{7}{
+  S = - \frac 1{2g_o^2} \int d^Dx \sqrt{g-\cF}~
+      \Back&\Bigl\{&\Back 
+      G^{\mu\nu} \circ \partial_\mu T \circ \partial_\nu T -
+      \frac {1}{\alpha'} ~T \circ T -  
+      {\sqrt \frac{8}{9\alpha'}} ~T\circ T\circ T \Bigr\}. 
+}{1}\coordE{}\end{eqnarray}
+The kinetic term of this action generates the equation of motion
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:eomLagrang}
+  \frac 12 \frac 1{\sqrt{g-\cF}}~ \rightCoord{}
+  \partial_\mu \Bigl( \sqrt{g-\cF}~(G^{\mu\nu} \circ \partial_\nu T +
+  \partial_\nu T \circ G^{\mu\nu}) \Bigr) + \frac 1{\alpha'} T = 0,
+\rightCoord{}}{0mm}{1}{3}{
+  \frac 12 \frac 1{\sqrt{g-\cF}}~ 
+  \partial_\mu \Bigl( \sqrt{g-\cF}~(G^{\mu\nu} \circ \partial_\nu T +
+  \partial_\nu T \circ G^{\mu\nu}) \Bigr) + \frac 1{\alpha'} T = 0,
+}{1}\coordE{}\end{eqnarray}
+which reduces to equation (\ref{eq:eomtachyon}) because
+\myHighlight{$\frac12(G^{\mu\nu} \circ \partial_\nu T + \partial_\nu T \circ G^{\mu\nu}) 
+= G^{\mu\nu} \partial_\nu T + \cO(\partial^2G)$}\coordHE{}. 
+This means that the question whether one has to put the non-commutative 
+product into the kinetic term or not cannot be decided at % this stage.
+first derivative order. 
+
+If we impose the background field on-shell condition (\ref{eq:eom1}),
+the kinetic term of (\ref{eq:eomtachyon}) reveals a remarkable feature
+of the geometry on the D-brane. Equation (\ref{eq:eom1}) implies also
+\myHighlight{$\partial_\mu (\sqrt{g-\cF}G^{\mu\nu}) = \sqrt{g-\cF} M^{\rho\sigma} (-\Gamma_{\rho\sigma}{}^{\nu} - \frac 12 H_{\rho\sigma}{}^{\nu})$}\coordHE{},
+and we are able to rewrite (\ref{eq:eomtachyon}) as
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:eomtachyon2}
+  M^{\mu\nu}\nabla_\mu \nabla_\nu T - (-2\pi) T = 0,
+\rightCoord{}}{0mm}{1}{2}{
+  M^{\mu\nu}\nabla_\mu \nabla_\nu T - (-2\pi) T = 0,
+}{1}\coordE{}\end{eqnarray}
+where we have introduced the connection \myHighlight{$\nabla$}\coordHE{} that is compatible
+with the bulk metric and has torsion \myHighlight{$H$}\coordHE{}
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:connection}
+  \nabla_\mu \xi_\nu = \partial_\mu \xi_\nu
+                      \leftCoord{}- \Gamma_{\mu\nu}{}^\rho \xi_\rho
+                      \leftCoord{}- \frac 12 H_{\mu\nu}{}^\rho \xi_\rho .\rightCoord{}
+\rightCoord{}}{0mm}{3}{3}{
+  \nabla_\mu \xi_\nu = \partial_\mu \xi_\nu
+                      - \Gamma_{\mu\nu}{}^\rho \xi_\rho
+                      - \frac 12 H_{\mu\nu}{}^\rho \xi_\rho .
+}{1}\coordE{}\end{eqnarray}
+This is exactly the connection that appears in closed string theory
+and it is independent of the gauge field \myHighlight{$A$}\coordHE{}.
+
+Finally, we make a remark on higher order interactions in the
+tachyonic potential. Since each term in the potential is a power of
+the field \myHighlight{$T$}\coordHE{}, it is a very symmetric expression and one may ask if
+more brackets than the outermost can be omitted and, if so, how many. 
+For ``\myHighlight{$T^{\circ n}$}\coordHE{}'' with \myHighlight{$n = 4,5$}\coordHE{} it is easy to show that all
+brackets can be left out, i.e. 
+\myHighlight{$\int_x T^{\circ 4}=\int_x T\circ T\circ T\circ T$}\coordHE{} and 
+\myHighlight{$\int_x T^{\circ 5}=\int_x T\circ T\circ T\circ T\circ T$}\coordHE{}. 
+What happens if we vary these expressions? To
+this end one has to select an arbitrary choice for the brackets in
+\myHighlight{$T^{\circ 4}$}\coordHE{} and \myHighlight{$T^{\circ 5}$}\coordHE{}. Independently of that choice the 
+variation gives the sum over all bracket arrangements for three and four
+functions,
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:vary}
+&&\leftCoord{} \delta \int _x T^{\circ 4} = 
+     \int _x \delta T \cdot \Bigl(T\circ (T\circ T)) + 
+                            \leftCoord{}((T\circ T)\circ T)\Bigr) \rightCoord{}
+\rightCoord{}\\
+&&\leftCoord{} \delta \int _x T^{\circ 5} = 
+     \int _x \delta T \cdot \Bigl(T \circ (T \circ (T \circ T)) +
+                                  T \circ ((T \circ T) \circ T) + \rightCoord{}
+                                  \leftCoord{}(T \circ T) \circ (T \circ T) + \rightCoord{}
+\nonumber\rightCoord{}\\ 
+&&\leftCoord{} \hspace{2.8truecm}           +~(T \circ (T \circ T)) \circ T + \rightCoord{}
+                                  \leftCoord{}((T \circ T) \circ T) \circ T \Bigr). \rightCoord{}
+\rightCoord{}}{0mm}{7}{9}{
+  && \delta \int _x T^{\circ 4} = 
+     \int _x \delta T \cdot \Bigl(T\circ (T\circ T)) + 
+                            ((T\circ T)\circ T)\Bigr) 
+\\
+&& \delta \int _x T^{\circ 5} = 
+     \int _x \delta T \cdot \Bigl(T \circ (T \circ (T \circ T)) +
+                                  T \circ ((T \circ T) \circ T) + 
+                                  (T \circ T) \circ (T \circ T) + 
+\\ 
+&& \hspace{2.8truecm}           +~(T \circ (T \circ T)) \circ T + 
+                                  ((T \circ T) \circ T) \circ T \Bigr). 
+}{1}\coordE{}\end{eqnarray}
+For higher powers the behaviour is different. For instance, in case of
+\myHighlight{$n=6$}\coordHE{} the following four expressions have different variations: 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{eq:power6}
+&&\leftCoord{}\int _x (T \circ (T \circ T)) \circ ((T \circ T) \circ T) ,\rightCoord{}\\
+&&\leftCoord{}\int _x (T \circ (T \circ T)) \circ (T \circ (T \circ T)) ,\nonumber\rightCoord{}\\
+&&\leftCoord{}\int _x ((T \circ T) \circ T) \circ ((T \circ T) \circ T) ,\nonumber\rightCoord{}\\
+&&\leftCoord{}\int _x ((T \circ T) \circ (T \circ T)) \circ (T \circ T) .\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{5}{6}{
+  &&\int _x (T \circ (T \circ T)) \circ ((T \circ T) \circ T) ,\\
+&&\int _x (T \circ (T \circ T)) \circ (T \circ (T \circ T)) ,\\
+&&\int _x ((T \circ T) \circ T) \circ ((T \circ T) \circ T) ,\\
+&&\int _x ((T \circ T) \circ (T \circ T)) \circ (T \circ T) .}{1}\coordE{}\end{eqnarray}
+Any other bracket arrangements can be converted to one of these
+possibilities by means of equations (\ref{eq:ordprod}) and
+(\ref{eq:assocprod}). 
+The variations of (\ref{eq:power6}) give a sum of
+6, 3, 3, and 2 different terms, respectively.\footnote{% 
+  The total number of terms is always 14, 
+  which is the number of bracket arrangements for five functions.
+}
+Therefore, for higher powers than five we have distinct expressions, 
+where either one could arise in the tachyon potential, possibly with 
+different weights.
+
+
+\section{Discussion}
+\label{sec:disc}
+
+
+In view of the quantity \myHighlight{$M_{\mu\nu}$}\coordHE{} and its inverse, the two metrics,
+\myHighlight{$g$}\coordHE{} and \myHighlight{$G$}\coordHE{}, seem to be on equal footing on the D-brane. For instance,
+the integration measure can be written as \myHighlight{$\root 4 \of {g} \root 4 \of {G}$}\coordHE{}. 
+However, in the effective field theory on the brane they play
+different roles. \myHighlight{$G$}\coordHE{} appears in the kinetic term of the 
+action and, therefore, one expects that it is the preferred metric on
+the brane. However, as we have seen in section (\ref{sec:tachyon}),
+the natural connection on the D-brane is compatible with
+\myHighlight{$g$}\coordHE{} and has torsion \myHighlight{$H=dB$}\coordHE{}. This has an interesting consequence.
+The connection and the parallel transport is independent
+of the open string gauge field \myHighlight{$A$}\coordHE{} and depends only on bulk quantities.
+So we have gained some insight into the differential structure on
+a D-brane and it would be even more interesting to see how 
+this extends to second derivative order. The correlation functions of
+open string photon vertices instead of tachyon vertices would be another
+source of information. They should give rise
+to a gauge theory in a general non-commutative background.
+
+We have seen that the form of the terms in the tachyonic potential is
+determined for powers lower than six. For higher powers 
+of the tachyon field one has to calculate the
+corresponding correlators in order to decide with which relative
+weight the distinct subsets (e.g. (\ref{eq:power6})) appear. 
+Of course, a sum over all bracket arrangements would be a natural choice.
+But in fact, to find out whether this
+guess is correct, one needs a better understanding of the underlying
+\myHighlight{$A_\infty$}\coordHE{}-structure (cf. \cite{stasheff,Cornalba:2002sm}).
+
+Since our results are consequences of restricting off-shell correlators 
+to the known structure of conformal field theory it would be
+interesting to compare our results with other off-shell approaches, 
+e.g. background independent open string field theory
+\cite{Witten:1992qy,Witten:1993cr,
+Shatashvili:1993kk,Shatashvili:1993ps}.\footnote{% 
+  BSFT requires a fixed conformal background in the bulk, 
+  but allows for arbitrary boundary interactions. Our approach does 
+  not make reference to such a background and is closer to the spirit of the 
+  sigma model approach to string theory~\cite{Tseytlin:1989rr}.
+} 
+Clearly we expect that the tachyonic on-shell condition obtained in this 
+paper is equivalent to the consistency condition for a string propagating 
+in nontrivial background fields, i.e. the Weyl invariance condition of the 
+underlying 2-d non-linear sigma model. Furthermore, the relation to previous 
+work on the appearance of a non-commutative tachyon action, mostly considered 
+in the limit of a strong magnetic field~\cite{Cornalba:2001ad,Okuyama:2001ch}, 
+needs clarification. The exact non-commutative tachyon potential 
+should be given by the well known expression obtained from BSFT but with 
+ordinary products replaced with the generalized non-commutative product found 
+in~\cite{Herbst:2001ai}. 
+
+
+\emph{Acknowledgments.} This work was supported in part by the Austrian 
+Research Funds FWF under grants Nr. P14639-TPH and P15553,
+and by the city of Vienna under grant Nr. H-85/2001.
+
+\newpage
+
+\thebibliography{99}\addtolength{\itemsep}{-7pt}
+
+\vspace{-4truemm}
+
+\bibitem{Schomerus:1999ug}
+V.~Schomerus,
+``D-branes and deformation quantization,''
+JHEP {\bf 9906} (1999) 030
+[hep-th/9903205].
+%%CITATION = HEP-TH 9903205;%%
+
+\bibitem{Seiberg:1999vs}
+N.~Seiberg and E.~Witten,
+``String theory and noncommutative geometry,''
+JHEP {\bf 9909} (1999) 032
+[hep-th/9908142].
+%%CITATION = HEP-TH 9908142;%%
+
+\bibitem{Ardalan:1999ce}
+F.~Ardalan, H.~Arfaei and M.~M.~Sheikh-Jabbari,
+``Noncommutative geometry from strings and branes,''
+JHEP {\bf 9902} (1999) 016
+[hep-th/9810072].
+%%CITATION = HEP-TH 9810072;%%
+
+\bibitem{Ardalan:2000av}
+F.~Ardalan, H.~Arfaei and M.~M.~Sheikh-Jabbari,
+``Dirac quantization of open strings and noncommutativity in branes,''
+Nucl.\ Phys.\ B {\bf 576} (2000) 578
+[hep-th/9906161].
+%%CITATION = HEP-TH 9906161;%%
+
+\bibitem{Chu:1999qz}
+C.~Chu and P.~Ho,
+``Noncommutative open string and D-brane,''
+Nucl.\ Phys.\ B {\bf 550} (1999) 151
+[hep-th/9812219].
+%%CITATION = HEP-TH 9812219;%%
+
+\bibitem{Kontsevich:1997vb}
+M.~Kontsevich,
+``Deformation quantization of Poisson manifolds, I,''
+q-alg/9709040.
+%%CITATION = Q-ALG 9709040;%%
+
+\bibitem{Cattaneo:2000fm}
+A.~S.~Cattaneo and G.~Felder,
+``A path integral approach to the Kontsevich quantization formula,''
+Commun.\ Math.\ Phys.\  {\bf 212} (2000) 591
+[math.qa/9902090].
+%%CITATION = MATH.QA 9902090;%%
+
+\bibitem{Herbst:2001ai}
+M.~Herbst, A.~Kling and M.~Kreuzer,
+``Star products from open strings in curved backgrounds,''
+JHEP {\bf 0109} (2001) 014
+[arXiv:hep-th/0106159].
+%%CITATION = HEP-TH 0106159;%%
+
+\bibitem{Cornalba:2002sm}
+L.~Cornalba and R.~Schiappa,
+``Nonassociative star product deformations for D-brane worldvolumes in curved 
+backgrounds,''
+Commun.\ Math.\ Phys.\  {\bf 225} (2002) 33
+[arXiv:hep-th/0101219].
+%%CITATION = HEP-TH 0101219;%%
+
+\bibitem{Ho:2000fv}
+P.~Ho and Y.~Yeh,
+``Noncommutative D-brane in non-constant NS-NS B field background,''
+Phys.\ Rev.\ Lett.\  {\bf 85} (2000) 5523
+[hep-th/0005159].
+%%CITATION = HEP-TH 0005159;%%
+
+\bibitem{Chu:2000gi}
+C.~Chu and P.~Ho,
+``Constrained quantization of open string in background B field and  
+noncommutative D-brane,''
+Nucl.\ Phys.\ B {\bf 568} (2000) 447
+[hep-th/9906192].
+%%CITATION = HEP-TH 9906192;%%
+
+\bibitem{Ho:2001qk}
+P.~Ho,
+``Making non-associative algebra associative,''
+hep-th/0103024.
+%%CITATION = HEP-TH 0103024;%%
+
+\bibitem{Ho:2001fi}
+P.~Ho and S.~Miao,
+``Noncommutative differential calculus for D-brane in non-constant B  
+field background,''
+hep-th/0105191.
+%%CITATION = HEP-TH 0105191;%%
+
+\bibitem{stasheff}
+J. D. Stasheff, 
+``On the homotopy associativity of H-spaces, I. \& II.,'' 
+Trans. Amer. Math. Soc. {\bf 108} (1963) 275 \& 293.
+
+\bibitem{Polchinski:1998rq}
+J.~Polchinski,
+``String theory. Vol. 1: An introduction to the bosonic string,''
+Cambridge University Press (1998).
+
+\bibitem{Witten:1992qy}
+E.~Witten,
+``On background independent open string field theory,''
+Phys.\ Rev.\ D {\bf 46} (1992) 5467
+[arXiv:hep-th/9208027].
+%%CITATION = HEP-TH 9208027;%%
+
+\bibitem{Witten:1993cr}
+E.~Witten,
+``Some computations in background independent off-shell string theory,''
+Phys.\ Rev.\ D {\bf 47} (1993) 3405
+[arXiv:hep-th/9210065].
+%%CITATION = HEP-TH 9210065;%%
+
+\bibitem{Shatashvili:1993kk}
+S.~L.~Shatashvili,
+``Comment on the background independent open string theory,''
+Phys.\ Lett.\ B {\bf 311} (1993) 83
+[arXiv:hep-th/9303143].
+%%CITATION = HEP-TH 9303143;%%
+
+\bibitem{Shatashvili:1993ps}
+S.~L.~Shatashvili,
+``On the problems with background independence in string theory,''
+arXiv:hep-th/9311177.
+%%CITATION = HEP-TH 9311177;%%
+
+\bibitem{Cornalba:2001ad}
+L.~Cornalba,
+``Tachyon condensation in large magnetic fields with background  
+independent string field theory,''
+Phys.\ Lett.\ B {\bf 504} (2001) 55
+[arXiv:hep-th/0010021].
+%%CITATION = HEP-TH 0010021;%%
+
+\bibitem{Okuyama:2001ch}
+K.~Okuyama,
+``Noncommutative tachyon from background independent open string field 
+theory,''
+Phys.\ Lett.\ B {\bf 499} (2001) 167
+[arXiv:hep-th/0010028].
+%%CITATION = HEP-TH 0010028;%%
+
+\bibitem{Tseytlin:1989rr}
+A.~A.~Tseytlin,
+``Sigma Model Approach To String Theory,''
+Int.\ J.\ Mod.\ Phys.\ A {\bf 4} (1989) 1257.
+%%CITATION = IMPAE,A4,1257;%%
+
+\end{document}
+
+\bye

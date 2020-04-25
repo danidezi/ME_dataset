@@ -1,0 +1,2438 @@
+
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{amssymb}
+%
+%
+\oddsidemargin 0 pt      %   Left margin on odd-numbered pages.
+\evensidemargin 0 pt     %   Left margin on even-numbered pages.
+\voffset=-2 truecm
+\textwidth=16.5 truecm
+\textheight=24 truecm
+%
+
+\newcounter{theorem}
+\newtheorem{theorem}{Theorem}[section]   %Section count
+\setlength{\baselineskip}{12.5pt}
+\setlength{\parskip}{10pt plus2pt minus2pt}
+%
+\newcounter{eg}
+\newtheorem{eg}{Example}[section]   %Section count
+\def\beg{\begin{eg}\rm}
+\def\eeg{\hfill\sq\end{eg}}
+%
+%
+%
+
+\def\t#1{\tilde #1}
+\def\ad{\mbox{ad}\,}
+\def\b#1{{\mathbb #1}}
+\def\bra#1{\langle #1 \vert}
+\def\c#1{{\cal #1}}
+\def\coker{\mbox{Coker}\,}
+\def\der{\mbox{Der}}
+\def\Dirac{{\raise0.09em\hbox{/}}\kern-0.69em D}
+\def\e{{\scriptstyle\rm e}}
+\def\etal{{\it et al.}\ }
+\def\im{\mbox{Im}\,}
+\def\kbar{{\mathchar'26\mkern-9muk}}  
+\def\ker{\mbox{Ker}\,}
+\def\ket#1{\vert #1 \rangle}
+\def\op{{\scriptstyle\rm op}}
+\def\sq{\hbox{\rlap{\myHighlight{$\sqcap$}\coordHE{}}\myHighlight{$\sqcup$}\coordHE{}}}
+\def\squeeze{\hspace{-17pt}}
+\def\st{\, : \,}
+\def\p{\partial}
+\def\h#1{\hat #1}
+\def\tr{\mbox{Tr}}
+\def\ttr{\tilde{\mbox{T}}\mbox{r}}
+\def\tint{\hspace{7pt}\tilde{\hspace{-7pt}\int}}
+\def\vev#1{\langle #1 \rangle}
+%
+\def\wm{\mathbin{*}}
+\def\hwm{\mathbin{\hat *}}
+\def\k{\kern-.1em\mathbin{,}\kern-.1em}
+\def\hk{\kern.12em\raise-1em\hbox{\myHighlight{$\hat{\raise1em\hbox{,}}$}\coordHE{}}\kern.12em}
+%
+%
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\providecommand{\initiate}{\setcounter{equation}{0}}
+%
+%
+%
+%
+\def\cn#1{\cite{#1}}
+\def\cy#1{\cite{#1}}
+%
+%
+%
+
+\usepackage{useful_macros}
+\begin{document}
+
+\title{Fuzzy-{\myHighlight{$pp$}\coordHE{}} Waves}
+
+\author{J. Madore\myHighlight{$\strut^{1,2}$}\coordHE{} \ M. Maceda\myHighlight{$\strut^{1}$}\coordHE{} \
+        D.~C. Robinson\myHighlight{$\strut^{3}$}\coordHE{}\\[10pt]
+        \myHighlight{$\strut^{1}$}\coordHE{}Laboratoire de Physique Th\'eorique\\
+        Universit\'e de Paris-Sud, B\^atiment 211, F-91405 Orsay%\\[5pt]
+\and    \myHighlight{$\strut^{2}$}\coordHE{}Max-Planck-Institut f\"ur Physik\\
+        F\"ohringer Ring 6, D-80805 M\"unchen\\[5pt]
+\and    \myHighlight{$\strut^{3}$}\coordHE{}Dept. of Mathematics\\
+        King's College, Strand, UK-WC2~R2LS London}
+
+\date{}
+
+\maketitle
+
+\abstract
+
+We present a noncommutative version of a plane-wave solution to the
+gravitational field equations. We start with a given classical
+solution, admittedly rather simple, and construct an algebra and a
+differential calculus which supports the metric. In the particular
+solution presented as an example the 1-forms do not anticommute, to a
+degree which depends on the amplitude of the deviation of the metric
+from the standard Minkowski metric.
+
+
+\vfill
+
+\medskip
+\eject
+
+\parskip 4pt plus2pt minus2pt
+
+\initiate
+\section{Motivation}
+
+A noncommutative generalization of a classical solution to Einstein's
+equation would require first of all a noncommutative version of a
+smooth manifold. Although noncommutative geometry has its roots in
+several attempts by physicists to overcome the problems of ultraviolet
+divergences in field theory it is to A.~Connes that is due the first
+construction~\cite{Con94} of a smooth structure. The version of this
+which we shall use here~\cite{Mad00c} is a slight, even `smoother',
+modification which permits the use of a metric of Minkowski signature.
+This metric has also a locality property which is most easily
+expressible in terms of a `frame' in the sense of Cartan. A smooth
+manifold \myHighlight{$V$}\coordHE{} with a metric can be defined as a subspace of an
+euclidean space \myHighlight{$\b{R}^m$}\coordHE{} of sufficiently high dimension \myHighlight{$m$}\coordHE{} and the
+embedding can be chosen so that the induced metric coincides with that
+of the manifold. If the manifold is of dimension \myHighlight{$n$}\coordHE{} then generically
+in this case \myHighlight{$m$}\coordHE{} must satisfy \myHighlight{$m \geq n(n-1)/2$}\coordHE{}. The embedding is
+equivalent to a projection 
+$$\coord{}\boxMath{
+\c{C}(\b{R}^m) \rightarrow \c{C}(V)
+}{dollar}{0pt}\coordE{}$$
+of the algebra of functions \myHighlight{$\c{C}(\b{R}^m)$}\coordHE{} onto the algebra
+\myHighlight{$\c{C}(V)$}\coordHE{} of smooth functions on \myHighlight{$V$}\coordHE{} and the latter can be formally
+defined in terms of generators and relations.  This is convenient for
+the noncommutative generalizations. 
+
+Classical metrics have often been
+defined~\cite{LidRomTavRip97,PavTap01} using embeddings and although
+it is possible in the present case to avoid this
+construction~\cite{DesPirRob76} it will perhaps in general
+be convenient.  Other metrics with curvature have been
+proposed~\cite{Mad89c,AscCas93} in the past but none
+has been found to be Einstein. The method we use is for the moment
+limited to what could be considered noncommutative analogues of
+parallelizable manifolds. Another popular approach does not have this
+limitation but is restricted to metrics of euclidean signature; we
+refer to two recent books~\cite{Lan97,FigGraVar00} for an exhaustive
+description and reference to the original literature.
+
+Within the general framework which we here consider, the principal
+difference between the commutative and noncommutative cases lies in
+the spectrum of the operators which we use to generate the
+noncommutative algebra which replaces the algebra of functions. This
+in turn depends not only on the structure of this algebra as an abstract
+algebra but on the representation of it which we choose to
+consider. The ultimate aim is the construction of a noncommutative
+generalization of the theory of general relativity which will remain
+``smooth', but become essentially noncommutative, in regions where the
+commutative limit would be singular. An explicit example has been
+constructed~\cite{MacMadZou02} recently based on the Kasner metric.
+
+
+\initiate
+\section{The general formalism}
+
+For the purpose of the present exposition the expression
+`noncommutative space-time' will designate a \myHighlight{$*$}\coordHE{}-algebra \myHighlight{$\c{A}$}\coordHE{} with
+trivial center and \myHighlight{$n(=4)$}\coordHE{} hermitian generators \myHighlight{$x^\mu$}\coordHE{} as well as a
+differential calculus \myHighlight{$\Omega^*(\c{A})$}\coordHE{} over \myHighlight{$\c{A}$}\coordHE{} which has certain
+'parallelizability' properties; notably the \myHighlight{$\c{A}$}\coordHE{}-module
+\myHighlight{$\Omega^1(\c{A})$}\coordHE{} is free. This will be discussed in more detail
+below. The \myHighlight{$x^\mu$}\coordHE{} will be referred to as `position generators'.  We
+shall suppose also that there is a set of \myHighlight{$n(=4)$}\coordHE{} antihermitian
+`momentum generators' \myHighlight{$\lambda_\alpha$}\coordHE{} and a `Fourier transform'
+$$\coord{}\boxMath{
+F: x^\mu \longrightarrow \lambda_\alpha = F_\alpha (x^\mu)
+}{dollar}{0pt}\coordE{}$$
+which takes the position generators to the momentum generators.
+Let \myHighlight{$\rho$}\coordHE{} be a representation of \myHighlight{$\c{A}$}\coordHE{} as an algebra of linear
+operators on some Hilbert space.  For every \myHighlight{$k_\mu \in \b{R}^4$}\coordHE{} one
+can construct a unitary element \myHighlight{$u(k) = e^{ik_\mu x^\mu}$}\coordHE{} of \myHighlight{$\c{A}$}\coordHE{} 
+and one can consider the weakly closed algebra \myHighlight{$\c{A}_\rho$}\coordHE{} generated
+by the image of the \myHighlight{$u(k)$}\coordHE{} under \myHighlight{$\rho$}\coordHE{}.  The momentum operators
+\myHighlight{$\lambda_\alpha$}\coordHE{} are also unbounded but using them one can construct
+also a set of `translation' operators 
+\myHighlight{$\hat u(\xi) = e^{\xi^\alpha \lambda_\alpha}$}\coordHE{} whose image under \myHighlight{$\rho$}\coordHE{}
+belongs also to \myHighlight{$\c{A}_\rho$}\coordHE{}. In general \myHighlight{$\hat u u \neq u \hat u$}\coordHE{}; if
+the metric which we introduce is the flat metric then we shall see
+that \myHighlight{$[\lambda_\alpha, x^\mu] = \delta^\mu_\alpha$}\coordHE{} and in this case we
+can write the commutation relations as \myHighlight{$\hat u u = q u \hat u$}\coordHE{} with 
+\myHighlight{$q = e^{i k_\mu \xi^\mu}$}\coordHE{};  the `Fourier transform' is the simple linear
+transformation
+\begin{equation}\coord{}\boxEquation{
+\lambda_\alpha  = \frac{1}{i\kbar}\theta^{-1}_{\alpha\mu} x^\mu   \label{bc}
+}{
+\lambda_\alpha  = \frac{1}{i\kbar}\theta^{-1}_{\alpha\mu} x^\mu   }{ecuacion}\coordE{}\end{equation}
+for some symplectic structure \myHighlight{$\theta^{\alpha\mu}$}\coordHE{}. As a measure of
+noncommmutativity, and to recall the many parallelisms with quantum
+mechanics, we use the symbol \myHighlight{$\kbar$}\coordHE{}, which will designate the square
+of a real number whose value could lie somewhere between the Planck
+length and the proton radius. 
+
+Using \myHighlight{$\lambda_\alpha$}\coordHE{} we construct the derivation
+$$\coord{}\boxMath{
+e_\alpha f = [\lambda_\alpha f].
+}{dollar}{0pt}\coordE{}$$
+That is, the derivations are related to the momenta as
+usual.  In the flat case mentioned above we find that
+$$\coord{}\boxMath{
+e_\alpha x^\nu = 
+\frac{1}{i\kbar}\theta^{-1}_{\alpha\mu} [x^\mu, x^\nu] = \delta_\alpha^\nu
+}{dollar}{0pt}\coordE{}$$
+provided we introduce the commutation relations
+$$\coord{}\boxMath{
+[x^\mu, x^\nu] = i\kbar \theta^{\mu\nu}
+}{dollar}{0pt}\coordE{}$$
+or equivalently the Poisson structure 
+$$\coord{}\boxMath{
+\{x^\mu, x^\nu\} = 
+\lim_{\kbar\to 0}\frac 1{i\kbar} [x^\mu, x^\nu] = \theta^{\mu\nu}
+}{dollar}{0pt}\coordE{}$$
+in the commutative limit.  
+
+Since the center is trivial the algebra can also be considered as the
+`phase space' and \myHighlight{$F$}\coordHE{} will be (implicitly) assumed to be an
+automorphism of \myHighlight{$\c{A}$}\coordHE{}:
+$$\coord{}\boxMath{
+\widehat{u_1 \wm u_2} = \hat u_1 \hwm \hat u_2.
+}{dollar}{0pt}\coordE{}$$
+We designate here for a moment the product with a star so we can
+place a hat on it. In the commutative limit \myHighlight{$F$}\coordHE{} is an extension to phase
+space of the ordinary Fourier transform.  As a simple example, one can
+consider the two Pauli matrices \myHighlight{$(x^\mu) = (\sigma^1,\sigma^2)$}\coordHE{} as
+`coordinates' for the algebra of \myHighlight{$2\times 2$}\coordHE{} matrices and the linear
+combination 
+\myHighlight{$(\lambda_\alpha) = (-\sigma_2,\sigma_1) = \epsilon_{\mu\nu} \sigma^\nu$}\coordHE{} 
+as `momenta'. The derivations \myHighlight{$e_\alpha = \ad \lambda_\alpha$}\coordHE{} almost
+behave as partial derivatives: \myHighlight{$e_\alpha x^\mu = \delta^\mu_\alpha \sigma^3$}\coordHE{}. 
+In this case there is no commutative limit.
+
+In general the representation is not necessarily irreducible but we
+shall assume that it is a direct sum of an arbitrary number of copies
+of some representation which is irreducible.  The subalgebra
+\myHighlight{$\c{A}^\prime_\rho$}\coordHE{} of those elements algebra \myHighlight{$\c{B}(\c{H})$}\coordHE{} of all
+bounded operators on \myHighlight{$\c{H}$}\coordHE{} which commute with \myHighlight{$\c{A}_\rho$}\coordHE{} is
+therefore in general nontrivial.  There does not seem to be a direct
+role to be played by the \myHighlight{$\c{A}^\prime_\rho$}\coordHE{} except for the constraint
+that it must grow as the algebra becomes commutative if this limit is
+not to be singular.  Typically then, as the algebra becomes
+increasingly commutative the representation becomes increasingly
+reducible.
+
+We shall suppose that \myHighlight{$\c{A}$}\coordHE{} has a commutative limit which is an
+algebra \myHighlight{$\c{C}(V)$}\coordHE{} of smooth functions on a space-time \myHighlight{$V$}\coordHE{} endowed
+with a globally defined moving frame \myHighlight{$\theta^\alpha$}\coordHE{} and thus a
+metric.  By parallelizable we mean that the module \myHighlight{$\Omega^1(\c{A})$}\coordHE{}
+has a basis \myHighlight{$\theta^\alpha$}\coordHE{} which commutes with the elements of
+\myHighlight{$\c{A}$}\coordHE{}. For all \myHighlight{$f \in \c{A}$}\coordHE{}
+\begin{equation}\coord{}\boxEquation{
+f\theta^\alpha = \theta^\alpha f.                          \label{f-theta}
+}{
+f\theta^\alpha = \theta^\alpha f.                          }{ecuacion}\coordE{}\end{equation}
+This is the correspondence principle we use. We shall see that it
+implies that the metric components must be constants, a condition
+usually imposed on a moving frame. The frame \myHighlight{$\theta^\alpha$}\coordHE{} allows
+one~\cite{Mad00c} to construct a representation of the differential
+algebra from that of \myHighlight{$\c{A}$}\coordHE{}. The frame elements belong in fact to the
+algebra \myHighlight{$\c{A}^\prime_\rho$}\coordHE{}. Following strictly what one does in
+ordinary geometry, we shall introduce the set of derivations
+\myHighlight{$e_\alpha$}\coordHE{} to be dual to the frame \myHighlight{$\theta^\alpha$}\coordHE{}, that is with
+$$\coord{}\boxMath{
+\theta^\alpha(e_\beta) = \delta^\alpha_\beta.
+}{dollar}{0pt}\coordE{}$$ 
+
+We define the differential exactly as did E.~Cartan in the commutative
+case. If \myHighlight{$e_\alpha$}\coordHE{} is a derivation of \myHighlight{$\c{A}$}\coordHE{} then for every element 
+\myHighlight{$f \in \c{A}$}\coordHE{} we define \myHighlight{$df$}\coordHE{} by the constraint 
+\myHighlight{$df(e_\alpha) = e_\alpha f$}\coordHE{}. The construction of the differential
+calculus from the structure of the resulting module of 1-forms is
+essentially due to Connes~\cite{Con94}; in the present notation it is
+to be found elsewhere~\cite{Mad00c}.  It follows from general
+arguments that the momenta \myHighlight{$\lambda_\alpha$}\coordHE{} must satisfy the
+consistency condition~\cn{DimMad96,MadMou98}
+\begin{equation}\coord{}\boxEquation{
+2 \lambda_\gamma \lambda_\delta P^{\gamma\delta}{}_{\alpha\beta} - 
+\lambda_\gamma F^\gamma{}_{\alpha\beta} - 
+K_{\alpha\beta} = 0.                                           \label{consis}
+}{
+2 \lambda_\gamma \lambda_\delta P^{\gamma\delta}{}_{\alpha\beta} - 
+\lambda_\gamma F^\gamma{}_{\alpha\beta} - 
+K_{\alpha\beta} = 0.                                           }{ecuacion}\coordE{}\end{equation}
+The \myHighlight{$P^{\gamma\delta}{}_{\alpha\beta}$}\coordHE{} define the product \myHighlight{$\pi$}\coordHE{} in the
+algebra of forms:
+\begin{equation}\coord{}\boxEquation{
+\theta^\alpha \theta^\beta = P^{\alpha\beta}{}_{\gamma\delta} 
+\theta^\gamma \theta^\delta.                                  \label{struc}
+}{
+\theta^\alpha \theta^\beta = P^{\alpha\beta}{}_{\gamma\delta} 
+\theta^\gamma \theta^\delta.                                  }{ecuacion}\coordE{}\end{equation}
+This product is defined to be the one with the least relations which
+is consistent with the module structure of the 1-forms.  The
+\myHighlight{$F^\gamma{}_{\alpha\beta}$}\coordHE{} are related to the 2-form \myHighlight{$d\theta^\alpha$}\coordHE{}
+through the structure equations:
+$$\coord{}\boxMath{
+d\theta^\alpha = - {1\over 2}C^\alpha{}_{\beta\gamma} 
+\theta^\beta \theta^\gamma.
+}{dollar}{0pt}\coordE{}$$
+In the noncommutative case the structure elements are defined as
+\begin{equation}\coord{}\boxEquation{
+C^\alpha{}_{\beta\gamma} = F^\alpha{}_{\beta\gamma} - 
+2 \lambda_\delta P^{(\alpha\delta)}{}_{\beta\gamma}.              \label{s-e}
+}{
+C^\alpha{}_{\beta\gamma} = F^\alpha{}_{\beta\gamma} - 
+2 \lambda_\delta P^{(\alpha\delta)}{}_{\beta\gamma}.              }{ecuacion}\coordE{}\end{equation}
+It follows that
+\begin{equation}\coord{}\boxEquation{
+e_\alpha C^\alpha{}_{\beta\gamma} = 0.                           \label{fix}
+}{
+e_\alpha C^\alpha{}_{\beta\gamma} = 0.                           }{ecuacion}\coordE{}\end{equation}
+This must be imposed then at the commutative level and can be used as a 
+gauge-fixing condition. 
+
+Finally, to complete the definition of the coefficients of the
+consistency condition~(\ref{consis}) we introduce the special 1-form 
+\myHighlight{$\theta = -\lambda_\alpha\theta^\alpha$}\coordHE{}. In the commutative, flat limit
+$$\coord{}\boxMath{
+\theta \rightarrow i\partial_\alpha dx^\alpha.
+}{dollar}{0pt}\coordE{}$$
+It is referred to as a `Dirac operator'~\cite{Con94}. As an
+(antihermitian) 1-form \myHighlight{$\theta$}\coordHE{} defines a covariant derivative on an
+associated \myHighlight{$\c{A}$}\coordHE{}-module with local gauge transformations given by
+the unitary elements of \myHighlight{$\c{A}$}\coordHE{}.  The \myHighlight{$K_{\alpha\beta}$}\coordHE{} are related to
+the curvature of \myHighlight{$\theta$}\coordHE{}:
+$$\coord{}\boxMath{
+d\theta + \theta^2 = - {1\over 2} K_{\alpha\beta} \theta^\alpha \theta^\beta.
+}{dollar}{0pt}\coordE{}$$
+All the coefficients lie in the center \myHighlight{$\c{Z}(\c{A}_\kbar)$}\coordHE{} of the algebra.
+With no restriction of generality we can impose the conditions
+\begin{equation}\coord{}\boxEquation{
+C^\epsilon{}_{\gamma\delta} = 
+P^{\alpha\beta}{}_{\gamma\delta} C^\epsilon{}_{\alpha\beta}, \qquad 
+K_{\gamma\delta} = 
+P^{\alpha\beta}{}_{\gamma\delta} K_{\alpha\beta}.              \label{C-con}
+}{
+C^\epsilon{}_{\gamma\delta} = 
+P^{\alpha\beta}{}_{\gamma\delta} C^\epsilon{}_{\alpha\beta}, \qquad 
+K_{\gamma\delta} = 
+P^{\alpha\beta}{}_{\gamma\delta} K_{\alpha\beta}.              }{ecuacion}\coordE{}\end{equation}
+
+Equation~(\ref{s-e}) is the correspondence principle which associates
+a differential calculus to a metric.  On the left in fact the quantity
+\myHighlight{$C^\alpha{}_{\beta\gamma}$}\coordHE{} determines a moving frame, which in turn
+fixes a metric; on the right are the elements of the algebra which fix
+to a large extent the differential calculus. A `blurring' of a
+geometry proceeds via this correspondence. It is evident that in the
+presence of curvature the 1-forms cease to anticommute. On the other
+hand it is possible for flat `space' to be described by `coordinates'
+which do not commute.  
+
+The correspondence principle between the commutative and
+noncommutative geometries can be also described as the map
+\begin{equation}\coord{}\boxEquation{
+\t{\theta^\alpha}  \mapsto \theta^\alpha                      \label{cp}
+}{
+\t{\theta^\alpha}  \mapsto \theta^\alpha                      }{ecuacion}\coordE{}\end{equation}
+with the product satisfying the condition
+\begin{equation}\coord{}\boxEquation{
+\t{\theta^\alpha} \t{\theta^\beta} \mapsto 
+P^{\alpha\beta}{}_{\gamma\delta} \theta^\gamma \theta^\delta      \label{cp0}
+}{
+\t{\theta^\alpha} \t{\theta^\beta} \mapsto 
+P^{\alpha\beta}{}_{\gamma\delta} \theta^\gamma \theta^\delta      }{ecuacion}\coordE{}\end{equation}
+The tilde on the left is to indicate that it is the commutative form.
+The condition can be written also as
+$$\coord{}\boxMath{
+\t{C}^\alpha{}_{\beta\gamma} \mapsto 
+C^\alpha{}_{\eta\zeta} P^{\eta\zeta}{}_{\beta\gamma}
+}{dollar}{0pt}\coordE{}$$
+or as 
+$$\coord{}\boxMath{
+\lim_{\kbar\to 0}C^\alpha{}_{\beta\gamma} = \t{C}^\alpha{}_{\beta\gamma}.
+}{dollar}{0pt}\coordE{}$$
+A solution to these equations would be a solution to the problem we
+have set. It would be however unsatisfactory in that no smoothness
+condition has been imposed. This can at best be done using the inner
+derivations. We shall construct therefore the set of momentum
+generators. The procedure we shall follow is not always valid; a
+counter example has been constructed~\cite{MadSae98} for the flat
+metric on the torus.
+
+We write \myHighlight{$P^{\alpha\beta}{}_{\gamma\delta}$}\coordHE{} in the form
+\begin{equation}\coord{}\boxEquation{
+P^{\alpha\beta}{}^{\phantom{\alpha\beta}}_{\gamma\delta} = 
+\frac 12 \delta^{[\alpha}_\gamma \delta^{\beta]}_\delta +
+i\kbar Q^{\alpha\beta}{}^{\phantom{\alpha\beta}}_{\gamma\delta}.     \label{P}
+}{
+P^{\alpha\beta}{}^{\phantom{\alpha\beta}}_{\gamma\delta} = 
+\frac 12 \delta^{[\alpha}_\gamma \delta^{\beta]}_\delta +
+i\kbar Q^{\alpha\beta}{}^{\phantom{\alpha\beta}}_{\gamma\delta}.     }{ecuacion}\coordE{}\end{equation}
+It will be convenient also to introduce the notation
+\begin{equation}\coord{}\boxEquation{
+I_{\alpha\beta} = 
+K_{\alpha\beta} + \lambda_\gamma I^\gamma{}_{\alpha\beta}, \qquad
+I^\gamma{}_{\alpha\beta} = F^\gamma{}_{\alpha\beta} - 
+2i\kbar\lambda_\delta Q^{\gamma\delta}{}_{\alpha\beta}          \label{Gab}
+}{
+I_{\alpha\beta} = 
+K_{\alpha\beta} + \lambda_\gamma I^\gamma{}_{\alpha\beta}, \qquad
+I^\gamma{}_{\alpha\beta} = F^\gamma{}_{\alpha\beta} - 
+2i\kbar\lambda_\delta Q^{\gamma\delta}{}_{\alpha\beta}          }{ecuacion}\coordE{}\end{equation}
+so we can write~(\ref{consis}) in the form
+$$
+[\lambda_\alpha, \lambda_\beta] = I_{\alpha\beta} -
+i\kbar[\lambda_\gamma, \lambda_\delta]
+Q^{\gamma\delta}{}_{\alpha\beta}.                           %\label{consis2}
+$$\coord{}\boxMath{
+If we replace the commutator on the right-hand side by its value we obtain
+the equation
+}{dollar}{0pt}\coordE{}$$
+[\lambda_\alpha, \lambda_\beta] = I_{\alpha\beta} -
+i\kbar Q^{\gamma\delta}{}_{\alpha\beta}
+(K_{\gamma\delta} + I_{\gamma\delta}) + (i\kbar)^2
+Q^{\eta\zeta}{}_{\alpha\beta}  Q^{\gamma\delta}{}_{\eta\zeta}
+[\lambda_\gamma, \lambda_\delta].
+$$\coord{}\boxMath{
+This can be simplified by a redefinition 
+}{dollar}{0pt}\coordE{}$$
+K_{\alpha\beta} - i\kbar Q^{\gamma\delta}{}_{\alpha\beta} K_{\gamma\delta}
+\mapsto K_{\alpha\beta}, \qquad
+F^\epsilon{}_{\alpha\beta} - 
+i\kbar Q^{\gamma\delta}{}_{\alpha\beta} F^\epsilon{}_{\gamma\delta}
+\mapsto F^\epsilon{}_{\alpha\beta}
+$$
+of the coefficients \myHighlight{$K_{\alpha\beta}$}\coordHE{} and \myHighlight{$F^\gamma{}_{\alpha\beta}$}\coordHE{}.
+Iterating this proceedure one obtains the consistency condition in the 
+form
+\begin{equation}\coord{}\boxEquation{
+[\lambda_\alpha, \lambda_\beta] = I_{\alpha\beta}            \label{consis2}
+}{
+[\lambda_\alpha, \lambda_\beta] = I_{\alpha\beta}            }{ecuacion}\coordE{}\end{equation}
+as well as the condition
+$$\coord{}\boxMath{
+Q^{[\gamma\delta]}{}_{\alpha\beta} = 0 
+}{dollar}{0pt}\coordE{}$$
+on the coefficients. The condition that
+\myHighlight{$P^{\gamma\delta}{}_{\alpha\beta}$}\coordHE{} be an idempotent now implies a
+similar condition on \myHighlight{$i\kbar Q^{(\gamma\delta)}{}_{(\alpha\beta)}$}\coordHE{}.
+Unless we are in a non-perturbative regime we can set then the latter
+equal to zero.
+
+We introduce the derivations
+\myHighlight{$e_{\alpha\beta} = \ad (\lambda_\gamma \lambda_\delta)$}\coordHE{}
+so that one can write the identity
+\begin{equation}\coord{}\boxEquation{
+i\kbar e_{\alpha\beta} = i\kbar \lambda_{(\alpha} e_{\beta)} - 
+i\kbar e_\beta e_\alpha.                                        \label{sc}
+}{
+i\kbar e_{\alpha\beta} = i\kbar \lambda_{(\alpha} e_{\beta)} - 
+i\kbar e_\beta e_\alpha.                                        }{ecuacion}\coordE{}\end{equation}
+The first term on the right remains in the commutative limit as a
+vector field; the second term vanishes. The second term resembles a
+second derivative, but as a derivation. It is easy to see here the
+relation between an expression from noncommutative geometry and an
+effective commutative limit with higher-order derivative corrections. 
+
+In the commutative case a moving frame is dual to a set of derivations
+\myHighlight{$\t{e}_\alpha$}\coordHE{} which satisfy the commutation relations
+\begin{equation}\coord{}\boxEquation{
+[\t{e}_\alpha, \t{e}_\beta] = 
+\t{C}^\gamma{}_{\alpha\beta}\t{e}_\gamma             \label{te-te}
+}{
+[\t{e}_\alpha, \t{e}_\beta] = 
+\t{C}^\gamma{}_{\alpha\beta}\t{e}_\gamma             }{ecuacion}\coordE{}\end{equation}
+If we use the correspondence principle and the
+expression~(\ref{s-e}) we find that this becomes
+\begin{equation}\coord{}\boxEquation{
+[e_\alpha, e_\beta] = F^\gamma{}_{\alpha\beta} e_\gamma -
+2i\kbar Q^{\gamma\delta}{}_{\alpha\beta} e_{\gamma\delta}  
+= F^\gamma{}_{\alpha\beta} e_\gamma -
+2i\kbar Q^{\gamma\delta}{}_{\alpha\beta} 
+(\lambda_{(\gamma} e_{\delta)} - e_{\gamma\delta})              \label{sc2}
+}{
+[e_\alpha, e_\beta] = F^\gamma{}_{\alpha\beta} e_\gamma -
+2i\kbar Q^{\gamma\delta}{}_{\alpha\beta} e_{\gamma\delta}  
+= F^\gamma{}_{\alpha\beta} e_\gamma -
+2i\kbar Q^{\gamma\delta}{}_{\alpha\beta} 
+(\lambda_{(\gamma} e_{\delta)} - e_{\gamma\delta})              }{ecuacion}\coordE{}\end{equation}
+The last term on the right-hand side vanishes in the commutative limit.
+
+The Jacobi identity with two momenta and one position generator can be
+written as
+\begin{equation}\coord{}\boxEquation{
+e_{[\alpha} e^\mu_{\beta]} = 
+e^\mu_\gamma I^\gamma{}_{\alpha\beta}.                           \label{G-C}
+}{
+e_{[\alpha} e^\mu_{\beta]} = 
+e^\mu_\gamma I^\gamma{}_{\alpha\beta}.                           }{ecuacion}\coordE{}\end{equation}
+Because of the symmetries of the indices \myHighlight{$I_{\alpha\beta}$}\coordHE{} can be
+considered as a field strength for a gauge potential which takes its
+values in the formal Lie algebra associated to the group of unitary
+elements of the associative algebra \myHighlight{$\c{A}$}\coordHE{}. Although the algebra is
+generally of infinite dimension the relation~(\ref{consis}) acts as a
+finiteness condition and one can consider the \myHighlight{$\lambda_\alpha$}\coordHE{} as
+generators of a Lie algebra with commutation relations
+given~\cite{DimMad96,JurMolSchSchWes01} by the
+bracket~(\ref{consis2}). It is convenient to introduce the (right) dual
+$$\coord{}\boxMath{
+Q^{*\zeta\eta\gamma\delta} =
+\frac{1}{2} \epsilon^{\alpha\beta\gamma\delta}
+Q^{\zeta\eta}{}_{\alpha\beta}
+}{dollar}{0pt}\coordE{}$$
+of \myHighlight{$Q^{\zeta\eta}{}_{\alpha\beta}$}\coordHE{} and to define the Jacobi anomaly
+for three momenta as
+$$\coord{}\boxMath{
+A_J^\delta = \frac 14\epsilon^{\alpha\beta\gamma\delta}
+[\lambda_\alpha,[\lambda_\beta,\lambda_\gamma]].
+}{dollar}{0pt}\coordE{}$$
+The Jacobi identities can be written then as
+\begin{equation}\coord{}\boxEquation{
+A_J^\alpha = 0.                                              \label{J3}
+}{
+A_J^\alpha = 0.                                              }{ecuacion}\coordE{}\end{equation}
+With the Ansatz we are using we find that
+$$\coord{}\boxMath{
+A_J^\alpha =
+-2i\kbar K_{\beta\gamma}Q^{*\beta\delta\gamma\alpha}\lambda_\delta
++ (-2i\kbar)^2 Q^{(\delta\gamma}{}_{\beta\gamma}
+Q^{*\beta\eta)\gamma\alpha} \lambda_\delta\lambda_\gamma\lambda_\eta.
+}{dollar}{0pt}\coordE{}$$
+Equation~(\ref{J3}) must be verified in each example. 
+Because of the relations amongst the momenta, sufficient but not
+necessary conditions for the left-hand side to vanish are
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+K_{\beta\gamma}Q^{*\beta\delta\gamma\alpha} = 0,          \rightCoord{}\label{jac1}\\\leftCoord{}[6pt]
+Q^{(\delta\gamma}{}_{\beta\gamma}
+Q^{*\beta\eta)\gamma\alpha} = 0.                        \rightCoord{}\label{jac2}
+\rightCoord{}}{0mm}{2}{4}{
+K_{\beta\gamma}Q^{*\beta\delta\gamma\alpha} = 0,          \\[6pt]
+Q^{(\delta\gamma}{}_{\beta\gamma}
+Q^{*\beta\eta)\gamma\alpha} = 0.                        }{1}\coordE{}\end{eqnarray}
+In the example we shall find that both these equations place
+restrictions on the coefficients.
+
+It is necessary~\cite{DubMadMasMou96b} to introduce a flip operation
+$$\coord{}\boxMath{
+\sigma:\;\Omega^1(\c{A}_\kbar) \otimes \Omega^1(\c{A}_\kbar) \rightarrow
+\Omega^1(\c{A}_\kbar) \otimes \Omega^1(\c{A}_\kbar)
+}{dollar}{0pt}\coordE{}$$
+to define the reality condition and the Leibniz rules.  If we write
+$$\coord{}\boxMath{
+S^{\alpha\beta}{}_{\gamma\delta} = \delta^\beta_\gamma \delta^\alpha_\delta
++ i\kbar T^{\alpha\beta}{}_{\gamma\delta}
+}{dollar}{0pt}\coordE{}$$
+we find that a choice~\cn{DimMad96} of connection which is
+torsion-free, and satisfies all Leibniz rules is given by
+\begin{equation}\coord{}\boxEquation{
+\omega^\alpha{}_{\beta} = \frac 12 F^\alpha{}_{\gamma\beta} \theta^\gamma
++ i\kbar \lambda_\gamma T^{\alpha\gamma}{}_{\delta\beta}\theta^\delta.
+                                                               \label{t-free}
+}{
+\omega^\alpha{}_{\beta} = \frac 12 F^\alpha{}_{\gamma\beta} \theta^\gamma
++ i\kbar \lambda_\gamma T^{\alpha\gamma}{}_{\delta\beta}\theta^\delta.
+                                                               }{ecuacion}\coordE{}\end{equation}
+We can compare this with the expression~(\ref{s-e}) for the structure
+elements.  
+
+The relation
+$$\coord{}\boxMath{
+\pi \circ (1 + \sigma) = 0
+}{dollar}{0pt}\coordE{}$$
+must hold~\cn{DimMad96,MadMou98} to assure that the torsion be a
+bilinear map. In terms of the coefficients
+\myHighlight{$P^{\alpha\beta}{}_{\gamma\delta}$}\coordHE{} it can be written in the form
+$$\coord{}\boxMath{
+T^{\alpha\beta}{}_{\eta\zeta} P^{\eta\zeta}{}_{\gamma\delta} +  
+Q^{(\alpha\beta)}{}_{\gamma\delta} = 0.  
+}{dollar}{0pt}\coordE{}$$
+The symmetric part \myHighlight{$T^{(\alpha\beta)}{}_{(\gamma\delta)}$}\coordHE{}, which is here 
+arbitrary, will be fixed by the condition that the connection be metric.
+It follows that
+\begin{equation}\coord{}\boxEquation{
+\omega^\alpha{}_{\eta\zeta}P^{\eta\zeta}{}_{\beta\gamma} =
+\frac 12 C^\alpha{}_{\beta\gamma}.                     \label{T0}
+}{
+\omega^\alpha{}_{\eta\zeta}P^{\eta\zeta}{}_{\beta\gamma} =
+\frac 12 C^\alpha{}_{\beta\gamma}.                     }{ecuacion}\coordE{}\end{equation}
+This is the usual relation between the Ricci-rotation coefficients
+and the Levi-Civita connection. Using it one can deduce~(\ref{s-e})
+from~(\ref{t-free}).  Using the vanishing-torsion condition one can
+write the expression for the commutator of the derivations as
+\begin{equation}\coord{}\boxEquation{
+[e_\alpha, e_\beta] - \omega^\gamma{}_{[\alpha\beta]} e_\gamma = 
+- 2i\kbar Q^{\gamma\delta}{}_{\alpha\beta} 
+(e_{\gamma} e_{\delta} - \omega^\epsilon{}_{\gamma\delta} e_\epsilon).
+                                                         \label{consis3}
+}{
+[e_\alpha, e_\beta] - \omega^\gamma{}_{[\alpha\beta]} e_\gamma = 
+- 2i\kbar Q^{\gamma\delta}{}_{\alpha\beta} 
+(e_{\gamma} e_{\delta} - \omega^\epsilon{}_{\gamma\delta} e_\epsilon).
+                                                         }{ecuacion}\coordE{}\end{equation}
+A second form of the correspondence principle is the map
+\begin{equation}\coord{}\boxEquation{
+\t{\omega}^\alpha{}_{\beta} \t{\theta} \mapsto 
+\omega^\alpha{}_{\beta} \theta                             \label{cp2}
+}{
+\t{\omega}^\alpha{}_{\beta} \t{\theta} \mapsto 
+\omega^\alpha{}_{\beta} \theta                             }{ecuacion}\coordE{}\end{equation}
+between the commutative and noncommutative connection forms.
+
+We shall suppose that \myHighlight{$\c{A}_\kbar$}\coordHE{} has a metric, which we define as a
+bilinear map 
+\begin{equation}\coord{}\boxEquation{
+g:\; \Omega^1(\c{A}_\kbar) \otimes \Omega^1(\c{A}_\kbar) 
+\rightarrow \c{A}_\kbar.                                        \label{metric} 
+}{
+g:\; \Omega^1(\c{A}_\kbar) \otimes \Omega^1(\c{A}_\kbar) 
+\rightarrow \c{A}_\kbar.                                        }{ecuacion}\coordE{}\end{equation} 
+In terms of the frame one can define the metric by the condition that
+\begin{equation}\coord{}\boxEquation{
+g(\theta^\alpha \otimes \theta^\beta)= g^{\alpha\beta}.          \label{f-m}
+}{
+g(\theta^\alpha \otimes \theta^\beta)= g^{\alpha\beta}.          }{ecuacion}\coordE{}\end{equation}
+The \myHighlight{$g^{\alpha\beta}$}\coordHE{} are taken to be deformed versions 
+\myHighlight{$g^{\alpha\beta} \mapsto g^{\alpha\beta} + i \kbar h^{\alpha\beta}$}\coordHE{}
+of the components of the standard euclidean or lorentzian metric
+\myHighlight{$g^{\alpha\beta}$}\coordHE{} on \myHighlight{$\b{R}^n$}\coordHE{} which satisfy~\cn{FioMad98a} the
+symmetry condition
+\begin{equation}\coord{}\boxEquation{
+P^{\alpha\beta}{}_{\gamma\delta} (g+i\kbar h)^{\gamma\delta} = 0.   
+                                                             \label{symmet}
+}{
+P^{\alpha\beta}{}_{\gamma\delta} (g+i\kbar h)^{\gamma\delta} = 0.   
+                                                             }{ecuacion}\coordE{}\end{equation}
+Together with the reality condition
+$$\coord{}\boxMath{
+(g+i\kbar h)^{\beta\alpha} + i\kbar T^{\alpha\beta}{}_{\gamma\delta}
+(g+i\kbar h)^{\gamma\delta} = ((g+i\kbar h)^{\beta\alpha})^*
+}{dollar}{0pt}\coordE{}$$
+this means that in fact \myHighlight{$h^{\alpha\beta} = 0$}\coordHE{} and also that the flip
+satisfies the constraint
+$$\coord{}\boxMath{
+T^{\alpha\beta}{}_{\gamma\delta}g^{\gamma\delta} = 0.
+}{dollar}{0pt}\coordE{}$$
+We suppose then that the coefficients of the metric are the usual
+commutative ones. The various reality
+conditions~\cite{Con95,FioMad98a} imply also that
+$$\coord{}\boxMath{
+(Q^{\alpha\beta}{}_{\gamma\delta})^* =
+Q^{\alpha\beta}{}_{\gamma\delta} + o(i\kbar), \qquad
+(T^{\alpha\beta}{}_{\gamma\delta})^* =
+T^{\alpha\beta}{}_{\gamma\delta} + o(i\kbar).
+}{dollar}{0pt}\coordE{}$$
+
+The connection is compatible with the metric if
+\begin{equation}\coord{}\boxEquation{
+T^{\alpha\gamma}{}_{\delta\epsilon} g^{\epsilon\beta} +
+T^{\beta\gamma}{}_{\delta\epsilon} g^{\alpha\epsilon} +
+i\kbar T^{\beta\gamma}{}_{\epsilon\zeta} g^{\eta\zeta}
+T^{\alpha\epsilon}{}_{\delta\eta} = 0.                          \label{m-c3}
+}{
+T^{\alpha\gamma}{}_{\delta\epsilon} g^{\epsilon\beta} +
+T^{\beta\gamma}{}_{\delta\epsilon} g^{\alpha\epsilon} +
+i\kbar T^{\beta\gamma}{}_{\epsilon\zeta} g^{\eta\zeta}
+T^{\alpha\epsilon}{}_{\delta\eta} = 0.                          }{ecuacion}\coordE{}\end{equation}
+To first order this simplifies to the usual condition
+\begin{equation}\coord{}\boxEquation{
+T^{(\alpha\gamma}{}_{\delta}{}^{\beta)} = o(i\kbar).            \label{m-c2}
+}{
+T^{(\alpha\gamma}{}_{\delta}{}^{\beta)} = o(i\kbar).            }{ecuacion}\coordE{}\end{equation}
+The index was lifted here with the metric.  
+
+If we introduce formally the `covariant derivative' \myHighlight{$D_\alpha X^\beta$}\coordHE{}
+of a `vector' \myHighlight{$X^\alpha$}\coordHE{} by the formula
+$$\coord{}\boxMath{
+D_\alpha X^\beta = \omega^\beta{}_{\alpha\gamma} X^\gamma
+}{dollar}{0pt}\coordE{}$$
+and the covariant derivative \myHighlight{$D_\alpha (X^\beta Y^\gamma)$}\coordHE{} of the
+product of two such `vectors' as
+$$\coord{}\boxMath{
+D_\alpha (X^\beta Y^\gamma) = D_\alpha X^\beta Y^\gamma + 
+S^{\beta\delta}{}_{\alpha\epsilon} X^\epsilon D_\delta Y^\gamma,
+}{dollar}{0pt}\coordE{}$$
+since there is a `flip' as the index on the derivation crosses the
+index on the first `vector', then the condition~(\ref{m-c3}) that the
+connection be metric can be written
+$$\coord{}\boxMath{
+D_\alpha g^{\beta\gamma} = 0
+}{dollar}{0pt}\coordE{}$$
+as usual. More satisfactory origins of the condition~(\ref{m-c3})
+can be given~\cite{DubMadMasMou95}.
+
+The `position' commutation relations are of the form
+\begin{equation}\coord{}\boxEquation{
+[x^\mu, x^\nu] = i\kbar J^{\mu\nu}.                        \label{x-x}
+}{
+[x^\mu, x^\nu] = i\kbar J^{\mu\nu}.                        }{ecuacion}\coordE{}\end{equation}
+The right-hand side is not necessarily in the center.  The system of
+operator equations we must solve consists of Equation~(\ref{s-e}),
+Equation~(\ref{consis2}), the metric compatibility
+equation~(\ref{m-c2}) as well as the constraints on the coefficients
+given above.  Using the same formal manipulations as above we can find
+the commutation relations for the position generators as solution to a
+set of differential conditions. From~(\ref{x-x}) we see that
+\begin{equation}\coord{}\boxEquation{
+i\kbar e_\gamma J^{\mu\nu} = [x^{[\mu}, e^{\nu]}_\gamma]  \label{pxx}.
+}{
+i\kbar e_\gamma J^{\mu\nu} = [x^{[\mu}, e^{\nu]}_\gamma]  .
+}{ecuacion}\coordE{}\end{equation}
+We choose the symplectic structure \myHighlight{$\theta^{\alpha\beta}$}\coordHE{} such that
+$$\coord{}\boxMath{
+\theta^{-1}_{\alpha\beta} = -i\kbar K_{\alpha\beta} + 
+o(\omega^\gamma_{\alpha\beta})
+}{dollar}{0pt}\coordE{}$$ 
+and such that 
+\begin{equation}\coord{}\boxEquation{
+J^{\mu\nu} = 
+e^\mu_\alpha e^\nu_\beta \theta^{\alpha\beta}.            \label{J-theta}
+}{
+J^{\mu\nu} = 
+e^\mu_\alpha e^\nu_\beta \theta^{\alpha\beta}.            }{ecuacion}\coordE{}\end{equation}
+This cannot be generally possible unless
+\myHighlight{$\theta^{(\alpha\beta)}\neq 0$}\coordHE{}.  It will allow us to define
+(formally) a divergence \myHighlight{$D_\mu J^{\mu\nu}$}\coordHE{} by setting
+\begin{equation}\coord{}\boxEquation{
+D_\mu J^{\mu\nu} = 
+e^\nu_\beta D_\alpha \theta^{\alpha\beta}           \label{div}
+}{
+D_\mu J^{\mu\nu} = 
+e^\nu_\beta D_\alpha \theta^{\alpha\beta}           }{ecuacion}\coordE{}\end{equation}
+and using the connection form~(\ref{t-free}).
+The condition 
+$$\coord{}\boxMath{
+D_\mu J^{\mu\nu} =0 
+}{dollar}{0pt}\coordE{}$$
+establishes a link~\cite{BouCah99} between the symplectic structure
+and the connection. We cannot make any general statements concerning
+this condition in the present context.
+
+It is tempting to suppose that to lowest order at least, in a
+semiclassical approximation, there is an analogue of Darboux's lemma
+and that it is always possible to choose generators which satisfy
+commutation relations of the form~(\ref{x-x}) with the right-hand in
+the center.  However the example we shall examine in detail shows that
+this is not always the case. Having fixed the generators, the
+manifestations of curvature would be found then in the form of the
+frame. The two sets of generators \myHighlight{$x^\mu$}\coordHE{} and \myHighlight{$\lambda_\alpha$}\coordHE{}
+satisfy, under the assumptions we make, three sets of equations.  The
+commutation relations~(\ref{x-x}) for the position generators \myHighlight{$x^\mu$}\coordHE{}
+and the associated Jacobi identities permit one definition of the
+algebra. The commutation relations for the momentum generators permit
+a second definition. The conjugacy relations assure that the two
+descriptions concern the same algebra.  We shall analyze these
+identities later using the example to show that they have interesting
+non-trivial solutions.
+
+There are two sets of equations to be solved simultaneously in the
+four variables \myHighlight{$\lambda_\alpha$}\coordHE{}. The first set is the
+set~(\ref{s-e}), a system of \myHighlight{$(4-1)\times 6 = 18$}\coordHE{} equations which are
+to be read now from right to left as equations in the \myHighlight{$\lambda_\alpha$}\coordHE{}
+with given `sources' \myHighlight{$C^\alpha{}_{\beta\gamma}$}\coordHE{}. This gives the
+Fourier transform as a functional of the gravitational field. The
+boundary conditions are obscure but could be taken, for lack of
+something better, as Equations~(\ref{bc}); this is then to be the form of
+the map from \myHighlight{$x^\mu$}\coordHE{} to \myHighlight{$\lambda_\alpha$}\coordHE{} when there is no source.
+The second set of equations is the set of consistency
+conditions~(\ref{consis2}). In the commutative limit the Fourier
+transformation becomes a set of four functionals, which could be considered
+as a special coordinate transformation, and in this limit the
+consistency conditions give rise to differential equations. In general
+however the transformation will not be a local one, a simple point to
+point map, but a more elaborate morphism of the entire algebra of
+functions into itself. It would be analogous to the unitary operator
+of field theory which takes the values of the fields at minus infinity
+to their values at some fixed finite time. The former would be the
+\myHighlight{$\lambda_\alpha$}\coordHE{} and the latter the \myHighlight{$x^\mu$}\coordHE{}. Since the algebra is
+noncommutative one might suppose this morphism to be also inner and
+write its inverse as
+$$\coord{}\boxMath{
+x^\mu \rightarrow \lambda_\alpha =
+\frac{1}{i\kbar} \theta^{-1}_{\alpha\mu} U^{-1} x^\mu U 
+}{dollar}{0pt}\coordE{}$$
+for some \myHighlight{$U$}\coordHE{}. The map defined by Equations~(\ref{bc}) is not however
+of this form. We shall return to this briefly in Section~\ref{Heis}.
+
+All this can be clarified somewhat by repeating it in the linear
+approximation, by which we mean a Fourier transformation `close' to
+that given by~(\ref{bc}). Equation~(\ref{s-e}) can be written as
+$$\coord{}\boxMath{
+C^\alpha{}_{\beta\gamma}(x^\mu) = F^\alpha{}_{\beta\gamma} -
+4i\kbar\lambda_\delta Q^{\alpha\delta}{}_{\beta\gamma}.
+}{dollar}{0pt}\coordE{}$$
+To the lowest order the right-hand side is linear in the metric
+components and the Fourier map is linear. This is a simple problem in
+linear algebra and easy to solve, but the solution might be the
+trivial one. Beyond the linear approximation the complication is due
+mainly to the fact that, although the right-hand side remains linear
+in \myHighlight{$\lambda_\alpha$}\coordHE{}, the left-hand side becomes very complicated
+because of the Fourier transformation. The \myHighlight{$C^\alpha{}_{\beta\gamma}$}\coordHE{}
+are given functions of \myHighlight{$x^\mu$}\coordHE{} and in general simple; as functions of
+the \myHighlight{$\lambda_\alpha$}\coordHE{} they are quite complicated.
+
+A commutative gauge transformation is an element of the algebra
+\myHighlight{$M_4(\c{C}(\b{R}^4))$}\coordHE{}.  The product in the algebra of forms is not
+necessarily anti-commutative but the extra terms will not appear in
+the expression for the differential of a form, because of the
+relation~(\ref{C-con}) and the form of the Ansatz we are using. We
+shall adopt the rule that the gauge transformation must be made before
+`quantization', not after. This is for many reasons, principally the
+fact that the `after-quantization' gauge
+`group'~\cite{JurMolSchSchWes01} is more difficult to define.
+
+We start then with a given frame and associated rotation coefficients
+and we transform the frame to a new one, to whose rotation
+coefficients we give the name \myHighlight{$C^{\prime\alpha}{}_{\beta\gamma}$}\coordHE{}.  As an
+additional simplification we shall calculate all quantities retaining
+only terms first order in the gauge elements.  The rotation
+coefficients are then given by
+$$\coord{}\boxMath{
+C^{\prime\alpha}{}_{\beta\gamma} = C^\alpha{}_{\beta\gamma} + 
+D_{[\beta} H^\alpha_{\gamma]}
+}{dollar}{0pt}\coordE{}$$
+for some first-order gauge transformation whose form must be found
+as part of the problem. We have here introduced the notation
+$$\coord{}\boxMath{
+D_{\beta} H^\alpha_{\gamma} =
+e_{\beta} H^\alpha_{\gamma} + [C,H]^\alpha{}_{\beta\gamma}, \qquad
+[C,H]^\alpha{}_{\beta\gamma} = 
+C^\alpha{}_{\beta\delta} H^\delta_{\gamma} -
+H^\alpha_{\delta} C^\delta{}_{\beta\gamma} 
+}{dollar}{0pt}\coordE{}$$
+The use we make of the letter \myHighlight{$H$}\coordHE{} is motivated in
+Section~\ref{Heis}. We have chosen the original frame more or less
+arbitrarily. It will determine a symplectic form and a metric and in
+general it must be gauged so that these two objects are correctly
+related. The metric is of course Lorentz invariant but the symplectic
+form not.
+
+From~(\ref{s-e}) one finds that
+\begin{equation}\coord{}\boxEquation{
+C^\alpha{}_{\beta \gamma} + D_{[\beta} H^\alpha_{\gamma]}
+= F^\alpha{}_{\beta \gamma} -
+4i\kbar \lambda_\delta Q^{\alpha\delta}{}_{\beta \gamma}.        \label{s-e2}
+}{
+C^\alpha{}_{\beta \gamma} + D_{[\beta} H^\alpha_{\gamma]}
+= F^\alpha{}_{\beta \gamma} -
+4i\kbar \lambda_\delta Q^{\alpha\delta}{}_{\beta \gamma}.        }{ecuacion}\coordE{}\end{equation}
+Only the position generators \myHighlight{$x^\mu$}\coordHE{} appear on the left-hand side
+and only the momentum generators \myHighlight{$\lambda_\pm$}\coordHE{} appear on the
+right-hand side. Finally the structure equations can be written as
+the commutation relations
+\begin{equation}\coord{}\boxEquation{
+[\lambda_\beta, \lambda_\gamma] = K_{\beta\gamma}
++ \frac 12 \lambda_\alpha (F^\alpha{}_{\beta \gamma} +
+C^\alpha{}_{\beta \gamma} + D_{[\beta} H^\alpha_{\gamma]}).   \label{consis4}
+}{
+[\lambda_\beta, \lambda_\gamma] = K_{\beta\gamma}
++ \frac 12 \lambda_\alpha (F^\alpha{}_{\beta \gamma} +
+C^\alpha{}_{\beta \gamma} + D_{[\beta} H^\alpha_{\gamma]}).   }{ecuacion}\coordE{}\end{equation}
+In the example we give we shall render more explicit this equation.
+We could have introduced \myHighlight{$\lambda_0 = 1$}\coordHE{} and written the constant term
+as \myHighlight{$\lambda_0 F^0{}_{\alpha\beta} = K_{\alpha\beta}$}\coordHE{}. It could be
+thought of as a spontaneous shift \`a la Brout-Englert-Higgs-Kibble in
+the eigenvalues of the operators \myHighlight{$\lambda_\alpha$}\coordHE{}, We must also deal
+with the fact that we have imposed no associativity condition on the
+product. For example the quantities \myHighlight{$P^{\alpha\beta}{}_{\gamma\delta}$}\coordHE{}
+or \myHighlight{$S^{\alpha\beta}{}_{\gamma\delta}$}\coordHE{} have not been required to
+satisfy the Yang-Baxter equation. We refer to previous
+work~\cite{FioMad98a} for a discussion of the problems this might
+entrain concerning reality conditions within the present formalism.
+The right-hand side of Equation~(\ref{consis4}) must at least satisfy
+the Jacobi identities.  We shall focus attention on this point in the
+example.
+
+The problem of gauge invariance and the algebra of observables is a
+touchy one upon which we shall not dwell. We notice in
+Section~\ref{Heis} that formally a gauge transformation in
+noncommutative geometry is the same as the time evolution in quantum
+field theory. This is somewhat the analog of the result from mechanics
+to the effect that the hamiltonian generates that particular
+symplectic transformation which is the time evolution.
+
+It is obvious that not all of the elements of \myHighlight{$\c{A}$}\coordHE{} are gauge
+invariant but not that all observables are gauge-invariant.  A gauge
+transformation is a local rotation
+\begin{equation}\coord{}\boxEquation{
+\theta^\alpha \mapsto \theta^{\prime\alpha} =
+\Lambda^{-1}{}^\alpha_\beta \theta^\beta.            \label{lr}
+}{
+\theta^\alpha \mapsto \theta^{\prime\alpha} =
+\Lambda^{-1}{}^\alpha_\beta \theta^\beta.            }{ecuacion}\coordE{}\end{equation}
+This formula is slightly misleading since we have written
+\myHighlight{$\theta^{\prime\alpha}$}\coordHE{} as though it belonged to the module of 1-forms
+of the original calculus whereas in fact it is a frame for a different
+differential calculus. One should more properly use a direct-sum
+notation and consider \myHighlight{$\Lambda^\alpha_\beta$}\coordHE{} and its inverse as maps
+between the two terms; this would complicate considerably the formulae.
+The structure elements transform classically as
+$$\coord{}\boxMath{
+\t{C}^{\prime\alpha}{}_{\beta\gamma} = \t{\Lambda}^{-1}{}^\alpha_\delta
+\t{C}^{\delta}{}_{\epsilon\zeta} \t{\Lambda}^\epsilon_\beta
+\t{\Lambda}^\zeta_\gamma + 
+\t{\Lambda}^{-1}{}^\alpha_\delta \t{e}_\epsilon
+\t{\Lambda}^\delta_{[\gamma} \t{\Lambda}^\epsilon_{\beta]}.
+}{dollar}{0pt}\coordE{}$$
+This is a familiar formula but it cannot be taken over as is to the
+noncommutative case; under the gauge transformation the calculus
+transforms also. This is apparent in the conditions~(\ref{C-con}).
+Within the context of the present calculi the nearest one can come is
+the transformation
+$$\coord{}\boxMath{
+C^{\prime\alpha}{}_{\beta\gamma} = \Lambda^{-1}{}^\alpha_\delta
+C^{\delta}{}_{\epsilon\zeta} \Lambda^\epsilon_\beta
+\Lambda^\zeta_\gamma + \delta C^\alpha{}_{\beta\gamma} \qquad \delta
+C^\alpha{}_{\beta\gamma} = - 2e_\delta\Lambda^{-1}{}^\alpha_\epsilon
+\Lambda^\delta_\zeta \Lambda^\epsilon_\eta
+P^{\prime\zeta\eta}{}_{\beta\gamma}.
+}{dollar}{0pt}\coordE{}$$
+If \myHighlight{$P$}\coordHE{} and \myHighlight{$P^\prime$}\coordHE{} are of the form considered here one can write
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}C^{\prime\alpha}{}_{\beta\gamma} = \Lambda^{-1}{}^\alpha_\delta
+C^{\delta}{}_{\epsilon\zeta} \Lambda^\epsilon_\beta
+\Lambda^\zeta_\gamma - 2e_\delta\Lambda^{-1}{}^\alpha_\epsilon
+\leftCoord{}[\Lambda^\delta_\zeta, \Lambda^\epsilon_\eta]
+P^{\prime\zeta\eta}{}_{\beta\gamma}\\\leftCoord{}[6pt]
+&&\leftCoord{}\phantom{C^{\prime\alpha}{}_{\beta\gamma} } +
+\Lambda^{-1}{}^\alpha_\delta e_\epsilon \Lambda^\delta_{[\beta}
+\Lambda^\epsilon_{\gamma]} + \Lambda^{-1}{}^\alpha_\delta e_\epsilon
+\Lambda^\delta_\zeta \Lambda^\epsilon_\eta
+P^{\prime(\zeta\eta)}{}_{\beta\gamma}.\rightCoord{}
+\rightCoord{}}{0mm}{4}{3}{
+&&C^{\prime\alpha}{}_{\beta\gamma} = \Lambda^{-1}{}^\alpha_\delta
+C^{\delta}{}_{\epsilon\zeta} \Lambda^\epsilon_\beta
+\Lambda^\zeta_\gamma - 2e_\delta\Lambda^{-1}{}^\alpha_\epsilon
+[\Lambda^\delta_\zeta, \Lambda^\epsilon_\eta]
+P^{\prime\zeta\eta}{}_{\beta\gamma}\\[6pt]
+&&\phantom{C^{\prime\alpha}{}_{\beta\gamma} } +
+\Lambda^{-1}{}^\alpha_\delta e_\epsilon \Lambda^\delta_{[\beta}
+\Lambda^\epsilon_{\gamma]} + \Lambda^{-1}{}^\alpha_\delta e_\epsilon
+\Lambda^\delta_\zeta \Lambda^\epsilon_\eta
+P^{\prime(\zeta\eta)}{}_{\beta\gamma}.
+}{1}\coordE{}\end{eqnarray*}
+In the linear approximation, with \myHighlight{$\Lambda^\alpha_\beta \simeq
+\delta^\alpha_\beta + H^\alpha_\beta$}\coordHE{}, the inhomogeneous
+term simplifies to the expression
+\begin{equation}\coord{}\boxEquation{
+- 2e_\delta\Lambda^{-1}{}^\alpha_\epsilon \Lambda^\delta_\zeta
+\Lambda^\epsilon_\eta P^{\prime\zeta\eta}{}_{\beta\gamma} = e_{[\beta}
+H^\alpha_{\gamma]} + e_\delta
+H^\alpha_\epsilon P^{(\delta\epsilon)}{}_{\beta\gamma}.
+                                                                \label{SW1}
+}{
+- 2e_\delta\Lambda^{-1}{}^\alpha_\epsilon \Lambda^\delta_\zeta
+\Lambda^\epsilon_\eta P^{\prime\zeta\eta}{}_{\beta\gamma} = e_{[\beta}
+H^\alpha_{\gamma]} + e_\delta
+H^\alpha_\epsilon P^{(\delta\epsilon)}{}_{\beta\gamma}.
+                                                                }{ecuacion}\coordE{}\end{equation}        
+Since
+$$\coord{}\boxMath{
+\theta^{\prime\alpha}(e_\beta) = \Lambda^{-1}{}^\alpha_\beta
+}{dollar}{0pt}\coordE{}$$
+in a certain formal way one can imagine that
+$$\coord{}\boxMath{
+e^\prime_\alpha \sim \Lambda^\beta_\alpha e_\beta
+}{dollar}{0pt}\coordE{}$$
+except that the right-hand-side is not a derivation in general. It
+makes sense however to introduce 
+\myHighlight{$\bar{\lambda}^\prime_\alpha = \Lambda_\alpha^\beta \lambda_\beta$}\coordHE{} 
+and to compare it with the elements \myHighlight{$\lambda^\prime_\beta$}\coordHE{} defined to
+be those which generate the derivations dual to
+\myHighlight{$\theta^{\prime\alpha}$}\coordHE{}.  This means that we must consider the
+identity
+$$\coord{}\boxMath{
+\Lambda^{-1}{}^\gamma_\beta \theta^\beta_\mu
+[\lambda^\prime_\alpha, x^\mu] = \theta^\gamma_\mu
+[\Lambda^{-1}{}^\beta_\alpha \bar{\lambda^\prime}_\beta, x^\mu]
+}{dollar}{0pt}\coordE{}$$
+as an equation for \myHighlight{$e^\prime_\alpha$}\coordHE{} in terms of 
+\myHighlight{$\bar {e}^\prime_\alpha = \ad \bar{\lambda}^\prime_\alpha$}\coordHE{} and solve. There
+results a rather complicated situation because of the change in
+Poisson structure which must accompany a gauge transformation in
+general. We shall attempt to elucidate this with the example.
+
+
+\initiate
+\section{The commutative plane wave}\label{spp}
+
+Plane-fronted gravitational waves with parallel rays (\myHighlight{$pp$}\coordHE{}-waves) have
+a metric~\cite{KraSteMacHer80} which can be
+defined~\cite{DesPirRob76} by the moving frame \myHighlight{$\t{\theta}^a = dx^a$}\coordHE{},
+\myHighlight{$x^a = (x, y)$}\coordHE{} and
+\begin{equation}\coord{}\boxEquation{
+\t{\theta}^+ = \frac 1{\sqrt 2} (\t{\theta}^0 + \t{\theta}^3) = 
+\t{\Lambda}^{-1} (du + \t{h} dv ), \qquad 
+\t{\theta}^- = \frac 1{\sqrt 2} (\t{\theta}^0 - \t{\theta}^3)
+= \t{\Lambda} dv.                                        \label{th-cl}
+}{
+\t{\theta}^+ = \frac 1{\sqrt 2} (\t{\theta}^0 + \t{\theta}^3) = 
+\t{\Lambda}^{-1} (du + \t{h} dv ), \qquad 
+\t{\theta}^- = \frac 1{\sqrt 2} (\t{\theta}^0 - \t{\theta}^3)
+= \t{\Lambda} dv.                                        }{ecuacion}\coordE{}\end{equation}
+The generators of \myHighlight{$\c{A}$}\coordHE{} will be chosen \myHighlight{$x^\mu = (u,v,x,y)$}\coordHE{}, with \myHighlight{$u$}\coordHE{}
+and \myHighlight{$v$}\coordHE{} null coordinates in the commutative limit.  The \myHighlight{$\t{\Lambda}$}\coordHE{}
+is for the moment an arbitrary invertible element of \myHighlight{$\c{A}$}\coordHE{}.  When
+\myHighlight{$\t{h}=0$}\coordHE{} the space-time is Minkowski and the vector \myHighlight{$\partial_v$}\coordHE{} is
+tangent to the bicharacteristics along the characteristic surfaces \myHighlight{$ u
+= \mbox{constant}$}\coordHE{}.  If \myHighlight{$\t{h} = \t{h}(v)$}\coordHE{} one can introduce an
+element \myHighlight{$I\t{h}(v) \in \c{A}$}\coordHE{} such that \myHighlight{$\partial_v I\t{h}(v) =
+\t{h}(v)$}\coordHE{} and use it to define \myHighlight{$u^\prime = u + I\t{h}(v)$}\coordHE{}; the
+space-time is still Minkowski.  With \myHighlight{$\t{\Lambda} = 1$}\coordHE{} then one has
+\myHighlight{$\t{\theta}^+ = du^\prime$}\coordHE{} and \myHighlight{$\t{\theta}^- = dv$}\coordHE{} The map defined by
+\myHighlight{$(uv) \mapsto (u^\prime,v)$}\coordHE{} does not respect the structure of \myHighlight{$\c{A}$}\coordHE{}
+as an algebra but it does leave invariant the commutator: \myHighlight{$[u^\prime,
+v] = [u,v]$}\coordHE{}.  Consider the derivations \myHighlight{$\t{e}_\alpha$}\coordHE{} dual to the
+moving frame. In the commutative limit we have \myHighlight{$\t{e}_1 = \partial_x$}\coordHE{},
+\myHighlight{$\t{e}_2 = \partial_y$}\coordHE{} and
+$$\coord{}\boxMath{
+\t{e}_+ = \t{\Lambda}\partial_u, \qquad 
+\t{e}_- = \t{\Lambda}^{-1}(\partial_v - \t{h} \partial_u).
+}{dollar}{0pt}\coordE{}$$
+The metric-compatible connection form is given by
+$$\coord{}\boxMath{
+\t{\omega}^\alpha{}_\beta = 
+\left(\begin{array}{ccc} \t{\omega}^+{}_+ &0
+&\t{\omega}^+{}_b \\[4pt] 
+0 &\t{\omega}^-{}_- &0 \\[4pt] 0
+&\t{\omega}^a{}_- &0  
+\end{array}\right)
+}{dollar}{0pt}\coordE{}$$
+with
+$$\coord{}\boxMath{
+\t{\omega}^+{}_+ = 
+\t{\Lambda}^{-2}\t{e}_+ \t{h} \t{\theta}^- + 
+\t{\Lambda}^{-1} d\t{\Lambda}, \qquad
+\t{\omega}^+{}_a = \t{\Lambda}^{-1} \t{e}_a \t{h}  \t{\theta}^-.
+}{dollar}{0pt}\coordE{}$$
+One of the expressions of the zero-torsion condition is the identity
+$$\coord{}\boxMath{
+\t{D}_{[\alpha}\t{D}_{\beta]} \t{x}^\mu = 0
+}{dollar}{0pt}\coordE{}$$
+which can also be written as
+\begin{equation}\coord{}\boxEquation{
+\t{e}_{[\alpha}\t{e}_{\beta]} \t{x}^\mu = 
+\t{\omega}^\gamma{}_{[\alpha\beta]} \t{e}_\gamma x^\mu.       \label{com}
+}{
+\t{e}_{[\alpha}\t{e}_{\beta]} \t{x}^\mu = 
+\t{\omega}^\gamma{}_{[\alpha\beta]} \t{e}_\gamma x^\mu.       }{ecuacion}\coordE{}\end{equation}
+This is the same as Equation~(\ref{te-te}.
+
+When \myHighlight{$\tilde{\Lambda}=1$}\coordHE{} the moving frame satisfies the commutation
+relations
+$$\coord{}\boxMath{
+\begin{array}{ll}
+[\t{e}_+, \t{e}_-] = - \t{e}_+ \t{h} \t{e}_+, &
+[\t{e}_-, \t{e}_a] = \t{e}_a \t{h} \t{e}_+, \\[4pt]
+[\t{e}_+, \t{e}_a] = 0, &
+[\t{e}_a, \t{e}_b] = 0.
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+If one includes a possible gauge transformation \myHighlight{$\t{\Lambda}$}\coordHE{} then one
+finds that the non-zero structure coefficients are given by
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{l}
+\t{C}^+{}_{a -} = -\t{\Lambda}^{-2}\t{e}_a \t{h},\\[4pt]
+\t{C}^+{}_{+ -} = -\t{\Lambda}^{-2}\t{e}_+ \t{h}
+- \t{\Lambda}^{-1}\t{e}_-\t{\Lambda}          ,\\[4pt]
+\t{C}^\pm{}_{\alpha \pm} = \pm\t{\Lambda}^{-1}\t{e}_\alpha\t{\Lambda}.
+                                                                \label{Cclas} 
+\end{array}
+}{
+\begin{array}{l}
+\t{C}^+{}_{a -} = -\t{\Lambda}^{-2}\t{e}_a \t{h},\\[4pt]
+\t{C}^+{}_{+ -} = -\t{\Lambda}^{-2}\t{e}_+ \t{h}
+- \t{\Lambda}^{-1}\t{e}_-\t{\Lambda}          ,\\[4pt]
+\t{C}^\pm{}_{\alpha \pm} = \pm\t{\Lambda}^{-1}\t{e}_\alpha\t{\Lambda}.
+                                                                \end{array}
+}{ecuacion}\coordE{}\end{equation}
+In writing this we have used the fact that the connection form
+commutes with the coordinates. This will no longer be true in general
+and extra terms can appear.
+
+
+\initiate
+\section{\myHighlight{$pp$}\coordHE{}-algebras}
+
+The noncommutative generalization will involve essentially finding an
+equivalent of Equation~(\ref{te-te}). It will be a commutation
+relation of the form~(\ref{consis3}) and better expressed in terms of
+the momentum generators. This will fix the algebra as well the
+calculus. That is, the correspondence principle which we shall
+actually use is a modified version of the map
+$$\coord{}\boxMath{
+\t{e}_\alpha \mapsto \lambda_\alpha
+}{dollar}{0pt}\coordE{}$$
+which is, of course, that introduced by Bohr.  This representation
+is valid only in the limit \myHighlight{$\kbar \to \infty$}\coordHE{}.  The commutation
+relations for the \myHighlight{$\t{e}_\alpha$}\coordHE{} must be `lifted' to commutation
+relations between the \myHighlight{$\lambda_\alpha$}\coordHE{}. For this we notice that the
+\myHighlight{$L^2$}\coordHE{}-completion of the algebra of functions on the space-time can be
+identified with \myHighlight{$\c{H} = L^2(\b{R}^4)$}\coordHE{}. We define then for smooth
+\myHighlight{$\psi \in \c{H}$}\coordHE{}
+\begin{equation}\coord{}\boxEquation{
+\lambda_\alpha \psi = \t{e}_\alpha \psi.                 \label{repres}
+}{
+\lambda_\alpha \psi = \t{e}_\alpha \psi.                 }{ecuacion}\coordE{}\end{equation}
+Once we have implemented the correspondence principle then this set of
+momentum generators will satisfy the consistency
+Equation~(\ref{consis}), however with \myHighlight{$K_{\alpha\beta} = 0$}\coordHE{}. To obtain a
+non-zero value for the central extension one must modify the
+representation. We do this in our analysis of another
+metric~\cite{MacMadZou02}; here we restrict our considerations to formal
+algebras. 
+
+According to the correspondence principle as expressed by~(\ref{cp})
+we introduce a frame \myHighlight{$\theta^\alpha$}\coordHE{} which has the commutative frame as
+a limit and is as `near' to it in form as possible for all values of
+\myHighlight{$\kbar$}\coordHE{}. We shall assume in this example that the noncommutative frame
+has the same functional form as its limit.  When \myHighlight{$h=0$}\coordHE{}, we have noticed,
+the space-time is flat; the noncommutative version is also flat. 
+The frame is the noncommutative form of~(\ref{th-cl}) which we write in
+the same way as
+\begin{equation}\coord{}\boxEquation{
+\theta^+ = \frac 1{\sqrt 2}(\theta^0 + \theta^3) = 
+\Lambda^{-1}(du + h dv ), \qquad 
+\theta^- = \frac 1{\sqrt 2} (\theta^0 - \theta^3) = 
+\Lambda dv, \qquad
+\theta^a = dx^a.                                      \label{th-qu}
+}{
+\theta^+ = \frac 1{\sqrt 2}(\theta^0 + \theta^3) = 
+\Lambda^{-1}(du + h dv ), \qquad 
+\theta^- = \frac 1{\sqrt 2} (\theta^0 - \theta^3) = 
+\Lambda dv, \qquad
+\theta^a = dx^a.                                      }{ecuacion}\coordE{}\end{equation}
+This defines also the differential of the generators of the algebra
+in terms of the basis of the module of 1-forms.  It defines therefore
+the conjugacy relations
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{ll}
+[\lambda_+, u] = \Lambda, 
+&[\lambda_+, v] = 0,                              \\[4pt]
+[\lambda_-, u] = - h \Lambda^{-1}, 
+&[\lambda_-, v] = \Lambda^{-1},
+\end{array}                                        \label{duality}
+}{
+\begin{array}{ll}
+[\lambda_+, u] = \Lambda, 
+&[\lambda_+, v] = 0,                              \\[4pt]
+[\lambda_-, u] = - h \Lambda^{-1}, 
+&[\lambda_-, v] = \Lambda^{-1},
+\end{array}                                        }{ecuacion}\coordE{}\end{equation}
+as well as 
+$$\coord{}\boxMath{
+[\lambda_a, x^b] = \delta_a^b, \qquad [\lambda_\pm, x^b] = 0 
+\qquad [\lambda_a, u] = 0  \qquad [\lambda_a, v] = 0.
+}{dollar}{0pt}\coordE{}$$
+From~(\ref{duality}) and the reality conditions it follows that
+$$\coord{}\boxMath{
+h^* \Lambda = \Lambda^* h, \qquad \Lambda^* = \Lambda.
+}{dollar}{0pt}\coordE{}$$
+Therefore \myHighlight{$h^* = h$}\coordHE{}. In the linearized approximation 
+\myHighlight{$\Lambda^{\pm 1} = 1 \pm H$}\coordHE{}.
+
+We shall restrict our consideration to the linear approximation, The
+problem is to find an algebra with a set of 4 generators \myHighlight{$x^\mu$}\coordHE{}
+satisfying commutation rules as well as a Fourier transformation to a
+new set \myHighlight{$\lambda_\alpha$}\coordHE{} which satisfies Equations~(\ref{consis4}).
+We use the map~(\ref{cp}). In the commutative case the geometry is
+completely determined (to within integration constants)
+by~(\ref{te-te}). We seek an analogous equation in the noncommutative
+case. This means that we must rewrite the noncommutative version
+of Equation~(\ref{te-te}) in terms of the momenta and compare it with the
+Equation~(\ref{s-e2}).  According to the correspondence principle
+the form of the \myHighlight{$C^\alpha{}_{\beta\gamma}$}\coordHE{} as functionals of \myHighlight{$h$}\coordHE{} are
+determined in the commutative limit. A stronger condition is to assume
+that they have the same functional form when \myHighlight{$\kbar \neq 0$}\coordHE{}. We
+satisfy then automatically the `Bohr-Ehrenfest' condition
+\begin{equation}\coord{}\boxEquation{
+\lim_{\kbar\to 0} h = \t{h}.
+}{
+\lim_{\kbar\to 0} h = \t{h}.
+}{ecuacion}\coordE{}\end{equation}
+The non-vanishing structure elements are given by
+Equation~(\ref{cp0}) as 
+\begin{equation}\coord{}\boxEquation{
+e_\alpha h = - C^+{}_{\alpha -}, \qquad
+C^\alpha{}_{[\beta\gamma]} + 2i\kbar 
+C^\alpha{}_{(\eta\zeta)} P^{\eta\zeta}{}_{\beta\gamma} =
+C^\alpha{}_{\beta\gamma}.                              \label{evol1}
+}{
+e_\alpha h = - C^+{}_{\alpha -}, \qquad
+C^\alpha{}_{[\beta\gamma]} + 2i\kbar 
+C^\alpha{}_{(\eta\zeta)} P^{\eta\zeta}{}_{\beta\gamma} =
+C^\alpha{}_{\beta\gamma}.                              }{ecuacion}\coordE{}\end{equation}
+These should be read as equations for \myHighlight{$h$}\coordHE{} in terms of the commutator
+\myHighlight{$[\lambda_a,\lambda_+]$}\coordHE{} if one believes that the noncommutative
+structure determines the gravitational field. If they are read from
+right to left then they are equations for the structure of the algebra
+in terms of the gravitational field. There is considerable ambiguity
+in the Equations~(\ref{evol1}). They are, strictly speaking, only true
+in the limit \myHighlight{$\kbar\to 0$}\coordHE{}. We suppose however that this ambiguity can
+be absorbed in a `gauge' transformation.
+
+We shall look for a solution with only
+$$\coord{}\boxMath{
+H^+_+ = - H^-_- = H \neq 0.
+}{dollar}{0pt}\coordE{}$$
+We have then
+$$\coord{}\boxMath{
+\theta^+ = du + h dv - H du, \qquad
+\theta^- = dv + H dv
+}{dollar}{0pt}\coordE{}$$
+as well as
+$$\coord{}\boxMath{
+C^+{}_{a-} = -e_a h, \qquad 
+C^+{}_{a+} = - C^-{}_{a-} = e_a H.
+}{dollar}{0pt}\coordE{}$$
+This in turn implies the relations
+\begin{equation}\coord{}\boxEquation{
+F^+{}_{a+} = - F^-{}_{a-}, \qquad 
+Q^{\pm +}{}_{a+} = - Q^{\pm -}{}_{a-}.                  \label{a-a+}
+}{
+F^+{}_{a+} = - F^-{}_{a-}, \qquad 
+Q^{\pm +}{}_{a+} = - Q^{\pm -}{}_{a-}.                  }{ecuacion}\coordE{}\end{equation}
+To be solved are two sets of equations. The first
+is Equation~(\ref{s-e}); for \myHighlight{$\alpha \neq -$}\coordHE{}
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}F^+{}_{\alpha -} - 4i\kbar\lambda_r Q^{+r}{}_{\alpha -} 
+\leftCoord{}=  - e_\alpha h, \qquad r = +,-               \rightCoord{}\label{consis6a}\\\leftCoord{}[4pt]
+&&\leftCoord{}F^-{}_{\alpha -} - 4i\kbar\lambda_r Q^{-r}{}_{\alpha -} 
+\leftCoord{}=  - e_\alpha H,                               \rightCoord{}\label{consis6b}
+\rightCoord{}}{0mm}{5}{4}{
+&&F^+{}_{\alpha -} - 4i\kbar\lambda_r Q^{+r}{}_{\alpha -} 
+=  - e_\alpha h, \qquad r = +,-               \\[4pt]
+&&F^-{}_{\alpha -} - 4i\kbar\lambda_r Q^{-r}{}_{\alpha -} 
+=  - e_\alpha H,                               }{1}\coordE{}\end{eqnarray}
+These are the actual equations; they define the algebra in terms of
+the rotation coefficients.  The second set is Equation~(\ref{consis2})
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}I_{+-} = K_{+-} + \lambda_r F^r{}_{+-} 
+\leftCoord{}- 2i\kbar \lambda_r  \lambda_s Q^{rs}{}_{+-},       \rightCoord{}\label{consis6c}\\\leftCoord{}[4pt]
+&&\leftCoord{}I_{a+} = K_{a+} + \lambda_r F^r{}_{a+} 
+\leftCoord{}- 2i\kbar \lambda_r  \lambda_s Q^{rs}{}_{a+},       \rightCoord{}\label{consis6d}\\\leftCoord{}[4pt]
+&&\leftCoord{}I_{a-} = K_{a-} + \lambda_r F^r{}_{a-} 
+\leftCoord{}- 2i\kbar \lambda_r  \lambda_s Q^{rs}{}_{a-},       \rightCoord{}\label{consis6e}\\\leftCoord{}[4pt]
+&&\leftCoord{}I_{ab} = K_{ab} + \lambda_r F^r{}_{ab}.           \rightCoord{}\label{consis6f}
+\rightCoord{}}{0mm}{10}{6}{
+&&I_{+-} = K_{+-} + \lambda_r F^r{}_{+-} 
+- 2i\kbar \lambda_r  \lambda_s Q^{rs}{}_{+-},       \\[4pt]
+&&I_{a+} = K_{a+} + \lambda_r F^r{}_{a+} 
+- 2i\kbar \lambda_r  \lambda_s Q^{rs}{}_{a+},       \\[4pt]
+&&I_{a-} = K_{a-} + \lambda_r F^r{}_{a-} 
+- 2i\kbar \lambda_r  \lambda_s Q^{rs}{}_{a-},       \\[4pt]
+&&I_{ab} = K_{ab} + \lambda_r F^r{}_{ab}.           }{1}\coordE{}\end{eqnarray}
+From Equation~(\ref{consis6a}) we deduce that
+$$\coord{}\boxMath{
+e_a e_b h = 4i\kbar I_{ar} Q^{+r}{}_{b-}.
+}{dollar}{0pt}\coordE{}$$ 
+Since we are working only to first order we should compare the relative
+magnitudes of the various terms in the equations. One can draw the
+following table:
+$$\coord{}\boxMath{
+\begin{array}{cccccccccc}
+[K] &= &L^{-2} &| &[2i\kbar K] &=  &L^0 &\mbox{real} & \\[4pt]
+[F] &= &L^{-1} &| &[2i\kbar \lambda F] &=  &L^0 &\mbox{real}
+&| &F \sim 2i\kbar\kappa K \\[4pt]
+[Q] &= &L^{-2} &| &[(2i\kbar \lambda )^2 Q] &=  &L^0 &\mbox{real} 
+&| &Q \sim 2i\kbar\kappa^2 K
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+We write then
+$$\coord{}\boxMath{
+F^r{}_{at} = 2i\kbar\kappa D^{rs}{}_t K_{as},\qquad
+Q^{rs}{}_{at} = 2i\kbar\kappa^2 D^{rsu}{}_t K_{au}
+}{dollar}{0pt}\coordE{}$$
+with the coefficients \myHighlight{$D^{rs}{}_t$}\coordHE{} and \myHighlight{$D^{rst}{}_u$}\coordHE{} real and
+without dimension. We have included the factor \myHighlight{$2i\kbar$}\coordHE{} to indicate
+the scaling behaviour and a characteristic gravitational curvature
+\myHighlight{$\kappa$}\coordHE{} to keep the physical dimensions correct and to allow for a
+variation in the ratio of the two coefficients. The parameters
+\myHighlight{$2i\kbar K_{\alpha\beta}$}\coordHE{} are real, without dimension and do not
+necessarily vanish with the curvature.  We have here implicitly
+supposed they do not. This point has been discussed
+elsewhere~\cite{MacMadZou02}. From the conditions~(\ref{a-a+}) we see
+that the relations
+$$\coord{}\boxMath{
+D^{+s}{}_+ = - D^{-s}{}_-, \qquad
+D^{+rs}{}_+ = - D^{-rs}{}_-.
+}{dollar}{0pt}\coordE{}$$
+We would like the derivative of a physical quantity \myHighlight{$f$}\coordHE{} to satisfy
+\myHighlight{$e_a f \sim \kappa f$}\coordHE{}, which implies that 
+$$\coord{}\boxMath{
+(2i\kbar K) \sim \kappa (2i\kbar\lambda).
+}{dollar}{0pt}\coordE{}$$ 
+Therefore the order of magnitude of the wave is related to the two
+length scales by
+$$\coord{}\boxMath{
+h \sim \kappa (2i\kbar \lambda) (2i\kbar K) \sim (2i\kbar K)^2.
+}{dollar}{0pt}\coordE{}$$
+If we use the expansion in terms of the coefficients \myHighlight{$D^{rs}{}_t$}\coordHE{} we
+find that
+$$\coord{}\boxMath{
+I_{at} = K_{at} - 
+2i\kbar\kappa \lambda_r D^{rs}{}_t K_{as} + o(\kappa^2).
+}{dollar}{0pt}\coordE{}$$
+To simplify the equations, but without other justification, we choose
+$$\coord{}\boxMath{
+K_{+-} = 0, \qquad K_{ab} = 0,  \qquad F^\alpha{}_{ab} = 0,
+\qquad F^\alpha{}_{rs} = 0,
+\qquad Q^{\alpha\beta}{}_{rs} = 0.
+}{dollar}{0pt}\coordE{}$$ 
+The integrability conditions for the equations for \myHighlight{$h$}\coordHE{} and \myHighlight{$H$}\coordHE{} are
+respectively
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}F^r{}_{ab} e_r h = 4i\kbar I_{[ar} Q^{+r}{}_{b]-},\\\leftCoord{}[4pt]
+&&\leftCoord{}F^r{}_{ab} e_r H = 4i\kbar I_{[ar} Q^{-r}{}_{b]-}.\rightCoord{}
+\rightCoord{}}{0mm}{3}{3}{
+&&F^r{}_{ab} e_r h = 4i\kbar I_{[ar} Q^{+r}{}_{b]-},\\[4pt]
+&&F^r{}_{ab} e_r H = 4i\kbar I_{[ar} Q^{-r}{}_{b]-}.
+}{1}\coordE{}\end{eqnarray*}
+These can be written as 
+$$\coord{}\boxMath{
+D^{rst}{}_- K_{[as} K_{b]t} = 0,\qquad
+D^{ps}{}_u D^{uqt}{}_- K_{[as} K_{b]t} = 0
+}{dollar}{0pt}\coordE{}$$
+and it implies therefore that
+$$\coord{}\boxMath{
+D^{r[st]}{}_- = 0,\qquad D^{p[s}{}_q D^{uqt]}{}_- = 0.
+}{dollar}{0pt}\coordE{}$$
+But \myHighlight{$D^{rst}{}_-$}\coordHE{} must also be symmetric in the first two
+indices. We conclude therefore that it is totally symmetric in the
+first three indices.
+
+The second set of equations gives rise to Jacobi identities:
+$$\coord{}\boxMath{
+\epsilon^{\alpha\beta\gamma\delta}[\lambda_\alpha, I_{\beta\gamma}] = 0.
+}{dollar}{0pt}\coordE{}$$
+The Jacobi identities can be written then as
+$$\coord{}\boxMath{
+I_{[as} Q^{\pm s}{}_{b]-} = 0.
+}{dollar}{0pt}\coordE{}$$ 
+These are the same conditions as for the existence of \myHighlight{$h$}\coordHE{} and \myHighlight{$H$}\coordHE{}.
+
+We notice also that \myHighlight{$h(x^a)$}\coordHE{} is harmonic if
+\begin{equation}\coord{}\boxEquation{
+g^{ab} e_a e_b h = 4i\kbar g^{ab} I_{ar} Q^{+r}{}_{b-} = 0. \label{eq:1}
+}{
+g^{ab} e_a e_b h = 4i\kbar g^{ab} I_{ar} Q^{+r}{}_{b-} = 0. }{ecuacion}\coordE{}\end{equation}
+This can be written as
+$$\coord{}\boxMath{
+g^{ab} D^{+st}{}_- K_{as} K_{bt} = 0,\qquad
+g^{ab} D^{ps}{}_q D^{+qt}{}_- K_{as} K_{bt} = 0
+}{dollar}{0pt}\coordE{}$$
+To actually find a (formal) solution is more difficult.  One easily
+sees that
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}4i\kbar \lambda_r \lambda_s Q^{rs}{}_{a+} = \lambda_+ F^+{}_{a+} -
+\lambda_+ e_a H + 4i\kbar \lambda_- \lambda_r Q^{-r}{}_{a+}, \\\leftCoord{}[4pt]
+&&\leftCoord{}4i\kbar \lambda_r \lambda_s Q^{rs}{}_{a-} = \lambda_r F^r{}_{a-} +
+\lambda_+ e_a h + \lambda_- e_a H.\rightCoord{}
+\rightCoord{}}{0mm}{3}{3}{
+&&4i\kbar \lambda_r \lambda_s Q^{rs}{}_{a+} = \lambda_+ F^+{}_{a+} -
+\lambda_+ e_a H + 4i\kbar \lambda_- \lambda_r Q^{-r}{}_{a+}, \\[4pt]
+&&4i\kbar \lambda_r \lambda_s Q^{rs}{}_{a-} = \lambda_r F^r{}_{a-} +
+\lambda_+ e_a h + \lambda_- e_a H.
+}{1}\coordE{}\end{eqnarray*}
+Using the first set, the second set of equations can be replaced by
+the system
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}I_{a+} = K_{a+} + \frac 12 \lambda_+ e_a H
+\leftCoord{}+ \frac 12\lambda_r F^r{}_{a+} - \frac 12 \lambda_- 
+\leftCoord{}(4i\kbar \lambda_r Q^{-r}{}_{a+} - F^-{}_{a+}),     \rightCoord{}\label{consis7d}\\\leftCoord{}[4pt]
+&&\leftCoord{}I_{a-} = K_{a-} - \frac 12 (\lambda_+ e_a h 
+\leftCoord{}+ \lambda_- e_a H) + \frac 12\lambda_r F^r{}_{a-}.    \rightCoord{}\label{consis7e}
+\rightCoord{}}{0mm}{6}{4}{
+&&I_{a+} = K_{a+} + \frac 12 \lambda_+ e_a H
++ \frac 12\lambda_r F^r{}_{a+} - \frac 12 \lambda_- 
+(4i\kbar \lambda_r Q^{-r}{}_{a+} - F^-{}_{a+}),     \\[4pt]
+&&I_{a-} = K_{a-} - \frac 12 (\lambda_+ e_a h 
++ \lambda_- e_a H) + \frac 12\lambda_r F^r{}_{a-}.    }{1}\coordE{}\end{eqnarray}
+This in turn can be written as
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}[\lambda_a, \lambda_+ (1 - \frac 12 H)] = 
+\leftCoord{}(1 - \frac 12 H) K_{a+} +i\kbar\kappa\lambda_r D^{rs}{}_+ K_{as}
+\nonumber\rightCoord{}\\\leftCoord{}[4pt] \rightCoord{} 
+&&\leftCoord{}\phantom{[\lambda_a, \lambda_+ (1 - \frac 12 H)]}
+\leftCoord{}- i\kbar\kappa \lambda_- (4i\kbar\kappa \lambda_r 
+D^{-rs}{}_{+} - D^{-s}{}_+) K_{as},     \rightCoord{}\label{consis8d}\\\leftCoord{}[4pt]
+&&\leftCoord{}[\lambda_a, \lambda_- (1 + \frac 12 H) + \lambda_+ \frac 12 h ] = 
+\leftCoord{}(1 + \frac 12 H) K_{a-} + i\kbar\kappa\lambda_r D^{rs}{}_- K_{as}
+\nonumber\rightCoord{}\\\leftCoord{}[4pt] \rightCoord{} 
+&&\leftCoord{}\phantom{[\lambda_a, \lambda_+ (1 + \frac 12 H) + \lambda_+ \frac 12 h ]}
+\leftCoord{}+ \frac 12 h K_{a+}.        \rightCoord{}\label{consis8e}
+\rightCoord{}}{0mm}{11}{8}{
+&&[\lambda_a, \lambda_+ (1 - \frac 12 H)] = 
+(1 - \frac 12 H) K_{a+} +i\kbar\kappa\lambda_r D^{rs}{}_+ K_{as}
+\\[4pt]  
+&&\phantom{[\lambda_a, \lambda_+ (1 - \frac 12 H)]}
+- i\kbar\kappa \lambda_- (4i\kbar\kappa \lambda_r 
+D^{-rs}{}_{+} - D^{-s}{}_+) K_{as},     \\[4pt]
+&&[\lambda_a, \lambda_- (1 + \frac 12 H) + \lambda_+ \frac 12 h ] = 
+(1 + \frac 12 H) K_{a-} + i\kbar\kappa\lambda_r D^{rs}{}_- K_{as}
+\\[4pt]  
+&&\phantom{[\lambda_a, \lambda_+ (1 + \frac 12 H) + \lambda_+ \frac 12 h ]}
++ \frac 12 h K_{a+}.        }{1}\coordE{}\end{eqnarray}
+If we suppose that there is a solution \myHighlight{$f$}\coordHE{} to the equation
+$$\coord{}\boxMath{
+e_a f = - F^-{}_{a+} + 4i\kbar\lambda_r Q^{-r}{}_{a+} 
+}{dollar}{0pt}\coordE{}$$
+then we can write the second set of equations finally as
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}[\lambda_a, \lambda_+ (1 - \frac 12 H) + \lambda_- \frac 12 f ] = 
+\leftCoord{}(1 - \frac 12 H) K_{a+} \nonumber\rightCoord{}\\\leftCoord{}[4pt] 
+&&\leftCoord{}\phantom{[\lambda_a, \lambda_+ (1 - \frac 12 H) + \lambda_- \frac 12 f ]}
+\leftCoord{}+ \frac 12 f K_{a-} +i\kbar\kappa\lambda_r D^{rs}{}_+ K_{as},
+\label{consis9d}\\\leftCoord{}[4pt] \rightCoord{} 
+&&\leftCoord{}[\lambda_a, \lambda_- (1 + \frac 12 H) + \lambda_+ \frac 12 h ] = 
+\leftCoord{}(1 + \frac 12 H) K_{a-} \nonumber\rightCoord{}\\\leftCoord{}[4pt] 
+&&\leftCoord{}\phantom{[\lambda_a, \lambda_- (1 + \frac 12 H) + \lambda_+ \frac 12 h ]}
+\leftCoord{}+ \frac 12 h K_{a+} +i\kbar\kappa\lambda_r D^{rs}{}_- K_{as}.\rightCoord{}
+\label{consis9e} 
+\rightCoord{}}{0mm}{11}{6}{
+&&[\lambda_a, \lambda_+ (1 - \frac 12 H) + \lambda_- \frac 12 f ] = 
+(1 - \frac 12 H) K_{a+} \\[4pt] 
+&&\phantom{[\lambda_a, \lambda_+ (1 - \frac 12 H) + \lambda_- \frac 12 f ]}
++ \frac 12 f K_{a-} +i\kbar\kappa\lambda_r D^{rs}{}_+ K_{as},
+\\[4pt]  
+&&[\lambda_a, \lambda_- (1 + \frac 12 H) + \lambda_+ \frac 12 h ] = 
+(1 + \frac 12 H) K_{a-} \\[4pt] 
+&&\phantom{[\lambda_a, \lambda_- (1 + \frac 12 H) + \lambda_+ \frac 12 h ]}
++ \frac 12 h K_{a+} +i\kbar\kappa\lambda_r D^{rs}{}_- K_{as}.
+}{1}\coordE{}\end{eqnarray}
+Here, as in the previous version we have used the linearization
+assumption to replace, for example, on the right-hand side 
+\myHighlight{$h I_{a+}$}\coordHE{} by \myHighlight{$h K_{a+}$}\coordHE{}. By the same assumption we find that
+$$\coord{}\boxMath{
+h = -2i\kbar \kappa D^{+s}{}_- \lambda_s,\qquad
+H = -2i\kbar \kappa D^{-s}{}_- \lambda_s,\qquad
+f = -2i\kbar \kappa D^{-s}{}_+ \lambda_s.
+}{dollar}{0pt}\coordE{}$$
+Since there are only \myHighlight{$\lambda_\pm$}\coordHE{} on the right-hand side, the extra
+element \myHighlight{$f$}\coordHE{} which we have introduced must be a linear combination of
+\myHighlight{$h$}\coordHE{} and \myHighlight{$H$}\coordHE{}. Taking the successive derivatives we find that
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}e_a h = -2i\kbar \kappa D^{+s}{}_- I_{as} \simeq 
+\leftCoord{}-2i\kbar \kappa D^{+s}{}_- K_{as}\\\leftCoord{}[4pt]
+&&\leftCoord{}e_a e_b h = -2i\kbar \kappa D^{+s}{}_- [\lambda_a, I_{bs}]
+\simeq -(2i\kbar \kappa)^2 D^{+s}{}_- D^{rt}{}_s K_{ar} K_{bt}.\rightCoord{}
+\rightCoord{}}{0mm}{4}{3}{
+&&e_a h = -2i\kbar \kappa D^{+s}{}_- I_{as} \simeq 
+-2i\kbar \kappa D^{+s}{}_- K_{as}\\[4pt]
+&&e_a e_b h = -2i\kbar \kappa D^{+s}{}_- [\lambda_a, I_{bs}]
+\simeq -(2i\kbar \kappa)^2 D^{+s}{}_- D^{rt}{}_s K_{ar} K_{bt}.
+}{1}\coordE{}\end{eqnarray*}
+But we have another expression, Equation~(\ref{consis6b}), for \myHighlight{$e_a h$}\coordHE{}
+and the two must be equal. The leading terms are equal by our choice
+of normalization. If we compare the next terms, those which dominate
+the second derivatives, we find that
+$$\coord{}\boxMath{
+2 D^{+rs}{}_- = D^{+t}{}_- D^{rs}{}_t.
+}{dollar}{0pt}\coordE{}$$
+In Appendix~I one reads that the metric component \myHighlight{$h(\equiv \t{h})$}\coordHE{}
+is a linear function of \myHighlight{$u$}\coordHE{}, harmonic in the \myHighlight{$x^a$}\coordHE{} and more or less
+arbitrary as a function of the \myHighlight{$v$}\coordHE{}.  The term linear in \myHighlight{$u$}\coordHE{} is in fact
+a coordinate artifact and can be eliminated by replacing \myHighlight{$u$}\coordHE{} and \myHighlight{$v$}\coordHE{}
+by new coordinates while maintaining the general metric form. 
+
+Suppose that \myHighlight{$h$}\coordHE{} has an expansion around a solution of the form of a
+vacuum plane wave solution defined by Equation~(\ref{vpws}):
+$$\coord{}\boxMath{
+h = h_ax^a + \frac 12 h_{ab} x^a x^b + \cdots
+}{dollar}{0pt}\coordE{}$$
+From~(\ref{consis6a}) we find that
+$$\coord{}\boxMath{
+F^+{}_{a-} = -h_a, \qquad h_{ab} x^b = 4i\kbar \lambda_r Q^{+r}{}_{a-}
+= 2(2i\kbar\kappa)^2 \lambda_r  D^{+rs}{}_- K_{as}.
+}{dollar}{0pt}\coordE{}$$
+The relation between the momenta and coordinates is linear as in the
+flat-space case. If we take the derivative we find the relations
+$$\coord{}\boxMath{
+h_{ab} = 4i\kbar K_{br} Q^{+r}{}_{a-}
+= 2(2i\kbar\kappa)^2 D^{+rs}{}_- K_{ar} K_{bs}.
+}{dollar}{0pt}\coordE{}$$
+Suppose that the boost \myHighlight{$H$}\coordHE{} has a similar expansion
+$$\coord{}\boxMath{
+H = H_ax^a + \frac 12 H_{ab} x^a x^b + \cdots.
+}{dollar}{0pt}\coordE{}$$
+From~(\ref{consis6b}) we find that
+$$\coord{}\boxMath{
+F^-{}_{a-} = -H_a, \qquad 
+H_{ab} x^b = 4i\kbar \lambda_r Q^{-r}{}_{a-}
+= 2(2i\kbar\kappa)^2 \lambda_r  D^{-rs}{}_- K_{as}.
+}{dollar}{0pt}\coordE{}$$
+If we take the derivative we find the relations
+$$\coord{}\boxMath{
+H_{ab} = 4i\kbar K_{br} Q^{-r}{}_{a-}
+= 2(2i\kbar\kappa)^2 D^{-rs}{}_- K_{ar} K_{bs}.
+}{dollar}{0pt}\coordE{}$$
+The most interesting relations are those which follow
+from~(\ref{duality}). In the present context they become
+$$\coord{}\boxMath{
+\begin{array}{ll}
+[\lambda_+,u] = 1 + \frac 12 H_{ab}x^a x^b, &
+[\lambda_+,v] = 0,\\[4pt]
+[\lambda_-,u] = - \frac 12 h_{ab}x^a x^b, &
+[\lambda_-,v] = 1 - \frac 12 H_{ab}x^a x^b.
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+The fact that the right-hand side is quadratic is related to the
+approximation we are using and not directly to the quadratic relations
+satisfied by the momenta.
+
+When \myHighlight{$h=0$}\coordHE{}, or rather in the limit when \myHighlight{$h\to 0$}\coordHE{}, there is a natural set
+of conjugacy relations given by \myHighlight{$e_\pm x^a = 0$}\coordHE{}; \myHighlight{$e_a x^\pm = 0$}\coordHE{}, that
+is, with \myHighlight{$K_{\pm a} = 0$}\coordHE{}. When \myHighlight{$h \neq 0$}\coordHE{} this can no longer be the case.
+From the conjugacy relations~(\ref{duality}) we find that
+$$\coord{}\boxMath{
+[\lambda_-, x^+] = K_{-a} [x^a, x^+] = -h.
+}{dollar}{0pt}\coordE{}$$
+From~(\ref{TE}) below it follows that 
+$$\coord{}\boxMath{
+K_{-a} J^{a+} = - h.
+}{dollar}{0pt}\coordE{}$$
+Therefore with \myHighlight{$h \neq 0$}\coordHE{} it is consistent to have \myHighlight{$K_{+a} = 0$}\coordHE{} as
+long as \myHighlight{$K_{-a} \neq 0$}\coordHE{}. We shall examine this possibility in some detail.
+
+We recall first that Equation~(\ref{consis6c})~--~(\ref{consis6f})
+should be read from left to right as usual; the \myHighlight{$h$}\coordHE{} is considered as
+been given. We start with the most general possible \myHighlight{$h = h(x^\alpha)$}\coordHE{}.
+Only for certain choices of this function is the metric a \myHighlight{$pp$}\coordHE{}-wave
+metric. A \myHighlight{$pp$}\coordHE{}-metric arises (by definition) whenever there is a
+covariantly constant null vector, for example when the metric is
+Ricci flat. To obtain commutation relations for the
+position generators one must use the conjugacy
+relations~(\ref{duality}). We use Equation~(\ref{pxx}) to obtain
+differential equations for \myHighlight{$J^{\mu\nu}$}\coordHE{}:
+$$\coord{}\boxMath{
+\begin{array}{ll}
+i\kbar dJ^{+-} = [v,h] \theta^-,
+&i\kbar dJ^{+b} = [x^b,h] \theta^-, \\[4pt] 
+i\kbar dJ^{a-} = 0,
+&i\kbar dJ^{ab} = 0.
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+The Jacobi identities~(\ref{pxx}) reduce then to the equations
+$$\coord{}\boxMath{
+e_- J^{+-} = [v,h], \qquad e_- J^{+a} = [x^a,h].
+}{dollar}{0pt}\coordE{}$$
+The \myHighlight{$J^{\mu\nu}$}\coordHE{} must be of the form
+$$\coord{}\boxMath{
+J^{+\nu} = J^{+\nu}(u, x^a), \qquad J^{-a} = \theta^{-a}, \qquad
+J^{ab} = \theta^{ab}
+}{dollar}{0pt}\coordE{}$$
+and they must satisfy the constraint
+$$\coord{}\boxMath{
+[v, J^{a+}] = [x^a, J^{-+}]
+}{dollar}{0pt}\coordE{}$$
+which follows from the Jacobi identities.  If
+Equation~(\ref{J-theta}) is to hold we must have
+\begin{equation}\coord{}\boxEquation{
+J^{+a} = \theta^{+a} - h \theta^{-a}, \qquad 
+h = h(u,v,\lambda_+).\label{TE}
+}{
+J^{+a} = \theta^{+a} - h \theta^{-a}, \qquad 
+h = h(u,v,\lambda_+).}{ecuacion}\coordE{}\end{equation}
+
+We have already recalled the fact that in the commutative limit the
+commutation relations define a symplectic structure. This is one of
+the foundation facts of quantum mechanics.  What is new here is the
+fact that the extension of these relations to the differential
+calculus leaves also a gravitation field as `shadow'.  We have
+constructed the differential calculus (formally) so that it would
+define the \myHighlight{$pp$}\coordHE{} metric in the limit. The two structures have a common
+origin and this fact should be apparent.  The \myHighlight{$pp$}\coordHE{} metric is of Petrov
+type \myHighlight{$N$}\coordHE{}. We have found that the matrix~\myHighlight{$K_{\alpha\beta}$}\coordHE{} - considered
+as an electromagnetic field or as a \myHighlight{$B$}\coordHE{}-field - is of type \myHighlight{$I$}\coordHE{}. Both
+structures define a common principle null vector, defined by the
+propagation of the wave. There remains much to be clarified on the
+relation between the two classes of principle null vectors in more
+general situations.
+
+We can now consider the algebra and calculus as given and use
+previously employed methods to find the metric.
+
+\initiate
+\section{Curvature}                                         \label{curv}
+
+The linear-connection coefficients are defined in terms of the
+structure elements by the formula~(\ref{T0}), which can be written in
+the form
+$$\coord{}\boxMath{
+\omega^\alpha{}_{[\beta\gamma]} = C^\alpha{}_{\beta\gamma} - 
+i\kbar \omega^\alpha{}_{(\eta\zeta)} Q^{\eta\zeta}{}_{\beta\gamma}.
+}{dollar}{0pt}\coordE{}$$
+The case which we shall consider is such however that the second
+term vanishes and so we have the usual formula for the Levi-Civita
+connection.  The associated covariant derivative is defined by the
+actions \myHighlight{$D \theta^\alpha = - \omega^\alpha{}_\beta \theta^\beta$}\coordHE{} with
+the right-hand side defined using~(\ref{t-free}). 
+
+The product in the algebra of forms is not necessarily
+anti-commutative but the extra terms will not appear in the expression
+for the differential of a form, because of the relation~(\ref{C-con})
+and the form of the Ansatz we are using. To calculate the curvature we
+must know the structure of the algebra of forms, given by
+Equation~(\ref{struc}).  The relations are the usual ones except for
+\begin{equation}\coord{}\boxEquation{
+\theta^{(+}\theta^{-)} = 4i\kbar Q^{+-}{}_{ra} \theta^r\theta^a ,\qquad
+(\theta^+)^2 = 2i\kbar  Q^{++}{}_{ar} \theta^a \theta^r.    \label{acr}
+}{
+\theta^{(+}\theta^{-)} = 4i\kbar Q^{+-}{}_{ra} \theta^r\theta^a ,\qquad
+(\theta^+)^2 = 2i\kbar  Q^{++}{}_{ar} \theta^a \theta^r.    }{ecuacion}\coordE{}\end{equation}
+Because of the symmetries of the rotation coefficients these products
+do not contribute to the exterior derivative.
+
+Although not a satisfactory object, we define the curvature exactly
+as in the commutative case, as the left-linear map 
+\myHighlight{$\mbox{Curv} = - D^2$}\coordHE{} from \myHighlight{$\Omega^1(\c{A})$}\coordHE{} into 
+\myHighlight{$\Omega^2(\c{A}) \otimes \Omega^1(\c{A})$}\coordHE{}, with associated Ricci map
+from \myHighlight{$\Omega^1(\c{A})$}\coordHE{} into \myHighlight{$\Omega^1(\c{A})$}\coordHE{} given by
+$$\coord{}\boxMath{
+\mbox{Ric} (\theta^+) = -(\Delta h + g^{ab} (e_a h e_b H + e_a H e_b h)) 
+\theta^-, \qquad 
+\mbox{Ric} (\theta^-) = 0, \qquad
+\mbox{Ric} (\theta^a) = 0.
+}{dollar}{0pt}\coordE{}$$
+The only
+non-vanishing component of the Ricci tensor is therefore
+$$
+R^+{}_- = -\Delta h - g^{ab} (e_a h e_b H + e_a H e_b h).    %\label{ricncm}
+$$ We have not perhaps found the most general \myHighlight{$pp$}\coordHE{}-algebra; in fact we
+did not even correctly characterize a \myHighlight{$pp$}\coordHE{}-algebra; but we have shown
+there is at least one algebra with a differential calculus whose
+compatible metric is a plane wave.
+
+
+\initiate
+\section{Heisenberg  picture}                            \label{Heis}
+
+One could also consider the problem of finding the metric as an evolution
+equation in field theory in the sense that one can pass from the
+Schr\"odinger picture to the Heisenberg picture with the help of an
+evolution hamiltonian. In quantum field theory a scalar field evolves
+in time according to the equation
+$$\coord{}\boxMath{
+\phi(t) = U(t)^{-1}\phi(0)U(t) = \phi^\prime (0), \qquad U(t) = e^{iHt}.
+}{dollar}{0pt}\coordE{}$$
+We have chosen a very particular gauge transformation \myHighlight{$\t{\Lambda}$}\coordHE{} which
+in the commutative limit is one element of the local Lorentz
+transformations and we have, in the linear approximation, `lifted'
+\myHighlight{$\t{\Lambda}$}\coordHE{} to a morphism \myHighlight{$\Lambda$}\coordHE{} of the differential calculus
+which is such that the covariant derivative transforms as it
+should. We have then on the one hand the transformation of the
+rotation coefficients given by Equations~(\ref{evol1}) and on the
+other hand what would be the quantum version of a gauge transformation
+$$\coord{}\boxMath{
+D\phi \mapsto D^\prime \phi^\prime = 
+D^\prime (U^{-1}\phi U) = (U^{-1}D U) (U^{-1}\phi U).
+}{dollar}{0pt}\coordE{}$$
+There is a strong similarity between the quantum gauge transformation 
+$$\coord{}\boxMath{
+D^\prime = U^{-1}D U
+}{dollar}{0pt}\coordE{}$$
+and the noncommutative change of frame~(\ref{evol1}), which supports
+the point of view that gravity is a manifestation of the
+noncommutative structure of space-time. The evolution of a (free)
+quantum field in a gravitational background is the same as, or at
+least similar to, a change of frame in a noncommutative geometry.
+
+
+\initiate
+\section{Embeddings}
+
+In this section we would like to consider the \myHighlight{$pp$}\coordHE{}-wave metrics as
+perturbations of flat metrics and also consider them as noncommutative
+embeddings~\cite{MadMou98,GraLizMarVit01}. To distinguish them we
+shall place a prime on perturbed quantities.
+The commuting generators can be considered as the coordinates of an
+\myHighlight{$\b{R}^4$}\coordHE{}. If \myHighlight{$h=0$}\coordHE{} one can set \myHighlight{$\lambda_a = - K_{a\pm} x^\pm$}\coordHE{} to
+define an embedding \myHighlight{$\b{R}^2 \hookrightarrow \b{R}^4$}\coordHE{}. Consider now
+the 8-dimensional phase-space associated to the \myHighlight{$\b{R}^4$}\coordHE{} obtained by
+adding 4 extra variables \myHighlight{$(x^{a}, \lambda_\pm)$}\coordHE{} and `quantize' this
+space by imposing the commutation relations
+$$\coord{}\boxMath{
+[\lambda_\alpha, x^\mu] = i \kbar \delta_\alpha^\mu
+}{dollar}{0pt}\coordE{}$$
+We write the corresponding relations Equation~(\ref{duality}) in the
+form
+$$\coord{}\boxMath{
+[\lambda^\prime_\alpha, x^{\prime\mu}] = i \kbar e_\alpha^{\prime\mu}
+}{dollar}{0pt}\coordE{}$$
+and we consider the latter as a perturbation
+$$\coord{}\boxMath{
+e_\alpha^{\prime\mu} = \delta_\alpha^\mu + i\kbar f_\alpha^{\mu}
+}{dollar}{0pt}\coordE{}$$
+of the former. If we perturb 
+$$\coord{}\boxMath{
+x^{\prime\mu} = x^\mu + i\kbar \xi^\mu, \qquad 
+\lambda^\prime_\alpha = \lambda_\alpha + i\kbar l_\alpha 
+}{dollar}{0pt}\coordE{}$$
+both the position and the momentum generators we see that the relation 
+$$\coord{}\boxMath{
+f^{\mu}_\alpha = [\lambda_\alpha, \xi^\mu] + [l_\alpha, x^\mu]
+}{dollar}{0pt}\coordE{}$$
+holds. The induced perturbation of the frame is given by~(\ref{lr}) with
+$$\coord{}\boxMath{
+\Lambda^\alpha_\beta \simeq \delta^\alpha_\beta - i\kbar f^\alpha_\beta
+}{dollar}{0pt}\coordE{}$$
+no longer necessarily a gauge transformation.
+
+If \myHighlight{$\lambda_\alpha$}\coordHE{} and its perturbed equivalent are to generate
+differential calculi then they both must satisfy~(\ref{consis}) with
+in general different coefficients. We set
+$$\coord{}\boxMath{
+P^{\prime\alpha\beta}{}^{\phantom{\alpha\beta}}_{\gamma\delta} = 
+P^{\alpha\beta}{}^{\phantom{\alpha\beta}}_{\gamma\delta} +
+i\kbar Q^{\alpha\beta}{}^{\phantom{\alpha\beta}}_{\gamma\delta},
+\qquad
+F^{\prime\alpha}{}_{\gamma\delta} = F^{\alpha}{}_{\gamma\delta}
+ + i\kbar \phi^{\alpha}{}_{\gamma\delta}, \qquad
+K^\prime_{\gamma\delta} = K_{\gamma\delta} +i\kbar  \kappa_{\gamma\delta}
+}{dollar}{0pt}\coordE{}$$
+and we shall restrict our attention to the special case
+$$\coord{}\boxMath{
+P^{\alpha\beta}{}^{\phantom{\alpha\beta}}_{\gamma\delta} =
+\frac 12 \delta^{[\alpha}_\gamma \delta^{\beta]}_\delta, \qquad
+F^{\alpha}{}_{\gamma\delta} = 0
+}{dollar}{0pt}\coordE{}$$
+which is a perturbation of flat space. Comparing then the two sets of
+equations we find the relation
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}e_{[\alpha} l_{\beta]} =  \kappa_{\alpha\beta} +
+\phi^{\gamma}{}_{\alpha\beta}\lambda_\gamma
+\leftCoord{}- i\kbar l_{[\alpha} l_{\beta]}
+\leftCoord{}- 4 i\kbar Q^{\gamma\delta}{}_{\alpha\beta} 
+l_{\gamma} \lambda_{\delta} \\\leftCoord{}[6pt]
+&&\leftCoord{}\phantom{e_{[\alpha} l_{\beta]}}
+\leftCoord{}-2 \lambda_\gamma\lambda_\delta Q^{\gamma\delta}{}_{\alpha\beta}  
+\leftCoord{}-2 (i\kbar)^2 l_\gamma l_\delta Q^{\gamma\delta}{}_{\alpha\beta}
+\leftCoord{}-2 i\kbar Q^{\gamma\delta}{}_{\alpha\beta} e_{\delta} l_{\gamma} 
+\rightCoord{}}{0mm}{8}{2}{
+&&e_{[\alpha} l_{\beta]} =  \kappa_{\alpha\beta} +
+\phi^{\gamma}{}_{\alpha\beta}\lambda_\gamma
+- i\kbar l_{[\alpha} l_{\beta]}
+- 4 i\kbar Q^{\gamma\delta}{}_{\alpha\beta} 
+l_{\gamma} \lambda_{\delta} \\[6pt]
+&&\phantom{e_{[\alpha} l_{\beta]}}
+-2 \lambda_\gamma\lambda_\delta Q^{\gamma\delta}{}_{\alpha\beta}  
+-2 (i\kbar)^2 l_\gamma l_\delta Q^{\gamma\delta}{}_{\alpha\beta}
+-2 i\kbar Q^{\gamma\delta}{}_{\alpha\beta} e_{\delta} l_{\gamma} 
+}{1}\coordE{}\end{eqnarray*}
+
+If the metric is a \myHighlight{$pp$}\coordHE{}-wave then
+$$\coord{}\boxMath{
+i\kbar f^\mu_\alpha = \left(\begin{array}{cccc} 
+0 &-h &0 &0 \\[4pt] 0 &0 &0 &0 \\[4pt] 
+0 &0 &0 &0 \\[4pt] 0 &0 &0 &0 \end{array}\right).
+}{dollar}{0pt}\coordE{}$$
+The embedding `space' described by an algebra \myHighlight{$\c{B}$}\coordHE{} has a natural
+differential calculus with a module of 1-forms of rank 8 freely
+generated by the elements \myHighlight{$dy^i$}\coordHE{}, with
+$$\coord{}\boxMath{
+y^i = (\theta^{\mu\alpha}\lambda_\alpha, x^\nu)
+}{dollar}{0pt}\coordE{}$$
+A basis of the 1-forms of the embedded `space' \myHighlight{$\c{A}$}\coordHE{} would have
+four elements \myHighlight{$\theta^\alpha$}\coordHE{} and would have to be in some sense a
+restriction of the 1-forms over \myHighlight{$\c{B}$}\coordHE{}. Associated to the inclusion
+of \myHighlight{$\c{A}$}\coordHE{} in \myHighlight{$\c{B}$}\coordHE{} there is an inclusion map
+$$\coord{}\boxMath{
+\iota^* : \Omega^1(\c{A}) \hookrightarrow \Omega^1(\c{B})
+}{dollar}{0pt}\coordE{}$$
+between the respective module of 1-forms. If \myHighlight{$\theta^\alpha$}\coordHE{} is a
+frame and \myHighlight{$f$}\coordHE{} an element of \myHighlight{$\c{A}$}\coordHE{} then we must have the relation
+$$\coord{}\boxMath{
+0 = \iota^* (f\theta^\alpha - \theta^\alpha f) =
+[\iota^* f, \theta^\alpha_i] dy^i.
+}{dollar}{0pt}\coordE{}$$
+This implies then the relations 
+$$\coord{}\boxMath{
+[\iota^* f, \theta^\alpha_i] = 0.
+}{dollar}{0pt}\coordE{}$$
+There are \myHighlight{$2n^2$}\coordHE{} unknowns and an equal number of relations.
+
+We started with four generators \myHighlight{$\lambda_\alpha$}\coordHE{} of an algebra \myHighlight{$\c{A}$}\coordHE{}
+and an unknown functional \myHighlight{$h$}\coordHE{} of a second set of four generators
+\myHighlight{$x^\mu$}\coordHE{} of the same algebra. Consider the subalgebra \myHighlight{$\c{B}$}\coordHE{} generated
+by the \myHighlight{$x^a$}\coordHE{}. With the choice we have made for the form of the matrix
+\myHighlight{$K_{\alpha\beta}$}\coordHE{} we can identify \myHighlight{$\c{B}$}\coordHE{} as a function algebra and
+therefore by the commutation relations~(\ref{duality}) we
+can conclude that the \myHighlight{$\lambda_\pm$}\coordHE{} are functions of the
+\myHighlight{$x^a$}\coordHE{}. Likewise we identify the \myHighlight{$\lambda_a$}\coordHE{} as functions of the
+\myHighlight{$x^\pm$}\coordHE{}. The four functions constitute an embedding of \myHighlight{$\c{A}$}\coordHE{} as a
+subalgebra of a `flat' algebra \myHighlight{$\c{B}$}\coordHE{} with twice the
+generators. Because of the simple structure of the problem, two of
+these functions are just linear transformations.
+
+
+
+\initiate
+\section{Discussion}
+
+It would seem that it is possible to find a noncommutative geometry,
+of Minkowski signature in `dimension' four. We have
+started with a given commutative metric, admittedly rather degenerate,
+and constructed an algebra and a differential calculus which supports
+the metric. The algebra is a `\myHighlight{$q$}\coordHE{}-deformed` version of commutative
+\myHighlight{$\b{R}^4$}\coordHE{}; the differential calculus differs from de~Rham's in that the
+relations~(\ref{acr}) hold.
+
+Our calculations have been all carried out on the level of formal
+algebra. The real problem lies in fact in finding a representation of
+the quadratic algebra~(\ref{consis3}). We have given a certain number
+of necessary conditions for such a representation to exist; they are
+not necessarily sufficient.  To obtain a concrete solution we must
+find a representation in terms of operators on a Hilbert space.  To
+each representation corresponds a trace and therefore an action.
+
+The Riemann tensor is of null type. Its relation with \myHighlight{$J^{\mu\nu}$}\coordHE{}
+would be expressed in terms of the action of \myHighlight{$J^{\mu\nu}$}\coordHE{} on the
+principle null direction. Let \myHighlight{$k_\mu$}\coordHE{} be this vector. We must compare
+\myHighlight{$k^\mu$}\coordHE{} with \myHighlight{$J^{\mu\nu}k_\nu$}\coordHE{}.  In the limit \myHighlight{$\kbar \to 0$}\coordHE{} we
+recover the commutative plane-wave solution plus in addition a
+symplectic structure \myHighlight{$J^{\mu\nu}$}\coordHE{}.  The relation of \myHighlight{$J$}\coordHE{} to the Riemann
+tensor in general is a subject of interest which we leave also to a
+future publication.
+
+
+\appendix
+
+\initiate
+\section*{Appendix I}
+\setcounter{section}{1}
+
+\renewcommand{\thesection}{\Roman{section}}
+
+For completeness we give here a brief review of plane-fronted metrics
+using the 'principal null vector' approach, a formalism which is a bit
+more elaborate than is essential but which explicitly identifies, from
+the beginning, the important vector \myHighlight{$k = \t{e_+}$}\coordHE{}, with components
+\myHighlight{$k^{\alpha}$}\coordHE{}. In special cases \myHighlight{$k$}\coordHE{} can be identified as a principal
+null vector of the Riemann or Weyl (conformal) curvature tensors. We
+shall consider \myHighlight{$n$}\coordHE{}-metrics since to do so is no more complicated than
+4-metrics ; when \myHighlight{$n=4$}\coordHE{} these metrics are included in the Kerr-Schild
+class of metrics~\cite{KraSteMacHer80}.  We are considering only classical
+commutative geometry here so we can omit, without ambiguity, the tilde
+notation used in previous discussions of classical metrics. We recall
+also that the metric components \myHighlight{$g_{ab}$}\coordHE{} are real constants.
+
+The line element is given in the frame formalism by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+ds^{2} = \theta^{-}\otimes\theta^{+} + \theta^{+}\otimes\theta^{-} + \rightCoord{}
+g_{ab}\theta^{a}\otimes\theta^{b},                         \rightCoord{}\label{ff}
+\rightCoord{}}{0mm}{1}{4}{
+ds^{2} = \theta^{-}\otimes\theta^{+} + \theta^{+}\otimes\theta^{-} + 
+g_{ab}\theta^{a}\otimes\theta^{b},                         }{1}\coordE{}\end{eqnarray}
+The class of metrics to be considered will be called 
+{\it  plane-fronted}, and can be defined in local coordinates \myHighlight{$x^{\alpha}$}\coordHE{}
+by a frame
+\begin{equation}\coord{}\boxEquation{
+\theta^{\alpha} = (\delta_{\beta}^{\alpha} + 
+h k^{\alpha} k_{\beta}) dx^{\beta},
+}{
+\theta^{\alpha} = (\delta_{\beta}^{\alpha} + 
+h k^{\alpha} k_{\beta}) dx^{\beta},
+}{ecuacion}\coordE{}\end{equation}
+where the \myHighlight{$k^{\alpha}$}\coordHE{} are constants given by
+\begin{equation}\coord{}\boxEquation{
+k^{\alpha}=\delta_{+}^{\alpha},
+}{
+k^{\alpha}=\delta_{+}^{\alpha},
+}{ecuacion}\coordE{}\end{equation}
+so that \myHighlight{$\partial_{\beta}(k^{\alpha}) = 0$}\coordHE{}. Furthermore 
+\myHighlight{$g_{\alpha\beta}k^{\alpha}k^{\beta} = 0$}\coordHE{},  
+\myHighlight{$g_{\alpha\beta}k^{\beta}=k_{\alpha} =\delta_{\alpha}^{-}$}\coordHE{}, where, 
+in the natural coordinate basis (\myHighlight{$x^{+}=u,x^{-}=v,x^{a}$}\coordHE{}), the flat 
+metric takes the form
+$$\coord{}\boxMath{
+g_{\alpha\beta}dx^{\alpha}\otimes dx^{\beta} = 2dudv + g_{ab}dx^{a}dx^{b},
+}{dollar}{0pt}\coordE{}$$
+and \myHighlight{$h$}\coordHE{} is a function. Hence the line element~(\ref{ff}) of a {\it
+plane-fronted metric} \myHighlight{$g$}\coordHE{} is given in Kerr-Schild form by
+$$\coord{}\boxMath{
+ds^{2} = 2du\otimes dv + g_{ab}dx^{a}\otimes dx^{b} + 2h (dv)^{2}.
+}{dollar}{0pt}\coordE{}$$
+Note that the vector field \myHighlight{$k^{\alpha}e_{\alpha}=e_{+}$}\coordHE{} is a null
+vector with respect to these metrics.
+
+The Levi-Civita connection 1-forms, in components with respect to the above
+bases (\myHighlight{$e_{\alpha},\theta^{\alpha})$}\coordHE{} are given by
+$$\coord{}\boxMath{
+\omega^{\alpha}{}_{\beta} = (k^{\alpha}\p_\beta h - 
+\p^\alpha h k_{\beta})k_{\gamma}dx^{\gamma} =
+(k^{\alpha}\p_\beta h -\p^\alpha h k_{\beta})\theta^{-}.
+}{dollar}{0pt}\coordE{}$$
+The components of the curvature 2-forms, relative to the same bases,
+are given by
+$$\coord{}\boxMath{
+R^{\alpha}{}_{\beta\gamma\delta} =
+k_{\gamma}k_{\beta}\p_\delta \p^{\alpha}h -
+k_{\delta}k_{\beta}\p_{\gamma}\p^{\alpha} h + k^{\alpha}
+k_{\delta} \p_{\beta}\p_{\gamma}h - 
+k^{\alpha}k_{\gamma} \p_{\beta}\p_{\delta} h.
+}{dollar}{0pt}\coordE{}$$
+Consequently
+$$\coord{}\boxMath{
+R^{\alpha}{}_{\beta\gamma\delta} k^{\delta} = 
+k_{\gamma}k_{\beta}\p_\delta \p^{\alpha} h k^{\delta} - 
+k^{\alpha}k_{\gamma}\p_{\beta}\p_{\delta} h k^{\delta},
+}{dollar}{0pt}\coordE{}$$
+and the Ricci tensor has components
+$$\coord{}\boxMath{
+ R_{\beta\delta} = R^{\alpha}{}_{\beta\alpha\delta}
+= k_{\alpha}k_{\beta}\p_\delta \p^{\alpha} h - 
+k_{\delta} k_{\beta}\p_\alpha \p^{\alpha} h + 
+k^{\alpha} k_{\delta} \p_{\beta}\p_{\alpha} h.
+}{dollar}{0pt}\coordE{}$$
+Hence
+$$\coord{}\boxMath{
+R_{\beta\delta}k^{\delta}=0 \quad \mbox{iff} \quad
+\p_{\beta}\p_{\delta}hk^{\delta}k^{\beta}=0.
+}{dollar}{0pt}\coordE{}$$
+The results above can be used to prove the following theorems which
+illustrate some of the properties of the class of metrics being
+considered here~\cite{KraSteMacHer80,MisThoWhe73,EhlKun62,Pir65,Gri91}.
+
+\begin{theorem}
+  
+Let \myHighlight{$D_\alpha$}\coordHE{}denote the Levi-Civita covariant derivative
+(components with respect to the moving frame). Then
+
+\begin{enumerate}
+
+\item The following equality holds
+
+\begin{equation}\coord{}\boxEquation{
+D_\alpha k_{\beta}=k_{\alpha}k_{\beta}\p_{\gamma} h k^{\gamma}.
+}{
+D_\alpha k_{\beta}=k_{\alpha}k_{\beta}\p_{\gamma} h k^{\gamma}.
+}{ecuacion}\coordE{}\end{equation}
+
+\item \myHighlight{$k^{\alpha}D_{a}k_{\beta}=0,$}\coordHE{} and \myHighlight{$k^{\alpha}e_{\alpha}$}\coordHE{} is
+  tangent to affinely parametrized null geodesics.
+
+\item \myHighlight{$D_{[\alpha}k_{\beta]} = D_{\alpha}k^{\alpha}=0$}\coordHE{}; \quad 
+\myHighlight{$D_{\alpha}k_{\beta} = D_{(\alpha}k_{\beta)}$}\coordHE{} \quad \hbox{and} \quad 
+\myHighlight{$D_{\alpha}k_{\beta} D_{}^{\alpha}k^{\beta} = 0$}\coordHE{}. 
+
+\end{enumerate}
+\end{theorem}
+
+This justifies the teminology `plane-fronted', since these conditions
+applied to vacuum Lorentzian 4-metrics of the form considered here,
+define the so-called {\em plane-fronted metrics}
+
+\begin{theorem}
+
+\myHighlight{$D_{a}k_{\beta}=0$}\coordHE{} if and only if
+\begin{equation}\coord{}\boxEquation{
+\p_+ h = \p_\beta h k^{\beta}=0.
+}{
+\p_+ h = \p_\beta h k^{\beta}=0.
+}{ecuacion}\coordE{}\end{equation}
+
+\end{theorem}
+
+Once again using the previously mentioned Lorentzian 4-metric
+terminology, when this equation is satisfied, the plane fronted
+metrics which admit a covariantly constant null vector
+field are said to be {\em plane-fronted with parallel rays
+(\myHighlight{$pp$}\coordHE{}~waves)}.
+
+\begin{theorem}
+
+Consider {\em plane-fronted} metrics. Two useful results are the following.
+
+\begin{enumerate}
+
+\item \myHighlight{$\ R^{\alpha}{}_{\beta\gamma\delta}k^{\delta}=0$}\coordHE{} if and only if%
+\begin{equation}\coord{}\boxEquation{
+\p_{\alpha}\p_{\beta} h k^{\beta} = Fk_{\alpha},
+}{
+\p_{\alpha}\p_{\beta} h k^{\beta} = Fk_{\alpha},
+}{ecuacion}\coordE{}\end{equation}
+for some function \myHighlight{$F$}\coordHE{}, and then the Ricci tensor must take the form%
+\begin{equation}\coord{}\boxEquation{
+ R_{\alpha\beta} = k_{\alpha}k_{\beta}(2F-\p_\alpha \p^{\alpha} h).
+}{
+ R_{\alpha\beta} = k_{\alpha}k_{\beta}(2F-\p_\alpha \p^{\alpha} h).
+}{ecuacion}\coordE{}\end{equation}
+
+\item  Let \myHighlight{$Q_{\alpha\beta}=k_{\alpha}q_{\beta} - k_{\beta}q_{\alpha}$}\coordHE{} 
+where \myHighlight{$k^{\alpha}q_{\alpha}=0$}\coordHE{} and the \myHighlight{$q_{\alpha}$}\coordHE{}
+are also constants. That is, \myHighlight{$\p_{\beta} q_{\alpha} = 0$}\coordHE{}. 
+Then \myHighlight{$Q_{\alpha\beta}k^{\beta} =0$}\coordHE{} and, if \myHighlight{$f$}\coordHE{}\ is any function,
+\begin{equation}\coord{}\boxEquation{
+D_\alpha (fQ_{\beta\gamma}) = Q_{\beta\gamma}(\p_{\alpha}f - 
+hk_{\alpha} \p_{\beta}f k^{\beta} +
+fk_{\alpha}\p_\beta h k^{\beta}).
+}{
+D_\alpha (fQ_{\beta\gamma}) = Q_{\beta\gamma}(\p_{\alpha}f - 
+hk_{\alpha} \p_{\beta}f k^{\beta} +
+fk_{\alpha}\p_\beta h k^{\beta}).
+}{ecuacion}\coordE{}\end{equation}
+
+Hence when \myHighlight{$fQ_{\beta\gamma}$}\coordHE{} is non-zero \myHighlight{$D_\alpha(fQ_{\beta\gamma})=0$}\coordHE{} if
+and only if the equation%
+\begin{equation}\coord{}\boxEquation{
+\p_\alpha \log |f| + k_{\alpha}\p_\beta h k^{\beta}=0,
+}{
+\p_\alpha \log |f| + k_{\alpha}\p_\beta h k^{\beta}=0,
+}{ecuacion}\coordE{}\end{equation}
+admits a non zero solution \myHighlight{$f$}\coordHE{}.
+\end{enumerate}
+
+\end{theorem}
+By using the results above it is a straight-forward matter to obtain further
+results about particular classes of solutions of Einstein's equations (see
+further comment below).
+
+\begin{theorem}                                         \label{th4}
+
+\begin{enumerate}
+
+\item In any dimension greater than two, plane-fronted metrics are Ricci
+flat, \myHighlight{$R_{\alpha\beta}=0,$}\coordHE{} if and only if the two equations%
+$$\coord{}\boxMath{
+\p_{\alpha}\p_{\beta}k^{\beta} h  = 
+F k_{\alpha}, \qquad \p_\alpha \p^{\alpha} h = 2F
+}{dollar}{0pt}\coordE{}$$
+for some function \myHighlight{$F$}\coordHE{}, are satisfied.
+
+Hence it follows from the above results that when the latter two
+equations are satisfied, the Weyl conformal tensor satisfies the
+equation \myHighlight{$C_{\beta\gamma\delta}^{\alpha} k^{\delta}=0$}\coordHE{} and, in the
+four dimensional Lorentzian case, is said to be of Petrov type \myHighlight{$N$}\coordHE{} with
+\myHighlight{$k^{\alpha}e_{\alpha}$}\coordHE{} being a repeated principal null vector.
+
+\item Using the local coordinate expressions further it follows
+  immediately that {plane-fronted metrics are Ricci flat} if and only
+  if the function \myHighlight{$h$}\coordHE{} is given by%
+\begin{equation}\coord{}\boxEquation{
+h = L(v) u + G(v,x^{a}),
+}{
+h = L(v) u + G(v,x^{a}),
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$L(v)$}\coordHE{} satisfies \myHighlight{$\p_v L = F$}\coordHE{} and the function  \myHighlight{$G$}\coordHE{}
+satisfies the (Laplace-type) equation
+\begin{equation}\coord{}\boxEquation{
+g^{ab} \p_{a}\p_{b} G = 0.                          \label{laplace}
+}{
+g^{ab} \p_{a}\p_{b} G = 0.                          }{ecuacion}\coordE{}\end{equation}
+
+\item In the {four dimensional Lorentzian case}, writing \myHighlight{$z=x+iy,$}\coordHE{} it
+follows from these equations that plane fronted metrics g is 
+{\it Ricci flat} if and only if
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+G = K(v,z)+c.c., \qquad h = Lu+G(v,x^{a}).        \rightCoord{}\label{dcr}
+\rightCoord{}}{0mm}{1}{3}{
+G = K(v,z)+c.c., \qquad h = Lu+G(v,x^{a}).        }{1}\coordE{}\end{eqnarray}
+for {any} complex \myHighlight{$K$}\coordHE{} holomorphic in z.
+
+\end{enumerate}
+\end{theorem}
+
+
+It is a straightforward matter to show that the term \myHighlight{$Lu$}\coordHE{} in (8.10)
+and (8.12) is merely an artifact of the coordinate choice. It can be
+eliminated, while retaining the general form of the metric, by
+choosing new \myHighlight{$u,v$}\coordHE{} coordinates.  Hence the Ricci-flat solutions are
+\myHighlight{$pp$}\coordHE{}-waves. As an immediate corollary follows the
+
+\begin{theorem} 
+
+In the four-dimensional Lorentzian case, using the notation of
+Theorem~\ref{th4}, it therefore follows that {\em Ricci flat \myHighlight{$pp$}\coordHE{} waves} are
+determined by an arbitrary complex function K where
+\begin{equation}\coord{}\boxEquation{
+h = G(v,x^{a}) = K(v,z) + c.c.
+}{
+h = G(v,x^{a}) = K(v,z) + c.c.
+}{ecuacion}\coordE{}\end{equation}
+
+\end{theorem}
+
+
+In summary
+
+\begin{enumerate}
+
+\item Functions \myHighlight{$h=h(v)$}\coordHE{} give flat metrics as do functions linear in the
+coordinates \myHighlight{$x^{\alpha}$}\coordHE{}.
+
+\item It is clear from the form of the Ricci tensor given above that
+  is is a straightforward matter to produce plane-fronted (or more
+  particularly \myHighlight{$pp$}\coordHE{}-wave) metrics which are solutions of the Einstein
+  field equations with matter sources such as a massless scalar field
+  (\myHighlight{$R_{\alpha\beta}=\kappa e_{\alpha}(\varphi )e_{\beta}(\varphi),$}\coordHE{}
+  with say \myHighlight{$\varphi=\varphi(v)$}\coordHE{} ) and gauge fields (for example the
+  null electromagnetic field with components
+  \myHighlight{$F_{\alpha\beta}=k_{\alpha} p_{\beta}-k_{\beta}p_{\alpha}$}\coordHE{}, with
+  \myHighlight{$k_{\alpha}p^{\alpha}=0,$}\coordHE{} so that \myHighlight{$F_{\alpha\beta}F^{\alpha\beta}=0$}\coordHE{}
+  and the energy momentum tensor is (modulo sign conventions) given by
+  \myHighlight{$k_{\alpha}k_{\beta} (p_{\gamma}p^{\gamma})$}\coordHE{}).
+  
+\item One final specialization made in the literature which is
+  relevant here is from \myHighlight{$pp$}\coordHE{} waves to {\it plane waves.}. This
+  corresponds to making particular choices of solutions of the
+  equations above. In the vacuum case , the solutions of
+  Equation~(\ref{laplace}) given by
+\begin{equation}\coord{}\boxEquation{
+h = \frac 12 h_{ab}(v)x^{a}x^{b}, \qquad g^{ab} h_{ab} = 0, \label{vpws}
+}{
+h = \frac 12 h_{ab}(v)x^{a}x^{b}, \qquad g^{ab} h_{ab} = 0, }{ecuacion}\coordE{}\end{equation}
+are {\it vacuum plane wave solutions}. This terminology can be
+justified by computing the Weyl tensor and noting the planar symmetry.
+In addition, the notions of amplitude and polarisation can be
+introduced.
+
+\end{enumerate}
+
+
+\initiate
+\section*{Appendix II}
+\setcounter{section}{2}
+
+An alternative form of a plane wave metric, derivable as the Penrose
+limit of any 4-metric, is currently of some interest in the
+string-theory community~\cite{BlaFigHulPap02}. It can be obtained by
+the following argument.  Consider an arbitrary metric in null
+coordinates \myHighlight{$x^\mu = (u,v,x^i)$}\coordHE{}. The hypersurfaces \myHighlight{$u = u_0$}\coordHE{} are
+assumed to be null and \myHighlight{$v$}\coordHE{} to be the affine parameter along the
+corresponding bicharacteristics.  The line element can be written in
+the form
+$$\coord{}\boxMath{
+ds^2 = 2 du dv + g_{++} du^2 + 
+2 g_{+i} dv dx^i + g_{ij} dx^i dx^j.
+}{dollar}{0pt}\coordE{}$$
+Since \myHighlight{$(0,1,0,0)$}\coordHE{} is a null vector we have \myHighlight{$g_{--} = 0$}\coordHE{}. We have
+also used the local coordinate freedom to set
+$$\coord{}\boxMath{
+g_{+-} = 1, \qquad g_{-i} = 0.
+}{dollar}{0pt}\coordE{}$$
+The remaining metric components are general functions of all
+coordinates. We now rescale
+$$\coord{}\boxMath{
+g_{\mu\nu} \mapsto \omega^{-2} g_{\mu\nu}, \qquad
+u \mapsto \omega^2 u, \qquad x^i \mapsto \omega x^i.
+}{dollar}{0pt}\coordE{}$$
+The line element becomes
+$$\coord{}\boxMath{
+ds^2 = 2 du dv + \omega^2 g_{++} du^2 + 
+2 \omega g_{+i} du dx^i + g_{ij} dx^i dx^j
+}{dollar}{0pt}\coordE{}$$
+with the metric components now functions of the form
+$$\coord{}\boxMath{
+g_{\mu\nu} = g_{\mu\nu}(\omega^2 u, v, \omega x^i).
+}{dollar}{0pt}\coordE{}$$
+As a singular limit when \myHighlight{$\omega \to 0$}\coordHE{} one
+obtains~\cite{Pen76,BlaFigHulPap02} the plane wave with line element 
+$$\coord{}\boxMath{
+ds^2 = 2 du dv + g_{ij}(v) dx^i dx^j.
+}{dollar}{0pt}\coordE{}$$
+If the initial metric is described by a frame of the form
+$$\coord{}\boxMath{
+\theta^+ = du, \qquad
+\theta^- = dv + \theta^-_+ du +  \theta^-_i dx^i,\qquad 
+\theta^a =  \theta^a_i dx^i
+}{dollar}{0pt}\coordE{}$$
+then the scaled metric is described by
+\begin{equation}\coord{}\boxEquation{
+\theta^+ = du, \qquad
+\theta^- = dv, \qquad \theta^a =  
+\theta^a_i(v) dx^i.                         \label{cR-frame}
+}{
+\theta^+ = du, \qquad
+\theta^- = dv, \qquad \theta^a =  
+\theta^a_i(v) dx^i.                         }{ecuacion}\coordE{}\end{equation}
+We shall refer to~(\ref{cR-frame}) as the Rosen frame. 
+
+In the `quasi-commutative' limit the line element is given by
+$$\coord{}\boxMath{
+ds^2 = 2d\t{u} d\t{v} + 2\t{h} d\t{v}^2 - d\t{x}^2 - d\t{y}^2.
+}{dollar}{0pt}\coordE{}$$
+In the Rosen frame it is of the form
+$$\coord{}\boxMath{
+ds^2 = 2du dv - (\theta^1)^2 - (\theta^2)^2.
+}{dollar}{0pt}\coordE{}$$
+This form of the metric has a certain similarity to the Kasner
+metric, which has also~\cite{MacMadZou02} a noncommutative extension.
+
+The dual frame is such that the only nontrivial commutation
+relations are given by
+\begin{equation}\coord{}\boxEquation{
+[e_-, e_a] =   (e^{-1} \dot e)^b{}_a e_b, \qquad 
+\theta^a_i e^i_b = \delta^a_b.                                   \label{crs}
+}{
+[e_-, e_a] =   (e^{-1} \dot e)^b{}_a e_b, \qquad 
+\theta^a_i e^i_b = \delta^a_b.                                   }{ecuacion}\coordE{}\end{equation}
+The structure functions \myHighlight{$C^\alpha{}_{\beta\gamma}$}\coordHE{} are seen to be with
+$$\coord{}\boxMath{
+C^a{}_{-b} = - C^a{}_{b-} = (e^{-1} \dot e)^b{}_a. 
+}{dollar}{0pt}\coordE{}$$
+the only non-vanishing components.
+
+The transformation from the Rosen frame to the previous frame for the
+tilded metric is made using the transformation of coordinates
+$$\coord{}\boxMath{
+u = \t{u} +\frac 12 F_{ab} (\t{v}) \t{x}^a \t{x}^b, \qquad
+v = \t{v}, \qquad
+x^i = e^i_a (\t{v}) \t{x}^a.
+}{dollar}{0pt}\coordE{}$$
+In the old coordinates the Rosen frame is of the form 
+\myHighlight{$\theta^\alpha = \Lambda^\alpha{}_\beta \t{\theta}^\beta$}\coordHE{} with
+$$\coord{}\boxMath{
+\Lambda^\alpha{}_\beta = \left(
+\begin{array}{ccc}
+1 &0 &-F_{bc}\t{x}^c \\[2pt]
+0 &1 &0 \\[2pt]
+0 &(e^{-1}\dot e)^a{}_c \t{x}^c &1
+\end{array}\right)
+}{dollar}{0pt}\coordE{}$$
+The matrix \myHighlight{$\Lambda^\alpha{}_\beta$}\coordHE{} is a local Lorenz transformation
+if
+$$\coord{}\boxMath{
+g^{+a} = \Lambda^+{}_\alpha \Lambda^a{}_\beta g^{\alpha\beta} =
+\Lambda^a{}_- + \Lambda^+{}_b g^{ab} = 
+(e^{-1} \dot e - F)^a{}_b \t{x}^b = 0.
+}{dollar}{0pt}\coordE{}$$
+That is, if 
+$$\coord{}\boxMath{
+F =  e^{-1} \dot e
+}{dollar}{0pt}\coordE{}$$
+Here the dot denotes derivative with respect to \myHighlight{$v$}\coordHE{}.  It should be
+noted that, because of the special form of \myHighlight{$h$}\coordHE{} one obtains, this
+applies to the special case of plane waves.
+
+The matrix \myHighlight{$F^a{}_b(v)$}\coordHE{} is an arbitrary real element of the
+algebra \myHighlight{$M_2$}\coordHE{} of complex \myHighlight{$2 \times 2$}\coordHE{} matrices, which we write
+$$\coord{}\boxMath{
+F = S + A
+}{dollar}{0pt}\coordE{}$$
+as the sum of a symmetric part and an antisymmetric part.  The
+latter defines a rotation in the plane transverse to the null
+coordinates.  The non-vanishing components of the connection form are
+given by
+$$\coord{}\boxMath{
+\omega^a{}_- = -S^a{}_b \theta^b,  \qquad
+\omega^+{}_a = S_{ab} \theta^b,  \qquad
+\omega^a{}_b = A^a{}_b \theta^-.
+}{dollar}{0pt}\coordE{}$$
+The curvature 2-form has 
+$$\coord{}\boxMath{
+\Omega^a{}_- = - (\dot S^a{}_b + [A, S]^a{}_b - (S^2)^a{}_b)  
+\theta^- \theta^b, \qquad \Omega^a{}_b = 0
+}{dollar}{0pt}\coordE{}$$
+as non-vanishing components. The non-vanishing components of the
+Riemann tensor are given by
+$$\coord{}\boxMath{
+R^a{}_{--b} =  - (\dot S + [A, S] - S^2)^a{}_b
+}{dollar}{0pt}\coordE{}$$
+as well as those obtained from symmetries. The only non-vanishing
+component of the Ricci tensor is
+$$\coord{}\boxMath{
+R_{--} = - \tr (\dot  S + [A, S] - S^2).
+}{dollar}{0pt}\coordE{}$$
+So the field equations reduce to the condition that the trace of
+a matrix be constant.  The solution has three arbitrary functions; two
+dynamical ones in \myHighlight{$S$}\coordHE{} and a gauge degree of freedom in \myHighlight{$A$}\coordHE{}.
+
+
+
+
+\initiate
+\section*{Acknowledgments} This work was to a large extend carried out
+while one of the authors (J.M.) was visiting the MPI in M\"unchen. He
+is grateful to Julius Wess for financial support during this period.
+D.C.R. would like to thank the Theoretical Physics Group of Imperial
+College, London for its hospitality during this time. The authors
+would like to thank Lane Hughston for discussions.
+
+
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{Con94}
+A.~Connes, {\em Noncommutative Geometry}.
+\newblock Academic Press, 1994.
+
+\bibitem{Mad00c}
+J.~Madore, {\em An Introduction to Noncommutative Differential Geometry and its
+  Physical Applications}.
+\newblock No.~257 in London Mathematical Society Lecture Note Series. Cambridge
+  University Press, second~ed., 2000.
+\newblock 2nd revised printing.
+
+\bibitem{LidRomTavRip97}
+J.~E. Lidsey, C.~Romero, R.~Tavakol, and S.~Rippl, ``On applications of
+  {C}ampbell's embedding theorem,'' {\em Class.\ and Quant.\ Grav.} {\bf 14}
+  (1997) 865--879,
+\href{http://xxx.lanl.gov/abs/gr-qc/9907040}{{\tt gr-qc/9907040}}.
+%%CITATION = GR-QC 9907040;%%.
+
+\bibitem{PavTap01}
+M.~Pavsic and V.~Tapia, ``Resource letter on geometrical results for embeddings
+  and branes,''
+\href{http://xxx.lanl.gov/abs/gr-qc/0010045v2}{{\tt gr-qc/0010045v2}}.
+%%CITATION = GR-QC 0010045;%%.
+
+\bibitem{DesPirRob76}
+S.~Deser, F.~A.~E. Pirani, and D.~C. Robinson, ``New embedding model of general
+  relativity,'' {\em Phys.\ Rev.} {\bf D14} (1976), no.~12, 3301--3303.
+
+\bibitem{Mad89c}
+J.~Madore, ``{K}aluza-{K}lein aspects of noncommutative geometry,'' in {\em
+  Differential Geometric Methods in Theoretical Physics}, A.~I. Solomon, ed.,
+  pp.~243--252.
+\newblock World Scientific Publishing, 1989.
+\newblock Chester, August 1988.
+
+\bibitem{AscCas93}
+P.~Aschieri and L.~Castellani, ``An introduction to noncommutative differential
+  geometry on quantum groups,'' {\em Int.\ J.~Mod.\ Phys.~A} {\bf 8} (1993)
+  1667--1706,
+\href{http://xxx.lanl.gov/abs/hep-th/9207084}{{\tt hep-th/9207084}}.
+%%CITATION = IMPAE,A8,1667;%%.
+
+\bibitem{Lan97}
+G.~Landi, {\em An Introduction to Noncommutative Spaces and their Geometries},
+  vol.~51 of {\em Lecture Notes in Physics. New Series M, Monographs}.
+\newblock Springer-Verlag, 1997.
+
+\bibitem{FigGraVar00}
+H.~Figueroa, J.~M. Gracia-Bond{\'\i a}, and J.~C. V{\'a}rilly, {\em Elements of
+  Noncommutative Geometry}.
+\newblock Birkhauser Advanced Texts. Birkh{\"a}user Verlag, Basel, 2000.
+
+\bibitem{MacMadZou02}
+M.~Maceda, J.~Madore, and G.~Zoupanos, ``On the resolution of space-time
+  singularities {II},'' {\em (to be published)} (2002).
+
+\bibitem{DimMad96}
+A.~Dimakis and J.~Madore, ``Differential calculi and linear connections,'' {\em
+  J.~Math.\ Phys.} {\bf 37} (1996), no.~9, 4647--4661,
+  \href{http://xxx.lanl.gov/abs/q-alg/9601023}{{\tt q-alg/9601023}}.
+
+\bibitem{MadMou98}
+J.~Madore and J.~Mourad, ``Quantum space-time and classical gravity,'' {\em
+  J.~Math.\ Phys.} {\bf 39} (1998), no.~1, 423--442.
+
+\bibitem{MadSae98}
+J.~Madore and L.~A. Saeger, ``Topology at the {P}lanck length,'' {\em Class.\
+  and Quant.\ Grav.} {\bf 15} (1998) 811--826,
+\href{http://xxx.lanl.gov/abs/gr-qc/9708053}{{\tt gr-qc/9708053}}.
+%%CITATION = CQGRD,15,811;%%.
+
+\bibitem{JurMolSchSchWes01}
+B.~Jurco, L.~Moller, S.~Schraml, P.~Schupp, and J.~Wess, ``Construction of
+  non-abelian gauge theories on noncommutative spaces,'' {\em Euro.\ Phys.\
+  Jour.~C} {\bf C21} (2001) 383--388,
+\href{http://xxx.lanl.gov/abs/hep-th/0104153}{{\tt hep-th/0104153}}.
+%%CITATION = HEP-TH 0104153;%%.
+
+\bibitem{DubMadMasMou96b}
+M.~Dubois-Violette, J.~Madore, T.~Masson, and J.~Mourad, ``On curvature in
+  noncommutative geometry,'' {\em J.~Math.\ Phys.} {\bf 37} (1996), no.~8,
+  4089--4102, \href{http://xxx.lanl.gov/abs/q-alg/9512004}{{\tt
+  q-alg/9512004}}.
+
+\bibitem{FioMad98a}
+G.~Fiore and J.~Madore, ``Leibniz rules and reality conditions,'' {\em Euro.\
+  Phys.\ Jour.~C} {\bf 17} (1998), no.~2, 359--366,
+  \href{http://xxx.lanl.gov/abs/math/9806071}{{\tt math/9806071}}.
+
+\bibitem{Con95}
+A.~Connes, ``Noncommutative geometry and reality,'' {\em J.~Math.\ Phys.} {\bf
+  36} (1995) 6194.
+
+\bibitem{DubMadMasMou95}
+M.~Dubois-Violette, J.~Madore, T.~Masson, and J.~Mourad, ``Linear connections
+  on the quantum plane,'' {\em Lett.\ Math.\ Phys.} {\bf 35} (1995), no.~4,
+  351--358,
+\href{http://xxx.lanl.gov/abs/hep-th/9410199}{{\tt hep-th/9410199}}.
+%%CITATION = LMPHD,35,351;%%.
+
+\bibitem{BouCah99}
+F.~Bourgeois and M.~Cahen, ``Can one define a preferred symplectic
+  connection?,'' {\em Rep.\ on\ Math.\ Phys.} {\bf 43} no.~1--2, 35--42.
+\newblock {B}ialowieza, July 1997.
+
+\bibitem{KraSteMacHer80}
+D.~Kramer, H.~Stephani, M.~MacCallum, and E.~Herlt, {\em Exact Solutions of
+  {E}instein's Field Equations}.
+\newblock Cambridge University Press, 1980.
+
+\bibitem{Pen76}
+R.~Penrose, ``Any space-time has a plane wave as a limit,'' in {\em
+  Differential Geometry \& Relativity}, pp.~271--275.
+\newblock D.~Reidel Publishing Company, 1976.
+
+\bibitem{BlaFigHulPap02}
+M.~Blau, J.~Figueroa-O'Farrill, C.~Hull, and G.~Papadopoulos, ``Penrose limits
+  and maximal supersymmetry,''
+\href{http://xxx.lanl.gov/abs/http://arXiv.org/abs/hep-th/0201081}{{\tt
+  http://arXiv.org/abs/hep-th/0201081}}.
+%%CITATION = HEP-TH 0201081;%%.
+
+\bibitem{FioMacMad01}
+G.~Fiore, M.~Maceda, and J.~Madore, ``The real quantum plane as part of
+  \myHighlight{$2d$}\coordHE{}-{M}inkowski space,'' in {\em New Developments in Basic Interactions
+  Theories}, A.~Jadczyk, J.~Lukierski, and J.~Rembielinski, eds., no.~000 in
+  Proceedings Series.
+\newblock Amer. Math. Soc., Providence, Rhode Island, 2001.
+\newblock Karpacz, February 2001.
+
+\bibitem{GraLizMarVit01}
+J.~M. Gracia-Bondia, F.~Lizzi, G.~Marmo, and P.~Vitale, ``Infinitely many star
+  products to play with,''
+\href{http://xxx.lanl.gov/abs/hep-th/0112092}{{\tt hep-th/0112092}}.
+%%CITATION = HEP-TH 0112092;%%.
+
+\bibitem{MisThoWhe73}
+C.~W. Misner, K.~S. Thorne, and J.~A. Wheeler, {\em Gravitation}.
+\newblock W.H.~Freeman and Company, 1973.
+
+\bibitem{EhlKun62}
+J.~Ehlers and W.~Kundt, ``Exact solutions of the gravitational field
+  equations,'' in {\em {GRAVITATION}: an introduction to current research},
+  L.~Witten, ed., pp.~49--101.
+\newblock John Wiley \& Son, 1962.
+
+\bibitem{Pir65}
+F.~A.~E. Pirani, ``Introduction to gravitational radiation theory,'' in {\em
+  Lectures on General Relativity}, S.~Deser and K.~W. Ford, eds., vol.~1 of
+  {\em Brandeis Summer Institute in Theoretical Physics; 1964}, pp.~249--373.
+\newblock Prentice-Hall Inc., London, 1965.
+
+\bibitem{Gri91}
+J.~B. Griffiths, {\em Colliding plane waves in general relativity}.
+\newblock Clarendon Press, Oxford, 1991.
+
+\end{thebibliography}\endgroup
+
+\end{document}
+
+\bye

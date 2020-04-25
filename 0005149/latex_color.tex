@@ -1,0 +1,637 @@
+
+\documentclass[a4paper,12pt]{article}
+
+\voffset0cm
+\hoffset0cm
+\oddsidemargin0cm
+\evensidemargin0cm
+\topmargin0cm
+\textwidth16.cm
+\textheight22.cm
+\setlength{\arraycolsep}{0.5mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\catcode`@=11
+\newcount\@tempcntc
+\def\@citex[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
+  \@tempcnta\z@\@tempcntb\m@ne\def\@citea{}\@cite{\@for\@citeb:=#2\do
+    {\@ifundefined
+       {b@\@citeb}{\@citeo\@tempcntb\m@ne\@citea\def\@citea{,}{\bf
+?}\@warning
+       {Citation `\@citeb' on page \thepage \space undefined}}%
+    {\setbox\z@\hbox{\global\@tempcntc0\csname b@\@citeb\endcsname\relax}%
+     \ifnum\@tempcntc=\z@ \@citeo\@tempcntb\m@ne
+       \@citea\def\@citea{,}\hbox{\csname b@\@citeb\endcsname}%
+     \else
+      \advance\@tempcntb\@ne
+      \ifnum\@tempcntb=\@tempcntc
+      \else\advance\@tempcntb\m@ne\@citeo
+      \@tempcnta\@tempcntc\@tempcntb\@tempcntc\fi\fi}}\@citeo}{#1}}
+\def\@citeo{\ifnum\@tempcnta>\@tempcntb\else\@citea\def\@citea{,}%
+  \ifnum\@tempcnta=\@tempcntb\the\@tempcnta\else
+   {\advance\@tempcnta\@ne\ifnum\@tempcnta=\@tempcntb \else
+\def\@citea{--}\fi
+    \advance\@tempcnta\m@ne\the\@tempcnta\@citea\the\@tempcntb}\fi\fi}
+\catcode`@=12
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{useful_macros}
+\begin{document}
+\title{\vskip-3cm{\baselineskip12pt
+\centerline{\normalsize DESY 00-074\hfill ISSN 0418-9833}
+\centerline{\normalsize NYU/00/05/01\hfill}
+\centerline{\normalsize hep-th/0005149\hfill}
+\centerline{\normalsize May 2000\hfill}}
+\vskip1.5cm 
+Width and Partial Widths of Unstable Particles}
+\author{{\sc Pietro A. Grassi,\myHighlight{$^1$}\coordHE{} Bernd A. Kniehl,\myHighlight{$^2$}\coordHE{} Alberto Sirlin\myHighlight{$^1$}\coordHE{}}\\
+{\normalsize \myHighlight{$^1$}\coordHE{} Department of Physics, New York University,}\\
+{\normalsize 4~Washington Place, New York, NY~10003, USA}\\
+{\normalsize \myHighlight{$^2$}\coordHE{} II. Institut f\"ur Theoretische Physik, Universit\"at
+Hamburg,}\\
+{\normalsize Luruper Chaussee 149, 22761 Hamburg, Germany}}
+
+\date{}
+
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+In the gauge theory context, a definition of branching ratios and partial
+widths of unstable particles is proposed that satisfies the basic principles
+of additivity and gauge independence.
+A simpler definition, similar to the conventional one, is examined in the
+\myHighlight{$Z^0$}\coordHE{}-boson case. In order to establish contact with experiment, we show that 
+it leads to a peak cross section that justifies the expression used by the
+LEP Electroweak Working Group through next-to-next-to-leading order, provided
+that the {\it pole} rather than the {\it on-shell} mass and width of the \myHighlight{$Z^0$}\coordHE{}
+boson are employed.
+
+\medskip
+
+\noindent
+PACS numbers: 11.10.Gh, 11.15.-q
+\end{abstract}
+
+\newpage
+
+The mass, width, and partial widths of unstable particles rank among the basic
+concepts in particle physics.
+In fact, most fundamental particles of nature are unstable, and their masses,
+widths, and partial widths are some of their crucial defining properties. 
+Yet, the precise and consistent definitions of these concepts have been
+notoriously difficult and elusive over a period spanning several decades.
+The reason is that unstable particles are not asymptotic states and,
+consequently, they lie somewhat outside the traditional formulation of Quantum
+Field Theory.
+
+The conventional definitions of mass and width are
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{def_mass_1}
+M^2&=&M^2_0+{\rm Re}\rightCoord{}\, A(M^2),\rightCoord{}\\\leftCoord{}
+\label{def_width_1}
+M\Gamma&=&-\frac{\leftCoord{}{\rm Im}\rightCoord{}\, A(M^2)}{\rightCoord{}1-{\rm Re}\rightCoord{}\, A'(M^2)}, \rightCoord{}  
+\rightCoord{}}{0mm}{3}{8}{
+M^2&=&M^2_0+{\rm Re}\, A(M^2),\\
+M\Gamma&=&-\frac{{\rm Im}\, A(M^2)}{1-{\rm Re}\, A'(M^2)},   
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$M_0$}\coordHE{} is the bare mass and \myHighlight{$A(s)$}\coordHE{} is the self-energy in the case of
+scalar bosons and the transverse self-energy in the case of vector bosons.
+The partial widths are then defined by decomposing the numerator of
+Eq.~(\ref{def_width_1}) into a sum of contributions involving distinct sets of
+final-state physical particles.
+Most calculations of partial and total widths are based on
+Eqs.~(\ref{def_mass_1}) and (\ref{def_width_1}).
+We will refer to \myHighlight{$M$}\coordHE{} as the on-shell mass and to Eqs.~(\ref{def_mass_1}) and
+(\ref{def_width_1}) as the conventional on-shell formulation.
+
+The emergence of gauge theories has brought into the discussion a new and
+powerful element, namely the requirement of gauge independence of physical
+observables.
+It was shown in Ref.~\cite{si_1} that, in a gauge theory,
+Eqs.~(\ref{def_mass_1}) and (\ref{def_width_1}) become gauge dependent in
+\myHighlight{$O(g^4)$}\coordHE{} and \myHighlight{$O(g^6)$}\coordHE{}, respectively, where \myHighlight{$g$}\coordHE{} is a generic gauge coupling.
+As the leading contributions to \myHighlight{$M^2$}\coordHE{} and \myHighlight{$\Gamma$}\coordHE{} are of order \myHighlight{$O(g^0)$}\coordHE{} and
+\myHighlight{$O(g^2)$}\coordHE{}, respectively, we see that in both cases the problem arises in the
+next-to-next-to-leading order (NNLO).
+In the same paper, it was proposed that the way of solving this predicament is
+to base the definitions of mass and width on the complex-valued position of
+the propagator's pole,
+\begin{equation}\coord{}\boxEquation{
+\label{def_mass_2}
+\bar s=M^2_0+A(\bar s), 
+}{
+\bar s=M^2_0+A(\bar s), 
+}{ecuacion}\coordE{}\end{equation}
+an idea that goes back to well known tenets of \myHighlight{$S$}\coordHE{}-matrix theory
+\cite{s-matrix}.
+A frequently employed parameterization is \myHighlight{$\bar s=m_2^2-im_2\Gamma_2$}\coordHE{}, where
+we use the notation of Ref.~\cite{si_1}.
+Identifying \myHighlight{$m_2$}\coordHE{} and \myHighlight{$\Gamma_2$}\coordHE{} with the gauge-independent definitions of
+mass and width of the unstable particle, it follows from
+Eq.~(\ref{def_mass_2}) that
+\begin{equation}\coord{}\boxEquation{
+\label{def_width_2}
+m_2\Gamma_2=-{\rm Im}\,A(\bar s).  
+}{
+m_2\Gamma_2=-{\rm Im}\,A(\bar s).  
+}{ecuacion}\coordE{}\end{equation}
+Over the last several years, a number of authors have advocated the use of
+\myHighlight{$\bar s$}\coordHE{} as the basis for the definition of mass and width \cite{zmass}, the
+conclusions of Ref.~\cite{si_1} have been confirmed by later studies
+\cite{psz,si-kniehl} and proven to all orders \cite{gg}.
+It has been shown that, in the case of a heavy Higgs boson, the gauge
+dependences of \myHighlight{$M$}\coordHE{} and \myHighlight{$\Gamma$}\coordHE{} are numerically large \cite{si-kniehl}.
+It has also been emphasized that the on-shell definition of width
+[Eq.~(\ref{def_width_1})] leads to severe problems if \myHighlight{$A(s)$}\coordHE{} is not analytic
+in the neighborhood of \myHighlight{$M^2$}\coordHE{}.
+This occurs, for instance, when the mass of the decaying particle lies very
+close to a physical threshold \cite{bhatta,pal} or, in the resonance region,
+when the unstable particle is coupled to massless quanta, as in the cases of
+the \myHighlight{$W$}\coordHE{} boson and the unstable quarks \cite{psw}.
+Significant progress has also been achieved in the treatment of unstable
+particles in the framework of the Pinch Technique \cite{pt}.
+
+An important issue that arises at this stage is the following:
+if Eq.~(\ref{def_width_2}) provides a consistent definition of width, what is
+the definition of partial widths?
+It must clearly satisfy two important properties: additivity, {\it i.e.}\ the
+sum of the partial widths must equal the total width
+[Eq.~(\ref{def_width_2})], and gauge independence.
+
+We consider the process \myHighlight{$i\to Z^0\to f$}\coordHE{}, where \myHighlight{$i$}\coordHE{} and \myHighlight{$f$}\coordHE{} are
+initial and final states involving particles which are either stable or have 
+negligible widths.
+The transverse part of the propagator is given by 
+\begin{equation}\coord{}\boxEquation{
+\label{new_1}
+{\cal D}_{\mu\nu}=-i\frac{Q_{\mu\nu}}{s-\bar s-[A(s)-A(\bar s)]}, 
+}{
+{\cal D}_{\mu\nu}=-i\frac{Q_{\mu\nu}}{s-\bar s-[A(s)-A(\bar s)]}, 
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$Q_{\mu\nu}=g_{\mu\nu}-p_\mu p_\nu/s$}\coordHE{}, \myHighlight{$p_\mu$}\coordHE{} is the four-momentum of
+the \myHighlight{$Z^0$}\coordHE{} boson, and \myHighlight{$s=p^2$}\coordHE{}.
+The vertex amplitude is of the form 
+\begin{equation}\coord{}\boxEquation{
+\label{new_2}
+V_f^\mu(s)\equiv\left\langle f\left|J^\mu_Z\right|0\right\rangle
+=\sum_av^{(a)}_f(s,\dots)M^{(a)\mu}_f,
+}{
+V_f^\mu(s)\equiv\left\langle f\left|J^\mu_Z\right|0\right\rangle
+=\sum_av^{(a)}_f(s,\dots)M^{(a)\mu}_f,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$M^{(a)\mu}_f$}\coordHE{} denote various independent vector and axial-vector matrix
+elements involving the spinors, polarization four-vectors, and four-momenta of
+the final-state particles, while \myHighlight{$v^{(a)}_f(s,\dots)$}\coordHE{} are scalar functions.
+The dots indicate their additional dependence on the momenta of the 
+final-state particles. 
+In this paper, we use the convention of including the coupling \myHighlight{$-ig/c$}\coordHE{}, where
+\myHighlight{$c$}\coordHE{} is an abbreviation for \myHighlight{$\cos\theta_w$}\coordHE{}, in the definition of
+\myHighlight{$v^{(a)}_f(s,\dots)$}\coordHE{}, so that, in leading order, \myHighlight{$v^{(a)}_f(s,\dots)=O(g)$}\coordHE{}.
+Expanding Eq.~(\ref{new_2}) and the denominator of Eq.~(\ref{new_1}) about
+\myHighlight{$s=\bar s$}\coordHE{}, it is well-known \cite{zmass} that the overall amplitude can be written in the
+form 
+\begin{equation}\coord{}\boxEquation{\label{new_3}
+{\cal A}_{fi}(s)=-i\frac{Q_{\mu\nu}V_f^\mu(\bar s)V_i^\nu(\bar s)}
+{(s-\bar s)[1-A^\prime(\bar s)]}+N,
+}{{\cal A}_{fi}(s)=-i\frac{Q_{\mu\nu}V_f^\mu(\bar s)V_i^\nu(\bar s)}
+{(s-\bar s)[1-A^\prime(\bar s)]}+N,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$N$}\coordHE{} stands for non-resonant contributions. 
+As the pole residues
+\myHighlight{$v^{(a)}_f(\bar s,\dots)v^{(b)}_i(\bar s,\dots)/[1-A^\prime(\bar s)]$}\coordHE{} are
+gauge independent for any choice of the states \myHighlight{$i,f$}\coordHE{} and the amplitudes \myHighlight{$a,b$}\coordHE{},
+a gauge-independent definition of partial width is given by 
+\begin{equation}\coord{}\boxEquation{
+\label{new_4}
+m_2\hat\Gamma_f=-{1\over 6}\sum_{\rm spins}\int d\Phi_f 
+\frac{Q_{\mu\nu}V_f^{\mu*}(\bar s)V_f^\nu(\bar s)}
+{\left|1-A^\prime(\bar s)\right|}.
+}{
+m_2\hat\Gamma_f=-{1\over 6}\sum_{\rm spins}\int d\Phi_f 
+\frac{Q_{\mu\nu}V_f^{\mu*}(\bar s)V_f^\nu(\bar s)}
+{\left|1-A^\prime(\bar s)\right|}.
+}{ecuacion}\coordE{}\end{equation}
+The integration is over the phase space of the final-state particles with
+\myHighlight{$(\sum_n p_n)^2=m^2_2$}\coordHE{}, a factor of \myHighlight{$1/3$}\coordHE{} arises from the average over the
+initial-state polarization, and a factor of \myHighlight{$1/2$}\coordHE{} from the familiar relation
+between \myHighlight{$m_2\hat\Gamma_f$}\coordHE{} and the integrated amplitude square. 
+
+A limitation of Eq.~(\ref{new_4}) is that there is no guarantee that it
+satisfies the additivity property.
+In fact, it is expected that \myHighlight{$\sum_f\hat\Gamma_f\neq\Gamma_2$}\coordHE{} when one
+includes NNLO contributions.
+In order to remedy this situation, we propose to define the branching ratios
+by 
+\begin{equation}\coord{}\boxEquation{
+\label{new_5}
+B_f=\frac{\hat\Gamma_f}{\sum_f\hat\Gamma_f},
+}{
+B_f=\frac{\hat\Gamma_f}{\sum_f\hat\Gamma_f},
+}{ecuacion}\coordE{}\end{equation}
+and the partial widths by 
+\begin{equation}\coord{}\boxEquation{
+\label{new_6}
+\Gamma_f=B_f\Gamma_2.  
+}{
+\Gamma_f=B_f\Gamma_2.  
+}{ecuacion}\coordE{}\end{equation}
+The gauge independence of Eq.~(\ref{new_4}) implies that of Eq.~(\ref{new_5}),
+while Eqs.~(\ref{new_5}) and (\ref{new_6}) guarantee the additivity property,
+\myHighlight{$\sum_f\Gamma_f=\Gamma_2$}\coordHE{}.
+The rescaling in Eqs.~(\ref{new_5}) and (\ref{new_6}) implies that
+\myHighlight{$\hat\Gamma_f=\Gamma_f(X/m_2\Gamma_2)$}\coordHE{}, where
+\begin{equation}\coord{}\boxEquation{
+\label{new_7}
+X=m_2\sum_f\hat\Gamma_f.
+}{
+X=m_2\sum_f\hat\Gamma_f.
+}{ecuacion}\coordE{}\end{equation}
+
+The resonant cross section at \myHighlight{$s=m^2_2$}\coordHE{} is proportional to 
+\myHighlight{$\hat\Gamma_e\hat\Gamma_f/(m_2\Gamma_2)^2 
+=\left[\Gamma_e\Gamma_f/(m_2\Gamma_2)^2\right]$}\coordHE{}  \myHighlight{$\times(X/m_2\Gamma_2)^2$}\coordHE{}, where
+\myHighlight{$\Gamma_e$}\coordHE{} is the \myHighlight{$Z^0\to e^+e^-$}\coordHE{} partial width.
+Hence, it is modified by a factor \myHighlight{$(X/m_2\Gamma_2)^2$}\coordHE{} when expressed in terms
+of the widths \myHighlight{$\Gamma_f$}\coordHE{} that satisfy the additivity property.
+We note that \myHighlight{$X/m_2$}\coordHE{} and \myHighlight{$\Gamma_2$}\coordHE{} represent two different definitions of
+total width, based on the pole residues and the pole position, respectively.
+The ratio \myHighlight{$(X/m_2\Gamma_2)$}\coordHE{} differs from unity by gauge-independent terms of
+\myHighlight{$O(g^4)$}\coordHE{}, {\it i.e.}\ in NNLO.
+As a consequence, in the \myHighlight{$Z^0$}\coordHE{}-boson case, this is expected to be a very small
+effect, of the same order of magnitude as non-resonant contributions that are
+frequently neglected.
+
+Next, we examine the difference \myHighlight{$X-m_2\Gamma_2$}\coordHE{} in greater detail. 
+It is convenient to split
+\myHighlight{$I\left(m^2_2\right)\equiv{\rm Im}\,A\left(m^2_2\right)$}\coordHE{} in the form
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{new_9}
+I\left(m^2_2\right)&=&F\left(m^2_2\right)+G\left(m^2_2\right),\rightCoord{}\\\leftCoord{}
+F\left(m^2_2\right)&=&\sum_{\rightCoord{}fI_f\rightCoord{}}\left(m^2_2\right),\rightCoord{}\\\leftCoord{}
+I_f\left(m^2_2\right)&=&\frac{\leftCoord{}1}{\rightCoord{}6}\sum_{\rightCoord{}\rm spins}\int d\Phi_f 
+Q_{\mu\nu}V_f^{\mu*}\left(m_2^2\right)V_f^\nu\left(m_2^2\right). \rightCoord{}\label{new_11}
+\rightCoord{}}{0mm}{4}{9}{
+I\left(m^2_2\right)&=&F\left(m^2_2\right)+G\left(m^2_2\right),\\
+F\left(m^2_2\right)&=&\sum_{fI_f}\left(m^2_2\right),\\
+I_f\left(m^2_2\right)&=&\frac{1}{6}\sum_{\rm spins}\int d\Phi_f 
+Q_{\mu\nu}V_f^{\mu*}\left(m_2^2\right)V_f^\nu\left(m_2^2\right). }{1}\coordE{}\end{eqnarray}
+\myHighlight{$-I_f(m^2_2)/m_2$}\coordHE{} is the conventional expression for the partial width of the
+unstable particle into the physical state \myHighlight{$f$}\coordHE{}, modulo the wave-function
+renormalization of the unstable particle, with the important difference that
+it is evaluated at the gauge-independent pole mass \myHighlight{$m_2$}\coordHE{} rather than the
+gauge-dependent on-shell mass \myHighlight{$M$}\coordHE{}.
+\myHighlight{$G\left(m^2_2\right)\equiv I\left(m^2_2\right)-F\left(m^2_2\right)$}\coordHE{} involves
+contributions from unphysical intermediate states (Goldstone bosons,
+Faddeev-Popov ghosts, and longitudinal modes of gauge bosons), which can
+contribute to \myHighlight{$I\left(m^2_2\right)$}\coordHE{} for sufficiently low values of the gauge-parameters
+\cite{si_1}.
+
+In the conventional on-shell formulation, it is assumed that \myHighlight{$I(M^2)$}\coordHE{} can be
+expressed as a sum of contributions involving solely physical intermediate
+states, namely \myHighlight{$I(M^2)=\sum_fI_f(M^2)$}\coordHE{}.
+The argument invokes the unitarity of the \myHighlight{$S$}\coordHE{} matrix and would, in fact, be
+valid if \myHighlight{$I(M^2)$}\coordHE{} were an \myHighlight{$S$}\coordHE{}-matrix amplitude.
+However, as the unstable particle is not an asymptotic state, this is not the
+case, and the above decomposition into physical cut contributions must be
+viewed as an approximation.
+In fact, we will show in this section that \myHighlight{$G\left(m^2_2\right)\neq0$}\coordHE{} in
+\myHighlight{$O(g^6)$}\coordHE{}, {\it i.e.}\ in NNLO. 
+
+We study the difference \myHighlight{$X-m_2\Gamma_2=X+{\rm Im}\,A(\bar s)$}\coordHE{}, where \myHighlight{$X$}\coordHE{} is
+defined in Eqs.~(\ref{new_4}) and (\ref{new_7}), by expanding
+\myHighlight{$v^{(a)}_f(\bar s,\dots)$}\coordHE{}, \myHighlight{$A^\prime(\bar s)$}\coordHE{}, and \myHighlight{$A(\bar s)$}\coordHE{} about \myHighlight{$s=m^2_2$}\coordHE{}
+through terms of \myHighlight{$O(g^6)$}\coordHE{}.
+The leading terms in the expansion of \myHighlight{${\rm Im}\,A(\bar s)$}\coordHE{} is
+\myHighlight{$I\left(m^2_2\right)$}\coordHE{}, for which we employ the decomposition of
+Eq.~(\ref{new_9}). 
+The \myHighlight{$F\left(m^2_2\right)$}\coordHE{} term cancels the leading contribution from \myHighlight{$X$}\coordHE{}, and
+we find 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{new_13}
+&&\leftCoord{}X-m_2\Gamma_2=\frac{\leftCoord{}(m_2\Gamma_2)^2}{\rightCoord{}2}I^{\prime\prime}
+\leftCoord{}-\frac{\leftCoord{}m_2\Gamma_2}{\rightCoord{}2}(I^\prime)^2+G\left(m^2_2\right)
+\nonumber\rightCoord{}\\
+&&\leftCoord{}{}-\frac{\leftCoord{}m_2\Gamma_2}{\rightCoord{}3}\sum_{\rightCoord{}f,\rm spins}\int d\Phi_fQ_{\mu\nu} 
+{\rightCoord{}\leftCoord{}\rm Im}\rightCoord{}\,\left[V_f^{\mu*}\left(m_2^2\right)V_f^{\nu\prime}\left(m_2^2\right)
+\right], \rightCoord{}
+\rightCoord{}}{0mm}{8}{10}{
+&&X-m_2\Gamma_2=\frac{(m_2\Gamma_2)^2}{2}I^{\prime\prime}
+-\frac{m_2\Gamma_2}{2}(I^\prime)^2+G\left(m^2_2\right)
+\\
+&&{}-\frac{m_2\Gamma_2}{3}\sum_{f,\rm spins}\int d\Phi_fQ_{\mu\nu} 
+{\rm Im}\,\left[V_f^{\mu*}\left(m_2^2\right)V_f^{\nu\prime}\left(m_2^2\right)
+\right], 
+}{1}\coordE{}\end{eqnarray}
+where the primes indicate derivatives with respect to \myHighlight{$s$}\coordHE{}, evaluated at
+\myHighlight{$s=m^2_2$}\coordHE{}.
+Since \myHighlight{$X$}\coordHE{} and \myHighlight{$m_2\Gamma_2$}\coordHE{} are gauge independent, Eq.~(\ref{new_13})
+determines the gauge-dependent part of \myHighlight{$G\left(m^2_2\right)$}\coordHE{} in \myHighlight{$O(g^6)$}\coordHE{}.
+As \myHighlight{$\Gamma_2$}\coordHE{} and \myHighlight{$I$}\coordHE{} are of \myHighlight{$O(g^2)$}\coordHE{}, \myHighlight{$v^{(a)}_f$}\coordHE{} is of \myHighlight{$O(g)$}\coordHE{}, and
+\myHighlight{$v^{(a)\prime}_f$}\coordHE{} is of \myHighlight{$O(g^3)$}\coordHE{}, it suffices to consider the gauge dependence
+of the one-loop electroweak contributions to \myHighlight{$I(s)$}\coordHE{} and \myHighlight{$v^{(a)}_f(s,\dots)$}\coordHE{}. 
+Furthermore, in the consideration of the vertex contributions, we may restrict
+ourselves to the two-particle final states, since those involving more
+particles give gauge-dependent contributions of higher order. 
+
+In the \myHighlight{$Z^0$}\coordHE{}-boson case, the gauge dependence of \myHighlight{$I(s)$}\coordHE{} and
+\myHighlight{$v^{(a)}_f(s,\dots)$}\coordHE{} at the one-loop level can be obtained from
+Eqs.~(7), (8), (17), and (24) of Ref.~\cite{deg} in the approximation of
+neglecting the masses of the external fermions, which we henceforth adopt.
+Applying those results to Eq.~(\ref{new_13}) and noting that
+\myHighlight{$G\left(m^2_2\right)$}\coordHE{} vanishes for \myHighlight{$\xi_W>1/c^2$}\coordHE{}, where \myHighlight{$\xi_W$}\coordHE{} is the gauge
+parameter associated with the \myHighlight{$W$}\coordHE{} boson, we find
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+G\left(m^2_2\right)
+&\leftCoord{}=&\frac{\leftCoord{}m_2\Gamma_2}{\rightCoord{}2}\left[(I^\prime)^2-(F^\prime)^2\right]
+\leftCoord{}-g^2c^2m^2_2\Gamma^2_2(\xi_W-1)
+\nonumber\rightCoord{}\\
+&&\leftCoord{}{}\times{\rm Im}\rightCoord{}\,\eta_W\left(m^2_2\right)+O(g^8),
+\label{new_14}
+\rightCoord{}}{0mm}{5}{5}{
+G\left(m^2_2\right)
+&=&\frac{m_2\Gamma_2}{2}\left[(I^\prime)^2-(F^\prime)^2\right]
+-g^2c^2m^2_2\Gamma^2_2(\xi_W-1)
+\\
+&&{}\times{\rm Im}\,\eta_W\left(m^2_2\right)+O(g^8),
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$\eta_W$}\coordHE{} is a gauge-dependent amplitude given in Ref.~\cite{deg}.
+Its imaginary part is non-vanishing in a subclass of gauges characterized by
+\myHighlight{$M_Z>2\sqrt{\xi_W}M_W$}\coordHE{} or \myHighlight{$\xi_W<1/(4c^2)$}\coordHE{} \cite{si_1,deg}.
+It is worth noting that one-loop \myHighlight{$\gamma$}\coordHE{}--\myHighlight{$Z$}\coordHE{} mixing contributions, which
+have been taken into account, cancel in the derivation.
+
+We now discuss an alternative and manifestly additive definition of 
+branching ratios, namely
+\begin{equation}\coord{}\boxEquation{
+\label{new_15}
+\tilde B_{f,2}=\frac{I_f\left(m^2_2\right)}{F\left(m^2_2\right)}.
+}{
+\tilde B_{f,2}=\frac{I_f\left(m^2_2\right)}{F\left(m^2_2\right)}.
+}{ecuacion}\coordE{}\end{equation}
+The corresponding partial widths are
+\begin{equation}\coord{}\boxEquation{
+\label{new_16}
+\tilde\Gamma_{f,2}=\tilde B_{f,2}\Gamma_2. 
+}{
+\tilde\Gamma_{f,2}=\tilde B_{f,2}\Gamma_2. 
+}{ecuacion}\coordE{}\end{equation}
+Eq.~(\ref{new_15}) is the conventional definition employed in current
+calculations, except that the amplitudes are evaluated at the
+gauge-independent pole mass \myHighlight{$m_2$}\coordHE{} rather than at the on-shell mass \myHighlight{$M$}\coordHE{}.
+Similarly, Eq.~(\ref{new_16}) also involves the gauge-independent width
+\myHighlight{$\Gamma_2$}\coordHE{} rather than \myHighlight{$\Gamma$}\coordHE{}.
+Recalling Eq.~(\ref{def_width_2}), Eq.~(\ref{new_16}) can be expressed in the
+form
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{new_18}
+m_2\tilde\Gamma_{f,2}=-\frac{\leftCoord{}I_f\left(m^2_2\right)}{\rightCoord{}F\left(m^2_2\right)}\rightCoord{}\,
+\frac{\leftCoord{}I\left(m^2_2\right)}
+{\rightCoord{}\leftCoord{}1+\left[{\rm Im}\rightCoord{}\,A(\bar s)-I\left(m^2_2\right)\right]/(m_2\Gamma_2)},
+\rightCoord{}}{0mm}{4}{6}{
+m_2\tilde\Gamma_{f,2}=-\frac{I_f\left(m^2_2\right)}{F\left(m^2_2\right)}\,
+\frac{I\left(m^2_2\right)}
+{1+\left[{\rm Im}\,A(\bar s)-I\left(m^2_2\right)\right]/(m_2\Gamma_2)},
+}{1}\coordE{}\end{eqnarray}
+since the second factor on the r.h.s.\ equals \myHighlight{$-m_2\Gamma_2$}\coordHE{} \cite{pal}.
+We note that the denominator of this second factor differs from the
+conventional wave-function renormalization in NNLO. 
+By construction, Eqs.~(\ref{new_15}) and (\ref{new_16}) satisfy the additivity
+property, \myHighlight{$\sum_f\tilde\Gamma_{f,2}=\Gamma_2$}\coordHE{}. 
+In order to establish contact with experiment, 
+we now show that it leads to a peak cross section that is gauge independent
+through \myHighlight{$O(g^4)$}\coordHE{}, {\it i.e.}\ through NNLO.
+
+Using Eqs.~(\ref{new_1}) and (\ref{new_2}), the amplitude at \myHighlight{$s=m_2^2$}\coordHE{} for the
+process \myHighlight{$i\to Z^0\to f$}\coordHE{} is found to be
+\begin{equation}\coord{}\boxEquation{
+\label{new_19}
+{\cal A}_{fi}\left(m_2^2\right)
+=-\frac{Q_{\mu\nu}V_f^\mu\left(m_2^2\right)V_i^\nu\left(m_2^2\right)}
+{m_2\Gamma_2-i\left[A(\bar s)-A\left(m_2^2\right)\right]}
++\tilde N,
+}{
+{\cal A}_{fi}\left(m_2^2\right)
+=-\frac{Q_{\mu\nu}V_f^\mu\left(m_2^2\right)V_i^\nu\left(m_2^2\right)}
+{m_2\Gamma_2-i\left[A(\bar s)-A\left(m_2^2\right)\right]}
++\tilde N,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\tilde N$}\coordHE{} represents non-resonant contributions.
+Disregarding for the moment the contributions from \myHighlight{$\tilde N$}\coordHE{}, we consider the
+square of the absolute value of the first term on the r.h.s.\ of
+Eq.~(\ref{new_19}),
+integrate over the phase space of the final-state particles, sum over their
+spins, and average over those of the initial-state particles.
+Noting that
+\myHighlight{${\rm Re}\,\left[A(\bar s)-A\left(m_2^2\right)\right]
+=m_2\Gamma_2I^\prime\left(m_2^2\right)=O(g^4)$}\coordHE{} in leading order, and making
+use of Eqs.~(\ref{new_9}), (\ref{new_11}), and (\ref{new_18}), we find for the
+resonant contribution through \myHighlight{$O(g^4)$}\coordHE{} 
+\begin{equation}\coord{}\boxEquation{
+\label{new_21}
+\sigma_{\rm R}^0=\frac{12\pi\tilde\Gamma_{e,2}\tilde\Gamma_{f,2}}
+{m_2^2\Gamma^2_2}
+\left[1-(I^\prime)^2+\frac{2G\left(m_2^2\right)}{m_2\Gamma_2}\right],
+}{
+\sigma_{\rm R}^0=\frac{12\pi\tilde\Gamma_{e,2}\tilde\Gamma_{f,2}}
+{m_2^2\Gamma^2_2}
+\left[1-(I^\prime)^2+\frac{2G\left(m_2^2\right)}{m_2\Gamma_2}\right],
+}{ecuacion}\coordE{}\end{equation}
+where we have identified the initial state with an \myHighlight{$e^+e^-$}\coordHE{} pair and 
+\myHighlight{$\tilde\Gamma_{e,2}$}\coordHE{} (\myHighlight{$\tilde\Gamma_{f,2}$}\coordHE{}) is the \myHighlight{$Z^0\to e^+e^-$}\coordHE{}
+(\myHighlight{$Z^0 \to f$}\coordHE{}) partial width, defined according to
+Eqs.~(\ref{new_15}) and (\ref{new_16}).
+In Eq.~(\ref{new_21}), it is understood that \myHighlight{$\sigma^0$}\coordHE{} is the cross section
+devoid of initial-state radiation effects, which are usually taken into
+account by a suitable convolution with a {\it Radiator Function} \cite{pdg}. 
+
+At this stage, we recall that the non-resonant amplitude \myHighlight{$\tilde N$}\coordHE{} in
+Eq.~(\ref{new_19}) includes contributions from box and photon-mediated
+diagrams as well as non-resonant effects from \myHighlight{$\gamma$}\coordHE{}--\myHighlight{$Z$}\coordHE{} mixing graphs.
+In leading order, their gauge-dependent parts can be found from the results of
+Ref.~\cite{deg}.
+Inserting Eq.~(\ref{new_14}) into Eq.~(\ref{new_21}), one finds that the
+gauge-dependent \myHighlight{$(I^\prime)^2$}\coordHE{} term is removed and that the \myHighlight{${\rm Im}\,\eta_W$}\coordHE{}
+contribution in Eq.~(\ref{new_14}) cancels in leading order the
+gauge-dependent part of the interference of \myHighlight{$\tilde N$}\coordHE{} with the first term in
+Eq.~(\ref{new_19}).
+Thus, we find at \myHighlight{$s=m^2_2$}\coordHE{} 
+\begin{equation}\coord{}\boxEquation{
+\label{new_25}
+\sigma^0\left(m^2_2\right)
+=\frac{12\pi\tilde\Gamma_{e,2}\tilde\Gamma_{f,2}}{m^2_2\Gamma^2_2}
+\left(1-\frac{\Gamma^2_2}{m^2_2}\right)+\sigma_{\rm B}^0\left(m^2_2\right),
+}{
+\sigma^0\left(m^2_2\right)
+=\frac{12\pi\tilde\Gamma_{e,2}\tilde\Gamma_{f,2}}{m^2_2\Gamma^2_2}
+\left(1-\frac{\Gamma^2_2}{m^2_2}\right)+\sigma_{\rm B}^0\left(m^2_2\right),
+}{ecuacion}\coordE{}\end{equation}
+where we have used \myHighlight{$F^\prime\left(m^2_2\right)=-\Gamma_2/m_2$}\coordHE{} in leading 
+order and the background part \myHighlight{$\sigma_{\rm B}^0$}\coordHE{} is a gauge-independent
+contribution of \myHighlight{$O(g^4)$}\coordHE{}.
+As \myHighlight{$\sigma^0$}\coordHE{} is a physical observable, the fact that Eq.~(\ref{new_25}) is
+devoid of gauge-dependent contributions implies that the partial widths 
+\myHighlight{$\tilde\Gamma_{e,2}$}\coordHE{} and \myHighlight{$\tilde\Gamma_{f,2}$}\coordHE{}, defined on the basis of
+Eqs.~(\ref{new_15}) and (\ref{new_16}) are gauge independent through \myHighlight{$O(g^6)$}\coordHE{},
+{\it i.e.}\ through NNLO.
+
+The current analyses of the electroweak data measure
+\myHighlight{$m_1=\left(m^2_2+\Gamma_2^2\right)^{1/2}$}\coordHE{} and \myHighlight{$\Gamma_1=m_1\Gamma_2/m_2$}\coordHE{}
+rather than \myHighlight{$m_2$}\coordHE{} and \myHighlight{$\Gamma_2$}\coordHE{} \cite{si_1}, and determine the peak cross
+section at \myHighlight{$s=m_1^2$}\coordHE{} rather than at \myHighlight{$s=m^2_2$}\coordHE{}.
+If the branching ratios are defined by
+\myHighlight{$\tilde B_{f,1}=I_f\left(m^2_1\right)/F\left(m^2_1\right)$}\coordHE{} and the partial
+widths by \myHighlight{$\tilde\Gamma_{f,1}=\tilde B_{f,1}\Gamma_1 $}\coordHE{}, instead of
+Eqs.~(\ref{new_15}) and (\ref{new_16}), we find that the cross section at
+\myHighlight{$s=m_1^2$}\coordHE{} is given by
+\begin{equation}\coord{}\boxEquation{
+\label{new_26}
+\sigma^0\left(m^2_1\right)
+=\frac{12\pi\tilde\Gamma_{e,1}\tilde\Gamma_{f,1}}{m^2_1\Gamma^2_1}
++\sigma_{\rm B}^0\left(m^2_1\right). 
+}{
+\sigma^0\left(m^2_1\right)
+=\frac{12\pi\tilde\Gamma_{e,1}\tilde\Gamma_{f,1}}{m^2_1\Gamma^2_1}
++\sigma_{\rm B}^0\left(m^2_1\right). 
+}{ecuacion}\coordE{}\end{equation}
+The theoretical expression employed by the LEP Electroweak Working Group
+(EWWG) \cite{ewwg} is of the same form as the first term in
+Eq.~(\ref{new_26}).
+Thus, Eq.~(\ref{new_26}) justifies this expression through terms of \myHighlight{$O(g^4)$}\coordHE{},
+{\it i.e.}\ through NNLO in the electroweak interactions, 
+provided that the gauge-independent definitions of
+mass and width are employed!
+We note that this means that contributions of \myHighlight{$O(g^6)$}\coordHE{} to the partial and
+total widths are incorporated into Eqs.~(\ref{new_25}) and (\ref{new_26}).
+On the other hand, \myHighlight{$\sigma_{\rm B}^0$}\coordHE{} can be evaluated from tree-level and
+one-loop diagrams.
+
+We conclude with the following observations and summary of our results:
+(i) In the hadronic sector, the formulation of this paper is restricted to
+the parton level of quarks and gluons, {\it i.e.} the effects of confinement
+are not taken into account.
+Since \myHighlight{$\Gamma_\tau$}\coordHE{} is of order \myHighlight{$10^{-3}$}\coordHE{}~eV and the widths of the least
+massive \myHighlight{$B$}\coordHE{} and \myHighlight{$D$}\coordHE{} mesons are even smaller, we neglect the leptonic widths as
+well as those of the five lightest quarks.
+(ii) If the final-state particles  have negligible widths, Eq.~(\ref{new_4})
+provides a gauge-independent definition of partial widths to all orders of
+perturbation theory.
+In Eqs.~(\ref{new_5}) and (\ref{new_6}), we have shown how this definition
+can be modified in order to satisfy the additivity property.
+(iii) A rigorous analysis does not include unstable particles in the final
+states.
+They are rather treated as virtual particles, which decay into stable ones. 
+Examples are \myHighlight{$Z^0\to f_1\bar f_2W^*\to f_1\bar f_2f_3\bar f_4$}\coordHE{},
+\myHighlight{$H\to W^{+*}W^{-*}\to f_5\bar f_6 f_7 \bar f_8$}\coordHE{}, where \myHighlight{$f_i$}\coordHE{} denote stable
+fermions.
+In domains of phase space where the virtual \myHighlight{$W^*$}\coordHE{} bosons are in their resonant
+regions, a resummation analogous to Eq.~(\ref{new_3}) is in general required. 
+In the \myHighlight{$W$}\coordHE{}-boson case, processes of this kind are forbidden by kinematic
+considerations.
+(iv) In Eq.~(\ref{new_13}), we have analyzed, in leading order and in the
+\myHighlight{$Z^0$}\coordHE{}-boson case, the difference \myHighlight{$X-m_2\Gamma_2$}\coordHE{} between two different
+gauge-independent definitions of total widths, based on the pole residues and
+the pole position, respectively.
+An interesting byproduct is the evaluation of the amplitude
+\myHighlight{$G\left(m^2_2\right)$}\coordHE{} [Eq.~(\ref{new_14})], which represents the contribution
+to \myHighlight{$I\left(m^2_2\right)$}\coordHE{} from unphysical intermediate states.
+The result \myHighlight{$G\left(m^2_2\right)\neq0$}\coordHE{} in \myHighlight{$O(g^6)$}\coordHE{} reflects the fact that the
+unstable particle is not an asymptotic state.
+(v) In Eqs.~(\ref{new_15})--(\ref{new_26}), we have examined, in the
+\myHighlight{$Z^0$}\coordHE{}-boson case, an alternative and simpler definition of partial widths that
+is similar to the one employed in current calculations, except that it
+makes use of the {\it pole} rather than the {\it on-shell} mass and width.
+Subject to this modification, Eq.~(\ref{new_26}) provides a theoretical
+justification, through NNLO in the electroweak interactions, 
+for the peak cross section employed by the EWWG \cite{ewwg}.
+In this regard, it is important to note that Eqs.~(\ref{new_25}) and
+(\ref{new_26}) incorporate corrections of \myHighlight{$O(g^6)$}\coordHE{} to the width and partial
+widths. 
+
+A.S. would like to thank the members of the \myHighlight{$2^{\rm nd}$}\coordHE{} Institute for
+Theoretical Physics of Hamburg University and the Brookhaven National
+Laboratory for their warm hospitality during summer 2000, and the Alexander
+von Humboldt Foundation for its kind support.  
+The research of P.A.G. and A.S. was supported in part by NSF Grants No.\
+PHY-9722083 and No.\ PHY-0070787. 
+The research of B.A.K. was supported in part by DFG Grant No.\ KN~365/1-1,
+by BMBF Grant No.\ 05~HT9GUA~3, and by the European Commission through TMR
+Network No.\ ERBFMRX-CT98-0194.
+
+\begin{thebibliography}{99}
+
+\bibitem{si_1}  
+A. Sirlin, Phys.\ Rev.\ Lett.\ {\bf67}, 2127 (1991);
+Phys.\ Lett.\ B {\bf267}, 240 (1991).
+  
+\bibitem{s-matrix}
+R. E. Peierls, in {\it The Proceedings of the 1954 Glasgow Conference on
+Nuclear and Meson Physics}, edited by E. H. Bellamy and R. G. Moorhouse
+(Pergamon Press, London and New York, 1955), p.~296;
+M. L\'evy, Nuovo Cimento {\bf XIII}, 115 (1959); 
+R. J. Eden, P. V. Landshoff, D. I. Olive, and J. C. Polkinghorne, {\it The
+Analytic S-Matrix} (Cambridge University Press, Cambridge, England, 1966),
+p.~247.
+
+\bibitem{zmass} 
+M. Consoli and A. Sirlin,
+in {\it Physics at LEP}, CERN Yellow Report No.~86-02, 1986, Vol.~1, p.~63;
+S. Willenbrock and G. Valencia, Phys.\ Lett.\ B {\bf259}, 373 (1991); 
+R. G. Stuart, Phys.\ Lett.\ B {\bf262}, 113 (1991); {\bf272}, 353 (1991); 
+Phys.\ Rev.\ Lett.\ {\bf70}, 3193 (1993);
+Nucl.\ Phys.\ {\bf B498}, 28 (1997);
+H. Veltman, Z. Phys.\ C {\bf62}, 35 (1994);
+A. R. Bohm and N. L. Harshman, Nucl.\ Phys.\ {\bf B581}, 581 (2000).
+
+\bibitem{psz} 
+M. Passera and A. Sirlin, Phys.\ Rev.\ Lett.\ {\bf77}, 4146 (1996).
+
+\bibitem{si-kniehl} 
+B. A. Kniehl and A. Sirlin, Phys.\ Rev.\ Lett.\ {\bf81}, 1373 (1998);
+Phys.\ Lett.\ B {\bf440}, 136 (1998).
+
+\bibitem{gg}
+P. Gambino and P. A. Grassi,
+Report No.\ TUM-HEP-352/99, MPI-PhT/99-24, and hep-ph/9907254, to appear in 
+Phys.\ Rev. D.
+
+\bibitem{bhatta}
+T. Bhattacharya and S. Willenbrock, Phys.\ Rev.\ D {\bf47}, 4022 (1993);
+
+\bibitem{pal}
+B. A. Kniehl, C. P. Palisoc, and A. Sirlin,
+Report No.\ DESY 00-079 and hep-ph/0007002.
+
+\bibitem{psw} 
+M. Passera and A. Sirlin,
+Phys.\ Rev.\ D {\bf58}, 113010 (1998).
+
+\bibitem{pt}
+J. Papavassiliou and A. Pilaftsis,
+Phys.\ Rev.\ Lett.\ {\bf75}, 3060 (1995); Phys.\ Rev.\ D {\bf53}, 2128 (1996);
+{\bf54}, 5315 (1996); 
+N. J. Watson, Nucl.\ Phys.\ {\bf B494}, 388 (1997);
+J. Papavassiliou, E. de Rafael, and N. J. Watson, 
+Nucl.\ Phys.\ {\bf B503}, 79 (1997); 
+J. Papavassiliou,
+Report No.\ CERN-TH/99-137 and hep-ph/9905328 (May 1999).
+
+\bibitem{deg}
+G. Degrassi and A. Sirlin,
+Phys.\ Rev.\ D {\bf46}, 3104 (1992).
+
+\bibitem{pdg}
+Particle Data Group, D. E. Groom {\it et al.},
+Eur.\ Phys.\ J. C {\bf15}, 1 (2000), p.~256.
+
+\bibitem{ewwg}
+The LEP Collaborations ALEPH, DELPHI, L3, OPAL, the LEP Electroweak Working
+Group and the SLD Heavy Flavour and Electroweak Groups, D. Abbaneo 
+{\it et al.}, Report No.\ CERN-EP-2000-016, January 2000
+(URL: http://lepewwg.web.cern.ch/LEPEWWG/).
+ 
+\end{thebibliography}
+\end{document}
+
+\bye

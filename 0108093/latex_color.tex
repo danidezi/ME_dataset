@@ -1,0 +1,746 @@
+
+\documentclass[a4paper,11pt]{article}
+\topmargin -2.3cm
+\oddsidemargin -0.3cm
+\evensidemargin 0cm
+\textwidth 16.6cm
+\textheight 23cm
+\renewcommand{\arraystretch}{1.4}
+
+%%%%% Macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\mysection#1{
+    \addtocounter{section}{1}\setcounter{subsection}{0}\setcounter{equation}{0}
+    \vskip8mm\begin{center}{\bf\thesection~#1}\end{center}}
+\def\mysubsection#1{\addtocounter{subsection}{1}
+    \vskip6mm\noindent{\sc\thesubsection~#1}\vskip4mm}
+\providecommand{\vev}[1]{\left<{#1}\right>}
+\providecommand{\bra}[1]{\left<{#1}\right|}
+\providecommand{\ket}[1]{\left|{#1}\right>}
+\providecommand{\cbra}[1]{_{\rm c}\!\!\left<{#1}\right|}
+\providecommand{\cket}[1]{\left|{#1}\right>_{\rm \!c}}
+\providecommand{\ibra}[1]{\langle\!\langle{#1}|}
+\providecommand{\iket}[1]{|{#1}\rangle\!\rangle}
+\providecommand{\ul}[1]{{\underline #1}}
+\providecommand{\tsum}{{\textstyle\sum}}
+\providecommand{\tprod}{{\textstyle\prod}}
+\providecommand{\tint}{{\textstyle\int}}
+\providecommand{\tfrac}[2]{{\textstyle\frac{#1}{#2}}}
+\providecommand{\sinpi}[1]{{\bf s}(#1)}
+\providecommand{\bS}{{\bf S}}
+\providecommand{\bG}{{\bf G}}
+\providecommand{\IIxI}[2]{\left[\!\!\begin{array}{c}#1\\#2\end{array}\!\!\right]}
+\providecommand{\IIxII}[4]{\left[\!\!\begin{array}{cc}#1&#2\\#3&#4\end{array}\!\!\right]}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% D O C U M E N T   B E G I N S %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{useful_macros}
+\begin{document}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\baselineskip = 0.6cm
+\pagestyle{plain}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% T I T L E   P A G E %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+%%%%% preprint number %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\baselineskip 5mm
+\hfill\vbox{\hbox{YITP-01-56}
+            \hbox{hep-th/0108093} }
+
+\baselineskip0.8cm\vskip2cm
+
+%%%%% title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+ {\large\bf Bulk-Boundary Propagator in Liouville Theory on a Disc}
+\end{center}
+
+\vskip10mm
+
+%%%%% author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\baselineskip0.6cm
+\begin{center}
+  Kazuo Hosomichi\footnote{
+ \tt hosomiti@yukawa.kyoto-u.ac.jp}\\         \vskip2mm
+{\it Yukawa Institute for Theoretical Physics \\
+     Kyoto University, Kyoto 606-8502, Japan} \vskip3mm
+\end{center}
+
+%%%%% abstract %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vskip8mm\baselineskip=3.5ex
+\begin{center}{\bf Abstract}\end{center}\par\smallskip
+
+   We study Liouville theory on worldsheets with boundary using
+ the solutions of Knizhnik-Zamolodchikov equation involving
+ a degenerate representation of the Virasoro algebra.
+   The expression for bulk-boundary propagator on a disc
+ is proposed.
+
+\vspace*{\fill}
+\noindent August~~2001
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% T I T L E   P A G E   E N D %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{footnote}{0}
+\setcounter{section}{0}
+\baselineskip = 0.6cm
+\pagestyle{plain}
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}.}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{footnote}{0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% M A I N   T E X T %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+   Liouville theory is an interacting two-dimensional
+ conformal field theory that has many applications in string theory.
+ It was originally studied as a theory of two-dimensional gravity,
+ and recently it has also applied to the study of strings propagating
+ near the singularities of manifolds.
+ It plays a key role in understanding the holography in string theory,
+ since most of the known backgrounds realizing the holography
+ have a radial direction which is described by a linear-dilaton like
+ theory.
+ To study the property of D-branes on such backgrounds from the CFT
+ viewpoint, it is therefore necessary to understand the Liouville
+ theory on open worldsheets.
+
+   Liouville theory on open worldsheets was analyzed in \cite{FZZ, ZZ}
+ where some basic correlators were derived.
+ They were based on bootstraps and free field techniques which were
+ first developed in \cite{DO,ZZ2,T} for the case without boundary.
+ See also \cite{PT,T2,T3}.
+ Our analysis in this letter is along these path.
+
+~
+
+   Liouville theory on a worldsheet with boundary is defined by
+ the action
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  I&=&\frac{\leftCoord{}1}{\rightCoord{}8\pi}\int_\Sigma d^2\sigma \sqrt{g}
+     \left[g^{mn}\partial_m\phi\partial_n\phi
+    \leftCoord{}+\sqrt{2}QR\phi+8\pi\mu e^{\sqrt{2}b\phi}\right] \rightCoord{}
+  \nonumber\rightCoord{} \\ &\leftCoord{}& \rightCoord{}
+    \leftCoord{}+\frac{\leftCoord{}1}{\rightCoord{}4\pi}\int_{\leftCoord{}\partial\Sigma}d\xi g^{1/4}
+     \left[\sqrt{2}QK\phi+4\pi\mu_B e^{b\phi/\sqrt{2}}\right] ,
+\rightCoord{}}{0mm}{7}{7}{
+  I&=&\frac{1}{8\pi}\int_\Sigma d^2\sigma \sqrt{g}
+     \left[g^{mn}\partial_m\phi\partial_n\phi
+    +\sqrt{2}QR\phi+8\pi\mu e^{\sqrt{2}b\phi}\right] 
+  \\ && 
+    +\frac{1}{4\pi}\int_{\partial\Sigma}d\xi g^{1/4}
+     \left[\sqrt{2}QK\phi+4\pi\mu_B e^{b\phi/\sqrt{2}}\right] ,
+}{1}\coordE{}\end{eqnarray}
+ where \myHighlight{$K$}\coordHE{} is the curvature of the boundary and \myHighlight{$\mu_B$}\coordHE{} is
+ called the boundary cosmological constant.
+ \myHighlight{$\mu_B$}\coordHE{} can take different values for each connected component of
+ the boundary and, what is more, \myHighlight{$\mu_B$}\coordHE{} can be different for
+ each boundary segment bounded by two boundary vertex operators.
+
+   When \myHighlight{$\mu$}\coordHE{} and \myHighlight{$\mu_B$}\coordHE{} vanish, the theory reduces to a free theory
+ with the stress tensor
+\begin{equation}\coord{}\boxEquation{
+  T = -\frac{1}{2}(\partial\phi\partial\phi-\sqrt{2}Q\partial^2\phi)
+}{
+  T = -\frac{1}{2}(\partial\phi\partial\phi-\sqrt{2}Q\partial^2\phi)
+}{ecuacion}\coordE{}\end{equation}
+ and the center \myHighlight{$c=1+6Q^2$}\coordHE{}.
+
+   We have two kinds of primary fields in Liouville theory with boundary.
+ Bulk primaries \myHighlight{$V_\alpha(z)=e^{\sqrt{2}\alpha\phi(z)}$}\coordHE{} correspond
+ to closed string modes while boundary primaries
+ \myHighlight{$B_\alpha(x)=e^{\alpha\phi(x)/\sqrt{2}}$}\coordHE{} correspond to open string modes.
+ They are of conformal weight \myHighlight{$h_\alpha=\alpha(Q-\alpha)$}\coordHE{}.
+ We mainly use coordinates \myHighlight{$z,w,\ldots$}\coordHE{} for positions of bulk fields
+ and \myHighlight{$x,y,\cdots$}\coordHE{} for boundary fields.
+
+   As was studied in \cite{FZZ,ZZ}, it is natural to regard \myHighlight{$\mu_B$}\coordHE{}
+ as labeling D-branes or Cardy states in Liouville theory.
+ The classification of Cardy states has been done in \cite{ZZ} using
+ the modular property of Virasoro characters.
+ Consistent Cardy states are expressed as linear combination of
+ Ishibashi states, and the coefficients are proportional to
+ the one-point function of a bulk field \myHighlight{$\vev{V_\alpha(z)}$}\coordHE{} on a disc.
+ This was obtained in \cite{FZZ}:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \vev{V_\alpha(z)}_{\mu_B} &=& U(\alpha;s)|z-\bar{z}|^{-2h_\alpha},
+ \nonumber \rightCoord{}\\\leftCoord{}
+  U(\alpha;s) &=& 2 \cosh\left[2\pi s(2\alpha-Q)\right] \rightCoord{}
+  \leftCoord{}\{\mu\pi\gamma(b^2)\}^{(Q-2\alpha)/2b} \rightCoord{}
+  \leftCoord{}(2\alpha-Q)\Gamma[(2\alpha-Q)b]\Gamma[(2\alpha-Q)/b], \rightCoord{}
+\label{U}
+\rightCoord{}}{0mm}{4}{6}{
+  \vev{V_\alpha(z)}_{\mu_B} &=& U(\alpha;s)|z-\bar{z}|^{-2h_\alpha},
+ \\
+  U(\alpha;s) &=& 2 \cosh\left[2\pi s(2\alpha-Q)\right] 
+  \{\mu\pi\gamma(b^2)\}^{(Q-2\alpha)/2b} 
+  (2\alpha-Q)\Gamma[(2\alpha-Q)b]\Gamma[(2\alpha-Q)/b], 
+}{1}\coordE{}\end{eqnarray}
+ where \myHighlight{$\gamma(x)=\Gamma(x)/\Gamma(1-x)$}\coordHE{} and we introduced
+ a new parameter \myHighlight{$s$}\coordHE{} for labeling the Cardy states \myHighlight{$\cket{s}$}\coordHE{}.
+ It is related to \myHighlight{$\mu_B$}\coordHE{} via
+\begin{equation}\coord{}\boxEquation{
+  \mu_B = \cosh(2\pi sb)\left(\frac{\mu}{\sin\pi b^2}\right)^{1/2}.
+\label{bcc-p}
+}{
+  \mu_B = \cosh(2\pi sb)\left(\frac{\mu}{\sin\pi b^2}\right)^{1/2}.
+}{ecuacion}\coordE{}\end{equation}
+
+   Our goal is to obtain the expression for bulk-boundary propagator
+ \myHighlight{$\vev{V_\alpha(z)B_\beta(x)}_s$}\coordHE{} on a disc.
+ What we have to determine is the structure constant
+ \myHighlight{$R(\alpha,\beta;s)$}\coordHE{} defined by
+\begin{equation}\coord{}\boxEquation{
+  \vev{V_\alpha(z)B_\beta(x)}_{s}=
+  |z-\bar{z}|^{h_\beta-2h_\alpha}|z-x|^{-2h_\beta}R(\alpha,\beta;s).
+}{
+  \vev{V_\alpha(z)B_\beta(x)}_{s}=
+  |z-\bar{z}|^{h_\beta-2h_\alpha}|z-x|^{-2h_\beta}R(\alpha,\beta;s).
+}{ecuacion}\coordE{}\end{equation}
+ To obtain this we use the (\myHighlight{$1+2$}\coordHE{})-point function
+ with an auxiliary insertion of a degenerate operator \myHighlight{$B_{-b/2}(y)$}\coordHE{}.
+ Conformal invariance restricts the correlator to take the form
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\lefteqn{ \rightCoord{}
+  \vev{V_\alpha(z)B_\beta(x)B_{-b/2}(y)}^{\rm (upper~half~plane)}_{s_L,s_R}
+\rightCoord{}} \nonumber \rightCoord{}\\
+&\leftCoord{}=& (x-z)^{-h_\beta-h_{-b/2}}(x-\bar{z})^{-h_\beta+h_{-b/2}}
+     \leftCoord{}|z-\bar{z}|^{h_\beta-2h_\alpha+h_{-b/2}}(y-\bar{z})^{-2h_{-b/2}}
+  \nonumber \rightCoord{}\\
+&&\leftCoord{}\times \vev{V_\alpha(0)B_\beta(1)B_{-b/2}(\eta)}^{\rm (disc)}_{s_L,s_R},
+  \leftCoord{}~~~~\eta=\tfrac{(y-z)(x-\bar{z})}{(y-\bar{z})(x-z)} \rightCoord{}
+\rightCoord{}}{0mm}{5}{7}{
+\lefteqn{ 
+  \vev{V_\alpha(z)B_\beta(x)B_{-b/2}(y)}^{\rm (upper~half~plane)}_{s_L,s_R}
+} \\
+&=& (x-z)^{-h_\beta-h_{-b/2}}(x-\bar{z})^{-h_\beta+h_{-b/2}}
+     |z-\bar{z}|^{h_\beta-2h_\alpha+h_{-b/2}}(y-\bar{z})^{-2h_{-b/2}}
+  \\
+&&\times \vev{V_\alpha(0)B_\beta(1)B_{-b/2}(\eta)}^{\rm (disc)}_{s_L,s_R},
+  ~~~~\eta=\tfrac{(y-z)(x-\bar{z})}{(y-\bar{z})(x-z)} 
+}{1}\coordE{}\end{eqnarray}
+ This correlator has two boundary segments since there are two
+ boundary operator insertions.
+ The suffices \myHighlight{$L,R$}\coordHE{} mean the left or right of \myHighlight{$B_{-b/2}$}\coordHE{} on the real axis.
+ The two boundary cosmological constants must satisfy
+ \myHighlight{$s_L\pm s_R = \pm' ib/2$}\coordHE{} so as to be consistent with
+ the fusion rule\cite{ZZ}.
+ Otherwise the null vector actually does not decouple.
+
+   The \myHighlight{$(1+2)$}\coordHE{}-point function can be expressed in a number of ways:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\lefteqn{ \rightCoord{}
+  \vev{V_\alpha(0)B_\beta(1)B_{-b/2}(\eta)}^{\rm (disc)}_{s_L,s_R}
+\rightCoord{}}\nonumber \rightCoord{}\\
+&\leftCoord{}=& c_+(\beta;s_L,s_R)R(\alpha,\beta-\tfrac{b}{2};s_R)
+     G_{\alpha,\beta}(\eta)e^{i\pi b\beta/2}
+ \nonumber\rightCoord{} \\ &\leftCoord{}& \!\!\!\!\!\! \rightCoord{}
+   \leftCoord{}+~ c_-(\beta;s_L,s_R)R(\alpha,\beta+\tfrac{b}{2};s_R)
+      G_{\alpha,Q-\beta}(\eta)e^{i\pi b(Q-\beta)/2}
+ \nonumber \rightCoord{}\\
+&\leftCoord{}=& c_+(\beta;s_R,s_L)R(\alpha,\beta-\tfrac{b}{2};s_L)
+     G_{\alpha,\beta}(\eta e^{-2\pi i})e^{-i\pi b\beta/2}
+ \nonumber\rightCoord{} \\ &\leftCoord{}&\!\!\!\!\!\! \rightCoord{}
+  \leftCoord{}+~ c_-(\beta;s_R,s_L)R(\alpha,\beta+\tfrac{b}{2};s_L)
+     G_{\alpha,Q-\beta}(\eta e^{-2\pi i})e^{-i\pi b(Q-\beta)/2},
+\rightCoord{}}{0mm}{7}{10}{
+\lefteqn{ 
+  \vev{V_\alpha(0)B_\beta(1)B_{-b/2}(\eta)}^{\rm (disc)}_{s_L,s_R}
+}\\
+&=& c_+(\beta;s_L,s_R)R(\alpha,\beta-\tfrac{b}{2};s_R)
+     G_{\alpha,\beta}(\eta)e^{i\pi b\beta/2}
+ \\ && \!\!\!\!\!\! 
+   +~ c_-(\beta;s_L,s_R)R(\alpha,\beta+\tfrac{b}{2};s_R)
+      G_{\alpha,Q-\beta}(\eta)e^{i\pi b(Q-\beta)/2}
+ \\
+&=& c_+(\beta;s_R,s_L)R(\alpha,\beta-\tfrac{b}{2};s_L)
+     G_{\alpha,\beta}(\eta e^{-2\pi i})e^{-i\pi b\beta/2}
+ \\ &&\!\!\!\!\!\! 
+  +~ c_-(\beta;s_R,s_L)R(\alpha,\beta+\tfrac{b}{2};s_L)
+     G_{\alpha,Q-\beta}(\eta e^{-2\pi i})e^{-i\pi b(Q-\beta)/2},
+}{1}\coordE{}\end{eqnarray}
+ where the equality should hold at least up to overall factors.
+ Here \myHighlight{$G_\beta(\eta)$}\coordHE{} is the following solution of KZ equation:
+\begin{equation}\coord{}\boxEquation{
+  G_{\alpha,\beta}(\eta) =\eta^{b\alpha}(1-\eta)^{b\beta}
+   F\left(b(2\alpha+\beta-Q-\tfrac{b}{2}), b(\beta-\tfrac{b}{2}),
+          b(2\beta-b);1-\eta\right).
+}{
+  G_{\alpha,\beta}(\eta) =\eta^{b\alpha}(1-\eta)^{b\beta}
+   F\left(b(2\alpha+\beta-Q-\tfrac{b}{2}), b(\beta-\tfrac{b}{2}),
+          b(2\beta-b);1-\eta\right).
+}{ecuacion}\coordE{}\end{equation}
+ We assume that the correlator is analytic on the complex
+ \myHighlight{$\eta$}\coordHE{}-plane except on the positive half of the real axis.
+ The expression \myHighlight{$\eta e^{-2\pi i}$}\coordHE{} indicates going clockwise
+ around \myHighlight{$\eta=0$}\coordHE{} once.
+ \myHighlight{$c_\pm(\beta;s_L,s_R)$}\coordHE{} are the OPE coefficients:
+\begin{equation}\coord{}\boxEquation{
+  B_\beta(x)B_{-b/2}(y)_{s_L,s_R} \stackrel{x<y}{\sim}
+  |y-x|^{b\beta}c_+(\beta;s_L,s_R)B_{\beta-b/2}(x)
+ + |y-x|^{b(Q-\beta)}c_-(\beta;s_L,s_R)B_{\beta+b/2}(x)
+}{
+  B_\beta(x)B_{-b/2}(y)_{s_L,s_R} \stackrel{x<y}{\sim}
+  |y-x|^{b\beta}c_+(\beta;s_L,s_R)B_{\beta-b/2}(x)
+ + |y-x|^{b(Q-\beta)}c_-(\beta;s_L,s_R)B_{\beta+b/2}(x)
+}{ecuacion}\coordE{}\end{equation}
+ They are calculated as the free field correlators
+ with an appropriate insertion of boundary screening operator
+ \myHighlight{$S_B = \int_{\partial\Sigma}B_b$}\coordHE{}:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  c_+(\beta;s_L,s_R)
+&\leftCoord{}=& \vev{B_\beta B_{-b/2}B_{Q-\beta+b/2}}_{\rm free}
+  \leftCoord{}~=~ 1, \rightCoord{}
+ \nonumber \rightCoord{}\\\leftCoord{}
+  c_-(\beta;s_L,s_R)
+&\leftCoord{}=& \vev{(-\mu_BS_B)B_\beta B_{-b/2}B_{Q-\beta+b/2}}_{\rm free}
+ \nonumber \rightCoord{}\\
+&\leftCoord{}=& \frac{\leftCoord{}2b^2}{\rightCoord{}\pi}\Gamma(1-2b\beta)\Gamma(2b\beta-bQ) \rightCoord{}
+      \cos\pi(b\beta-\tfrac{bQ}{2})(\mu\pi\gamma(b^2))^{1/2} \rightCoord{}
+      \cos\pi(b\beta-\tfrac{bQ}{2}\mp 2ibs_R)
+ \nonumber \rightCoord{}\\
+&&\leftCoord{} ~~~~(s_R = s_L \pm \tfrac{ib}{2}).\rightCoord{}
+\rightCoord{}}{0mm}{8}{10}{
+  c_+(\beta;s_L,s_R)
+&=& \vev{B_\beta B_{-b/2}B_{Q-\beta+b/2}}_{\rm free}
+  ~=~ 1, 
+ \\
+  c_-(\beta;s_L,s_R)
+&=& \vev{(-\mu_BS_B)B_\beta B_{-b/2}B_{Q-\beta+b/2}}_{\rm free}
+ \\
+&=& \frac{2b^2}{\pi}\Gamma(1-2b\beta)\Gamma(2b\beta-bQ) 
+      \cos\pi(b\beta-\tfrac{bQ}{2})(\mu\pi\gamma(b^2))^{1/2} 
+      \cos\pi(b\beta-\tfrac{bQ}{2}\mp 2ibs_R)
+ \\
+&& ~~~~(s_R = s_L \pm \tfrac{ib}{2}).
+}{1}\coordE{}\end{eqnarray}
+
+   We can derive some recursion relations between \myHighlight{$R(\alpha,\beta;s)$}\coordHE{}
+ from the transformation property and monodromy of
+ hypergeometric functions.
+ We shall do this by rewriting the \myHighlight{$(1+2)$}\coordHE{}-point function as a linear
+ sum of the solutions \myHighlight{$H_{\alpha,\beta}(\eta)$}\coordHE{}
+ and \myHighlight{$H_{Q-\alpha,\beta}(\eta)$}\coordHE{} that diagonalize the monodromy
+ around \myHighlight{$\eta=0$}\coordHE{}.
+ They are defined as
+\begin{equation}\coord{}\boxEquation{
+  H_{\alpha,\beta}(\eta)=\eta^{b\alpha}(1-\eta)^{b\beta}
+  F\left(b(2\alpha+\beta-Q-\tfrac{b}{2}),b(\beta-\tfrac{b}{2}),
+         b(2\alpha-b);\eta\right)
+}{
+  H_{\alpha,\beta}(\eta)=\eta^{b\alpha}(1-\eta)^{b\beta}
+  F\left(b(2\alpha+\beta-Q-\tfrac{b}{2}),b(\beta-\tfrac{b}{2}),
+         b(2\alpha-b);\eta\right)
+}{ecuacion}\coordE{}\end{equation}
+ and are related to \myHighlight{$G_{\alpha,\beta}$}\coordHE{} via
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    \leftCoord{}(G_{\alpha,\beta},G_{\alpha,Q-\beta})
+&\leftCoord{}=&(H_{\alpha,\beta},H_{Q-\alpha,\beta})
+\IIxII{x_{\beta,\alpha}}{x_{Q-\beta,\alpha}}
+      {\rightCoord{}\leftCoord{}x_{\beta,Q-\alpha}}{x_{Q-\beta,Q-\alpha}}, \nonumber \rightCoord{}\\\leftCoord{}
+  x_{\beta,\alpha} &=&
+    \frac{\leftCoord{}\Gamma(2b\beta-b^2)\Gamma(1+b^2-2b\alpha)} \rightCoord{}
+         {\rightCoord{}\leftCoord{}\Gamma(1+\frac{\leftCoord{}b^2}{\rightCoord{}2}-2b\alpha+b\beta) \rightCoord{}
+          \Gamma(b\beta-\frac{\leftCoord{}b^2}{\rightCoord{}2})}. \rightCoord{}
+\rightCoord{}}{0mm}{9}{10}{
+    (G_{\alpha,\beta},G_{\alpha,Q-\beta})
+&=&(H_{\alpha,\beta},H_{Q-\alpha,\beta})
+\IIxII{x_{\beta,\alpha}}{x_{Q-\beta,\alpha}}
+      {x_{\beta,Q-\alpha}}{x_{Q-\beta,Q-\alpha}}, \\
+  x_{\beta,\alpha} &=&
+    \frac{\Gamma(2b\beta-b^2)\Gamma(1+b^2-2b\alpha)} 
+         {\Gamma(1+\frac{b^2}{2}-2b\alpha+b\beta) 
+          \Gamma(b\beta-\frac{b^2}{2})}. 
+}{1}\coordE{}\end{eqnarray}
+ There are subtle phase factors arising in deriving
+ the recursion relation, which should be handled carefully
+ so that the resultant relation is symmetric under
+ the exchange of \myHighlight{$s_L$}\coordHE{} and \myHighlight{$s_R$}\coordHE{}.
+ We must also pay attention to the relation
+\begin{equation}\coord{}\boxEquation{
+  \vev{V_\alpha(0)B_\beta(1)B_{-b/2}(\eta)}^{\rm (disc)}_{s_L,s_R}
+ =\eta^{-2h_{-b/2}}
+  \vev{V_\alpha(0)B_\beta(1)B_{-b/2}(\eta^{-1})}^{\rm (disc)}_{s_R,s_L},
+}{
+  \vev{V_\alpha(0)B_\beta(1)B_{-b/2}(\eta)}^{\rm (disc)}_{s_L,s_R}
+ =\eta^{-2h_{-b/2}}
+  \vev{V_\alpha(0)B_\beta(1)B_{-b/2}(\eta^{-1})}^{\rm (disc)}_{s_R,s_L},
+}{ecuacion}\coordE{}\end{equation}
+ which merely corresponds to flipping the real axis
+ of the upper half-plane.
+ We finally find the following relation:
+\begin{equation}\coord{}\boxEquation{
+  iX^+\IIxI{c_+(\beta;s_R,s_L)R(\alpha,\beta-\tfrac{b}{2};s_L)}
+           {c_-(\beta;s_R,s_L)R(\alpha,\beta+\tfrac{b}{2};s_L)}
+ = X^-\IIxI{c_+(\beta;s_L,s_R)R(\alpha,\beta-\tfrac{b}{2};s_R)}
+           {c_-(\beta;s_L,s_R)R(\alpha,\beta+\tfrac{b}{2};s_R)}
+\label{recur}
+}{
+  iX^+\IIxI{c_+(\beta;s_R,s_L)R(\alpha,\beta-\tfrac{b}{2};s_L)}
+           {c_-(\beta;s_R,s_L)R(\alpha,\beta+\tfrac{b}{2};s_L)}
+ = X^-\IIxI{c_+(\beta;s_L,s_R)R(\alpha,\beta-\tfrac{b}{2};s_R)}
+           {c_-(\beta;s_L,s_R)R(\alpha,\beta+\tfrac{b}{2};s_R)}
+}{ecuacion}\coordE{}\end{equation}
+ where the components of \myHighlight{$X^\pm$}\coordHE{} are given by
+\begin{equation}\coord{}\boxEquation{
+  x^\pm_{\beta,\alpha}=
+  e^{\pm i\pi b(\alpha+\frac{\beta}{2}-\frac{3Q}{4})}x_{\beta,\alpha}.
+}{
+  x^\pm_{\beta,\alpha}=
+  e^{\pm i\pi b(\alpha+\frac{\beta}{2}-\frac{3Q}{4})}x_{\beta,\alpha}.
+}{ecuacion}\coordE{}\end{equation}
+ The phases are fixed so that we can find a matrix \myHighlight{$Y$}\coordHE{} satisfying
+ \myHighlight{$YX^\mp = \pm iX^\pm$}\coordHE{}, ensuring that the relation is symmetric
+ under the exchange of \myHighlight{$s_L$}\coordHE{} and \myHighlight{$s_R$}\coordHE{}.
+
+   Let us pose a while and see the consistency of the relation
+ (\ref{recur}) with the reflection symmetry of the vertices.
+ The structure constant \myHighlight{$R(\alpha,\beta;s)$}\coordHE{} should be invariant
+ under the reflection of the bulk vertex operator
+ \myHighlight{$V_\alpha \Leftrightarrow V_{Q-\alpha}$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+ V_\alpha=D(\alpha)V_{Q-\alpha},~~~
+ D(\alpha)= -[\mu\pi\gamma(b^2)]^{(Q-2\alpha)/b}
+   \frac{\Gamma((2\alpha-Q)b)\Gamma((2\alpha-Q)/b)}
+        {\Gamma(-(2\alpha-Q)b)\Gamma(-(2\alpha-Q)/b)}.
+}{
+ V_\alpha=D(\alpha)V_{Q-\alpha},~~~
+ D(\alpha)= -[\mu\pi\gamma(b^2)]^{(Q-2\alpha)/b}
+   \frac{\Gamma((2\alpha-Q)b)\Gamma((2\alpha-Q)/b)}
+        {\Gamma(-(2\alpha-Q)b)\Gamma(-(2\alpha-Q)/b)}.
+}{ecuacion}\coordE{}\end{equation}
+ and the reflection of the boundary operator
+ \myHighlight{$B_\beta \Leftrightarrow B_{Q-\beta}$}\coordHE{}:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+ B_\beta &=& d(\beta;s,s) B_{Q-\beta},\nonumber \rightCoord{}\\\leftCoord{}
+ d(\beta;s_L,s_R) &=&
+ \frac{\leftCoord{}\bG(Q-2\beta)\bG(2\beta-Q)^{-1} \rightCoord{}
+       \leftCoord{}\{\mu\pi\gamma(b^2)b^{2-2b^2}\}^{(Q-2\beta)/2b}} \rightCoord{}
+ {\rightCoord{}\leftCoord{}\bS(\beta+is_L+is_R)\bS(\beta-is_L-is_R)
+  \bS(\beta+is_L-is_R)\bS(\beta-is_L+is_R)}.\rightCoord{}
+\label{bref}
+\rightCoord{}}{0mm}{5}{7}{
+ B_\beta &=& d(\beta;s,s) B_{Q-\beta},\\
+ d(\beta;s_L,s_R) &=&
+ \frac{\bG(Q-2\beta)\bG(2\beta-Q)^{-1} 
+       \{\mu\pi\gamma(b^2)b^{2-2b^2}\}^{(Q-2\beta)/2b}} 
+ {\bS(\beta+is_L+is_R)\bS(\beta-is_L-is_R)
+  \bS(\beta+is_L-is_R)\bS(\beta-is_L+is_R)}.
+}{1}\coordE{}\end{eqnarray}
+ Here we used some of the functions \myHighlight{$\Upsilon$}\coordHE{}, \myHighlight{$\bS$}\coordHE{},
+ \myHighlight{$\bG$}\coordHE{} introduced in \cite{DO, ZZ2, FZZ}.
+ They are characterized by the shift relations
+\begin{equation}\coord{}\boxEquation{
+  \Upsilon(x+b)=b^{1-2bx}\gamma(bx)\Upsilon(x),~~~~
+  \bS(x+b)=2\sin(\pi bx)\bS(x), ~~~~
+  \bG(x+b)=\frac{b^{\frac{1}{2}-bx}}{\sqrt{2\pi}}\Gamma(bx)\bG(x),
+}{
+  \Upsilon(x+b)=b^{1-2bx}\gamma(bx)\Upsilon(x),~~~~
+  \bS(x+b)=2\sin(\pi bx)\bS(x), ~~~~
+  \bG(x+b)=\frac{b^{\frac{1}{2}-bx}}{\sqrt{2\pi}}\Gamma(bx)\bG(x),
+}{ecuacion}\coordE{}\end{equation}
+ and those with \myHighlight{$b$}\coordHE{} replaced with \myHighlight{$1/b$}\coordHE{}.
+ We can check that if we can find a solution \myHighlight{$R(\alpha,\beta;s)$}\coordHE{} of
+ the recursion relation, then its reflections
+\begin{equation}\coord{}\boxEquation{
+  D(\alpha)R(Q-\alpha,\beta;s),~~~
+  d(\beta;s,s)R(\alpha,Q-\beta;s)
+}{
+  D(\alpha)R(Q-\alpha,\beta;s),~~~
+  d(\beta;s,s)R(\alpha,Q-\beta;s)
+}{ecuacion}\coordE{}\end{equation}
+ are also solutions of the same recursion relation.
+
+    By inserting \myHighlight{$s_R=s_L+\tfrac{ib}{2}$}\coordHE{} into (\ref{recur})
+ we obtain partial difference equations for \myHighlight{$R(\alpha,\beta;s)$}\coordHE{}.
+ To write down the solution, it seems that the most efficient way
+ is to take the Fourier transform:
+\begin{equation}\coord{}\boxEquation{
+  \tilde{R}(\alpha,\beta;p)
+  = \tfrac{1}{2}\int_{-\infty}^{\infty} ds e^{4\pi sp}R(\alpha,\beta;s),~~~~
+  R(\alpha,\beta,s)
+  = -i\int_{-i\infty}^{i\infty}dp e^{-4\pi sp}\tilde{R}(\alpha,\beta,p),
+}{
+  \tilde{R}(\alpha,\beta;p)
+  = \tfrac{1}{2}\int_{-\infty}^{\infty} ds e^{4\pi sp}R(\alpha,\beta;s),~~~~
+  R(\alpha,\beta,s)
+  = -i\int_{-i\infty}^{i\infty}dp e^{-4\pi sp}\tilde{R}(\alpha,\beta,p),
+}{ecuacion}\coordE{}\end{equation}
+ in terms of which the difference equation becomes simply
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \rightCoord{}
+  \tilde{R}(\alpha,\beta;p+b) \rightCoord{}
+       \sin\pi b(p+\alpha-\tfrac{\beta}{2}+\tfrac{Q}{2}) \rightCoord{}
+       \sin\pi b(p-\alpha-\tfrac{\beta}{2}+\tfrac{3Q}{2}) \rightCoord{}
+\nonumber\rightCoord{} \\ &\leftCoord{}=& \rightCoord{}
+  \tilde{R}(\alpha,\beta;p) \rightCoord{}
+       \sin\pi b(p+\alpha+\tfrac{\beta}{2}-\tfrac{Q}{2}) \rightCoord{}
+       \sin\pi b(p-\alpha+\tfrac{\beta}{2}+\tfrac{Q}{2}) \rightCoord{}
+\nonumber\rightCoord{} \\ &\leftCoord{}=& \rightCoord{}
+  \tilde{R}(\alpha,\beta+b;p+\tfrac{b}{2}) \rightCoord{}
+  \frac{\leftCoord{}\pi^2 b^2(\mu\pi\gamma(b^2))^{1/2} \rightCoord{}
+        \Gamma(1-2b\beta)\Gamma(1-b^2-2b\beta)} \rightCoord{}
+       {\rightCoord{}\leftCoord{}\Gamma(b\beta)\Gamma(1-b\beta)^3 \rightCoord{}
+        \Gamma(1-b\beta-2b\alpha+bQ)\Gamma(1-b\beta+2b\alpha-bQ)}. \rightCoord{}
+\rightCoord{}}{0mm}{5}{19}{
+&& 
+  \tilde{R}(\alpha,\beta;p+b) 
+       \sin\pi b(p+\alpha-\tfrac{\beta}{2}+\tfrac{Q}{2}) 
+       \sin\pi b(p-\alpha-\tfrac{\beta}{2}+\tfrac{3Q}{2}) 
+\\ &=& 
+  \tilde{R}(\alpha,\beta;p) 
+       \sin\pi b(p+\alpha+\tfrac{\beta}{2}-\tfrac{Q}{2}) 
+       \sin\pi b(p-\alpha+\tfrac{\beta}{2}+\tfrac{Q}{2}) 
+\\ &=& 
+  \tilde{R}(\alpha,\beta+b;p+\tfrac{b}{2}) 
+  \frac{\pi^2 b^2(\mu\pi\gamma(b^2))^{1/2} 
+        \Gamma(1-2b\beta)\Gamma(1-b^2-2b\beta)} 
+       {\Gamma(b\beta)\Gamma(1-b\beta)^3 
+        \Gamma(1-b\beta-2b\alpha+bQ)\Gamma(1-b\beta+2b\alpha-bQ)}. 
+}{1}\coordE{}\end{eqnarray}
+ A solution is given by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \tilde{R}(\alpha,\beta;p) &=& \rightCoord{}
+  \leftCoord{}2\pi(\mu\pi\gamma(b^2)b^{2-2b^2})^{(Q-2\alpha-\beta)/2b} \rightCoord{}
+  \frac{\leftCoord{}\bG(Q)\bG(\beta)\bG(Q-2\beta)\Upsilon(2\alpha)} \rightCoord{}
+       {\rightCoord{}\leftCoord{}\bG(Q-\beta)^3\bG(2Q-2\alpha-\beta)\bG(2\alpha-\beta)} \rightCoord{}
+  \nonumber\rightCoord{} \\ &\leftCoord{}& \times 
+  \bS( p+\tfrac{\beta+2\alpha-Q}{2}) \rightCoord{}
+  \bS( p+\tfrac{\beta-2\alpha+Q}{2}) \rightCoord{}
+  \bS(-p+\tfrac{\beta+2\alpha-Q}{2}) \rightCoord{}
+  \bS(-p+\tfrac{\beta-2\alpha+Q}{2}). \rightCoord{}
+\label{Rtil}
+\rightCoord{}}{0mm}{5}{12}{
+  \tilde{R}(\alpha,\beta;p) &=& 
+  2\pi(\mu\pi\gamma(b^2)b^{2-2b^2})^{(Q-2\alpha-\beta)/2b} 
+  \frac{\bG(Q)\bG(\beta)\bG(Q-2\beta)\Upsilon(2\alpha)} 
+       {\bG(Q-\beta)^3\bG(2Q-2\alpha-\beta)\bG(2\alpha-\beta)} 
+  \\ && \times 
+  \bS( p+\tfrac{\beta+2\alpha-Q}{2}) 
+  \bS( p+\tfrac{\beta-2\alpha+Q}{2}) 
+  \bS(-p+\tfrac{\beta+2\alpha-Q}{2}) 
+  \bS(-p+\tfrac{\beta-2\alpha+Q}{2}). 
+}{1}\coordE{}\end{eqnarray}
+ The normalization was fixed so that we have \myHighlight{$R(\alpha,0;s)=U(\alpha;s)$}\coordHE{}.
+
+   We have to analyze the transformation property of the above
+ solution under the reflection (\ref{bref}).
+ To do this we check whether or not the value of \myHighlight{$R(\alpha,\beta;s)$}\coordHE{}
+ at \myHighlight{$\beta=Q$}\coordHE{} is as required from the reflection symmetry:
+\begin{equation}\coord{}\boxEquation{
+  d(\beta;s,s)\times(-i)\int dp e^{-4\pi sp}\tilde{R}(\alpha,Q-\beta;p)
+  \stackrel{\beta\to 0}{\rightarrow} U(\alpha;s).
+}{
+  d(\beta;s,s)\times(-i)\int dp e^{-4\pi sp}\tilde{R}(\alpha,Q-\beta;p)
+  \stackrel{\beta\to 0}{\rightarrow} U(\alpha;s).
+}{ecuacion}\coordE{}\end{equation}
+ In doing this we have to be careful for the fact that when a factor
+ like \myHighlight{$e^{4\pi sp_0}$}\coordHE{} is multiplied onto the inverse Fourier transform
+ (\myHighlight{$p$}\coordHE{}-integration), it shifts the contour of \myHighlight{$p$}\coordHE{}-integration
+ and possibly picks up some poles.
+ A calculation shows that our structure constant satisfies
+ the above equation, ensuring the reflection symmetry at \myHighlight{$\beta=0$}\coordHE{}.
+
+   As we have seen above, the solution was obtained by solving the
+ recursion relation (\ref{recur}) and imposing the reflection symmetry.
+ The normalization was fixed by matching with \myHighlight{$U(\alpha;s)$}\coordHE{} in the limit
+ \myHighlight{$\beta\rightarrow 0$}\coordHE{}.
+ Any solution satisfying these conditions should be equal to the above
+ \myHighlight{$R(\alpha,\beta;s)$}\coordHE{} for all \myHighlight{$\beta\in\{b{\bf Z}+b^{-1}{\bf Z}\}$}\coordHE{}
+ due to recursion relation (\ref{recur}) and that associated with
+ the degenerate field \myHighlight{$B_{-1/2b}$}\coordHE{}.
+ In this sense the solution is unique.
+
+   It is known from the perturbative analysis based on
+ path-integral formalism that the correlators diverge when the
+ non-conservation of Liouville momentum can be screened by a
+ non-negative integer number of screening operators.
+ Our \myHighlight{$R(\alpha,\beta;s)$}\coordHE{} indeed has the corresponding
+ poles at \myHighlight{$2\alpha+\beta=Q-nb$}\coordHE{}.
+ For the first few of them we can also check that the residue
+ is precisely equal to the free-field correlators as expected.
+
+~
+ 
+   If a bulk operator \myHighlight{$V_\alpha$}\coordHE{} approaches the boundary, it can be
+ expanded as a sum over boundary fields \myHighlight{$B_\beta$}\coordHE{}.
+ One naively expects that the expansion obeys the following formula
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  V_{\alpha}(z)&\stackrel{z\rightarrow x}{\sim}&
+  \tfrac{1}{2} \int d\beta
+  \leftCoord{}|z-\bar{z}|^{h_\beta-2h_\alpha} R(\alpha,\beta;s)B_{Q-\beta}(x)
+    \nonumber\rightCoord{} \\ &\leftCoord{}=& \rightCoord{}
+  \tfrac{1}{2i}\int d\beta dp \rightCoord{}
+  \leftCoord{}|z-\bar{z}|^{h_\beta-2h_\alpha} e^{-4\pi sp}
+  \tilde{R}(\alpha,\beta;p)B_{Q-\beta}(x).\rightCoord{}
+\label{VBexp}
+\rightCoord{}}{0mm}{4}{6}{
+  V_{\alpha}(z)&\stackrel{z\rightarrow x}{\sim}&
+  \tfrac{1}{2} \int d\beta
+  |z-\bar{z}|^{h_\beta-2h_\alpha} R(\alpha,\beta;s)B_{Q-\beta}(x)
+    \\ &=& 
+  \tfrac{1}{2i}\int d\beta dp 
+  |z-\bar{z}|^{h_\beta-2h_\alpha} e^{-4\pi sp}
+  \tilde{R}(\alpha,\beta;p)B_{Q-\beta}(x).
+}{1}\coordE{}\end{eqnarray}
+ where the \myHighlight{$\beta$}\coordHE{}-integration should be done over 
+ \myHighlight{$\beta\in \frac{Q}{2}+i{\bf R}$}\coordHE{}~ for \myHighlight{$\alpha\in \frac{Q}{2}+i{\bf R}$}\coordHE{},
+ and suitably deformed for generic \myHighlight{$\alpha$}\coordHE{} in order to
+ ensure the analyticity.
+ Similar deformation of contour is also assumed for \myHighlight{$p$}\coordHE{}-integration.
+ As a special case, take as \myHighlight{$\alpha$}\coordHE{} those values corresponding to
+ degenerate representation of the Virasoro algebra:
+\begin{equation}\coord{}\boxEquation{
+  2\alpha_{k,l}=Q-kb-lb^{-1},~~~(k,l\in {\bf Z}_{\ge 1}).
+}{
+  2\alpha_{k,l}=Q-kb-lb^{-1},~~~(k,l\in {\bf Z}_{\ge 1}).
+}{ecuacion}\coordE{}\end{equation}
+ We then expect that \myHighlight{$V_\alpha$}\coordHE{} is expanded into boundary degenerate
+ operators \myHighlight{$B_{\beta_{m,n}}$}\coordHE{} with
+\begin{equation}\coord{}\boxEquation{
+  2\beta_{m,n}=Q-mb-nb^{-1},~~~
+ (m = 1,3,\cdots, 2k-1,~~~
+  n = 1,3,\cdots, 2l-1).
+\label{degB}
+}{
+  2\beta_{m,n}=Q-mb-nb^{-1},~~~
+ (m = 1,3,\cdots, 2k-1,~~~
+  n = 1,3,\cdots, 2l-1).
+}{ecuacion}\coordE{}\end{equation}
+ Our \myHighlight{$R(\alpha,\beta;s)$}\coordHE{} agrees with this expectation.
+ To see this, note first that the integral over \myHighlight{$\beta$}\coordHE{} and \myHighlight{$p$}\coordHE{}
+ has only contribution from poles due to the vanishing factor
+ \myHighlight{$\Upsilon(2\alpha)$}\coordHE{} in the integrand.
+ In order to cancel this factor, we actually need
+ the degeneration of two poles that pinch the integration contour.
+ By analyzing the location and the degeneracy of the poles of
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\lefteqn{  \tilde{R}(\alpha,\beta;s)d(Q-\beta;s,s) } \nonumber \rightCoord{}\\
+&\leftCoord{}\sim& \int dp \rightCoord{}
+            \frac{\leftCoord{}\bG(2\beta-Q)\Upsilon(2\alpha) \rightCoord{}
+            \bS( p+\tfrac{\beta+2\alpha-Q}{2}) \rightCoord{}
+            \bS( p+\tfrac{\beta-2\alpha+Q}{2}) \rightCoord{}
+            \bS(-p+\tfrac{\beta+2\alpha-Q}{2}) \rightCoord{}
+            \bS(-p+\tfrac{\beta-2\alpha+Q}{2})} \rightCoord{}
+           {\rightCoord{}\leftCoord{}\bG(\beta)\bG(Q-\beta)\bG(2Q-2\alpha-\beta)\bG(2\alpha-\beta)}, \rightCoord{}
+\rightCoord{}}{0mm}{4}{11}{
+\lefteqn{  \tilde{R}(\alpha,\beta;s)d(Q-\beta;s,s) } \\
+&\sim& \int dp 
+            \frac{\bG(2\beta-Q)\Upsilon(2\alpha) 
+            \bS( p+\tfrac{\beta+2\alpha-Q}{2}) 
+            \bS( p+\tfrac{\beta-2\alpha+Q}{2}) 
+            \bS(-p+\tfrac{\beta+2\alpha-Q}{2}) 
+            \bS(-p+\tfrac{\beta-2\alpha+Q}{2})} 
+           {\bG(\beta)\bG(Q-\beta)\bG(2Q-2\alpha-\beta)\bG(2\alpha-\beta)}, 
+}{1}\coordE{}\end{eqnarray}
+ we find that the degenerate bulk field \myHighlight{$V_{\alpha_{k,l}}$}\coordHE{}
+ is expanded into degenerate boundary fields \myHighlight{$B_{\beta_{m,n}}$}\coordHE{}
+ with \myHighlight{$(m,n)$}\coordHE{} precisely given in (\ref{degB}).
+ Note that the reflection coefficient \myHighlight{$d(\beta;s,s)$}\coordHE{} becomes singular
+ when \myHighlight{$\beta$}\coordHE{} belongs to a degenerate representation.
+ Therefore, only \myHighlight{$B_{\beta_{m,n}}$}\coordHE{} (and not their reflection transform)
+ can appear with finite coefficient in the expansion of \myHighlight{$V_{\alpha_{k,l}}$}\coordHE{}.
+
+~
+
+   The Fourier transformed structure constant \myHighlight{$\tilde{R}(\alpha,\beta;p)$}\coordHE{}
+ may well be thought of as the fusion coefficient of an Ishibashi state
+ \myHighlight{$\iket{p}$}\coordHE{} with a boundary primary \myHighlight{$B_\beta$}\coordHE{}.
+ It seems therefore reasonable that the bulk-boundary structure constant
+ becomes simpler if we take Ishibashi states rather than Cardy states.
+ In \cite{ZZ} the Cardy states \myHighlight{$\cket{m,n}$}\coordHE{} corresponding to degenerate
+ representations of Virasoro algebra have also been constructed
+ and analyzed in some detail.
+ From the comparison of the wave functions for Cardy states
+ \myHighlight{$\cket{s}$}\coordHE{} and \myHighlight{$\cket{m,n}$}\coordHE{}, it is expected that the bulk-boundary
+ structure constant for degenerate Cardy states might be given by
+\begin{equation}\coord{}\boxEquation{
+  R(\alpha,\beta)_{m,n} = 2i\int_{-i\infty}^{i\infty}dp
+  \sin(2\pi mpb)\sin(2\pi np/b)\tilde{R}(\alpha,\beta;p),
+}{
+  R(\alpha,\beta)_{m,n} = 2i\int_{-i\infty}^{i\infty}dp
+  \sin(2\pi mpb)\sin(2\pi np/b)\tilde{R}(\alpha,\beta;p),
+}{ecuacion}\coordE{}\end{equation}
+ with \myHighlight{$\tilde{R}(\alpha,\beta;p)$}\coordHE{} given in (\ref{Rtil}).
+ On the other hand, it follows from the fusion rule that only
+ degenerate boundary operators \myHighlight{$B_{\beta_{r,s}}$}\coordHE{} with
+\[\coord{}\boxMath{
+ r=1,3,\cdots, 2m-1,~~~~ s=1,3,\cdots, 2n-1
+}{corchetes}{0pt}\coordE{}\]
+ can appear on a degenerate Cardy state \myHighlight{$\cket{m,n}$}\coordHE{}.
+ To prove the consistency of all these we need further study of
+ boundary degenerate operators and degenerate Cardy states.
+
+   Of all the basic structure constants in Liouville theory on a disc,
+ it remains to calculate the three-point function of boundary operators.
+   The boundary degenerate operator \myHighlight{$B_{-b/2}$}\coordHE{} and the associated
+ KZ equation will be useful also there.
+
+~
+
+   The author thanks the organizer and participants of the Workshop
+ on Field Theory at Otaru (Japan) where he initiated this work.
+ The work of the author is supported in part by JSPS Research
+ Fellowships for Young Scientists. 
+
+\vskip15mm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% R E F E R E N C E S  %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}{\sc References}\end{center}\par
+
+\list{[\arabic{enumi}]}
+     {\settowidth\labelwidth{[99]}\leftmargin\labelwidth
+      \advance\leftmargin\labelsep\usecounter{enumi}}
+\def\newblock{\hskip .11em plus .33em minus .07em}
+\sloppy\clubpenalty4000\widowpenalty4000
+\sfcode`\.=1000\relax
+\let\endthebibliography=\endlist
+
+%%%%% references %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibitem{FZZ} V. Fateev, A. Zamolodchikov and Al. Zamolodchikov,
+    {\sl ``Boundary Liouville Field Theory I.
+           Boundary State and Boundary Two-point Function''},
+    {\tt hep-th/0001012}.
+\bibitem{ZZ} A. Zamolodchikov and Al. Zamolodchikov,
+    {\sl ``Liouville field theory on a pseudosphere''},
+    {\tt hep-th/0101152}.
+\bibitem{DO} H. Dorn and H. J. Otto,
+    {\sl ``Two and three point functions in Liouville theory''},
+    Nucl. Phys. B {\bf 429}, 375 (1994), {\tt hep-th/9403141}.
+\bibitem{ZZ2} A. Zamolodchikov and Al. Zamolodchikov,
+    {\sl ``Structure constants and conformal bootstrap
+           in Liouville field theory''},
+    Nucl. Phys. B {\bf 477}, 577 (1996), {\tt hep-th/9506136}.
+\bibitem{T} J. Teschner,
+    {\sl ``On the Liouville three point function''},
+    Phys. Lett. B {\bf 363}, 65 (1995), {\tt hep-th/9507109}.
+\bibitem{PT} B. Ponsot and J. Teschner,
+    {\sl ``Liouville bootstrap via harmonic analysis
+           on a noncompact quantum group''},
+    {\tt hep-th/9911110}.
+\bibitem{T2} J. Teschner,
+    {\sl ``Remarks on Liouville theory with boundary'',}
+    {\tt hep-th/0009138}.
+\bibitem{T3} J. Teschner,
+    {\sl ``Liouville theory revisited'',}
+    {\tt hep-th/0104158}.
+
+
+\end{document}
+
+\bye

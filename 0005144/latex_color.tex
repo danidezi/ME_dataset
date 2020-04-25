@@ -1,0 +1,1202 @@
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{fullpage}
+
+\usepackage{amsmath}
+\usepackage[psamsfonts]{amssymb}
+\usepackage{amsthm}
+\usepackage{xspace}
+
+\providecommand{\nid}{\noindent}
+\providecommand{\for}{\quad \text{for }}
+\providecommand{\Span}{\mathrm{Span}}
+
+\providecommand{\R}{{\mathbb R}}
+\providecommand{\C}{{\mathbb C}}
+\providecommand{\Z}{{\mathbb Z}}
+\providecommand{\Q}{{\mathbb Q}}
+\providecommand{\N}{{\mathbb N}}
+\providecommand{\half}{\ensuremath{\frac{1}{2}}\xspace}
+\providecommand{\uu}{{\mathbf u}}
+\providecommand{\vv}{{\mathbf v}}
+\providecommand{\jj}{{\mathbf j}}
+\providecommand{\kk}{{\mathbf k}}
+\providecommand{\zz}{{\mathbf z}}
+\providecommand{\hh}{{\mathbf h}}
+\providecommand{\PP}{{\mathbb P}}
+
+\providecommand{\F}{{\mathcal H}}
+\providecommand{\OO}{{\mathcal O}}
+\providecommand{\V}{{\mathcal V}}
+
+\providecommand{\eti}{\tilde{\eta}}
+\providecommand{\bpsi}{\boldsymbol \psi}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\IP}[1]{\langle#1\rangle}
+\providecommand{\iso}{\simeq}
+\providecommand{\done}{\myHighlight{$\hfill \hfill \blacksquare$}\coordHE{} \bigskip}
+\providecommand{\dwrt}[1]{\frac{\partial}{\partial#1}}
+\providecommand{\eps}{\epsilon}
+\providecommand{\ci}{\oint}
+\providecommand{\Div}{\mathrm{div}\ }
+\providecommand{\Mod}{\mathrm{mod}\ }
+
+\providecommand{\chit}{\tilde{\chi}}
+\providecommand{\etat}{\tilde{\eta}}
+
+\newtheorem{defn}{Definition}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{lem}[defn]{Lemma}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{prop}[defn]{Proposition}
+
+\providecommand{\oproof}[1]{\noindent {\bf Proof#1.\ }}
+
+\providecommand{\la}{\label}
+\providecommand{\ti}[1]{\textit{#1}}
+
+
+
+\usepackage{useful_macros}
+\begin{document}
+
+\begin{flushright}
+  DAMTP-2000-50
+\end{flushright}
+
+\begin{center} \LARGE{\textbf{Zhu's Theorem and an algebraic characterization of chiral blocks}} \end{center}
+\vskip 1.0cm
+\begin{center}{\large Andrew Neitzke\footnote{aneitzke@alumni.princeton.edu}\\
+DAMTP, Cambridge University\\
+Cambridge CB3 0WA\\
+United Kingdom\\}\end{center}
+
+\begin{center} May 16, 2000 \end{center}
+
+\vskip 0.8cm
+
+
+\begin{abstract}
+
+Working in the axiomatic framework recently proposed by Gaberdiel and Goddard, we prove a generalized version
+of Zhu's Theorem; for any chiral bosonic conformal field theory on the sphere, our result characterizes 
+the chiral blocks in terms of a certain quotient of the Fock space.  We also establish,
+under a finiteness hypothesis closely related to rationality of the theory, that the
+relevant Knizhnik-Zamolodchikov-type equation admits solutions.
+
+\end{abstract}
+
+
+\section{Introduction} \label{intro}
+
+The problem of determining the chiral blocks in a given 
+conformal field theory is \ti{a priori} a difficult one.  In certain 
+specific cases this problem has been
+completely solved -- e.g., for a broad class of well behaved theories, the chiral blocks
+are understood to arise from ``Feynman diagrams'' with only \myHighlight{$3$}\coordHE{}-valent vertices, with the
+interaction vertices completely determined by the
+fusion rules \cite{DFMS}.  Furthermore the spaces of chiral blocks have been computed explicitly
+in certain cases, e.g. the WZW models, for which they have a straightforward
+algebraic description as spaces of coinvariants \cite{FSV}, \cite{KL}.  
+
+For more general theories (even rational ones), somewhat less is known.
+The most significant progress was made by Zhu,
+who in \cite{Zhu} introduced a completely algebraic technique for determining the highest weight representations of
+a vertex operator algebra; namely, he constructed a functor which associates to a vertex operator
+algebra \myHighlight{$V$}\coordHE{} (with conformal weights in \myHighlight{$\N$}\coordHE{}) 
+an associative algebra \myHighlight{$A(V)$}\coordHE{},
+such that the irreducible representations of \myHighlight{$A(V)$}\coordHE{} are in 1-1 correspondence
+with the irreducible highest weight representations of \myHighlight{$V$}\coordHE{}.  In fact, given a representation of \myHighlight{$A(V)$}\coordHE{},
+Zhu constructed the corresponding representation
+of \myHighlight{$V$}\coordHE{} by first defining correlation functions on the sphere and then factorizing to obtain the states;
+so when \myHighlight{$V$}\coordHE{} is the algebra of fields in the vacuum sector of a chiral conformal field theory, we can interpret
+Zhu's construction as giving all the \myHighlight{$2$}\coordHE{}-point chiral blocks.
+Roughly speaking, \myHighlight{$A(V)$}\coordHE{} is the algebra of zero
+modes of \myHighlight{$V$}\coordHE{} (see \cite{NB} for a discussion of this point, \cite{DLM}, \cite{Li} for other
+facets of \myHighlight{$A(V)$}\coordHE{}, and \cite{FZ}, \cite{Lucke}, \cite{DLM2} for some explicit calculations).
+A modification of Zhu's construction allows one
+to compute, in a similar algebraic fashion, the fusion rules of the
+theory \cite{FZ}.
+
+This paper is mainly concerned with a generalization of Zhu's construction
+to the case of \myHighlight{$k$}\coordHE{}-point conformal blocks.  
+We now turn to a description of its contents.
+
+In Section \ref{notation} we fix notation
+and briefly review the formalism introduced by Gaberdiel and Goddard in
+\cite{GG}, which is a convenient framework in which to state the theorems
+of this paper.
+
+In Section \ref{zhusec} we discuss Zhu's construction and a natural generalization, 
+first mentioned in \cite{GG},
+which associates to \myHighlight{$V$}\coordHE{} and any \myHighlight{$\uu = (u_1, \dots, u_k) \in \PP^k$}\coordHE{} a vector space \myHighlight{$A_\uu$}\coordHE{}.  This \myHighlight{$A_\uu$}\coordHE{} will be
+obtained as a quotient of the Fock space at \myHighlight{$0 \in \PP$}\coordHE{}.
+
+In Section \ref{zhugen} we prove that, when the \myHighlight{$u_i$}\coordHE{} are distinct, any linear functional \myHighlight{$\eta \in (A_\uu)^*$}\coordHE{} 
+corresponds to the value of
+a chiral block at \myHighlight{$\uu$}\coordHE{}, in the sense that \myHighlight{$\eta$}\coordHE{} induces a consistent
+prescription for correlation functions
+\myHighlight{$\IP{\prod_{i=1}^k \phi_i(u_i) \cdots}$}\coordHE{}
+where the dots indicate arbitrary insertions of the vertex operators in \myHighlight{$V$}\coordHE{}.
+So \myHighlight{$\eta$}\coordHE{} corresponds to a particular way of coupling some set of
+\myHighlight{$V$}\coordHE{}-primary fields \myHighlight{$\phi_i$}\coordHE{} placed at the points \myHighlight{$u_i$}\coordHE{}.
+
+In Section \ref{funcdep} we introduce a certain finiteness condition on \myHighlight{$V$}\coordHE{} which generalizes
+Zhu's ``condition \myHighlight{$C$}\coordHE{}.''  Under this condition, which appears to be closely related to rationality of \myHighlight{$V$}\coordHE{}, we show that
+the Knizhnik-Zamolodchikov-type equation governing the \myHighlight{$\uu$}\coordHE{}-dependence of the chiral block (obtained
+essentially by making the substitution \myHighlight{$L_{-1} \to \partial$}\coordHE{}) admits
+a solution.
+
+Finally, in Section \ref{discussion} we discuss remaining open questions,
+and a possible relation between
+the present work and the Friedan-Shenker vector bundle formalism
+\cite{FS}.
+
+
+\section{Hypotheses and notation} \label{notation}
+
+We assume the reader is familiar with basic notions of conformal field
+theory, as found for instance in \cite{DFMS}, \cite{Greview}.  Some
+acquaintance with the language of vertex operator algebras \cite{FLM},
+\cite{Kac}, \cite{Borch} is also helpful.
+
+At all times in this paper we are considering a fixed chiral bosonic conformal field theory
+on the sphere \myHighlight{$\PP$}\coordHE{}.  To be completely rigorous, by a ``chiral bosonic conformal field theory'' we mean
+an object of the type discussed in \cite{GG}.  The details of the chosen formalism are generally not
+essential to following the ideas of this paper, however; what is essential is just that a chiral conformal field
+theory on \myHighlight{$\PP$}\coordHE{} is regarded as defined by its amplitudes.
+We write these amplitudes \myHighlight{$\IP{\prod_{a=1}^k V(\psi_a, z_a)}$}\coordHE{}, with the vertex operator corresponding
+to \myHighlight{$\psi$}\coordHE{} written \myHighlight{$V(\psi, z)$}\coordHE{}
+and its modes written 
+\begin{equation}\coord{}\boxEquation{
+V(\psi, z) = \sum_{n \in \Z} V_n(\psi) z^{-n-h_\psi}
+}{
+V(\psi, z) = \sum_{n \in \Z} V_n(\psi) z^{-n-h_\psi}
+}{ecuacion}\coordE{}\end{equation}
+(so the grading is by conformal weight, which we always represent by the letter \myHighlight{$h$}\coordHE{}).
+The only exception to this rule is the Virasoro field which we write \myHighlight{$L(z)$}\coordHE{}, with modes \myHighlight{$L_n$}\coordHE{}.
+The space of Virasoro quasiprimary states is denoted by \myHighlight{$V$}\coordHE{}; it has a grading by conformal weight, which we assume
+can be taken of the form
+\myHighlight{$V = \oplus_{h=0}^\infty V^h$}\coordHE{}, with each \myHighlight{$V^h$}\coordHE{} finite-dimensional.
+
+In \cite{GG} the role of ``space of states'' 
+is played by a collection of topological vector spaces denoted \myHighlight{$\V^\OO$}\coordHE{},
+for \myHighlight{$\OO$}\coordHE{} an open set in \myHighlight{$\PP$}\coordHE{} (usually with \myHighlight{$\PP - \OO$}\coordHE{} simply connected.)  These vector spaces are obtained by
+factorization from the amplitudes, with two states regarded as equal 
+just if they agree in correlation functions with vertex operators
+inside \myHighlight{$\OO$}\coordHE{}.
+Roughly speaking, an element \myHighlight{$\chi \in \V^\OO$}\coordHE{} is a coherent state (or limit of coherent states)
+constructed out of fields away from \myHighlight{$\OO$}\coordHE{}.  In this paper we
+make explicit 
+reference to \myHighlight{$\V^\OO$}\coordHE{} only occasionally; when we do, \myHighlight{$\OO$}\coordHE{} will always have simply connected complement.
+We will make frequent use of the Fock space \myHighlight{$\F$}\coordHE{} at \myHighlight{$0$}\coordHE{},
+which is defined similarly by factorization.
+
+We will often consider meromorphic functions and differentials defined on the Riemann sphere \myHighlight{$\PP$}\coordHE{}. 
+It is convenient to use the language of ``divisors'' (see \cite{GH}) to classify the zeros
+and poles of these functions.
+So let a divisor on \myHighlight{$\PP$}\coordHE{} be any formal sum of the form
+\begin{equation}\coord{}\boxEquation{
+D = \sum_{P \in \PP} c_P [P], \qquad c_P \in \Z, \qquad \textrm{finitely many } c_P \ne 0.
+}{
+D = \sum_{P \in \PP} c_P [P], \qquad c_P \in \Z, \qquad \textrm{finitely many } c_P \ne 0.
+}{ecuacion}\coordE{}\end{equation}
+Divisors can be added in the obvious way.  We say \myHighlight{$D \ge 0$}\coordHE{} if all \myHighlight{$c_P \ge 0$}\coordHE{}.  
+Now let \myHighlight{$\nu_P(f)$}\coordHE{} denote the order of vanishing of \myHighlight{$f$}\coordHE{} at \myHighlight{$P$}\coordHE{}, and define the divisor of \myHighlight{$f$}\coordHE{} to be
+\begin{equation}\coord{}\boxEquation{
+\Div f = \sum_{P \in \PP} \nu_P(f) [P],
+}{
+\Div f = \sum_{P \in \PP} \nu_P(f) [P],
+}{ecuacion}\coordE{}\end{equation}
+so that \myHighlight{$\Div f \ge -D$}\coordHE{} if the poles of \myHighlight{$f$}\coordHE{} are ``at worst given by \myHighlight{$D$}\coordHE{}.''  Clearly \myHighlight{$\Div fg = \Div f + \Div g$}\coordHE{}.
+We can similarly define \myHighlight{$\Div \omega$}\coordHE{} where \myHighlight{$\omega$}\coordHE{} is a meromorphic \myHighlight{$k$}\coordHE{}-differential on \myHighlight{$\PP$}\coordHE{}; explicitly,
+such an \myHighlight{$\omega$}\coordHE{} can always be written as \myHighlight{$\omega = f dz^{\otimes k}$}\coordHE{} for some \myHighlight{$f$}\coordHE{}, and then
+we have 
+\begin{equation}\coord{}\boxEquation{
+\Div \omega = \Div f + k \Div dz = \Div f - 2k [\infty].
+}{
+\Div \omega = \Div f + k \Div dz = \Div f - 2k [\infty].
+}{ecuacion}\coordE{}\end{equation}
+The crucial analytic property which the amplitudes of the theory must possess is that
+for \myHighlight{$\IP{V(\psi, z) \cdots} dz^{\otimes h_\psi}$}\coordHE{} is meromorphic on \myHighlight{$\PP$}\coordHE{} for any \myHighlight{$\psi \in V$}\coordHE{}, and has poles only when \myHighlight{$z$}\coordHE{} meets
+the coordinates of the insertions \myHighlight{$\cdots$}\coordHE{}.
+
+
+\section{Zhu's subspace} \label{zhusec}
+
+Zhu in \cite{Zhu}
+introduced a purely algebraic mechanism for determining the highest weight 
+representations of a chiral theory.  This construction, when generalized
+to \myHighlight{$k$}\coordHE{}-point functions, amounts to the following:  Fix \myHighlight{$\uu \in (\PP - \{0\})^k$}\coordHE{} and 
+consider a subspace \myHighlight{$O_\uu \subset \F$}\coordHE{} of the Fock space, defined by
+\begin{equation}\coord{}\boxEquation{ \label{defO}
+\begin{split}
+O_\uu = \Span \ \Big\{ \ci_0 dz g(z) V(\psi, z) \chi \ \Big\vert \ &\chi \in \F, \psi \in V, \\
+                    & \Div g dz^{\otimes -h_\psi+1} \ge -N[0] + \sum_{i=1}^k h_\psi [u_i] \textrm{    for some } N\Big\}.
+\end{split}
+}{ \begin{split}
+O_\uu = \Span \ \Big\{ \ci_0 dz g(z) V(\psi, z) \chi \ \Big\vert \ &\chi \in \F, \psi \in V, \\
+                    & \Div g dz^{\otimes -h_\psi+1} \ge -N[0] + \sum_{i=1}^k h_\psi [u_i] \textrm{    for some } N\Big\}.
+\end{split}
+}{split}\coordE{}\end{equation}
+This definition can be motivated in the following way:  
+as described in \cite{GG}, define a ``highest weight state at \myHighlight{$\uu$}\coordHE{}'' to be 
+any state \myHighlight{$\Sigma$}\coordHE{} such that
+\begin{equation}\coord{}\boxEquation{ \label{highwtcond}
+\Div \left( \IP{ \Sigma V(\psi, z) } dz^{\otimes h_\psi} \right) \ge \sum_{i=1}^k -h_\psi [u_i], \qquad \forall \psi \in \F.
+}{ \Div \left( \IP{ \Sigma V(\psi, z) } dz^{\otimes h_\psi} \right) \ge \sum_{i=1}^k -h_\psi [u_i], \qquad \forall \psi \in \F.
+}{ecuacion}\coordE{}\end{equation}
+(Informally, the idea is that \myHighlight{$\Sigma$}\coordHE{} should stand for insertions
+of primary fields \myHighlight{$\phi_1(u_1) \cdots \phi_k(u_k)$}\coordHE{}; then the requirement
+\eqref{highwtcond} just says that each \myHighlight{$\phi_i$}\coordHE{} is annihilated by positive
+modes of \myHighlight{$V(\psi, z)$}\coordHE{}.) 
+If we fix such a \myHighlight{$\Sigma$}\coordHE{} and consider \myHighlight{$\omega \in O_\uu$}\coordHE{}, then \myHighlight{$\IP{\Sigma \omega}$}\coordHE{} must vanish, 
+because substituting
+the integral appearing in 
+\eqref{defO} for \myHighlight{$\omega$}\coordHE{} we find that the resulting integrand has been engineered to have no poles
+on \myHighlight{$\PP - \{0\}$}\coordHE{}.  \myHighlight{$O_\uu$}\coordHE{} therefore represents a space of 
+``states in the Fock space at \myHighlight{$0$}\coordHE{} 
+which are orthogonal to primary fields placed at the points \myHighlight{$u_1, \dots, u_k$}\coordHE{}.''
+
+For most of this paper we consider only the case where all \myHighlight{$u_i$}\coordHE{} are distinct (though the behavior
+of \myHighlight{$O_\uu$}\coordHE{} when some of the \myHighlight{$u_i$}\coordHE{} come together is important --- in particular, it motivates
+the finiteness condition we impose in Section \ref{funcdep}, and also see Section \ref{discussion}.)
+
+Now suppose given a particular \myHighlight{$\Sigma$}\coordHE{} which is a highest weight state at \myHighlight{$\uu$}\coordHE{}.  Then \myHighlight{$\Sigma$}\coordHE{} induces
+a linear functional \myHighlight{$\eta: \F \to \C$}\coordHE{} by the rule
+\myHighlight{$\eta(\chi) = \IP{\Sigma \chi}$}\coordHE{}, and we have just seen that this \myHighlight{$\eta$}\coordHE{} must vanish
+on \myHighlight{$O_\uu$}\coordHE{}.  Conversely, in the special case \myHighlight{$k=2$}\coordHE{}, Zhu essentially showed that 
+any \myHighlight{$\eta: \F \to \C$}\coordHE{} vanishing on \myHighlight{$O_\uu$}\coordHE{}
+in fact comes from a \myHighlight{$\Sigma \in \V^\OO$}\coordHE{} satisfying \eqref{highwtcond} --- in other words, every such \myHighlight{$\eta$}\coordHE{} comes from a 
+highest weight representation.
+So we have a correspondence between linear functionals on \myHighlight{$\F / O_\uu$}\coordHE{} and representations of our theory.  Actually, different linear functionals
+can give rise to equivalent representations; the precise formulation in \cite{Zhu}
+defines an algebra structure on the quotient \myHighlight{$\F / O_\uu$}\coordHE{} and shows that the irreducible 
+representations of this algebra are
+exactly the highest weight representations of the theory.  This is a 
+remarkable result as it provides a completely systematic way of constructing
+the representations, which are \ti{a priori} rather complicated objects from an algebraic standpoint 
+since one needs to specify the action of every field in the theory.
+
+In calculations it will be useful to know that the function \myHighlight{$g$}\coordHE{} in \eqref{defO} can be chosen to
+have an ancillary property, namely, we can choose it to be holomorphic in \myHighlight{$\uu$}\coordHE{}:  e.g. it is easily checked
+that
+\begin{equation}\coord{}\boxEquation{ \label{fchoice}
+g_N(z) = z^{-(N+1+(k-2)h)} \prod_{i=1}^k (z-u_i)^h
+}{ g_N(z) = z^{-(N+1+(k-2)h)} \prod_{i=1}^k (z-u_i)^h
+}{ecuacion}\coordE{}\end{equation}
+satisfies the condition in \eqref{defO} for all \myHighlight{$N \ge 1$}\coordHE{}.  Furthermore, a straightforward induction shows that it is
+actually sufficient to use only the \myHighlight{$g_N$}\coordHE{} in the definition of \myHighlight{$O_\uu$}\coordHE{} 
+(essentially because a function satisfying \eqref{defO} is determined
+by its singular part at \myHighlight{$0$}\coordHE{}.)
+
+
+\section{A generalization of Zhu's Theorem} \label{zhugen}
+
+We will now give a generalization of Zhu's result mentioned above ---
+which can be viewed as a construction of correlation functions
+corresponding to insertions of representations of \myHighlight{$A(V)$}\coordHE{} at \myHighlight{$2$}\coordHE{} 
+points --- to general \myHighlight{$k$}\coordHE{}-point functions.
+
+To prove our generalized version of Zhu's Theorem we need to construct correlation functions 
+which induce a given linear \myHighlight{$\eta: \F \to \C$}\coordHE{} (vanishing on \myHighlight{$O_\uu$}\coordHE{}).
+We represent these (putative) correlation functions by the notation
+\begin{equation}\coord{}\boxEquation{ \label{defcf}
+\IP{\prod_{a=1}^l V(\psi_a, z_a)}_\eta,
+}{ \IP{\prod_{a=1}^l V(\psi_a, z_a)}_\eta,
+}{ecuacion}\coordE{}\end{equation}
+where the subscript \myHighlight{$\eta$}\coordHE{} reminds us that these are not the
+vacuum correlation functions.
+In a sense we have no choice in defining the functions \eqref{defcf},
+because to say they are induced from \myHighlight{$\eta$}\coordHE{} is exactly to say that
+\myHighlight{$\eta$}\coordHE{} already defines for us their Laurent series; the real question is whether these series converge.  However, working with these
+Laurent series will be somewhat difficult, because the correlation functions are 
+expected to have poles whenever two
+of the \myHighlight{$z_i$}\coordHE{} coincide, and the series in question are expanded about the point \myHighlight{$\zz = (0, \dots, 0)$}\coordHE{}.
+We must therefore be careful about the domain in which we are working.
+We will use the letter \myHighlight{$R$}\coordHE{} to denote one of the \myHighlight{$l!$}\coordHE{} 
+possible permutations of the coordinates \myHighlight{$z_1, \dots, z_l$}\coordHE{}; by
+abuse of notation, \myHighlight{$R$}\coordHE{} is the region \myHighlight{$\{\zz: \abs{z_{R(1)}} > \abs{z_{R(2)}} > \cdots > \abs{z_{R(l)}}\}$}\coordHE{}.
+
+So given \myHighlight{$\eta$}\coordHE{}, some \myHighlight{$(\psi_1, \dots, \psi_l) \in V^{\otimes l}$}\coordHE{}, and a region \myHighlight{$R$}\coordHE{}, we define a formal power series by
+\begin{equation}\coord{}\boxEquation{ \label{defseries}
+\IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R} = \sum_{\jj \in \Z^l} \eta \left( \prod_{i=1}^l V_{j_{R(i)}}(\psi_{R(i)}) \right) \zz^{- \jj - \hh}
+}{ \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R} = \sum_{\jj \in \Z^l} \eta \left( \prod_{i=1}^l V_{j_{R(i)}}(\psi_{R(i)}) \right) \zz^{- \jj - \hh}
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\jj$}\coordHE{} is a multi-index, so e.g. by \myHighlight{$\zz^{-\jj-\hh}$}\coordHE{} we mean \myHighlight{$\prod_{i=1}^l z_i^{-j_i-h_i}$}\coordHE{}.
+For \myHighlight{$\eta$}\coordHE{} which could be induced from primary fields inserted at \myHighlight{$\uu$}\coordHE{} --- in other words, \myHighlight{$\eta$}\coordHE{} vanishing on the
+subspace \myHighlight{$O_\uu$}\coordHE{} introduced in Section \ref{zhusec} --- we will show that the power series \eqref{defseries} 
+are the Laurent expansions of a single function 
+\myHighlight{$\IP{\prod_{a=1}^l V(\psi_a, z_a)}_\eta$}\coordHE{} in the different regions \myHighlight{$R$}\coordHE{}.  This is the content of Theorem
+\ref{bigThm}, toward which we are working (the next three lemmas are somewhat technical, so the reader may
+want to flip to the theorem first.)
+
+In order to prove Theorem \ref{bigThm} we first
+establish that the series \eqref{defseries} obey a formal version of the operator product expansion.  To
+formulate this statement precisely we need one more bit of notation:  for a meromorphic function \myHighlight{$f(\zz)$}\coordHE{}
+with poles only at \myHighlight{$z_i = z_j$}\coordHE{}, let \myHighlight{$\iota_{i,j} f$}\coordHE{} mean ``the Laurent
+series for \myHighlight{$f$}\coordHE{} around \myHighlight{$(0, \dots, 0)$}\coordHE{}, expanded in the region where \myHighlight{$\abs{z_i} > \abs{z_j}$}\coordHE{}'' (this
+notation is commonly employed in the study of vertex operator algebras, see e.g. \cite{Kac}, \cite{FLM}).
+Then we can state
+\begin{lem} \label{opelem} Let \myHighlight{$R = \{\abs{z_1} > \dots > \abs{z_l}\}$}\coordHE{} (for simplicity).
+Then for any \myHighlight{$\eta: \F \to \C$}\coordHE{} the power series defined by \myHighlight{$\eta$}\coordHE{} obey the following ``operator
+product expansion'' identities:
+\begin{itemize}
+\item For all \myHighlight{$m\in[1,l)$}\coordHE{}, we have the OPE as \myHighlight{$z_m \to z_l$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{ \label{ope}
+\begin{split}
+\IP{\prod_{a=1}^l & V(\psi_a, z_a)}_{\eta,R} =  \\
+ & \sum_{i=m+1}^{l-1} \sum_{n = - h_1 - h_i}^{-1} (\iota_{m,i} - \iota_{i,m}) (z_m - z_i)^{n} \IP{V(V_{-n-h_m}(\psi_m) \psi_i, z_i) \prod_{a \ne m,i} V(\psi_a, z_a)}_{\eta,R} \\
++ &\sum_{n = -h_m - h_l}^\infty \iota_{m,l} (z_m - z_l)^n \IP{V(V_{-n-h_m}(\psi_m) \psi_l, z_l) \prod_{a \ne m,l} V(\psi_a, z_a)}_{\eta,R}.
+\end{split}
+}{ \begin{split}
+\IP{\prod_{a=1}^l & V(\psi_a, z_a)}_{\eta,R} =  \\
+ & \sum_{i=m+1}^{l-1} \sum_{n = - h_1 - h_i}^{-1} (\iota_{m,i} - \iota_{i,m}) (z_m - z_i)^{n} \IP{V(V_{-n-h_m}(\psi_m) \psi_i, z_i) \prod_{a \ne m,i} V(\psi_a, z_a)}_{\eta,R} \\
++ &\sum_{n = -h_m - h_l}^\infty \iota_{m,l} (z_m - z_l)^n \IP{V(V_{-n-h_m}(\psi_m) \psi_l, z_l) \prod_{a \ne m,l} V(\psi_a, z_a)}_{\eta,R}.
+\end{split}
+}{split}\coordE{}\end{equation}
+\item We also have an OPE as \myHighlight{$z_l \to z_{l-1}$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{ \label{opeshort}
+\begin{split}
+\IP{\prod_{a=1}^l & V(\psi_a, z_a)}_{\eta,R} = \\
+&\sum_{n = -h_{l-1} - h_l}^\infty \iota_{l,{l-1}} (z_l - z_{l-1})^n \IP{V(V_{-n-h_l}(\psi_l) \psi_{l-1}, z_{l-1}) \prod_{a \ne {l-1},l} V(\psi_a, z_a)}_{\eta,R}.
+\end{split}
+}{ \begin{split}
+\IP{\prod_{a=1}^l & V(\psi_a, z_a)}_{\eta,R} = \\
+&\sum_{n = -h_{l-1} - h_l}^\infty \iota_{l,{l-1}} (z_l - z_{l-1})^n \IP{V(V_{-n-h_l}(\psi_l) \psi_{l-1}, z_{l-1}) \prod_{a \ne {l-1},l} V(\psi_a, z_a)}_{\eta,R}.
+\end{split}
+}{split}\coordE{}\end{equation}
+\end{itemize}
+\end{lem}
+
+\oproof{} The essence of the proof is the observation that checking any coefficient in the above identities involves
+only a finite computation; this computation amounts to verifying that a 
+certain state \myHighlight{$\chi \in \F$}\coordHE{} is annihilated by \myHighlight{$\eta$}\coordHE{}.  But the
+OPE of the conformal field theory then shows that 
+this same \myHighlight{$\chi$}\coordHE{} is annihilated by the linear functionals induced by correlations with vertex operators inserted
+away from \myHighlight{$0$}\coordHE{}.  Then by the factorization property \myHighlight{$\chi = 0$}\coordHE{}, so naturally \myHighlight{$\eta(\chi) = 0$}\coordHE{}.
+In other words:
+the operator product expansion is already encoded in 
+the definition of \myHighlight{$\F$}\coordHE{}, so naturally every linear functional on \myHighlight{$\F$}\coordHE{} must obey it.
+
+More explicitly:  first we prove \eqref{ope}.  For notational simplicity we consider only the case \myHighlight{$m=1$}\coordHE{}.
+Fix a multi-index \myHighlight{$\jj$}\coordHE{} and consider the coefficient of \myHighlight{$\zz^\jj$}\coordHE{} in \eqref{ope}; we have to show this
+coefficient receives only finitely many contributions on each side.  The left side manifestly has only a single
+term involving \myHighlight{$\zz^\jj$}\coordHE{}.  On the other hand, each term in the sums on the right side can contain at
+most one contribution to the coefficient of \myHighlight{$\zz^\jj$}\coordHE{}.  The double sum contains only finitely many terms, so manifestly
+makes only a finite contribution.  The single sum contains infinitely many terms; indeed,
+replacing \myHighlight{$(z_1 - z_l)^n$}\coordHE{} and \myHighlight{$\IP{V(V_{-n-h_1}(\psi_1) \psi_l, z_l) \prod_{a \ne 1,l} V(\psi_a, z_a)}_{\eta,R}$}\coordHE{} by their power series expansions,
+we find that for each \myHighlight{$k \ge 0$}\coordHE{} the coefficient of \myHighlight{$\zz^\jj$}\coordHE{} can receive a contribution proportional to
+\begin{equation}\coord{}\boxEquation{ \label{propterm}
+\eta \left( \left( \prod_{i=2}^{l-1} V_{-j_i-h_i}(\psi_i) \right) V_{- j_1 - j_l - h_1 - h_l}( V_{j_1 - h_1 - k}(\psi_1) \psi_l) \Omega \right).
+}{ \eta \left( \left( \prod_{i=2}^{l-1} V_{-j_i-h_i}(\psi_i) \right) V_{- j_1 - j_l - h_1 - h_l}( V_{j_1 - h_1 - k}(\psi_1) \psi_l) \Omega \right).
+}{ecuacion}\coordE{}\end{equation}
+So we need to show that only finitely many of these terms are nonzero.
+When \myHighlight{$\jj$}\coordHE{} is fixed, then setting \myHighlight{$\alpha = j_1 + j_l + h_1 + h_l, \beta = h_1 + h_l - j_1,$}\coordHE{} we find that 
+\eqref{propterm} depends linearly on a state of the form \myHighlight{$V_{-\alpha}(\chi_k) \Omega$}\coordHE{} where
+\myHighlight{$\chi_k$}\coordHE{} has weight \myHighlight{$\beta + k$}\coordHE{}.  But such an expression always vanishes when \myHighlight{$k > \alpha-\beta$}\coordHE{}.
+(Note that we are taking advantage of a special property of the vacuum, and so 
+this only works because \myHighlight{$z_l$}\coordHE{} is the coordinate closest to the origin --- this is the 
+reason why we restricted ourselves to that special case.)  
+Hence the coefficient of \myHighlight{$\zz^\jj$}\coordHE{} receives only finitely
+many contributions on each side of \eqref{ope}, and we can rewrite \eqref{ope} in the form
+\begin{equation}\coord{}\boxEquation{ \label{ope2}
+\eta(\chi_\jj) = 0
+}{ \eta(\chi_\jj) = 0
+}{ecuacion}\coordE{}\end{equation}
+for some \myHighlight{$\chi_\jj \in \F$}\coordHE{}.
+
+Now choose some \myHighlight{$\OO \subset \PP$}\coordHE{} containing \myHighlight{$0$}\coordHE{}.  Then the space \myHighlight{$\V^\OO$}\coordHE{} of limits of coherent states 
+is embedded in \myHighlight{$\F^*$}\coordHE{} as a dense 
+subspace (in the weak-\myHighlight{$*$}\coordHE{} topology induced from \myHighlight{$\F$}\coordHE{} --- see \cite{GG}).
+But for \myHighlight{$\eta$}\coordHE{} induced from \myHighlight{$\Sigma \in \V^\OO$}\coordHE{}, the power
+series we are considering actually do converge --- \myHighlight{$\IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta, R}$}\coordHE{} is exactly the power series expansion
+of \myHighlight{$f(\zz) = \IP{\Sigma \prod_{a=1}^l V(\psi_a, z_a)}$}\coordHE{} for \myHighlight{$\zz \in R$}\coordHE{}.  To determine this expansion we make use of
+a construction from \cite{Gaberdiel}, as follows.  Fix \myHighlight{$z_2, \dots, z_l \in \OO$}\coordHE{} with \myHighlight{$\abs{z_2} > \cdots > \abs{z_l}$}\coordHE{} and 
+note that for \myHighlight{$z_1$}\coordHE{} close enough to \myHighlight{$z_l$}\coordHE{} we have \cite{DFMS}, \cite{Greview}
+\begin{equation}\coord{}\boxEquation{
+f(\zz) = \sum_{n=-h_1-h_l}^\infty (z_1 - z_l)^{n} \IP{\Sigma V(V_{-n-h_1}(\psi_1) \psi_l, z_l) \prod_{a \ne 1,l} V(\psi_a, z_a)}.
+}{
+f(\zz) = \sum_{n=-h_1-h_l}^\infty (z_1 - z_l)^{n} \IP{\Sigma V(V_{-n-h_1}(\psi_1) \psi_l, z_l) \prod_{a \ne 1,l} V(\psi_a, z_a)}.
+}{ecuacion}\coordE{}\end{equation}
+From the operator product expansion we also know the pole structure of the correlation function, so that if we put
+\begin{equation}\coord{}\boxEquation{
+g(\zz) = \sum_{i=2}^{l-1} \sum_{n = - h_1 - h_i}^{-1} (z_1 - z_i)^{n} \IP{\Sigma V(V_{-n-h_1}(\psi_1) \psi_i, z_i) \prod_{a \ne 1,i} V(\psi_a, z_a)}
+}{
+g(\zz) = \sum_{i=2}^{l-1} \sum_{n = - h_1 - h_i}^{-1} (z_1 - z_i)^{n} \IP{\Sigma V(V_{-n-h_1}(\psi_1) \psi_i, z_i) \prod_{a \ne 1,i} V(\psi_a, z_a)}
+}{ecuacion}\coordE{}\end{equation}
+then \myHighlight{$f(\zz) - g(\zz)$}\coordHE{} has no poles as a function of \myHighlight{$z_1 \in \OO$}\coordHE{}.  Its power series expansion about \myHighlight{$z_1 = z_l$}\coordHE{} therefore converges on any disc contained in \myHighlight{$\OO$}\coordHE{}.
+So we can write \myHighlight{$f(\zz)$}\coordHE{} when \myHighlight{$\abs{z_1} > \abs{z_2}$}\coordHE{} as (the expansion of \myHighlight{$f(\zz) - g(\zz)$}\coordHE{} for \myHighlight{$z_1$}\coordHE{} near \myHighlight{$z_l$}\coordHE{}) plus 
+(the expansion of \myHighlight{$g(\zz)$}\coordHE{} for \myHighlight{$\abs{z_1} > \abs{z_2}$}\coordHE{}).  This gives exactly \eqref{ope} except that we have substituted fixed values for \myHighlight{$z_2, \dots, z_l$}\coordHE{};
+but since those values were arbitrary we get \myHighlight{$\eqref{ope}$}\coordHE{} as an identity of functions, which implies the desired identity of power series.
+So \eqref{ope}, and hence \eqref{ope2}, hold for all \myHighlight{$\eta \in \V^\OO$}\coordHE{}.  Then \eqref{ope2} and \eqref{ope} must
+hold for all \myHighlight{$\eta \in \F^*$}\coordHE{}, completing the proof of \eqref{ope} (in the case \myHighlight{$m=1$}\coordHE{}, but the other \myHighlight{$m$}\coordHE{} are proven in an exactly analogous way.)
+
+The proof of \eqref{opeshort} is similar to the proof of \eqref{ope} in case \myHighlight{$m=l-1$}\coordHE{} (which is actually somewhat easier than the general case
+because there are no poles to be subtracted.)  The point is that the necessary finiteness condition will hold on the right side of \eqref{opeshort},
+because after we decompose the field at \myHighlight{$z_l$}\coordHE{} into modes acting at \myHighlight{$z_{l-1}$}\coordHE{}, the field at \myHighlight{$z_{l-1}$}\coordHE{} will be the one closest to the origin; so
+we can argue as above. \done
+
+Fix \myHighlight{$k$}\coordHE{} and fix some \myHighlight{$\uu = (u_1, \dots, u_k) \in (\C-\{0\})^k$}\coordHE{}, with all \myHighlight{$u_i$}\coordHE{} distinct.  Our strategy in proving
+Theorem \ref{bigThm} will be to first establish convergence of modified power series
+in which we have shifted the poles from \myHighlight{$z_i = u_j$}\coordHE{} to \myHighlight{$z_i = \infty$}\coordHE{}; once this is established the rest
+is easy.  The next two lemmas concern these modified power series.
+
+\begin{lem} \label{pL} Fix \myHighlight{$l \ge 0$}\coordHE{} and let \myHighlight{$R = \{\abs{z_1} > \dots > \abs{z_l}\}$}\coordHE{}.  Suppose given \myHighlight{$\eta: \F \to \C$}\coordHE{} such that \myHighlight{$O_\uu \subset \ker \eta$}\coordHE{}, and
+\myHighlight{$(\psi_1, \dots, \psi_l) \in V^{\otimes l}$}\coordHE{}.  Then in the power series
+\begin{equation}\coord{}\boxEquation{ \label{powr}
+\left( \prod_{m=1}^k (z_1 - u_m)^{h_1} \right) \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R}
+}{ \left( \prod_{m=1}^k (z_1 - u_m)^{h_1} \right) \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R}
+}{ecuacion}\coordE{}\end{equation}
+the coefficient of \myHighlight{$\zz^\jj$}\coordHE{} vanishes whenever \myHighlight{$j_1 > (k-2) h_1$}\coordHE{}.
+\end{lem}
+\oproof{} The motivating idea is that as a function of \myHighlight{$z_1$}\coordHE{} in the region \myHighlight{$R$}\coordHE{},
+\myHighlight{$\IP{\prod_{a=1}^l V(\psi_a, z_a)}_\eta$}\coordHE{} should only have poles at \myHighlight{$z_1 = u_i$}\coordHE{}, of order at 
+most \myHighlight{$h_1$}\coordHE{}.  By multiplying by \myHighlight{$\prod_{m=1}^k (z_1 - u_m)^{h_1}$}\coordHE{} we convert all these poles to a single pole at \myHighlight{$\infty$}\coordHE{}, still
+of bounded order; and since all other poles have been removed, the power series expansion in \myHighlight{$R$}\coordHE{} of the
+resulting function can be expected
+to converge up to \myHighlight{$z_1 = \infty$}\coordHE{}.  The bounded order of the pole at \myHighlight{$\infty$}\coordHE{} will therefore be manifested as a cutoff in
+the power series.
+
+Explicitly, the proof consists in noting that the coefficient of \myHighlight{$\zz^\jj$}\coordHE{} in \eqref{powr} is given by
+\begin{equation}\coord{}\boxEquation{
+\eta \left( \ci_0 \frac{dz_1}{z_1^{j_1+1}} \prod_{m=1}^k (z_1 - u_m)^{h_1} V(\psi_1, z_1) \prod_{a=2}^l V_{-j_a - h_a}(\psi_a) \Omega \right)
+}{
+\eta \left( \ci_0 \frac{dz_1}{z_1^{j_1+1}} \prod_{m=1}^k (z_1 - u_m)^{h_1} V(\psi_1, z_1) \prod_{a=2}^l V_{-j_a - h_a}(\psi_a) \Omega \right)
+}{ecuacion}\coordE{}\end{equation}
+which vanishes by hypothesis for \myHighlight{$j_1 > (k-2) h_1$}\coordHE{}. \done
+
+Now we are in a position to show that our modified power series actually converge.
+\begin{lem} \label{modconv} Suppose given \myHighlight{$\eta: \F \to \C$}\coordHE{} such that \myHighlight{$O_\uu \subset \ker \eta$}\coordHE{}.  Fix \myHighlight{$l \ge 0$}\coordHE{}, and for
+any \myHighlight{$(c_1, \dots, c_l) \in (\Z^+)^l$}\coordHE{}, define
+\begin{equation}\coord{}\boxEquation{
+\Pi = \prod_{j=1}^l \prod_{m=1}^k (z_j - u_m)^{c_j}.
+}{
+\Pi = \prod_{j=1}^l \prod_{m=1}^k (z_j - u_m)^{c_j}.
+}{ecuacion}\coordE{}\end{equation}
+Then for any \myHighlight{$(\psi_1, \dots, \psi_l) \in V^{\otimes l}$}\coordHE{}, the \myHighlight{$c_j$}\coordHE{} can be chosen sufficiently large that the power series
+\begin{equation}\coord{}\boxEquation{
+\Pi \cdot \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R}
+}{
+\Pi \cdot \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R}
+}{ecuacion}\coordE{}\end{equation}
+is convergent in \myHighlight{$R$}\coordHE{}.  Furthermore, this power series can be continued to a meromorphic function defined on \myHighlight{$\C^l$}\coordHE{}, with poles
+only at \myHighlight{$z_i = z_j$}\coordHE{}, independent of \myHighlight{$R$}\coordHE{}.  For \myHighlight{$l>1$}\coordHE{} this function is given recursively by the formula
+\begin{equation}\coord{}\boxEquation{ \label{ope5}
+\begin{split}
+\Pi \cdot \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta}
+= & \Pi \cdot \sum_{i=2}^{l} \sum_{n = - h_1 - h_i}^{-1} (z_1 - z_i)^{n} \IP{V(V_{-n-h_1}(\psi_1) \psi_i, z_i) \prod_{a \ne 1,i} V(\psi_a, z_a)}_{\eta} \\
+- & \Pi \cdot \sum_{i=2}^{l-1} \sum_{n = - h_1 - h_i}^{-1} \iota_{i,1} (z_1 - z_i)^{n} \IP{V(V_{-n-h_1}(\psi_1) \psi_i, z_i) \prod_{a \ne 1,i} V(\psi_a, z_a)}_{\eta} \\
++ & \Pi \cdot \sum_{n=0}^\infty (z_1 - z_l)^n \IP{V(V_{-n-h_1}(\psi_1) \psi_l, z_l) \prod_{a \ne 1,l} V(\psi_a, z_a)}_{\eta},
+\end{split}
+}{ \begin{split}
+\Pi \cdot \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta}
+= & \Pi \cdot \sum_{i=2}^{l} \sum_{n = - h_1 - h_i}^{-1} (z_1 - z_i)^{n} \IP{V(V_{-n-h_1}(\psi_1) \psi_i, z_i) \prod_{a \ne 1,i} V(\psi_a, z_a)}_{\eta} \\
+- & \Pi \cdot \sum_{i=2}^{l-1} \sum_{n = - h_1 - h_i}^{-1} \iota_{i,1} (z_1 - z_i)^{n} \IP{V(V_{-n-h_1}(\psi_1) \psi_i, z_i) \prod_{a \ne 1,i} V(\psi_a, z_a)}_{\eta} \\
++ & \Pi \cdot \sum_{n=0}^\infty (z_1 - z_l)^n \IP{V(V_{-n-h_1}(\psi_1) \psi_l, z_l) \prod_{a \ne 1,l} V(\psi_a, z_a)}_{\eta},
+\end{split}
+}{split}\coordE{}\end{equation}
+which must be interpreted as follows:  the first term is a meromorphic function in \myHighlight{$z_1$}\coordHE{},
+and the second two together define a convergent power series in \myHighlight{$z_1$}\coordHE{} (in fact a polynomial.)
+\end{lem}
+
+\oproof{} By induction on \myHighlight{$l$}\coordHE{}.  For \myHighlight{$l=1$}\coordHE{}, choose \myHighlight{$c_1=h_1$}\coordHE{}; then we are just considering
+\begin{equation}\coord{}\boxEquation{
+\prod_{i=1}^k (z - u_i)^{h} \IP{V(\psi, z)}_{\eta,R}
+}{
+\prod_{i=1}^k (z - u_i)^{h} \IP{V(\psi, z)}_{\eta,R}
+}{ecuacion}\coordE{}\end{equation}
+and Lemma \ref{pL} says this series can have no power of \myHighlight{$z$}\coordHE{} exceeding \myHighlight{$z^{(k-2)h}$}\coordHE{}.  On the other hand,
+from the definition we see immediately that it can have no pole at \myHighlight{$z=0$}\coordHE{}; so in this case the series is just a polynomial. 
+
+So take \myHighlight{$l \ge 2$}\coordHE{} and assume the lemma true for \myHighlight{$l-1$}\coordHE{}.  We use the fact that the power series satisfy a formal OPE as
+\myHighlight{$z_1 \to z_l$}\coordHE{} (Lemma \ref{opelem}) to reduce a correlator with \myHighlight{$l$}\coordHE{} vertex operators to a sum of
+correlators with \myHighlight{$l-1$}\coordHE{} vertex operators.  From the case \myHighlight{$m=1$}\coordHE{} of \eqref{ope}, we have
+the expansion
+\begin{equation}\coord{}\boxEquation{ \label{ope3}
+\begin{split}
+\IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R} = \sum_{i=2}^{l-1} &\sum_{n = - h_1 - h_i}^{-1} (\iota_{1,i} - \iota_{i,1}) (z_1 - z_i)^{n} \IP{V(V_{-n-h_1}(\psi_1) \psi_i, z_i) \prod_{a \ne 1,i} V(\psi_a, z_a)}_{\eta,R} \\
++ &\sum_{n = -h_1 - h_l}^\infty \iota_{1,l} (z_1 - z_l)^n \IP{V(V_{-n-h_1}(\psi_1) \psi_l, z_l) \prod_{a \ne 1,l} V(\psi_a, z_a)}_{\eta,R},
+\end{split}
+}{ \begin{split}
+\IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R} = \sum_{i=2}^{l-1} &\sum_{n = - h_1 - h_i}^{-1} (\iota_{1,i} - \iota_{i,1}) (z_1 - z_i)^{n} \IP{V(V_{-n-h_1}(\psi_1) \psi_i, z_i) \prod_{a \ne 1,i} V(\psi_a, z_a)}_{\eta,R} \\
++ &\sum_{n = -h_1 - h_l}^\infty \iota_{1,l} (z_1 - z_l)^n \IP{V(V_{-n-h_1}(\psi_1) \psi_l, z_l) \prod_{a \ne 1,l} V(\psi_a, z_a)}_{\eta,R},
+\end{split}
+}{split}\coordE{}\end{equation}
+where \myHighlight{$R = \{\abs{z_1} > \dots > \abs{z_{l}}\}.$}\coordHE{}  To make the notation more palatable we
+now define, for \myHighlight{$i \in (1,l]$}\coordHE{} and \myHighlight{$n \in \Z$}\coordHE{},
+\begin{equation}\coord{}\boxEquation{
+g_{i,n}(z_2, \dots, z_l) = \left( \prod_{j=2}^l \prod_{m=1}^k (z_j - u_m)^{c_j} \right) \IP{V(V_{-n-h_1}(\psi_1) \psi_i, z_i) \prod_{a \ne 1,i} V(\psi_a, z_a)}_{\eta,R}.
+}{
+g_{i,n}(z_2, \dots, z_l) = \left( \prod_{j=2}^l \prod_{m=1}^k (z_j - u_m)^{c_j} \right) \IP{V(V_{-n-h_1}(\psi_1) \psi_i, z_i) \prod_{a \ne 1,i} V(\psi_a, z_a)}_{\eta,R}.
+}{ecuacion}\coordE{}\end{equation}
+In addition, we fix the \myHighlight{$c_j$}\coordHE{} (\myHighlight{$j \in (1,l]$}\coordHE{}) sufficiently large that \myHighlight{$g_{i,n}$}\coordHE{}
+is convergent in \myHighlight{$R$}\coordHE{} for \myHighlight{$(i \in (1,l)$}\coordHE{}, \myHighlight{$n \in [-h_1-h_i, -1])$}\coordHE{} and for \myHighlight{$(i=l, n \in [-h_1-h_i, kh_1-1])$}\coordHE{}.
+The inductive hypothesis guarantees that such a choice of the \myHighlight{$c_j$}\coordHE{} is possible, since we are only requiring convergence
+of finitely many functions.
+
+From Lemma \ref{pL} we know that the left side of \myHighlight{$\Pi \cdot \eqref{ope3}$}\coordHE{} contains powers of \myHighlight{$z_1$}\coordHE{} only
+up to \myHighlight{$z_1^{(k-2)h_1}$}\coordHE{}.  Now we want to isolate all negative powers of \myHighlight{$z_1$}\coordHE{} on the right side without
+disturbing this condition.  We therefore rewrite \myHighlight{$\eqref{ope3}$}\coordHE{} in the following way:
+\begin{equation}\coord{}\boxEquation{ \label{big2}
+\begin{split}
+\IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R} = & \sum_{i=2}^{l} \sum_{n = - h_1 - h_i}^{-1} \iota_{1,i} (z_1 - z_i)^{n} \IP{V(V_{-n-h_1}(\psi_1) \psi_i, z_i) \prod_{a \ne 1,i} V(\psi_a, z_a)}_{\eta,R} \\
+- & \sum_{i=2}^{l-1} \sum_{n = - h_1 - h_i}^{-1} \iota_{i,1} (z_1 - z_i)^{n} \IP{V(V_{-n-h_1}(\psi_1) \psi_i, z_i) \prod_{a \ne 1,i} V(\psi_a, z_a)}_{\eta,R} \\
++ &\sum_{n = 0}^\infty (z_1 - z_l)^n \IP{V(V_{-n-h_1}(\psi_1) \psi_l, z_l) \prod_{a \ne 1,l} V(\psi_a, z_a)}_{\eta,R},
+\end{split}
+}{ \begin{split}
+\IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R} = & \sum_{i=2}^{l} \sum_{n = - h_1 - h_i}^{-1} \iota_{1,i} (z_1 - z_i)^{n} \IP{V(V_{-n-h_1}(\psi_1) \psi_i, z_i) \prod_{a \ne 1,i} V(\psi_a, z_a)}_{\eta,R} \\
+- & \sum_{i=2}^{l-1} \sum_{n = - h_1 - h_i}^{-1} \iota_{i,1} (z_1 - z_i)^{n} \IP{V(V_{-n-h_1}(\psi_1) \psi_i, z_i) \prod_{a \ne 1,i} V(\psi_a, z_a)}_{\eta,R} \\
++ &\sum_{n = 0}^\infty (z_1 - z_l)^n \IP{V(V_{-n-h_1}(\psi_1) \psi_l, z_l) \prod_{a \ne 1,l} V(\psi_a, z_a)}_{\eta,R},
+\end{split}
+}{split}\coordE{}\end{equation}
+which on choosing \myHighlight{$c_1 = h_1$}\coordHE{} and multiplying by \myHighlight{$\Pi$}\coordHE{} becomes
+\begin{equation}\coord{}\boxEquation{ \label{big1}
+\begin{split}
+\Pi \cdot \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R} = & \prod_{m=1}^k (z_1 - u_m)^{h_1} \sum_{i=2}^{l} \sum_{n = - h_1 - h_i}^{-1} \iota_{1,i} (z_1 - z_i)^{n} g_{i,n}(z_2, \dots, z_l) \\
+-& \prod_{m=1}^k (z_1 - u_m)^{h_1} \sum_{i=2}^{l-1} \sum_{n = - h_1 - h_i}^{-1} \iota_{i,1} (z_1 - z_i)^{n} g_{i,n}(z_2, \dots, z_l) \\
++& \prod_{m=1}^k (z_1 - u_m)^{h_1} \sum_{n = 0}^\infty (z_1 - z_l)^n g_{l,n}(z_2, \dots, z_l).
+\end{split}
+}{ \begin{split}
+\Pi \cdot \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R} = & \prod_{m=1}^k (z_1 - u_m)^{h_1} \sum_{i=2}^{l} \sum_{n = - h_1 - h_i}^{-1} \iota_{1,i} (z_1 - z_i)^{n} g_{i,n}(z_2, \dots, z_l) \\
+-& \prod_{m=1}^k (z_1 - u_m)^{h_1} \sum_{i=2}^{l-1} \sum_{n = - h_1 - h_i}^{-1} \iota_{i,1} (z_1 - z_i)^{n} g_{i,n}(z_2, \dots, z_l) \\
++& \prod_{m=1}^k (z_1 - u_m)^{h_1} \sum_{n = 0}^\infty (z_1 - z_l)^n g_{l,n}(z_2, \dots, z_l).
+\end{split}
+}{split}\coordE{}\end{equation}
+On the right side of \eqref{big1} all of the negative powers of \myHighlight{$z_1$}\coordHE{} have now been collected into the first term.
+This term is
+convergent in \myHighlight{$R$}\coordHE{} by our inductive hypothesis on the \myHighlight{$g_{i,n}$}\coordHE{}.
+So restrict attention
+to the other two terms; write their sum \myHighlight{$f(\zz)$}\coordHE{},
+\begin{equation}\coord{}\boxEquation{ \label{deff}
+\begin{split}
+f(\zz) = -& \prod_{m=1}^k (z_1 - u_m)^{h_1} \sum_{i=2}^{l-1} \sum_{n = - h_1 - h_i}^{-1} \iota_{i,1} (z_1 - z_i)^{n} g_{i,n}(z_2, \dots, z_l) \\
++& \prod_{m=1}^k (z_1 - u_m)^{h_1} \sum_{n = 0}^\infty (z_1 - z_l)^n g_{l,n}(z_2, \dots, z_l),
+\end{split}
+}{ \begin{split}
+f(\zz) = -& \prod_{m=1}^k (z_1 - u_m)^{h_1} \sum_{i=2}^{l-1} \sum_{n = - h_1 - h_i}^{-1} \iota_{i,1} (z_1 - z_i)^{n} g_{i,n}(z_2, \dots, z_l) \\
++& \prod_{m=1}^k (z_1 - u_m)^{h_1} \sum_{n = 0}^\infty (z_1 - z_l)^n g_{l,n}(z_2, \dots, z_l),
+\end{split}
+}{split}\coordE{}\end{equation}
+which is still a formal Laurent series.  
+
+As remarked earlier, the left side of \eqref{big1}
+only contains powers of \myHighlight{$z_1$}\coordHE{} up to \myHighlight{$z_1^{(k-2)h_1}$}\coordHE{}; and it is clear that the first term on the right 
+contains powers of \myHighlight{$z_1$}\coordHE{} only up to \myHighlight{$z_1^{kh_1-1}$}\coordHE{}; so \myHighlight{$f(\zz)$}\coordHE{} is actually a polynomial in \myHighlight{$z_1$}\coordHE{},
+of degree at most \myHighlight{$kh_1 - 1$}\coordHE{}.  We can therefore expand \myHighlight{$f(\zz)$}\coordHE{} as
+\begin{equation}\coord{}\boxEquation{ \label{taylor}
+f(\zz) = \sum_{s=0}^{kh_1-1} \frac{(z_1-z_l)^s}{s!} \left(\dwrt{z_1}\right)^s \Big\vert_{z_1 = z_l} f(\zz).
+}{ f(\zz) = \sum_{s=0}^{kh_1-1} \frac{(z_1-z_l)^s}{s!} \left(\dwrt{z_1}\right)^s \Big\vert_{z_1 = z_l} f(\zz).
+}{ecuacion}\coordE{}\end{equation}
+To exploit \eqref{taylor} we must make the formal substitution \myHighlight{$z_1 = z_l$}\coordHE{} in each term of \eqref{deff}.  
+To verify that this is well defined we need to check that, for
+fixed \myHighlight{$j_2, \dots, j_{l-1}$}\coordHE{} and fixed \myHighlight{$\alpha+\beta$}\coordHE{}, 
+there are only finitely many terms \myHighlight{$z_1^{\alpha} z_2^{j_2} \cdots z_{l-1}^{j_{l-1}} z_l^\beta$}\coordHE{}
+appearing in each term of \eqref{deff}.  This in turn amounts to checking that the 
+Laurent series \myHighlight{$g_{i,n}$}\coordHE{} has only a finite singularity at
+ \myHighlight{$z_l = 0$}\coordHE{}, with order bounded uniformly in \myHighlight{$n$}\coordHE{}; this is automatic for \myHighlight{$i \ne l$}\coordHE{}, and
+for \myHighlight{$i=l$}\coordHE{} it is guaranteed by the
+the fact that \myHighlight{$z_l$}\coordHE{} is the coordinate closest to the origin, by an argument similar
+to that in the proof of Lemma \ref{opelem}.  So we can substitute \eqref{deff} into
+\eqref{taylor}, obtaining finally a polynomial in \myHighlight{$z_1$}\coordHE{} whose coefficients are convergent power series in \myHighlight{$R$}\coordHE{}
+(by our inductive hypothesis on the relevant \myHighlight{$g_{i,n}$}\coordHE{}.)  
+So \myHighlight{$f(\zz)$}\coordHE{} is convergent in \myHighlight{$R$}\coordHE{}.  Since we already dealt with the first term in \eqref{big1}, this
+proves that \myHighlight{$\Pi \cdot \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R}$}\coordHE{} converges to a holomorphic function in \myHighlight{$R$}\coordHE{}.
+Call this function \myHighlight{$\Pi \cdot \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta}$}\coordHE{}.
+
+By \eqref{big2} it is clear that the recursive formula 
+\eqref{ope5} is satisfied.  On the other hand, \eqref{ope5} defines a meromorphic function on all of \myHighlight{$\C^l$}\coordHE{},
+so we get the required analytic continuation of the power series \myHighlight{$\Pi \cdot \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R}$}\coordHE{}
+to all of \myHighlight{$\C^l$}\coordHE{}.  It only remains
+to check that the resulting function is actually independent of which region \myHighlight{$R$}\coordHE{} we started with.
+
+First suppose \myHighlight{$R'$}\coordHE{} is obtained from \myHighlight{$R$}\coordHE{} by swapping \myHighlight{$z_i$}\coordHE{} with \myHighlight{$z_j$}\coordHE{}, for some \myHighlight{$i,j \ne l$}\coordHE{}.  Choose any \myHighlight{$m \ne l$}\coordHE{}.  Using
+\myHighlight{$\Pi \cdot$}\coordHE{} \eqref{ope} and bringing \myHighlight{$z_m$}\coordHE{} close to \myHighlight{$z_l$}\coordHE{} we get the ``simple OPE'' for the functions analytically continued from \myHighlight{$R$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+\Pi \cdot \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R} = \Pi \cdot \sum_{n = - h_m - h_l}^\infty (z_m - z_l)^{n} \IP{V(V_{-n-h_m}(\psi_m) \psi_l, z_l) \prod_{a \ne m,l} V(\psi_a, z_a)}_\eta
+}{
+\Pi \cdot \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R} = \Pi \cdot \sum_{n = - h_m - h_l}^\infty (z_m - z_l)^{n} \IP{V(V_{-n-h_m}(\psi_m) \psi_l, z_l) \prod_{a \ne m,l} V(\psi_a, z_a)}_\eta
+}{ecuacion}\coordE{}\end{equation}
+But note that we would get the same thing on the right side had we started with \myHighlight{$R'$}\coordHE{} instead of \myHighlight{$R$}\coordHE{}.  The analytic continuations from \myHighlight{$R$}\coordHE{} and \myHighlight{$R'$}\coordHE{} therefore
+agree when \myHighlight{$z_m$}\coordHE{} is close to \myHighlight{$z_l$}\coordHE{}, hence everywhere.
+
+On the other hand, suppose \myHighlight{$R'$}\coordHE{} is obtained from \myHighlight{$R$}\coordHE{} by swapping \myHighlight{$z_l$}\coordHE{} with \myHighlight{$z_{l-1}$}\coordHE{}.  In this case we need to use \eqref{opeshort} and the case \myHighlight{$m=l-1$}\coordHE{} of \eqref{ope};
+multiplying both equations by \myHighlight{$\Pi$}\coordHE{} we get two expressions for \myHighlight{$\Pi \cdot \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R}$}\coordHE{} when \myHighlight{$z_l$}\coordHE{} is near \myHighlight{$z_{l-1}$}\coordHE{}, namely
+\begin{gather}\coord{}\boxAlignEqnarray{
+\leftCoord{}\Pi \cdot \IP{\prod_{\rightCoord{}a=1}^l V(\psi_a, z_a)}_{\rightCoord{}\eta,R} = \Pi \cdot \sum_{\rightCoord{}n = - h_{\rightCoord{}l-1} - h_l}^\infty (z_{\rightCoord{}l-1} - z_l)^{n} \IP{V(V_{\rightCoord{}-n-h_{\rightCoord{}l-1}}(\psi_{\rightCoord{}l-1}) \psi_l, z_l) \prod_{\rightCoord{}a \ne l-1,l} V(\psi_a, z_a)}_\eta, \rightCoord{}\\
+\leftCoord{}\Pi \cdot \IP{\prod_{\rightCoord{}a=1}^l V(\psi_a, z_a)}_{\rightCoord{}\eta,R} = \Pi \cdot \sum_{\rightCoord{}n = - h_{\rightCoord{}l-1} - h_l}^\infty (z_{\rightCoord{}l} - z_{\rightCoord{}l-1})^{n} \IP{V(V_{\rightCoord{}-n-h_l}(\psi_l) \psi_{\rightCoord{}l-1}, z_{\rightCoord{}l-1}) \prod_{\rightCoord{}a \ne l-1,l} V(\psi_a, z_a)}_\eta.
+}{0mm}{2}{21}{
+\Pi \cdot \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R} = \Pi \cdot \sum_{n = - h_{l-1} - h_l}^\infty (z_{l-1} - z_l)^{n} \IP{V(V_{-n-h_{l-1}}(\psi_{l-1}) \psi_l, z_l) \prod_{a \ne l-1,l} V(\psi_a, z_a)}_\eta, \\
+\Pi \cdot \IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R} = \Pi \cdot \sum_{n = - h_{l-1} - h_l}^\infty (z_{l} - z_{l-1})^{n} \IP{V(V_{-n-h_l}(\psi_l) \psi_{l-1}, z_{l-1}) \prod_{a \ne l-1,l} V(\psi_a, z_a)}_\eta.
+}{0}\coordE{}\end{gather}
+Exchanging the label \myHighlight{$z_{l-1}$}\coordHE{} for \myHighlight{$z_l$}\coordHE{} in one of the two equations makes manifest that the functions 
+continued from \myHighlight{$R$}\coordHE{} and \myHighlight{$R'$}\coordHE{} agree when \myHighlight{$z_l$}\coordHE{} is near \myHighlight{$z_{l-1}$}\coordHE{}, hence everywhere.
+This completes the proof since we can transform any \myHighlight{$R$}\coordHE{} 
+to any \myHighlight{$R'$}\coordHE{} by successive swaps of the types we have considered. \done
+
+Conbining the last two lemmas, now we can finally prove that the original power series are well behaved, thus
+establishing the existence of the correlation functions:
+
+\begin{thm} \label{bigThm} Suppose given \myHighlight{$\eta: \F \to \C$}\coordHE{} such that \myHighlight{$O_\uu \subset \ker \eta$}\coordHE{}.  Then the power
+series \myHighlight{$\IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta,R}$}\coordHE{} defined by \eqref{defseries} each converge on some domain and can be analytically continued to a single
+function \myHighlight{$\IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta}$}\coordHE{} which is meromorphic on \myHighlight{$\C^l$}\coordHE{}.  This function has poles only at \myHighlight{$z_i = z_j$}\coordHE{} or \myHighlight{$z_i = u_j$}\coordHE{},
+and \myHighlight{$\IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta} dz_i^{\otimes h_i}$}\coordHE{} is nonsingular at 
+\myHighlight{$z_i = \infty$}\coordHE{}.  Furthermore, for all \myHighlight{$i,j \in [1,l]$}\coordHE{} we have the operator product expansion
+\begin{equation}\coord{}\boxEquation{
+\IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta} = \sum_{n= - h_i - h_j}^\infty (z_i - z_j)^n \IP{V(V_{-n-h_i}(\psi_i) \psi_j, z_j) \prod_{a \ne i,j} V(\psi_a, z_a)}_\eta.
+}{
+\IP{\prod_{a=1}^l V(\psi_a, z_a)}_{\eta} = \sum_{n= - h_i - h_j}^\infty (z_i - z_j)^n \IP{V(V_{-n-h_i}(\psi_i) \psi_j, z_j) \prod_{a \ne i,j} V(\psi_a, z_a)}_\eta.
+}{ecuacion}\coordE{}\end{equation}
+for \myHighlight{$z_i$}\coordHE{} sufficiently close to \myHighlight{$z_j$}\coordHE{}.
+\end{thm}
+\oproof{} This all follows directly from Lemma \ref{modconv} except for the behavior at \myHighlight{$\infty$}\coordHE{}, which is a consequence of Lemma \ref{pL}. \done
+
+Finally we can establish a limited form of 
+the ``representation property'' in the sense of \cite{GG} (see also \cite{Montague}):
+
+\begin{thm} Suppose given \myHighlight{$\eta: \F \to \C$}\coordHE{} such that \myHighlight{$O_\uu \subset \ker \eta$}\coordHE{}.  Let \myHighlight{$\OO$}\coordHE{} be an open disc \myHighlight{$\{ |z| < R \} \subset \C$}\coordHE{}, with all \myHighlight{$u_i \notin \OO$}\coordHE{}.
+Then there exists a state \myHighlight{$\Sigma \in \V^\OO$}\coordHE{} which induces \myHighlight{$\eta$}\coordHE{} in the sense that, for \myHighlight{$\chi \in \F$}\coordHE{},
+\begin{equation}\coord{}\boxEquation{
+\eta(\chi) = \IP{\Sigma \chi}.
+}{
+\eta(\chi) = \IP{\Sigma \chi}.
+}{ecuacion}\coordE{}\end{equation}
+\end{thm}
+\oproof{}  The topological vector space \myHighlight{$\V^\OO$}\coordHE{} contains the Fock space at \myHighlight{$\infty$}\coordHE{}
+which we denote \myHighlight{$\F_\infty$}\coordHE{} (to distinguish it from \myHighlight{$\F$}\coordHE{} which is the Fock space at \myHighlight{$0$}\coordHE{}); the idea of the proof is to build up \myHighlight{$\Sigma$}\coordHE{} as a limit
+of states in \myHighlight{$\F_\infty$}\coordHE{}, using the existence of correlation functions to establish convergence.
+
+We have \myHighlight{$\F_\infty \subset \F^*$}\coordHE{} via the rule \cite{Greview}
+\begin{equation}\coord{}\boxEquation{
+\psi(\chi) = \lim_{z \to 0} \IP{V((-z)^{-2 L_0} e^{-z^{-1} L_1} \psi, z^{-1}) V(\chi, z)} \qquad \forall \ \psi \in \F_\infty, \chi \in \F
+}{
+\psi(\chi) = \lim_{z \to 0} \IP{V((-z)^{-2 L_0} e^{-z^{-1} L_1} \psi, z^{-1}) V(\chi, z)} \qquad \forall \ \psi \in \F_\infty, \chi \in \F
+}{ecuacion}\coordE{}\end{equation}
+(note that this indeed defines an injection --- the definition of \myHighlight{$\F_\infty$}\coordHE{} by factorization guarantees that if any \myHighlight{$\psi \in \F_\infty$}\coordHE{} annihilates
+every \myHighlight{$\chi \in \F$}\coordHE{} then \myHighlight{$\psi = 0$}\coordHE{}.)  Both \myHighlight{$\F$}\coordHE{} and \myHighlight{$\F_\infty$}\coordHE{} are graded by conformal weight.
+Writing \myHighlight{$\F^{(N)}$}\coordHE{} for the space of states with weight \myHighlight{$\le N$}\coordHE{}, and likewise \myHighlight{$\F^{(N)}_\infty$}\coordHE{}, 
+we have \myHighlight{$\dim \F^{(N)} = \dim \F^{(N)}_\infty$}\coordHE{} (by assumption as described
+in Section \ref{notation}, both dimensions are finite.)  
+Let \myHighlight{$P_N: \F \to \F^{(N)}$}\coordHE{} denote the projection.  Then we claim that its adjoint \myHighlight{$P_N^*: \F^* \to \F^*$}\coordHE{}
+actually maps \myHighlight{$\F^* \to \F^{(N)}_\infty$}\coordHE{}.  To prove this claim, note that \myHighlight{$\F^{(N)}_\infty$}\coordHE{} is contained in \myHighlight{$P_N^*(\F^*)$}\coordHE{},
+since for any \myHighlight{$\psi \in \F^{(N)}_\infty$}\coordHE{}, we have \myHighlight{$\psi(\chi) = 0$}\coordHE{} when \myHighlight{$h_\chi > N$}\coordHE{}.  On the other hand the two spaces have equal 
+dimension, which proves the claim.
+
+Now write \myHighlight{$\Sigma_N = P_N^* \eta$}\coordHE{}.  By the above, the \myHighlight{$\Sigma_N$}\coordHE{} are actually elements of \myHighlight{$\F_\infty$}\coordHE{}.  
+We claim that they converge as \myHighlight{$N \to \infty$}\coordHE{} to some \myHighlight{$\Sigma \in \V^\OO$}\coordHE{}.  To check this 
+we need only verify that, for any \myHighlight{$(\psi_1, \dots, \psi_l) \in V^{\otimes l}$}\coordHE{} and \myHighlight{$\zz$}\coordHE{} in some compact \myHighlight{$K \subset \OO^k$}\coordHE{} bounded away from the diagonals,
+\begin{equation}\coord{}\boxEquation{
+f_N(\zz) = \IP{\Sigma_N \prod_{a=1}^l V(\psi_a, z_a)} \to f(\zz) = \IP{\prod_{a=1}^l V(\psi_a, z_a)}_\eta
+}{
+f_N(\zz) = \IP{\Sigma_N \prod_{a=1}^l V(\psi_a, z_a)} \to f(\zz) = \IP{\prod_{a=1}^l V(\psi_a, z_a)}_\eta
+}{ecuacion}\coordE{}\end{equation}
+uniformly on \myHighlight{$K$}\coordHE{}.
+So for fixed \myHighlight{$\zz$}\coordHE{}, consider the function \myHighlight{$\lambda \mapsto f(\lambda \zz)$}\coordHE{} 
+where \myHighlight{$\lambda$}\coordHE{} ranges over \myHighlight{$\C^\times$}\coordHE{}.
+This function is holomorphic on some disc containing \myHighlight{$0 < \abs{\lambda} \le 1$}\coordHE{}; and now we claim that 
+the \myHighlight{$f_N(\zz)$}\coordHE{} are nothing but the partial sums in its Laurent expansion, evaluated at \myHighlight{$\lambda=1$}\coordHE{}.
+To prove this claim we note that \myHighlight{$f(\zz)$}\coordHE{} and \myHighlight{$f_N(\zz)$}\coordHE{} satisfy the same operator product expansion identities;
+using these identities we can reduce to the case \myHighlight{$l=1$}\coordHE{}, in which case the claim is straightforward.
+Hence the \myHighlight{$f_N(\zz)$}\coordHE{} converge to \myHighlight{$f(\zz)$}\coordHE{}, and since the \myHighlight{$\zz$}\coordHE{}-dependence in \myHighlight{$f(\zz)$}\coordHE{} is of a particularly simple sort
+(\myHighlight{$f$}\coordHE{} is a rational function of \myHighlight{$\zz$}\coordHE{}, with poles only on the diagonals or at the \myHighlight{$u_i$}\coordHE{}) it is clear that the
+convergence of this Laurent expansion is uniform in \myHighlight{$\zz$}\coordHE{} in the required sense. \done
+
+
+\section{Functional dependence} \label{funcdep}
+
+In the last section we 
+checked that a linear functional \myHighlight{$\eta: \F \to \C$}\coordHE{} vanishing on \myHighlight{$O_\uu$}\coordHE{} is sufficient to determine a set of
+correlation functions involving \myHighlight{$k$}\coordHE{} highest weight states fixed at \myHighlight{$\uu$}\coordHE{}.  Next we want to show that these correlation
+functions can in fact be extended to general \myHighlight{$\uu$}\coordHE{}, in a manner consistent with the ``Knizhnik-Zamolodchikov'' differential
+equations imposed by the rule \myHighlight{$L_{-1} \mapsto \partial$}\coordHE{} \cite{KZ}.  We will find that this can indeed be done, provided
+that we impose a finiteness condition which in some sense expresses the existence of a null-vector.
+
+By Theorem \ref{bigThm}, we know that to determine correlation functions at each point, 
+it is sufficient to give linear functionals \myHighlight{$\eta(\uu): \F \to \C$}\coordHE{} such that each \myHighlight{$\eta(\uu)$}\coordHE{} annihilates
+\myHighlight{$O_\uu$}\coordHE{}.  We want to arrange that the correlation functions \myHighlight{$\IP{}_{\eta(\uu)}$}\coordHE{} corresponding to \myHighlight{$\eta(\uu)$}\coordHE{} satisfy the
+appropriate KZ-type equations:  explicitly, what we require is that
+\begin{equation}\coord{}\boxEquation{
+\oint_{u_i} \IP{L(z) \chi}_{\eta(\uu)} dz = \dwrt{u_i} \IP{\chi}_{\eta(\uu)}.
+}{
+\oint_{u_i} \IP{L(z) \chi}_{\eta(\uu)} dz = \dwrt{u_i} \IP{\chi}_{\eta(\uu)}.
+}{ecuacion}\coordE{}\end{equation}
+This differential equation implies a differential equation for the functionals \myHighlight{$\eta(\uu)$}\coordHE{}, which
+we will construct below; the remainder of this section is essentially devoted to checking that this
+equation (which we view as a kind of ``parallel transport'' problem for the \myHighlight{$\eta(\uu)$}\coordHE{}) admits solutions.
+
+First we introduce a bit of notation.
+Let \myHighlight{$X$}\coordHE{} denote the open set \myHighlight{$\{ \uu = (u_1, \dots, u_k) \in \PP^k : u_i \ne u_j \ \forall i \ne j, u_i \ne 0 \ \forall i \}$}\coordHE{}.
+Let \myHighlight{$B$}\coordHE{} denote the trivial vector bundle \myHighlight{$X \times \F$}\coordHE{} over \myHighlight{$X$}\coordHE{}, and let \myHighlight{$\Gamma(U,B)$}\coordHE{} denote the space
+of holomorphic sections of \myHighlight{$B$}\coordHE{} over any \myHighlight{$U \subset X$}\coordHE{}.  (Since \myHighlight{$B$}\coordHE{} is an infinite-dimensional vector bundle
+we should say what we mean by a ``holomorphic section:''  to be exact, we mean a holomorphic section of
+some finite-dimensional subbundle.)  Then for each \myHighlight{$\uu \in X$}\coordHE{}, let \myHighlight{$O_\uu \subset
+B_\uu \iso \F$}\coordHE{} be the subspace we defined in \eqref{defO}.  Then let \myHighlight{$O$}\coordHE{} denote the sheaf
+of holomorphic sections of the collection of spaces \myHighlight{$O_\uu$}\coordHE{} --- in other words, we define
+\begin{equation}\coord{}\boxEquation{
+\Gamma(U, O) = \left\{ s \in \Gamma(U, B) \ \Big\vert \ s(\uu) \in O_\uu \ \ \forall \uu \in U \right\}.
+}{
+\Gamma(U, O) = \left\{ s \in \Gamma(U, B) \ \Big\vert \ s(\uu) \in O_\uu \ \ \forall \uu \in U \right\}.
+}{ecuacion}\coordE{}\end{equation}
+It is not clear \ti{a priori}
+that \myHighlight{$O$}\coordHE{} is a vector bundle (for example, different
+\myHighlight{$O_\uu$}\coordHE{} could have different codimensions in \myHighlight{$\F$}\coordHE{}).
+
+What is the relation between the different spaces \myHighlight{$O_\uu$}\coordHE{}?  Let us work informally for
+a moment to see what we should expect.  Suppose we consider
+some \myHighlight{$\chi \in \Gamma(U, B)$}\coordHE{}, and introduce the notation \myHighlight{$W(\phi, u)$}\coordHE{} for
+an insertion of a primary field \myHighlight{$\phi$}\coordHE{} (corresponding to some highest weight representation
+of the theory) at the point \myHighlight{$u \in \PP$}\coordHE{}.
+Then, \ti{once we have defined the correlation functions for general \myHighlight{$\uu \in X$}\coordHE{}},
+we would expect to have
+\begin{equation}\coord{}\boxEquation{ \label{exp}
+\begin{split}
+\dwrt{u_i} \IP{\prod_{a=1}^k W(\phi_a, u_a) \chi(\uu)} & = \IP{W(L_{-1} \phi_i, u_i) \prod_{a \ne i} W(\phi_a, u_a) \chi(\uu)} \\
+                                                       & + \IP{\prod_{a=1}^l W(\phi_a, u_a) \dwrt{u_i} \chi(\uu)}.
+\end{split}
+}{ \begin{split}
+\dwrt{u_i} \IP{\prod_{a=1}^k W(\phi_a, u_a) \chi(\uu)} & = \IP{W(L_{-1} \phi_i, u_i) \prod_{a \ne i} W(\phi_a, u_a) \chi(\uu)} \\
+                                                       & + \IP{\prod_{a=1}^l W(\phi_a, u_a) \dwrt{u_i} \chi(\uu)}.
+\end{split}
+}{split}\coordE{}\end{equation}
+(There is a potential notational confusion here:  we emphasize that \myHighlight{$\chi(\uu)$}\coordHE{} refers to an element 
+of \myHighlight{$B_\uu \iso \F$}\coordHE{}, which lives at \myHighlight{$0 \in \PP$}\coordHE{}, and not some kind of ``field at \myHighlight{$\uu$}\coordHE{}.'')
+In particular, suppose in fact that \myHighlight{$\chi \in \Gamma(U, O)$}\coordHE{}.
+Then by the definition of \myHighlight{$O$}\coordHE{} the left side of \eqref{exp} should vanish identically.
+On the right side, by the usual trick of reversing the contour, we could think of \myHighlight{$L_{-1}$}\coordHE{} as acting on
+\myHighlight{$\chi(\uu)$}\coordHE{} instead of on \myHighlight{$\phi_i$}\coordHE{}.  To do this we need to get rid of the contributions from the poles
+in \myHighlight{$(z-u_a)$}\coordHE{} for \myHighlight{$a \ne i$}\coordHE{}.  We can do this using the highest weight condition, which
+guarantees that these poles have order at most \myHighlight{$2$}\coordHE{}.  
+
+So, for \myHighlight{$i \in [1,l]$}\coordHE{} and \myHighlight{$\uu \in X$}\coordHE{}, define an 
+operator \myHighlight{$L^i(\uu): \F \to \F$}\coordHE{} as follows:  
+\begin{equation}\coord{}\boxEquation{ \label{defL}
+L^i(\uu) = -\oint_0 dz L(z) f^i_\uu(z)
+}{ L^i(\uu) = -\oint_0 dz L(z) f^i_\uu(z)
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$f^i_\uu(z) dz$}\coordHE{} is holomorphic on \myHighlight{$\PP - \{0\}$}\coordHE{}, with 
+\begin{equation}\coord{}\boxEquation{ \label{fcond}
+\nu_{u_j} ((f^i_\uu - \delta^{ij}) dz) \ge 2
+}{ \nu_{u_j} ((f^i_\uu - \delta^{ij}) dz) \ge 2
+}{ecuacion}\coordE{}\end{equation}
+(so \myHighlight{$f^i_\uu - 1$}\coordHE{} has a zero of order \myHighlight{$2$}\coordHE{} at \myHighlight{$u_i$}\coordHE{}, and \myHighlight{$f^i_\uu$}\coordHE{} has a zero of order \myHighlight{$2$}\coordHE{} at all \myHighlight{$u_j$}\coordHE{} with \myHighlight{$j \ne i$}\coordHE{}.) 
+The definition \eqref{defL} of \myHighlight{$L^i(\uu)$}\coordHE{} depends on which function \myHighlight{$f^i_\uu$}\coordHE{}
+we pick, but from the definition \eqref{defO} of \myHighlight{$O_\uu$}\coordHE{} we see at once that different choices only differ by maps \myHighlight{$\F \to O_\uu$}\coordHE{}.
+Now \eqref{exp} says that
+\begin{equation}\coord{}\boxEquation{
+0 = \IP{\prod_{a=1}^k W(\phi_a, u_a) \left( L^i(\uu) + \dwrt{u_i} \right) \chi(\uu)},
+}{
+0 = \IP{\prod_{a=1}^k W(\phi_a, u_a) \left( L^i(\uu) + \dwrt{u_i} \right) \chi(\uu)},
+}{ecuacion}\coordE{}\end{equation}
+in other words, \myHighlight{$\left( L^i(\uu) + \dwrt{u_i} \right) \chi(\uu)$}\coordHE{} is orthogonal to all highest weight states.
+Writing 
+\begin{equation}\coord{}\boxEquation{ \label{defcon}
+D^i(\uu) = L^i(\uu) + \dwrt{u_i},
+}{ D^i(\uu) = L^i(\uu) + \dwrt{u_i},
+}{ecuacion}\coordE{}\end{equation}
+the above considerations lead us to expect:
+
+\begin{lem} \label{dpres} For open sets \myHighlight{$U \subset X$}\coordHE{},
+\begin{enumerate}
+\item The operator \myHighlight{$D^i: \Gamma(U,B) \to \Gamma(U,B)$}\coordHE{} maps \myHighlight{$\Gamma(U,O) \to \Gamma(U,O)$}\coordHE{}.
+\item The operator \myHighlight{$[D^i, D^j]$}\coordHE{} maps \myHighlight{$\Gamma(U,B) \to \Gamma(U,O)$}\coordHE{}.
+\end{enumerate}
+\end{lem}
+\oproof{} First we fix a particular choice of \myHighlight{$f^i_\uu(z)$}\coordHE{} which will make the calculations easier.
+Namely, we let \myHighlight{$f^i_\uu(z)$}\coordHE{} be of the form
+\begin{equation}\coord{}\boxEquation{
+f^i_\uu(z) = \frac{1}{z^{3k+1}} \prod_{j \ne i} (z-u_j)^3 (Az^2 + Bz + C)
+}{
+f^i_\uu(z) = \frac{1}{z^{3k+1}} \prod_{j \ne i} (z-u_j)^3 (Az^2 + Bz + C)
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$A$}\coordHE{}, \myHighlight{$B$}\coordHE{}, \myHighlight{$C$}\coordHE{} are fixed by requiring that \myHighlight{$f^i_\uu(z) - 1$}\coordHE{} have a zero of order \myHighlight{$3$}\coordHE{} at \myHighlight{$z = u_i$}\coordHE{}.
+The point of this choice is that it makes \myHighlight{$f^i_\uu$}\coordHE{} holomorphic in \myHighlight{$\uu$}\coordHE{} so long as \myHighlight{$\uu$}\coordHE{} stays in \myHighlight{$X$}\coordHE{},
+and satisfies 
+\begin{equation}\coord{}\boxEquation{ \label{cond3}
+\nu_{u_j} \left((f^i_\uu - \delta^{ij}) dz \right) \ge 3.
+}{ \nu_{u_j} \left((f^i_\uu - \delta^{ij}) dz \right) \ge 3.
+}{ecuacion}\coordE{}\end{equation}
+
+\medskip
+
+\oproof{ of 1} First note we are indeed free to choose \myHighlight{$f^i_\uu(z)$}\coordHE{} as above, since different choices of \myHighlight{$f^i_\uu(z)$}\coordHE{}
+satisfying \eqref{fcond} change \myHighlight{$D^i$}\coordHE{} only by maps into \myHighlight{$O_\uu$}\coordHE{}.
+Now \myHighlight{$\Gamma(U,O)$}\coordHE{} is spanned (over the holomorphic functions on \myHighlight{$U$}\coordHE{}) by sections of the form
+\begin{equation}\coord{}\boxEquation{ \label{sectdef}
+s(\uu) = - \ci dw g(\uu,w) V(\psi,w) \chi,
+}{ s(\uu) = - \ci dw g(\uu,w) V(\psi,w) \chi,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\chi \in \F$}\coordHE{}, \myHighlight{$\psi \in V$}\coordHE{} and \myHighlight{$g(\uu, w)$}\coordHE{} is holomorphic in \myHighlight{$\uu$}\coordHE{}
+(as given e.g. by \eqref{fchoice}).  (Strictly speaking, it is not completely obvious that sections of this form are enough ---
+pathologies are excluded by choosing a maximal set
+of sections \eqref{sectdef} which are linearly independent at a single point \myHighlight{$\uu$}\coordHE{}, then noting that the subset of \myHighlight{$U$}\coordHE{} 
+on which they become degenerate is nowhere dense.)
+So it is sufficient to check that \myHighlight{$D^i$}\coordHE{} maps the section \eqref{sectdef} into a section of \myHighlight{$O$}\coordHE{}.  We therefore compute 
+\begin{equation}\coord{}\boxEquation{ \label{p1}
+\begin{split}
+D^is(\uu) &= - \left(\dwrt{u_i} - \oint_{\abs{z} > \abs{w}} dz L(z) f^i(\uu, \zz) \right) \ci dw g(\uu, w) V(\psi, w) \chi \\
+          &= - \ci dw \left(\dwrt{u_i} g(\uu,w) \right) V(\psi,w) \chi + \ci \ci_{\abs{z} > \abs{w}} dw dz f^i(\uu, z) g(\uu, w) L(z) V(\psi, w) \chi
+\end{split}
+}{ \begin{split}
+D^is(\uu) &= - \left(\dwrt{u_i} - \oint_{\abs{z} > \abs{w}} dz L(z) f^i(\uu, \zz) \right) \ci dw g(\uu, w) V(\psi, w) \chi \\
+          &= - \ci dw \left(\dwrt{u_i} g(\uu,w) \right) V(\psi,w) \chi + \ci \ci_{\abs{z} > \abs{w}} dw dz f^i(\uu, z) g(\uu, w) L(z) V(\psi, w) \chi
+\end{split}
+}{split}\coordE{}\end{equation}
+By the usual contour manipulation argument, the last term in \eqref{p1} can be rewritten as
+\begin{equation}\coord{}\boxEquation{ \label{p2} 
+\begin{split}
+& \ci_{\abs{w} > \abs{z}} dw g(\uu,w) V(\psi,w) \left(\ci dz f^i(\uu,z) L(z) \chi\right) \\
+& + \ci_0 dw g(\uu,w) \ci_w dz f^i(\uu,z) \left(\frac{V(L_0 \psi, w)}{(z-w)^2} + \frac{V(L_{-1}\psi, w)}{z-w} + O((z-w)^0) \right) \chi,
+\end{split}
+}{ \begin{split}
+& \ci_{\abs{w} > \abs{z}} dw g(\uu,w) V(\psi,w) \left(\ci dz f^i(\uu,z) L(z) \chi\right) \\
+& + \ci_0 dw g(\uu,w) \ci_w dz f^i(\uu,z) \left(\frac{V(L_0 \psi, w)}{(z-w)^2} + \frac{V(L_{-1}\psi, w)}{z-w} + O((z-w)^0) \right) \chi,
+\end{split}
+}{split}\coordE{}\end{equation}
+where in the second term we have used the OPE between \myHighlight{$L(z)$}\coordHE{} and \myHighlight{$V(\psi, w)$}\coordHE{}.  Now the first term in \eqref{p2} is manifestly in \myHighlight{$O_\uu(\F)$}\coordHE{}.  
+Evaluating the integral of \myHighlight{$z$}\coordHE{} around \myHighlight{$w$}\coordHE{} in the second term we obtain
+\begin{equation}\coord{}\boxEquation{ \label{p3}
+\ci_0 dw g(\uu,w) \left(f^i(\uu,w) V(L_{-1}\psi, w) + \dwrt{w} f^i(\uu,w) V(L_0 \psi, w) \right) \chi.
+}{ \ci_0 dw g(\uu,w) \left(f^i(\uu,w) V(L_{-1}\psi, w) + \dwrt{w} f^i(\uu,w) V(L_0 \psi, w) \right) \chi.
+}{ecuacion}\coordE{}\end{equation}
+Now the second term of \eqref{p3} is in \myHighlight{$O_\uu(\F)$}\coordHE{}, but the first is not, because \myHighlight{$L_{-1}\psi$}\coordHE{} has weight \myHighlight{$h_\psi+1$}\coordHE{} and \myHighlight{$gf^i(\uu,w)$}\coordHE{}
+has a zero of order only \myHighlight{$h_\psi$}\coordHE{} at \myHighlight{$w = u_i$}\coordHE{}.  
+Combining it with the first term in \eqref{p1}, we see that what remains to be checked is that
+\begin{equation}\coord{}\boxEquation{ \label{p4}
+\ci_0 dw  g(\uu,w) f^i(\uu,w) V(L_{-1} \psi, w) \chi - \left( \dwrt{u_i} g(\uu,w) \right) V(\psi,w) \chi
+}{ \ci_0 dw  g(\uu,w) f^i(\uu,w) V(L_{-1} \psi, w) \chi - \left( \dwrt{u_i} g(\uu,w) \right) V(\psi,w) \chi
+}{ecuacion}\coordE{}\end{equation}
+belongs to \myHighlight{$O_\uu(\F)$}\coordHE{}.  Using the fact that \myHighlight{$V(L_{-1} \psi, w) = \dwrt{w} V(\psi, w)$}\coordHE{} and integrating by parts, this boils
+down to the assertion that
+\begin{equation}\coord{}\boxEquation{
+\dwrt{u_i} g(\uu,w) + \dwrt{w} \left(g(\uu,w) f^i(\uu,w) \right)
+}{
+\dwrt{u_i} g(\uu,w) + \dwrt{w} \left(g(\uu,w) f^i(\uu,w) \right)
+}{ecuacion}\coordE{}\end{equation}
+has a zero of order at least 
+\myHighlight{$h_\psi$}\coordHE{} at each \myHighlight{$w = u_j$}\coordHE{}.  For \myHighlight{$j \ne i$}\coordHE{} this is clear since each term separately has such a zero.
+At \myHighlight{$w = u_i$}\coordHE{} we use the fact that \myHighlight{$f^i(\uu, w) = 1$}\coordHE{} to second order in \myHighlight{$w$}\coordHE{}. \done
+
+\oproof{ of 2} Using the result of part 1, we see that we are again free
+to use our convenient choice of \myHighlight{$f^i_\uu(w)$}\coordHE{}.  With this choice we will show
+that the operators \myHighlight{$[L^j, \dwrt{u_i}]$}\coordHE{} and \myHighlight{$[L^i, L^j]$}\coordHE{} \ti{separately} map \myHighlight{$\Gamma(B,U) \to \Gamma(O,U)$}\coordHE{} (for
+other choices this would not be the case.)
+
+So take any \myHighlight{$\chi(\uu) \in \Gamma(B,U)$}\coordHE{}.  We have
+\begin{equation}\coord{}\boxEquation{
+\begin{split}
+\left[L^j, \dwrt{u_i}\right] \chi(\uu) &= \dwrt{u_i} \ci dz L(z) f^i(\uu,z) \chi(\uu) - \ci dz L(z) f^i(\uu, z) \dwrt{u_i} \chi(\uu) \\
+                            &= \ci dz L(z) \left(\dwrt{u_i} f^i(\uu,z)\right) \chi(\uu) 
+\end{split}
+}{
+\begin{split}
+\left[L^j, \dwrt{u_i}\right] \chi(\uu) &= \dwrt{u_i} \ci dz L(z) f^i(\uu,z) \chi(\uu) - \ci dz L(z) f^i(\uu, z) \dwrt{u_i} \chi(\uu) \\
+                            &= \ci dz L(z) \left(\dwrt{u_i} f^i(\uu,z)\right) \chi(\uu) 
+\end{split}
+}{split}\coordE{}\end{equation}
+which belongs to \myHighlight{$O_\uu$}\coordHE{} by our hypothesis \eqref{cond3} on \myHighlight{$f^i$}\coordHE{} (this is
+where we are using the fact that the number \myHighlight{$3$}\coordHE{} appears there, instead of the
+\myHighlight{$2$}\coordHE{} in \eqref{fcond}.)  Next, for any \myHighlight{$\chi \in \F$}\coordHE{}, we have the purely algebraic fact
+\begin{equation}\coord{}\boxEquation{
+\begin{split}
+[L^i, L^j] \chi &= \left(\ci_{\abs{z}>\abs{w}} - \ci_{\abs{w}>\abs{z}}\right) dz dw f^j(\uu,z) f^i(\uu,w) L(z) L(w) \chi \\
+	      	&= \ci_0 dw f^i(\uu, w) \ci_w dz f^j(\uu,z) \left( \frac{c/2}{(z-w)^4} + \frac{2L(w)}{(z-w)^2} + \frac{\partial_w L(w)}{z-w} + O((z-w)^0) \right) \chi \\
+		&= \ci_0 dw \left( \frac{c}{2} f^i(\uu, w) \partial_w^3 f^j(\uu, w) + f^i(\uu,w) \partial_w f^j(\uu, w) L(w) + (i \leftrightarrow j) \right) \chi 
+\end{split}
+}{
+\begin{split}
+[L^i, L^j] \chi &= \left(\ci_{\abs{z}>\abs{w}} - \ci_{\abs{w}>\abs{z}}\right) dz dw f^j(\uu,z) f^i(\uu,w) L(z) L(w) \chi \\
+	      	&= \ci_0 dw f^i(\uu, w) \ci_w dz f^j(\uu,z) \left( \frac{c/2}{(z-w)^4} + \frac{2L(w)}{(z-w)^2} + \frac{\partial_w L(w)}{z-w} + O((z-w)^0) \right) \chi \\
+		&= \ci_0 dw \left( \frac{c}{2} f^i(\uu, w) \partial_w^3 f^j(\uu, w) + f^i(\uu,w) \partial_w f^j(\uu, w) L(w) + (i \leftrightarrow j) \right) \chi 
+\end{split}
+}{split}\coordE{}\end{equation}
+and the first term vanishes since \myHighlight{$f^i$}\coordHE{}, \myHighlight{$f^j$}\coordHE{} are holomorphic on \myHighlight{$\PP - \{ 0 \}$}\coordHE{}, 
+while the last two terms belong to \myHighlight{$O_\uu$}\coordHE{}.  This completes the proof. \done
+
+The \myHighlight{$D^i$}\coordHE{} as defined by \eqref{defcon} are the components of a connection (covariant derivative) in \myHighlight{$B$}\coordHE{}, which
+according to Lemma \eqref{dpres} is well defined and flat modulo sections of \myHighlight{$O$}\coordHE{}.
+So define the quotient sheaf \myHighlight{$A = B/O$}\coordHE{} by \myHighlight{$\Gamma(U,A) = \Gamma(U,B) / \Gamma(U,O)$}\coordHE{}.
+The \myHighlight{$D^i$}\coordHE{} then induce a flat connection in \myHighlight{$A$}\coordHE{}
+in the obvious way; we will use the letter \myHighlight{$D$}\coordHE{} for this connection as well.
+
+To exploit the existence of this connection we will need to be able to solve differential equations
+in the spaces of interest; to guarantee this can always be done, we now impose a strong
+finiteness condition on the conformal field theory.  Namely consider the space 
+\myHighlight{$O_\uu$}\coordHE{} at the point \myHighlight{$\uu = (\infty, \dots, \infty)$}\coordHE{}.  If we call this space \myHighlight{$C_k$}\coordHE{}, then \eqref{defO} becomes
+\begin{equation}\coord{}\boxEquation{ \label{defC}
+C_k = \Span\left\{ V_{-N-(k-1)h}(\psi) \chi \ \Big\vert \ \chi \in \F, \psi \in V^h, N \ge 1 \right\}.
+}{ C_k = \Span\left\{ V_{-N-(k-1)h}(\psi) \chi \ \Big\vert \ \chi \in \F, \psi \in V^h, N \ge 1 \right\}.
+}{ecuacion}\coordE{}\end{equation}
+Note that unlike the generic spaces \myHighlight{$O_\uu$}\coordHE{}, \myHighlight{$C_k$}\coordHE{} inherits the grading from \myHighlight{$\F$}\coordHE{}, so we can write \myHighlight{$C_k = \oplus_{h \ge 0} C_k^h$}\coordHE{}.
+
+We digress briefly to discuss the space \myHighlight{$C_k$}\coordHE{}.  In the case \myHighlight{$k=2$}\coordHE{} it was originally introduced by Zhu in \cite{Zhu}, who
+proved that the characters of the chiral theory close under modular transformations, under the 
+hypothesis that \myHighlight{$\F / C_2$}\coordHE{} is finite-dimensional.  Zhu conjectured that this hypothesis is equivalent to
+rationality of the theory.  As far as the author is aware, this conjecture is still unproven.
+
+For our purposes the important point is that 
+\myHighlight{$C_k$}\coordHE{} gives a kind of uniform control over the fibres of \myHighlight{$O$}\coordHE{}, as we see from the following (essentially contained
+already in \cite{Zhu} for \myHighlight{$k=2$}\coordHE{}):
+
+\begin{lem} \label{basislem} Let \myHighlight{$S_k$}\coordHE{} be a graded subspace of \myHighlight{$\F$}\coordHE{} with \myHighlight{$S_k + C_k = \F$}\coordHE{}.  Then \myHighlight{$S_k + O_\uu = \F$}\coordHE{} for any \myHighlight{$\uu \in X$}\coordHE{}.
+\end{lem}
+\oproof{}
+First note that the term \myHighlight{$V_{-N-(k-1)h}(\psi) \chi$}\coordHE{} appearing in the definition \eqref{defC} is precisely 
+the term of highest conformal weight
+in the element of \myHighlight{$O_\uu$}\coordHE{} obtained by substituting \myHighlight{$N, \psi, \chi$}\coordHE{} in \eqref{fchoice}, so that any
+element of \myHighlight{$C_k$}\coordHE{} equals an element of \myHighlight{$O_\uu$}\coordHE{} plus ``lower-order corrections.''  Explicitly, for any \myHighlight{$M$}\coordHE{}, \myHighlight{$C_k^{M} \subset O_\uu + \F^{(M-1)}$}\coordHE{} (where by \myHighlight{$\F^{(M-1)}$}\coordHE{} we mean \myHighlight{$\oplus_{h=0}^{M-1} \F^M$}\coordHE{}.)
+
+Now we prove by induction that \myHighlight{$\F^{(M)} \subset S_k^{(M)} + O_\uu$}\coordHE{}.  For \myHighlight{$M=-1$}\coordHE{} there is nothing to prove.  So assume \myHighlight{$\F^{(M-1)} \subset S_k^{(M-1)} + O_\uu$}\coordHE{}.
+By assumption we have \myHighlight{$\F^M = S_k^M + C_k^M$}\coordHE{}, so \myHighlight{$\F^M \subset S_k^M + O_\uu + \F^{(M-1)} \subset S_k^M + S_k^{(M-1)} + O_\uu = S_k^{(M)} + O_\uu$}\coordHE{} as desired. \done
+
+Now we can formulate our key finiteness hypothesis (which is a kind of higher-dimensional analogue of Zhu's ``condition C,'' to which
+it reduces in case \myHighlight{$k=2$}\coordHE{}) and our main lemma:
+\begin{lem} \label{api} Suppose \myHighlight{$\F / C_k$}\coordHE{} is finite-dimensional.  Fix \myHighlight{$\vv \in X$}\coordHE{} and a simply connected neighborhood \myHighlight{$U$}\coordHE{} of \myHighlight{$\vv$}\coordHE{}.  
+Then any \myHighlight{$\chi \in A_\vv$}\coordHE{} may be extended to
+\myHighlight{$\chit \in \Gamma(U,A)$}\coordHE{} such that \myHighlight{$D^i \chit = 0$}\coordHE{} for all \myHighlight{$i \in [1,k]$}\coordHE{}.
+\end{lem}
+\oproof{} By assumption, we can find a finite-dimensional graded \myHighlight{$S$}\coordHE{} with \myHighlight{$S + C_k = \F$}\coordHE{}.  Let \myHighlight{$\{s_1, \dots, s_d\}$}\coordHE{} be a basis for \myHighlight{$S$}\coordHE{}.
+From Lemma \ref{basislem} we know that \myHighlight{$S + O_\uu = \F$}\coordHE{} for all \myHighlight{$\uu \in X$}\coordHE{}.  Let \myHighlight{$U$}\coordHE{} be any simply connected neighborhood of \myHighlight{$\vv$}\coordHE{} in \myHighlight{$X$}\coordHE{}.  We write
+\begin{equation}\coord{}\boxEquation{
+\chit(\uu) = \sum_{l=1}^d f_l(\uu) s_l \quad (\Mod O_\uu)
+}{
+\chit(\uu) = \sum_{l=1}^d f_l(\uu) s_l \quad (\Mod O_\uu)
+}{ecuacion}\coordE{}\end{equation}
+where the \myHighlight{$f_l$}\coordHE{} are complex-valued functions on \myHighlight{$U$}\coordHE{}, yet to be determined.  Then
+\begin{equation}\coord{}\boxEquation{
+D^i \chit(\uu) = \sum_{l=1}^d \frac{\partial f_l}{\partial u_i}(\uu) s_l + f_l(\uu) L^i(\uu) s_l \quad (\Mod O_\uu).
+}{
+D^i \chit(\uu) = \sum_{l=1}^d \frac{\partial f_l}{\partial u_i}(\uu) s_l + f_l(\uu) L^i(\uu) s_l \quad (\Mod O_\uu).
+}{ecuacion}\coordE{}\end{equation}
+Writing \myHighlight{$L^i(\uu) s_l = \sum_{m = 1}^d C^{im}_l(\uu) s_m \ (\Mod O_\uu)$}\coordHE{}, to get \myHighlight{$D^i \chit(\uu) = 0$}\coordHE{} it is therefore
+sufficient to demand that
+\begin{equation}\coord{}\boxEquation{ \label{eqd}
+0 = \frac{\partial f_m}{\partial u_i} + \sum_{l=1}^d f_l C^{im}_l (\uu)
+}{ 0 = \frac{\partial f_m}{\partial u_i} + \sum_{l=1}^d f_l C^{im}_l (\uu)
+}{ecuacion}\coordE{}\end{equation}
+for each \myHighlight{$m$}\coordHE{}.  For each \myHighlight{$i$}\coordHE{}, this is a regular matrix
+differential equation for the functions \myHighlight{$f_l$}\coordHE{}; furthermore, the fact that \myHighlight{$[D^i, D^j] = 0 \ (\Mod O_\uu)$}\coordHE{} is exactly the integrability condition for this
+system of differential equations, so Frobenius's theorem \cite{Spivak} implies they have a common solution with
+the specified initial condition. \done
+
+Now all the work has been done and we can prove our main theorem, which is essentially a translation of the last result
+to the dual sheaf \myHighlight{$A^*$}\coordHE{}.
+\begin{thm} \label{mainthm} Suppose \myHighlight{$\F / C_k$}\coordHE{} is finite-dimensional.  Fix \myHighlight{$\vv \in X$}\coordHE{} and a simply connected neighborhood \myHighlight{$U$}\coordHE{} of \myHighlight{$\vv$}\coordHE{}.
+Then any \myHighlight{$\eta \in A_\vv^*$}\coordHE{} may be uniquely extended to \myHighlight{$\etat \in \Gamma(A^*, U)$}\coordHE{} such that for any \myHighlight{$\chi \in \F$}\coordHE{},
+\begin{equation}\coord{}\boxEquation{ \label{pop}
+\etat(\uu)(L^i(\uu) \chi) = \dwrt{u_i} \etat(\uu) (\chi).
+}{ \etat(\uu)(L^i(\uu) \chi) = \dwrt{u_i} \etat(\uu) (\chi).
+}{ecuacion}\coordE{}\end{equation}
+\end{thm}
+\oproof{} We define \myHighlight{$\etat(\uu)$}\coordHE{} by the following rule:  given any \myHighlight{$\chi \in A_\uu$}\coordHE{}, use Lemma \ref{api} to extend \myHighlight{$\chi$}\coordHE{} to a section \myHighlight{$\chit$}\coordHE{} of \myHighlight{$A$}\coordHE{}
+over \myHighlight{$U$}\coordHE{} and in particular over \myHighlight{$\vv$}\coordHE{}.  Then set \myHighlight{$\etat(\uu)(\chi) = \eta(\chit(\vv))$}\coordHE{}.  The point of this definition is that it
+makes \myHighlight{$\etat$}\coordHE{} ``constant on horizontal sections:'' for any covariantly constant section \myHighlight{$\chit$}\coordHE{} of \myHighlight{$A$}\coordHE{}, we have
+\begin{equation}\coord{}\boxEquation{ \label{last}
+\etat(\uu) (\chit(\uu)) = const.
+}{ \etat(\uu) (\chit(\uu)) = const.
+}{ecuacion}\coordE{}\end{equation}
+Differentiating \eqref{last} we obtain
+\begin{equation}\coord{}\boxEquation{ \label{last2}
+\left( \dwrt{u_i} \etat(\uu) \right) (\chit(\uu)) + \etat(\uu) \left( \dwrt{u_i} \chit(\uu) \right) = 0,
+}{ \left( \dwrt{u_i} \etat(\uu) \right) (\chit(\uu)) + \etat(\uu) \left( \dwrt{u_i} \chit(\uu) \right) = 0,
+}{ecuacion}\coordE{}\end{equation}
+and since \myHighlight{$D^i \chit(\uu) = 0$}\coordHE{}, using the definition \eqref{defcon} of \myHighlight{$D$}\coordHE{} in \eqref{last2} we obtain \eqref{pop}. \done
+
+In terms of the correlation functions induced from \myHighlight{$\etat(\uu)$}\coordHE{} by Theorem \ref{bigThm}, the result \eqref{pop} can be reexpressed as
+\begin{equation}\coord{}\boxEquation{
+\oint_{u_i} \IP{L(z) \chi}_{\etat(\uu)} dz = \dwrt{u_i} \IP{\chi}_{\etat(\uu)},
+}{
+\oint_{u_i} \IP{L(z) \chi}_{\etat(\uu)} dz = \dwrt{u_i} \IP{\chi}_{\etat(\uu)},
+}{ecuacion}\coordE{}\end{equation}
+using the definition \eqref{defL} of \myHighlight{$L^i$}\coordHE{} and the fact that the correlation
+functions satisfy the highest weight condition.
+This is the desired functional dependence of the correlation functions on \myHighlight{$\uu$}\coordHE{}.  So when \myHighlight{$\F/C_k$}\coordHE{} is finite-dimensional,
+Theorem \ref{mainthm} (together with Theorem \ref{bigThm}) 
+gives a construction of a complete family of \myHighlight{$k$}\coordHE{}-point functions on simply connected neighborhoods in \myHighlight{$X$}\coordHE{}, 
+starting from a single linear functional on one
+space \myHighlight{$A_\vv$}\coordHE{}.
+
+We remark that there is another approach to this system of differential equations, which gives a slightly different
+result.  Namely, one can use the fact that all correlation functions \myHighlight{$\IP{\prod_{a=1}^k W(\phi_a, u_a)}$}\coordHE{} can be computed
+in terms of correlations between fields \myHighlight{$\phi_a$}\coordHE{} belonging to the ``special subspaces'' \cite{Nahm2} of the \myHighlight{$k$}\coordHE{} relevant 
+representations.  When at least \myHighlight{$k-3$}\coordHE{} of the representations are quasirational, one then finds that
+the relevant differential equations close on a finite-dimensional space.  By a calculation similar
+to that done in the proof of Lemma \ref{dpres} one
+can then show that the integrability conditions are always satisfied, so
+that the differential equations admit a solution.
+It would be interesting to find a more explicit connection between this approach
+and that presented above.
+
+
+\section{Discussion} \label{discussion}
+In this paper we have presented a construction of chiral correlation functions on the sphere.  This
+construction guarantees that the correlation functions are locally single-valued, but tells us nothing
+about the monodromy when two fields are transported around one another.  In generic situations one expects that the
+correlation function will change at most by a phase under this transformation, but there are examples known in which this
+is not the case, such as the \ti{logarithmic} conformal field theories \cite{log}.  It would be interesting to find
+a natural condition which implies that logarithms do not occur.  In the case of \myHighlight{$2$}\coordHE{}-point functions with
+logarithms one sees at once that the problem is failure of \myHighlight{$L_0$}\coordHE{} to act semisimply; more generally 
+it has been suggested \cite{Gpriv} that semisimplicity of Zhu's algebra might be sufficient to exclude
+logarithmic behavior for all correlation functions (finite-dimensionality of \myHighlight{$\F / C_2$}\coordHE{} is not sufficient, as one
+sees \cite{Gpriv} from the example of \cite{Glog}.)
+
+After this work was completed the author became aware that vector bundles of conformal blocks with connection 
+determined by the stress-energy tensor, 
+similar to the sheaf \myHighlight{$A^*$}\coordHE{} appearing in Section \ref{funcdep}, were introduced by Friedan and Shenker and
+have been considered previously in e.g. \cite{FS}, \cite{Felder},
+\cite{FS2}.  These constructions are formulated on moduli spaces which are compactified by including
+configurations in which the marked points come together; the vector bundle of conformal blocks becomes
+nontrivial, and the connection only projectively flat, when these extra configurations are included.
+It would be interesting to understand more precisely the relation between the Friedan-Shenker vector bundles
+and those introduced in this paper; in particular, if there were a canonical way to extend the vector bundle \myHighlight{$\F / O_\uu$}\coordHE{}
+to points in moduli space where the \myHighlight{$u_i$}\coordHE{} coincide, it might shed light on the conjecture of Zhu mentioned in Section \ref{funcdep},
+as well as the question of the monodromy of the correlation functions.
+
+It would also be interesting to understand in more detail the
+relation between the present work and the tensor product theory
+of \cite{HL}.
+
+
+\section*{Acknowledgements} \label{ack}
+
+This paper could not have been written were it not for my research supervisors Peter Goddard and Matthias Gaberdiel,
+who originally suggested the problem and who helped me negotiate numerous obstacles.  In particular, I would like to thank
+Matthias Gaberdiel for several important suggestions and for helpful feedback on various drafts of the paper.  I would
+also like to thank Sakura Sch\"afer-Nameki for her comments on an early draft.
+
+I gratefully acknowledge financial support from a British Marshall Scholarship.
+
+
+\begin{thebibliography}{99}
+
+\bibitem{Borch} R. Borcherds, \ti{Vertex algebras, Kac-Moody algebras, and the Monster},
+Proc. Natl. Acad. Sci. USA \textbf{83} (1986), 3068-3071.
+
+\bibitem{NB} D. Brungs and W. Nahm, \ti{The associative algebras of conformal field theory}, Lett. Math. Phys. \textbf{47} (1999), 379-383, hep-th/9811239.
+
+\bibitem{DFMS} P. Di Francesco et al.  \ti{Conformal field theory}, Springer, 1997.
+
+\bibitem{DLM2} C. Dong, H. Li and G. Mason.  \ti{Certain associative algebras similar to \myHighlight{$U(sl_{2})$}\coordHE{} and Zhu's algebra \myHighlight{$A(V_{L})$}\coordHE{}}, J. Algebra \textbf{196} (1997), no. 2, 532--551, q-alg/9605032.
+
+\bibitem{DLM} C. Dong, H. Li and G. Mason.  \ti{Twisted representations of vertex operator algebras}, Math. Ann. \textbf{310} (1998), no. 3, 571-600, q-alg/9509005.
+
+\bibitem{Felder} G. Felder.  \ti{The KZB equations on Riemann surfaces}, in \ti{Les Houches 1995, Quantum symmetries}, 687-725, hep-th/9609153.
+
+\bibitem{FSV} B. Feigin, V. Schechtman and A. Varchenko.  \ti{On algebraic equations satisfied by hypergeometric
+correlators in WZW models. II}, Commun. Math. Phys. \textbf{170} (1995), 219-247, hep-th/9407010.
+
+\bibitem{FLM} I. Frenkel, J. Lepowsky and A. Meurman.  \ti{Vertex operator algebras and the Monster}, Academic (Pure and Applied Mathematics 134), 1988. 
+
+\bibitem{FZ} I. Frenkel and Y. Zhu.  \ti{Vertex operator algebras associated to representations of affine and Virasoro algebras}, Duke Math. J. \textbf{66} (1992), 123-168.
+
+\bibitem{FS} D. Friedan and S. Shenker.  \ti{The analytic geometry of two-dimensional conformal field theory}, Nucl. Phys. \textbf{B281} (1987), 509-545.
+
+\bibitem{FS2} J. Fuchs and C. Schweigert.  \ti{D-brane conformal field theory and bundles of conformal blocks}, math.QA/0004034.
+
+\bibitem{Gaberdiel} M. Gaberdiel.  \ti{Fusion in conformal field theory as the tensor product of the symmetry algebra}, Int. J. Mod. Phys. \textbf{A9} (1994), 4619-4636, hep-th/9307183.
+
+\bibitem{Greview} M. Gaberdiel.  \ti{An introduction to conformal field theory},
+Rept. Prog. Phys. \textbf{63} (2000), 607-667, hep-th/9910156.
+
+\bibitem{Gpriv} M. Gaberdiel.  Private communication.
+
+\bibitem{Glog} M. Gaberdiel and H. Kausch.  \ti{A rational logarithmic conformal field theory}, Phys. Lett. \textbf{B386} (1996), 131-137, hep-th/9606050.
+
+\bibitem{GG} M. Gaberdiel and P. Goddard.  \ti{Axiomatic conformal field theory}, Commun. Math. Phys. \textbf{209} (2000), 549-594, hep-th/9810018.
+
+\bibitem{GH} P. Griffiths and J. Harris.  \ti{Principles of algebraic geometry}, Wiley, 1978.
+
+\bibitem{log} V. Gurarie.  \ti{Logarithmic operators in conformal field theory}, Nucl. Phys. \textbf{B410} (1993), 535-549, hep-th/9303160.
+
+\bibitem{HL} Y. Huang and J. Lepowsky.  \ti{A theory of tensor products for module categories of a vertex operator algebra.  I-III},  Selecta Math. \textbf{1} (1995), no. 4, 699-756, hep-th/9309076; \ti{ibid.}, 757-786, hep-th/9309159; J. Pure Appl. Algebra \textbf{100} (1995), 141-172, q-alg/9505018.
+
+\bibitem{Kac} V. Kac.  \ti{Vertex algebras for beginners}, American Mathematical Society, 1997.
+
+\bibitem{KL} D. Kazhdan and G. Lusztig.  \ti{Tensor categories arising from affine Lie algebras. I-V,} J. Amer. Math.
+Soc. \textbf{6} (1993), 905-947; \ti{ibid.}, 949-1011; \textbf{7} (1994), 335-382; \ti{ibid.}, 383-454, \dots.
+
+\bibitem{Li} H. Li.  \ti{The regular representation, Zhu's \myHighlight{$A(V)$}\coordHE{}-theory and induced modules}, math.QA/9909007.
+
+\bibitem{Lucke} K. Lucke.  \ti{On Zhu's Associative Algebra as a Tool in the Representation Theory of Vertex Operator Algebras}, hep-th/9605020.
+
+\bibitem{KZ} V. Knizhnik and A. Zamolodchikov.  \ti{Current algebra and Wess-Zumino model in two dimensions}, Nucl. Phys. \textbf{B247} (1984), 83-103.
+
+\bibitem{Montague} P. Montague.  \ti{On representations of conformal field theories and the construction of orbifolds}, Lett. Math. Phys. \textbf{38} (1996), 1-11.
+
+\bibitem{Nahm2} W. Nahm.  \ti{Quasi-rational fusion products}, Int. J. Mod. Phys. \textbf{B8} (1994), 3693-3702, hep-th/9402039.
+
+\bibitem{Spivak} M. Spivak.  \ti{A comprehensive introduction to differential geometry. I}, Publish or Perish, 1979. 
+
+\bibitem{Zhu} Y. Zhu.  \ti{Modular invariance of characters of vertex operator algebras}, J. Amer. Math. Soc. \textbf{9}, 237-302 (1996).
+
+\end{thebibliography}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\bye

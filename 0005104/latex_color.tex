@@ -1,0 +1,1078 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,12pt]{article} 
+\usepackage{amssymb,amsmath,amsfonts} 
+\usepackage[dvips]{graphicx}
+
+ 
+\setlength{\textwidth}{16.5cm} 
+\setlength{\textheight}{8.8in} 
+\setlength{\oddsidemargin}{0pt} 
+\setlength{\marginparsep}{0pt} 
+\setlength{\marginparwidth}{0pt} 
+\setlength{\headheight}{0in} 
+\setlength{\topmargin}{0in} 
+\setlength{\headsep}{0in} 
+\setlength{\footskip}{0.22in} 
+ 
+\usepackage{useful_macros}
+\begin{document} 
+ 
+\title{Crossing probabilities on same-spin clusters\\
+in the two-dimensional Ising model} 
+\author{ 
+Ervig Lapalme\footnote{Centre de recherches math\'ematiques, 
+Universit\'e de Montr\'eal, C.P.\ 6128, succ.\ centre-ville,
+Montr\'eal,  Qu\'ebec, Canada\ \ H3C 3J7. Email: {\ttfamily
+lapalmee{\char'100}crm.umontreal.ca}}
+\and Yvan Saint-Aubin\footnote{
+Centre de recherches math\'ematiques and 
+D\'ept.\ de math\'ematiques et de statistique,
+Universit\'e de Montr\'eal, C.P.\ 6128, succ.\ centre-ville,
+Montr\'eal,  Qu\'ebec, Canada\ \ H3C 3J7.
+Email: {\ttfamily saint{\char'100}crm.umontreal.ca}}
+}
+\date{\today} 
+ 
+ 
+
+\maketitle 
+ 
+\begin{abstract} 
+Probabilities of crossing on same-spin clusters, seen as order
+parameters, have been introduced recently for the critical 2d Ising model by
+Langlands, Lewis and Saint-Aubin.
+We extend Cardy's ideas, introduced for percolation, to obtain an
+ordinary  differential equation of order \myHighlight{$6$}\coordHE{} for the horizontal crossing probability
+\myHighlight{$\pi_h$}\coordHE{}. Due to the identity \myHighlight{$\pi_h(r)+\pi_h(1/r)=1$}\coordHE{}, the function \myHighlight{$\pi_h$}\coordHE{}
+must lie in a 3-dimensional subspace. New measurements of \myHighlight{$\pi_h$}\coordHE{} are made
+for \myHighlight{$40$}\coordHE{} values of the aspect ratio
+\myHighlight{$r$}\coordHE{} (\myHighlight{$r\in[0.1443,6.928]$}\coordHE{}). These data are more precise than those obtained
+by Langlands {\em et al} as
+the \myHighlight{$95$}\coordHE{}\%-confidence interval is brought to \myHighlight{$4\times10^{-4}$}\coordHE{}. A \myHighlight{$3$}\coordHE{}-parameter
+fit using these new data determines the solution of the differential equation.
+The largest gap between this solution and the 40 data is smaller than 
+\myHighlight{$4\times 10^{-4}$}\coordHE{}. The probability \myHighlight{$\pi_{hv}$}\coordHE{} of simultaneous horizontal
+and vertical crossings is also treated.
+
+\bigskip
+
+Les probabilit\'es de travers\'ee sur les plages de spins identiques,
+vues comme para\-m\`e\-tres d'ordre, ont \'et\'e introduites 
+r\'ecemment pour le mod\`ele d'Ising bidimensionnel critique par
+Langlands, Lewis et Saint-Aubin. Nous \'etendons
+les id\'ees de Cardy, pr\'esent\'ees pour la percolation, afin d'obtenir
+une \'equation diff\'erentielle ordinaire du sixi\`eme ordre pour la
+probabilit\'e d'une travers\'ee horizontale \myHighlight{$\pi_h$}\coordHE{}. Il suit de 
+l'identit\'e \myHighlight{$\pi_h(r)+\pi_h(1/r)=1$}\coordHE{} que \myHighlight{$\pi_h$}\coordHE{} doit reposer dans un 
+sous-espace de dimension trois. De nouvelles mesures de \myHighlight{$\pi_h$}\coordHE{} sont faites
+pour \myHighlight{$40$}\coordHE{} valeurs du rapport \myHighlight{$r$}\coordHE{} des c\^ot\'es du rectangle (\myHighlight{$r\in[0.1443,6.928]$}\coordHE{}).
+L'intervalle de confiance de \myHighlight{$95$}\coordHE{}\% est ici r\'eduit \`a \myHighlight{$4\times 10^{-4}$}\coordHE{}.
+La solution de l'\'equation diff\'erentielle est choisie en minimisant
+l'\'ecart quadratique entre la solution et ces nouvelle donn\'ees. Le
+plus grand \'ecart entre les donn\'ees et la solution ainsi obtenue est
+plus petit que \myHighlight{$4\times 10^{-4}$}\coordHE{}. La probabilit\'e de travers\'ees
+horizontale et verticale simultan\'ees est \'egalement \'etudi\'ee.
+\end{abstract} 
+
+\noindent\hskip\leftmargin{\scshape Short Title:}{} Crossing probabilities in the 2d Ising model
+
+\noindent\hskip\leftmargin{\scshape PACS numbers:}{} 0.50.+q, 64.60.Fr, 64.60.Ak, 11.25.Hf
+
+
+\section{Introduction} 
+
+The probability \myHighlight{$\pi_h(r)$}\coordHE{} of crossing on open sites inside a rectangle of aspect
+ratio \myHighlight{$r$}\coordHE{} has been measured at \myHighlight{$p_c$}\coordHE{} for several models of percolation in \cite{LPPS} and
+\cite{LPS}. These simulations support hypotheses of universality and conformal
+invariance of this function \myHighlight{$\pi_h(r)$}\coordHE{} and of several others. Cardy's 
+contemporaneous work \cite{Cardyperco} offered a prediction for \myHighlight{$\pi_h$}\coordHE{} using
+conformal field theory. His analytic expression agrees with the simulations
+within statistical errors and provides further support that these crossing
+probabilities are order parameters with the usual critical properties.
+
+This paper presents similar evidence, both numerical and analytic, for 
+crossing probabilities
+on same-spin clusters of the two-dimensional Ising model at
+criticality. These crossing probabilities are not traditional order parameters
+for the Ising model. It is not a priori obvious that they are not identically 
+zero or one in any dimension \myHighlight{$d$}\coordHE{}. In dimension two however the simulations carried out
+in \cite{LLS} indicates clearly that they are non-trivial functions and that they are
+likely to satisfy the same hypotheses (or even more restrictive ones) of 
+universality and conformal invariance. Moreover physical quantities for which conformal
+field theory gives quantitative predictions that can be readily verified by
+simulation are always welcome.
+
+Let a triangular lattice be oriented in such a way that sites on horizontal
+lines are at a distance of one mesh unit. A rectangle of height \myHighlight{$V$}\coordHE{} and width
+\myHighlight{$H$}\coordHE{} is superimposed on the lattice. The width \myHighlight{$H$}\coordHE{} is measured in mesh units
+but \myHighlight{$V$}\coordHE{} is the number of horizontal lines in the rectangle. A configuration of the 
+Ising model has a horizontal crossing if there exists a path made of edges between 
+nearest neighbor sites going
+from the leftmost inner column to the rightmost one and visiting only plus
+spins. (Because of the relative position of the rectangle and the lattice,
+the vertical columns are made of sites in zigzag.) Let \myHighlight{$\pi_h(V,H)$}\coordHE{} be the
+probability at the critical temperature of such a crossing. One defines
+similarly a vertical crossing and the associated probability \myHighlight{$\pi_v(V,H)$}\coordHE{}.
+It is a well-known fact from percolation theory that, on the triangular
+lattice, a horizontal crossing on plus spins (or open sites)
+exist if and only if there is no vertical crossing on minus spins
+(closed sites). (One can convince oneself easily of this
+simple fact using a drawing.) Since plus and minus spins are equiprobable,
+this observation implies \myHighlight{$\pi_h(V,H)+\pi_v(V,H)=1$}\coordHE{}. In this paper we will 
+ultimately be interested in the limit \myHighlight{$\pi_h(r)=\lim_{V,H\rightarrow \infty, r=
+\sqrt3 V/2H}
+\pi_h(V,H)$}\coordHE{} and similarly for \myHighlight{$\pi_v$}\coordHE{}. The infinite lattice limit of the previous
+relation is known as the duality relation: \myHighlight{$\pi_h(r)+\pi_v(r)=1$}\coordHE{}. If \myHighlight{$\pi_h$}\coordHE{}
+and \myHighlight{$\pi_v$}\coordHE{} are rotational invariants, the latter relation can be written as
+\myHighlight{$\pi_h(r)+\pi_h(1/r)=1$}\coordHE{}. This duality relation will hold for other
+(regular) lattices if the functions \myHighlight{$\pi_h$}\coordHE{} and \myHighlight{$\pi_v$}\coordHE{} are universal but
+its discrete equivalent (\myHighlight{$\pi_h(V,H)+\pi_v(V,H)=1$}\coordHE{}) hold strictly for neither
+the square nor the hexagonal lattices.
+
+The present paper discusses both a prediction for \myHighlight{$\pi_h$}\coordHE{} extending Cardy's
+approach and precise measurements of the function \myHighlight{$\pi_h$}\coordHE{} for \myHighlight{$40$}\coordHE{} values
+of its parameter \myHighlight{$r$}\coordHE{}. The agreement will be seen to be excellent, that is,
+perfect within statistical errors. The first section
+covers the theoretical prediction, the second the details of the simulation
+and the comparison of the data with the prediction.
+
+ 
+\section{A theoretical prediction based\\ on conformal field theory}
+
+\subsection{Cardy's prediction for percolation}
+
+Cardy's prediction for \myHighlight{$\pi_h$}\coordHE{} for two-dimensional percolation proceeds
+in two steps. He first identifies the probability \myHighlight{$\pi_h$}\coordHE{} with the
+difference of two partition functions with boundary conditions for
+the \myHighlight{$1$}\coordHE{}-state Potts model. He then uses the 
+conformal field theory at \myHighlight{$c=0$}\coordHE{} to
+obtain an analytic expression for this difference. Here is a (very
+rapid) presentation of these two steps.
+
+The partition function \myHighlight{$Z(q)$}\coordHE{} of the \myHighlight{$q$}\coordHE{}-state Potts model on a finite
+rectangular domain is the sum over all configurations \myHighlight{$\sigma$}\coordHE{}
+of \myHighlight{$e^{-\beta H(\sigma)}$}\coordHE{} where \myHighlight{$H(\sigma)=J\sum_{\langle x,y\rangle}
+(1-\delta_{\sigma(x), \sigma(y)})$}\coordHE{}. The sum in \myHighlight{$H(\sigma)$}\coordHE{} runs over
+immediate neighbor pairs \myHighlight{$\langle x,y\rangle$}\coordHE{}. This can be rewritten as 
+\myHighlight{$Z(q)=\sum_R p^{B(R)}(1-p)^{B-B(R)}q^{N_c(R)}$}\coordHE{} where \myHighlight{$p=1-e^{-\beta J}$}\coordHE{}.
+The sum is over all subsets \myHighlight{$R$}\coordHE{} of the set of edges of the lattice in
+the rectangular domain. The integer \myHighlight{$B$}\coordHE{} counts the edges in the lattice,
+\myHighlight{$B(R)$}\coordHE{} those in the subset \myHighlight{$R$}\coordHE{} and \myHighlight{$N_c(R)$}\coordHE{} the clusters
+in \myHighlight{$R$}\coordHE{}. If \myHighlight{$q=1$}\coordHE{} (the value for percolation), this sum is 1 as desired.
+Let \myHighlight{$Z_{\alpha\beta}$}\coordHE{} be the partition function of the Potts model for
+configurations whose spins on the left side of the rectangle are in
+the state \myHighlight{$\alpha\in\{1,2,\dots,q\}$}\coordHE{}, those on the right in the
+state \myHighlight{$\beta$}\coordHE{}, and the others free. Cardy's first crucial observation
+is that \myHighlight{$\pi_h=\left.(Z_{\alpha\alpha}-Z_{\alpha\beta})\right|_{q=1}$}\coordHE{}
+where \myHighlight{$\alpha\neq\beta$}\coordHE{}. (The difference, done for a ``generic'' \myHighlight{$q$}\coordHE{},
+contains precisely the configurations that have a cluster intersecting the
+left and right sides.) The problem of calculating \myHighlight{$\pi_h$}\coordHE{} is therefore
+transformed into that of calculating partition functions.
+
+
+The possibility of calculating partition functions on finite domains
+with given boundary conditions also originates from works by Cardy (see for
+example \cite{C2}).
+In the case of \myHighlight{$Z_{\alpha\beta}$}\coordHE{}, for example, the four sides of the rectangle
+are submitted respectively to the boundary conditions \myHighlight{$\alpha$}\coordHE{}, free,
+\myHighlight{$\beta$}\coordHE{} and free. Cardy argues that such a partition function is proportional
+to the \myHighlight{$4$}\coordHE{}-point correlation function \myHighlight{$\langle \phi(z_1) \phi(z_2) \phi(z_3)
+\phi(z_4) \rangle$}\coordHE{} in the conformal field theory associated to percolation
+whose central charge is \myHighlight{$c=0$}\coordHE{}. The \myHighlight{$z_i\in\mathbb C$}\coordHE{} are the vertices of the
+rectangle in the complex plane and \myHighlight{$\phi$}\coordHE{} is the field that changes the
+boundary conditions in this theory. For percolation, this field is 
+identified to \myHighlight{$\phi_{1,2}$}\coordHE{} and it has conformal weight \myHighlight{$h=0$}\coordHE{}, a necessary
+condition for \myHighlight{$\langle \phi(z_1) \phi(z_2) \phi(z_3)
+\phi(z_4) \rangle$}\coordHE{} to be scale invariant. (The indices on \myHighlight{$\phi_{1,2}$}\coordHE{}
+refer to the labels of Kac table. See \cite{dFMS}.) The rules to find
+correlation functions in a conformal field theory are well-known and
+with this identification between partition functions with boundary conditions
+and \myHighlight{$4$}\coordHE{}-point correlation functions, the problem of calculating \myHighlight{$\pi_h$}\coordHE{} amounts
+to solving an ordinary differential equation.
+
+Two obstacles appear in applying these ideas to the Ising model. First the
+Ising model is the \myHighlight{$q=2$}\coordHE{} Potts model and the difference \myHighlight{$(Z_{\alpha\alpha}-
+Z_{\alpha\beta})|_{q=2}$}\coordHE{} cannot be interpreted as the crossing probability
+since the factor \myHighlight{$q^{N_c(R)}$}\coordHE{} in the sum gives different weights to the various
+configurations that have a crossing from left to right. Second although 
+the operator
+for the Ising model that changes the boundary state from free to a given state
+\myHighlight{$\alpha$}\coordHE{} is still \myHighlight{$\phi_{1,2}$}\coordHE{}, as in percolation, its conformal weight
+\myHighlight{$h_{1,2}$}\coordHE{} is now \myHighlight{$\frac1{16}$}\coordHE{} and its \myHighlight{$4$}\coordHE{}-point correlation is not anymore 
+invariant under a conformal mapping \myHighlight{$z\rightarrow w$}\coordHE{} but picks up the usual
+jacobian factors: \myHighlight{$\langle \phi(w_1) \phi(w_2)\phi(w_3)\phi(w_4)\rangle=
+(\prod_i |w'(z_i)|^{-h_{1,2}})\langle \phi(z_1) \phi(z_2)\phi(z_3)
+\phi(z_4)\rangle$}\coordHE{}. These prefactors (and those additional coming from
+the presence of vertices along the boundary) seem to contradict the (strict)
+conformal invariance observed by simulation in \cite{LLS}.
+
+In \cite{LPPS} and \cite{LPS} the probability \myHighlight{$\pi_{hv}$}\coordHE{} of having simultaneous
+horizontal and vertical crossings was also obtained numerically. Watts \cite{W} was
+able to extend Cardy's argument to obtain a prediction that fits extremely well
+the data. His work is of particular interest to us as he is able to write
+\myHighlight{$\pi_{hv}$}\coordHE{} again as a partition function but with more general boundary
+conditions. Whether a conformal boundary operator accomplishes
+the change between these more complex boundary conditions is not clear.
+Nonetheless the expression of \myHighlight{$\pi_{hv}$}\coordHE{} as a partition function allows
+us to expect, Watts argues, that this probability is given by some
+\myHighlight{$4$}\coordHE{}-point correlation function. He seeks it in the \myHighlight{$h=0$}\coordHE{} sector.
+
+\subsection{The differential equation for \myHighlight{$\pi_h$}\coordHE{}}
+
+Cardy's argument for percolation cannot be extended to the Ising model.
+One can still hope to relate crossing probabilities like \myHighlight{$\pi_h$}\coordHE{} to
+\myHighlight{$4$}\coordHE{}-point correlation functions as Watts did for \myHighlight{$\pi_{hv}$}\coordHE{} of percolation.
+If such a relationship exists, the choice can be narrowed to \myHighlight{$4$}\coordHE{}-point
+functions of the identity family as these are the only ones in the
+\myHighlight{$c=\frac12$}\coordHE{} conformal field theory that are invariant under conformal
+map \myHighlight{$z\rightarrow w$}\coordHE{} like \myHighlight{$\pi_h(r)$}\coordHE{}. An obvious objection will be
+that the \myHighlight{$4$}\coordHE{}-point function of the primary field in the identity family
+is identically \myHighlight{$1$}\coordHE{} (or a constant). For the calculation at hand it might well be
+that this primary field must be interpreted as one whose 
+correlation functions satisfy only one of the differential equations
+corresponding to the two leading singular vectors. This milder 
+requirement does not force the function to be a constant as will be seen
+immediately.
+
+The Verma module \myHighlight{$V_{(c=\frac12,h=0)}$}\coordHE{} of the Virasoro algebra has a maximal
+proper submodule \myHighlight{$M$}\coordHE{} generated by two singular vectors, one at level \myHighlight{$1$}\coordHE{},
+the other at level \myHighlight{$6$}\coordHE{}. The first of these is \myHighlight{$L_{-1}|0\rangle$}\coordHE{} and the
+corresponding differential equation implies that the \myHighlight{$4$}\coordHE{}-point function
+is a constant. We shall drop this requirement. The other singular
+vector is
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \left({L_{{-1}}}^{6}-10\rightCoord{}\,{L_{{-1}}}^{4}L_{{-2}}+{\frac {\leftCoord{}43}{\rightCoord{}3}}\rightCoord{}\,{L_{{-1}}}^
+{\rightCoord{}\leftCoord{}2}{L_{{-2}}}^{2}-{\frac {\leftCoord{}100}{\rightCoord{}27}}\rightCoord{}\,{L_{{-2}}}^{3}+{\frac {\leftCoord{}97}{\rightCoord{}2}}\rightCoord{}\,{
+L_{{-1}}}^{3}L_{{-3}}\right.\rightCoord{}\\\leftCoord{}
+\leftCoord{}-{\frac {\leftCoord{}337}{\rightCoord{}6}}\rightCoord{}\,L_{{-1}}L_{{-2}}L_{{-3}}+{
+\frac {\leftCoord{}3185}{\rightCoord{}144}}\rightCoord{}\,{L_{{-3}}}^{2}-{\frac {\leftCoord{}381}{\rightCoord{}2}}\rightCoord{}\,{L_{{-1}}}^{2}L_{{-4}}+{\frac
+  {\rightCoord{}\leftCoord{}1265}{18}}\rightCoord{}\,L_{{-2}}L_{{-4}}\rightCoord{}\\\leftCoord{}
+\left. +{\frac {\leftCoord{}19309}{\rightCoord{}36}}\rightCoord{}\,L_{{-1}}L_{{-5}}-{\frac
+    {\rightCoord{}\leftCoord{}9005}{12}}\rightCoord{}\,L_{{-6}}\right) \left|c={\textstyle{\frac{\leftCoord{}1}{\rightCoord{}2}}},h=0\right\rangle . \rightCoord{}
+\rightCoord{}}{0mm}{15}{26}{
+  \left({L_{{-1}}}^{6}-10\,{L_{{-1}}}^{4}L_{{-2}}+{\frac {43}{3}}\,{L_{{-1}}}^
+{2}{L_{{-2}}}^{2}-{\frac {100}{27}}\,{L_{{-2}}}^{3}+{\frac {97}{2}}\,{
+L_{{-1}}}^{3}L_{{-3}}\right.\\
+-{\frac {337}{6}}\,L_{{-1}}L_{{-2}}L_{{-3}}+{
+\frac {3185}{144}}\,{L_{{-3}}}^{2}-{\frac {381}{2}}\,{L_{{-1}}}^{2}L_{{-4}}+{\frac
+  {1265}{18}}\,L_{{-2}}L_{{-4}}\\
+\left. +{\frac {19309}{36}}\,L_{{-1}}L_{{-5}}-{\frac
+    {9005}{12}}\,L_{{-6}}\right) \left|c={\textstyle{\frac{1}{2}}},h=0\right\rangle . 
+}{1}\coordE{}\end{eqnarray*}
+If \myHighlight{$f(z)$}\coordHE{} is the \myHighlight{$4$}\coordHE{}-point function with \myHighlight{$z=(z_1-z_2)(z_3-z_4)/(z_1-z_3)
+(z_2-z_4)$}\coordHE{}, the differential equation is
+\begin{equation}\coord{}\boxEquation{
+  \label{eqdiff}
+  \begin{split}
+    {\frac {1}{72}}\,\left (1-2\,z\right )\left (686\,{z}^{2}\left (1-z
+      \right )^{2}+73\,z\left (1-z\right )+25\right ){\frac {d}{dz}}f(z)&\\
+    +{\frac {1}{144}}\,z\left (1-z\right )\left (25141\,{z}^{2}\left (1-z
+      \right )^{2}-2986\,z\left (1-z\right )-171\right ){\frac {d^{2}}{d{z}^
+        {2}}}f(z)&\\
+    +\frac{1}{
+      27}\,{z}^{2}\left (1-z\right )^{2}\left (1-2\,z\right )
+    \left (208-3595\,z\left (1-z\right )\right ){\frac {d^{3}}{d{z}^{3}}}f
+    (z)&\\
+    +\frac{1}{6}\,{z}^{3}\left (1-z\right )^{3}\left (137-737\,z\left (1-z
+      \right )\right ){\frac {d^{4}}{d{z}^{4}}}f(z)&\\
+    +10\,\left (1-2\,z\right ){z}^{4}\left (1-z\right )^{4}{\frac
+      {d^{5}}{d{z}^{5}}}f(z)&\\
+    +{z}^{5}\left (1-z\right )^{5}{\frac {d^{6}}{d{z}^{6}}}f(z)&=0.  
+  \end{split}
+}{
+  \begin{split}
+    {\frac {1}{72}}\,\left (1-2\,z\right )\left (686\,{z}^{2}\left (1-z
+      \right )^{2}+73\,z\left (1-z\right )+25\right ){\frac {d}{dz}}f(z)&\\
+    +{\frac {1}{144}}\,z\left (1-z\right )\left (25141\,{z}^{2}\left (1-z
+      \right )^{2}-2986\,z\left (1-z\right )-171\right ){\frac {d^{2}}{d{z}^
+        {2}}}f(z)&\\
+    +\frac{1}{
+      27}\,{z}^{2}\left (1-z\right )^{2}\left (1-2\,z\right )
+    \left (208-3595\,z\left (1-z\right )\right ){\frac {d^{3}}{d{z}^{3}}}f
+    (z)&\\
+    +\frac{1}{6}\,{z}^{3}\left (1-z\right )^{3}\left (137-737\,z\left (1-z
+      \right )\right ){\frac {d^{4}}{d{z}^{4}}}f(z)&\\
+    +10\,\left (1-2\,z\right ){z}^{4}\left (1-z\right )^{4}{\frac
+      {d^{5}}{d{z}^{5}}}f(z)&\\
+    +{z}^{5}\left (1-z\right )^{5}{\frac {d^{6}}{d{z}^{6}}}f(z)&=0.  
+  \end{split}
+}{split}\coordE{}\end{equation}
+This differential equation has three (regular) singular points at \myHighlight{$0,1$}\coordHE{}
+and \myHighlight{$\infty$}\coordHE{}. It is invariant under any permutation of these three points.
+(Invariance under \myHighlight{$z\rightarrow 1-z$}\coordHE{} is clear: invariance under
+\myHighlight{$z\rightarrow 1/z$}\coordHE{} requires some work.) The exponents
+at any of these points are \myHighlight{$0$}\coordHE{}, \myHighlight{$\frac16$}\coordHE{}
+twice degenerate, \myHighlight{$\frac12$}\coordHE{}, \myHighlight{$\frac53$}\coordHE{} and \myHighlight{$\frac52$}\coordHE{}. The monodromy
+matrices around the three singular points are similar due to the symmetry
+of the equation but they cannot be diagonalized simultaneously.
+
+The cross-ratio \myHighlight{$z=(z_1-z_2)(z_3-z_4)/(z_1-z_3)
+(z_2-z_4)$}\coordHE{} is related to the aspect ratio \myHighlight{$r=\sqrt3 V/2H$}\coordHE{} of the rectangle. If
+the four points \myHighlight{$z_1, z_2, z_3$}\coordHE{} and \myHighlight{$z_4$}\coordHE{} are chosen along the real axis
+at \myHighlight{$-\frac1k, -1, 1, \frac1k$}\coordHE{}, then 
+\begin{equation*}\coord{}\boxEquation{
+k=\frac{1-\sqrt z}{1+\sqrt z}.
+}{
+k=\frac{1-\sqrt z}{1+\sqrt z}.
+}{ecuacion}\coordE{}\end{equation*}
+A Schwarz-Christoffel transformation can be used to map the upper plane
+onto a rectangle with the images of the \myHighlight{$z_i$}\coordHE{} at the vertices. The aspect
+ratio is then given as 
+\begin{equation*}\coord{}\boxEquation{
+r=\frac{K(1-k^2)}{2K(k^2)}
+}{
+r=\frac{K(1-k^2)}{2K(k^2)}
+}{ecuacion}\coordE{}\end{equation*}
+where \myHighlight{$K$}\coordHE{} is the complete elliptic integral of the first kind. The very
+short but wide rectangles (\myHighlight{$r=\sqrt3 V/2H\rightarrow 0^+$}\coordHE{}) corresponds to \myHighlight{$z\rightarrow
+0^+$}\coordHE{}, the tall and narrow (\myHighlight{$r\rightarrow+\infty$}\coordHE{}) to \myHighlight{$z\rightarrow 1^-$}\coordHE{} and
+the square to \myHighlight{$r=1, z=\frac12$}\coordHE{}. The function \myHighlight{$r(z)$}\coordHE{} has the property
+\myHighlight{$r(z)=r(\frac1z)$}\coordHE{} and the symmetry \myHighlight{$z\rightarrow \frac1z$}\coordHE{} of the differential
+equation is thus welcome. If \myHighlight{$\pi_h$}\coordHE{} does not depend on the relative angle
+between the rectangle and the lattice, that is if \myHighlight{$\pi_h$}\coordHE{} is a rotational
+invariant, then the duality relation implies \myHighlight{$\pi_h(1)=\frac12$}\coordHE{} and it can
+be put in the form \myHighlight{$(\frac12-\pi_h(r))=-(\frac12-\pi_h(\frac1r))$}\coordHE{}. Fortunately
+the function \myHighlight{$r(z)$}\coordHE{} is such that \myHighlight{$r(z)=1/r(1-z)$}\coordHE{} and the duality simply
+states that the function \myHighlight{$f(z)=\frac12-\pi_h(r(z))$}\coordHE{} is odd with respect to
+the axis \myHighlight{$z=\frac12$}\coordHE{}. An odd subspace of the solution space of the differential
+equation (odd with respect with \myHighlight{$z=\frac12$}\coordHE{}) exists due to the symmetry
+\myHighlight{$z\rightarrow 1-z$}\coordHE{} and it is of dimension \myHighlight{$3$}\coordHE{}. 
+
+We explored several
+paths to cast the solutions of eq.\ (\ref{eqdiff}) into analytically tractable forms.
+One of them was to write the lhs of eq.\ (\ref{eqdiff}) as 
+\myHighlight{$\prod_{1\le i\le6}(z(1-z))^{a_i}\frac{d}{dz}$}\coordHE{} like Watts did.
+But there is no real solutions for the \myHighlight{$a_i$}\coordHE{}'s in the present case. The most
+natural path however is the screening operator method (\cite{DF}, see also
+\cite{dFMS}). The pertinent field is \myHighlight{$\phi_{2,3}$}\coordHE{} (with Kac's labels)
+and the 4-point correlation calls for three contour integrals
+(a charge \myHighlight{$Q_+Q_-^2$}\coordHE{} must be added at infinity to assure
+neutrality). Integral representations of six linearly independent
+solutions can be obtained in this straightforward (but probably tedious)
+way. The main problem is therefore whether there is sufficient physical
+information on \myHighlight{$f$}\coordHE{} to fix the linear combination. As argued above the odd parity
+of \myHighlight{$f$}\coordHE{} reduces the space of solutions to a three-dimensional subspace.
+The condition \myHighlight{$f(0)=-\frac12$}\coordHE{} (i.e.\ \myHighlight{$\pi_h(0)=1-\pi_h(1)=0$}\coordHE{}) is one
+further linear constraint. The function \myHighlight{$f(z)$}\coordHE{} is monotone increasing
+but this condition will restrict \myHighlight{$f$}\coordHE{} to an open set of the \myHighlight{$3$}\coordHE{}-d
+subspace rather than decrease the dimension. The numerical data presented below indicate that 
+\myHighlight{$\pi_h(z)\rightarrow z^{\frac16}$}\coordHE{} as \myHighlight{$z\rightarrow 0^+$}\coordHE{}.
+This is rather striking in view of the two-fold degeneracy of the
+exponent \myHighlight{$\frac16$}\coordHE{}. Two solutions associated to this exponent can
+be chosen to behave as \myHighlight{$z^{\frac16}$}\coordHE{} and \myHighlight{$z^{\frac16}\log z$}\coordHE{} for small
+\myHighlight{$z$}\coordHE{} and the latter, if present in \myHighlight{$f$}\coordHE{}, should dominate the former
+whenever \myHighlight{$z$}\coordHE{} is close to \myHighlight{$0$}\coordHE{}. 
+The fact that it is not seen in the simulation
+could be interpreted physically as a manifestation of the power
+law behavior of critical correlation functions at short distance. Imposing that
+the behavior in \myHighlight{$z^{\frac16}\log z$}\coordHE{} be absent of \myHighlight{$f$}\coordHE{} would add one linear
+constraint. With all these constraints we would still be left with
+a one-dimensional subspace in the space of odd solutions. We have not
+found any further constraints to fix completely the function \myHighlight{$f$}\coordHE{}. This
+is why we resorted to a numerical fit (see Paragraph \ref{numeric}).
+
+As we were trying to solve analytically the differential equation, Marc-Andr\'e
+Lewis suggested to us to look for a solution of the form 
+\myHighlight{$ez^d {}_2F_1(a,b,c;z)$}\coordHE{}, with \myHighlight{$a,b,c,d$}\coordHE{} and \myHighlight{$e$}\coordHE{} constants, that would be
+odd around \myHighlight{$z=\frac12$}\coordHE{} and reproduce the asymptotic behavior of the data.
+Cardy's prediction for percolation is of this form and the suggestion is natural
+in this sense. Such a function exists but it does not satisfy the differential
+equation. However it follows so closely the data of \cite{LLS} (the worst
+gap is \myHighlight{$1$}\coordHE{}\%) that we decided to improve these measurements to answer the
+question: which of the hypergeometric function or of the solution of the
+differential equation, if any, describes the data.
+
+
+\section{Improved measurements of \myHighlight{$\pi_h$}\coordHE{}}
+
+\subsection{Finite size effects and power law behavior}
+
+The probabilities \myHighlight{$\pi_h,\pi_v$}\coordHE{} and \myHighlight{$\pi_{hv}$}\coordHE{} at \myHighlight{$81$}\coordHE{} values
+of \myHighlight{$r$}\coordHE{} (\myHighlight{$\in[0.136,7.351]$}\coordHE{})
+were measured in \cite{LLS} for the three regular lattices on rectangles
+containing around \myHighlight{$40000$}\coordHE{} sites. For these sizes, departure from the
+duality relation is small but still noticeable for the square and the
+hexagonal lattices. No attempt was made there to use various sizes in order to 
+reduce finite-size effects. For the new runs to be presented here we
+chose to concentrate on the triangular lattice and use various sizes
+to approximate the function \myHighlight{$\pi_h$}\coordHE{} (and the other two, \myHighlight{$\pi_v$}\coordHE{} and \myHighlight{$\pi_{hv}$}\coordHE{}) in the
+limit when the mesh goes to zero.
+
+A power law for the finite-size behavior of critical data is an accepted
+hypothesis and our measurements rest upon it. It states that, for sufficiently
+large size,
+\begin{equation*}\coord{}\boxEquation{
+|\pi_h(V,H)-\pi_h(r)| \approx a V^\beta
+}{
+|\pi_h(V,H)-\pi_h(r)| \approx a V^\beta
+}{ecuacion}\coordE{}\end{equation*}
+with \myHighlight{$\beta$}\coordHE{} a negative constant and \myHighlight{$r=\sqrt3 V/2H$}\coordHE{}. We shall use several linear
+sizes of the form \myHighlight{$V=2^iV_0$}\coordHE{} and \myHighlight{$H=2^iH_0$}\coordHE{}. Writing \myHighlight{$\pi_h(i)$}\coordHE{} for
+\myHighlight{$\pi_h(2^iV_0,2^iH_0)$}\coordHE{} and supposing that \myHighlight{$\pi_h(i)$}\coordHE{} is decreasing,
+we can write \myHighlight{$\pi_h(i)-\pi_h(i+1)\approx aV_0^\beta 2^{i\beta}(1-2^\beta)$}\coordHE{} and
+therefore express \myHighlight{$\pi_h(r)$}\coordHE{} as \myHighlight{$\pi_h(i)-aV_0^\beta2^{i\beta}$}\coordHE{}. To determine the
+constants \myHighlight{$a$}\coordHE{} and \myHighlight{$\beta$}\coordHE{} requires at least \myHighlight{$3$}\coordHE{} rectangle sizes as only
+the differences \myHighlight{$(\pi_h(i)-\pi_h(i+1))$}\coordHE{} can be used.
+
+
+\begin{table}[htbp]
+  \begin{center}
+    \leavevmode
+    \begin{tabular}{|r|c|c||r|r|r|r|r|}\hline
+      \myHighlight{$r$}\coordHE{} & \myHighlight{$V_0$}\coordHE{} & \myHighlight{$H_0$}\coordHE{} & \myHighlight{$\hat\pi_h(0)$}\coordHE{} & \myHighlight{$\hat\pi_h(1)$}\coordHE{} & \myHighlight{$\hat\pi_h(2)$}\coordHE{} &
+      \myHighlight{$\hat\pi_h(3)$}\coordHE{} & \myHighlight{$\hat\pi_h(4)$}\coordHE{} \\
+      \hline
+      0.1443 & 4 & 24 & \myHighlight{$0.029265|21$}\coordHE{} & \myHighlight{$0.025583|20$}\coordHE{} & \myHighlight{$0.023806|19$}\coordHE{} & \myHighlight{$0.022949|19$}\coordHE{} & \myHighlight{$0.022538|18$}\coordHE{} \\ 
+      \hline
+      0.9897 & 16 & 14 & \myHighlight{$0.502797|46$}\coordHE{} & \myHighlight{$0.499753|63$}\coordHE{} & \myHighlight{$0.498280|63$}\coordHE{} & \myHighlight{$0.497645|63$}\coordHE{} & \myHighlight{$0.497321|60$}\coordHE{}\\
+      \hline
+      6.928 & 32 & 4 & \myHighlight{$0.978259|17$}\coordHE{} & \myHighlight{$0.977944|15$}\coordHE{} & \myHighlight{$0.977865|13$}\coordHE{} & \myHighlight{$0.977834|16$}\coordHE{} & \myHighlight{$0.977859|18$}\coordHE{}  \\ 
+      \hline
+    \end{tabular}
+    \caption{\myHighlight{$\hat \pi_h$}\coordHE{} for three aspect ratios \myHighlight{$r$}\coordHE{} and five sizes. }
+    \label{tab:pihinfini1}
+  \end{center}
+\end{table}
+
+What are the right rectangle sizes and what is the required precision on
+each \myHighlight{$\hat\pi_h(i)$}\coordHE{}? For the two extreme rectangles that we are planning
+to measure, \myHighlight{$r_{\text{wide}}=\frac{\sqrt3}2\frac{V_0}{H_0}=
+\frac{\sqrt3}2\frac4{24}\approx0.1443$}\coordHE{} and
+\myHighlight{$r_{\text{tall}}=\frac{\sqrt3}2\frac{32}4\approx6.928$}\coordHE{}, and for a rectangle
+close to a square \myHighlight{$r_{\text{sq}}=\frac{\sqrt3}2\frac{16}{14}\approx 0.9897$}\coordHE{},
+we obtained \myHighlight{$\pi_h(i)$}\coordHE{}, \myHighlight{$i=0,1,2,3,4$}\coordHE{}. Each increment corresponds to an
+increase by a factor of 2 of the linear size. For example \myHighlight{$\pi_h(0)$}\coordHE{} 
+was measured on a rectangle of \myHighlight{$4\times 24$}\coordHE{} sites and \myHighlight{$\pi_h(4)$}\coordHE{} on
+\myHighlight{$64\times 384$}\coordHE{} sites for the wide rectangle. The results appear in Table
+\ref{tab:pihinfini1}. The samples were large, at least \myHighlight{$250\times 10^6$}\coordHE{}
+configurations. The digits
+after the vertical bar gives the statistical error on the digits just
+before; for example, 
+the first element in the table (\myHighlight{$0.029269|21$}\coordHE{}) means
+that \myHighlight{$\hat\pi_h(0)$}\coordHE{} is \myHighlight{$0.029269$}\coordHE{} with the
+95\%-confidence interval being \myHighlight{$[0.029248, 0.029290]$}\coordHE{}. The differences between
+\myHighlight{$\hat\pi(3)$}\coordHE{} and \myHighlight{$\hat\pi(4)$}\coordHE{} are however small. 
+In fact the monotonicity of \myHighlight{$\hat\pi_h(i)$}\coordHE{} for \myHighlight{$r_{\text{tall}}=
+6.928$}\coordHE{} is broken for \myHighlight{$i=4$}\coordHE{} even though the error bars do allow for
+the power law to hold.
+Larger samples would definitely be required
+for the large lattices. Fortunately the precision on the measurements
+for \myHighlight{$i=0,1,2$}\coordHE{} and the fact that the power law seems to hold for very small
+sizes (4 sites in one direction!) allow for good estimates of \myHighlight{$\pi_h(r)$}\coordHE{} 
+without these larger lattices. Table \ref{tab:pihinfini2} shows estimates
+of \myHighlight{$\pi_h$}\coordHE{} for \myHighlight{$r_{\text{wide}}$}\coordHE{}, \myHighlight{$r_{\text{tall}}$}\coordHE{} and \myHighlight{$r_{\text{sq}}$}\coordHE{}
+using the power law hypothesis and a subset of the measurements of
+Table \ref{tab:pihinfini1}. The notation \myHighlight{$i$}\coordHE{}--\myHighlight{$j$}\coordHE{} means that 
+\myHighlight{$\hat\pi_h(i),\hat\pi_h(i+1),\dots, \hat\pi_h(j)$}\coordHE{} were used to obtain 
+\myHighlight{$\hat\pi_h(r)$}\coordHE{}. Using only the three smallest lattices, the three largest or the
+five ones lead to estimates \myHighlight{$\hat\pi_h(r)$}\coordHE{} that differ by less than \myHighlight{$4$}\coordHE{}
+units on the fourth significant digits. We therefore decided to use only
+three sizes for each \myHighlight{$r$}\coordHE{} considered and choose the pairs \myHighlight{$(V_0,H_0)$}\coordHE{}
+in such a way that \myHighlight{$V_0, H_0\ge 4$}\coordHE{} and that \myHighlight{$V_0H_0\ge 96$}\coordHE{}. All samples
+were larger or equal to \myHighlight{$10^8$}\coordHE{}. Tables \ref{tab:resultatspih} 
+gives the results for \myHighlight{$\pi_h$}\coordHE{}, \myHighlight{$\pi_v$}\coordHE{} and \myHighlight{$\pi_{hv}$}\coordHE{} at
+\myHighlight{$40$}\coordHE{} values of \myHighlight{$r\in[0.1443, 6.928]$}\coordHE{}.
+
+
+
+\begin{table}[htbp]
+  \begin{center}
+    \leavevmode
+    \begin{tabular}{|r||r|r|r|r|r|r|}\hline
+      \myHighlight{$r$}\coordHE{} & 0--2 & 0--3 & 0--4 & 1--3 & 1--4 & 2--4\\ \hline
+      0.1443 & 0.02215 & 0.02215 & 0.02216 & 0.02215 & 0.02216 & 0.02216 \\ \hline
+      0.9897 & 0.4969 & 0.4971 & 0.4970 & 0.4972 & 0.4970 & 0.4970 \\ \hline
+      6.928 & 0.9778 & 0.9778 & 0.9778 & 0.9778 & 0.9778 & 0.9777 \\ \hline
+    \end{tabular}
+    \caption{Estimates \myHighlight{$\hat\pi_h$}\coordHE{} using subsets of available data.}
+    \label{tab:pihinfini2}
+  \end{center}
+\end{table}
+
+
+There is always, on a finite lattice, the problem of determining
+\myHighlight{$r$}\coordHE{} from the numbers \myHighlight{$V$}\coordHE{} and \myHighlight{$H$}\coordHE{}. The two simplest choices are the
+aspect ratios of the smallest or the largest rectangles that include the
+sites considered and only those. Even though it is not a natural choice,
+the aspect ratio of the tallest and narrowest rectangle would be another
+convention. The method we have used to determine \myHighlight{$\pi_h(r)$}\coordHE{} overcomes
+this imprecision due to convention. For any convention the aspect
+ratio for a rectangular subset of the triangular lattice will be
+\myHighlight{$\frac{\sqrt3}2(V+\Delta_V)/(H+\Delta_H)$}\coordHE{} with \myHighlight{$\Delta_V$}\coordHE{} and \myHighlight{$\Delta_H$}\coordHE{}
+dependent on the convention but independent of \myHighlight{$V$}\coordHE{} and \myHighlight{$H$}\coordHE{}. The ratio
+\myHighlight{$r$}\coordHE{} at which \myHighlight{$\pi_h$}\coordHE{} is measured is therefore \myHighlight{$\lim_{i\rightarrow
+\infty} \frac{\sqrt3}2(2^i V_0+\Delta_V)/(2^iH_0+\Delta_H)=
+\frac{\sqrt3}2 V_0/H_0$}\coordHE{}, independent of \myHighlight{$\Delta_V$}\coordHE{} and \myHighlight{$\Delta_H$}\coordHE{}, 
+that is independent of the convention. This is another advantage of using
+several lattices for a given \myHighlight{$r$}\coordHE{}.
+
+Even though \myHighlight{$\pi_h$}\coordHE{} (and \myHighlight{$\pi_v$}\coordHE{}) is invariant under rotation,
+finite-size effects are not. The differences between 
+\myHighlight{$\hat\pi_h(0)=0.02927$}\coordHE{},
+\myHighlight{$\hat\pi_h(1)=0.02558$}\coordHE{} and
+\myHighlight{$\hat\pi_h(2)=0.02381$}\coordHE{}
+for \myHighlight{$r=0.1443$}\coordHE{} are much bigger than those between 
+\myHighlight{$\hat\pi_v(0)=0.02174$}\coordHE{},
+\myHighlight{$\hat\pi_v(1)=0.02205$}\coordHE{} and
+\myHighlight{$\hat\pi_v(2)=0.02214$}\coordHE{}
+for \myHighlight{$1/r=1/6.928=0.1443$}\coordHE{}. The statistical errors on \myHighlight{$\hat\pi_h(0.1443)$}\coordHE{}
+and \myHighlight{$\hat\pi_v(6.928)$}\coordHE{} are therefore different even if both numbers
+turn out to be very close (\myHighlight{$0.02215$}\coordHE{} and \myHighlight{$0.02218$}\coordHE{}). In the worst
+cases the \myHighlight{$95$}\coordHE{}\%-confidence interval amounts to less than \myHighlight{$2$}\coordHE{} units
+on the third significant digit (e.g.\ \myHighlight{$\hat\pi_h(0.1443)=0.02215\pm
+0.00015$}\coordHE{}). At the center of the range of \myHighlight{$r$}\coordHE{} the error on \myHighlight{$\hat\pi_h(r)$}\coordHE{}
+decreases to \myHighlight{$4$}\coordHE{} units on the fourth digit and it is even smaller for 
+large \myHighlight{$r$}\coordHE{}. Over the whole range it is smaller than \myHighlight{$4\times 10^{-4}$}\coordHE{}
+for both \myHighlight{$\pi_h$}\coordHE{} and \myHighlight{$\pi_v$}\coordHE{}.
+
+The improvement upon previous measurements found in \cite{LLS} can be
+checked easily. Among the 40 values of \myHighlight{$r$}\coordHE{} used there are nine pairs
+\myHighlight{$((V_a,H_a),(V_b,H_b))$}\coordHE{} such that 
+\begin{equation*}\coord{}\boxEquation{
+r_a=\frac{\sqrt3}2\frac{V_a}{H_a}=\left(\frac{\sqrt3}2\frac{V_b}{H_b}
+\right)^{-1}=\frac1{r_b}.
+}{
+r_a=\frac{\sqrt3}2\frac{V_a}{H_a}=\left(\frac{\sqrt3}2\frac{V_b}{H_b}
+\right)^{-1}=\frac1{r_b}.
+}{ecuacion}\coordE{}\end{equation*}
+The pairs \myHighlight{$(r_a,1/r_a)$}\coordHE{} are those corresponding to the following
+lines of Table \ref{tab:resultatspih}: \myHighlight{$(1, 40), \allowbreak
+(5, 36),\allowbreak (7, 34), \allowbreak
+(8, 33),\allowbreak (10, 31), \allowbreak
+(11, 30), \allowbreak(12, 29), \allowbreak(18, 23), 
+\allowbreak(20, 21)$}\coordHE{}.
+The measurements for these pairs should satisfy \myHighlight{$\hat\pi_h(r_a)=
+\hat\pi_v(r_b)$}\coordHE{}, \myHighlight{$\hat\pi_v(r_a)=\hat\pi_h(r_b)$}\coordHE{} and \myHighlight{$\hat\pi_{hv}(r_a)
+=\hat\pi_{hv}(r_b)$}\coordHE{} within statistical errors. This turns out to be
+the case. (See Figure \ref{fig:dua}.)
+There are in total 27 independent comparisons. Their relative
+errors is always less than \myHighlight{$2\times 10^{-3}$}\coordHE{}. The largest occur when the
+quantities \myHighlight{$\hat\pi$}\coordHE{} being compared are themselves very small,
+like \myHighlight{$\hat\pi_h(\frac{\sqrt3}2\frac16)=0.02215$}\coordHE{} and \myHighlight{$\hat\pi_v(
+\frac{\sqrt3}28)=0.02218$}\coordHE{}. In all cases the absolute value of
+these differences are less than \myHighlight{$5\times 10^{-4}$}\coordHE{}. Not only
+are these variations small, they are of both signs. This fact is 
+a further indication that the power law hypothesis provides a very good
+approximation. Suppose indeed that, at the sizes used, correction
+terms are required: \myHighlight{$|\pi_h(i)-\pi_h(r)|\approx aV^\beta(1+\frac bV+\dots)$}\coordHE{}.
+These new terms would lead to a systematic error that is not seen here.
+
+
+\begin{figure}
+\begin{center}\leavevmode
+\includegraphics[bb = 70 200 560 600,clip,width = 10cm]{dualite.ps}
+\end{center}
+\caption{Differences \myHighlight{$\hat\pi_h(r_a)-\hat\pi_v(r_b)$}\coordHE{} and
+\myHighlight{$\hat\pi_{hv}(r_a)-\hat\pi_{hv}(r_b)$}\coordHE{} for several pairs
+\myHighlight{$(r_a, r_b=r_a^{-1})$}\coordHE{}.\label{fig:dua}}
+\end{figure}
+
+
+\subsection{A prediction for \myHighlight{$\pi_h$}\coordHE{} for the critical Ising model}\label{numeric}
+
+The first easy comparison between the theory developed in the first Section
+and the new data lies in the asymptotic behavior of \myHighlight{$\pi_h$}\coordHE{} as \myHighlight{$r$}\coordHE{}
+approaches \myHighlight{$0$}\coordHE{} and \myHighlight{$+\infty$}\coordHE{}. If \myHighlight{$\pi_h$}\coordHE{} is a solution of the differential
+equation (\ref{eqdiff}), then \myHighlight{$\log\pi_h(r)\rightarrow -\lambda\pi/r$}\coordHE{}
+as \myHighlight{$r\rightarrow 0$}\coordHE{} and \myHighlight{$\log(1-\pi_h(r))\rightarrow -\lambda\pi r$}\coordHE{}
+as \myHighlight{$r\rightarrow +\infty$}\coordHE{} with \myHighlight{$\lambda$}\coordHE{} one of the exponents. Using the
+ten extreme values of \myHighlight{$r$}\coordHE{} on each side of the measured interval,
+we obtain for \myHighlight{$\pi_h$}\coordHE{}
+\begin{align*}\coord{}\boxAlignEqnarray{
+\leftCoord{}\log \hat\pi_h(r)&\underset{r\rightarrow 0}{\longrightarrow} -0.16648 \pi \frac1r\rightCoord{}\\
+\leftCoord{}\log (1-\hat\pi_h(r))&\underset{r\rightarrow\infty}{\longrightarrow} -0.16657\pi r.\rightCoord{}\\
+}{0mm}{2}{3}{
+\log \hat\pi_h(r)&\underset{r\rightarrow 0}{\longrightarrow} -0.16648 \pi \frac1r\\
+\log (1-\hat\pi_h(r))&\underset{r\rightarrow\infty}{\longrightarrow} -0.16657\pi r.\\
+}{0}\coordE{}\end{align*}
+The slopes obtained using the data for \myHighlight{$\pi_v$}\coordHE{} are \myHighlight{$0.16647\pi$}\coordHE{} and \myHighlight{$0.16654\pi$}\coordHE{}.
+These numbers are very close to the exponent \myHighlight{$\frac16$}\coordHE{}, the smallest non-vanishing
+exponent of the differential equation (\ref{eqdiff}). This is
+remarkable! Clearly \myHighlight{$\lambda$}\coordHE{} is to be interpreted as a critical
+exponent of the Ising model. But none of the usual exponents of the Ising model
+contains the prime number \myHighlight{$3$}\coordHE{} in their denominators and scaling laws involve
+only products and integral linear combinations of these exponents. If this new critical
+exponent can be deduced from the usual ones, it will not be by traditional
+scaling laws.
+
+
+\begin{figure}
+\begin{center}\leavevmode
+\includegraphics[bb = 60 200 550 600,clip,width = 10cm]{figpih.ps}
+\end{center}
+\caption{The prediction \myHighlight{$\log \pi_h/(1-\pi_h)$}\coordHE{} as a function of \myHighlight{$\log r$}\coordHE{} together
+with the 40 measurements \myHighlight{$\hat\pi_h(r_i)$}\coordHE{}.\label{fig:pih}}
+\end{figure}
+
+
+
+The second test is to obtain a solution of the differential equation
+(\ref{eqdiff}) that describes the data. Let \myHighlight{$f_i,i=0,1,\dots,5$}\coordHE{}, be
+a basis of solutions for
+equation (\ref{eqdiff}) defined by their behavior at \myHighlight{$z=\frac12$}\coordHE{}:
+\myHighlight{$f_i^{(j)}(z=\frac12)=\delta_{ij}$}\coordHE{}. Since \myHighlight{$f(z)=\frac12-\pi_h(r(z))$}\coordHE{}
+is odd with respect to \myHighlight{$z=\frac12$}\coordHE{}, it lies in the subspace 
+of functions of the form \myHighlight{$af_1+bf_3+cf_5$}\coordHE{}. We determine the constants
+\myHighlight{$a, b$}\coordHE{} and \myHighlight{$c$}\coordHE{} by requiring that \myHighlight{$L=(\sum_i (\frac12-\hat\pi_h(r_i)
+-f(z(r_i)))^2)^{\frac12}$}\coordHE{}
+be minimum. The sum is over the 40 data. The three solutions \myHighlight{$f_1,
+f_3$}\coordHE{} and \myHighlight{$f_5$}\coordHE{} were obtained numerically. 
+Both {\scshape Matlab} %\myHighlight{${}^\text{\texttrademark}$}\coordHE{} 
+and Mathematica %\myHighlight{${}^\text{\textregistered}$}\coordHE{}
+give similar fits. These softwares have internal parameters controlling
+the required accuracy of the integration. These parameters
+can be pushed to a point where stronger
+requirement does not lead to any significant improvement on the minimum of
+\myHighlight{$L$}\coordHE{}. Figure \ref{fig:pih} has been drawn using the values \myHighlight{$a,b$}\coordHE{} and \myHighlight{$c$}\coordHE{} 
+obtained for control parameters beyond this point. The largest among the
+differences \myHighlight{$|\frac12-\hat\pi_h(r_i)-f(z(r_i))|, i=1,\dots, 40$}\coordHE{}, is
+\myHighlight{$3.6\times 10^{-4}$}\coordHE{}, smaller than the statistical error, and the
+standard deviation is \myHighlight{$1.5\times 10^{-4}$}\coordHE{}. Similar results are obtained for
+\myHighlight{$\pi_v$}\coordHE{}. The agreement is therefore excellent. As a comparison it is
+instructive to redo Cardy's calculation testing his prediction for
+percolation. Since the publication of \cite{Cardyperco}, better data
+were obtained for percolation by sites on a square lattice
+for \myHighlight{$81$}\coordHE{} rectangles with at least \myHighlight{$10^6$}\coordHE{} sites \cite{LPS}. The 
+samples contained over \myHighlight{$10^6$}\coordHE{} configurations. For these, the statistical
+errors are approximately \myHighlight{$10^{-4}$}\coordHE{} at the extremities of the
+interval (\myHighlight{$r\in[0.142, 7.067]$}\coordHE{}) and \myHighlight{$10^{-3}$}\coordHE{} in the middle. (At the
+extremities these data are therefore more precise than the present ones for
+the Ising model and at the center they are less precise.)
+The largest departure
+from duality is \myHighlight{$4\times 10^{-4}$}\coordHE{}, almost exactly what is seen in
+Figure \ref{fig:dua} for the present data. Comparing his prediction
+\myHighlight{$\pi_h^{\text{perco}}(r(z))=3\Gamma(\frac23)z^{\frac13}{}_2F_1(
+\frac13,\frac23,\frac43,z)/\Gamma(\frac13)^2$}\coordHE{} with the data
+leads to \myHighlight{$\max_{1\le i\le81}|\pi_h^{\text{perco}}(r(z_i))-\hat\pi_h(r_i)|= 
+7.8\times 10^{-4}$}\coordHE{} and to a standard deviation of \myHighlight{$4.2\times 10^{-5}$}\coordHE{}.
+These results are similar to those just reported.
+
+We mentioned earlier the possibility of describing the data
+with a hypergeometric function. The function 
+\begin{equation*}\coord{}\boxEquation{
+g(z)=\frac{6\Gamma(\frac13)}{\Gamma(\frac16)^2} z^{\frac16}{}_2F_1(
+{\textstyle{\frac16}},{\textstyle{\frac56}},{\textstyle{\frac76}};z)
+}{
+g(z)=\frac{6\Gamma(\frac13)}{\Gamma(\frac16)^2} z^{\frac16}{}_2F_1(
+{\textstyle{\frac16}},{\textstyle{\frac56}},{\textstyle{\frac76}};z)
+}{ecuacion}\coordE{}\end{equation*}
+is odd around \myHighlight{$z=\frac12$}\coordHE{}, when shifted by \myHighlight{$\frac12$}\coordHE{},
+and behaves as \myHighlight{$z^{\frac16}$}\coordHE{} and \myHighlight{$(1-z)^{\frac16}$}\coordHE{}
+when \myHighlight{$z\rightarrow 0^+$}\coordHE{} and \myHighlight{$z\rightarrow 1^-$}\coordHE{}. Several data are now
+more than \myHighlight{$2\times 10^{-3}$}\coordHE{} apart from the corresponding values of \myHighlight{$g$}\coordHE{}, 
+a gap barely visible on a figure, but clearly out
+of any reasonable confidence interval. We may accept the solution
+of the differential equation as an analytic prediction for \myHighlight{$\pi_h$}\coordHE{} but
+we must reject the function \myHighlight{$g(z)$}\coordHE{}.
+
+Measurements were also made of the probability \myHighlight{$\pi_{hv}$}\coordHE{}. As its behavior
+at \myHighlight{$z=0$}\coordHE{} and \myHighlight{$z=1$}\coordHE{} is also described by the exponent \myHighlight{$\frac16$}\coordHE{}, one may
+hope that the even subspace (around \myHighlight{$z=\frac12$}\coordHE{}) of the differential
+equation may contain a solution matching the data. This is not the case.
+The best fit in this subspace lies up to \myHighlight{$6\times 10^{-3}$}\coordHE{} away from
+the data, an unacceptable gap. (This disagreement
+has an advantage. It shows that the success of the fit for \myHighlight{$\pi_h$}\coordHE{} is
+not a consequence of the large freedom that a three-parameter
+fit gives.) Watts used the third singular vector to describe \myHighlight{$\pi_{hv}$}\coordHE{}
+for percolation. In the Verma module \myHighlight{$V_{c=0,h=0}$}\coordHE{}, this vector is at level
+five, leading
+to a differential equation of order \myHighlight{$5$}\coordHE{}. However the third one in 
+\myHighlight{$V_{c=\frac12,h=0}$}\coordHE{} is at level 11 and the associated operator
+\myHighlight{$P(z,\frac{d\ }{dz})$}\coordHE{} is a polynomial
+of order \myHighlight{$11$}\coordHE{} in \myHighlight{$\frac{d\ }{dz}$}\coordHE{}. It can be cast as
+\begin{align*}\coord{}\boxAlignEqnarray{
+\leftCoord{}P(z,\frac{\leftCoord{}d\ }{\rightCoord{}dz})=&\sum_{\rightCoord{}1\le i\le 11,\  i \text{\ odd}}((z(1-z))^{i-1}
+\leftCoord{}p_i(z(1-z))\frac{\leftCoord{}d^{\leftCoord{}i}\ }{\rightCoord{}dz^{\leftCoord{}i}} \rightCoord{}\\
+&\leftCoord{}+  \sum_{\rightCoord{}2\le i\le 10,\ i \text{\ even}}(1-2z)((z(1-z))^{i-1}
+\leftCoord{}p_i(z(1-z))\frac{\leftCoord{}d^{\leftCoord{}i}\ }{\rightCoord{}dz^{\leftCoord{}i}}
+}{0mm}{11}{7}{
+P(z,\frac{d\ }{dz})=&\sum_{1\le i\le 11,\  i \text{\ odd}}((z(1-z))^{i-1}
+p_i(z(1-z))\frac{d^{i}\ }{dz^{i}} \\
+&+  \sum_{2\le i\le 10,\ i \text{\ even}}(1-2z)((z(1-z))^{i-1}
+p_i(z(1-z))\frac{d^{i}\ }{dz^{i}}
+}{0}\coordE{}\end{align*}
+with
+\begin{align*}\coord{}\boxAlignEqnarray{ 
+\leftCoord{}p_1(u) & = -{\textstyle{\frac {\leftCoord{}1}{\rightCoord{}81}}}\,u\left (
+\leftCoord{}-484-20465\,u+120702\,u^{\leftCoord{}2}+134456\,u^{\leftCoord{}3}+326536\,u^{\leftCoord{}4}\right )\rightCoord{}\\
+\leftCoord{}p_2(u) & = -{\textstyle{\frac {\leftCoord{}1}{\rightCoord{}81}}}\left (-484-65267\,u
+\leftCoord{}+555942\,{u}^{\leftCoord{}2}
+\leftCoord{}+2442422\,u^{\leftCoord{}3}+9038782\,{u}^{\leftCoord{}4} \right )\rightCoord{}\\
+\leftCoord{}p_3(u) & = {\textstyle{\frac {\leftCoord{}1} 
+{\rightCoord{}\leftCoord{}162}}}\left (44318-1002950\,u-5132553\,u^{\leftCoord{}2}-12317152\,u^{\leftCoord{}3}+245463307\,u^{\leftCoord{}4} 
+\leftCoord{}\right )\rightCoord{}\\ 
+\leftCoord{}p_4(u) & = {\textstyle{\frac {\leftCoord{}1}{\rightCoord{}486}}}\left (-412839-8111249 
+\leftCoord{}\,u-42237350\,u^{\leftCoord{}2}+ 
+\leftCoord{}749236363\,u^{\leftCoord{}3}\right )\rightCoord{}\\ 
+\leftCoord{}p_5(u) & = {\textstyle{-{\frac {\leftCoord{}1}{\rightCoord{}1944}}}}\left ( 
+\leftCoord{}3492203+28198986\,u-1347384726\,{u}^{\leftCoord{}2}
+\leftCoord{}+5106251212\,u^{\leftCoord{}3}\right )\rightCoord{}\\ 
+\leftCoord{}p_6(u) & = {\textstyle{-{\frac {\leftCoord{}7}{\rightCoord{}1944}}}}\left (368339-27634444\,u+
+\leftCoord{}153070553\,u^{\leftCoord{}2}\right )\rightCoord{}\\ 
+\leftCoord{}p_7(u) & = {\textstyle{\frac {\leftCoord{}11}{\rightCoord{}1296}}}
+\leftCoord{}\left (554551-9066926\,u+29200567\,{u}^{\leftCoord{}2}\right)\rightCoord{}\\ 
+\leftCoord{}p_8(u) & = {\textstyle{\frac {\leftCoord{}11}{\rightCoord{}54}}}\left (- 
+\leftCoord{}11842+75835\,u\right )\rightCoord{}\\ 
+\leftCoord{}p_9(u) & = {\textstyle{-{\frac {\leftCoord{}11}{\rightCoord{}18}}}}\left (-757+3457\,u\right )\rightCoord{}\\ 
+\leftCoord{}p_{\rightCoord{}10}(u) & = {\textstyle{-{\frac {\leftCoord{}110}{\rightCoord{}3 
+\leftCoord{}}}}}\rightCoord{}\\ 
+\leftCoord{}p_{\rightCoord{}11}(u) & = 1.
+}{0mm}{49}{23}{ 
+p_1(u) & = -{\textstyle{\frac {1}{81}}}\,u\left (
+-484-20465\,u+120702\,u^{2}+134456\,u^{3}+326536\,u^{4}\right )\\
+p_2(u) & = -{\textstyle{\frac {1}{81}}}\left (-484-65267\,u
++555942\,{u}^{2}
++2442422\,u^{3}+9038782\,{u}^{4} \right )\\
+p_3(u) & = {\textstyle{\frac {1} 
+{162}}}\left (44318-1002950\,u-5132553\,u^{2}-12317152\,u^{3}+245463307\,u^{4} 
+\right )\\ 
+p_4(u) & = {\textstyle{\frac {1}{486}}}\left (-412839-8111249 
+\,u-42237350\,u^{2}+ 
+749236363\,u^{3}\right )\\ 
+p_5(u) & = {\textstyle{-{\frac {1}{1944}}}}\left ( 
+3492203+28198986\,u-1347384726\,{u}^{2}
++5106251212\,u^{3}\right )\\ 
+p_6(u) & = {\textstyle{-{\frac {7}{1944}}}}\left (368339-27634444\,u+
+153070553\,u^{2}\right )\\ 
+p_7(u) & = {\textstyle{\frac {11}{1296}}}
+\left (554551-9066926\,u+29200567\,{u}^{2}\right)\\ 
+p_8(u) & = {\textstyle{\frac {11}{54}}}\left (- 
+11842+75835\,u\right )\\ 
+p_9(u) & = {\textstyle{-{\frac {11}{18}}}}\left (-757+3457\,u\right )\\ 
+p_{10}(u) & = {\textstyle{-{\frac {110}{3 
+}}}}\\ 
+p_{11}(u) & = 1.
+}{0}\coordE{}\end{align*} 
+The differential equation \myHighlight{$P(z,\frac{d\ }{dz})f(z)=0$}\coordHE{}
+is again symmetric under any permutation of the
+three regular singular points \myHighlight{$0, 1$}\coordHE{} and \myHighlight{$\infty$}\coordHE{}.
+The exponents (with their degeneracies) are \myHighlight{$0 (2), \frac16 (2),
+\frac12 (1), 1 (1), \frac53 (2), \frac52 (1), \frac{14}3 (1)$}\coordHE{}
+and \myHighlight{$6 (1)$}\coordHE{}.
+The even subspace of the differential
+equation is of dimension 6 and the fit 
+will therefore contain 6 parameters.
+Using the data of the last column of Table \ref{tab:resultatspih}
+and numerical integration of the differential equation, we obtain
+a best fit (in
+the same sense as the one used for \myHighlight{$\pi_h$}\coordHE{}) that has a largest
+difference of \myHighlight{$2.7\times 10^{-4}$}\coordHE{} and a standard deviation of
+\myHighlight{$1.3\times 10^{-4}$}\coordHE{}. These are excellent results well within
+the experimental windows. However we have tried to fit similarly
+the function \myHighlight{$h(z)= \kappa z^{\frac16}(1-z)^{\frac16}$}\coordHE{} with the
+constant \myHighlight{$\kappa$}\coordHE{} chosen such that \myHighlight{$h(z=\frac12)=\hat\pi_{hv}(z=\frac12)$}\coordHE{}.
+While this function {\em is not} a solution,
+the 6-dimensional subspace of (numerical) even solutions contains
+a solution \myHighlight{$\tilde h$}\coordHE{}
+that approaches it extremely well (namely
+\myHighlight{$\max_{z\in[0,1]}|\tilde h(z)-h(z)|\approx 10^{-6}$}\coordHE{}). Consequently
+the large dimension of the even subspace allows for functions that
+are not solution to be fitted within statistical errors and
+the fit for \myHighlight{$\pi_{hv}$}\coordHE{}
+is much less convincing than the one
+above for \myHighlight{$\pi_h$}\coordHE{} or than Watts' prediction.
+
+
+
+\section*{Acknowledments} 
+ 
+It is a pleasure to thank R.P.\ Langlands, M.-A.\ Lewis 
+and G.\ Watts for helpful
+discussions, A.\ Bourlioux for introducing us to the control of
+errors in integrating differential equations and H.\ Pinson and
+Ph.\ Zaugg for a careful reading of the manuscript.
+ 
+E.\ L.\ gratefully acknowledges a fellowship from the NSERC Canada  
+Scholarships Program and Y.\ S.-A.\ support 
+from NSERC (Canada) and FCAR (Qu\'ebec).  
+
+ 
+\begin{thebibliography}{1} 
+ 
+ 
+
+\bibitem{Cardyperco} Cardy J L 1992 {\em Critical percolation in finite geometries}
+J.\ Phys.\ A {\bf 25} L201-L206
+
+\bibitem{C2} Cardy J L 1986 {\em Effect of boundary conditions on  
+the operator content of two-dimensional conformally invariant theories}
+Nucl.\ Phys. {\bf B275} 200--218
+
+\bibitem{dFMS} DiFrancesco P, Mathieu P and  S\'en\'echal D 1996  
+{\em Conformal Field Theory} Springer Verlag
+
+\bibitem{DF} Dotsenko Vl S, Fateev V A 1984 {\em Conformal algebra
+and multipoint correlation functions in 2D statistical models}
+Nucl.\ Phys. {\bf 240} 312--348
+
+\bibitem{LLS} Langlands R P, Lewis M-A and Saint-Aubin Y 2000
+{\em Universality and conformal invariance for the Ising model in 
+domains with boundary} J.\ Stat.\ Phys.\ {\bf 98}  131--244
+
+\bibitem{LPPS} Langlands R P, Pichet C, Pouliot P and Saint-Aubin Y 1992
+{\em On the universality of crossing probabilities in two-dimensional
+percolation} J.\ Stat.\ Phys.\ {\bf 67} 553--574
+
+\bibitem{LPS} Langlands R P, Pouliot P and Saint-Aubin Y 1994
+{\em Conformal invariance in two-dimensional percolation} Bull.\ AMS
+{\bf 30} 1--61
+
+\bibitem{W} Watts G M T 1996 {\em A crossing probability for critical percolation
+in two dimensions} J.\ Phys.\ A {\bf 29} L363-368
+
+\end{thebibliography}
+
+\begin{table}[htbp]
+\begin{center}
+  \leavevmode
+  \begin{tabular}{|c|c|c|r|r|r|}\hline
+    \myHighlight{$r$}\coordHE{} & \myHighlight{$V_0$}\coordHE{} & \myHighlight{$H_0$}\coordHE{} & \myHighlight{$\hat\pi_h$}\coordHE{} & \myHighlight{$\hat\pi_v$}\coordHE{} & \myHighlight{$\hat\pi_{hv}$}\coordHE{} \\ \hline
+      0.1443 & 4 & 24 & 0.02215 & 0.9779 & 0.02215  \\ \hline 
+      0.1624 & 6 & 32 & 0.03321 & 0.9668 & 0.03321  \\ \hline 
+      0.1732 & 6 & 30 & 0.04057 & 0.9594 & 0.04057  \\ \hline 
+      0.1999 & 6 & 26 & 0.06082 & 0.9392 & 0.06082  \\ \hline 
+      0.2165 & 6 & 24 & 0.07400 & 0.9257 & 0.07400  \\ \hline 
+      0.2362 & 6 & 22 & 0.09062 & 0.9093 & 0.09061  \\ \hline 
+      0.2665 & 8 & 26 & 0.1166 & 0.8830 & 0.1166  \\ \hline 
+      0.2887 & 6 & 18 & 0.1359 & 0.8647 & 0.1359  \\ \hline 
+      0.3248 & 6 & 16 & 0.1662 & 0.8341 & 0.1661  \\ \hline 
+      0.3464 & 8 & 20 & 0.1834 & 0.8164 & 0.1831  \\ \hline 
+      0.3849 & 8 & 18 & 0.2133 & 0.7865 & 0.2127  \\ \hline 
+      0.4330 & 8 & 16 & 0.2483 & 0.7518 & 0.2468  \\ \hline 
+      0.4949 & 8 & 14 & 0.2891 & 0.7111 & 0.2852  \\ \hline 
+      0.5413 & 10 & 16 & 0.3163 & 0.6833 & 0.3096  \\ \hline 
+      0.6186 & 10 & 14 & 0.3572 & 0.6429 & 0.3436  \\ \hline 
+      0.6662 & 10 & 13 & 0.3797 & 0.6202 & 0.3600  \\ \hline 
+      0.7423 & 12 & 14 & 0.4124 & 0.5878 & 0.3804  \\ \hline 
+      0.8660 & 10 & 10 & 0.4580 & 0.5421 & 0.3997  \\ \hline 
+      0.9326 & 14 & 13 & 0.4797 & 0.5203 & 0.4042  \\ \hline 
+      0.9897 & 16 & 14 & 0.4969 & 0.5028 & 0.4059  \\ \hline 
+      1.010  & 14 & 12 & 0.5029 & 0.4973 & 0.4058  \\ \hline 
+      1.066  & 16 & 13 & 0.5183 & 0.4812 & 0.4043  \\ \hline 
+      1.155  & 16 & 12 & 0.5419 & 0.4578 & 0.3996  \\ \hline 
+      1.299  & 12 & 8 & 0.5767 & 0.4232 & 0.3860  \\ \hline 
+      1.540  & 16 & 9 & 0.6277 & 0.3717 & 0.3544  \\ \hline 
+      1.732  & 16 & 8 & 0.6639 & 0.3364 & 0.3269  \\ \hline 
+      1.949  & 18 & 8 & 0.6999 & 0.3001 & 0.2952  \\ \hline 
+      2.165  & 20 & 8 & 0.7318 & 0.2679 & 0.2655  \\ \hline 
+      2.309  & 16 & 6 & 0.7516 & 0.2484 & 0.2469  \\ \hline 
+      2.598  & 18 & 6 & 0.7864 & 0.2135 & 0.2128  \\ \hline 
+      2.887  & 20 & 6 & 0.8163 & 0.1835 & 0.1833  \\ \hline 
+      3.175  & 22 & 6 & 0.8418 & 0.1580 & 0.1579  \\ \hline 
+      3.464  & 24 & 6 & 0.8643 & 0.1357 & 0.1357  \\ \hline 
+      3.753  & 26 & 6 & 0.8834 & 0.1166 & 0.1166  \\ \hline 
+      4.330  & 30 & 6 & 0.9137 & 0.08623 & 0.08623  \\ \hline 
+      4.619  & 32 & 6 & 0.9259 & 0.07416 & 0.07416  \\ \hline 
+      5.196  & 24 & 4 & 0.9452 & 0.05489 & 0.05489  \\ \hline 
+      5.629  & 26 & 4 & 0.9563 & 0.04370 & 0.04370  \\ \hline 
+      6.062  & 28 & 4 & 0.9651 & 0.03489 & 0.03489  \\ \hline 
+      6.928  & 32 & 4 & 0.9778 & 0.02218 & 0.02218  \\ \hline
+  \end{tabular}
+  \caption{The measurements \myHighlight{$\hat\pi_h$}\coordHE{}, \myHighlight{$\hat\pi_v$}\coordHE{} and \myHighlight{$\hat\pi_{hv}$}\coordHE{}.}
+  \label{tab:resultatspih}
+\end{center}
+\end{table}
+
+\section*{List of captions}
+
+\noindent Table \ref{tab:pihinfini1}: 
+\myHighlight{$\hat \pi_h$}\coordHE{} for three aspect ratios \myHighlight{$r$}\coordHE{} and five sizes.
+
+\noindent Table \ref{tab:pihinfini2}: 
+Estimates \myHighlight{$\hat\pi_h$}\coordHE{} using subsets of available data.
+
+\noindent Table \ref{tab:resultatspih}:
+The measurements \myHighlight{$\hat\pi_h$}\coordHE{}, \myHighlight{$\hat\pi_v$}\coordHE{} and \myHighlight{$\hat\pi_{hv}$}\coordHE{}.
+
+\noindent Figure \ref{fig:dua}: Differences \myHighlight{$\hat\pi_h(r_a)-\hat\pi_v(r_b)$}\coordHE{} and
+\myHighlight{$\hat\pi_{hv}(r_a)-\hat\pi_{hv}(r_b)$}\coordHE{} for several pairs
+\myHighlight{$(r_a, r_b=r_a^{-1})$}\coordHE{}.
+
+\noindent Figure \ref{fig:pih}: The prediction \myHighlight{$\log \pi_h/(1-\pi_h)$}\coordHE{} as a function of \myHighlight{$\log r$}\coordHE{} together
+with the 40 measurements \myHighlight{$\hat\pi_h(r_i)$}\coordHE{}.
+
+\end{document} 
+ 
+ 
+
+ 
+\begin{table}[htbp]
+\begin{center}
+  \leavevmode
+  \begin{tabular}{|c|c|c|r|r|r|r|}\hline
+    \myHighlight{$r$}\coordHE{} & \myHighlight{$LV$}\coordHE{} & \myHighlight{$LH$}\coordHE{} & \myHighlight{$\pi_h(0)$}\coordHE{} & \myHighlight{$\pi_h(1)$}\coordHE{} & \myHighlight{$\pi_h(2)$}\coordHE{} &
+    \myHighlight{$\pi_h(r)$}\coordHE{} \\ \hline
+     0.1443 & 4 & 24 & 0.02926 & 0.02558 & 0.02381 & 0.02215  \\ \hline 
+     0.1624 & 6 & 32 & 0.03927 & 0.03611 & 0.03459 & 0.03321  \\ \hline 
+     0.1732 & 6 & 30 & 0.04752 & 0.04396 & 0.04223 & 0.04057  \\ \hline 
+     0.1999 & 6 & 26 & 0.06965 & 0.06501 & 0.06281 & 0.06082  \\ \hline 
+     0.2165 & 6 & 24 & 0.08428 & 0.07917 & 0.07661 & 0.07400  \\ \hline 
+     0.2362 & 6 & 22 & 0.1020 & 0.09627 & 0.09342 & 0.09062  \\ \hline 
+     0.2665 & 8 & 26 & 0.1263 & 0.1214 & 0.1190 & 0.1166  \\ \hline 
+     0.2887 & 6 & 18 & 0.1493 & 0.1425 & 0.1391 & 0.1359  \\ \hline 
+     0.3248 & 6 & 16 & 0.1809 & 0.1733 & 0.1696 & 0.1662  \\ \hline 
+     0.3464 & 8 & 20 & 0.1951 & 0.1893 & 0.1863 & 0.1834  \\ \hline 
+     0.3849 & 8 & 18 & 0.2256 & 0.2196 & 0.2165 & 0.2133  \\ \hline 
+     0.4330 & 8 & 16 & 0.2608 & 0.2545 & 0.2514 & 0.2483  \\ \hline 
+     0.4949 & 8 & 14 & 0.3016 & 0.2952 & 0.2920 & 0.2891  \\ \hline 
+     0.5413 & 10 & 16 & 0.3265 & 0.3214 & 0.3188 & 0.3163  \\ \hline 
+     0.6186 & 10 & 14 & 0.3674 & 0.3623 & 0.3597 & 0.3572  \\ \hline 
+     0.6662 & 10 & 13 & 0.3898 & 0.3847 & 0.3822 & 0.3797  \\ \hline 
+     0.7423 & 12 & 14 & 0.4205 & 0.4163 & 0.4143 & 0.4124  \\ \hline 
+     0.8660 & 10 & 10 & 0.4676 & 0.4626 & 0.4602 & 0.4580  \\ \hline 
+     0.9326 & 14 & 13 & 0.4864 & 0.4829 & 0.4812 & 0.4797  \\ \hline 
+     0.9897 & 16 & 14 & 0.5028 & 0.4998 & 0.4983 & 0.4969  \\ \hline 
+     1.010 & 14 & 12 & 0.5097 & 0.5062 & 0.5045 & 0.5029  \\ \hline  
+     1.066 & 16 & 13 & 0.5244 & 0.5215 & 0.5199 & 0.5183  \\ \hline 
+     1.155 & 16 & 12 & 0.5478 & 0.5448 & 0.5434 & 0.5419  \\ \hline 
+     1.299 & 12 & 8 & 0.5846 & 0.5805 & 0.5786 & 0.5767  \\ \hline 
+     1.540 & 16 & 9 & 0.6336 & 0.6306 & 0.6291 & 0.6277  \\ \hline 
+     1.732 & 16 & 8 & 0.6695 & 0.6664 & 0.6650 & 0.6639  \\ \hline 
+     1.949 & 18 & 8 & 0.7048 & 0.7021 & 0.7009 & 0.6999  \\ \hline 
+     2.165 & 20 & 8 & 0.7363 & 0.7340 & 0.7329 & 0.7318  \\ \hline 
+     2.309 & 16 & 6 & 0.7569 & 0.7540 & 0.7527 & 0.7516  \\ \hline 
+     2.598 & 18 & 6 & 0.7909 & 0.7884 & 0.7873 & 0.7864  \\ \hline 
+     2.887 & 20 & 6 & 0.8201 & 0.8180 & 0.8170 & 0.8163  \\ \hline 
+     3.175 & 22 & 6 & 0.8451 & 0.8435 & 0.8426 & 0.8418  \\ \hline 
+     3.464 & 24 & 6 & 0.8668 & 0.8653 & 0.8647 & 0.8643  \\ \hline 
+     3.753 & 26 & 6 & 0.8853 & 0.8841 & 0.8837 & 0.8834  \\ \hline 
+     4.330 & 30 & 6 & 0.9151 & 0.9143 & 0.9139 & 0.9137  \\ \hline 
+     4.619 & 32 & 6 & 0.9270 & 0.9263 & 0.9260 & 0.9259  \\ \hline 
+     5.196 & 24 & 4 & 0.9466 & 0.9456 & 0.9453 & 0.9452  \\ \hline 
+     5.629 & 26 & 4 & 0.9573 & 0.9566 & 0.9564 & 0.9563  \\ \hline 
+     6.062 & 28 & 4 & 0.9660 & 0.9654 & 0.9652 & 0.9651  \\ \hline 
+     6.928 & 32 & 4 & 0.97826 & 0.97794 & 0.97787 & 0.9778  \\ \hline
+  \end{tabular}
+  \caption{The measurements \myHighlight{$\hat\pi_h$}\coordHE{}}
+  \label{tab:resultatspih}
+\end{center}
+\end{table}
+
+\begin{table}[htbp]
+\begin{center}
+  \leavevmode
+  \begin{tabular}{|c|c|c|r|r|r|r|}\hline
+    \myHighlight{$r$}\coordHE{} & \myHighlight{$LV$}\coordHE{} & \myHighlight{$LH$}\coordHE{} & \myHighlight{$\pi_v(0)$}\coordHE{} & \myHighlight{$\pi_v(1)$}\coordHE{} & \myHighlight{$\pi_v(2)$}\coordHE{} &
+    \myHighlight{$\pi_v(r)$}\coordHE{} \\ \hline
+      0.1443 & 4 & 24 & 0.97071 & 0.97439 & 0.97620 & 0.9779  \\ \hline 
+      0.1624 & 6 & 32 & 0.9607 & 0.9639 & 0.9654 & 0.9668  \\ \hline 
+      0.1732 & 6 & 30 & 0.9524 & 0.9561 & 0.9578 & 0.9594  \\ \hline 
+      0.1999 & 6 & 26 & 0.9304 & 0.9350 & 0.9372 & 0.9392  \\ \hline 
+      0.2165 & 6 & 24 & 0.9157 & 0.9209 & 0.9234 & 0.9257  \\ \hline 
+      0.2362 & 6 & 22 & 0.8981 & 0.9037 & 0.9065 & 0.9093  \\ \hline 
+      0.2665 & 8 & 26 & 0.8737 & 0.8786 & 0.8809 & 0.8830  \\ \hline 
+      0.2887 & 6 & 18 & 0.8505 & 0.8574 & 0.8610 & 0.8647  \\ \hline 
+      0.3248 & 6 & 16 & 0.8191 & 0.8266 & 0.8303 & 0.8341  \\ \hline 
+      0.3464 & 8 & 20 & 0.8049 & 0.8107 & 0.8136 & 0.8164  \\ \hline 
+      0.3849 & 8 & 18 & 0.7744 & 0.7805 & 0.7836 & 0.7865  \\ \hline 
+      0.4330 & 8 & 16 & 0.7391 & 0.7454 & 0.7486 & 0.7518  \\ \hline 
+      0.4949 & 8 & 14 & 0.6983 & 0.7047 & 0.7080 & 0.7111  \\ \hline 
+      0.5413 & 10 & 16 & 0.6734 & 0.6786 & 0.6811 & 0.6833  \\ \hline 
+      0.6186 & 10 & 14 & 0.6326 & 0.6377 & 0.6403 & 0.6429  \\ \hline 
+      0.6662 & 10 & 13 & 0.6102 & 0.6153 & 0.6178 & 0.6202  \\ \hline 
+      0.7423 & 12 & 14 & 0.5795 & 0.5837 & 0.5857 & 0.5878  \\ \hline 
+      0.8660 & 10 & 10 & 0.5324 & 0.5374 & 0.5398 & 0.5421  \\ \hline 
+      0.9326 & 14 & 13 & 0.5136 & 0.5172 & 0.5188 & 0.5203  \\ \hline 
+      0.9897 & 16 & 14 & 0.4971 & 0.5002 & 0.5016 & 0.5028  \\ \hline 
+      1.010 & 14 & 12 & 0.4903 & 0.4938 & 0.4955 & 0.4973  \\ \hline 
+      1.066 & 16 & 13 & 0.4756 & 0.4787 & 0.4801 & 0.4812  \\ \hline 
+      1.155 & 16 & 12 & 0.4522 & 0.4553 & 0.4567 & 0.4578  \\ \hline 
+      1.299 & 12 & 8 & 0.4153 & 0.4195 & 0.4214 & 0.4232  \\ \hline 
+      1.540 & 16 & 9 & 0.3663 & 0.3695 & 0.3708 & 0.3717  \\ \hline 
+      1.732 & 16 & 8 & 0.3305 & 0.3336 & 0.3350 & 0.3364  \\ \hline 
+      1.949 & 18 & 8 & 0.2952 & 0.2979 & 0.2991 & 0.3001  \\ \hline 
+      2.165 & 20 & 8 & 0.2637 & 0.2661 & 0.2671 & 0.2679  \\ \hline 
+      2.309 & 16 & 6 & 0.2431 & 0.2460 & 0.2473 & 0.2484  \\ \hline 
+      2.598 & 18 & 6 & 0.2092 & 0.2116 & 0.2127 & 0.2135  \\ \hline 
+      2.887 & 20 & 6 & 0.1800 & 0.1821 & 0.1829 & 0.1835  \\ \hline 
+      3.175 & 22 & 6 & 0.1548 & 0.1566 & 0.1574 & 0.1580  \\ \hline 
+      3.464 & 24 & 6 & 0.1332 & 0.1347 & 0.1353 & 0.1357  \\ \hline 
+      3.753 & 26 & 6 & 0.1146 & 0.1159 & 0.1163 & 0.1166  \\ \hline 
+      4.330 & 30 & 6 & 0.08488 & 0.08573 & 0.08604 & 0.08623  \\ \hline 
+      4.619 & 32 & 6 & 0.07302 & 0.07377 & 0.07403 & 0.07416  \\ \hline 
+      5.196 & 24 & 4 & 0.05343 & 0.05435 & 0.05469 & 0.05489  \\ \hline 
+      5.629 & 26 & 4 & 0.04266 & 0.04337 & 0.04359 & 0.04370  \\ \hline 
+      6.062 & 28 & 4 & 0.03408 & 0.03460 & 0.03479 & 0.03489  \\ \hline 
+      6.928 & 32 & 4 & 0.02174 & 0.02205 & 0.02214 & 0.02218  \\ \hline
+  \end{tabular}
+  \caption{The measurements \myHighlight{$\hat\pi_v$}\coordHE{}}
+  \label{tab:resultatspiv}
+\end{center}
+\end{table}
+
+
+
+\bibitem{Cardyperco} John L.\ Cardy, {\em Critical percolation in finite geometries},
+J.\ Phys.\ A {\bf 25} (1992) L201-L206.
+
+\bibitem{C2} John L. Cardy, {\em Effect of boundary conditions on  
+the operator content of two-dimensional conformally invariant theories}, 
+Nucl.\ Phys. {\bf B275} (1986), 200--218. 
+
+\bibitem{dFMS} P. DiFrancesco, P. Mathieu et D. S\'en\'echal,  
+{\em Conformal Field Theory}, Springer Verlag, 1996.  
+
+\bibitem{LLS} R.P.\ Langlands, M.-A.\ Lewis, Y.\ Saint-Aubin,
+{\em Universality and conformal invariance for the Ising model in 
+domains with boundary}, J.\ Stat.\ Phys.\ {\bf 98} (2000) to be published.
+
+\bibitem{LPPS} R.P.\ Langlands, C.\ Pichet, Ph.\ Pouliot, Y.\ Saint-Aubin,
+{\em On the universality of crossing probabilities in two-dimensional
+percolation}, J.\ Stat.\ Phys.\ {\bf 67} (1992) 553--574.
+
+\bibitem{LPS} R.P.\ Langlands, Ph.\ Pouliot, Y.\ Saint-Aubin,
+{\em Conformal invariance in two-dimensional percolation}, Bull.\ AMS
+{\bf 30} (1994) 1--61.
+
+\bibitem{W} G.M.T.\ Watts, {\em A crossing probability for critical percolation
+in two dimensions}, J.\ Phys.\ A {\bf 29} (1996) L363-368.
+ 
+ 
+
+ 
+\begin{table}[htbp]
+  \begin{center}
+    \leavevmode
+    \begin{tabular}{|r|c|c||r|r|r|r|r|}\hline
+      \myHighlight{$r$}\coordHE{} & \myHighlight{$V_0$}\coordHE{} & \myHighlight{$H_0$}\coordHE{} & \myHighlight{$\pi_h(0)$}\coordHE{} & \myHighlight{$\pi_h(1)$}\coordHE{} & \myHighlight{$\pi_h(2)$}\coordHE{} &
+      \myHighlight{$\pi_h(3)$}\coordHE{} & \myHighlight{$\pi_h(4)$}\coordHE{} \\
+      \hline
+      0.1443 & 4 & 24 & 
+      \myHighlight{$0.029269|21$}\coordHE{} & \myHighlight{$0.025578|20$}\coordHE{} & \myHighlight{$0.023801|19$}\coordHE{} & \myHighlight{$0.022961|19$}\coordHE{} & \myHighlight{$0.022556|18$}\coordHE{} \\ 
+      \hline
+      0.9897 & 16 & 14 & \myHighlight{$0.502761|46$}\coordHE{} & \myHighlight{$0.499753|63$}\coordHE{} & \myHighlight{$0.498281|63$}\coordHE{} & \myHighlight{$0.497591|63$}\coordHE{} & \myHighlight{$0.497302|60$}\coordHE{}\\
+      \hline
+      6.928 & 32 & 4 & \myHighlight{$0.978255|17$}\coordHE{} & \myHighlight{$0.977938|15$}\coordHE{} & \myHighlight{$0.977870|13$}\coordHE{} & \myHighlight{$0.977868|16$}\coordHE{} & \myHighlight{$0.977821|18$}\coordHE{}  \\ 
+      \hline
+    \end{tabular}
+    \caption{\myHighlight{$\hat \pi_h$}\coordHE{} for three aspect ratios \myHighlight{$r$}\coordHE{} and five sizes. }
+    \label{tab:pihinfini1}
+  \end{center}
+\end{table}
+
+ 
+
+\begin{table}[htbp]
+  \begin{center}
+    \leavevmode
+    \begin{tabular}{|r||r|r|r|r|r|r|}\hline
+      \myHighlight{$r$}\coordHE{} & 0--2 & 0--3 & 0--4 & 1--3 & 1--4 & 2--4\\ \hline
+      0.1443 & 0.02215 & 0.02219 & 0.02218 & 0.02221 & 0.02219 &
+      0.02218 \\ \hline
+      0.9897 & 0.4969 & 0.4969 & 0.4970 & 0.4970 & 0.4971 & 0.4971 \\
+      \hline
+      6.928 & 0.9778 & 0.9778 & 0.9780 & 0.9779 & 0.9778 & 0.9779 \\
+      \hline
+    \end{tabular}
+    \caption{Estimates \myHighlight{$\hat\pi_h$}\coordHE{} using subsets of available data.}
+    \label{tab:pihinfini2}
+  \end{center}
+\end{table}
+
+
+\bye

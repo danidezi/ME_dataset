@@ -1,0 +1,1044 @@
+
+
+
+\documentclass[a4paper,a4paper]{article}
+
+
+\usepackage{amsmath, amssymb, latexsym, amsfonts}
+\usepackage{epsf}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\def\sect#1{\section{#1}\setcounter{equation}{0}}
+\topmargin=-3cm 
+\oddsidemargin=0.3cm
+\textheight 23cm \textwidth 16cm
+\usepackage{useful_macros}
+\begin{document}
+
+\centerline{} \vskip0.5cm \centerline{\LARGE \bf Total Variation
+and  Variational Symplectic-Energy- } \vskip3pt \centerline{\LARGE \bf
+Momentum integrators } \vskip0.7cm \centerline{\large
+Jing-Bo Chen,\myHighlight{$\quad$}\coordHE{}  Han-Ying Guo\myHighlight{$\quad$}\coordHE{}   and\myHighlight{$\quad$}\coordHE{}  Ke Wu}
+\vskip3pt \centerline{\small Institute of Theoretical Physics,
+Chinese Academy of Sciences} \vskip3pt \centerline{\small P.O. Box
+2735, Beijing 100080, P.R. China} \vskip3pt \centerline{\small
+\texttt{<chenjb><hyguo><wuke>@itp.ac.cn}} \vskip3pt
+
+
+
+\begin{abstract}
+A   discrete total variation calculus with variable time steps is
+presented in this letter. Using this discrete variation calculus,
+we generalize
+Lee's discrete mechanics and derive variational
+symplectic-energy-momentum integrators by Kane, Marsden and Ortiz.
+The relationship among discrete total variation, Lee's discrete
+mechanics and Kane-Marsden-Ortiz's integrators is explored.
+
+\vskip8pt {\bf Keywords.} Total variation, Discrete mechanics,
+Symplectic-energy-momentum integrators
+\end{abstract}
+
+
+
+\sect{Introduction}
+In 1980's, Lee  proposed an energy-preserving discrete
+mechanics with variable time steps by taking (discrete) time as
+dynamical variable [\ref{td1}, \ref{td2}, \ref{td3}]. On the other
+hand, motivated by the symplectic property of Lagrangian
+mechanics, a version of discrete Lagrangian
+mechanics has been devoloped and  variational integrators that preserve
+discrete symplectic two form  have been obtained 
+[\ref{m1}, \ref{m3}, \ref{v1}, \ref{v2}, \ref{w1}].
+However,  variational integrators
+obtained in this way have fixed time steps and consequently they
+are not energy-preserving in general.
+
+ Obviously,
+the energy-preserving discrete mechanics and variational
+integrator are more preferable since  solutions of the
+Euler-Lagrange equations of conservative continuous systems are
+not only symplectic but also energy-preserving. In order to attain
+this goal, some discrete mechanics with discrete energy
+conservation and  symplectic variational integrators are needed to
+study.  Recently, Kane, Marsden and Ortiz have employed
+appropriate  time steps to conserve a defined discrete energy and
+developed what they called symplectic-energy-momentum preserving
+variational integrators in [\ref{k1}]. Although their approach is
+more or less related to Lee's discrete mechanics, but the discrete
+energy preserving condition is not derived by the variational
+principle.
+
+The purpose of this letter is to generalize or improve these
+approaches as well as to explore the relation among  discretetotal
+variation, Lee's discrete mechanics and Kane-Marsden-Ortiz's
+integrators. We will present a   discrete total variation calculus
+with variable time steps and a discrete mechanics that is
+discretely symplectic, energy preserving and has the correct
+continuous limit. In fact, this discrete variation calculus and
+mechanics are a generalization of Lee's discrete mechanics in
+symplectic-preserving sense and can directly derive the
+variational symplectic-energy-momentum integrators by Kane,
+Marsden and Ortiz.
+
+This letter is organized as follows. In the next section, we
+remind total variation calculus for continuous mechanics.
+ In section 3, we present a   discrete total variation calculus with variable
+time steps and a discrete mechanics,  derive Kane-Marsden-Ortiz's
+integrators and explore the relation among our approach, Lee's
+discrete mechanics and Kane-Marsden-Ortiz's approach.
+  We finish with some conclusions and remarks in Section 4.
+
+
+Before ending this section, we recall very briefly the ordinary
+variational principle in Lagrangian mechanics for later use.
+ Suppose \myHighlight{$Q$}\coordHE{} denotes the extended
+configuration space with coordinates \myHighlight{$(t, q^i)$}\coordHE{} and \myHighlight{$Q^{(1)}$}\coordHE{} the
+first prolongation of \myHighlight{$Q$}\coordHE{} with coordinates \myHighlight{$(t, q^i, \dot{q}^{i})$}\coordHE{}
+[\ref{o1}]. Here \myHighlight{$t$}\coordHE{} denotes time and \myHighlight{$q^i, i=1, 2, \cdots, n$}\coordHE{}
+denote the position.
+  Consider a Lagrangian
+\myHighlight{$L:\,\, Q^{(1)} \to \mathbb{R}$}\coordHE{}. The corresponding action functional is defined by
+\begin{align}\coord{}\boxAlignEqnarray{
+    \leftCoord{}S(q^{\leftCoord{}i}(t))=\int_{\leftCoord{}\rightCoord{}a}^{\leftCoord{}b}L(t, q^{\leftCoord{}i}(t), \dot{q}^{\leftCoord{}i}(t))\,dt, \label{1.1}
+}{0mm}{6}{2}{
+    S(q^{i}(t))=\int_{a}^{b}L(t, q^{i}(t), \dot{q}^{i}(t))\,dt, }{0}\coordE{}\end{align}
+where \myHighlight{$q^{i}(t)$}\coordHE{} is a \myHighlight{$C^{2}$}\coordHE{} curve in \myHighlight{$Q$}\coordHE{}.
+
+Hamilton's principle seeks a curve \myHighlight{$q^i(t)$}\coordHE{} denoted by \myHighlight{${\cal C}_a^b$}\coordHE{} with
+endpoints \myHighlight{$a$}\coordHE{} and \myHighlight{$b$}\coordHE{},  for which the action functional \myHighlight{$S$}\coordHE{} is
+stationary under variations of \myHighlight{$q^i(t)$}\coordHE{} with fixed endpoints.
+\noindent Let
+\begin{align}\coord{}\boxAlignEqnarray{
+   \leftCoord{}V=\phi^{\leftCoord{}i}(t,q)\frac{\leftCoord{}\partial}{\rightCoord{}\partial q^{\leftCoord{}i}} \label{1.2}
+}{0mm}{4}{2}{
+   V=\phi^{i}(t,q)\frac{\partial}{\partial q^{i}} }{0}\coordE{}\end{align}
+be a vertical vector field on \myHighlight{$Q$}\coordHE{}. Here
+\myHighlight{$q=(q^{1},\cdots, q^{n})$}\coordHE{}.
+By a vertical vector field we mean a vector field on \myHighlight{$Q$}\coordHE{} not
+involving terms of form \myHighlight{$\xi(t,q) \frac{\partial}{\partial t}$}\coordHE{}.
+Namely, time \myHighlight{$t$}\coordHE{} does not undergo
+variation.
+
+Let \myHighlight{$F^{\epsilon}$}\coordHE{} be the flow of \myHighlight{$V$}\coordHE{}, i.e., a one-parameter group of transformations on
+\myHighlight{$Q$}\coordHE{}: \myHighlight{$F^{\epsilon}(t,q^i)=(\tilde
+{t}, \tilde{q}^i)$}\coordHE{}.
+\begin{align}\coord{}\boxAlignEqnarray{
+&\leftCoord{}\tilde{t}=t,\label{1.3a}\rightCoord{}\\&
+\leftCoord{}\tilde{q}^{\leftCoord{}i}=g^{\leftCoord{}i}(\epsilon, t, q),\label{1.3}
+}{0mm}{4}{2}{
+&\tilde{t}=t,\\&
+\tilde{q}^{i}=g^{i}(\epsilon, t, q),}{0}\coordE{}\end{align}
+where
+\begin{align}\coord{}\boxAlignEqnarray{
+   \leftCoord{}\left.\frac{\leftCoord{}d}{\rightCoord{}d\epsilon}\right|_{\rightCoord{}\epsilon=0}g^{\leftCoord{}i}(\epsilon, t, q)
+   \leftCoord{}=\phi^{\leftCoord{}i}(t,q):=\delta q^{\leftCoord{}i}(t). \label{1.4}
+}{0mm}{6}{3}{
+   \left.\frac{d}{d\epsilon}\right|_{\epsilon=0}g^{i}(\epsilon, t, q)
+   =\phi^{i}(t,q):=\delta q^{i}(t). }{0}\coordE{}\end{align}
+\noindent
+
+In other words, the deformation (\ref{1.3a}-\ref{1.3}) transforms the curve
+\myHighlight{$q^i(t)$}\coordHE{} into a family of curves \myHighlight{$\tilde{q}^{i}(\epsilon, \tilde{t})$}\coordHE{} in \myHighlight{$Q$}\coordHE{}
+denoted by \myHighlight{${{\cal
+C}_\epsilon}_a^b$}\coordHE{} 
+which are determined by
+\begin{align}\coord{}\boxAlignEqnarray{
+&\leftCoord{}\tilde{t}=t,\label{1.5a}\rightCoord{}\\
+&\leftCoord{}\tilde{q}^{\leftCoord{}i}=g^{\leftCoord{}i}(\epsilon, t, q(t)).  \label{1.5}
+}{0mm}{4}{2}{
+&\tilde{t}=t,\\
+&\tilde{q}^{i}=g^{i}(\epsilon, t, q(t)).  }{0}\coordE{}\end{align}
+Thus, we obtain a (sufficiently small) set of curves \myHighlight{${{\cal
+C}_\epsilon}_a^b$}\coordHE{} around
+\myHighlight{${{\cal C}}_a^b$}\coordHE{}.  
+Corresponding to this set of curves
+ %\tilde{q}^i(\epsilon, \tilde{t})=g^i(\epsilon, \tilde{t}, q^i(\tilde{t})). \label{1.5}
+there are a set of Lagrangian and action functionals
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}S(q^{\leftCoord{}i}(t)) \rightarrow S(\tilde{q}^{\leftCoord{}i}(\epsilon, \tilde{t}))=
+\leftCoord{}\int_{\leftCoord{}\rightCoord{}{a}}^{{b}}
+          \leftCoord{}L( \tilde{q}^{\leftCoord{}i}(\epsilon, \tilde{t}), \frac{\leftCoord{}d}{\rightCoord{}d\tilde{t}}
+          \leftCoord{}\tilde{q}^{\leftCoord{}i}(\epsilon, \tilde{t}))\,d\tilde{t}.
+\label{1.6}
+}{0mm}{10}{3}{
+S(q^{i}(t)) \rightarrow S(\tilde{q}^{i}(\epsilon, \tilde{t}))=
+\int_{{a}}^{{b}}
+          L( \tilde{q}^{i}(\epsilon, \tilde{t}), \frac{d}{d\tilde{t}}
+          \tilde{q}^{i}(\epsilon, \tilde{t}))\,d\tilde{t}.
+}{0}\coordE{}\end{align}
+Now, we can calculate the variation of \myHighlight{$S$}\coordHE{} at \myHighlight{$q(t)$}\coordHE{} as follows
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\delta S=&\left.\frac{\leftCoord{}d}{\rightCoord{}d\epsilon}\right|_{\rightCoord{}\epsilon=0}S(\tilde{q}^{\leftCoord{}i}(\epsilon, \tilde{t}))
+           \leftCoord{}\notag\rightCoord{}\\
+       % =&\left.\frac{d}{d\epsilon}\right|_{\epsilon=0}\int_{\tilde{a}}^{\tilde{b}}
+        %  L(\tilde{t}, \tilde{q}(\epsilon, \tilde{t}), \frac{d}{d\tilde{t}}
+         % \tilde{q}(\epsilon, \tilde{t}))\,d\tilde{t}\notag\\
+       %=&\left.\frac{d}{d\epsilon}\right|_{\epsilon=0}\int_{a}^{b}
+        %  L(t, g(\epsilon, t, q(t)), \frac{d}{dt}g(\epsilon, t, q(t)))\,dt
+         % \quad\quad (\tilde{t}=t, \tilde{a}=a, \tilde{b}=b)\notag\\
+        \leftCoord{}=&\int_{\leftCoord{}\rightCoord{}a}^{\leftCoord{}b}\left[\left(\frac{\leftCoord{}\partial L}{\rightCoord{}\partial q^{\leftCoord{}i}}-\frac{\leftCoord{}d}{\rightCoord{}dt}
+          \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}\right)\phi^{\leftCoord{}i}\right]dt
+          \leftCoord{}+\left.\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}\phi^{\leftCoord{}i}\right|_{\rightCoord{}a}^{\leftCoord{}b}.\label{1.7}
+}{0mm}{15}{7}{theequation}{0}\coordE{}\end{align}
+For the fixed endpoints, \myHighlight{$\phi^i(a, q(a))=\phi^i(b, q(b))=0$}\coordHE{}, the
+requirement of Hamilton's principle, \myHighlight{$\delta S =0$}\coordHE{}, yields the
+Euler-Lagrangian equation for \myHighlight{$q(t)$}\coordHE{}
+\begin{align}\coord{}\boxAlignEqnarray{
+ \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial q^{\leftCoord{}i}}-\frac{\leftCoord{}d}{\rightCoord{}dt}
+          \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}=0. \label{1.8}
+}{0mm}{7}{4}{
+ \frac{\partial L}{\partial q^{i}}-\frac{d}{dt}
+          \frac{\partial L}{\partial \dot{q}^{i}}=0. }{0}\coordE{}\end{align}
+
+If we drop the requirement of \myHighlight{$\phi^i(a, q(a))=\phi^i(b, q(b))=0$}\coordHE{},  we
+can naturally obtain the Lagrangian one form on \myHighlight{$Q^{(1)}$}\coordHE{} from the
+second term in (\ref{1.7}):
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\theta_{\rightCoord{}L}=\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}dq^{\leftCoord{}i},\label{1.9}
+}{0mm}{4}{3}{
+\theta_{L}=\frac{\partial L}{\partial \dot{q}^{i}}dq^{i},}{0}\coordE{}\end{align}
+where \myHighlight{$dq^i$}\coordHE{} are dual to \myHighlight{$\frac{\partial}{\partial q^j}$}\coordHE{},
+\myHighlight{$dq^i(\frac{\partial}{\partial q^j})=\delta_j^i$}\coordHE{}.
+Furthermore, %restricting \myHighlight{$\tilde{q}^i(\epsilon, \tilde{t})$}\coordHE{} to the solution space of (\ref{1.8}),
+it can be proved that the solution of (\ref{1.8}) preserves the
+Lagrangian two form
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\omega_L:=d\theta_{\rightCoord{}L}. \label{1.10}
+}{0mm}{1}{2}{
+\omega_L:=d\theta_{L}. }{0}\coordE{}\end{align}%
+
+ On the other hand,
+introducing the Euler-Lagrange one form
+\begin{align}\coord{}\boxAlignEqnarray{
+ \leftCoord{}E(q^{\leftCoord{}i}, \dot q^{\leftCoord{}i})=\{\frac{\leftCoord{}\partial L}{\rightCoord{}\partial q^{\leftCoord{}i}}-\frac{\leftCoord{}d}{\rightCoord{}dt}
+          \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}\}dq^{\leftCoord{}i}, \label{1.11}
+}{0mm}{10}{4}{
+ E(q^{i}, \dot q^{i})=\{\frac{\partial L}{\partial q^{i}}-\frac{d}{dt}
+          \frac{\partial L}{\partial \dot{q}^{i}}\}dq^{i}, }{0}\coordE{}\end{align}
+the nilpotency of \myHighlight{$d$}\coordHE{} leads to%
+\begin{align}\coord{}\boxAlignEqnarray{
+dE(q^{\leftCoord{}i}, \dot q^{\leftCoord{}i})+\frac{\leftCoord{}d}{\rightCoord{}dt}\omega_L=0. \label{1.12}}{0mm}{3}{2}{theequation}{0}\coordE{}\end{align}
+ Namely, the
+necessary and sufficient condition for symplectic structure
+preserving is that the Euler-Lagrange one form is closed
+[\ref{glw1}, \ref{glw2}, \ref{glw3}].
+
+
+
+
+\sect{Total variation  for Lagrangian mechanics}
+
+Consider a general  vector field on \myHighlight{$Q$}\coordHE{}
+\begin{align}\coord{}\boxAlignEqnarray{
+ \leftCoord{}V=\xi(t,q)\frac{\leftCoord{}\partial}{\rightCoord{}\partial t}
+    \leftCoord{}+\phi^{\leftCoord{}i}(t,q)\frac{\leftCoord{}\partial}{\rightCoord{}\partial q^{\leftCoord{}i}},  \label{2.1}
+}{0mm}{6}{3}{
+ V=\xi(t,q)\frac{\partial}{\partial t}
+    +\phi^{i}(t,q)\frac{\partial}{\partial q^{i}},  }{0}\coordE{}\end{align}
+Here \myHighlight{$q=(q^{1},\cdots, q^{n}).$}\coordHE{}  Let 
+ \myHighlight{$F^{\epsilon}$}\coordHE{} be the flow of \myHighlight{$V$}\coordHE{}. The
+variations of \myHighlight{$(t,q^i)\in Q$}\coordHE{} are described in such a way
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}(t, q^{\leftCoord{}i}) \rightarrow F^{\epsilon}(t, q^{\leftCoord{}i})=(\tilde{t}, \tilde{q}^{\leftCoord{}i}),
+\label{2.2}
+}{0mm}{4}{1}{
+(t, q^{i}) \rightarrow F^{\epsilon}(t, q^{i})=(\tilde{t}, \tilde{q}^{i}),
+}{0}\coordE{}\end{align}
+where
+\begin{align}\coord{}\boxAlignEqnarray{
+  \leftCoord{}\tilde{t}=f(\epsilon, t, q),\qquad %\label{2.3}
+  \leftCoord{}\tilde{q}^{\leftCoord{}i}=g^{\leftCoord{}i}(\epsilon, t, q),  \label{2.3}
+}{0mm}{3}{1}{theequation}{0}\coordE{}\end{align}
+with
+\begin{align}\coord{}\boxAlignEqnarray{
+   \leftCoord{}\left.\frac{\leftCoord{}d}{\rightCoord{}d\epsilon}\right|_{\rightCoord{}\epsilon=0}f(\epsilon, t, q)=\xi(t,q):=\delta t,
+   \leftCoord{}\quad \quad \left.\frac{\leftCoord{}d}{\rightCoord{}d\epsilon}\right|_{\rightCoord{}\epsilon=0}g^{\leftCoord{}i}(\epsilon, t, q)
+   \leftCoord{}=\phi^{\leftCoord{}i}(t,q):=\delta q^{\leftCoord{}i}.
+   \label{2.4}
+}{0mm}{8}{5}{
+   \left.\frac{d}{d\epsilon}\right|_{\epsilon=0}f(\epsilon, t, q)=\xi(t,q):=\delta t,
+   \quad \quad \left.\frac{d}{d\epsilon}\right|_{\epsilon=0}g^{i}(\epsilon, t, q)
+   =\phi^{i}(t,q):=\delta q^{i}.
+   }{0}\coordE{}\end{align}
+ The deformations (\ref{2.3}) transform a curve
+\myHighlight{$q^i(t)$}\coordHE{} in \myHighlight{$Q$}\coordHE{} denoted by \myHighlight{${{\cal C}}_a^b$}\coordHE{} into a
+set of curves \myHighlight{$\tilde{q}^i(\epsilon, \tilde{t})$}\coordHE{} in \myHighlight{$Q$}\coordHE{} denoted by \myHighlight{${{\cal
+C}_\epsilon}_{\tilde a}^{\tilde b}$}\coordHE{},
+determined by
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\tilde{t}=f(\epsilon, t, q(t)),\qquad %\label{2.5}\rightCoord{} \\
+  \leftCoord{}\tilde{q^{\leftCoord{}i}}=g^{\leftCoord{}i}(\epsilon, t, q(t)).  \label{2.5}
+}{0mm}{3}{2}{theequation}{0}\coordE{}\end{align}
+Before calculating the total variation of \myHighlight{$S$}\coordHE{}, we introduce  the
+first order prolongation of \myHighlight{$V$}\coordHE{} denoted as \myHighlight{$\text{pr}^{1}V$}\coordHE{}
+\begin{align}\coord{}\boxAlignEqnarray{
+ \leftCoord{}\text{pr}^{\leftCoord{}1}V=\xi(t,q)\frac{\leftCoord{}\partial}{\rightCoord{}\partial t}+
+                \leftCoord{}\phi^{\leftCoord{}i}(t,q)\frac{\leftCoord{}\partial}{\rightCoord{}\partial q^{\leftCoord{}i}}
+      \leftCoord{}+\alpha^{\leftCoord{}i}(t, q, \dot{q})\frac{\leftCoord{}\partial}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}},  \label{2.8}
+}{0mm}{11}{4}{
+ \text{pr}^{1}V=\xi(t,q)\frac{\partial}{\partial t}+
+                \phi^{i}(t,q)\frac{\partial}{\partial q^{i}}
+      +\alpha^{i}(t, q, \dot{q})\frac{\partial}{\partial \dot{q}^{i}},  }{0}\coordE{}\end{align}
+where % denotes the first order prolongation of \myHighlight{$V$}\coordHE{} and
+\begin{align}\coord{}\boxAlignEqnarray{
+ \leftCoord{}\alpha^{\leftCoord{}i}(t, q, \dot{q})=D_{\rightCoord{}t}\phi^{\leftCoord{}i}(t, q)-\dot{q}^{\leftCoord{}iD}_{\rightCoord{}t}\xi(t,q), \label{2.9}
+}{0mm}{4}{3}{
+ \alpha^{i}(t, q, \dot{q})=D_{t}\phi^{i}(t, q)-\dot{q}^{iD}_{t}\xi(t,q), }{0}\coordE{}\end{align}
+where \myHighlight{$D_{t}$}\coordHE{} denotes the total derivative with respect to \myHighlight{$t$}\coordHE{}. For example
+\begin{align*}\coord{}\boxAlignEqnarray{
+  \leftCoord{}D_{\rightCoord{}t}\phi^{\leftCoord{}k}(t, q^{\leftCoord{}i})=\phi_{\rightCoord{}t}^{\leftCoord{}k}+\phi_{\rightCoord{}q^{\leftCoord{}i}}^{\leftCoord{}k}\dot{q}^{\leftCoord{}i}, \quad
+  \leftCoord{}\phi_{\rightCoord{}t}^{\leftCoord{}k}=\frac{\leftCoord{}\partial \phi^{\leftCoord{}k}}{\rightCoord{}\partial t}.
+}{0mm}{11}{6}{
+  D_{t}\phi^{k}(t, q^{i})=\phi_{t}^{k}+\phi_{q^{i}}^{k}\dot{q}^{i}, \quad
+  \phi_{t}^{k}=\frac{\partial \phi^{k}}{\partial t}.
+}{0}\coordE{}\end{align*}
+For prolongation of vector field and the related formulae, we
+refer
+the reader to %the excellent book
+[\ref{o1}].% written by Olver.
+
+\noindent
+Now we calculate the total variation of \myHighlight{$S$}\coordHE{} straightforwardly:
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\delta
+\leftCoord{}S=&\left.\frac{\leftCoord{}d}{\rightCoord{}d\epsilon}\right|_{\rightCoord{}\epsilon=0}S(\tilde{q}^{\leftCoord{}i}(\epsilon,
+\leftCoord{}\tilde{t}))
+           \leftCoord{}\notag\rightCoord{}\\
+        \leftCoord{}=&\left.\frac{\leftCoord{}d}{\rightCoord{}d\epsilon}\right|_{\rightCoord{}\epsilon=0}\int_{\leftCoord{}\rightCoord{}\tilde{a}}^{\tilde{b}}
+          \leftCoord{}L(\tilde{t}, \tilde{q}^{\leftCoord{}i}(\epsilon, \tilde{t}), \frac{\leftCoord{}d}{\rightCoord{}d\tilde{t}}
+          \leftCoord{}\tilde{q}^{\leftCoord{}i}(\epsilon, \tilde{t}))\,d\tilde{t}\notag\rightCoord{}\\
+       \leftCoord{}=&\left.\frac{\leftCoord{}d}{\rightCoord{}d\epsilon}\right|_{\rightCoord{}\epsilon=0}\int_{\leftCoord{}\rightCoord{}a}^{\leftCoord{}b}
+          \leftCoord{}L(\tilde{t}, \tilde{q}^{\leftCoord{}i}(\epsilon, \tilde{t}),\frac{\leftCoord{}d}{\rightCoord{}d\tilde{t}}
+          \leftCoord{}\tilde{q}^{\leftCoord{}i}(\epsilon, \tilde{t}))
+          \leftCoord{}\frac{\leftCoord{}d\tilde{t}}{\rightCoord{}dt}\,dt
+          \leftCoord{}\quad\quad\quad (\tilde{t}=f(\epsilon, t, q(t)))\notag\rightCoord{}\\
+        \leftCoord{}=&\int_{\leftCoord{}\rightCoord{}a}^{\leftCoord{}b}\left.\frac{\leftCoord{}d}{\rightCoord{}d\epsilon}\right|_{\rightCoord{}\epsilon=0}
+           \leftCoord{}L(\tilde{t}, \tilde{q}^{\leftCoord{}i}(\epsilon, \tilde{t}), \frac{\leftCoord{}d}{\rightCoord{}d\tilde{t}}
+          \leftCoord{}\tilde{q}^{\leftCoord{}i}(\epsilon, \tilde{t}))dt+\int_{\leftCoord{}\rightCoord{}a}^{\leftCoord{}b}L(t, q^{\leftCoord{}i}(t), \dot{q}^{\leftCoord{}i}(t))
+           \leftCoord{}D_{\rightCoord{}t}\xi dt \notag\rightCoord{}\\
+        \leftCoord{}=&\int_{\leftCoord{}\rightCoord{}a}^{\leftCoord{}b}\left[\frac{\leftCoord{}\partial L}{\rightCoord{}\partial t}\xi+
+            \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial q^{\leftCoord{}i}}\phi^{\leftCoord{}i}+\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}
+            \leftCoord{}(D_{\rightCoord{}t}\phi^{\leftCoord{}i}-\dot{q}^{\leftCoord{}iD}_{\rightCoord{}t}\xi)\right]\,dt
+            \leftCoord{}+\int_{\leftCoord{}\rightCoord{}a}^{\leftCoord{}b}L\,D_{\rightCoord{}t}\xi\,dt \notag\rightCoord{}\\
+         \leftCoord{}\begin{split}
+         \leftCoord{}=&\int_{\leftCoord{}\rightCoord{}a}^{\leftCoord{}b}\left[\left(\frac{\leftCoord{}\partial L}{\rightCoord{}\partial t}+\frac{\leftCoord{}d}{\rightCoord{}dt}\left(
+           \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}\dot{q}^{\leftCoord{}i}-L\right)\right)\xi+\left(
+          \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial q^{\leftCoord{}i}}-\frac{\leftCoord{}d}{\rightCoord{}dt}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}
+          \leftCoord{}\right)\phi^{\leftCoord{}i}\right]\,dt \rightCoord{}\\
+&\leftCoord{}\quad +\left.\left[\left(L-\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}
+           \leftCoord{}\dot{q}^{\leftCoord{}i}\right)\xi
+           \leftCoord{}+\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}\phi^{\leftCoord{}i}\right]\right|_{\rightCoord{}a}^{\leftCoord{}b}.
+         \leftCoord{}\leftCoord{}\rightCoord{}\end{split} \label{2.10}
+}{0mm}{80}{43}{
+\delta
+S=&\left.\frac{d}{d\epsilon}\right|_{\epsilon=0}S(\tilde{q}^{i}(\epsilon,
+\tilde{t}))
+           \notag\\
+        =&\left.\frac{d}{d\epsilon}\right|_{\epsilon=0}\int_{\tilde{a}}^{\tilde{b}}
+          L(\tilde{t}, \tilde{q}^{i}(\epsilon, \tilde{t}), \frac{d}{d\tilde{t}}
+          \tilde{q}^{i}(\epsilon, \tilde{t}))\,d\tilde{t}\notag\\
+       =&\left.\frac{d}{d\epsilon}\right|_{\epsilon=0}\int_{a}^{b}
+          L(\tilde{t}, \tilde{q}^{i}(\epsilon, \tilde{t}),\frac{d}{d\tilde{t}}
+          \tilde{q}^{i}(\epsilon, \tilde{t}))
+          \frac{d\tilde{t}}{dt}\,dt
+          \quad\quad\quad (\tilde{t}=f(\epsilon, t, q(t)))\notag\\
+        =&\int_{a}^{b}\left.\frac{d}{d\epsilon}\right|_{\epsilon=0}
+           L(\tilde{t}, \tilde{q}^{i}(\epsilon, \tilde{t}), \frac{d}{d\tilde{t}}
+          \tilde{q}^{i}(\epsilon, \tilde{t}))dt+\int_{a}^{b}L(t, q^{i}(t), \dot{q}^{i}(t))
+           D_{t}\xi dt \notag\\
+        =&\int_{a}^{b}\left[\frac{\partial L}{\partial t}\xi+
+            \frac{\partial L}{\partial q^{i}}\phi^{i}+\frac{\partial L}{\partial \dot{q}^{i}}
+            (D_{t}\phi^{i}-\dot{q}^{iD}_{t}\xi)\right]\,dt
+            +\int_{a}^{b}L\,D_{t}\xi\,dt \notag\\
+         \begin{split}
+         =&\int_{a}^{b}\left[\left(\frac{\partial L}{\partial t}+\frac{d}{dt}\left(
+           \frac{\partial L}{\partial \dot{q}^{i}}\dot{q}^{i}-L\right)\right)\xi+\left(
+          \frac{\partial L}{\partial q^{i}}-\frac{d}{dt}\frac{\partial L}{\partial \dot{q}^{i}}
+          \right)\phi^{i}\right]\,dt \\
+&\quad +\left.\left[\left(L-\frac{\partial L}{\partial \dot{q}^{i}}
+           \dot{q}^{i}\right)\xi
+           +\frac{\partial L}{\partial \dot{q}^{i}}\phi^{i}\right]\right|_{a}^{b}.
+         \end{split} }{0}\coordE{}\end{align}
+Here  we have made use of  (\ref{2.4}), (\ref{2.8}), (\ref{2.9}) and %
+$$\coord{}\boxMath{\left.\frac{d}{d\epsilon}\right|_{\epsilon=0}
+\frac{d\tilde{t}}{dt}=\frac{d}{dt}\left.\frac{d}{d\epsilon}\right|_{\epsilon=0}
+\tilde{t} =D_{t}\xi.}{dollar}{0pt}\coordE{}$$% In (\ref{2.10}), we used the prolongation
+\noindent If \myHighlight{$\xi(a, q(a))=\xi(b, q(b))=0$}\coordHE{} and \myHighlight{$\phi^i(a,
+q(a))=\phi^i(b, q(b))=0$}\coordHE{},
+ the requirement of \myHighlight{$\delta S
+=0$}\coordHE{} yields the equation from \myHighlight{$\xi$}\coordHE{}, the variation along
+the base manifold, i.e. the time,
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial t}+\frac{\leftCoord{}d}{\rightCoord{}dt}\left(
+           \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}\dot{q}^{\leftCoord{}i}-L\right)=0,
+\label{2.12}
+}{0mm}{7}{4}{
+\frac{\partial L}{\partial t}+\frac{d}{dt}\left(
+           \frac{\partial L}{\partial \dot{q}^{i}}\dot{q}^{i}-L\right)=0,
+}{0}\coordE{}\end{align}
+ and
+the Euler-Lagrange equation from \myHighlight{$\phi^i$}\coordHE{}, the %vertical
+ variation along the fibre, i.e. the configuration space,
+\begin{align}\coord{}\boxAlignEqnarray{
+ \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial q^{\leftCoord{}i}}-\frac{\leftCoord{}d}{\rightCoord{}dt}
+          \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}=0. \label{2.13}
+}{0mm}{7}{4}{
+ \frac{\partial L}{\partial q^{i}}-\frac{d}{dt}
+          \frac{\partial L}{\partial \dot{q}^{i}}=0. }{0}\coordE{}\end{align}
+\noindent Here \myHighlight{$\xi$}\coordHE{} and \myHighlight{$\phi^i$}\coordHE{}  are %called fibre %vertical
+regarded as independent components of
+the total variation. However, there is another decomposition for
+the independent components, i.e. the % meaning for
+vertical and
+horizontal variations, see {\em Remark} 2 below.
+
+If \myHighlight{$L$}\coordHE{} does not depend on \myHighlight{$t$}\coordHE{} explicitly, i.e.,  \myHighlight{$L$}\coordHE{} is conservative, 
+  \myHighlight{$\frac{\partial L}{\partial t}=0$}\coordHE{}, then
+(\ref{2.12}) becomes the energy conservation law
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\frac{\leftCoord{}d}{\rightCoord{}dt}H=0, \qquad H:=\left(
+           \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}\dot{q}^{\leftCoord{}i}-L\right).
+\label{2.14}
+}{0mm}{6}{3}{
+\frac{d}{dt}H=0, \qquad H:=\left(
+           \frac{\partial L}{\partial \dot{q}^{i}}\dot{q}^{i}-L\right).
+}{0}\coordE{}\end{align}
+ We expand the left-hand side of (\ref{2.14}) and obtain
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\frac{\leftCoord{}d}{\rightCoord{}dt}\left(
+           \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}\dot{q}^{\leftCoord{}i}-L\right)=
+\leftCoord{}-\left(\frac{\leftCoord{}\partial L}{\rightCoord{}\partial q^{\leftCoord{}i}}-\frac{\leftCoord{}d}{\rightCoord{}dt}
+          \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}\right)\dot{q}^{\leftCoord{}i}.
+\label{2.15}
+}{0mm}{14}{6}{
+\frac{d}{dt}\left(
+           \frac{\partial L}{\partial \dot{q}^{i}}\dot{q}^{i}-L\right)=
+-\left(\frac{\partial L}{\partial q^{i}}-\frac{d}{dt}
+          \frac{\partial L}{\partial \dot{q}^{i}}\right)\dot{q}^{i}.
+}{0}\coordE{}\end{align}
+Thus, for a conservative \myHighlight{$L$}\coordHE{}, energy conservation is a consequence
+of Euler-Lagrange equation. This agrees with Noether theorem,
+which states that the  characteristic of an infinitesimal symmetry
+of  the action functional \myHighlight{$S$}\coordHE{} is that of a conservation law for
+the Euler-Lagrange equation. For a conservative \myHighlight{$L$}\coordHE{},
+\myHighlight{$\frac{\partial}{\partial t}$}\coordHE{} is an infinitesimal symmetry of  the
+action functional \myHighlight{$S$}\coordHE{}, and its characteristic is \myHighlight{$-\dot{q}^i$}\coordHE{}.
+From Noether theorem, there exits a corresponding conservation law
+in the characteristic form
+\begin{align}\coord{}\boxAlignEqnarray{
+ \leftCoord{}-\left(\frac{\leftCoord{}\partial L}{\rightCoord{}\partial q^{\leftCoord{}i}}-\frac{\leftCoord{}d}{\rightCoord{}dt}
+\leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}\right)\dot{q}^{\leftCoord{}i}=0.
+\label{2.16}
+}{0mm}{8}{4}{
+ -\left(\frac{\partial L}{\partial q^{i}}-\frac{d}{dt}
+\frac{\partial L}{\partial \dot{q}^{i}}\right)\dot{q}^{i}=0.
+}{0}\coordE{}\end{align}
+If we drop the requirement
+\begin{align}\coord{}\boxAlignEqnarray{
+ \leftCoord{}\xi(a, q(a))=\xi(b, q(b))=0, \qquad
+ \leftCoord{}\phi^{\leftCoord{}i}(a, q(a))=\phi^{\leftCoord{}i}(b, q(b))=0,
+}{0mm}{4}{1}{
+ \xi(a, q(a))=\xi(b, q(b))=0, \qquad
+ \phi^{i}(a, q(a))=\phi^{i}(b, q(b))=0,
+}{0}\coordE{}\end{align}
+we can define the extended Lagrangian one form on \myHighlight{$Q^{(1)}$}\coordHE{} from
+the second term in (\ref{2.10})
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\vartheta_{\rightCoord{}L}:=\left(L-\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}
+           \leftCoord{}\dot{q}^{\leftCoord{}i}\right)dt +\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}dq^{\leftCoord{}i} \label{2.17}.
+}{0mm}{8}{4}{
+\vartheta_{L}:=\left(L-\frac{\partial L}{\partial \dot{q}^{i}}
+           \dot{q}^{i}\right)dt +\frac{\partial L}{\partial \dot{q}^{i}}dq^{i} .
+}{0}\coordE{}\end{align}
+Suppose \myHighlight{$g^i(t, v_{q^i})$}\coordHE{} is a solution of (\ref{2.13}) depending
+on the initial condition \myHighlight{$v_{q^i}\in Q^{(1)}$}\coordHE{}. Restricting
+\myHighlight{$\tilde{q}^i(\epsilon, \tilde{t})$}\coordHE{} to the solution space of
+(\ref{2.13}) and using the same method in [\ref{m1}], it can be
+proved that the extended symplectic two form is preserved
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}(\text{pr}^{\leftCoord{}1}g^{\leftCoord{}i})^{*}\Omega_{\rightCoord{}L}=\Omega_{\rightCoord{}L},\qquad
+\leftCoord{}\Omega_L:=d\vartheta_L. \label{2.22}
+}{0mm}{4}{3}{
+(\text{pr}^{1}g^{i})^{*}\Omega_{L}=\Omega_{L},\qquad
+\Omega_L:=d\vartheta_L. }{0}\coordE{}\end{align}
+where \myHighlight{$\text{pr}^{1}g^i(s, v_{q^i}))=(s,g^i(s, v_{q^i}),
+\frac{d}{ds}g^i(s, v_{q^i}))$}\coordHE{} denotes the first order prolongation
+of \myHighlight{$g^i(s, v_{q^i})$}\coordHE{} [\ref{o1}].
+
+
+
+ \vskip10pt 
+ \noindent
+ {\em Remark} \,1. \, If \myHighlight{$\xi$}\coordHE{} in
+(\ref{2.1}) is independent of \myHighlight{$q$}\coordHE{}, the deformations in
+(\ref{2.3}) are called fiber-preserving. In this case, the domain
+of definition of \myHighlight{$\tilde{q}^i(\epsilon, \tilde{t})$}\coordHE{} only depends
+on the deformations (\ref{2.3}). While in the general case, the
+domain of definition of \myHighlight{$\tilde{q}^i(\epsilon, \tilde{t})$}\coordHE{} not
+only depends on
+the deformations (\ref{2.3}) but also on \myHighlight{$q^i(t)$}\coordHE{}. %\vskip6pt
+
+\vskip10pt
+\noindent
+{\em Remark}\, 2. \, Using the identity %equation
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial t}+\frac{\leftCoord{}d}{\rightCoord{}dt}\left(
+           \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}\dot{q}^{\leftCoord{}i}-L\right)
+\leftCoord{}=-\left(\frac{\leftCoord{}\partial L}{\rightCoord{}\partial q^{\leftCoord{}i}}-\frac{\leftCoord{}d}{\rightCoord{}dt}\frac{\leftCoord{}\partial
+\leftCoord{}L}{\partial \dot{q}^{\leftCoord{}i}}
+          \leftCoord{}\right)\dot{q}^{\leftCoord{}i}, \label{2.24a}
+}{0mm}{16}{6}{
+\frac{\partial L}{\partial t}+\frac{d}{dt}\left(
+           \frac{\partial L}{\partial \dot{q}^{i}}\dot{q}^{i}-L\right)
+=-\left(\frac{\partial L}{\partial q^{i}}-\frac{d}{dt}\frac{\partial
+L}{\partial \dot{q}^{i}}
+          \right)\dot{q}^{i}, }{0}\coordE{}\end{align}
+the Eq. (\ref{2.10}) becomes
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\delta S=\int_{\leftCoord{}\rightCoord{}a}^{\leftCoord{}b}\left(\frac{\leftCoord{}\partial L}{\rightCoord{}\partial
+\leftCoord{}q^{\leftCoord{}i}}-\frac{\leftCoord{}d}{\rightCoord{}dt}
+         \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}\right)(\phi^{\leftCoord{}i}-\xi \dot{q}^{\leftCoord{}i})dt
+          \leftCoord{}+\left.\left[\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}^{\leftCoord{}i}}(\phi^{\leftCoord{}i}-\xi \dot{q}^{\leftCoord{}i})
+           \leftCoord{}\right]\right|_{\rightCoord{}a}^{\leftCoord{}b}+ \left.(L\xi)\right|_{\rightCoord{}a}^{\leftCoord{}b}.\label{2.24}
+}{0mm}{20}{8}{
+\delta S=\int_{a}^{b}\left(\frac{\partial L}{\partial
+q^{i}}-\frac{d}{dt}
+         \frac{\partial L}{\partial \dot{q}^{i}}\right)(\phi^{i}-\xi \dot{q}^{i})dt
+          +\left.\left[\frac{\partial L}{\partial \dot{q}^{i}}(\phi^{i}-\xi \dot{q}^{i})
+           \right]\right|_{a}^{b}+ \left.(L\xi)\right|_{a}^{b}.}{0}\coordE{}\end{align}
+
+According to (\ref{2.4}), \myHighlight{$\phi^i=\delta q^i$}\coordHE{} should be regarded
+as the total variation of \myHighlight{$q^i$}\coordHE{}, \myHighlight{$\delta q^i=\delta_V q^i
++\delta_H q^i$}\coordHE{}, since the variation of \myHighlight{$t$}\coordHE{} also induces the
+variation of \myHighlight{$q^i$}\coordHE{} denoted as \myHighlight{$\delta_H q^i$}\coordHE{}, the horizontal
+variation of \myHighlight{$ q^i$}\coordHE{}. Due to \myHighlight{$\xi=\delta t$}\coordHE{} in (\ref{2.4}), the
+horizontal variation of \myHighlight{$ q^i$}\coordHE{} should be  \myHighlight{$\delta_H q^i=\xi
+\dot{q}^i$}\coordHE{} and consequently \myHighlight{$\phi^i-\xi \dot{q}^i$}\coordHE{} is interpreted
+as vertical variation \myHighlight{$\delta_V q^i$}\coordHE{}, i.e. the variation of
+\myHighlight{$q^i(t)$}\coordHE{}
+at the moment \myHighlight{$t$}\coordHE{} (see, for example [\ref{c1}]). %and \myHighlight{$\xi$}\coordHE{} as
+Therefore, the first two terms in (\ref{2.24}) come from vertical
+variation \myHighlight{$\delta_V q^i$}\coordHE{} and the last term comes from horizontal
+variation \myHighlight{$\delta t$}\coordHE{}.  The horizontal variation of \myHighlight{$S$}\coordHE{} with
+respect to the horizontal variation  \myHighlight{$\delta_H q^i=\xi \dot{q}^i$}\coordHE{}
+just gives rise to the identity (\ref{2.24a}).
+
+
+
+\vskip5pt
+\sect{Discrete mechanics and variational integrators with variable
+time steps }
+
+ In this section, by means of a calculus of discrete total variations we develop
+ a discrete Lagrangian mechanics, which includes the boundary terms in Lee's
+discrete mechanics that give rise to the discrete version of
+symplectic preserving. The discrete variation calculus is mainly
+analog to Lee's idea that (discrete) time is regarded as dynamical
+variable, i.e. the time steps are variable [\ref{td1}, \ref{td2},
+\ref{td3}]. And the vertical part of this discrete variation
+calculus is similar to the one in [\ref{k1}, \ref{m1}, \ref{m3},
+\ref{v1}, \ref{v2}, \ref{w1}]. %, \ref{w2}].
+Using this calculus
+for discrete total  variations
+we  naturally derive
+ Kane-Marsden-Ortiz's integrators.
+
+ We use \myHighlight{$Q \times Q$}\coordHE{} for the discrete version
+of the first prolongation for the extended configuration space
+\myHighlight{$Q$}\coordHE{}. A point \myHighlight{$(t_{0}, q_{0}; t_{1}, q_{1})\in Q\times Q$}\coordHE{}
+{\footnote{In this section \myHighlight{$q$}\coordHE{} is an abbreviation of
+\myHighlight{$(q^{1}, q^{2}, \cdots, q^{n})$}\coordHE{}.}}corresponds to a tangent vector
+\myHighlight{$\frac{q_{1}-q_{0}}{t_{1}-t_{0}}$}\coordHE{}. A discrete Lagrangian is
+defined to be \myHighlight{$\mathbb{L}:\,Q\times Q\to \mathbb{R}$}\coordHE{} and the
+corresponding action to be
+\begin{align}\coord{}\boxAlignEqnarray{
+ \leftCoord{}\mathbb{S}=\sum_{\rightCoord{}k=0}^{\leftCoord{}{}\leftCoord{}N-1}\mathbb{L}(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})
+   \leftCoord{}(t_{\rightCoord{}k+1}-t_{\rightCoord{}k}). \label{3.1}
+}{0mm}{4}{8}{
+ \mathbb{S}=\sum_{k=0}^{{}N-1}\mathbb{L}(t_{k}, q_{k}, t_{k+1}, q_{k+1})
+   (t_{k+1}-t_{k}). }{0}\coordE{}\end{align}
+The discrete variational principle in total variation  is to
+extremize \myHighlight{$\mathbb{S}$}\coordHE{} for variations of both \myHighlight{$q_{k}$}\coordHE{} and \myHighlight{$t_{k}$}\coordHE{}
+with  fixed endpoints \myHighlight{$(t_{0}, q_{0})$}\coordHE{} and \myHighlight{$(t_{N}, q_{N})$}\coordHE{}. This
+discrete variational principle  determines a discrete flow
+\myHighlight{$\Phi:\,Q\times Q\to Q\times Q$}\coordHE{} by
+\begin{align}\coord{}\boxAlignEqnarray{
+   \leftCoord{}\Phi(t_{\rightCoord{}k-1}, q_{\rightCoord{}k-1}, t_{\rightCoord{}k}, q_{\rightCoord{}k})=(t_{\rightCoord{}k}, q_{\rightCoord{}k},t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1}). \label{3.2}
+}{0mm}{1}{9}{
+   \Phi(t_{k-1}, q_{k-1}, t_{k}, q_{k})=(t_{k}, q_{k},t_{k+1}, q_{k+1}). }{0}\coordE{}\end{align}
+Here \myHighlight{$(t_{k+1}, q_{k+1})$}\coordHE{} are found from the following discrete
+Euler-Lagrange equation, i.e. the variational integrator, and the
+discrete energy conservation law (for conservative L)
+\begin{align}\coord{}\boxAlignEqnarray{
+ %\begin{split}
+&\leftCoord{}(t_{\rightCoord{}k+1}-t_{\rightCoord{}k})D_{\rightCoord{}2}\mathbb{L}(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})
+  \leftCoord{}+(t_{\rightCoord{}k}-t_{\rightCoord{}k-1})D_{\rightCoord{}4}\mathbb{L}(t_{\rightCoord{}k-1}, q_{\rightCoord{}k-1}, t_{\rightCoord{}k}, q_{\rightCoord{}k})=0,
+  %\end{split}
+ \label{3.3}
+}{0mm}{1}{1}{theequation}{0}\coordE{}\end{align}
+and
+\begin{align}\coord{}\boxAlignEqnarray{
+ \leftCoord{}\begin{split}
+&\leftCoord{}(t_{\rightCoord{}k+1}-t_{\rightCoord{}k})D_{\rightCoord{}1}\mathbb{L}(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})
+   \leftCoord{}+D_{\rightCoord{}3}\mathbb{L}(t_{\rightCoord{}k-1}, q_{\rightCoord{}k-1}, t_{\rightCoord{}k}, q_{\rightCoord{}k})(t_{\rightCoord{}k}-t_{\rightCoord{}k-1}) \rightCoord{}\\
+&\leftCoord{}\quad -\mathbb{L}(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})+
+\leftCoord{}\mathbb{L}(t_{\rightCoord{}k-1}, q_{\rightCoord{}k-1}, t_{\rightCoord{}k}, q_{\rightCoord{}k})=0,
+\leftCoord{}\leftCoord{}\rightCoord{}\end{split}\label{3.4}
+}{0mm}{7}{25}{
+ \begin{split}
+&(t_{k+1}-t_{k})D_{1}\mathbb{L}(t_{k}, q_{k}, t_{k+1}, q_{k+1})
+   +D_{3}\mathbb{L}(t_{k-1}, q_{k-1}, t_{k}, q_{k})(t_{k}-t_{k-1}) \\
+&\quad -\mathbb{L}(t_{k}, q_{k}, t_{k+1}, q_{k+1})+
+\mathbb{L}(t_{k-1}, q_{k-1}, t_{k}, q_{k})=0,
+\end{split}}{0}\coordE{}\end{align}
+for all \myHighlight{$k\in\{1, 2, \cdots, N-1\}$}\coordHE{}. Here \myHighlight{$D_{i}$}\coordHE{} denotes the
+partial derivative of \myHighlight{$\mathbb{L}$}\coordHE{} with respect to the \myHighlight{$i$}\coordHE{}th
+argument. The Eq. (\ref{3.3}) is the discrete Euler-Lagrange
+equation. %(variational integrator).
+The Eq. (\ref{3.4}) is the discrete energy conservation law for a
+conservative \myHighlight{$\mathbb{L}$}\coordHE{}. The integrator (\ref{3.3})-(\ref{3.4})
+is just Kane-Marsden-Ortiz's integrator.
+
+
+Using the discrete flow \myHighlight{$\Phi$}\coordHE{}, the Eqs. (\ref{3.3}) and (\ref{3.4}) become
+respectively
+\begin{align}\coord{}\boxAlignEqnarray{
+&\leftCoord{}(t_{\rightCoord{}k+1}-t_{\rightCoord{}k})D_{\rightCoord{}2}\mathbb{L}\circ\Phi +
+     \leftCoord{}(t_{\rightCoord{}k}-t_{\rightCoord{}k-1})D_{\rightCoord{}4}\mathbb{L}=0, \label{3.5}\rightCoord{}\\
+&\leftCoord{}((t_{\rightCoord{}k+1}-t_{\rightCoord{}k})D_{\rightCoord{}1}\mathbb{L}-\mathbb{L})\circ\Phi +
+   \leftCoord{}D_{\rightCoord{}3}\mathbb{L}+\mathbb{L}=0. \label{3.6}
+}{0mm}{4}{12}{
+&(t_{k+1}-t_{k})D_{2}\mathbb{L}\circ\Phi +
+     (t_{k}-t_{k-1})D_{4}\mathbb{L}=0, \\
+&((t_{k+1}-t_{k})D_{1}\mathbb{L}-\mathbb{L})\circ\Phi +
+   D_{3}\mathbb{L}+\mathbb{L}=0. }{0}\coordE{}\end{align}
+If \myHighlight{$(t_{k+1}-t_{k})D_{2}\mathbb{L}$}\coordHE{} and \myHighlight{$(t_{k+1}-t_{k})D_{1}\mathbb{L}-\mathbb{L}$}\coordHE{}
+are invertible, the Eqs.
+(\ref{3.5}) and (\ref{3.6}) determine the discrete flow \myHighlight{$\Phi$}\coordHE{} under
+the consistency condition
+\begin{align}\coord{}\boxAlignEqnarray{
+   \leftCoord{}((t_{\rightCoord{}k+1}-t_{\rightCoord{}k})D_{\rightCoord{}1}\mathbb{L}-\mathbb{L})^{-1}\circ (D_{\rightCoord{}3}\mathbb{L}+\mathbb{L})
+    \leftCoord{}=((t_{\rightCoord{}k+1}-t_{\rightCoord{}k})D_{\rightCoord{}2}\mathbb{L})^{-1}\circ (t_{\rightCoord{}k}-t_{\rightCoord{}k-1})D_{\rightCoord{}4}\mathbb{L}.
+}{0mm}{2}{11}{
+   ((t_{k+1}-t_{k})D_{1}\mathbb{L}-\mathbb{L})^{-1}\circ (D_{3}\mathbb{L}+\mathbb{L})
+    =((t_{k+1}-t_{k})D_{2}\mathbb{L})^{-1}\circ (t_{k}-t_{k-1})D_{4}\mathbb{L}.
+}{0}\coordE{}\end{align}
+
+Now we prove that the discrete flow \myHighlight{$\Phi$}\coordHE{} preserves a discrete
+version of the extended Lagrange two form \myHighlight{$\Omega_{L}$}\coordHE{}. %We do
+As in continuous case,
+we calculate \myHighlight{$d\mathbb{S}$}\coordHE{} for variations with varied endpoints.
+\begin{align}\coord{}\boxAlignEqnarray{
+&\leftCoord{}d\mathbb{S}(t_{\rightCoord{}0}, q_{\rightCoord{}0}, \cdots, t_{\rightCoord{}N}, q_{\rightCoord{}N})\cdot (\delta t_{\rightCoord{}0}, \delta q_{\rightCoord{}0},
+      \leftCoord{}\cdots, \delta t_{\rightCoord{}N}, \delta q_{\rightCoord{}N})\notag \rightCoord{}\\
+&\leftCoord{}=\sum_{\rightCoord{}k=0}^{\leftCoord{}{}\leftCoord{}N-1}(D_{\rightCoord{}2}L(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})\delta q_{\rightCoord{}k}+
+        \leftCoord{}D_{\rightCoord{}4}L(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})\delta q_{\rightCoord{}k+1})(t_{\rightCoord{}k+1}-t_{\rightCoord{}k})\notag \rightCoord{}\\
+&\leftCoord{}\quad + \sum_{\rightCoord{}k=0}^{\leftCoord{}{}\leftCoord{}N-1}(D_{\rightCoord{}1}L(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})\delta t_{\rightCoord{}k}+
+        \leftCoord{}D_{\rightCoord{}3}L(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})\delta t_{\rightCoord{}k+1})(t_{\rightCoord{}k+1}-t_{\rightCoord{}k})\notag \rightCoord{}\\
+&\leftCoord{}\quad + \sum_{\rightCoord{}k=0}^{\leftCoord{}{}\leftCoord{}N-1}L(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})(\delta t_{\rightCoord{}k+1}
+       \leftCoord{}-\delta t_{\rightCoord{}k})\notag\rightCoord{}\\
+&\leftCoord{}=\sum_{\rightCoord{}k=0}^{\leftCoord{}{}\leftCoord{}N-1}D_{\rightCoord{}2}L(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})(t_{\rightCoord{}k+1}-t_{\rightCoord{}k})\delta q_{\rightCoord{}k}
+     \leftCoord{}\notag\rightCoord{}\\
+&\leftCoord{}\quad +\sum_{\rightCoord{}k=1}^{\leftCoord{}{}\leftCoord{}N} D_{\rightCoord{}4}L(t_{\rightCoord{}k-1}, q_{\rightCoord{}k-1}, t_{\rightCoord{}k}, q_{\rightCoord{}k})
+          \leftCoord{}(t_{\rightCoord{}k}-t_{\rightCoord{}k-1})\delta q_{\rightCoord{}k}\notag \rightCoord{}\\
+&\leftCoord{}\quad +\sum_{\rightCoord{}k=0}^{\leftCoord{}{}\leftCoord{}N-1}D_{\rightCoord{}1}L(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})(t_{\rightCoord{}k+1}-t_{\rightCoord{}k})
+        \leftCoord{}\delta t_{\rightCoord{}k}\notag \rightCoord{}\\
+&\leftCoord{}\quad +\sum_{\rightCoord{}k=1}^{\leftCoord{}{}\leftCoord{}N} D_{\rightCoord{}3}L(t_{\rightCoord{}k-1}, q_{\rightCoord{}k-1}, t_{\rightCoord{}k}, q_{\rightCoord{}k})(t_{\rightCoord{}k}-t_{\rightCoord{}k-1})
+        \leftCoord{}\delta t_{\rightCoord{}k}\notag \rightCoord{}\\
+&\leftCoord{}\quad + \sum_{\rightCoord{}k=0}^{\leftCoord{}{}\leftCoord{}N-1}L(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})(-\delta t_{\rightCoord{}k})
+       \leftCoord{}+\sum_{\rightCoord{}k=1}^{\leftCoord{}{}\leftCoord{}N}L(t_{\rightCoord{}k-1}, q_{\rightCoord{}k-1}, t_{\rightCoord{}k}, q_{\rightCoord{}k})\delta t_{\rightCoord{}k}\notag
+       }{0mm}{36}{91}{
+&d\mathbb{S}(t_{0}, q_{0}, \cdots, t_{N}, q_{N})\cdot (\delta t_{0}, \delta q_{0},
+      \cdots, \delta t_{N}, \delta q_{N})\notag \\
+&=\sum_{k=0}^{{}N-1}(D_{2}L(t_{k}, q_{k}, t_{k+1}, q_{k+1})\delta q_{k}+
+        D_{4}L(t_{k}, q_{k}, t_{k+1}, q_{k+1})\delta q_{k+1})(t_{k+1}-t_{k})\notag \\
+&\quad + \sum_{k=0}^{{}N-1}(D_{1}L(t_{k}, q_{k}, t_{k+1}, q_{k+1})\delta t_{k}+
+        D_{3}L(t_{k}, q_{k}, t_{k+1}, q_{k+1})\delta t_{k+1})(t_{k+1}-t_{k})\notag \\
+&\quad + \sum_{k=0}^{{}N-1}L(t_{k}, q_{k}, t_{k+1}, q_{k+1})(\delta t_{k+1}
+       -\delta t_{k})\notag\\
+&=\sum_{k=0}^{{}N-1}D_{2}L(t_{k}, q_{k}, t_{k+1}, q_{k+1})(t_{k+1}-t_{k})\delta q_{k}
+     \notag\\
+&\quad +\sum_{k=1}^{{}N} D_{4}L(t_{k-1}, q_{k-1}, t_{k}, q_{k})
+          (t_{k}-t_{k-1})\delta q_{k}\notag \\
+&\quad +\sum_{k=0}^{{}N-1}D_{1}L(t_{k}, q_{k}, t_{k+1}, q_{k+1})(t_{k+1}-t_{k})
+        \delta t_{k}\notag \\
+&\quad +\sum_{k=1}^{{}N} D_{3}L(t_{k-1}, q_{k-1}, t_{k}, q_{k})(t_{k}-t_{k-1})
+        \delta t_{k}\notag \\
+&\quad + \sum_{k=0}^{{}N-1}L(t_{k}, q_{k}, t_{k+1}, q_{k+1})(-\delta t_{k})
+       +\sum_{k=1}^{{}N}L(t_{k-1}, q_{k-1}, t_{k}, q_{k})\delta t_{k}\notag
+       }{0}\coordE{}\end{align}
+       \begin{align}\coord{}\boxAlignEqnarray{
+&\leftCoord{}=\sum_{\rightCoord{}k=1}^{\leftCoord{}{}\leftCoord{}N-1}(D_{\rightCoord{}2}L(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})(t_{\rightCoord{}k+1}-t_{\rightCoord{}k})
+                     \leftCoord{}+D_{\rightCoord{}4}L(t_{\rightCoord{}k-1}, q_{\rightCoord{}k-1}, t_{\rightCoord{}k}, q_{\rightCoord{}k})
+                     \leftCoord{}(t_{\rightCoord{}k}-t_{\rightCoord{}k-1}))\delta q_{\rightCoord{}k}\notag\rightCoord{}\\
+&\leftCoord{}\quad +\sum_{\rightCoord{}k=1}^{\leftCoord{}{}\leftCoord{}N-1}(D_{\rightCoord{}1}L(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})(t_{\rightCoord{}k+1}-t_{\rightCoord{}k})
+                     \leftCoord{}+D_{\rightCoord{}3}L(t_{\rightCoord{}k-1}, q_{\rightCoord{}k-1}, t_{\rightCoord{}k}, q_{\rightCoord{}k})
+                     \leftCoord{}(t_{\rightCoord{}k}-t_{\rightCoord{}k-1})\notag\\[-10pt]
+&\leftCoord{}\quad \quad\quad \quad \,\,+L(t_{\rightCoord{}k-1}, q_{\rightCoord{}k-1}, t_{\rightCoord{}k}, q_{\rightCoord{}k})
+      \leftCoord{}-L(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1}))\delta t_{\rightCoord{}k}\notag\rightCoord{}\\
+&\leftCoord{}\quad +D_{\rightCoord{}2}L(t_{\rightCoord{}0}, q_{\rightCoord{}0}, t_{\rightCoord{}1}, q_{\rightCoord{}1})(t_{\rightCoord{}1}-t_{\rightCoord{}0})\delta q_{\rightCoord{}0}
+           \leftCoord{}+D_{\rightCoord{}4}L(t_{\rightCoord{}N-1}, q_{\rightCoord{}N-1}, t_{\rightCoord{}N}, q_{\rightCoord{}N})(t_{\rightCoord{}N}-t_{\rightCoord{}N-1})\delta q_{\rightCoord{}N}\notag\rightCoord{}\\
+&\leftCoord{}\quad +(D_{\rightCoord{}1}L(t_{\rightCoord{}0}, q_{\rightCoord{}0}, t_{\rightCoord{}1}, q_{\rightCoord{}1})(t_{\rightCoord{}1}-t_{\rightCoord{}0})
+               \leftCoord{}-L(t_{\rightCoord{}0}, q_{\rightCoord{}0}, t_{\rightCoord{}1}, q_{\rightCoord{}1}))\delta t_{\rightCoord{}0}\notag\rightCoord{}\\
+&\leftCoord{}\quad  +(D_{\rightCoord{}3}L(t_{\rightCoord{}N-1}, q_{\rightCoord{}N-1}, t_{\rightCoord{}N}, q_{\rightCoord{}N})(t_{\rightCoord{}N}-t_{\rightCoord{}N-1})
+               \leftCoord{}+L(t_{\rightCoord{}N-1}, q_{\rightCoord{}N-1}, t_{\rightCoord{}N}, q_{\rightCoord{}N}))\delta t_{\rightCoord{}N}. \label{3.8}
+}{0mm}{18}{85}{
+&=\sum_{k=1}^{{}N-1}(D_{2}L(t_{k}, q_{k}, t_{k+1}, q_{k+1})(t_{k+1}-t_{k})
+                     +D_{4}L(t_{k-1}, q_{k-1}, t_{k}, q_{k})
+                     (t_{k}-t_{k-1}))\delta q_{k}\notag\\
+&\quad +\sum_{k=1}^{{}N-1}(D_{1}L(t_{k}, q_{k}, t_{k+1}, q_{k+1})(t_{k+1}-t_{k})
+                     +D_{3}L(t_{k-1}, q_{k-1}, t_{k}, q_{k})
+                     (t_{k}-t_{k-1})\notag\\[-10pt]
+&\quad \quad\quad \quad \,\,+L(t_{k-1}, q_{k-1}, t_{k}, q_{k})
+      -L(t_{k}, q_{k}, t_{k+1}, q_{k+1}))\delta t_{k}\notag\\
+&\quad +D_{2}L(t_{0}, q_{0}, t_{1}, q_{1})(t_{1}-t_{0})\delta q_{0}
+           +D_{4}L(t_{N-1}, q_{N-1}, t_{N}, q_{N})(t_{N}-t_{N-1})\delta q_{N}\notag\\
+&\quad +(D_{1}L(t_{0}, q_{0}, t_{1}, q_{1})(t_{1}-t_{0})
+               -L(t_{0}, q_{0}, t_{1}, q_{1}))\delta t_{0}\notag\\
+&\quad  +(D_{3}L(t_{N-1}, q_{N-1}, t_{N}, q_{N})(t_{N}-t_{N-1})
+               +L(t_{N-1}, q_{N-1}, t_{N}, q_{N}))\delta t_{N}. }{0}\coordE{}\end{align}
+We can see that the last four terms in (\ref{3.8}) come from the boundary variations.
+Based on the
+boundary variations, we can define two one forms on \myHighlight{$Q\times Q$}\coordHE{}
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\begin{split}
+&\leftCoord{}\theta_{\rightCoord{}\mathbb{L}}^{-}(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})\rightCoord{}\\
+&\leftCoord{}\, =(D_{\rightCoord{}1}\mathbb{L}(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})
+            \leftCoord{}(t_{\rightCoord{}k+1}-t_{\rightCoord{}k})-\mathbb{L}(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1}))dt_{\rightCoord{}k}\rightCoord{}\\
+&\leftCoord{}\, \quad +D_{\rightCoord{}2}\mathbb{L}(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})
+                \leftCoord{}(t_{\rightCoord{}k+1}-t_{\rightCoord{}k}) dq_{\rightCoord{}k}, \label{3.9}
+\leftCoord{}\leftCoord{}\rightCoord{}\end{split}
+}{0mm}{8}{29}{
+\begin{split}
+&\theta_{\mathbb{L}}^{-}(t_{k}, q_{k}, t_{k+1}, q_{k+1})\\
+&\, =(D_{1}\mathbb{L}(t_{k}, q_{k}, t_{k+1}, q_{k+1})
+            (t_{k+1}-t_{k})-\mathbb{L}(t_{k}, q_{k}, t_{k+1}, q_{k+1}))dt_{k}\\
+&\, \quad +D_{2}\mathbb{L}(t_{k}, q_{k}, t_{k+1}, q_{k+1})
+                (t_{k+1}-t_{k}) dq_{k}, \end{split}
+}{0}\coordE{}\end{align}
+and
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\begin{split}
+&\leftCoord{}\theta_{\rightCoord{}\mathbb{L}}^{+}(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})\rightCoord{}\\
+&\leftCoord{}\,    =(D_{\rightCoord{}3}\mathbb{L}(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})
+            \leftCoord{}(t_{\rightCoord{}k+1}-t_{\rightCoord{}k})+\mathbb{L}(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1}))dt_{\rightCoord{}k+1}\rightCoord{}\\
+&\leftCoord{}\, \quad +D_{\rightCoord{}4}\mathbb{L}(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})
+                \leftCoord{}(t_{\rightCoord{}k+1}-t_{\rightCoord{}k}) dq_{\rightCoord{}k+1}. \label{3.10}
+\leftCoord{}\leftCoord{}\rightCoord{}\end{split}
+}{0mm}{8}{29}{
+\begin{split}
+&\theta_{\mathbb{L}}^{+}(t_{k}, q_{k}, t_{k+1}, q_{k+1})\\
+&\,    =(D_{3}\mathbb{L}(t_{k}, q_{k}, t_{k+1}, q_{k+1})
+            (t_{k+1}-t_{k})+\mathbb{L}(t_{k}, q_{k}, t_{k+1}, q_{k+1}))dt_{k+1}\\
+&\, \quad +D_{4}\mathbb{L}(t_{k}, q_{k}, t_{k+1}, q_{k+1})
+                (t_{k+1}-t_{k}) dq_{k+1}. \end{split}
+}{0}\coordE{}\end{align}
+Here we have employed the notations in [\ref{m1}]. We regard the
+pair
+\myHighlight{$(\theta_{\mathbb{L}}^{-}, \theta_{\mathbb{L}}^{+})$}\coordHE{} as %being
+the discrete version of the extended Lagrange one form
+\myHighlight{$\vartheta_{L}$}\coordHE{} defined in (\ref{2.17}).
+
+Now we parameterize the solutions of the discrete variational
+principle by the initial condition \myHighlight{$(t_{0}, q_{0}, t_{1}, q_{1})$}\coordHE{}
+and  restrict \myHighlight{$\mathbb{S}$}\coordHE{} to that solution space.  Then Eq.
+(\ref{3.8}) becomes
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\begin{split}
+ \leftCoord{}d&\mathbb{S}(t_{\rightCoord{}0}, q_{\rightCoord{}0}, \cdots, t_{\rightCoord{}N}, q_{\rightCoord{}N})\cdot (\delta t_{\rightCoord{}0}, \delta q_{\rightCoord{}0},
+      \leftCoord{}\cdots, \delta t_{\rightCoord{}N}, \delta q_{\rightCoord{}N})\rightCoord{}\\
+&\leftCoord{}=\theta_{\rightCoord{}\mathbb{L}}^{-}(t_{\rightCoord{}0}, q_{\rightCoord{}0}, t_{\rightCoord{}1}, q_{\rightCoord{}1})\cdot
+                        \leftCoord{}(\delta t_{\rightCoord{}0}, \delta q_{\rightCoord{}0},  \delta t_{\rightCoord{}1}, \delta q_{\rightCoord{}1})\rightCoord{}\\
+&\leftCoord{}\quad +\theta_{\rightCoord{}\mathbb{L}}^{+}(t_{\rightCoord{}N-1}, q_{\rightCoord{}N-1}, t_{\rightCoord{}N}, q_{\rightCoord{}N})\cdot
+                \leftCoord{}(\delta t_{\rightCoord{}N-1}, \delta q_{\rightCoord{}N},  \delta t_{\rightCoord{}N-1}, \delta q_{\rightCoord{}N-1})\rightCoord{}\\
+&\leftCoord{}=\theta_{\rightCoord{}\mathbb{L}}^{-}(t_{\rightCoord{}0}, q_{\rightCoord{}0}, t_{\rightCoord{}1}, q_{\rightCoord{}1})\cdot
+                        \leftCoord{}(\delta t_{\rightCoord{}0}, \delta q_{\rightCoord{}0},  \delta t_{\rightCoord{}1}, \delta q_{\rightCoord{}1})\rightCoord{}\\
+&\leftCoord{}\quad +(\Phi^{N-1})^{*}\theta_{\rightCoord{}\mathbb{L}}^{+}(t_{\rightCoord{}0}, q_{\rightCoord{}0}, t_{\rightCoord{}1}, q_{\rightCoord{}1})\cdot
+        \leftCoord{}(\delta t_{\rightCoord{}0}, \delta q_{\rightCoord{}0},  \delta t_{\rightCoord{}1}, \delta q_{\rightCoord{}1}). \label{3.11}
+\leftCoord{}\leftCoord{}\rightCoord{}\end{split}
+}{0mm}{13}{50}{
+\begin{split}
+ d&\mathbb{S}(t_{0}, q_{0}, \cdots, t_{N}, q_{N})\cdot (\delta t_{0}, \delta q_{0},
+      \cdots, \delta t_{N}, \delta q_{N})\\
+&=\theta_{\mathbb{L}}^{-}(t_{0}, q_{0}, t_{1}, q_{1})\cdot
+                        (\delta t_{0}, \delta q_{0},  \delta t_{1}, \delta q_{1})\\
+&\quad +\theta_{\mathbb{L}}^{+}(t_{N-1}, q_{N-1}, t_{N}, q_{N})\cdot
+                (\delta t_{N-1}, \delta q_{N},  \delta t_{N-1}, \delta q_{N-1})\\
+&=\theta_{\mathbb{L}}^{-}(t_{0}, q_{0}, t_{1}, q_{1})\cdot
+                        (\delta t_{0}, \delta q_{0},  \delta t_{1}, \delta q_{1})\\
+&\quad +(\Phi^{N-1})^{*}\theta_{\mathbb{L}}^{+}(t_{0}, q_{0}, t_{1}, q_{1})\cdot
+        (\delta t_{0}, \delta q_{0},  \delta t_{1}, \delta q_{1}). \end{split}
+}{0}\coordE{}\end{align}
+From (\ref{3.11}), we can obtain
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}d\mathbb{S}=\theta_{\rightCoord{}\mathbb{L}}^{-}+(\Phi^{N-1})^{*}\theta_{\rightCoord{}\mathbb{L}}^{+}.
+\label{3.12}
+}{0mm}{1}{3}{
+d\mathbb{S}=\theta_{\mathbb{L}}^{-}+(\Phi^{N-1})^{*}\theta_{\mathbb{L}}^{+}.
+}{0}\coordE{}\end{align}
+The Eq. (\ref{3.12}) holds for arbitrary \myHighlight{$N>1$}\coordHE{}. By taking N=2, it
+leads to
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}d\mathbb{S}=\theta_{\rightCoord{}\mathbb{L}}^{-}+\Phi^{*}\theta_{\rightCoord{}\mathbb{L}}^{+}.
+\label{3.13}
+}{0mm}{1}{3}{
+d\mathbb{S}=\theta_{\mathbb{L}}^{-}+\Phi^{*}\theta_{\mathbb{L}}^{+}.
+}{0}\coordE{}\end{align}
+Taking exterior differentiation of (\ref{3.13}), it follows
+that
+\begin{align}\coord{}\boxAlignEqnarray{
+  \leftCoord{}\Phi^{*}(d\theta_{\rightCoord{}\mathbb{L}}^{+})=-d\theta_{\rightCoord{}\mathbb{L}}^{-}. \label{3.14}
+}{0mm}{1}{3}{
+  \Phi^{*}(d\theta_{\mathbb{L}}^{+})=-d\theta_{\mathbb{L}}^{-}. }{0}\coordE{}\end{align}
+From the definition of \myHighlight{$\theta_{\mathbb{L}}^{-}$}\coordHE{} and \myHighlight{$\theta_{\mathbb{L}}^{+}$}\coordHE{}, we
+know that
+\begin{align}\coord{}\boxAlignEqnarray{
+   \leftCoord{}\theta_{\rightCoord{}\mathbb{L}}^{-}+\theta_{\rightCoord{}\mathbb{L}}^{+}=d(\mathbb{L}(t_{\rightCoord{}k+1}-t_{\rightCoord{}k})).\label{3.15}
+}{0mm}{1}{5}{
+   \theta_{\mathbb{L}}^{-}+\theta_{\mathbb{L}}^{+}=d(\mathbb{L}(t_{k+1}-t_{k})).}{0}\coordE{}\end{align}
+Taking exterior differentiation of (\ref{3.15}), we obtain
+\myHighlight{$d\theta_{\mathbb{L}}^{+}=-d\theta_{\mathbb{L}}^{-}$}\coordHE{}.  Define
+\begin{align}\coord{}\boxAlignEqnarray{
+ \leftCoord{}\Omega_{\rightCoord{}\mathbb{L}}\equiv d\theta_{\rightCoord{}\mathbb{L}}^{+}=
+\leftCoord{}-d\theta_{\rightCoord{}\mathbb{L}}^{-}.\label{3.16}
+}{0mm}{2}{4}{
+ \Omega_{\mathbb{L}}\equiv d\theta_{\mathbb{L}}^{+}=
+-d\theta_{\mathbb{L}}^{-}.}{0}\coordE{}\end{align}
+Finally, we have shown that the discrete flow \myHighlight{$\Phi$}\coordHE{} preserves the
+discrete extended Lagrange two form \myHighlight{$\Omega_{\mathbb{L}}$}\coordHE{}.
+\begin{align}\coord{}\boxAlignEqnarray{
+  \leftCoord{}\Phi^{*}(\Omega_{\rightCoord{}\mathbb{L}})=\Omega_{\rightCoord{}\mathbb{L}}. \label{3.17}
+}{0mm}{1}{3}{
+  \Phi^{*}(\Omega_{\mathbb{L}})=\Omega_{\mathbb{L}}. }{0}\coordE{}\end{align}
+
+Now we show that the variational integrator (\ref{3.3}), the
+discrete energy conservation law (\ref{3.4}) and the discrete
+extended Lagrange two form \myHighlight{$\Omega_{\mathbb{L}}$}\coordHE{} converge to their
+continuous counterparts as \myHighlight{$t_{k+1}\to t_{k},\,\, t_{k-1}\to
+t_{k}$}\coordHE{}.
+
+
+Consider a conservative Lagrangian \myHighlight{$L(q, \dot{q})$}\coordHE{}. For simplicity, we choose the
+discrete Lagrangian as
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\mathbb{L}(t_{\rightCoord{}k}, q_{\rightCoord{}k}, t_{\rightCoord{}k+1}, q_{\rightCoord{}k+1})=L(q_{\rightCoord{}k}, \frac{\leftCoord{}q_{\rightCoord{}k+1}-q_{\rightCoord{}k}}
+{\rightCoord{}\leftCoord{}t_{\rightCoord{}k+1}-t_{\rightCoord{}k}}).\label{3.18}
+}{0mm}{3}{11}{
+\mathbb{L}(t_{k}, q_{k}, t_{k+1}, q_{k+1})=L(q_{k}, \frac{q_{k+1}-q_{k}}
+{t_{k+1}-t_{k}}).}{0}\coordE{}\end{align}
+The variational integrator (\ref{3.3}) becomes
+\begin{align}\coord{}\boxAlignEqnarray{
+&\leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial q_{\rightCoord{}k}}( q_{\rightCoord{}k}, \Delta_{\rightCoord{}t}q_{\rightCoord{}k})
+   \leftCoord{}-\frac{\leftCoord{}1}{\rightCoord{}t_{\rightCoord{}k+1}-t_{\rightCoord{}k}}\left(\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \Delta_{\rightCoord{}t}q_{\rightCoord{}k}}
+    \leftCoord{}(q_{\rightCoord{}k}, \Delta_{\rightCoord{}t}q_{\rightCoord{}k})-\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \Delta_{\rightCoord{}t}q_{\rightCoord{}k-1}}
+    \leftCoord{}( q_{\rightCoord{}k-1}, \Delta_{\rightCoord{}t}q_{\rightCoord{}k-1} )\right)=0, \label{3.19}
+}{0mm}{8}{21}{
+&\frac{\partial L}{\partial q_{k}}( q_{k}, \Delta_{t}q_{k})
+   -\frac{1}{t_{k+1}-t_{k}}\left(\frac{\partial L}{\partial \Delta_{t}q_{k}}
+    (q_{k}, \Delta_{t}q_{k})-\frac{\partial L}{\partial \Delta_{t}q_{k-1}}
+    ( q_{k-1}, \Delta_{t}q_{k-1} )\right)=0, }{0}\coordE{}\end{align}
+where \myHighlight{$\Delta_{t}q_{k}=\frac{q_{k+1}-q_{k}}{t_{k+1}-t_{k}},\quad
+\Delta_{t}q_{k-1}=\frac{q_{k}-q_{k-1}}{t_{k}-t_{k-1}}$}\coordHE{}.
+
+It is easy to see that as \myHighlight{$t_{k+1}\to
+t_{k},\,\,  t_{k-1}\to t_{k}$}\coordHE{},  the Eq. (\ref{3.19}) converges to
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial q_{\rightCoord{}k}}-\frac{\leftCoord{}d}{\rightCoord{}dt}
+\leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}_{\rightCoord{}k}}=0. \label{3.20}
+}{0mm}{5}{6}{
+\frac{\partial L}{\partial q_{k}}-\frac{d}{dt}
+\frac{\partial L}{\partial \dot{q}_{k}}=0. }{0}\coordE{}\end{align}
+\noindent
+The discrete energy conservation law (\ref{3.4}) becomes
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\frac{\leftCoord{}E_{\rightCoord{}k+1}-E_{\rightCoord{}k}}{\rightCoord{}t_{\rightCoord{}k+1}-t_{\rightCoord{}k}}=0, \label{3.21}
+}{0mm}{2}{6}{
+\frac{E_{k+1}-E_{k}}{t_{k+1}-t_{k}}=0, }{0}\coordE{}\end{align}
+where
+\begin{align*}\coord{}\boxAlignEqnarray{
+&\leftCoord{}E_{\rightCoord{}k+1}=\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \Delta_{\rightCoord{}t}q_{\rightCoord{}k}}\Delta_{\rightCoord{}t}q_{\rightCoord{}k}
+           \leftCoord{}-L(q_{\rightCoord{}k}, \frac{\leftCoord{}q_{\rightCoord{}k+1}-q_{\rightCoord{}k}}{\rightCoord{}t_{\rightCoord{}k+1}-t_{\rightCoord{}k}})\rightCoord{}\\
+&\leftCoord{}E_{\rightCoord{}k}=\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \Delta_{\rightCoord{}t}q_{\rightCoord{}k-1}}\Delta_{\rightCoord{}t}q_{\rightCoord{}k-1}
+           \leftCoord{}-L(q_{\rightCoord{}k-1}, \frac{\leftCoord{}q_{\rightCoord{}k}-q_{\rightCoord{}k-1}}{\rightCoord{}t_{\rightCoord{}k}-t_{\rightCoord{}k-1}}).
+}{0mm}{8}{26}{
+&E_{k+1}=\frac{\partial L}{\partial \Delta_{t}q_{k}}\Delta_{t}q_{k}
+           -L(q_{k}, \frac{q_{k+1}-q_{k}}{t_{k+1}-t_{k}})\\
+&E_{k}=\frac{\partial L}{\partial \Delta_{t}q_{k-1}}\Delta_{t}q_{k-1}
+           -L(q_{k-1}, \frac{q_{k}-q_{k-1}}{t_{k}-t_{k-1}}).
+}{0}\coordE{}\end{align*}
+The Eq. (\ref{3.21}) converges to
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\frac{\leftCoord{}d}{\rightCoord{}dt}\left(\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \dot{q}_{\rightCoord{}k}}\dot{q}_{\rightCoord{}k}-L\right)=0
+\label{3.22}
+}{0mm}{3}{5}{
+\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_{k}}\dot{q}_{k}-L\right)=0
+}{0}\coordE{}\end{align}
+as \myHighlight{$t_{k+1}\to t_{k},\,\, t_{k-1}\to t_{k}$}\coordHE{}.
+
+Now we consider the discrete extended Lagrange two form
+\myHighlight{$\Omega_{\mathbb{L}}$}\coordHE{} defined by (\ref{3.16}). Under the
+discretization (\ref{3.18}), the discrete extended Lagrange one
+form \myHighlight{$\theta_{\mathbb{L}}^{+}$}\coordHE{} defined in (\ref{3.10}) becomes
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\theta_{\rightCoord{}\mathbb{L}}^{+}=\left(L(q_{\rightCoord{}k}, \Delta_{\rightCoord{}t}q_{\rightCoord{}k})
+\leftCoord{}-\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \Delta_{\rightCoord{}t}q_{\rightCoord{}k}}
+           \leftCoord{}\Delta_{\rightCoord{}t}q_{\rightCoord{}k}\right)dt_{\rightCoord{}k+1} +
+        \leftCoord{}\frac{\leftCoord{}\partial L}{\rightCoord{}\partial \Delta_{\rightCoord{}t}q_{\rightCoord{}k} }dq_{\rightCoord{}k+1}. \label{3.23}
+}{0mm}{6}{15}{
+\theta_{\mathbb{L}}^{+}=\left(L(q_{k}, \Delta_{t}q_{k})
+-\frac{\partial L}{\partial \Delta_{t}q_{k}}
+           \Delta_{t}q_{k}\right)dt_{k+1} +
+        \frac{\partial L}{\partial \Delta_{t}q_{k} }dq_{k+1}. }{0}\coordE{}\end{align}
+From (\ref{3.23}), we can deduce that \myHighlight{$\theta_{\mathbb{L}}^{+}$}\coordHE{}
+converges to the continuous Lagrangian one form \myHighlight{$\vartheta_{L}$}\coordHE{}
+defined by (\ref{2.17}) as \myHighlight{$t_{k+1}\to t_{k}, \,\,t_{k-1}\to
+t_{k}$}\coordHE{}. Thus, we obtain
+\begin{align}\coord{}\boxAlignEqnarray{
+  \leftCoord{}\Omega_{\rightCoord{}\mathbb{L}}=d\theta_{\rightCoord{}\mathbb{L}}^{+}\to d\vartheta_{\rightCoord{}L}=\Omega_{\rightCoord{}L},\quad
+ \leftCoord{}(t_{\rightCoord{}k+1}\to t_{\rightCoord{}k}, \,\,t_{\rightCoord{}k-1}\to t_{\rightCoord{}k}). \label{3.24}
+}{0mm}{2}{9}{
+  \Omega_{\mathbb{L}}=d\theta_{\mathbb{L}}^{+}\to d\vartheta_{L}=\Omega_{L},\quad
+ (t_{k+1}\to t_{k}, \,\,t_{k-1}\to t_{k}). }{0}\coordE{}\end{align}
+
+The variational integrator (\ref{3.3}) with fixed time steps does
+not conserve the discrete energy exactly in general but the
+computed energy will not have secular variation [\ref{g1},
+\ref{s1}]. In some cases such as in discrete mechanics proposed by
+Lee in
+[\ref{td1}, \ref{td2}, \ref{td3}], %[\ref{l1}, \ref{l2}, \ref{l3}],
+the integrator (\ref{3.3}) is required to conserve the discrete
+energy (\ref{3.4}) by varying the time steps. In other words, the
+time steps can be chosen according to (\ref{3.4}) so as to the
+integrator (\ref{3.3}) conserves the discrete energy (\ref{3.4}).
+The resulting
+integrator also conserves the discrete extended Lagrange two form
+\myHighlight{$d\theta_{\mathbb{L}}^{+}$}\coordHE{}.
+ This fact had not been
+discussed in Lee's discrete mechanics.
+
+
+
+
+
+\sect{Conclusions}
+
+We have presented the calculus of total variation problem
+for discrete mechanics with variable time steps referring the one
+for continuous mechanics
+ in this letter.
+Using the calculus for discrete total  variations, we have proved
+that Lee's discrete mechanics is symplectic and derived
+Kane-Marsden-Ortiz's integrators. It is well acknowledged, an
+energy-preserving variational integrator is a more preferable and
+natural candidate of approximations for conservative
+Euler-Lagrangian equation since the solution of conservative
+Euler-Lagrangian equation is not only symplectic but also
+energy-preserving.
+
+As is mentioned, Kane-Marsden-Ortiz's integrators are closely
+related to the discrete mechanics proposed by Lee [\ref{td1},
+\ref{td2}, \ref{td3}]. %[\ref{l1}, \ref{l2}, \ref{l3}].
+In Lee's discrete mechanics, the difference equations are just
+Kane-Marsden-Ortiz's integrators.
+ However, Lee's difference equations are solved as
+boundary value problems, while Kane-Marsden-Ortiz's integrators
+are solved as initial value problems.
+
+Finally, it should be mentioned that two of the authors (HYG and
+KW) and their collaborators have presented a difference discrete
+variational calculus and the discrete version of Euler-Lagrange
+cohomology  for vertical variation problems in both Lagrangian and
+Hamiltonian formalism for discrete mechanics and field theory very
+recently [\ref{glw1}, \ref{glww}]. In their approach, the
+difference operator with fixed step-length  is regarded as an
+entire geometric object. The advantages of this approach have
+already be seen in the last section in the course of taking
+continuous limits although the difference operator \myHighlight{$\Delta_t$}\coordHE{} in
+(\ref{3.18}) is of variable step-length. This approach should be
+able to be generalized for the  discrete total variation problems.
+
+
+
+\begin{thebibliography} {99}
+
+\bibitem{c1} \label{c1}
+R. Courant and D. Hilbert, Methods of Mathematical Physics, {\em Interscience, New
+York, } (1953).
+
+\bibitem{l1}\label{td1}
+T.D. Lee, Can time be a discrete dynamical variable? {\em Phys.
+Lett.}, {\bf 122B}, (1982).
+
+\bibitem{l2}\label{td2}
+T.D. Lee, Difference equations and conservation laws, {\em J.
+Statis. Phys.}, {\bf 46}, 843-860, (1987).
+
+\bibitem{l3}\label{td3}
+T.D. Lee, Discrete mechanics, {\em Lectures given at the
+International School of Subnuclear Physics, Erice, August 1983}.
+
+\bibitem{g1}\label{g1}
+Z. Ge and J.E. Marsden, Lie-Poisson integrators and Lie-Poisson Hamilton-Jacobi
+theory, {\em Phys. Lett. A}, {\bf 133}, 134-139, (1988).
+
+\bibitem{glw1}\label{glw1} H.Y. Guo, Y.Q. Li and K. Wu, On symplectic and multisymplectic
+structures and their discrete versions in Lagrangian formalism,
+{\em Comm. Theor. Phys.}, {\bf 35} (2001) 703-710.
+
+\bibitem{glw2}\label{glw2} H.Y. Guo,
+Y.Q. Li and K. Wu, A note on symplectic algorithms, {\em Comm.
+Theor. Phys.}, {\bf 36} (2001) 11-18.
+
+\bibitem{glw3}\label{glw3} H.Y. Guo, Y.Q. Li, K. Wu and S.K. Wang,
+Symplectic, multisymplectic structures and Euler-Lagrange
+cohomology, Preprint AS-ITP-2001-009, April, 2001.
+arXiv:hep-th/0104140.
+
+\bibitem{glww}\label{glww}
+ H.Y. Guo, Y.Q. Li, K. Wu and S.K. Wang, Difference discrete variational principle,
+ Euler-Lagrange cohomology and
+ symplectic, multisymplectic structures, Preprint arXiv:hep-th/0106001.
+
+\bibitem{k1}\label{k1}
+C. Kane, J. E. Marsden and M. Ortiz,  Symplectic-energy-momentum preserving
+variational integrators, {\em J. Math. Phys.}, {\bf 40}, 3353-3371.
+
+
+\bibitem{m1}\label{m1}
+J.E. Marsden, G.P. Patrick and S. Shkoller, Multisymplectic geometry,
+variational integrators, and nonlinear PDEs, {\em Comm. Math. Phys.},
+{\bf 199}, 351-395 (1998).
+
+
+\bibitem{m3}\label{m3}
+J. Moser and A.P. Veselov, Discrete versions of some classical integrable systems
+and factorization of matrix polynomials, {\em Commun. Math. Phys.}, {\bf 139},
+217-243, (1991).
+
+\bibitem{olver}\label{o1}
+ P. J. Olver, Applications of Lie groups to differential equations.
+GTM 107,{\em Springer-Verlag.} (1993)
+
+\bibitem{s1}\label{s1}
+J.M. Sanz-serna and M. Calvo, Numerical Hamiltonian problems. {\em
+Chapman and Hall Lodon}, (1994).
+
+\bibitem{v1}\label{v1}
+A.P. Veselov, Integrable discrete-time systems and difference operators, {\em
+Funkts. Anal. Prilozhen,} {\bf 22}, 1-13, (1988).
+
+\bibitem{v2}\label{v2}
+A.P. Veselov, Integrable Lagrangian correspondence and the factorization of
+matrix polynomials,  {\em Funkts. Anal. Prilozhen,} {\bf 25}, 38-49, (1991).
+
+\bibitem{w1}\label{w1}
+J.M. Wendlandt and J. E. Marsden, Mechanical integrators derived from a discrete
+variational principle. {\em Physica D}, {\bf 106}, 223-246, (1997).
+
+ 
+\end{thebibliography}
+
+
+\end{document}
+
+\bye

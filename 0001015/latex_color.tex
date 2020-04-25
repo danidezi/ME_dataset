@@ -1,0 +1,471 @@
+
+ \documentclass[a4paper,fleqn,12pt]{article}
+ \usepackage{amsfonts,amssymb}
+%%%%%%%%%%%%%%%%%%
+ \providecommand{\End}{\nonumber\\}
+ \providecommand{\Bbc}[1]{{\bf #1}}
+ \providecommand{\Real}{{\Bbc{R}}}
+ \providecommand{\Dpath}{{\cal{D}}}
+ \providecommand{\half}{\frac12}
+ \providecommand{\Intot}{\int_{0}^{t}}
+ \providecommand{\Omu}{\omega_{\mu}}
+ \providecommand{\Pmu}{p_{\mu}}
+ \providecommand{\Xmu}{x^{\mu}}
+ \providecommand{\XXmu}{X^{\mu}}
+ \providecommand{\Pimu}{\pi_{\mu}}
+ \providecommand{\Etamu}{\eta^{\mu}}
+ \providecommand{\Tmu}{T_{\mu}}
+ \providecommand{\Dmu}{\partial_{\mu}}
+ \providecommand{\DDmu}{\nabla_{\mu}}
+ \providecommand{\Lag}{{\cal L}}
+ \providecommand{\Curv}[4]{R_{#1 #2 #3}{}^{#4}}
+ \providecommand{\Emh}{e^{-h}}
+ \providecommand{\Eph}{e^{h}}
+ \providecommand{\Pb}[2]{\left\{ #1,#2 \right\}}
+ \providecommand{\BRST}{{\small BRST}}
+ \providecommand{\Gam}[3]{\Gamma_{#1 #2}^{#3}}
+%
+%%%%%%%%%%%%%%%%%%
+ \usepackage{useful_macros}
+\begin{document}
+ %%%%%%%%%%%%%%%%%
+ %
+  \begin{flushright}
+ KCL-MTH-99-50\\
+ December 1999\\
+ \
+  \end{flushright}
+
+  \begin{center}{\huge Canonical Quantization and Topological Theories}\\
+ \ \\
+ {\large Talk given at QG99,
+ Third Meeting on\\
+ Constrained Dynamics and Quantum Gravity,\\
+ Villasimius (Sardinia, Italy) September 13-17, 1999\\
+ \ \\
+%
+ Alice Rogers\\
+ Department of Mathematics\\
+ King's College}\\
+ Strand, London WC2R 2LS, Great Britain\\
+  \end{center}
+ %%%%%%%%%%%%%%%%%%
+ \begin{abstract}
+The canonical quantization of the topological particle is
+described; it is shown that \BRST\ quantization of the model gives
+the supersymmetric quantum mechanical model considered by Witten
+when investigating Morse theory, and the rigorous path integral
+method appropriate for this model is discussed. Possibilities for
+the extension of this work to two dimensional models are briefly
+considered.
+ \end{abstract}
+%%%%%%%%%%%%%%%%
+%
+ \section{Introduction}
+%
+In this talk the first steps in a rigorous study of topological
+quantum theories using canonical methods is described. A
+topological theory is characterised by a high degree of symmetry,
+with the number of symmetries equal to the number of fields of the
+theory. As a result the system has no dynamical degrees of
+freedom, and the space of fields modulo symmetries, which is
+trivial at the linear level, is typically a finite-dimensional
+moduli space which encodes `topological' information.
+ \par
+As with quantum theories in general, a powerful  tool for studying
+a topological theory is functional integration. The generic
+expression for the vacuum generating functional takes the form
+ \begin{equation}\coord{}\boxEquation{\label{GFIeq}
+  \int_{{\rm fields}/{\rm symmetries}} \Dpath \phi \,
+    \exp\left( i S[\phi] \right)
+ }{\int_{{\rm fields}/{\rm symmetries}} \Dpath \phi \,
+    \exp\left( i S[\phi] \right)
+ }{ecuacion}\coordE{}\end{equation}
+where  \myHighlight{$S(\phi)$}\coordHE{} is the action of the field \myHighlight{$\phi$}\coordHE{}. Using standard
+(non-rigorous) methods of quantum field theory a number of new and
+unexpected mathematical results have been been derived from
+topological models, results which in many cases have then been
+fully proved by more standard mathematical methods, but which
+would probably not have been discovered without the insights
+gained from the quantum field theory. (An early appearance of
+topological invariants in the quantum field theoretic situation is
+due to Belavin, Polyakov, Schwarz and Tyupin \cite{BelPolSchTyu}.
+A more recent example of the powerful application of topological
+quantum field theory in mathematics may be found in
+\cite{Witten94}, while fuller accounts of earlier work in this
+field may be found in the books of Nash \cite{Nash} and Schwarz
+\cite{Schwar93}.) Most functional integrals such as (\ref{GFIeq}),
+and related expressions with operator insertions, have not at
+present been properly defined. However, since these integrals have
+such astonishing mathematical power, it seems that an attempt to
+define these objects rigorously should be more than worth while.
+In this talk we show how this may be done for the simplest
+topological model, the topological particle, and describe briefly
+some recent work by Hrabak \cite{Hrabak} which might lead to
+progress in the canonical quantization of topological field
+theories.
+ \par
+Some rigorous results on path integrals (that is, functional
+integrals in quantum mechanics) are known. The basic classical
+result (which is described by Simon in \cite{Simon}) for a
+particle of unit mass moving in one dimension with Hamiltonian
+ \begin{equation}\coord{}\boxEquation{
+  H = \half p^2 + V(x)
+ }{
+  H = \half p^2 + V(x)
+ }{ecuacion}\coordE{}\end{equation}
+gives the action of the imaginary time  evolution
+operator \myHighlight{$\exp(-Ht)$}\coordHE{} on a wave function \myHighlight{$\psi(x)$}\coordHE{} by the formula
+ \begin{equation}\coord{}\boxEquation{\label{EVeq}
+   \exp (-Ht) \psi(x)
+  = \int d\mu \exp \left( -\int_0^t V((x(s)) ds \right) \psi(x(t))
+ }{\exp (-Ht) \psi(x)
+  = \int d\mu \exp \left( -\int_0^t V((x(s)) ds \right) \psi(x(t))
+ }{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$d\mu$}\coordHE{} denotes Wiener measure starting from \myHighlight{$x$}\coordHE{}, and \myHighlight{$x(t)$}\coordHE{}
+are corresponding Brownian paths; the potential \myHighlight{$V$}\coordHE{} must satisfy
+certain analytic conditions. The curved space analogue of this
+result for a Riemannian manifold has been developed by Elworthy
+\cite{Elwort} and by Ikeda and Watanabe \cite{IkeWat}. The
+expression for evolution according to the Hamiltonian \myHighlight{$H= L +V(x)$}\coordHE{}
+where \myHighlight{$L$}\coordHE{} is the scalar Laplacian looks identical to (\ref{EVeq}),
+but with \myHighlight{$x(t)$}\coordHE{} a process depending on metric and connection
+rather than simply flat space Brownian motion. Tangent space
+geometry plays an essential part in the theory. The present author
+has further extended these methods  by developing a flat space
+theory of fermionic path integrals \cite{GBM} and marrying it with
+Brownian motion on manifolds to give Brownian motion on
+supermanifolds in a suitable form for handling  the Hodge-de Rham
+operator and the Dirac operator on manifolds \cite{SCSTWO,JMPFI}.
+%
+ \section{The Topological particle}
+%
+Following Beaulieu and Singer \cite{BeaSin} we consider the
+quantum-mechanical model with fields which are maps \myHighlight{$x: I \to M$}\coordHE{},
+where \myHighlight{$I$}\coordHE{} is the interval \myHighlight{$[0,t]$}\coordHE{} and \myHighlight{$M$}\coordHE{} is an \myHighlight{$n$}\coordHE{}-dimensional
+Riemannian manifold with metric \myHighlight{$g$}\coordHE{}. The action of the theory is
+ \begin{equation}\coord{}\boxEquation{\label{ACeq}
+  S[x(.)] = \Intot i\Omu(x(t'))\dot{x}^{\mu}(t') \, dt'
+ }{S[x(.)] = \Intot i\Omu(x(t'))\dot{x}^{\mu}(t') \, dt'
+ }{ecuacion}\coordE{}\end{equation}
+\myHighlight{$\omega=dh$}\coordHE{} is an exact one form on \myHighlight{$M$}\coordHE{} with local co-ordinate
+expression \myHighlight{$\omega= \Omu(x) d\Xmu$}\coordHE{} and
+ \myHighlight{$\dot{x}^{\mu}(t')= \frac{d{x}^{\mu}}{d t'}$}\coordHE{}. The action can
+be expressed in the simpler form \myHighlight{$S[x(.)] = i(h(x(t))-h(x(0)))$}\coordHE{} which
+shows that the action is indeed highly symmetric, being
+independent of all but the endpoints of the paths \myHighlight{$x(t)$}\coordHE{}.
+ \par
+While Beaulieu and Singer consider the case where \myHighlight{$\omega=0$}\coordHE{}, we
+consider the case where \myHighlight{$h$}\coordHE{} is a Morse function on \myHighlight{$M$}\coordHE{} (so that
+\myHighlight{$\omega=dh$}\coordHE{} is only zero at isolated points). To carry out the
+canonical quantization we first evaluate the momentum \myHighlight{$\Pmu$}\coordHE{}
+conjugate to \myHighlight{$\Xmu$}\coordHE{}, obtaining
+ \begin{equation}\coord{}\boxEquation{\label{MOMeq}
+  \Pmu = \frac{\delta \Lag}{\delta \dot{x}^\mu} = i\Omu,
+ }{\Pmu = \frac{\delta \Lag}{\delta \dot{x}^\mu} = i\Omu,
+ }{ecuacion}\coordE{}\end{equation}
+which shows that the theory has \myHighlight{$n$}\coordHE{} constraints
+ \begin{equation}\coord{}\boxEquation{
+   \Tmu \equiv \Pmu - i\Omu.
+ }{
+   \Tmu \equiv \Pmu - i\Omu.
+ }{ecuacion}\coordE{}\end{equation}
+The Hamiltonian of the theory is as usual defined to be
+ \myHighlight{$H(p,x)= \Pmu \Xmu - \Lag(x,\dot{x})$}\coordHE{}, so that, as is generally
+the case for a topological theory, the Hamiltonian of the theory
+(prior to gauge-fixing) is zero. Since \myHighlight{$\omega$}\coordHE{} is closed these
+constraints are first class and abelian, that is
+\myHighlight{$\Pb{\Tmu}{T_{\nu}}=0$}\coordHE{} and \myHighlight{$\Pb{\Tmu}{H_c}=0$}\coordHE{}.
+ \par
+The infinitesimal gauge transformations generated by \myHighlight{$\Tmu$}\coordHE{} are
+ \begin{equation}\coord{}\boxEquation{\label{GTeq}
+  \delta_{\epsilon}\psi(x) =-i \epsilon(\Dmu \psi(x) + \Omu(x) \psi(x))
+ }{\delta_{\epsilon}\psi(x) =-i \epsilon(\Dmu \psi(x) + \Omu(x) \psi(x))
+ }{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\psi(x)$}\coordHE{} is a wave function and  quantization is in the
+Schr\"odinger picture with \myHighlight{$\Pmu =-i \Dmu$}\coordHE{}.  (Below, when ghosts are
+introduced, we will find that we require \myHighlight{$\Pmu$}\coordHE{} to be represented
+as a covariant derivative \myHighlight{$-i\DDmu$}\coordHE{}.) The explicit form of the gauge
+transformations  suggests that
+representative of gauge equivalence classes may be obtained from
+the condition \myHighlight{$\XXmu \psi=0$}\coordHE{} where
+ \myHighlight{$\XXmu=g^{\mu\nu} (p_{\nu}  + i\omega_{\nu})$}\coordHE{}. The validity of these
+gauge-fixing conditions will become clear below.
+ \par
+The \BRST\ quantization scheme will now be applied to this system;
+to do this anticommuting ghosts  \myHighlight{$\Etamu$}\coordHE{} together with their
+conjugate momenta \myHighlight{$\Pimu$}\coordHE{} are introduced. (The phase space is now
+a \myHighlight{$(2n,2n)$}\coordHE{}-dimensional supermanifold, with odd coordinates
+\myHighlight{$\Etamu,\Pimu$}\coordHE{} transforming as indices suggest.) Poisson brackets
+on this extended phase space are defined by the symplectic form
+ \begin{equation}\coord{}\boxEquation{\label{SPBeq}
+  d\Pmu \wedge d \Xmu + \nabla\Pimu \wedge \nabla\Etamu
+   +  \frac12 dx^{\mu} \wedge dx^{\nu}
+  \Curv{\mu}{\nu}{\kappa}{\lambda}\eta^{\kappa}\pi_{\lambda},
+ }{d\Pmu \wedge d \Xmu + \nabla\Pimu \wedge \nabla\Etamu
+   +  \frac12 dx^{\mu} \wedge dx^{\nu}
+  \Curv{\mu}{\nu}{\kappa}{\lambda}\eta^{\kappa}\pi_{\lambda},
+ }{ecuacion}\coordE{}\end{equation}
+(where \myHighlight{$\nabla$}\coordHE{} denotes covariant differentiation using the
+Levi-Civita connection); this is a special case of the symplectic
+form introduced by Rothstein \cite{Rothst91}. Quantization
+ is carried out by introducing states represented
+by wave functions \myHighlight{$\psi(x,\eta)$}\coordHE{} and momenta acting as
+ \myHighlight{$\Pmu =-i \DDmu$}\coordHE{}, \myHighlight{$\Pimu = -i\frac{\partial}{\partial\Etamu}$}\coordHE{}.
+The wave functions \myHighlight{$\psi(x,\eta)$}\coordHE{} are functions on the
+\myHighlight{$(n,n)$}\coordHE{}-dimensional supermanifold \myHighlight{$SM$}\coordHE{} with local coordinates
+\myHighlight{$\Xmu,\Etamu$}\coordHE{}, and the explicit form of the action of the
+covariant derivative on a wave function is given by
+ \begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}\rightCoord{}\label{CDeq}
+  \DDmu \psi(x,\eta) = \Dmu \psi(x,\eta) \rightCoord{}
+     \leftCoord{}+ \Gam{\mu}{\nu}{\lambda} \eta^{\nu} \rightCoord{}
+     \frac{\leftCoord{}\partial}{\rightCoord{}\partial\eta^{\lambda}}\psi(x,\eta). \rightCoord{}
+\rightCoord{}}{0mm}{3}{7}{\DDmu \psi(x,\eta) = \Dmu \psi(x,\eta) 
+     + \Gam{\mu}{\nu}{\lambda} \eta^{\nu} 
+     \frac{\partial}{\partial\eta^{\lambda}}\psi(x,\eta). 
+}{1}\coordE{}\end{eqnarray}
+ \par
+The \BRST\ charge \myHighlight{$Q$}\coordHE{} takes the standard form
+ \myHighlight{$Q=\Etamu\Tmu=-i\Etamu(\Dmu + \omega)$}\coordHE{}. (A covariant derivative is
+not required here because of  the symmetry of the connection.) The
+gauge-fixing fermion \myHighlight{$\chi$}\coordHE{} also takes the standard form
+ \myHighlight{$\chi = \Pimu\XXmu = -ig^{\mu\nu} \Pimu(\nabla_{\nu}-\omega_{\nu})$}\coordHE{}.
+Alternatively, if we make the natural identification of forms on
+\myHighlight{$M$}\coordHE{} with wave functions \myHighlight{$\psi(x,\eta)$}\coordHE{} then  \myHighlight{$Q=-i\Emh d \Eph$}\coordHE{},
+\myHighlight{$\chi = \Eph \delta \Emh$}\coordHE{} where \myHighlight{$d$}\coordHE{} denotes exterior
+differentiation of forms and \myHighlight{$\delta= *d*$}\coordHE{} is the adjoint
+operator. The gauge-fixing Hamiltonian is then
+ \begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}\rightCoord{}\label{HAMeq}
+ H_g &=& i( Q \chi + \chi Q) \rightCoord{}\End
+&\leftCoord{}=& d \delta + \delta d + g^{\mu\nu}\Omu \omega_{\nu}
+  \leftCoord{}-i (\Pimu\eta^{\nu} - \rightCoord{}
+ \eta^{\nu}\Pimu) \frac{\leftCoord{}\partial^2 h }{\rightCoord{}\partial \Xmu \partial x_{\nu}}.\rightCoord{}
+\rightCoord{}}{0mm}{4}{7}{H_g &=& i( Q \chi + \chi Q) \End
+&=& d \delta + \delta d + g^{\mu\nu}\Omu \omega_{\nu}
+  -i (\Pimu\eta^{\nu} - 
+ \eta^{\nu}\Pimu) \frac{\partial^2 h }{\partial \Xmu \partial x_{\nu}}.
+}{1}\coordE{}\end{eqnarray}
+ \par
+This Hamiltonian has appeared in the literature on  other
+occasions; for instance, when \myHighlight{$h$}\coordHE{} is constant, it is the
+Hamiltonian used by Alvarez-Gaum\'e \cite{Alvare} to prove the
+Atiyah-Singer index theorem. (A rigorous version of this proof may
+be found in \cite{SCSTWO}.) It is also the first supersymmetric
+Hamiltonian used by Witten in his study of Morse theory
+\cite{Witten82}.
+ \par
+It is  evident that the choice \myHighlight{$\chi=\Pimu\XXmu$}\coordHE{} is a good
+gauge-fixing condition, satisfying the  essential conditions
+derived by the author in \cite{GFBFVQ}. First, as observed by
+Beaulieu and Singer in the constant \myHighlight{$h$}\coordHE{} case, the standard theory
+of harmonic forms shows that the gauge condition determines a
+unique element of each \myHighlight{$Q$}\coordHE{} cohomology class. (The observation that
+these arguments extend to all functions \myHighlight{$h$}\coordHE{} is due to Witten
+\cite{Witten82}.) Also, the zeros of \myHighlight{$H_g$}\coordHE{} coincide with these
+representatives of the cohomology classes, while the eigenvalues
+of \myHighlight{$H_g$}\coordHE{} tend to infinity, so that this Hamiltonian does regulate
+the non-physical states.
+ \par
+The path integral formulae for this Hamiltonian can be put in
+rigorous form using the methods of the author in
+\cite{SCSTWO,JMPFI}, and used to establish rigorous results for
+this model. The key idea in this approach is to use Brownian paths
+\myHighlight{$x_t,\eta_t$}\coordHE{} in the supermanifold \myHighlight{$SM$}\coordHE{} with local coordinates
+\myHighlight{$\Xmu,\Etamu$}\coordHE{}. The Brownian paths are defined by the stochastic
+differential  equations
+ \begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \Xmu_t &=& \Xmu + \Intot e^{\mu}_{a,s}\circ db^{a}_s , \rightCoord{}\End
+  e^{\mu}_{a,t}&=& e^{\mu}_{a} +\Intot
+   \leftCoord{}-e^{\nu}_{a,s} e^{\lambda}_{b,s}
+   \Gam{\nu}{\lambda}{\mu}(x_s) \circ db^{b}_s \rightCoord{}\End
+  \Etamu_t &=& \Etamu + \theta^{a}_t e^{\mu}_{a,t} \rightCoord{}\End
+  \leftCoord{}+&&\!\!\!\!\!\!\!\!\! \Intot \big( - \eta^{\nu}_s \Gam{\nu}{\lambda}{\mu}
+  e^{\lambda}_{b,s} \circ db^{b}_s - \theta^a_t de^{\mu}_{a,s}
+  \leftCoord{}+\frac{\leftCoord{}1}{\rightCoord{}4}\eta^{\nu}_s \Curv{\nu}{\lambda}{\kappa}{\rightCoord{}\mu}
+  \leftCoord{}(x_s)\eta^{\lambda}_s\rho^{a}_s e^{\kappa}_{a,s} ds \big),
+\rightCoord{}}{0mm}{6}{7}{
+  \Xmu_t &=& \Xmu + \Intot e^{\mu}_{a,s}\circ db^{a}_s , \End
+  e^{\mu}_{a,t}&=& e^{\mu}_{a} +\Intot
+   -e^{\nu}_{a,s} e^{\lambda}_{b,s}
+   \Gam{\nu}{\lambda}{\mu}(x_s) \circ db^{b}_s \End
+  \Etamu_t &=& \Etamu + \theta^{a}_t e^{\mu}_{a,t} \End
+  +&&\!\!\!\!\!\!\!\!\! \Intot \big( - \eta^{\nu}_s \Gam{\nu}{\lambda}{\mu}
+  e^{\lambda}_{b,s} \circ db^{b}_s - \theta^a_t de^{\mu}_{a,s}
+  +\frac{1}{4}\eta^{\nu}_s \Curv{\nu}{\lambda}{\kappa}{\mu}
+  (x_s)\eta^{\lambda}_s\rho^{a}_s e^{\kappa}_{a,s} ds \big),
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$b_t$}\coordHE{} is flat bosonic Brownian motion and \myHighlight{$(\theta_t,\rho_t)$}\coordHE{}
+is flat fermionic Brownian motion. The measure corresponding
+to this process incorporates as the `kinetic term' the heat kernel
+of the Laplace-Beltrami operator \myHighlight{$(d+ \delta)^2$}\coordHE{}, so that these
+Brownian paths are appropriate for the analysis of the Hamiltonian
+(\ref{HAMeq}). Further details will be found in \cite{TOPP}, where
+it will be shown that Witten's approach to Morse theory
+\cite{Witten82} can be put on an entirely rigorous mathematical
+footing. (Some parts of Witten's analysis have been proved
+rigorously by Simon et al \cite{Simetal} and by Mathai and Wu
+\cite{MatWu}; however the explicit modeling of the manifold's
+cohomology via critical points and instanton calculations does not
+appear to have received a full mathematical treatment.)
+%
+ \section{The two-dimensional topological sigma \hfil\break model}
+%
+To conclude, a brief indication of some developments in a
+two-dimensional topological model will be described. The model,
+which was first proposed by Witten \cite{Witten88}, concerns the
+geometry of \myHighlight{$J$}\coordHE{}-holomorphic curves (or pseudoholomorphic maps)
+\myHighlight{$u:\Sigma \to M$}\coordHE{}  from a Riemann surface \myHighlight{$\Sigma$}\coordHE{} into an a
+\myHighlight{$2m$}\coordHE{}-dimensional almost-Kaehler manifold \myHighlight{$M$}\coordHE{}. The other fields of
+the theory are a bosonic set \myHighlight{$H^{\alpha}_{\mu}$}\coordHE{} and two fermionic
+sets \myHighlight{$\Etamu$}\coordHE{} and \myHighlight{$\pi^{\alpha}_{\mu}$}\coordHE{}. (Here \myHighlight{$\alpha=1,2$}\coordHE{} are
+indices on \myHighlight{$\Sigma$}\coordHE{} while \myHighlight{$\mu=1,\dots,2 m$}\coordHE{} are indices on \myHighlight{$M$}\coordHE{}.)
+The fields \myHighlight{$H$}\coordHE{} and \myHighlight{$\pi$}\coordHE{} satisfy constraints
+ \myHighlight{$P^{^{-}}H=0, P^{^{-}}\pi=0$}\coordHE{} where
+ \myHighlight{$P^{^{-}}{}^{\alpha\mu}_{\beta\nu}
+ =\delta^{\alpha}_{\beta}\delta^{\mu}_{\nu}-
+  \epsilon^{\alpha}_{\beta}J^{\mu}_{\nu}$}\coordHE{}
+is a projection operator with \myHighlight{$\epsilon$}\coordHE{} the complex structure on
+\myHighlight{$\Sigma$}\coordHE{} and \myHighlight{$J$}\coordHE{} the almost complex structures on \myHighlight{$M$}\coordHE{}. Witten
+constructs by hand a set of supersymmetry transformations
+(beginning with \myHighlight{$\delta u^{\mu} = i \epsilon \eta^{\mu}$}\coordHE{}) on these
+fields, and then an invariant action. The model is used to derive
+deep geometric insights into the moduli space of \myHighlight{$J$}\coordHE{}-holomorphic
+curves on \myHighlight{$M$}\coordHE{}. Recent work of Hrabak \cite{Hrabak} shows that the
+rather complicated and seemingly ad hoc supersymmetry
+transformations of the model can be derived in the canonical
+setting as \BRST\ transformations; the novel feature of Hrabak's
+work is that the formalism used is not the standard canonical
+formalism (in which time plays a special r\^ole) but the
+multisymplectic formalism which is manifestly covariant;
+corresponding to the fields \myHighlight{$u:\Sigma \to M$}\coordHE{} there are
+multimomenta \myHighlight{$p^{\alpha}_{\mu}$}\coordHE{} (which after projection relate to
+Witten's  \myHighlight{$H^{\alpha}_{\mu}$}\coordHE{}), while in the ghost sector the
+ghosts have momenta \myHighlight{${\cal{P}}_{\mu}^{\alpha}$}\coordHE{} which relate to
+Witten's \myHighlight{$\pi^{\alpha}_{\mu}$}\coordHE{}. The BRST symmetry obtained by
+Hrabak corresponds directly to the \myHighlight{$J$}\coordHE{}-holomorphicity of the
+embeddings. Recent work by Kanatchikov \cite{Kanatc} on
+quantization in the multisymplectic framework suggests that it may
+be possible to use Hrabak's approach to carry out a full canonical
+quantization of Witten's interesting two-dimensional topological
+model.
+%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{9}
+
+\bibitem{BelPolSchTyu}
+A.A. Belavin, A.M. Polyakov, A.S. Schwarz, and Yu~S. Tyupin.
+\newblock {\em Physics Letters}, 59B:85, 1975.
+
+\bibitem{Witten94}
+E.~Witten.
+\newblock Monopoles and four manifolds.
+\newblock {\em Math. Res. Lett.}, 1, 1994.
+
+\bibitem{Nash}
+C.~Nash.
+\newblock {\em Differential topology and quantum field theory}.
+\newblock Academic Press, 1991.
+
+\bibitem{Schwar93}
+A.~Schwarz.
+\newblock {\em Quantum Field Theory and Topology}.
+\newblock Springer, 1993.
+
+\bibitem{Hrabak}
+S.P. Hrabak.
+\newblock On the multisymplectic origin of the nonabelian deformation algebra
+  of pseudoholomorphic embeddings into strictly almost kahler ambient
+  manifolds, and the corresponding {BRST} algebra.
+  \newblock Preprint math-ph/9904026.
+\newblock 1999.
+
+\bibitem{Simon}
+B.~Simon.
+\newblock {\em Functional Integration and Quantum mechanics}.
+\newblock Academic Press, 1979.
+
+\bibitem{Elwort}
+K.D. Elworthy.
+\newblock {\em Stochastic Differential Equations on Manifolds}.
+\newblock London Mathematical Society Lecture Notes in Mathematics. Cambridge
+  University Press, 1982.
+
+\bibitem{IkeWat}
+N.~Ikeda and S.~Watanabe.
+\newblock {\em Stochastic differential equations and diffusion processes}.
+\newblock North-Holland, 1981.
+
+\bibitem{GBM}
+A.~Rogers.
+\newblock Fermionic path integration and {G}rassmann {B}rownian motion.
+\newblock {\em Communications in Mathematical Physics}, 113:353--368, 1987.
+
+\bibitem{SCSTWO}
+A.~Rogers.
+\newblock Stochastic calculus in superspace {II}: differential forms,
+  supermanifolds and the {A}tiyah-{S}inger index theorem.
+\newblock {\em Journal of Physics A}, 25:6043--6062, 1992.
+
+\bibitem{JMPFI}
+Alice Rogers.
+\newblock Path integration, anticommuting variables and supersymmetry.
+\newblock {\em Journal of Mathematical Physics}, 36:2531--2545, 1995.
+
+\bibitem{BeaSin}
+Beaulieu and I.~Singer.
+\newblock The topological sigma model.
+\newblock {\em Commun. Math. Phys.}, 125:227--237, 1989.
+
+\bibitem{Rothst91}
+M.~Rothstein.
+\newblock The structure of supersymplectic supermanifolds.
+\newblock In C.~Bartocci, U.~Bruzzo, and R.~Cianci, editors, {\em Differential
+  geometric methods in theoretical physics, proceedings, Rapallo 1990}, volume
+  375 of {\em Lecture Notes in Physics}, pages 331--343. Springer, 1991.
+
+\bibitem{Alvare}
+L.~Alvarez-Gaum\'e.
+\newblock Supersymmetry and the {A}tiyah-{S}inger index theorem.
+\newblock {\em Comm. Math. Phys.}, 90:161--173, 1983.
+
+\bibitem{Witten82}
+E.~Witten.
+\newblock Supersymmetry and {M}orse theory.
+\newblock {\em Journal of Differential Geometry}, 17:661--692, 1982.
+
+\bibitem{GFBFVQ}
+A.~Rogers.
+\newblock Gauge fixing and {BFV} quantization.
+\newblock {\em Classical and Quantum Gravity}, \newblock to appear.
+
+\bibitem{TOPP}
+A.~Rogers.
+\newblock The topological particle. \newblock (In preparation.)
+
+\bibitem{Simetal}
+H.L. Cycon, R.G. Froese, W.~Kirsch, and B.~Simon.
+\newblock {\em Schr\"odinger operators}.
+\newblock Springer, 1987.
+
+\bibitem{MatWu}
+S.~Wu and V.~Mathai.
+\newblock Equivariant holomorphic morse inequalities. 1: A heat kernel proof.
+\newblock {\em ICTP preprint IC/96/29}, 96.
+
+\bibitem{Witten88}
+E.~Witten.
+\newblock Topological sigma models.
+\newblock {\em Commun.Math.Phys.}, 118:411, 1988.
+
+\bibitem{Kanatc}
+I.~V. Kanatchikov.
+\newblock On quantization of field theories in polymomentum variables.
+\newblock {\em To be published in the proceedings of International Conference
+  on Particles, Fields and Gravitation (Devoted to the Memory of Professor
+  Ryszard Raczka), Lodz, Poland, 15-18 Apr 1998.},
+  \newblock AIP Proceedings 1998 \newblock hep-th/9811016 .
+
+\end{thebibliography}
+%%%%%%%%%%%%%%%%
+\end{document}
+
+\bye

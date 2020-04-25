@@ -1,0 +1,2287 @@
+
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+%% `fullpage' settings, by H. Partl:
+\topmargin=0pt
+\advance\topmargin by -\headheight
+\advance\topmargin by -\headsep
+\textheight=8.9in
+\oddsidemargin=0pt
+\evensidemargin=\oddsidemargin
+\marginparwidth=0.5in
+\textwidth=6.5in
+%% with corrections for A4 paper:
+\advance\hoffset by -3mm
+\advance\voffset by  8mm
+
+%% This deflates (sub)section titles
+
+\makeatletter
+\def\section{\@startsection{section}{1}{\z@}{-3.5ex plus -1ex minus
+  -.2ex}{2.3ex plus .2ex}{\large\bf}}
+\def\subsection{\@startsection{subsection}{2}{\z@}{-3.25ex plus -1ex
+  minus -.2ex}{1.5ex plus .2ex}{\normalsize\bf}}
+\makeatother
+
+%% Abbreviations:
+
+\renewcommand{\a}{\alpha}          %% abbreviation for \alpha
+\renewcommand{\b}{\beta}           %% abbreviation for \beta
+\providecommand{\C}{\mathbb{C}}        %% complex numbers
+\providecommand{\Dl}{\Delta}           %% propagator
+\providecommand{\del}{\partial}        %% abbreviation for \partial
+\providecommand{\diff}{{\mathrm{diff}}} %% differential renormalization
+\providecommand{\dl}{\delta}           %% abbreviation for Dirac's delta
+\providecommand{\eps}{\epsilon}        %% abbreviation for \epsilon
+\providecommand{\F}{\mathcal{F}}       %% space of Feynman amplitudes
+\providecommand{\G}{\mathcal{G}}       %% group of gauge transformations
+\providecommand{\Ga}{\Gamma}           %% abbreviation for \Gamma
+\providecommand{\ga}{\gamma}           %% abbreviation for \gamma
+\providecommand{\id}{{\rm id}}         %% identity operation
+\renewcommand{\H}{\mathcal{H}}     %% Hopf algebra
+\providecommand{\K}{\mathcal{K}}       %% GLS functions
+\providecommand{\La}{\Lambda}          %% abbreviation for \Lambda
+\providecommand{\la}{\lambda}          %% abbreviation for \lambda
+\providecommand{\loc}{{\mathrm{loc}}}  %% locally integrable
+\providecommand{\nn}{\nonumber}        %% suppress equation numbering
+\providecommand{\ox}{\otimes}          %% tensor product
+\DeclareMathOperator{\Pf}{Pf}      %% pseudofunction
+\providecommand{\prim}{{\mathrm{prim}}} %% primitive
+\providecommand{\R}{\mathbb{R}}        %% real numbers
+\providecommand{\Rbar}{{\overline{R}}} %% `\bar R'
+\providecommand{\set}[1]{\{\,#1\,\}}   %% set notation
+\providecommand{\sgn}{{\rm sgn}}       %% signum function
+\renewcommand{\SS}{\mathcal{S}}    %% Schwartz functions
+\providecommand{\Sf}{\mathbb{S}}       %% S in `S-matrix'
+\providecommand{\thalf}{\tfrac{1}{2}}  %% small fraction  1/2
+\providecommand{\tquarter}{\tfrac{1}{4}} %% small fraction  1/4
+\providecommand{\teighth}{\tfrac{1}{8}}  %% small fraction  1/8
+\providecommand{\x}{\times}            %% cartesian product or cross
+\providecommand{\Z}{\mathbb{Z}}        %% integers
+\providecommand{\7}{\dagger}           %% hermitian conjugate
+\def\<#1,#2>{\langle#1,#2\rangle}  %% pairing of distributions
+
+
+
+%% Theorems and such (needs `amsthm' package):
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}           %% Theorem 1
+\newtheorem{prop}[thm]{Proposition} %% Proposition 2
+\newtheorem{lema}[thm]{Lemma}       %% Lemma 3
+\newtheorem{corl}[thm]{Corollary}   %% Corollary 4
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}       %% Definition 1
+\newtheorem{exer}{Exercise}         %% Exercise 1
+
+
+%% A trick to overcome automatic page cutting:
+
+\let\savednewpage=\newpage
+\providecommand{\fakenewpage}{\relax}
+\providecommand{\suppressnewpage}{\let\newpage=\fakenewpage}
+\providecommand{\restorenewpage}{\let\newpage=\savednewpage}
+
+\hyphenation{equi-va-lence equi-va-lent equi-vari-ant ge-ne-ral
+ge-ne-rate ge-ne-ra-ted ge-o-des-ic geo-met-ric geo-met-ries
+geo-met-ry Hamil-ton-ian Her-mit-ian ma-ni-fold ma-ni-folds
+neigh-bour-hood ope-ra-tor ope-ra-tors or-tho-go-nal pro-duct
+qua-drat-ic re-nor-ma-li-za-tion Rie-mann-ian semi-def-i-nite
+skew-ad-joint sum-ma-bi-li-ty sum-ma-ble to-po-lo-gi-cal to-po-lo-gy
+va-cuum}
+
+
+
+
+\title{Improved Epstein--Glaser renormalization\\
+in coordinate space I. Euclidean framework}
+
+\author{
+Jos\'e M. Gracia-Bond\'{\i}a\myHighlight{$^{a,b,c}$}\coordHE{}
+\\[1pc]
+\myHighlight{$^a\,$}\coordHE{}Forschungszentrum BiBoS, Fakult\"at der Physik\\
+Universit\"at Bielefeld, D--33615 Bielefeld, Germany\\
+\myHighlight{$^b\,$}\coordHE{}Departamento de F\'{\i}sica Te\'orica, Universidad de Zaragoza\\
+E--50009 Zaragoza, Spain\\
+\myHighlight{$^c\,$}\coordHE{}Departamento de F\'{\i}sica Te\'orica I, Universidad Complutense\\
+E--28040 Madrid, Spain
+\\[1pc]
+}
+
+%%% Delete next line in the final version:
+
+
+\usepackage{useful_macros}
+\begin{document}
+
+\begin{flushright}
+BiBoS/01--12--069\\
+DFTUZ/02/01\\
+FT--UCM/20--2002\\
+January 2002
+\end{flushright}
+
+
+\suppressnewpage  %% `\maketitle' invokes `\newpage'
+\maketitle
+\restorenewpage   %% back to normal page cutting
+
+\vskip 1.5cm
+
+
+\begin{abstract}
+In a series of papers, we investigate the reformulation of
+Epstein--Glaser renormalization in coordinate space, both in analytic
+and (Hopf) algebraic terms. This first article deals with analytical
+aspects. Some of the (historically good) reasons for the divorces of
+the Epstein--Glaser method, both from mainstream quantum field theory
+and the mathematical literature on distributions, are made plain; and
+overcome.
+\end{abstract}
+
+
+\section{Introduction}
+\label{sec:introibo}
+
+
+This is the first of a series of papers, the
+companions~\cite{Bettina,Flora} often being denoted respectively II
+and~III.
+\vfill\eject
+We find it convenient to summarize here the aims of these papers, in
+reverse order. Ever since Kreimer perceived a Hopf algebra lurking
+behind the forest formula~\cite{DirkOriginal}, the question of
+encoding the systematics of renormalization in such a structure (and
+the practical advantages therein) has been in the forefront. Connes
+and Kreimer were able to show, using the \myHighlight{$\varphi^3_6$}\coordHE{} model as an
+example, that renormalization of quantum field theories in momentum
+space is encoded in a commutative Hopf algebra \textit{of Feynman
+graphs} \myHighlight{$\H$}\coordHE{}, and the Riemann--Hilbert problem with values in the
+group of loops on the dual of \myHighlight{$\H$}\coordHE{}~\cite{CKI,CKII}. The latter makes
+sense only in the context of renormalization by dimensional
+regularization~\cite{Orange,ArgentinaBrasiu}, physicists' method of
+choice. Now, whereas it is plausible that the Hopf algebra approach to
+renormalization is consistent with all main renormalization methods,
+there is much to be learned by a systematic verification of this
+conjecture. Paper III focuses on combinatorial-geometrical aspects of
+this approach to perturbative renormalization in QFT within the
+framework of the Epstein--Glaser (EG) procedure~\cite{EG}.
+
+One can argue that all that experiments have established is (striking)
+agreement with (renormalized) momentum space
+integrals~\cite{Martinus}. Be that as it may, renormalization on real
+space is more intuitive, in that momentum space formulations ``rather
+obscure the fact that UV divergences arise from purely short-distance
+phenomena''~\cite{Collins}. For the questions of whether and how
+configuration space-based methods exhibit the Hopf algebraic
+structure, the EG method was a natural candidate. It enjoys privileged
+rapports with external field
+theory~\cite{HeidelbergTrier,Bellissard,Halley}, possesses a stark
+reputation for rigour, and does not share some limitations of
+dimensional regularization ---allowing for renormalization in curved
+backgrounds~\cite{BrFr}, for instance.
+
+In spite of its attractive features, EG renormalization still remains
+outside the mainstream of QFT. The (rather rigorous) QFT text by
+Itzykson and Zuber has only the following to say about it: ``\dots the
+most orthodox procedure of Epstein and Glaser relies directly on the
+axioms of local field theory in configuration space. It is free of
+mathematically undefined quantities, but hides the multiplicative
+structure of renormalization''~\cite[p.~374]{IZ}. Raymond Stora, today
+the chief propagandist of the method, had commented: ``In spite of its
+elegancy and accuracy this theory suffers from one defect, namely it
+does not yield explicit formulae of actual computational
+value''~\cite{LagrSt}. Indeed.
+
+Over the years, some of the awkwardness of the original formalism was
+dispelled in the work by Stora. The ``splitting of distributions'' was
+reformulated in~\cite{PoSt} as a typical problem of extension (through
+the boundaries of open sets) in distribution theory. Moreover,
+in~\cite{EllipticSt} it was made clear that an (easier) Euclidean
+analog of the EG construction does exist. Beyond being interesting on
+its own right (for instance for the renormalization group approach to
+criticality), it allows performing EG renormalization in practice by a
+(sort of) ``Wick rotation'' trick ---the subject of paper~II of this
+series.
+
+\smallskip
+
+When tackling the compatibility question of EG renormalization and the
+Connes--Kreimer algebra, two main surviving difficulties are brought
+to light. The first is that, while the Hopf algebra elucidation of
+Bogoliubov's recursive procedure is defined graph-by-graph, in the EG
+approach it is buried under operator aspects of the time-ordered
+products and the \myHighlight{$\Sf$}\coordHE{}-matrix, not directly relevant for that
+question. This problem was recently addressed by
+Pinter~\cite{Gudrunpaper,Gudrun} and also in~\cite{Etoile}; the last
+paper, however, contains a flaw, examined in~III.
+
+The second difficulty, uncovered in the course of the same
+investigation, has to do with prior, \textit{analytical} aspects of
+Epstein and Glaser's basic method of subtraction. For, it was curious
+to observe, the extension method by Epstein and Glaser has remained
+\textit{divorced as well} from the literature on distributions,
+centered mainly on analytical continuation and ``finite part''
+techniques. One scours in vain for any factual link between EG
+subtraction and the household names of mathematical distribution
+theory.
+
+And so the vision of casting all of quantum field theory in the light
+of distribution analysis~\cite{Guetti,BP} has remained unfulfilled.
+
+In the present paper we are concerned with the second of the mentioned
+difficulties. This means in practice that we deal with primitively UV
+divergent diagrams. (Nonprimitive diagrams are dealt with in~III.) By
+means of a seemingly minute departure from the letter, if not the
+spirit, of the EG original prescription we succeed to deliver its
+\textit{missing link} to the standard literature on extension of
+distributions. Then we proceed to show the \textit{dominant place} our
+improved subtraction method occupies with regard to dimensional
+regularization in configuration space; differential
+renormalization~\cite{FJL}; ``natural'' renormalization~\cite{NR}; and
+BPHZ renormalization.
+
+The benefits of the improved prescription do not stop there: it goes
+on to remarkably simplify the task of constructing covariant
+renormalizations in~II, and the Hopf-geometrical constructions in~III.
+
+An important sideline of this paper is the use of the theory of
+Ces\`aro summability of distributions~\cite{Odysseus,CesarRicardo} in
+dealing with the infrared difficulties; this helps to clarify the
+logical dependence of the BPHZ procedure on the causal one, already
+pointed out in~\cite{PrangeI}. Improved BPHZ methods for massless
+fields ensue as well.
+
+The main theoretical development is found in Section~2. Afterwards, we
+proceed by way of alternating discussions and examples. In order to
+deliver the argument without extraneous complications, we work out
+diagrams belonging to scalar theories. Most examples are drawn from
+the massless \myHighlight{$\varphi^4_4$}\coordHE{} model: masslessness is more challenging and
+instructive, because of the attendant infrared problems, and more
+interesting for the renormalization group calculations performed
+in~III. Eventually we bring in examples in massive theories as well.
+
+
+
+\section{Renormalization in configuration space}
+\label{sec:base-diag}
+
+
+\subsection{The new prescription}
+\label{sec:real-thing}
+
+All derivatives in this paper, unless explicitly stated otherwise, are
+in the sense of distributions. We tacitly use the translation
+invariance of Feynman propagators and amplitudes; in particular, the
+origin stands for the main diagonal.
+
+Let \myHighlight{$d$}\coordHE{} denote the dimension of the coordinate space. Typically, \myHighlight{$d$}\coordHE{}
+will be \myHighlight{$4n$}\coordHE{}. An unrenormalized Feynman amplitude \myHighlight{$f(\Ga)$}\coordHE{}, or simply
+\myHighlight{$f$}\coordHE{}, associated to a graph \myHighlight{$\Ga$}\coordHE{}, is smooth away from the diagonals.
+We say that \myHighlight{$\Ga$}\coordHE{} is \textit{primitively} divergent when \myHighlight{$f(\Ga)$}\coordHE{} is
+not locally integrable, but is integrable away from zero. Denote by
+\myHighlight{$\F_\prim(\R^d) \hookrightarrow L_\loc^1(\R^d\setminus\{0\})$}\coordHE{} this
+class of amplitudes.
+
+By definition, a tempered distribution \myHighlight{$\tilde{f}\in \SS'(\R^d)$}\coordHE{} is
+an \textit{extension} or \textit{renormalization} of~\myHighlight{$f$}\coordHE{} if
+$$\coord{}\boxMath{
+\tilde{f}[\phi] := \langle\tilde{f},\phi\rangle =
+\int_{\R^d} f(x)\phi(x) \,d^d x
+}{dollar}{0pt}\coordE{}$$
+holds whenever \myHighlight{$\phi$}\coordHE{} belongs to \myHighlight{$\SS(\R^d\setminus\{0\})$}\coordHE{}.
+
+Let
+\begin{equation}\coord{}\boxEquation{
+f(x) = O(|x|^{-a}) \qquad\mbox{as } x \to 0,
+\label{eq:alg-sing}
+}{
+f(x) = O(|x|^{-a}) \qquad\mbox{as } x \to 0,
+}{ecuacion}\coordE{}\end{equation}
+with \myHighlight{$a$}\coordHE{} an integer, and let \myHighlight{$k = a - d \geq 0$}\coordHE{}. Then,
+\myHighlight{$f \notin L_\loc^1(\R^d)$}\coordHE{}. But \myHighlight{$f$}\coordHE{} can be regarded as a well-defined
+functional on the space \myHighlight{$\SS_{k+1}(\R^d)$}\coordHE{} of Schwartz functions that
+vanish at the origin at order \myHighlight{$k+1$}\coordHE{}. Thus the simplest way to get an
+extension of \myHighlight{$f$}\coordHE{} would appear to be standard Taylor series surgery: to
+throw away the \myHighlight{$k$}\coordHE{}-jet of \myHighlight{$\phi$}\coordHE{} at the origin, in order to define
+\myHighlight{$\tilde f$}\coordHE{} by transposition. Denote this jet by \myHighlight{$j^k_0\phi$}\coordHE{} and the
+corresponding Taylor remainder by \myHighlight{$R^k_0\phi$}\coordHE{}. We have by that
+definition
+\begin{equation}\coord{}\boxEquation{
+\<\tilde f, \phi> = \<f, R^k_0\phi>.
+\label{eq:bas-def}
+}{
+\<\tilde f, \phi> = \<f, R^k_0\phi>.
+}{ecuacion}\coordE{}\end{equation}
+Using Lagrange's integral formula for the remainder:
+$$\coord{}\boxMath{
+R^k_0\phi(x) = (k+1) \sum_{|\b|=k+1}\frac{x^\b}{\b!}
+\int_0^1 dt\, (1-t)^k\,\del^\b\phi(tx),
+}{dollar}{0pt}\coordE{}$$
+where we have embraced the usual multiindex notation, and exchanging
+integrations, one appears to obtain an explicit integral formula for
+\myHighlight{$\tilde f$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+\tilde f(x) = (-)^{k+1} (k+1) \sum_{|\b|=k+1}
+\del^\b \biggl[\frac{x^\b}{\b!} \int_0^1 dt\,\frac{(1-t)^k}{t^{k+d+1}}
+f\Bigl(\frac{x}{t}\Bigr) \biggr].
+\label{eq:bas-Lagr}
+}{
+\tilde f(x) = (-)^{k+1} (k+1) \sum_{|\b|=k+1}
+\del^\b \biggl[\frac{x^\b}{\b!} \int_0^1 dt\,\frac{(1-t)^k}{t^{k+d+1}}
+f\Bigl(\frac{x}{t}\Bigr) \biggr].
+}{ecuacion}\coordE{}\end{equation}
+
+Lest the reader be worried with the precise meaning
+of~\eqref{eq:alg-sing}, we recall that in QFT one usually considers a
+generalized homogeneity degree, the \textit{scaling degree}~\cite{OS}.
+The scaling degree \myHighlight{$\sigma$}\coordHE{} of a scalar distribution \myHighlight{$f$}\coordHE{} at the origin
+of \myHighlight{$\R^d$}\coordHE{} is defined to be
+$$\coord{}\boxMath{
+\sigma_f = \inf \set{s : \lim_{\la\to 0} \la^s f(\la x) = 0}
+\qquad\mbox{for } f\in \SS'(\R^d),
+}{dollar}{0pt}\coordE{}$$
+where the limit is taken in the sense of distributions. Essentially,
+this means that \myHighlight{$f(x) = O(|x|^{-\sigma_f})$}\coordHE{} as \myHighlight{$x \to 0$}\coordHE{} in the
+Ces\`aro average sense~\cite{Ricardo}. Then \myHighlight{$[\sigma_f]$}\coordHE{} and
+respectively \myHighlight{$[\sigma_f] - d$}\coordHE{} ---called the \textit{singular order}---
+occupy the place of \myHighlight{$a$}\coordHE{} in~\eqref{eq:alg-sing} and of~\myHighlight{$k$}\coordHE{}.
+
+The trouble with~\eqref{eq:bas-Lagr} is that the remainder is not a
+test function, so, unless the infrared behaviour of \myHighlight{$f$}\coordHE{} is very good,
+we end up in~\eqref{eq:bas-def} with an undefined integral. In fact,
+in the massless theory \myHighlight{$f$}\coordHE{} is an homogeneous function with an
+algebraic singularity, the infrared behaviour is pretty bad, and \myHighlight{$-d$}\coordHE{}
+is also the critical exponent. A way to avoid the infrared problem is
+to \textit{weight} the Taylor subtraction. Epstein and
+Glaser~\cite{EG} introduced weight functions \myHighlight{$w$}\coordHE{} with the properties
+\myHighlight{$w(0) = 1$}\coordHE{}, \myHighlight{$w^{(\a)}(0) = 0$}\coordHE{} for \myHighlight{$0 < |\a| \leq k$}\coordHE{}, and projector
+maps \myHighlight{$\phi \mapsto W_w\phi$}\coordHE{} on \myHighlight{$\SS(\R^d)$}\coordHE{} given by
+\begin{equation}\coord{}\boxEquation{
+W_w\phi(x) := \phi(x) - w(x)\, j^k_0\phi(x).
+\label{eq:bas-EG}
+}{
+W_w\phi(x) := \phi(x) - w(x)\, j^k_0\phi(x).
+}{ecuacion}\coordE{}\end{equation}
+The previous ordinary Taylor surgery case corresponds to \myHighlight{$w \equiv 1$}\coordHE{},
+and the identity
+$$\coord{}\boxMath{
+W_w(w\phi) = w\, W_1\phi
+}{dollar}{0pt}\coordE{}$$
+tells us that \myHighlight{$W_w$}\coordHE{} indeed is a projector, since \myHighlight{$W_w(wx^\ga) = 0$}\coordHE{} for
+\myHighlight{$|\ga| \leq k$}\coordHE{}.
+
+\smallskip
+
+Look again at~\eqref{eq:bas-EG}. There is a considerable amount of
+overkilling there. The point is that, in the homogeneous case, a worse
+singularity at the origin entails a better behaviour at infinity. So
+we can, and should, weight only the \textit{last} term of the Taylor
+expansion. This leads to the definition employed in this paper, at
+variance with Epstein and Glaser's:
+\begin{equation}\coord{}\boxEquation{
+T_w\phi(x) :=  \phi(x) - j^{k-1}_0(\phi)(x)
+  - w(x) \sum_{|\a|=k} \frac{x^\a}{\a!} \,\phi^{(\a)}(0).
+\label{eq:imp-EG}
+}{
+T_w\phi(x) :=  \phi(x) - j^{k-1}_0(\phi)(x)
+  - w(x) \sum_{|\a|=k} \frac{x^\a}{\a!} \,\phi^{(\a)}(0).
+}{ecuacion}\coordE{}\end{equation}
+Just \myHighlight{$w(0) = 1$}\coordHE{} is now required in principle from the weight function.
+
+An amazing amount of mathematical mileage stems from this simple
+physical observation. To begin with, \myHighlight{$T_w$}\coordHE{} is also a projector. To
+obtain an integral formula for it, start from
+$$\coord{}\boxMath{
+T_w\phi = (1 - w) R^{k-1}_0\phi + w R^k_0\phi,
+}{dollar}{0pt}\coordE{}$$
+showing that it \myHighlight{$T_w$}\coordHE{} interpolates between \myHighlight{$R^k_0$}\coordHE{}, guaranteeing a
+good UV behaviour, and \myHighlight{$R^{k-1}_0$}\coordHE{}, well behaved enough in the
+infrared. By transposition, using~\eqref{eq:bas-Lagr}, we derive
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}T_w f(x) &= (-)^{\leftCoord{}k} k
+\leftCoord{}\sum_{\rightCoord{}|\a|=k} \del^\a \biggl[ \frac{\leftCoord{}x^\a}{\rightCoord{}\a!}
+\leftCoord{}\int_0^{\leftCoord{}1} dt\, \frac{\leftCoord{}(1-t)^{k-1}}{t^{k+d}} f\Bigl(\frac{\leftCoord{}x}{\rightCoord{}t}\Bigr)
+\leftCoord{}\Bigl(1-w\Bigl(\frac{\leftCoord{}x}{\rightCoord{}t}\Bigr)\Bigr)\biggr]
+\leftCoord{}\nn \rightCoord{}\\
+&\leftCoord{}\qquad + (-)^{k+1} (k+1) \sum_{\rightCoord{}|\b|=k+1}
+\leftCoord{}\del^\b \biggl[ \frac{\leftCoord{}x^\b}{\rightCoord{}\b!} \int_0^{\leftCoord{}1} dt\,
+\leftCoord{}\frac{\leftCoord{}(1-t)^{\leftCoord{}k}}{t^{k+d+1}} f\Bigl(\frac{\leftCoord{}x}{\rightCoord{}t}\Bigr)
+\leftCoord{}w\Bigl(\frac{\leftCoord{}x}{\rightCoord{}t}\Bigr) \biggr].
+\label{eq:Berkeley-jump}
+}{0mm}{21}{10}{
+T_w f(x) &= (-)^{k} k
+\sum_{|\a|=k} \del^\a \biggl[ \frac{x^\a}{\a!}
+\int_0^{1} dt\, \frac{(1-t)^{k-1}}{t^{k+d}} f\Bigl(\frac{x}{t}\Bigr)
+\Bigl(1-w\Bigl(\frac{x}{t}\Bigr)\Bigr)\biggr]
+\nn \\
+&\qquad + (-)^{k+1} (k+1) \sum_{|\b|=k+1}
+\del^\b \biggl[ \frac{x^\b}{\b!} \int_0^{1} dt\,
+\frac{(1-t)^{k}}{t^{k+d+1}} f\Bigl(\frac{x}{t}\Bigr)
+w\Bigl(\frac{x}{t}\Bigr) \biggr].
+}{0}\coordE{}\end{align}
+This is the central formula of this paper.
+
+
+
+\subsection{On the auxiliary function}
+\label{sec:have-leeway}
+
+It is important to realize what is (and is not) required of the weight
+function \myHighlight{$w$}\coordHE{}, apart from a good behaviour at the origin: in view of
+the smoothness and good properties of \myHighlight{$f$}\coordHE{} away from the origin, we
+have a lot of leeway, and, especially, \myHighlight{$w$}\coordHE{} does \textit{not} have to
+be a test function, nor to possess compact support. Basically, what is
+needed is that \myHighlight{$w$}\coordHE{} decay at infinity in the weak sense that it sport
+momenta of sufficiently high order.
+
+We formalize this assertion for greater clarity. First, one says that
+the distribution \myHighlight{$f$}\coordHE{} is of order \myHighlight{$|x|^l$}\coordHE{} (with \myHighlight{$l$}\coordHE{} not a negative
+integer) at infinity, in the Ces\`aro sense, if there exists a natural
+number \myHighlight{$N$}\coordHE{}, and a primitive \myHighlight{$f_N$}\coordHE{} of \myHighlight{$f$}\coordHE{} of order \myHighlight{$N$}\coordHE{}, such that \myHighlight{$f_N$}\coordHE{}
+is locally integrable for \myHighlight{$|x|$}\coordHE{}~large and the relation
+$$\coord{}\boxMath{
+f_N(x) = O(|x|^{N+l})
+}{dollar}{0pt}\coordE{}$$
+as \myHighlight{$|x| \uparrow\infty$}\coordHE{} holds in the ordinary sense. Now, for any real
+constant \myHighlight{$\ga$}\coordHE{}, the space \myHighlight{$\K_\ga$}\coordHE{} is formed by those smooth functions
+\myHighlight{$\phi$}\coordHE{} such that \myHighlight{$\del^\a\phi(x) = O(|x|^{\ga - |\a|})$}\coordHE{} as
+\myHighlight{$|x| \uparrow\infty$}\coordHE{}, for each~\myHighlight{$|\a|$}\coordHE{}. A topology for \myHighlight{$\K_\ga$}\coordHE{} is
+generated by the obvious family of seminorms, and the space \myHighlight{$\K$}\coordHE{} is
+defined as the inductive limit of the spaces \myHighlight{$\K_\ga$}\coordHE{} as
+\myHighlight{$\ga \uparrow\infty$}\coordHE{}. Consider now the dual space \myHighlight{$\K'$}\coordHE{} of
+distributions. The following are
+equivalent~\cite{Odysseus,CesarRicardo}:
+\vfill\eject
+\begin{itemize}
+\item
+\myHighlight{$f \in \K'$}\coordHE{}.
+\item
+\myHighlight{$f$}\coordHE{} satisfies
+$$\coord{}\boxMath{
+f(x) = o(|x|^{-\infty})
+}{dollar}{0pt}\coordE{}$$
+in the Ces\`aro sense as \myHighlight{$|x| \uparrow \infty$}\coordHE{}.
+\item
+There exist constants \myHighlight{$\mu_\a$}\coordHE{} such that
+$$\coord{}\boxMath{
+f(\la x) \sim \sum_{\a\geq0} \frac{\mu_\a\,\dl^{(\a)}(x)}{\la^{|\a|+1}}
+}{dollar}{0pt}\coordE{}$$
+in the sense of distributions, as \myHighlight{$\la \uparrow\infty$}\coordHE{}.
+\item
+All the moments \myHighlight{$\<f(x), x^\a>$}\coordHE{} exist in the sense of Ces\`aro
+summability of integrals (they coincide with the aforementioned
+constants \myHighlight{$\mu_\a$}\coordHE{}).
+\end{itemize}
+Any element of \myHighlight{$\K'$}\coordHE{} which is regular and takes the value 1 at zero
+qualifies as a weight ``function''. For instance, one can take for \myHighlight{$w$}\coordHE{}
+an exponential function \myHighlight{$e^{iqx}$}\coordHE{}, with \myHighlight{$q \neq 0$}\coordHE{}. This vanishes at
+\myHighlight{$\infty$}\coordHE{} to all orders, in the Ces\`aro sense, and so it is a
+perfectly good infrared problem-buster auxiliary function. The fact
+that \myHighlight{$e^{iqx} \in \K'$}\coordHE{}, for \myHighlight{$q \neq 0$}\coordHE{}, means that, outside the origin
+in momentum space, the Fourier transform of elements \myHighlight{$\phi \in \K$}\coordHE{} can
+be computed by a standard Ces\`aro evaluation
+$$\coord{}\boxMath{
+\hat\phi(q) = \<\exp(iqx), \phi(x)>.
+}{dollar}{0pt}\coordE{}$$
+Of course, for this auxiliary function the original
+equation~\eqref{eq:bas-EG} no longer applies, since it has no
+vanishing derivatives at the origin. But~\eqref{eq:bas-EG} can be
+replaced by the more general
+\begin{equation}\coord{}\boxEquation{
+W_w\phi(x) := \phi(x) - w(x) \sum_{0\leq|\a|\leq k} \frac{x^\a}{\a!}
+\biggl( \frac{\phi}{w} \biggr)^{(\a)}(0).
+\label{eq:bas-EGbis}
+}{
+W_w\phi(x) := \phi(x) - w(x) \sum_{0\leq|\a|\leq k} \frac{x^\a}{\a!}
+\biggl( \frac{\phi}{w} \biggr)^{(\a)}(0).
+}{ecuacion}\coordE{}\end{equation}
+This was seen, at the heuristic level, by~Prange~\cite{PrangeI}; see
+the discussion on the BPHZ formalism in subsection~5.3, where the
+``Ces\`aro philosophy'' comes into its own.
+
+These observations are all the more pertinent because the contrary
+prejudice is still widespread. For instance, the worthy
+thesis~\cite{Gudrun}, despite coming on the footsteps
+of~\cite{PrangeI}, yet unfortunately exhibits it; on its page~30:
+``\dots [the exponential] function is not allowed in the \myHighlight{$W$}\coordHE{}-operation
+because it does not have compact support.'' Of course it is allowed:
+then the Fourier transformed subtraction \myHighlight{$W_w$}\coordHE{} of Epstein and Glaser
+becomes exactly the standard BPHZ subtraction, around momentum
+\myHighlight{$p = q$}\coordHE{}. What \myHighlight{$T_w$}\coordHE{} becomes will be revealed later.
+
+
+\subsection{Properties of the \myHighlight{$T$}\coordHE{}-projector}
+\label{sec:we-come}
+
+Consider now the functional variation of the renormalized amplitudes
+with respect to~\myHighlight{$w$}\coordHE{}. One has
+$$\coord{}\boxMath{
+\Bigl< \frac{\dl}{\dl w}T_w f, \psi \Bigr> :=
+\frac{d}{d\la} T_{w+\la\psi}\,f\,\biggr|_{\la=0}
+}{dollar}{0pt}\coordE{}$$
+for \myHighlight{$T_w$}\coordHE{}, and similarly for \myHighlight{$W_w$}\coordHE{}, by definition of functional
+derivative. It is practical to write now
+$$\coord{}\boxMath{
+\dl^\a := (-)^{|\a|}\,\frac{\dl^{(\a)}}{\a!},
+}{dollar}{0pt}\coordE{}$$
+for this combination is going to appear with alarming frequency.
+{}From~\eqref{eq:bas-EG} we would obtain
+\begin{equation}\coord{}\boxEquation{
+\frac{\dl}{\dl w}W_w f[\cdot] =
+- \sum_{|\a|\leq k} f[x^\a\cdot] \,\dl^\a,
+\label{eq:funct-two}
+}{
+\frac{\dl}{\dl w}W_w f[\cdot] =
+- \sum_{|\a|\leq k} f[x^\a\cdot] \,\dl^\a,
+}{ecuacion}\coordE{}\end{equation}
+whereas~\eqref{eq:imp-EG} yields
+$$\coord{}\boxMath{
+\frac{\dl}{\dl w}T_w f[\cdot] = - \sum_{|\a|=k} f[x^\a\cdot] \,\dl^\a,
+}{dollar}{0pt}\coordE{}$$
+independently of \myHighlight{$w$}\coordHE{} in both cases. Malgrange's theorem says that
+different renormalizations of a primitively divergent graph differ by
+terms proportional to the delta function and all its derivatives
+\myHighlight{$\delta^{(\a)}$}\coordHE{}, up to \myHighlight{$|\a| = k$}\coordHE{}. Thus there is no canonical way to
+construct the renormalized amplitudes, the inherent ambiguity being
+represented by the undetermined coefficients of the \myHighlight{$\delta$}\coordHE{}'s,
+describing how the chosen extension acts on the finite codimension
+space of test functions not vanishing in a neighborhood of~\myHighlight{$0$}\coordHE{}.
+
+There is, however, a more ``natural'' way ---in which the ambiguity is
+reduced to terms in the higher-order derivatives of \myHighlight{$\delta$}\coordHE{},
+exclusively. This is guaranteed by our choice of \myHighlight{$T_w$}\coordHE{}.
+
+In practice, one works with appropriate 1-parameter (or few-parameter)
+families of auxiliary functions, big enough to be flexible, small
+enough to be manageable. Recall than in QFT, with \myHighlight{$c = \hbar = 1$}\coordHE{}, the
+physical dimension of length is inverse mass. Let then the variable
+\myHighlight{$\mu$}\coordHE{} have the dimension of mass. We consider the change in \myHighlight{$T_w f$}\coordHE{}
+when the variable \myHighlight{$w$}\coordHE{} changes from \myHighlight{$w\equiv w(\mu x)$}\coordHE{} to
+\myHighlight{$w((\mu+\dl\mu) x)$}\coordHE{}, which introduces the Jacobian
+\myHighlight{$\frac{\dl w}{\dl\mu} = \frac{\del w(\mu x)}{\del\mu}$}\coordHE{}, yielding
+\begin{equation}\coord{}\boxEquation{
+\frac{\del}{\del\mu}\,T_{w(\mu x)}f =
+- \sum_{|\a|=k} \<f, x^\nu \del^\nu w(\mu x)x^\a> \,\dl^\a.
+\label{eq:pre-ren}
+}{
+\frac{\del}{\del\mu}\,T_{w(\mu x)}f =
+- \sum_{|\a|=k} \<f, x^\nu \del^\nu w(\mu x)x^\a> \,\dl^\a.
+}{ecuacion}\coordE{}\end{equation}
+Here we have assumed that \myHighlight{$f$}\coordHE{} has no previous dependence on~\myHighlight{$\mu$}\coordHE{}.
+
+Enter now the (rotation-invariant) choice
+\myHighlight{$w_\mu(x) := H(\mu^{-1} - |x|)$}\coordHE{}, where \myHighlight{$H$}\coordHE{} is the Heaviside step
+function: it not only recommends itself for its simplicity, but it
+turns out to play a central theoretical role. The parameter \myHighlight{$\mu$}\coordHE{}
+corresponds in our context to 't~Hooft's energy scale in dimensional
+regularization ---see subsection~5.1; the limits \myHighlight{$\mu \downarrow 0$}\coordHE{}
+and \myHighlight{$\mu \uparrow \infty$}\coordHE{} correspond to the case \myHighlight{$w = 1$}\coordHE{} and
+respectively to the ``principal value'' of~\myHighlight{$f$}\coordHE{}; in general they will
+not exist.
+
+Write \myHighlight{$T_\mu f$}\coordHE{} for the corresponding renormalizations. With the help
+of~\eqref{eq:pre-ren}, one obtains
+\begin{equation}\coord{}\boxEquation{
+\mu\frac{\del}{\del\mu} T_\mu f =
+\sum_{|\a|=k} f\bigl[ \dl(\mu^{-1}-|x|)\,|x|x^\a \bigr]\,\dl^\a.
+\label{eq:RG-form}
+}{
+\mu\frac{\del}{\del\mu} T_\mu f =
+\sum_{|\a|=k} f\bigl[ \dl(\mu^{-1}-|x|)\,|x|x^\a \bigr]\,\dl^\a.
+}{ecuacion}\coordE{}\end{equation}
+For \myHighlight{$f$}\coordHE{} homogeneous (of order \myHighlight{$-d-k$}\coordHE{} as it happens), the expression is
+actually \textit{independent of} \myHighlight{$\mu$}\coordHE{}, the coefficients of the
+\myHighlight{$\dl^\a$}\coordHE{} being
+\begin{equation}\coord{}\boxEquation{
+c^\a = \int_{|x|=1} f\,x^\a = \int_{|x|=A} f\,|x| x^\a,
+\label{eq:c-coefs}
+}{
+c^\a = \int_{|x|=1} f\,x^\a = \int_{|x|=A} f\,|x| x^\a,
+}{ecuacion}\coordE{}\end{equation}
+with \myHighlight{$|\a| = k$}\coordHE{} and any \myHighlight{$A > 0$}\coordHE{}. Note that similar extra terms, with
+\myHighlight{$|\a| < k$}\coordHE{}, coming out of the formulae~\eqref{eq:funct-two} would
+indeed be \myHighlight{$\mu$}\coordHE{}-dependent.
+
+\smallskip
+
+Compute the \myHighlight{$T_\mu$}\coordHE{} in the massless (homogeneous) case, whereupon one
+can pull \myHighlight{$f$}\coordHE{} out of the integral sign. We get
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}T_\mu f(x) &= (-)^{\leftCoord{}k} \biggl\{ \sum_{\rightCoord{}|\a|=k} \del^\a \biggl[
+\leftCoord{}\frac{\leftCoord{}x^\a f(x)}{\rightCoord{}\a!} \bigl( 1 - (1-\mu|x|)^{\leftCoord{}k} \bigr) \biggr]
+\leftCoord{}\nn \rightCoord{}\\
+&\leftCoord{}\qquad\qquad + (k+1) \sum_{\rightCoord{}|\b|=k+1} \del^\b \biggl[
+\leftCoord{}\frac{\leftCoord{}x^\b f(x)}{\rightCoord{}\b!} \int_1^{\mu|x|} dt\, \frac{\leftCoord{}(1-t)^{\leftCoord{}k}}{\rightCoord{}t}
+\leftCoord{}\biggr] \biggr\}.
+\label{eq:comp-form}
+}{0mm}{12}{7}{
+T_\mu f(x) &= (-)^{k} \biggl\{ \sum_{|\a|=k} \del^\a \biggl[
+\frac{x^\a f(x)}{\a!} \bigl( 1 - (1-\mu|x|)^{k} \bigr) \biggr]
+\nn \\
+&\qquad\qquad + (k+1) \sum_{|\b|=k+1} \del^\b \biggl[
+\frac{x^\b f(x)}{\b!} \int_1^{\mu|x|} dt\, \frac{(1-t)^{k}}{t}
+\biggr] \biggr\}.
+}{0}\coordE{}\end{align}
+Formula~\eqref{eq:comp-form} is simpler than it looks: because of our
+previous remark on~\eqref{eq:RG-form}, \textit{all} the
+\myHighlight{$\mu$}\coordHE{}-polynomial terms in the previous expression for \myHighlight{$T_\mu f$}\coordHE{} must
+cancel. Let us then denote, for \myHighlight{$k\geq 1$}\coordHE{},
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+H_k:= \sum_{\rightCoord{}l=1}^{\leftCoord{}k} \frac{\leftCoord{}(-)^{l+1}}{l} \binom{k}{\rightCoord{}l} =
+\binom{k}{1} - \frac{\leftCoord{}1}{\rightCoord{}2} \binom{k}{2} +\cdots- (-)^k \frac{\leftCoord{}1}{\rightCoord{}k}. \rightCoord{}
+\label{eq:harmonic}
+\rightCoord{}}{0mm}{5}{7}{
+H_k:= \sum_{l=1}^{k} \frac{(-)^{l+1}}{l} \binom{k}{l} =
+\binom{k}{1} - \frac{1}{2} \binom{k}{2} +\cdots- (-)^k \frac{1}{k}. 
+}{1}\coordE{}\end{eqnarray}
+At least for \myHighlight{$\mu|x| \leq 1$}\coordHE{}, the expression for \myHighlight{$T_\mu f$}\coordHE{} becomes
+$$\coord{}\boxMath{
+T_\mu f(x) = (-)^k (k+1) \sum_{|\b|=k+1}
+\del^\b \biggl[ \frac{x^\b f(x)}{\b!} (\log\mu|x| + H_k) \biggr].
+}{dollar}{0pt}\coordE{}$$
+
+By performing the derivative with respect to \myHighlight{$\log\mu$}\coordHE{} directly on
+this formula, one obtains in the bargain interesting formulae for
+distribution theory. Namely, for any \myHighlight{$f$}\coordHE{} homogeneous of degree \myHighlight{$-d-k$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+(-)^k (k+1) \sum_{|\b|=k+1} \del^\b \biggl[ \frac{x^\b f(x)}{\b!}
+\biggr] = \sum_{|\a|=k}\biggl( \int_{|x|=1} f x^\a \biggr) \dl^\a(x).
+\label{eq:biscomp-form}
+}{
+(-)^k (k+1) \sum_{|\b|=k+1} \del^\b \biggl[ \frac{x^\b f(x)}{\b!}
+\biggr] = \sum_{|\a|=k}\biggl( \int_{|x|=1} f x^\a \biggr) \dl^\a(x).
+}{ecuacion}\coordE{}\end{equation}
+Thus the final result is
+\begin{equation}\coord{}\boxEquation{
+T_\mu f(x) = (-)^k (k+1) \sum_{|\b|=k+1} \del^\b \biggl[
+\frac{x^\b f(x)}{\b!} \log\mu|x| \biggr] +
+H_k \sum_{|\a|=k} c^\a\,\dl^\a(x),
+\label{eq:ast-form}
+}{
+T_\mu f(x) = (-)^k (k+1) \sum_{|\b|=k+1} \del^\b \biggl[
+\frac{x^\b f(x)}{\b!} \log\mu|x| \biggr] +
+H_k \sum_{|\a|=k} c^\a\,\dl^\a(x),
+}{ecuacion}\coordE{}\end{equation}
+with the \myHighlight{$c^\a$}\coordHE{} given by~\eqref{eq:c-coefs}. The resulting expression
+is actually valid for all \myHighlight{$x$}\coordHE{}: away from the origin it reduces to
+\myHighlight{$f(x)$}\coordHE{}, as it should. It is in the spirit of differential
+renormalization, since \myHighlight{$f$}\coordHE{} is renormalized as the distributional
+derivative of a regular object that coincides with \myHighlight{$f$}\coordHE{} away from the
+singularity.
+
+Let us put equation~\eqref{eq:ast-form} to work at once. When
+performing multiplicative renormalization in the causal
+theory~\cite{Flora}, the relevant property of a renormalized amplitude
+turns out to be its \textit{dilatation} or scaling behaviour. This is
+not surprising in view of the form of our integral
+equation~\eqref{eq:Berkeley-jump}. Now, a further consequence of the
+choice of operator \myHighlight{$T_w$}\coordHE{} is that it modifies the original homogeneity
+in a minimal way. Had we stuck to \myHighlight{$W_w$}\coordHE{}
+(using~\eqref{eq:biscomp-form}), the relatively complicated form
+$$\coord{}\boxMath{
+W_\mu f(\la\cdot) = \la^{-k-d} \, \biggl( W_\mu f
++ \log\la \sum_{|\a|=k} c^\a \,\dl^\a +
+\sum_{|\a|<k} a^\a (\la^{k-|\a|} - 1) \,\dl^\a \biggr),
+}{dollar}{0pt}\coordE{}$$
+for some \myHighlight{$a^\a$}\coordHE{}, would ensue; whereas for \myHighlight{$T_\mu$}\coordHE{}
+{}from~\eqref{eq:ast-form} one obtains
+\begin{equation}\coord{}\boxEquation{
+[f]_{R,\mu}(\la x) := T_\mu f(\la x) =
+\la^{-k-d} \, \biggl([f]_{R,\mu}(x)
++ \log\la \sum_{|\a|=k} c^\a\,\dl^\a(x) \biggr);
+\label{eq:rmnj-inhomog}
+}{
+[f]_{R,\mu}(\la x) := T_\mu f(\la x) =
+\la^{-k-d} \, \biggl([f]_{R,\mu}(x)
++ \log\la \sum_{|\a|=k} c^\a\,\dl^\a(x) \biggr);
+}{ecuacion}\coordE{}\end{equation}
+or
+$$\coord{}\boxMath{
+E[f]_{R,\mu}(x) :=
+(-k-d) [f]_{R,\mu}(x) + \sum_{|\a|=k} c^\a\,\dl^\a(x),
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$E$}\coordHE{} denotes the Euler operator \myHighlight{$\sum_{|\b|=1} x^\b \del^\b$}\coordHE{}.
+ From now on, the notations \myHighlight{$[f]_{R,\mu}$}\coordHE{} and \myHighlight{$T_\mu f$}\coordHE{} will be
+interchangeably used; when the dependence on \myHighlight{$\mu$}\coordHE{} need not be
+emphasized, we can write \myHighlight{$[f]_{R}$}\coordHE{} instead.
+
+We invite the reader to prove~\eqref{eq:rmnj-inhomog} directly, by
+reworking the argument used for the case \myHighlight{$k = 0$}\coordHE{}
+in~\cite[pp.~307--308]{Polaris}.
+
+Let us record here the obvious fact that when we employ two different
+prescriptions compatible with our renormalization scheme, the
+difference in the results is given by
+\begin{equation}\coord{}\boxEquation{
+[f]_{R_1} = [f]_{R_2} + \sum_{|\b|=k} C^\b\,\dl^\b,
+\label{eq:start-eq}
+}{
+[f]_{R_1} = [f]_{R_2} + \sum_{|\b|=k} C^\b\,\dl^\b,
+}{ecuacion}\coordE{}\end{equation}
+for some constants \myHighlight{$C^\b$}\coordHE{}. ``Different prescriptions'' could mean that
+we use different weight functions, or different choices of
+renormalization conditions, or simply different values of the parameter
+\myHighlight{$\mu$}\coordHE{}. In this respect, we note that the Fourier transforms of our
+real space renormalized amplitudes (see the end of Section~5) do not
+obey standard renormalization conditions on momentum space, so in
+particular contexts they might be in need of modification for this
+purpose.
+
+
+\subsection{Supplementary remarks}
+\label{sec:we-arrive}
+
+Following~\cite{SmirZav}, with a difference by a factor of 2 in the
+definition, we conveniently formalize the first order operator from
+the (larger) space \myHighlight{$\SS'_1(\R^d)$}\coordHE{} of continuous linear functionals on
+Schwartz functions that vanish at the origin, appearing in the
+foregoing:
+$$\coord{}\boxMath{
+S := \sum_{|\b|=1} \del^\b x^\b.
+}{dollar}{0pt}\coordE{}$$
+It ``regularizes'' \myHighlight{$\SS'_1$}\coordHE{}, mapping it onto \myHighlight{$\SS'$}\coordHE{}. Clearly, on
+tempered distributions \myHighlight{$S = d + E$}\coordHE{}. Therefore \myHighlight{$S$}\coordHE{} kills any
+homogeneous \textit{distribution} of order \myHighlight{$-d$}\coordHE{}, like \myHighlight{$\dl$}\coordHE{} ---but not
+the homogeneous \textit{functionals}! From~\eqref{eq:ast-form}, it is
+clear that (the analog in \myHighlight{$\xi$}\coordHE{}-space of) \myHighlight{$S$}\coordHE{} captures the Wodzicki
+\textit{residue} density in the theory of pseudodifferential operators
+---see for instance the discussion in Chapter~7 of~\cite{Polaris}.
+Analogously, define
+$$\coord{}\boxMath{
+S_{k+1} := (k+1)! \sum_{|\b|=k+1} \frac{\del^\b x^\b}{\b!}.
+}{dollar}{0pt}\coordE{}$$
+This sends onto \myHighlight{$\SS'$}\coordHE{} the space of functionals \myHighlight{$\SS'_{k+1}(\R^d)$}\coordHE{},
+dual of the space of Schwartz functions which vanish at the origin up
+to order \myHighlight{$k+1$}\coordHE{}. On well-behaved distributions, it is equivalent to
+\myHighlight{$(S+k)\cdots(S+1)S$}\coordHE{}: we think of \myHighlight{$S_{k+1}$}\coordHE{} as an ordered power of
+\myHighlight{$S_1$}\coordHE{}, with the coordinate multiplications remaining to the right of
+the differential operators. For massless models, our formulae come
+close to simply iterating \myHighlight{$S$}\coordHE{} in this way, as done in~\cite{SmirZav}.
+
+For theoretical purposes, it should be kept in mind that the
+\myHighlight{$T$}\coordHE{}-operator remains in the general framework of the Epstein--Glaser
+theory: after all, one could always find weight functions \myHighlight{$w(\mu)$}\coordHE{}
+such that \myHighlight{$W_{w(\mu)}$}\coordHE{} is identical to \myHighlight{$T_\mu$}\coordHE{}. In particular, the
+singular order of \myHighlight{$T_\mu f$}\coordHE{} is the same as that of \myHighlight{$f$}\coordHE{}~\cite{BrFr}.
+However, we see already that a finer classification needs to be
+introduced.
+
+\begin{defn}
+A distribution \myHighlight{$f = f_1$}\coordHE{} is called \textit{associate homogeneous} of
+order~1 and degree~\myHighlight{$a$}\coordHE{} when there exists a \textit{homogeneous}
+distribution \myHighlight{$f_0$}\coordHE{} of degree~\myHighlight{$a$}\coordHE{} such that
+$$\coord{}\boxMath{
+f_1(\la x) = \la^a(f_1(x) + g(\la) \,f_0(x)),
+}{dollar}{0pt}\coordE{}$$
+for some function \myHighlight{$g(\la)$}\coordHE{}. It is readily seen that only the logarithm
+function can foot the bill for \myHighlight{$g$}\coordHE{}. Then, a distribution \myHighlight{$f_n$}\coordHE{} is
+called \textit{associate homogeneous} of order~\myHighlight{$n$}\coordHE{} and degree~\myHighlight{$a$}\coordHE{} when
+there exists an associate homogeneous distribution \myHighlight{$f_{n-1}$}\coordHE{} of order
+\myHighlight{$n-1$}\coordHE{} and degree~\myHighlight{$a$}\coordHE{} such that
+$$\coord{}\boxMath{
+f_n(\la x) = \la^a(f_n(x) + \log\la \,f_{n-1}(x)).
+}{dollar}{0pt}\coordE{}$$
+\end{defn}
+
+Clearly the renormalization of primitively divergent graphs in
+massless theories, using \myHighlight{$T_\mu$}\coordHE{}, gives rise to associate homogeneous
+distributions of order~1. To pass associate homogeneous distributions
+of order~1 thru the same machine~\eqref{eq:comp-form}, in order to
+obtain a renormalized closed expression, is routine. Assuming no prior
+dependence of \myHighlight{$f_1$}\coordHE{} on \myHighlight{$\mu$}\coordHE{}, one would have to use now
+$$\coord{}\boxMath{
+\mu\frac{\del}{\del\mu} T_\mu f_1 = \sum_{|\a|=k}
+\biggl( \int f_1\,x^\a  - \log\mu \int f_0\,x^\a \biggr)\,\dl^\a
+}{dollar}{0pt}\coordE{}$$
+instead of~\eqref{eq:RG-form}, to simplify the output
+of~\eqref{eq:Berkeley-jump}. We omit the straightforward details. Of
+course, if \myHighlight{$g = [f]_{R;\mu}$}\coordHE{} for \myHighlight{$f$}\coordHE{} primitive, then \myHighlight{$T_\mu g = g$}\coordHE{};
+but diagrams with a renormalized subdivergence provide less trivial
+examples. The complete renormalization of massless theories gives rise
+exclusively to associate homogeneous distributions~\cite{Flora}.
+
+As remarked in~\cite{ClassicalRussian}, on the finite dimensional
+vector space spanned by an homogeneous distribution and its associates
+up to a given order, the Euler operator takes the Jordan normal form.
+The \myHighlight{$S_{k+1}$}\coordHE{} operators are nilpotent on that space, when \myHighlight{$a = -d-k$}\coordHE{}.
+For example,
+$$\coord{}\boxMath{
+S\biggl[\frac{1}{x^4}\biggr]_R  = S\biggl(\frac{1}{x^4}\biggr),
+}{dollar}{0pt}\coordE{}$$
+and therefore \myHighlight{$S^2\bigl[\frac{1}{x^4}\bigr]_R = 0$}\coordHE{}. In consonance with
+this, equation~\eqref{eq:ast-form} remains valid for \myHighlight{$f$}\coordHE{} primitively
+divergent of the associated homogeneous type.
+
+\smallskip
+
+The main theoretical development of the \myHighlight{$T$}\coordHE{}-operator closes here. We
+have found two instances in the QFT literature of the improved causal
+method advocated by us~\eqref{eq:imp-EG}: the ``special \myHighlight{$R$}\coordHE{}
+operation'' introduced in the outstanding (apparently unpublished)
+manuscript~\cite{ThreefromRussia}; and, unwittingly, ``natural''
+renormalization~\cite{NR} ---see subsection~5.2. The scaling
+properties are discussed in~\cite{ThreefromRussia}; but no explicit
+formulae for the renormalized amplitudes are given there. We turn to
+matters of illustration and comparison.
+
+
+\section{Some examples}
+\label{sec:Ex-First}
+
+
+We compute the simplest primitive diagrams relevant for the four-point
+function of \myHighlight{$\phi^4_4$}\coordHE{} theory ---for these logarithmically divergent
+graphs, there is of course no difference between \myHighlight{$T_w$}\coordHE{} and \myHighlight{$W_w$}\coordHE{}. The
+following notation will be used in the sequel:
+\begin{equation}\coord{}\boxEquation{
+\Omega_{d,m} := \int_{|x|=1} x_i^{2m} =
+\frac{2\,\Ga(m+\thalf)\pi^{(d-1)/2}}{\Ga(m+\thalf d)},
+\label{eq:Om-eq}
+}{
+\Omega_{d,m} := \int_{|x|=1} x_i^{2m} =
+\frac{2\,\Ga(m+\thalf)\pi^{(d-1)/2}}{\Ga(m+\thalf d)},
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$i$}\coordHE{} labels any component. In particular,
+\myHighlight{$\Omega_{d,0} =: \Omega_d$}\coordHE{}, the area of the sphere in dimension~\myHighlight{$d$}\coordHE{}.
+The quotients of the \myHighlight{$\Omega_{d,m}$}\coordHE{} are rational:
+$$\coord{}\boxMath{
+\frac{\Omega_{d,m}}{\Omega_d} =
+\frac{(2m-1)!!}{(2m+d-2)(2m+d-4)\cdots d}.
+}{dollar}{0pt}\coordE{}$$
+The ``propagator'', given by the formula
+$$\coord{}\boxMath{
+D_F(x) = \frac{|x|^{2-d}}{(d-2)\Omega_d},
+}{dollar}{0pt}\coordE{}$$
+when \myHighlight{$d \neq 2$}\coordHE{}, and by \myHighlight{$D_F(x) = (\log|x|)/\Omega_2$}\coordHE{} when \myHighlight{$d = 2$}\coordHE{}, is
+simply the Green function for the Laplace equation:
+$$\coord{}\boxMath{
+\Dl D_F(x) = -\dl(x).
+}{dollar}{0pt}\coordE{}$$
+Consider the ``fish'' diagram in \myHighlight{$\varphi^4_4$}\coordHE{} theory, giving the
+first correction to the four-point function. The corresponding
+amplitude is proportional to \myHighlight{$x^{-4}$}\coordHE{}. On using~\eqref{eq:ast-form}
+with \myHighlight{$k = 0$}\coordHE{},
+$$\coord{}\boxMath{
+\biggl[ \frac{1}{x^4} \biggr]_R =
+\del^\b \biggl[ \frac{x^\b\log(\mu|x|)}{x^4} \biggr]
+= S_1\, \frac{\log(\mu|x|)}{x^4}.
+}{dollar}{0pt}\coordE{}$$
+Next we look at \myHighlight{$\mu\frac{\del}{\del\mu}\bigl(T_\mu D_F^2\bigr)$}\coordHE{}. By
+direct computation, on the one hand,
+$$\coord{}\boxMath{
+\mu\frac{\del}{\del\mu} \biggl[ \frac{1}{x^4} \biggr]_R =
+\del^\b \biggl[ \frac{x^\b}{x^4} \biggr] =
+- \frac{1}{2} \Dl\biggl( \frac{1}{x^2} \biggr) = \Omega_4\,\dl(x),
+}{dollar}{0pt}\coordE{}$$
+and on the other, according to~\eqref{eq:RG-form}:
+$$\coord{}\boxMath{
+\mu\frac{\del}{\del\mu} \biggl[ \frac{1}{x^4} \biggr]_R = c^0\,\dl(x),
+\quad\mbox{with residue}\quad
+c^0 = \biggl< \frac{1}{x^4}, \dl(\mu^{-1} - |x|)\,|x| \biggr>_{\R^4}
+= \Omega_4,
+}{dollar}{0pt}\coordE{}$$
+which serves as a check. In this case, as \myHighlight{$\mu$}\coordHE{} varies from \myHighlight{$0$}\coordHE{}
+to~\myHighlight{$\infty$}\coordHE{}, all possible renormalizations of \myHighlight{$D_F^2$}\coordHE{} are obtained.
+One can as well directly check here the equation:
+\begin{equation}\coord{}\boxEquation{
+T_\mu f(\la x) =
+\la^{-4} \bigl[ T_\mu f(x) + \Omega_4 \log\la\,\dl(x) \bigr],
+\label{eq:klug-eq}
+}{
+T_\mu f(\la x) =
+\la^{-4} \bigl[ T_\mu f(x) + \Omega_4 \log\la\,\dl(x) \bigr],
+}{ecuacion}\coordE{}\end{equation}
+for \myHighlight{$f(x) = 1/x^4$}\coordHE{}. Equation~\eqref{eq:klug-eq} contains the single
+most important information about the fish graph and is
+\textit{essential} for the treatment of diagrams in which it appears
+as one of the subdivergences~\cite{Flora}.
+
+Next among the primitive diagrams relevant for the vertex correction
+comes the tetrahedron (also called the ``open envelope'') diagram. In
+spite of appearances, it is a three-loop graph, as one of the circuits
+depends on the others; it is the lowest-order diagram in \myHighlight{$\phi^4_4$}\coordHE{}
+theory with the full structure of the four-point function. The
+unrenormalized amplitude \myHighlight{$f \in \F_\prim(\R^{12})$}\coordHE{} is of the form
+$$\coord{}\boxMath{
+f(x,y,z) = \frac{1}{x^2 y^2 z^2 (x-y)^2 (y-z)^2 (x-z)^2},
+}{dollar}{0pt}\coordE{}$$
+which is logarithmically divergent overall. A funny thing about this
+diagram is that the amplitude for it looks exactly the same in
+momentum space ---see for instance~\cite{Dirkbook}. Denote by \myHighlight{$s$}\coordHE{} the
+collective variable \myHighlight{$(x,y,z)$}\coordHE{}. Then
+$$\coord{}\boxMath{
+[f]_R = S_{(x,y,z)} \biggl[
+\frac{\log(\mu|s|)}{x^2 y^2 z^2 (x-y)^2 (y-z)^2 (x-z)^2} \biggr].
+}{dollar}{0pt}\coordE{}$$
+
+Again, the most important information from the diagram concerns its
+dilatation properties. Proceeding as above, we obtain
+$$\coord{}\boxMath{
+\mu\frac{\del}{\del\mu} [f]_R =: I\,\dl(x),
+}{dollar}{0pt}\coordE{}$$
+where, for any \myHighlight{$A > 0$}\coordHE{},
+$$\coord{}\boxMath{
+I = \int_{s^2=A}\, \frac{|s|\,ds}{x^2 y^2 z^2 (x-y)^2 (y-z)^2 (x-z)^2}.
+}{dollar}{0pt}\coordE{}$$
+This integral is computable with moderate effort.
+First, one rescales variables: \myHighlight{$y = |x|u$}\coordHE{} and \myHighlight{$z = |x|v$}\coordHE{}, to obtain
+$$\coord{}\boxMath{
+I = \int_{\Sf^3} d\biggl( \frac{x}{|x|} \biggr) \int
+\frac{d^4u\,d^4v}{u^2v^2(x/|x|-u)^2(u-v)^2(x/|x|-v)^2}.
+}{dollar}{0pt}\coordE{}$$
+The calculation is then carried out by means of ultraspherical
+polynomial~\cite{AAR, CKTk} techniques. We recall that these
+polynomials are defined from
+$$\coord{}\boxMath{
+(1 - 2xr + r^2)^{-n} = \sum_{k=0}^\infty C^n_k(x)\,r^n,
+}{dollar}{0pt}\coordE{}$$
+for \myHighlight{$r < 1$}\coordHE{}. There follows an expansion for powers of the propagator
+$$\coord{}\boxMath{
+\frac{1}{(x-y)^{2n}} = \frac{1}{|y|^n} \sum_{k=0}^\infty C^n_k(xy)
+\biggl( \frac{|x|}{|y|} \biggr)^k,
+}{dollar}{0pt}\coordE{}$$
+if, for instance, \myHighlight{$|x| < |y|$}\coordHE{}. Using their orthogonality relation
+$$\coord{}\boxMath{
+\int_{\Sf^l} d\biggl(\frac{x}{|x|}\biggr)\,
+C^n_k\biggl(\frac{xu}{|x||u|}\biggr)
+C^n_l\biggl(\frac{xv}{|x||v|}\biggr) =
+\dl_{kl} C^n_k\biggl(\frac{uv}{|u||v|}\biggr) \frac{n\,\Omega_d}{k+n},
+}{dollar}{0pt}\coordE{}$$
+to perform the angular integrals (in our case \myHighlight{$n = 1$}\coordHE{}, \myHighlight{$l = 3$}\coordHE{}), we
+obtain \myHighlight{$I$}\coordHE{} as the sum of six radial integrals, corresponding to
+regions like \myHighlight{$|u| < |v| < 1$}\coordHE{}, and so forth. Each one is equivalent to
+\myHighlight{$2\pi^6\zeta(3)$}\coordHE{}. This yields finally the residue \myHighlight{$12\pi^6\zeta(3)$}\coordHE{}
+---the geometrical factor \myHighlight{$\Omega_4$}\coordHE{} is always present. In
+consequence, now
+$$\coord{}\boxMath{
+T_\mu f(\la x) =
+\la^{-12} [T_\mu f(x) + 12\pi^6\zeta(3) \log\la\, \dl(x)].
+}{dollar}{0pt}\coordE{}$$
+This is the first diagram which has a nontrivial topology, from the
+knot theory viewpoint, and thus the appearance of a \myHighlight{$\zeta$}\coordHE{}-value is
+expected~\cite{Dirkbook}.
+
+Consider now the two-loop ``setting sun'' diagram that contributes
+to the two-point function in \myHighlight{$\varphi^4_4$}\coordHE{} theory; it will prove
+instructive. One has to renormalize \myHighlight{$1/x^6$}\coordHE{}, and the singular order
+is~2. Off~\eqref{eq:ast-form} we read that
+\begin{equation}\coord{}\boxEquation{
+\biggl[ \frac{1}{x^6} \biggr]_R =
+\frac{1}{2} S_3 \biggl[ \frac{\log(\mu|x|)}{x^6} \biggr] +
+\frac{3\pi^2}{8}\,\Dl\dl(x).
+\label{eq:set-sun}
+}{
+\biggl[ \frac{1}{x^6} \biggr]_R =
+\frac{1}{2} S_3 \biggl[ \frac{\log(\mu|x|)}{x^6} \biggr] +
+\frac{3\pi^2}{8}\,\Dl\dl(x).
+}{ecuacion}\coordE{}\end{equation}
+Clearly, our formulae come rather close to simply iterating the
+operator~\myHighlight{$S$}\coordHE{}, as done in~\cite{SmirZav}. The last term obviously does
+not make a difference for the dilatation properties; but we shall soon
+strengthen the case for not dropping it. One has
+$$\coord{}\boxMath{
+\biggl[ \frac{1}{x^6} \biggr]_R (\la x) =
+\la^{-6} \biggl( \Bigl[ \frac{1}{x^6} \Bigr]_R +
+\frac{\Omega_4}{8}\log\la\,\Dl\dl(x) \biggr).
+}{dollar}{0pt}\coordE{}$$
+
+The reader may check that using \myHighlight{$W_w$}\coordHE{} instead of \myHighlight{$T_w$}\coordHE{} would bring
+to~\eqref{eq:set-sun} the extra term \myHighlight{$\pi^2\mu^2\dl(x)$}\coordHE{}, with an
+unwelcome \myHighlight{$\mu$}\coordHE{}-power dependence. As we know, this complicates the
+dilatation properties for the diagram. The terms polynomially
+dependent on \myHighlight{$\mu$}\coordHE{} are like the ``junk DNA'' of the Epstein--Glaser
+formalism, as they carry no useful information on the residues of
+QFT~\cite{Flora}.
+
+More generally, for quadratic divergences (such as also appear in the
+first (two-vertex) contribution to the two-point function of the
+\myHighlight{$\varphi^6_3$}\coordHE{} and \myHighlight{$\varphi^3_6$}\coordHE{} theories), one constructs the
+extension
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\bigl[|x|^{-d-2}\bigr]_R = \frac{\leftCoord{}1}{\rightCoord{}2} S_3 \biggl(
+\frac{\leftCoord{}\log\mu|x|}{\rightCoord{}x^{d+2}} \biggr) + \frac{\leftCoord{}3\Omega_d}{\rightCoord{}4d} \rightCoord{}\,\Dl\dl(x),
+\label{eq:quadra}
+\rightCoord{}}{0mm}{4}{6}{
+\bigl[|x|^{-d-2}\bigr]_R = \frac{1}{2} S_3 \biggl(
+\frac{\log\mu|x|}{x^{d+2}} \biggr) + \frac{3\Omega_d}{4d} \,\Dl\dl(x),
+}{1}\coordE{}\end{eqnarray}
+and
+$$\coord{}\boxMath{
+\bigl[|x|^{-d-2}\bigr]_R (\la x) = \la^{-d-2} \biggl(
+\bigl[|x|^{-d-2}\bigr]_R + \frac{\Omega_d}{2d} \log\la \,\Dl\dl(x)
+\biggr).
+}{dollar}{0pt}\coordE{}$$
+
+
+
+\section{The comparison with the mathematical literature}
+\label{sec:Ex-Comp}
+
+\subsection{On the real line}
+
+Now we must muster support for the choice of \myHighlight{$T_w$}\coordHE{} and \myHighlight{$T_\mu$}\coordHE{}. For
+the basics of distribution theory, we recommend~\cite{BB}. For
+concrete computations, a good place to start is the treatment by
+H\"ormander in Section~3.2 of~\cite{Hoermander}, of the extension
+problem for the distributions
+$$\coord{}\boxMath{
+f(x) = x_+^{-l}, \ x_-^{-l}, \ |x|^{-l}, \ |x|^{-l}\sgn(x), \ x^{-l}
+}{dollar}{0pt}\coordE{}$$
+on the real line. Of course, these are not independent: \myHighlight{$x_-$}\coordHE{} is just
+the reflection of \myHighlight{$x_+$}\coordHE{} with respect to the origin, then
+\myHighlight{$|x|^{-l} = x_+^{-l} + x_-^{-l}$}\coordHE{}, and so on; note that \myHighlight{$x^{-1}$}\coordHE{} is
+just the ordinary Cauchy principal value of~\myHighlight{$1/x$}\coordHE{}.
+
+On our side, for instance, \myHighlight{$xf(x) = H(x)$}\coordHE{} for \myHighlight{$f(x) = x_+^{-1}$}\coordHE{};
+\myHighlight{$xf(x) = \sgn(x)$}\coordHE{} for \myHighlight{$f(x) = |x|^{-1}$}\coordHE{}; and so on. Then our
+formulae~\eqref{eq:ast-form}, for \myHighlight{$l$}\coordHE{} odd, give
+$$\coord{}\boxMath{
+\bigl[x_+^{-l}\bigr]_R =
+\frac{(-)^{l-1}}{(l-1)!} \frac{d^l}{dx^l} (H(x) \log(\mu|x|))
++ H_{l-1}\,\dl^{l-1},
+}{dollar}{0pt}\coordE{}$$
+or, say,
+$$\coord{}\boxMath{
+\bigl[|x|^{-l}\bigr]_R =
+\frac{(-)^{l-1}}{(l-1)!} \frac{d^l}{dx^l} (\sgn(x) \log(\mu|x|)
++ 2 H_{l-1}\,\dl^{l-1},
+}{dollar}{0pt}\coordE{}$$
+and, for \myHighlight{$l$}\coordHE{} even, simply
+\begin{equation}\coord{}\boxEquation{
+\bigl[|x|^{-l}\bigr]_R =
+\frac{(-)^{l-1}}{(l-1)!} \frac{d^l}{dx^l} \log|x|.
+\label{eq:mag-simpl}
+}{
+\bigl[|x|^{-l}\bigr]_R =
+\frac{(-)^{l-1}}{(l-1)!} \frac{d^l}{dx^l} \log|x|.
+}{ecuacion}\coordE{}\end{equation}
+
+H\"ormander invokes the natural method of analytic continuation of
+\myHighlight{$x_+^z$}\coordHE{}, with \myHighlight{$z$}\coordHE{} complex, plus residue subtraction at the simple
+poles at the negative integers. Our formulae coincide with
+H\"ormander's ---see for example his~(3.2.5)--- provided that (a) we
+take \myHighlight{$\mu = 1$}\coordHE{}; and (b) \myHighlight{$H_k$}\coordHE{} defined in \eqref{eq:harmonic} equals
+(as anticipated in the notation) the sum of the first \myHighlight{$k$}\coordHE{} terms of the
+harmonic series! This turns out to be the case, although the proof,
+that the curious reader can find in~\cite[Ch.~6]{ThreefromTeX}, is not
+quite straightforward. Thus we understand that in~\eqref{eq:ast-form}
+and similar formulae \myHighlight{$H_k$}\coordHE{} just means \myHighlight{$\sum_{j=1}^k 1/j$}\coordHE{}.
+
+Encouraged by this indication of being on the right track, we take a
+closer look at the analytic continuation method. The point is that the
+function \myHighlight{$z \mapsto \int_0^\infty x^z \phi(x)\,dx$}\coordHE{} for \myHighlight{$\Re z > -1$}\coordHE{} is
+analytic, its differential being
+\myHighlight{$dz\,\int_0^\infty x^z \log x\,\phi(x)\,dx$}\coordHE{}. Let us now consider the
+analytic continuation definition for \myHighlight{$x^z_+$}\coordHE{}, where for simplicity we
+first take \myHighlight{$-2 < \Re z < -1$}\coordHE{}. One gleans
+$$\coord{}\boxMath{
+\<x^z_+, \phi> = \int_0^\infty x^z R^0_0\phi(x) \,dx.
+}{dollar}{0pt}\coordE{}$$
+We recall the proof of this:
+$$\coord{}\boxMath{
+\<x^z_+, \phi> :=
+\biggl< \frac{1}{z+1} \frac{d}{dx} x^{z+1}_+, \phi\biggr> =
+- \frac{1}{z+1}\,\lim_{\eps\downarrow0} \int_\eps^\infty
+x^{z+1} \phi'(x)\,dx.
+}{dollar}{0pt}\coordE{}$$
+A simple integration by parts, taking \myHighlight{$v = x^{z+1}$}\coordHE{} and
+\myHighlight{$u = \phi(x) - \phi(0)$}\coordHE{}, completes the argument.
+
+Iterating the procedure, one obtains
+$$\coord{}\boxMath{
+\<x^z_+, \phi> = \int_0^\infty x^z R^{l-1}_0\phi(x)\,dx
+}{dollar}{0pt}\coordE{}$$
+for \myHighlight{$-l-1 < \Re z < -l$}\coordHE{}, with \myHighlight{$l$}\coordHE{} a positive integer. At \myHighlight{$z = -l$}\coordHE{},
+however, this formula fails because of the attendant \textit{infrared}
+problem. Let us then compute the first two terms of the Laurent
+development of~\myHighlight{$x^z$}\coordHE{}: in view of
+$$\coord{}\boxMath{
+\<x^z_+, \phi> = \int_0^{\mu^{-1}} x^z R^{l-1}_0\phi(x)\,dx +
+\int_{\mu^{-1}}^\infty R^{l-2}_0\phi(x)\,dx
++ \frac{\phi^{(l-1)}(0)\mu^{-(z+l)}}{(l-1)!\,(z+l)},
+}{dollar}{0pt}\coordE{}$$
+the pole part is isolated. Therefore
+$$\coord{}\boxMath{
+\lim_{z\to-l} \biggl[x_+^z -
+\frac{(-)^{l-1}\dl^{(l-1)}(x)}{(l-1)!(z+l)} \biggr] =
+T_\mu(x^l_+) - \dl^{l-1}(x) \log\mu.
+}{dollar}{0pt}\coordE{}$$
+
+H\"ormander goes on to consider Hadamard's \textit{finite part}: that
+is, for \myHighlight{$x_+$}\coordHE{}, one studies
+$$\coord{}\boxMath{
+\int_\eps^\infty x^z \phi(x)\,dx,
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$\phi$}\coordHE{} is always a test function, for any \myHighlight{$z \in \C$}\coordHE{}, and
+discards the multiples of powers \myHighlight{$\eps^{-\theta}$}\coordHE{}, for nonvanishing
+\myHighlight{$\theta$}\coordHE{} with \myHighlight{$\Re\theta \geq 0$}\coordHE{}, and the multiples of \myHighlight{$\log\eps$}\coordHE{}.
+He proves that this finite part coincides with the result of the
+analytic continuation method.
+
+We do not need to review his proof, as we can show directly the
+identity of our results with finite part, by the following trick:
+\begin{align*}\coord{}\boxAlignEqnarray{
+\leftCoord{}\int_\eps^\infty \frac{\leftCoord{}\phi(x)}{\rightCoord{}x^{\leftCoord{}l}} \,dx
+&\leftCoord{}= \sum_{\rightCoord{}j=0}^{\leftCoord{}{}\leftCoord{}l-1} \int_\eps^{\mu^{-1}} \frac{\leftCoord{}\phi^{(j)}(0)}{\rightCoord{}j!}
+    \leftCoord{}\,x^{j-l}\,dx + \sum_{\rightCoord{}j=0}^{\leftCoord{}{}\leftCoord{}l-2} \int_{\leftCoord{}\rightCoord{}\mu^{-1}}^\infty
+    \leftCoord{}\frac{\leftCoord{}\phi^{(j)}(0)}{\rightCoord{}j!} \,x^{j-l}\,dx
+\leftCoord{}\rightCoord{}\\
+&\leftCoord{}\qquad + \int_\eps^{\mu^{-1}} x^{-l} R^{l-1}_0\phi(x) \,dx
+         \leftCoord{}+ \int_{\leftCoord{}\rightCoord{}\mu^{-1}}^\infty x^{-l} R^{l-2}_0\phi(x) \,dx.
+}{0mm}{17}{9}{
+\int_\eps^\infty \frac{\phi(x)}{x^{l}} \,dx
+&= \sum_{j=0}^{{}l-1} \int_\eps^{\mu^{-1}} \frac{\phi^{(j)}(0)}{j!}
+    \,x^{j-l}\,dx + \sum_{j=0}^{{}l-2} \int_{\mu^{-1}}^\infty
+    \frac{\phi^{(j)}(0)}{j!} \,x^{j-l}\,dx
+\\
+&\qquad + \int_\eps^{\mu^{-1}} x^{-l} R^{l-1}_0\phi(x) \,dx
+         + \int_{\mu^{-1}}^\infty x^{-l} R^{l-2}_0\phi(x) \,dx.
+}{0}\coordE{}\end{align*}
+Then, as \myHighlight{$\eps \downarrow 0$}\coordHE{}, the two last terms give rise to the
+\myHighlight{$T_\mu(1/x^l)$}\coordHE{} renormalization and the surviving finite terms cancel,
+except for the expected contribution
+\myHighlight{$-\frac{\phi^{(l-1)}(0)}{(l-1)!} \log\mu$}\coordHE{}, coming from the first sum.
+
+Denote the finite part of \myHighlight{$x_+^{-l}$}\coordHE{} by \myHighlight{$\Pf \frac{H(x)}{x^l}$}\coordHE{}, where
+\myHighlight{$\Pf$}\coordHE{} stands for \textit{pseudofunction} (or for \textit{partie
+finite}, according to taste). In summary, we have proved:
+
+\begin{prop}
+On the real line, the \myHighlight{$T$}\coordHE{}-operator leads to a one-parameter
+generalization of the finite part and analytic continuation
+extensions, to wit,
+$$\coord{}\boxMath{
+\bigl[x_+^{-l}\bigr]_R := T_\mu(x_+^{-l}) =
+\Pf \frac{H(x)}{x^l} + \dl^{l-1}(x) \log\mu.
+}{dollar}{0pt}\coordE{}$$
+\end{prop}
+
+This generalization is in the nature of things. Actually, the finite
+part and analytic continuation methods are not nearly as uniquely
+defined as some treatments make them appear. For instance, at the
+negative integers the definition of the finite part of \myHighlight{$x^z$}\coordHE{}
+\textit{changes} if we substitute \myHighlight{$A\eps$}\coordHE{} for \myHighlight{$\eps$}\coordHE{}; and,
+analogously, one can slip in a dimensionful scale in analytical
+prolongation formulae. The added flexibility of the choice of \myHighlight{$\mu$}\coordHE{} is
+convenient.
+
+We parenthetically observe that the nonhomogeneity of \myHighlight{$T_\mu$}\coordHE{}, and
+then of \myHighlight{$\Pf$}\coordHE{}, is directly related to the presence of logarithmic
+terms in the asymptotic expansion for the heat kernels of elliptic
+pseudodifferential operators~\cite{Odysseus}.
+
+Finally, we remark that the Laurent development for \myHighlight{$x_+^z|_{z=-l}$}\coordHE{}
+continues:
+\begin{equation}\coord{}\boxEquation{
+\frac{\phi^{(l-1)}(0)}{\eps(l-1)!} + \Pf(x^{-l}_+) +
+\frac{\eps}{2}\Pf(x^{-l}_+ \log x_+) +
+\frac{\eps^2}{3!}\Pf(x^{-l}_+ \log^2 x_+) + \cdots
+\label{eq:L-key}
+}{
+\frac{\phi^{(l-1)}(0)}{\eps(l-1)!} + \Pf(x^{-l}_+) +
+\frac{\eps}{2}\Pf(x^{-l}_+ \log x_+) +
+\frac{\eps^2}{3!}\Pf(x^{-l}_+ \log^2 x_+) + \cdots
+}{ecuacion}\coordE{}\end{equation}
+with \myHighlight{$\eps := z + l$}\coordHE{} and the obvious definition for
+$$\coord{}\boxMath{
+\Pf(x^{-l}_+ \log^m x_+) = \bigl[x^{-l}_+ \log^m x_+\bigr]_{R;\mu=1}.
+}{dollar}{0pt}\coordE{}$$
+
+
+
+\subsection{Dimensional reduction}
+
+The phrase ``dimensional reduction'' is used in the sense of
+ordinary calculus, it does not refer here to the method of
+renormalization of the same name. The reader may have wondered why we
+spend so much time on elementary distributions on \myHighlight{$\R$}\coordHE{}. The reason, as
+it turns out, is that an understanding of the 1-dimensional case is
+all that is needed for the renormalization of \myHighlight{${|x|^{-d-k}}$}\coordHE{}, for any
+\myHighlight{$k$}\coordHE{} and in any dimension \myHighlight{$d$}\coordHE{}; thus covering the basic needs of
+Euclidean field theory. For instance, one can define
+\myHighlight{$\bigl[x^{-4}\bigr]_R$}\coordHE{} on \myHighlight{$\R^4$}\coordHE{} from knowledge of \myHighlight{$x^{-1}_+$}\coordHE{} on~\myHighlight{$\R$}\coordHE{}.
+
+Denote \myHighlight{$r := |x|$}\coordHE{} and let \myHighlight{$f(r)$}\coordHE{} be an amplitude on \myHighlight{$\R^d$}\coordHE{}, depending
+only on the radial coordinate, in need of renormalization. We are
+ready now to simplify~\eqref{eq:ast-form} by a method that generalizes
+Proposition 1 to any number of dimensions.
+
+Given an arbitrary test function \myHighlight{$\phi$}\coordHE{}, consider its projection onto
+the radial-sum-values function \myHighlight{$\phi \mapsto P\phi$}\coordHE{} given by
+$$\coord{}\boxMath{
+P\phi(r) := \int_{|y|=1} \phi(ry).
+}{dollar}{0pt}\coordE{}$$
+We compute the derivatives of \myHighlight{$P\phi$}\coordHE{} at the origin:
+\myHighlight{$(P\phi)^{(2m+1)}(0) = 0$}\coordHE{} and
+$$\coord{}\boxMath{
+(P\phi)^{(2m)}(0) = \Omega_{d,m}\,\Dl^m\phi(0).
+}{dollar}{0pt}\coordE{}$$
+To prove this, whenever all the \myHighlight{$\b$}\coordHE{}'s, and thus \myHighlight{$n$}\coordHE{}, are even, use
+$$\coord{}\boxMath{
+(P\phi)^{(n)}(0) =
+\sum_{|\b|=n} \frac{n!\,\del^\b\phi}{\b!} \biggr|_{x=0}
+\int_{|y|=1} y_1^{\b_1} \dots y_n^{\b_n} =
+\frac{2\,\Ga(\frac{\b_1+1}{2})\cdots\Ga(\frac{\b_n+1}{2})}
+      {\Ga(\frac{n+d}{2})},
+}{dollar}{0pt}\coordE{}$$
+in consonance with~\eqref{eq:Om-eq}; the integral vanishes otherwise.
+Note that \myHighlight{$P\phi$}\coordHE{} can be considered as an even function defined on the
+whole real line. Then, whenever the integrals make sense,
+$$\coord{}\boxMath{
+\<f(r), \phi(x)>_{\R^d} = \<f(r) r^{d-1}, P\phi(r)>_{\R^+},
+}{dollar}{0pt}\coordE{}$$
+which in particular means that extension rules for \myHighlight{$H(r)f(r)$}\coordHE{} on \myHighlight{$\R$}\coordHE{}
+give extension rules for \myHighlight{$f(r)r^{d-1}$}\coordHE{} on \myHighlight{$\R^d$}\coordHE{}. This we call
+dimensional reduction.
+
+Before proceeding, let us put the examined real line extensions in
+perspective, by investigating how satisfactory our results are from a
+general standpoint, and whether alternative renormalizations with
+better properties might exist. Note first, from~\eqref{eq:ast-form}:
+$$\coord{}\boxMath{
+\Pf \frac{H(x)}{x} = \frac{d}{dx} (H(x) \log|x|).
+}{dollar}{0pt}\coordE{}$$
+For \myHighlight{$z$}\coordHE{} not a negative integer, the property
+\begin{equation}\coord{}\boxEquation{
+x\,x_+^z = x_+^{z+1}
+\label{eq:req-one}
+}{
+x\,x_+^z = x_+^{z+1}
+}{ecuacion}\coordE{}\end{equation}
+obtains; and excluding \myHighlight{$z = 0$}\coordHE{} as well, we have
+\begin{equation}\coord{}\boxEquation{
+\frac{d}{dx} x_+^z = z\,x_+^{z-1}.
+\label{eq:req-two}
+}{
+\frac{d}{dx} x_+^z = z\,x_+^{z-1}.
+}{ecuacion}\coordE{}\end{equation}
+One can examine how the negative integer power candidates fare in
+respect of these two criteria: of course, except for \myHighlight{$x^{-l}$}\coordHE{}, which
+keeps all the good properties, homogeneity is irretrievably lost.
+
+Actually, it is \myHighlight{$x_+^{-l}$}\coordHE{} that we need. One could \textit{define} a
+renormalization \myHighlight{$\bigl[x_+^{-l}\bigr]_\diff$}\coordHE{} of \myHighlight{$x_+^{-l}$}\coordHE{} simply by
+$$\coord{}\boxMath{
+\bigl[x_+^{-l}\bigr]_\diff :=
+(-)^{l-1} \frac{1}{(l-1)!} \frac{d^l}{dx^l} (H(x) \log|x|),
+}{dollar}{0pt}\coordE{}$$
+so \myHighlight{$\bigl[x_+^{-1}\bigr]_\diff = \Pf \frac{H(x)}{x}$}\coordHE{}; and
+automatically the second~\eqref{eq:req-two} of the requirements
+$$\coord{}\boxMath{
+\frac{d}{dx} \bigl[x_+^{-l}\bigr]_\diff =
+-l\,\bigl[x_+^{-l-1}\bigr]_\diff
+}{dollar}{0pt}\coordE{}$$
+would be fulfilled. This would be ``differential renormalization'' in
+a nutshell. It differs from the other extensions studied so far: from
+our previous results,
+$$\coord{}\boxMath{
+\bigl[x_+^{-l}\bigr]_\diff = \bigl[x_+^{-l}\bigr]_R
++ (-)^l (H_{l-1} + \log\mu) \,\dl^{l-1}(x).
+}{dollar}{0pt}\coordE{}$$
+
+On the other hand, it is seen that
+$$\coord{}\boxMath{
+\frac{d}{dx} T_\mu(x_+^{-l}) = -l\,T_\mu(x_+^{-l-1}) + \dl^l(x),
+}{dollar}{0pt}\coordE{}$$
+so that \myHighlight{$T_\mu$}\coordHE{} does not fulfill that second requirement; but in
+exchange, it does fulfill the first one~\eqref{eq:req-one}:
+$$\coord{}\boxMath{
+x_+\,T_\mu(x_+^{-l}) = T_\mu(x_+^{-l+1}).
+}{dollar}{0pt}\coordE{}$$
+There is no extension of \myHighlight{$x_+^a$}\coordHE{} for which both requirements
+simultaneously hold.
+
+It looks as if we are faced with a choice between \myHighlight{$[\cdot]_\diff$}\coordHE{} and
+\myHighlight{$T_\mu(\cdot)$}\coordHE{} ---which is essentially \myHighlight{$\Pf(\cdot)$}\coordHE{}--- each one with
+its attractive feature. But the situation is in truth not symmetrical:
+in higher dimensional spaces the analogue of the first requirement
+\textit{can} be generalized to the renormalization of \myHighlight{$|x|^{-l}$}\coordHE{};
+whereas the analog of the second then \textit{cannot} be made to work
+---have a sneak preview at~\eqref{eq:super-machine}.
+
+\smallskip
+
+Estrada and Kanwal \textit{define} then, for \myHighlight{$k \geq 0$}\coordHE{}
+\cite{wonderEKI,wonderEKII},
+\begin{align*}\coord{}\boxAlignEqnarray{
+\leftCoord{}\biggl<\Pf\Bigl(\frac{\leftCoord{}1}{\rightCoord{}r^{d+k}}\Bigr),  \phi(x)\biggr>_{\rightCoord{}\R^{\leftCoord{}d}} &:=
+\leftCoord{}\biggl<\Pf\Bigl(\frac{\leftCoord{}1}{\rightCoord{}r^{k+1}}\Bigr), P\phi(r)\biggr>_{\rightCoord{}\R^+};
+\leftCoord{}\\[3pt]
+\leftCoord{}\biggl<\Bigl[\frac{\leftCoord{}1}{\rightCoord{}r^{d+k}}\Bigr]_\diff,  \phi(x)\biggr>_{\rightCoord{}\R^{\leftCoord{}d}} &:=
+\leftCoord{}\biggl<\Bigl[\frac{\leftCoord{}1}{\rightCoord{}r^{k+1}}\Bigr]_\diff, P\phi(r)\biggr>_{\rightCoord{}\R^+}.
+}{0mm}{11}{9}{
+\biggl<\Pf\Bigl(\frac{1}{r^{d+k}}\Bigr),  \phi(x)\biggr>_{\R^{d}} &:=
+\biggl<\Pf\Bigl(\frac{1}{r^{k+1}}\Bigr), P\phi(r)\biggr>_{\R^+};
+\\[3pt]
+\biggl<\Bigl[\frac{1}{r^{d+k}}\Bigr]_\diff,  \phi(x)\biggr>_{\R^{d}} &:=
+\biggl<\Bigl[\frac{1}{r^{k+1}}\Bigr]_\diff, P\phi(r)\biggr>_{\R^+}.
+}{0}\coordE{}\end{align*}
+In view of~\eqref{eq:mag-simpl}, the case \myHighlight{$k$}\coordHE{}~odd is very easy, and
+then all the definitions coincide:
+$$\coord{}\boxMath{
+\Pf\Bigl(\frac{1}{r^{d+k}}\Bigr) =
+T_\mu\Bigl(\frac{1}{r^{d+k}}\Bigr) =
+\Bigl[\frac{1}{r^{d+k}}\Bigr]_\diff = r^z\bigr|_{z=-d-k},
+}{dollar}{0pt}\coordE{}$$
+the function \myHighlight{$r^z$}\coordHE{} having a removable singularity at \myHighlight{$-d-k$}\coordHE{}. However,
+in most instances in QFT \myHighlight{$k$}\coordHE{} happens to be even, so we concentrate on
+this case. \textit{We} are not in need of new definitions. By going
+through the motions of changing to radial plus polar coordinates and
+back, one checks that, assuming a spherically symmetric weight
+function \myHighlight{$w$}\coordHE{}, the evaluation \myHighlight{$\<T_wf(r), \phi(x)>$}\coordHE{} is equal to
+$$\coord{}\boxMath{
+\biggl<f(r), \phi(x) - \phi(0) - \frac{\Dl\phi(0)}{2!\,d} r^2 -\cdots-
+w(r)\frac{\Omega_{d,m}\,\Dl^m\phi(0)}{(2m)!\,\Omega_d}r^{2m}\biggr>;
+}{dollar}{0pt}\coordE{}$$
+the right hand side being invariant under \myHighlight{$T_w$}\coordHE{}. This was perhaps
+clear from the beginning, from symmetry considerations. It means in
+particular that the different putative definitions of \myHighlight{$T_\mu$}\coordHE{} on
+\myHighlight{$\R^d$}\coordHE{} obtained from \myHighlight{$T_\mu$}\coordHE{} on the real line all \textit{coincide}
+with the original definition, that is:
+
+\begin{prop}
+The \myHighlight{$T_\mu$}\coordHE{} operators are mutually consistent under dimensional
+reduction.
+\end{prop}
+
+Moreover,
+$$\coord{}\boxMath{
+r^{2q}\, T_\mu(r^{-d-2m}) = T_\mu(r^{-d-2m+2q})
+}{dollar}{0pt}\coordE{}$$
+follows, by using
+the easy identity
+$$\coord{}\boxMath{
+r^2 \Dl^m\dl(x) = 2m(2m+d-2) \Dl^{m-1}\dl(x).
+}{dollar}{0pt}\coordE{}$$
+Therefore, it is now clear that
+$$\coord{}\boxMath{
+T_\mu(r^{-d-2m}) = \Pf(r^{-d-2m})
++ \frac{\Omega_{d,m}\,\Dl^m\dl(x)}{\Omega_d\,(2m)!} \log\mu.
+}{dollar}{0pt}\coordE{}$$
+
+It remains to compute the derivatives. A powerful technique, based on
+``truncated regularization'' and calculation of the derivatives across
+surface jumps, was developed and clearly explained
+in~\cite{wonderEKI}. It is rather obvious that for \myHighlight{$k - d$}\coordHE{} odd the
+``na\"{\i}ve'' derivation formulae (see right below) will apply.
+Whereas for \myHighlight{$k - d = 2m$}\coordHE{} even, they obtain extra delta function terms;
+in particular for the powers of the Laplacian
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\Dl^{\leftCoord{}n} \biggl[\frac{\leftCoord{}1}{\rightCoord{}r^{d+2m}}\biggr]_\diff
+&\leftCoord{}= (d+2m+2n-2)\cdots(d+2m+2)(d+2m)(2m+2)\cdots
+\leftCoord{}\nn \rightCoord{}\\
+&\leftCoord{}\qquad \times\,(2m+2n) \biggl[\frac{\leftCoord{}1}{\rightCoord{}r^{d+2m+2n}}\biggr]_\diff
+\leftCoord{}+ \frac{\leftCoord{}\Omega_{\rightCoord{}d,m}}{(2m)!} \sum_{\rightCoord{}l=1}^{\leftCoord{}{}\leftCoord{}n} \frac{\leftCoord{}\Dl^{\leftCoord{}n}\dl(x)}{\rightCoord{}2m+2l-1}.
+\label{eq:super-machine}
+}{0mm}{13}{7}{
+\Dl^{n} \biggl[\frac{1}{r^{d+2m}}\biggr]_\diff
+&= (d+2m+2n-2)\cdots(d+2m+2)(d+2m)(2m+2)\cdots
+\nn \\
+&\qquad \times\,(2m+2n) \biggl[\frac{1}{r^{d+2m+2n}}\biggr]_\diff
++ \frac{\Omega_{d,m}}{(2m)!} \sum_{l=1}^{{}n} \frac{\Dl^{n}\dl(x)}{2m+2l-1}.
+}{0}\coordE{}\end{align}
+The first term is what we termed the ``na\"{\i}ve'' formula.
+
+Estrada and Kanwal do not explicitly give the powers of \myHighlight{$\Dl$}\coordHE{} for
+finite part. But from~\eqref{eq:super-machine} is a simple task to
+compute
+\begin{align*}\coord{}\boxAlignEqnarray{
+\leftCoord{}\Dl^{\leftCoord{}n} \biggl[\frac{\leftCoord{}1}{\rightCoord{}r^{d+2m}}\biggr]_R
+&\leftCoord{}= (d+2m+2n-2)\cdots(d+2m+2)(d+2m)(2m+2)\cdots
+\leftCoord{}\rightCoord{}\\
+&\leftCoord{}\qquad \times\,(2m+2n)\biggl[\frac{\leftCoord{}1}{\rightCoord{}r^{d+2m+2n}}\biggr]_R -
+\leftCoord{}\frac{\leftCoord{}\Omega_{\rightCoord{}d,m}}{\rightCoord{}(2m)!} \sum_{\rightCoord{}l=1}^{\leftCoord{}{}\leftCoord{}n}
+\leftCoord{}\frac{\leftCoord{}(4(m+l)+d-2)\,\Dl^{\leftCoord{}n}\dl(x)}{\rightCoord{}2(m+l)(2m+2l+d-2)}.
+}{0mm}{14}{8}{
+\Dl^{n} \biggl[\frac{1}{r^{d+2m}}\biggr]_R
+&= (d+2m+2n-2)\cdots(d+2m+2)(d+2m)(2m+2)\cdots
+\\
+&\qquad \times\,(2m+2n)\biggl[\frac{1}{r^{d+2m+2n}}\biggr]_R -
+\frac{\Omega_{d,m}}{(2m)!} \sum_{l=1}^{{}n}
+\frac{(4(m+l)+d-2)\,\Dl^{n}\dl(x)}{2(m+l)(2m+2l+d-2)}.
+}{0}\coordE{}\end{align*}
+
+No one seems to have computed explicitly the distributional
+derivatives of the\\
+\myHighlight{$\Pf(x^{-l}_+ \log^m x_+)$}\coordHE{} and the correspondingly
+defined \myHighlight{$\Pf(r^{-l} \log^m r)$}\coordHE{}, although they might be quite helpful
+for Euclidean QFT on configuration space.
+
+\smallskip
+
+We next enterprise to tackle a comparison with methods of
+renormalization in real space in the physical literature. Of those
+there are not many: it needs to be said that the flame-keepers of the
+Epstein--Glaser method~\cite{Scharf} actually work in momentum space
+(using dispersion relation techniques). Euclidean configuration space
+dimensional regularization, on the other hand, starting
+from~\cite{CKTk}, evolved into a powerful calculational tool in the
+eighties. With the advent of ``differential
+renormalization''~\cite{FJL} in the nineties, regularization-free
+coordinate space techniques came into their own: they are the natural
+``market competitors'' for the ideas presented here.
+
+We deal first with dimensional regularization.
+
+
+
+\section{Comparison with the QFT literature}
+\label{sec:Ex-Compbis}
+
+
+\subsection{Dimensional regularization and ``minimal subtraction''}
+
+Dimensional regularization on real space, for primitively divergent
+diagrams, can be identified with analytic continuation. To get the
+basic idea, it is perhaps convenient to perform first a couple of
+blind calculations. Start from the identity
+$$\coord{}\boxMath{
+\mu^\eps |x|^{-d+\eps} =
+\frac{\mu^\eps}{\eps} S_x\bigl(|x|^{-d+\eps}\bigr).
+}{dollar}{0pt}\coordE{}$$
+
+Then, expanding in \myHighlight{$\eps$}\coordHE{}, on use of~\eqref{eq:ast-form}, it follows
+that
+$$\coord{}\boxMath{
+\mu^\eps |x|^{-d+\eps} = \Omega_d \frac{\dl(x)}{\eps} +
+S_x\,\frac{\log(\mu|x|)}{|x|^d} + O(\eps).
+}{dollar}{0pt}\coordE{}$$
+The first term is a typical infinite (as \myHighlight{$1/\eps$}\coordHE{}) counterterm of the
+dimensionally regularized theory. The order of the delta function
+derivative, 0 in this case, tells us that we are dealing with a
+logarithmic divergence. The coefficient \myHighlight{$\Omega_n$}\coordHE{} of the counterterm,
+or QFT residue, coincides with our \textit{scaling coefficient} of
+Section~2. The second term is precisely \myHighlight{$[1/x^d]_R$}\coordHE{}, our renormalized
+expression.
+
+Let us go to quadratic divergences. A brute-force computation
+establishes for them the differential identity
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\mu^\eps |x|^{-d-2+\eps} = \rightCoord{}
+\frac{\leftCoord{}\mu^\eps}{\rightCoord{}2\eps(1-\frac{\leftCoord{}3}{\rightCoord{}2}\eps+\frac{\leftCoord{}1}{\rightCoord{}2}\eps^2)} \rightCoord{}
+\leftCoord{}\rightCoord{}\,S_3 \bigl(|x|^{\eps-d-2}\bigr).\rightCoord{}
+\label{eq:mirac-app}
+\rightCoord{}}{0mm}{5}{9}{
+\mu^\eps |x|^{-d-2+\eps} = 
+\frac{\mu^\eps}{2\eps(1-\frac{3}{2}\eps+\frac{1}{2}\eps^2)} 
+\,S_3 \bigl(|x|^{\eps-d-2}\bigr).
+}{1}\coordE{}\end{eqnarray}
+On the other hand, from~\eqref{eq:ast-form}:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+S_3\bigl(|x|^{-d-2}\bigr) = \frac{\leftCoord{}\Omega_d}{\rightCoord{}d}\rightCoord{}\,\Dl\dl(x).\rightCoord{}
+\rightCoord{}}{0mm}{2}{5}{
+S_3\bigl(|x|^{-d-2}\bigr) = \frac{\Omega_d}{d}\,\Dl\dl(x).
+}{1}\coordE{}\end{eqnarray}
+Performing in~\eqref{eq:mirac-app} the expansion with respect to
+\myHighlight{$\eps$}\coordHE{}, this yields
+$$\coord{}\boxMath{
+\mu^\eps |x|^{-d-2+\eps} = \frac{\Omega_d}{2d\,\eps} \Dl\dl(x) +
+\frac{1}{2}\, S_3\biggl(\frac{\log\mu|x|}{x^{d+2}}\biggr) +
+\frac{3\Omega_d}{4d}\,\Dl\dl(x) + O(\eps).
+}{dollar}{0pt}\coordE{}$$
+That is,
+$$\coord{}\boxMath{
+\mu^\eps |x|^{-d-2+\eps} = \frac{\Omega_d}{2d} \frac{\Dl\dl(x)}{\eps}
++ \bigl[|x|^{d-2}\bigr]_R + O(\eps).
+}{dollar}{0pt}\coordE{}$$
+A pattern has emerged: as before, there is a unique counterterm in
+\myHighlight{$\frac{1}{\eps}$}\coordHE{}; the residue coincides with our scaling coefficient;
+the order of the delta function derivative reminds us of the order of
+the divergence we are dealing with; and the ``constant'' regular term
+is precisely \myHighlight{$[1/|x|^{d+2}]_R$}\coordHE{} constructed in~\eqref{eq:quadra}
+according to our renormalization scheme.
+
+The correspondence between the two schemes, at the present level, is
+absolute and straightforward. It is then a foregone conclusion that we
+shall have \myHighlight{$\mu$}\coordHE{}-independent residues, always coincident with the
+scaling factors, for the simple poles of \myHighlight{$1/|x|^{d+2m}$}\coordHE{}, and that the
+first finite term shall coincide with \myHighlight{$T_\mu$}\coordHE{}, provided we identify
+our scale with 't~Hooft's universal one. This is an immediate
+consequence of the Laurent development~\eqref{eq:L-key}, transported
+to \myHighlight{$\R^d$}\coordHE{} by dimensional reduction. In symbols
+\begin{equation}\coord{}\boxEquation{
+\mu^\eps |x|^{\eps-d-2m} =
+\frac{\Omega_{d,m}}{(2m)!\,\eps}\,\Dl^m\dl(x)
++ \bigl[|x|^{-d-2}\bigr]_R + O(\eps).
+\label{eq:dim-par}
+}{
+\mu^\eps |x|^{\eps-d-2m} =
+\frac{\Omega_{d,m}}{(2m)!\,\eps}\,\Dl^m\dl(x)
++ \bigl[|x|^{-d-2}\bigr]_R + O(\eps).
+}{ecuacion}\coordE{}\end{equation}
+This substantiates the claim that \myHighlight{$T_\mu$}\coordHE{} effects a kind of minimal
+subtraction. Let us point out, in the same vein, that already
+in~\cite{Odysseus} the analytic continuation of Riemann's zeta
+function was evaluated as the outcome of a quantum field
+theory-flavoured renormalization process.
+
+A word of warning is perhaps in order here. Performing the Fourier
+transform of these identities, we do not quite obtain the usual
+formulae for dimensional regularization in momentum space. The
+nonresemblance is superficial, though, and related to choices of
+``renormalization prescriptions''. The beautiful correspondence is
+``spoiled'' (modified) as well for diagrams with subdivergences,
+because in dimensional regularization contributions will come to
+\myHighlight{$O(\eps^0)$}\coordHE{} from the higher terms of the \myHighlight{$\eps$}\coordHE{}-expansion, when
+multiplied by the unavoidable singular factors; but, again, the
+difference is not deep: we show in III how one organizes the Laurent
+expansions with respect to \myHighlight{$d$}\coordHE{} so as to make the correspondence with
+the \myHighlight{$T$}\coordHE{}-subtraction transparent.
+
+Much was made in~\cite{DirkResidue}, and rightly so, of the importance
+of the perturbative residues in the dimensional regularization scheme.
+Residues for primitive diagrams are the single most informative item
+in QFT. The coefficients of higher order poles are determined by the
+residues ---consult the discussion in~\cite{Gross}. Now, the appeal of
+working exclusively with well-defined quantities, as we do, would be
+much diminished if that information were to disappear in our approach.
+But we know it is not lost: it is stored in the scaling properties.
+
+
+\subsection{Differential renormalization and
+  ``natural renormalization'' in QFT}
+
+Differential renormalization, in its original form, turns around the
+following extension of \myHighlight{$1/x^4$}\coordHE{} (in \myHighlight{$\R^4$}\coordHE{}):
+\begin{equation}\coord{}\boxEquation{
+[1/x^4]_{\rm R,FJL} := -\frac{1}{4}\,\Dl\,\frac{\log\mu^2x^2}{x^2}.
+\label{eq:micro-machine}
+}{
+[1/x^4]_{\rm R,FJL} := -\frac{1}{4}\,\Dl\,\frac{\log\mu^2x^2}{x^2}.
+}{ecuacion}\coordE{}\end{equation}
+At present, two main schools of differential renormalization seem
+still in vogue: the original and more popular ``(constrained)
+differential renormalization'' of the Spanish school ---see for
+instance~\cite{Cetreria}--- and the ``Russian school'' ---inaugurated
+in~\cite{SmirZav}. This second method, as already reported, reduces to
+systematic use of the operators \myHighlight{$S_{k+1}$}\coordHE{}, i.e., to our
+formulae~\eqref{eq:ast-form} without the delta terms. Whereas the
+first school has its forte in concrete 1-loop calculations for
+realistic theories, assuming compatibility of differentiation with
+renormalization, the second initially stressed the development of
+global renormalization formulae for diagrams with subdivergences, and
+the compatibility of Bogoliubov's rules with renormalization.
+
+Hereafter, we refer mainly to the original version. It proceeded from
+its mentioned starting point to the computation of more complicated
+diagrams by reductions to two-vertex diagrams. This involves a
+bewildering series of tricks, witness more of the ingenuity of the
+inventors than of the soundness of the method. V.~gr., the tetrahedron
+diagram (considered already) is rather inelegantly renormalized by the
+substitution \myHighlight{$1/x^2 \mapsto x^2[1/x^4]_{\rm R,FJL}$}\coordHE{}. They get away
+with it, in that particular case, because their expression is still
+not infrared divergent. But in nonprimitive diagrams infrared
+infinities may arise in relation with the need to integrate the
+product of propagators over the coordinates of the \textit{internal}
+vertices in the diagram, and, in general, under the procedures of
+differential renormalization it is impossible to avoid incurring
+infrared problems~\cite{SmirIR}.
+
+Even for primitively divergent diagrams, differential renormalization
+is not free of trouble. In his extremely interesting paper,
+Schnetz~\cite{NR} delivers a critique of differential renormalization.
+In elementary fashion, notice that
+$$\coord{}\boxMath{
+\frac{x^\mu\log(\mu^2x^2)}{x^4} =
+-\frac{1}{2}\,\del^\mu \biggl[\frac{1+\log(\mu^2x^2)}{x^2}\biggr],
+}{dollar}{0pt}\coordE{}$$
+and so
+$$\coord{}\boxMath{
+\bigl[1/x^4\bigr]_R = -\frac{1}{4} \Dl\,\frac{1+\log(\mu^2x^2)}{x^2}.
+}{dollar}{0pt}\coordE{}$$
+This is to say:
+\begin{equation}\coord{}\boxEquation{
+\bigl[1/x^4\bigr]_R - \bigl[1/x^4\bigr]_{\rm R,FJL} = \pi^2\,\dl(x).
+\label{eq:micro-machinebis}
+}{
+\bigl[1/x^4\bigr]_R - \bigl[1/x^4\bigr]_{\rm R,FJL} = \pi^2\,\dl(x).
+}{ecuacion}\coordE{}\end{equation}
+We contend that ``our'' \myHighlight{$[1/x^4]_R$}\coordHE{} and not \myHighlight{$[1/x^4]_{\rm R,FJL}$}\coordHE{} is
+the right definition. Of course, one is in principle free to add
+certain delta terms to each individual renormalization and proclaim
+that to be the ``right'' definition. However, \myHighlight{$1/x^4$}\coordHE{} on \myHighlight{$\R^4$}\coordHE{} is
+dimensionally reduced to \myHighlight{$x^{-1}_+$}\coordHE{} on \myHighlight{$\R^+$}\coordHE{} and because, as already
+pointed out, differential renormalization of this distribution is
+consistent with \myHighlight{$[x^{-1}_+]_R$}\coordHE{} for \myHighlight{$\mu=1$}\coordHE{}, the \myHighlight{$[\cdot]_{\rm R,FJL}$}\coordHE{}
+definition is \textit{inconsistent} with any of the natural
+alternatives we established in the previous subsection. (It would
+clearly induce back an extra \myHighlight{$\dl$}\coordHE{} term in the definition of
+\myHighlight{$[x^{-1}_+]_R$}\coordHE{} on the real line, fully unwelcome in the context.)
+
+In other words, if we want to make use both of sensible rules of
+renormalization for the radial integral (namely, including
+differential renormalization at this level) and of Freedman, Johnson
+and Latorre's formulae, we have to relinquish the standard rules of
+calculus. This Schnetz noticed.
+
+Schnetz proposes instead a ``natural renormalization'' procedure on
+\myHighlight{$\R^4$}\coordHE{}, boiling down to the rule
+\begin{equation}\coord{}\boxEquation{
+\Dl^{n+1}\frac{\log(\mu^2x^2)}{x^2} =
+- \biggl[\frac{4^{n+1}n!(n+1)!}{x^{2n+4}}\biggr]_R
++ \biggl(8\pi^2 H_n + \frac{4\pi^2}{n+1}\biggr) \Dl^n\dl(x),
+\label{eq:nat-ren}
+}{
+\Dl^{n+1}\frac{\log(\mu^2x^2)}{x^2} =
+- \biggl[\frac{4^{n+1}n!(n+1)!}{x^{2n+4}}\biggr]_R
++ \biggl(8\pi^2 H_n + \frac{4\pi^2}{n+1}\biggr) \Dl^n\dl(x),
+}{ecuacion}\coordE{}\end{equation}
+whose first instance is precisely the previous
+equation~\eqref{eq:micro-machinebis}. This he found by heuristically
+defining ``natural renormalization'' as the one that relates
+renormalization scales at different dimensions without changing the
+definition of ordinary integrals or generating \myHighlight{$r$}\coordHE{}-dependence in the
+renormalization of \myHighlight{$r$}\coordHE{}-independent integrals; and by elaborate
+computations to get rid of the angular integrals.
+
+His calculation is any rate correct, and the results can be read off
+(for \myHighlight{$d = 4$}\coordHE{}, \myHighlight{$m = 0$}\coordHE{}) our~\eqref{eq:super-machine}, taking into
+account~\eqref{eq:micro-machine} and ~\eqref{eq:micro-machinebis}. We
+have proved that our operator \myHighlight{$T_w$}\coordHE{} in the context just amounts to
+``natural renormalization''.
+
+Shortly after the inception of the differential renormalization, it
+naturally occurred to some people that a definite relation should
+exist between it and dimensional regularization. However, because of
+the shortcomings of the former, they landed on formulae both messy and
+incorrect~\cite{DNuria}. The reader is invited to compare them with
+our~\eqref{eq:dim-par}.
+
+The more refined version of differential renormalization
+in~\cite{SmirZav}, coincides with our formulae for logarithmic
+divergences and eludes the main thrust of Schnetz's critique; however,
+we have seen that in general it does not yield the Laurent development
+of the dimensionally regularized theory either. On the other hand, it
+must be said that the emphasis in~\cite{FJL,NR} in bringing in the
+Laplacian instead of the less intuitive albeit more fundamental \myHighlight{$S_k$}\coordHE{}
+operators has welcome aspects, not only because of the enhanced
+feeling of understanding, but also in that it makes the transition to
+momentum space a trivial affair, as soon as the Fourier transform of
+the (evidently tempered) distribution \myHighlight{$x^{-2} \log(\mu^2x^2)$}\coordHE{} is
+known.
+
+The trinity of basic definitions in differential renormalization is
+then replaced by the identities
+\begin{align*}\coord{}\boxAlignEqnarray{
+\leftCoord{}\biggl[\frac{\leftCoord{}1}{\rightCoord{}x^{\leftCoord{}4}}\biggr]_R
+&\leftCoord{}= - \frac{\leftCoord{}1}{\rightCoord{}2} \,\Dl \,\frac{\leftCoord{}\log\mu|x|}{\rightCoord{}x^{\leftCoord{}2}} + \pi^{\leftCoord{}2}\,\dl(x);
+\leftCoord{}\rightCoord{}\\
+\leftCoord{}\biggl[\frac{\leftCoord{}1}{\rightCoord{}x^{\leftCoord{}6}}\biggr]_R
+&\leftCoord{}= - \frac{\leftCoord{}1}{\rightCoord{}16} \,\Dl^{\leftCoord{}2}\, \frac{\leftCoord{}\log\mu|x|}{\rightCoord{}x^{\leftCoord{}2}}
+    \leftCoord{}+ \frac{\leftCoord{}5}{\rightCoord{}8} \pi^{\leftCoord{}2} \Dl\dl(x);
+\leftCoord{}\rightCoord{}\\
+\leftCoord{}\biggl[\frac{\leftCoord{}\log\mu|x|}{\rightCoord{}x^{\leftCoord{}4}}\biggr]_R
+&\leftCoord{}= - \frac{\leftCoord{}1}{\rightCoord{}4} \,\Dl\, \frac{\leftCoord{}\log^{\leftCoord{}2}\mu|x| + \log\mu'|x|}{\rightCoord{}x^{\leftCoord{}2}}
+    \leftCoord{}+ \frac{\leftCoord{}\pi^{\leftCoord{}2}}{\rightCoord{}2} \,\dl(x);
+}{0mm}{32}{14}{
+\biggl[\frac{1}{x^{4}}\biggr]_R
+&= - \frac{1}{2} \,\Dl \,\frac{\log\mu|x|}{x^{2}} + \pi^{2}\,\dl(x);
+\\
+\biggl[\frac{1}{x^{6}}\biggr]_R
+&= - \frac{1}{16} \,\Dl^{2}\, \frac{\log\mu|x|}{x^{2}}
+    + \frac{5}{8} \pi^{2} \Dl\dl(x);
+\\
+\biggl[\frac{\log\mu|x|}{x^{4}}\biggr]_R
+&= - \frac{1}{4} \,\Dl\, \frac{\log^{2}\mu|x| + \log\mu'|x|}{x^{2}}
+    + \frac{\pi^{2}}{2} \,\dl(x);
+}{0}\coordE{}\end{align*}
+the \myHighlight{$\dl$}\coordHE{}'s being absent in standard differential renormalization. In
+the next Section~6 we shall see another demonstration of their
+importance.
+
+The kinship of the EG method with differential renormalization
+\textit{\`a la} Smirnov and Zavialov was recognized by
+Prange~\cite{PrangeI}; he was stumped for nonlogarithmic divergences,
+though. See~\cite{Cybele} in the same vein.
+
+
+
+\subsection{The connection with BPHZ renormalization}
+
+We still have left some chips to cash. We elaborate next the statement
+that BPHZ subtraction has no independent status from Epstein--Glaser,
+and that the validity of that renormalization method is just a
+corollary of the latter. This involves just a two-line proof.
+
+The Fourier transforms of the causally renormalized amplitudes exist
+at least in the sense of tempered distributions. They are in fact
+rather regular. Taking Fourier transforms is tantamount to replacing
+the test function by an exponential, which, according to the Ces\`aro
+theory of~\cite{Odysseus,CesarRicardo}, can preclude smoothness of the
+momentum space amplitude only at the origin. The appearance of an
+(integrable) singularity at \myHighlight{$p = 0$}\coordHE{} is physically expected in a theory
+of massless particles.
+
+Let us fix our conventions. We define Fourier and inverse Fourier
+transforms by
+$$\coord{}\boxMath{
+F[\phi](p) := \hat\phi(p)
+:= \int \frac{d^dx}{(2\pi)^{d/2}}\, e^{-ipx} \phi(x),
+}{dollar}{0pt}\coordE{}$$
+and
+$$\coord{}\boxMath{
+F^{-1}[\phi](p) := \check\phi(p)
+:= \int \frac{d^dx}{(2\pi)^{d/2}}\, e^{ipx} \phi(x),
+}{dollar}{0pt}\coordE{}$$
+respectively. It follows that
+$$\coord{}\boxMath{
+(x^\mu \phi)\check{\ }(p) = (-i)^\mu \del^\mu \check\phi(p),
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$\mu$}\coordHE{} denotes a multiindex; so that, in particular,
+$$\coord{}\boxMath{
+(x^\mu)\check{\ }(p) = (-i)^\mu (2\pi)^{d/2} \dl^{(\mu)}(p).
+}{dollar}{0pt}\coordE{}$$
+Also,
+\begin{equation}\coord{}\boxEquation{
+\del^\mu\phi(0) = (-i)^\mu (2\pi)^{-d/2} \<p^\mu, \check\phi>.
+\label{eq:acabaramos}
+}{
+\del^\mu\phi(0) = (-i)^\mu (2\pi)^{-d/2} \<p^\mu, \check\phi>.
+}{ecuacion}\coordE{}\end{equation}
+{}From this and the following consequence of~\eqref{eq:bas-def}:
+$$\coord{}\boxMath{
+\<F[\tilde f], F^{-1}[\phi]> = \<F[f], F^{-1}[R^k_0\phi]>,
+}{dollar}{0pt}\coordE{}$$
+there follows at once
+$$\coord{}\boxMath{
+F[\tilde f](p) = R^k_0 F[f](p).
+}{dollar}{0pt}\coordE{}$$
+This is nothing but the BPHZ subtraction rule in momentum space.
+
+\smallskip
+
+We hasten to add:
+
+\begin{itemize}
+\item
+An expression such as \myHighlight{$F[f]$}\coordHE{} is \textit{not} a priori meaningless: it
+is a well defined functional on the linear subspace of Schwartz
+functions \myHighlight{$\phi$}\coordHE{} whose first momenta \myHighlight{$\int p^\a\phi(p)\,d^d p$}\coordHE{} up to
+order \myHighlight{$k+1$}\coordHE{} happen to vanish. (This is the counterpart \myHighlight{$F\SS_{k+1}$}\coordHE{},
+according to~\eqref{eq:acabaramos}, of the distributions on real space
+acting on test functions vanishing up to order \myHighlight{$k+1$}\coordHE{} at the origin.)
+
+\item
+Moreover, explicit expressions for these functionals on the external
+variables are given precisely by the unrenormalized momentum space
+amplitudes!
+
+This circumstance constitutes the (deceptive) advantage of the BPHZ
+formalism for renormalization. We say deceptive because ---as
+persuasively argued in~\cite{ThreefromRussia}--- the BPHZ method makes
+no effective use of the recursive properties of renormalization (paper
+III) and then, when using it, prodigious amounts of energy must go
+into proving convergence of, and/or computing, the (rather horrendous)
+resulting integrals, into showing that the Minkowskian counterparts
+define \textit{bona fide} distributions\dots Much more natural to
+remain on the nutritious ground of distribution theory on real space,
+throughout. But this has never been done.
+
+\item
+Also, the \myHighlight{$\del^\mu F[f](0)$}\coordHE{} for \myHighlight{$|\mu| \leq k$}\coordHE{} exist for massive
+theories.
+\end{itemize}
+
+For zero-mass models, the basic BPHZ scheme runs into trouble; this is
+due naturally to the failure of \myHighlight{$\del^\mu\hat f(0)$}\coordHE{} to exist for
+\myHighlight{$|\mu|=k$}\coordHE{}, on account of the infrared problem. Now, one can perform
+subtraction at some external momentum \myHighlight{$q\neq0$}\coordHE{}, providing a mass
+scale. This is just the Fourier-mirrored version of standard EG
+renormalization, with weight function \myHighlight{$e^{-iqx}$}\coordHE{}; one only has to
+remember to use~\eqref{eq:bas-EGbis} instead of~\eqref{eq:bas-EG}.
+
+It is patent, though, that this last subtraction is quite awkward in
+practice, and will introduce in the Minkowskian context a
+noncovariance which must be compensated by further subtractions. This
+prompted Lowenstein and Zimmermann to introduce their ``soft mass
+insertions''~\cite{LowZim}. Which amounts to an epicycle too many.
+
+In the light of the approach advocated in this paper, there exist
+several simpler and more physical strategies.
+
+\begin{itemize}
+\item
+One strategy is to recruit our basic formula~\eqref{eq:imp-EG} in
+momentum space
+$$\coord{}\boxMath{
+F[f](p) - j^{k-1}_0 F[f](p) -
+\sum_{|\mu|=k} \frac{\del^\mu F[fw](p)\,p^\mu}{\mu!}.
+}{dollar}{0pt}\coordE{}$$
+Still with \myHighlight{$w(x) = e^{-iqx}$}\coordHE{}, this leads at once to
+$$\coord{}\boxMath{
+F[f](p) - j^{k-1}_0 F[f](p) -
+\sum_{|\mu|=k} \frac{\del^\mu F[f](q)\,p^\mu}{\mu!}.
+}{dollar}{0pt}\coordE{}$$
+Note that the difference between two of these recipes is polynomial in
+\myHighlight{$p^\mu$}\coordHE{}, with \myHighlight{$|\mu|=k$}\coordHE{} only, as it should. This can be more easily
+corrected for Lorentz covariance, should the need
+arise~\cite{Bettina}.
+
+\item
+A second method is to exploit homogeneity in adapting our recipes for
+direct use in momentum space, in the spirit of~\cite{chavaloraro}
+and~\cite{SmirIBP}.
+
+\item
+A third one is to perform Fourier analysis on our previous results.
+One has
+$$\coord{}\boxMath{
+\int \frac{d^4x}{(2\pi)^2}\, e^{-ipx}\, \frac{\log(\mu|x|)}{x^2} =
+- \frac{1}{p^2} \log\biggl(\frac{C|p|}{2\mu}\biggr),
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$C := e^\ga \simeq 1.781072\dots$}\coordHE{} with \myHighlight{$\ga$}\coordHE{} the
+Euler--Mascheroni constant. Then, from~\eqref{eq:nat-ren}, for
+instance for the ``fish'' diagram in the \myHighlight{$\varphi_4^4$}\coordHE{} model:
+$$\coord{}\boxMath{
+\widehat{[1/x^4]_R}(p) = \tquarter[1 - \log(C^2p^2/4\mu^2)],
+}{dollar}{0pt}\coordE{}$$
+and more generally:
+$$\coord{}\boxMath{
+\widehat{[1/x^{2k+4}]_R}(p) = \frac{(-)^{k+1}p^{2k}}{4^{k+1}k!(k+1)!}
+\biggl[2\log\frac{|p|}{2\mu} - \Psi(k+1) - \Psi(k+2)\biggr],
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$\Psi(x) := d/dx(\log\Ga(x))$}\coordHE{} has been invoked, and we recall
+that
+$$\coord{}\boxMath{
+\Psi(n) = -\ga + H_{n-1}.
+}{dollar}{0pt}\coordE{}$$
+For the setting sun diagram in the \myHighlight{$\varphi_4^4$}\coordHE{} model, in particular:
+\begin{equation}\coord{}\boxEquation{
+\widehat{[1/x^6]}_R =
+\frac{p^2}{16} \biggl(\log\frac{|p|\ga}{2\mu} - \frac{5}{4}\biggr).
+\label{eq:third-Fourier}
+}{
+\widehat{[1/x^6]}_R =
+\frac{p^2}{16} \biggl(\log\frac{|p|\ga}{2\mu} - \frac{5}{4}\biggr).
+}{ecuacion}\coordE{}\end{equation}
+\end{itemize}
+
+
+
+\section{Some examples in massive theories}
+\label{sec:massive-fun}
+
+The aim of this short section is to dispel any idea that the
+usefulness of EG-type renormalization, and in particular of the
+\myHighlight{$T$}\coordHE{}-subtraction, is restricted to massless models. The overall
+conclusion, though, is that the massless theory keeps a normative
+character. Our purposes being merely illustrative, we liberally borrow
+from Schnetz~\cite{NR}, Prange~\cite{PrangeI} and Haagensen and
+Latorre~\cite{HL}.
+
+The first example is nothing short of spectacular. Suppose we add to
+our original Lagrangian for \myHighlight{$\varphi_4^4$}\coordHE{} a mass term
+\myHighlight{$\thalf m^2\varphi^2$}\coordHE{} and treat it as a perturbation, for the
+calculation of the new propagator. Then we would have for \myHighlight{$D_F(x)$}\coordHE{}:
+$$\coord{}\boxMath{
+\frac{1}{x^2} - \int dx'\, \frac{m^2}{(x-x')^2 {x'}^2} +
+\int dx'\,dx''\, \frac{m^4}{(x-x')^2 (x'-x'')^2 {x''}^2} - \cdots
+}{dollar}{0pt}\coordE{}$$
+This ``nonrenormalizable'' interaction is tractable with our method.
+We work in momentum space, so we just have to consider the
+renormalization of \myHighlight{$1/p^{2k}$}\coordHE{} for \myHighlight{$k > 1$}\coordHE{}. This is read directly
+off~\eqref{eq:third-Fourier}, by inverting the roles of \myHighlight{$p$}\coordHE{} and~\myHighlight{$x$}\coordHE{},
+with the proviso that \myHighlight{$\mu$}\coordHE{} gets replaced by \myHighlight{$1/\mu$}\coordHE{}, in order to keep
+the correct dimensions. Then the result is
+$$\coord{}\boxMath{
+D_F(x) = \frac{1}{x^2} +
+\frac{m^2}{2} \sum_{n=0}^\infty \frac{m^{2n}x^{2n}}{4^n\,n!(n+1)!}
+\biggl(\log\frac{\mu|x|}{2} - \Psi(n+1) - \Psi(n+2)\biggr).
+}{dollar}{0pt}\coordE{}$$
+On naturally identifying the scale \myHighlight{$\mu = m$}\coordHE{}, one obtains on the nose
+the \textit{exact} expansion of the \textit{exact} result
+$$\coord{}\boxMath{
+D_F(x) = \frac{m}{|x|} K_1(m|x|).
+}{dollar}{0pt}\coordE{}$$
+Here \myHighlight{$K_1$}\coordHE{} is the modified Bessel function of order~1. Had we kept the
+original EG subtraction with a \myHighlight{$H(\mu - |p|)$}\coordHE{} weight, we would earn a
+surfeit of terms with extra powers of \myHighlight{$\mu$}\coordHE{}, landing in a serious
+mess.
+
+It is also interesting to see how well or badly fare the other
+``competitors''. Differential renormalization gives a expression of
+similar type but with different coefficients:
+$$\coord{}\boxMath{
+\frac{1}{x^2} +
+\frac{m^2}{2} \sum_{n=0}^\infty \frac{m^{2n}x^{2n}}{4^n\,n!(n+1)!}
+\biggl( \log\frac{\mu|x|}{2} + 2\ga \biggr).
+}{dollar}{0pt}\coordE{}$$
+To obtain the correct result, it is necessary to substitute a
+different mass scale \myHighlight{$\mu_n$}\coordHE{} for each integral and to adjust ad hoc an
+\textit{infinity} of such parameters. Dimensional regularization (plus
+``minimal'' subtraction of a pole term for each summand but the first)
+fares slightly better, as it ``only'' misses the \myHighlight{$\Psi(n+2)$}\coordHE{}
+terms~\cite{NR}. The distribution-theoretical rationale for the
+success of the ``illegal'' expansion performed is explained
+in~\cite{NR}.
+
+Let us now look at the fish diagram in the massive theory. It is
+possible to use~\eqref{eq:bas-Lagr} instead
+of~\eqref{eq:Berkeley-jump}. Make the change of variables:
+$$\coord{}\boxMath{
+t = \frac{|x|}{s};  \qquad  dt = -\frac{|x|\,ds}{s^2}.
+}{dollar}{0pt}\coordE{}$$
+One gets, for the renormalized amplitude,
+$$\coord{}\boxMath{
+-S\biggl[ \frac{m^2}{x^4} \int_{|x|}^\infty ds\, s K_1(ms)^2 \biggr].
+}{dollar}{0pt}\coordE{}$$
+Now,
+$$\coord{}\boxMath{
+\int ds\, s K_1(ms)^2 = \frac{s^2}{2} \biggl(
+K_0^2(s) + 2 \frac{K_0(s)K_1(s)}{s} - K^2_1(s) \biggr)
+}{dollar}{0pt}\coordE{}$$
+can be easily checked from
+$$\coord{}\boxMath{
+K'_0(s) = K_1(s);  \qquad  K'_1(s) = - K_0(s) - \frac{K_1(s)}{s}.
+}{dollar}{0pt}\coordE{}$$
+The final result is then
+$$\coord{}\boxMath{
+\Dl\,\biggl[ \frac{m^2}{2} \Bigl( K^2_0(m|x|) - K_1^2(m|x|) +
+\frac{K_0(m|x|)K_1(m|x|)}{m|x|} \Bigr) \biggr].
+}{dollar}{0pt}\coordE{}$$
+Had we used~\eqref{eq:Berkeley-jump}, the upper limit of the integral
+would become \myHighlight{$1/\mu$}\coordHE{}, and the result would be modified by
+$$\coord{}\boxMath{
+\frac{m^2}{4\mu^2x^2} (K^2_1(m/\mu) - K_2(m/\mu)K_0(m/\mu)).
+}{dollar}{0pt}\coordE{}$$
+At the ``high energy'' limit, as \myHighlight{$\mu \uparrow \infty$}\coordHE{} and
+\myHighlight{$|x| \downarrow 0$}\coordHE{}, this interpolates between the previous result and
+the renormalization in the massless case.
+
+However, this method becomes cumbersome already for renormalizing
+\myHighlight{$D_F^3$}\coordHE{}. It is convenient to modify the strategy, and to use in this
+context differential renormalization, corrected in such a way that the
+known renormalized mass zero limit is kept. This idea succeeds because
+of the good properties of our subtraction with respect to the mass
+expansion. For instance, away from zero~\cite{HL},
+$$\coord{}\boxMath{
+\biggl( \frac{mK_1(m|x|)}{|x|} \biggr)^3 =
+\frac{m^2}{16} (\Dl - 9m^2)(\Dl - m^2) \bigl(
+K_0(m|x|) K_1^2(m|x|) + K_0^3(m|x|) \bigr).
+}{dollar}{0pt}\coordE{}$$
+Note the three-particle ``threshold''. To this Haagensen and Latorre
+add a term of the form
+$$\coord{}\boxMath{
+\frac{\pi^2}{4} \log\frac{2\mu}{\ga m} \,\Dl\dl(x),
+}{dollar}{0pt}\coordE{}$$
+to which, for reasons sufficiently explained, we should add a term of
+the form \myHighlight{$\frac{5\pi^2}{8} \Dl\dl(x)$}\coordHE{}. A term proportional to~\myHighlight{$\dl$}\coordHE{}
+(thus a mass correction) is also present. As they indicate, it is
+better fixed by a renormalization prescription.
+
+
+
+\section{Conclusion}
+\label{sec:le-clou}
+
+We have delivered the missing link of the EG subtraction method to the
+standard literature on extension of distributions. The improved
+subtraction method sits at the crossroads in regard to dimensional
+regularization in configuration space; differential renormalization;
+``natural'' renormalization; and BPHZ renormalization. The discussions
+in the previous sections go a long way to justify the conjecture (made
+by Connes, and independently by Estrada) that Hadamard's finite part
+theory is in principle enough to deal with quantum field theory
+divergences. To accomplish that feat, however, it must go under the
+guise of the \myHighlight{$T$}\coordHE{}-projector; this gives the necessary flexibility to
+deal with complicated diagrams with subdivergences~\cite{Flora}.
+
+\bigskip
+
+\subsection*{Acknowledgements}
+
+I am indebted to Ph.~Blanchard for much encouragement and discussions,
+to S.~Lazzarini for a computation pertaining to subsection~5.1, and to
+D.~Kreimer and J.~C.~V\'arilly for comments on an earlier version of
+the manuscript.
+
+
+
+\begin{thebibliography}{53}
+
+
+\bibitem{Bettina}
+J. M. Gracia-Bond\'{\i}a and S. Lazzarini,
+\textsl{Improved Epstein--Glaser renormalization in coordinate space
+II. Lorentz invariant framework}, in preparation.
+
+\bibitem{Flora}
+J. M. Gracia-Bond\'{\i}a,
+\textsl{Improved Epstein--Glaser renormalization in coordinate space
+III. The Hopf algebra of Feynman graphs}, in preparation.
+
+\bibitem{DirkOriginal}
+D. Kreimer,
+Adv. Theor. Math. Phys. {\bf 2} (1998) 303.
+%%CITATION = 00203,2,303;%%
+
+\bibitem{CKI}
+A. Connes and D. Kreimer,
+Commun. Math. Phys. {\bf 210} (2000) 249.
+%%CITATION = HEP-TH 9912092;%%
+
+\bibitem{CKII}
+A. Connes and D. Kreimer,
+Commun. Math. Phys. {\bf 216} (2001) 215.
+%%CITATION = HEP-TH 0003188;%%
+
+\bibitem{Orange}
+G. 't~Hooft and M. Veltman,
+Nucl. Phys. {\bf B44} (1972) 189.
+%%CITATION = NUPHA,B44,189;%%
+
+\bibitem{ArgentinaBrasiu}
+C. G. Bollini and J. J. Giambiagi,
+Nuovo Cim. {\bf B12} (1972) 20.
+%%CITATION = NUCIA,B12,20;%%
+
+\bibitem{EG}
+H. Epstein and V. Glaser,
+Ann. Inst. Henri Poincar\'e A {\bf XIX} (1973) 211.
+%%CITATION = AHPAA,A19,211;%%
+
+\bibitem{Martinus}
+M. Veltman,
+\textit{Diagrammatica},
+Cambridge University Press, Cambridge, 1994.
+
+\bibitem{Collins}
+J. C. Collins,
+\textit{Renormalization},
+Cambridge University Press, Cambridge, 1984.
+
+\bibitem{HeidelbergTrier}
+H. G. Dosch and V. F. M\"uller,
+Fortschr. Phys. {\bf 23} (1975) 661.
+%%CITATION = FPYKA,23,661;%%
+
+\bibitem{Bellissard}
+J. Bellissard,
+Commun. Math. Phys. {\bf 41} (1975) 235.
+%%CITATION = CMPHA,41,235;%%
+
+\bibitem{Halley}
+J. M. Gracia-Bond\'{\i}a,
+Phys. Lett. {\bf B482} (2000) 315.
+%%CITATION = PHLTA,B482,315;%%
+
+\bibitem{BrFr}
+R. Brunetti and K. Fredenhagen,
+Commun. Math. Phys. {\bf 208} (2000) 623.
+%%CITATION = MATH-PH 9903028;%%
+
+\bibitem{IZ}
+C. Itzykson and J.-B. Zuber,
+\textit{Quantum Field Theory},
+McGraw-Hill, New York, 1980.
+
+\bibitem{LagrSt}
+R. Stora,
+\textsl{Lagrangian field theory}, \textit{in}
+Proceedings of the Les Houches School,
+C.~DeWitt-Morette and C. Itzykson, eds.,
+Gordon and Breach, 1973.
+
+\bibitem{PoSt}
+G. Popineau and R. Stora,
+\textsl{A pedagogical remark on the main theorem of perturbative
+renormalization theory},
+unpublished preprint, CPT \& LAPP-TH (1982).
+
+\bibitem{EllipticSt}
+R. Stora,
+\textsl{A note on elliptic perturbative renormalization on a compact
+manifold},
+unpublished undated preprint, LAPP-TH.
+
+\bibitem{Gudrunpaper}
+G. Pinter,
+Annalen Phys. (Ser. 8) {\bf 10} (2001) 333.
+%%CITATION = HEP-TH 9911063;%%
+
+\bibitem{Gudrun}
+G. Pinter,
+\textsl{Epstein--Glaser renormalization: finite renormalizations,
+the \myHighlight{$\Sf$}\coordHE{}-matrix of \myHighlight{$\Phi^4$}\coordHE{}~theory and the action principle},
+Doktorarbeit, DESY, 2000.
+
+\bibitem{Etoile}
+J. M. Gracia-Bond\'{\i}a and S. Lazzarini,
+\textsl{Connes--Kreimer--Epstein--Glaser renormalization},
+hep-th/0006106.
+%%CITATION = HEP-TH 0006106;%%
+
+\bibitem{Guetti}
+W. G\"uttinger,
+Phys. Rev. {\bf 89} (1953) 1004.
+%%CITATION = PHRVA,89,1004;%%
+
+\bibitem{BP}
+N. N. Bogoliubov and O. S. Parasiuk,
+Acta Math. {\bf97} (1957) 227.
+%%CITATION = ACMAA,97,227;%%
+
+\bibitem{FJL}
+D. Z. Freedman, K. Johnson and J. I. Latorre,
+Nucl. Phys. {\bf B371} (1992) 353.
+%%CITATION = NUPHA,B371,353;%%
+
+\bibitem{NR}
+O. Schnetz,
+J. Math. Phys. {\bf 38} (1997) 738.
+%%CITATION = HEP-TH 9610025;%%
+
+\bibitem{Odysseus}
+R. Estrada, J. M. Gracia-Bond\'{\i}a and J. C. V\'arilly,
+Commun. Math. Phys. {\bf 191} (1998) 219.
+%%CITATION = FUNCT-AN 9702001;%%
+
+\bibitem{CesarRicardo}
+R. Estrada,
+Proc. Roy. Soc. London {\bf A454} (1998) 2425.
+%%CITATION = PRSLA,A454,2425;%%
+
+\bibitem{PrangeI}
+D. Prange,
+J. Phys. A {\bf 32} (1999) 2225.
+%%CITATION = HEP-TH 9710225;%%
+
+\bibitem{OS}
+O. Steinmann,
+\textit{Perturbation Expansions in Axiomatic Field Theory},
+Lecture Notes in Physics 11, Springer, Berlin, 1971.
+
+\bibitem{Ricardo}
+R. Estrada,
+Int. J. Math. \& Math. Sci. {\bf 21} (1998) 625.
+%%CITATION = FUNCT-AN 9702001;%%
+
+\bibitem{Polaris}
+J. M. Gracia-Bond\'{\i}a, J. C. V\'arilly and H. Figueroa,
+\textit{Elements of Noncommutative Geometry},
+Birkh\"auser, Boston, 2001.
+
+\bibitem{SmirZav}
+V. A. Smirnov and O. I. Zavialov,
+Theor. Math. Phys. {\bf 96} (1993) 974.
+%%CITATION = TMPHA,96,974;%%
+
+\bibitem{ClassicalRussian}
+I. M. Gelfand and G. E. Shilov,
+\textit{Generalized Functions I},
+Academic Press, New York, 1964.
+
+\bibitem{ThreefromRussia}
+A. N. Kuznetsov, F. V. Tkachov and V. V. Vlasov,
+\textsl{Techniques of distributions in perturbative
+quantum field theory I},
+hep-th/9612037, Moscow, 1996.
+%%CITATION = HEP-TH 9612037;%%
+
+\bibitem{Dirkbook}
+D. Kreimer,
+\textit{Knots and Feynman Diagrams},
+Cambridge University Press, Cambridge, 2000.
+
+\bibitem{AAR}
+G. E. Andrews, R. Askey and R. Roy,
+\textit{Special Functions},
+Cambridge University Press, Cambridge, 1999.
+
+\bibitem{CKTk}
+K. G. Chetyrkin, A. L. Kataev and F. V. Tkachov,
+Nucl. Phys. {\bf B174} (1980) 345.
+%%CITATION = NUPHA,B174,345;%%
+
+\bibitem{BB}
+Ph. Blanchard and E. Br\"uning,
+\textit{Generalized Functions, Hilbert Spaces and Variational
+Methods},
+Birkh\"auser, Basel, 2002 (forthcoming).
+
+\bibitem{Hoermander}
+L. H\"ormander,
+\textit{The Analysis of Partial Differential Operators I},
+Springer, Berlin, 1983.
+
+\bibitem{ThreefromTeX}
+R. L. Graham, D. E. Knuth and O. Patashnik,
+\textit{Concrete Mathematics},
+Addison-Wesley, Reading, MA, 1989.
+
+\bibitem{wonderEKI}
+R. Estrada and R. P. Kanwal,
+Proc. Roy. Soc. London {\bf A401} (1985) 281.
+%%CITATION = PRSLA,A401,281;%%
+
+\bibitem{wonderEKII}
+R. Estrada and R. P. Kanwal,
+J. Math. Anal. Appl. {\bf 141} (1989) 195.
+%%CITATION = JMANA,141,195;%%
+
+\bibitem{Scharf}
+G. Scharf,
+\textit{Finite Quantum Electrodynamics: the Causal Approach},
+Springer, Berlin, 1995.
+
+\bibitem{DirkResidue}
+D. Kreimer, talks at Abdus Salam ICTP, Trieste, March 27, 2001
+and Mathematical Sciences Research Institute, Berkeley,
+April 25, 2001.
+
+\bibitem{Gross}
+D. J. Gross,
+\textsl{Applications of the renormalization group to high-energy
+physics},
+\textit{in} Proceedings of the Les Houches School,
+R. Balian and J. Zinn-Justin eds.,
+North-Holland, Amsterdam, 1976.
+
+\bibitem{Cetreria}
+F. del Aguila and M. P\'erez-Victoria,
+Acta Phys. Polon. {\bf B28} (1997) 2279.
+%%CITATION = APPOA,B28,2279;%%
+
+\bibitem{SmirIR}
+V. A. Smirnov,
+Nucl. Phys. {\bf B427} (1994) 325.
+%%CITATION = NUPHA,B427,325;%%
+
+\bibitem{DNuria} G. V. Dunne and N. Rius,
+Phys. Lett. {\bf B293} (1992) 367.
+%%CITATION = HEP-TH 9206038;%%
+
+\bibitem{Cybele}
+J. M. Gracia-Bond\'{\i}a,
+Mod. Phys. Lett. {\bf A16} (2001) 281.
+%%CITATION = MPLAE,A16,281;%%
+
+\bibitem{LowZim}
+J. H. Lowenstein and W. Zimmermann,
+Nucl. Phys. {\bf B86} (1975) 77.
+%%CITATION = NUPHA,B86,77;%%
+
+\bibitem{chavaloraro}
+O. I. Zavialov,
+Theor. Math. Phys. {\bf 98} (1994) 377.
+%%CITATION = TMPHA,98,377;%%
+
+\bibitem{SmirIBP}
+V. A. Smirnov,
+Theor. Math. Phys. {\bf 108} (1997) 953.
+%%CITATION = TMPHA,108,953;%%
+
+\bibitem{HL}
+P. E. Haagensen and J. L. Latorre,
+Phys. Lett. {\bf B283} (1992) 293.
+%%CITATION = PHLTA,B283,293;%%
+
+\end{thebibliography}
+
+\end{document}
+
+\bye

@@ -1,0 +1,4706 @@
+
+
+\documentclass[a4paper,11pt]{article}
+\usepackage[]{amsmath,amssymb}
+\usepackage{amsfonts}
+\usepackage{graphics,epsfig}
+\usepackage{epic}
+
+%% Only for \ZZ, \RR, \CC symbols (see below)\usepackage{amsfonts}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Text size (A4 paper)
+\textheight=23.4cm
+\textwidth=15.0cm
+\voffset=-1.7cm
+\hoffset=-0.8cm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Defs.
+\let\sect=\section
+\def\section{\newpage\sect}
+
+\def\text#1{\mbox{\rm #1\ }}
+
+\def\tr{{\rm Tr}}
+\def\diag{{\it Diag}}
+%%
+\def\ie{{\rm i.e.,\/}\ }
+\def\etc{{\rm etc.\/}\ }
+\def\cf{{\rm cf.\/}\ }
+\def\id{\mbox{\it id\,}}
+%%
+\def\one{\mbox{\rm 1}\hskip-2.8pt \mbox{\rm l}}
+%%
+%
+\def \otimesdot {\stackrel{\cdot}{\otimes}}
+%
+
+\providecommand{\Mlo}[1]{\ensuremath{(M_{#1}(\Lambda^{2}))_0}}
+%%
+%% If amsfonts are available use:
+\providecommand{\ZZ}{\mathbb{Z}}
+\providecommand{\RR}{\mathbb{R}}
+\providecommand{\CC}{\mathbb{C}}
+\providecommand{\HH}{\mathbb{H}}
+%% else...
+%%
+\providecommand{\ch}[1]{\chi_{#1}}
+\providecommand{\och}[1]{\overline{\chi_{#1}}}
+\providecommand{\ud}[1]{\underline{#1}}
+\providecommand{\ov}[1]{\underline{#1}}
+\providecommand{\ep}{\epsilon}
+\providecommand{\xa}[1]{|\chi_{#1}|^2}
+\providecommand{\xaa}[2]{|\chi_{#1} + \chi_{#2}|^2}
+\providecommand{\xaaa}[3]{|\chi_{#1} + \chi_{#2} + \chi_{#3}|^2}
+\providecommand{\xaaaa}[4]{|\chi_{#1} + \chi_{#2}+ \chi_{#3}+ \chi_{#4}|^2}
+\providecommand{\xaaaaa}[5]{|\chi_{#1} + \chi_{#2}+ \chi_{#3}+ \chi_{#4}+
+\chi_{#5}|^2}
+\providecommand{\xaaaaaa}[6]{|\chi_{#1} + \chi_{#2}+ \chi_{#3}+ \chi_{#4}+
+                             \chi_{#5} + \chi_{#6}|^2}
+\providecommand{\xaaaaaaa}[7]{|\chi_{#1} + \chi_{#2}+ \chi_{#3}+ \chi_{#4}+
+                             \chi_{#5} + \chi_{#6}+ \chi_{#7}|^2}
+\providecommand{\xaaaaaaaa}[8]{|\chi_{#1} + \chi_{#2}+ \chi_{#3}+ \chi_{#4}+
+                               \chi_{#5} + \chi_{#6}+ \chi_{#7}+ \chi_{#8}|^2}
+\providecommand{\xx}[2]{\chi_{#1}\overline{\chi_{#2}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{
+Twisted partition functions for ADE boundary conformal field theories
+       and Ocneanu algebras of quantum  symmetries
+         \vspace{0.8cm}}
+
+\author{R. Coquereaux\myHighlight{${}^{1}$}\coordHE{}  \thanks{~Email:
+Robert.Coquereaux@cpt.univ-mrs.fr}\myHighlight{$\;$}\coordHE{},
+              G. Schieber\myHighlight{${}^{1,}$}\coordHE{}  \myHighlight{${}^2$}\coordHE{} \thanks{~Email:
+schieber@if.ufrj.br} \\
+\\
+\myHighlight{${}^1$}\coordHE{} {\it Centre de Physique Th\'eorique - CNRS} \\
+             {\it Campus de Luminy - Case 907}           \\
+             {\it F-13288 Marseille - France}            \\
+\\
+\myHighlight{${}^2$}\coordHE{} {\it Instituto de F\'{\i}sica, Universidade Federal do Rio de
+Janeiro} \\
+             {\it Ilha do Fund\~ao, Caixa Postal 68528}\\
+             {\it 21945-970, Rio de Janeiro, Brasil}\\
+}
+
+\date{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{useful_macros}
+\begin{document}
+\thispagestyle{empty}
+\begin{titlepage}
+\maketitle
+\abstract{For every ADE Dynkin diagram, we give a realization, in
+terms of usual fusion algebras (graph algebras), of the
+algebra of quantum symmetries described by the associated Ocneanu
+graph. We give explicitly, in each case, the list of the
+corresponding twisted partition functions.}
+
+\vspace{1.cm}
+
+\begin{center}
+We dedicate this article to the memory of our friend  Prof. Juan A. Mignaco
+deceased, 6 June 2001.
+\end{center}
+
+
+
+\vspace{2. cm}
+
+\noindent Keywords: conformal field theories, ADE, modular invariance,
+quantum symmetries, Hopf algebras, quantum groups.
+\vspace{1.0cm}
+
+
+\vspace{2. cm}
+
+\noindent {\tt  hep-th/0107001}\\
+\noindent CPT-2001/P.4216 \\
+
+
+\vspace*{0.3 cm}
+
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Introduction}
+
+For each \myHighlight{$ADE$}\coordHE{} Dynkin diagram \myHighlight{$G$}\coordHE{}, we consider the corresponding
+Ocneanu graph \myHighlight{$Oc(G)$}\coordHE{}, as given by \myHighlight{$\cite{Ocneanu:paths}$}\coordHE{}, and build
+explicitly an algebra (the algebra of quantum symmetries
+of the given Dynkin diagram)
+whose multiplication table is encoded by this Ocneanu graph. Using
+this algebra structure, we obtain explicitly -- and easily -- the
+expression of all
+the twisted partition functions that one may associate with
+the given Dynkin diagram (one for each vertex of its corresponding
+Ocneanu graph).
+
+
+Our first purpose is not to deduce the graph \myHighlight{$Oc(G)$}\coordHE{} from \myHighlight{$G$}\coordHE{},
+since that was already done in \myHighlight{$\cite{Ocneanu:paths}$}\coordHE{} (actually the details
+have never been made available in printed form\ldots), but to give a
+simple  presentation of the corresponding algebra of quantum
+symmetries.
+In each case, this algebra will be given in terms of a quotient of
+the tensor square of the graph algebra (fusion algebra) associated
+with some particular ADE Dynkin diagram. These algebras \myHighlight{$Oc(G)$}\coordHE{} are commutative
+in almost all cases (for \myHighlight{$D_{2n}$}\coordHE{} they involve \myHighlight{$2\times 2$}\coordHE{} matrices).
+
+Our other purpose is to use this structure to obtain explicitly the
+corresponding ``toric matrices'' (terminology taken form
+\cite{Coque:qtetra}) and the corresponding ``twisted partition
+functions'' (terminology taken form \cite{PetZub:bcft} and
+\cite{PetZub:Oc}).
+
+The torus structure of all ADE models has  been worked out by
+A. Ocneanu himself several years ago (unpublished).
+Explicit expressions for the eight toric matrices of
+dimension \myHighlight{$6\times 6$}\coordHE{} of the \myHighlight{$D_{4}$}\coordHE{} model can be found in \cite{PetZub:bcft}
+(where they are interpreted
+physically in terms of the 3-state Potts model) and for the twelve toric matrices
+of dimension \myHighlight{$12\times 12$}\coordHE{} of the  \myHighlight{$E_{6}$}\coordHE{} model in \cite{Coque:qtetra}
+(where one can also find a general method of calculation for these 
+quantities). One of our purposes is to give explicit results, in particular for
+all exceptional cases, by following the method explained in this last 
+reference \cite{Coque:qtetra} and summarized in section 2.
+Starting from Conformal Field Theory (CFT), another general method for obtaining the
+structure of these twisted partition functions has been described in the
+subsequent article \cite{PetZub:Oc} which contains closed formulae;
+we do not use this formalism. Actually, 
+the constructions performed in the sequel avoid, deliberately, the use of CFT concepts.
+
+Again, we insist upon the fact that we take for granted the data given
+by the Ocneanu graphs themselves; otherwise, we should either have to
+diagonalize the convolution product of the quantum Racah-Wigner bi-algebra
+associated with the given ADE diagram, or to solve the problem of finding
+what are the irreducible elements for the set of  ``connections''
+that one can define on a pair of graphs (system of generalized
+Boltzman weights, see also \cite{Roche:Oc}). This was done by Ocneanu himself.
+The present paper can be read independently of \cite{Coque:qtetra} since 
+all the necessary information is gathered in section 2.
+
+As already stressed, our own 
+presentation, which follows \cite{Coque:qtetra}, uses neither the 
+language nor the techniques  of conformal field theory, but 
+the results themselves can be interpreted in terms of CFT. For 
+instance the toric matrices lead to quantities that can be
+interpreted in terms of partition functions for boundary counformal 
+field theories in presence of defect lines. The reader interested in 
+those CFT aspects should look at the article (\cite{PetZub:Oc}) which contains
+many results of independent interest and is
+probably the most complete published work on this subject, in
+relation with conformal field theories. 
+
+For every ADE example, the particular toric matrix associated with the 
+``unit vertex''  
+of the corresponding Ocneanu graph is the usual modular invariant for the 
+associated  
+ADE model (in the classification of \cite{CapItzZub}), \ie the
+corresponding sesquilinear form gives the usual modular invariant partition
+function. The other partition functions (the non trivially ``twisted''
+ones), those associated with the other points of the Ocneanu graph,
+are not modular invariant.
+
+
+It is unfortunately almost impossible to provide a unified (or
+uniform) treatment for all ADE diagrams; indeed, all of them are
+``special'', in one way or another. The \myHighlight{$A_{n}$}\coordHE{} are a bit too
+``simple'' (many interesting constructions just coincide in that
+case), the \myHighlight{$D_{2n}$}\coordHE{} are the only ones to give rise to a non abelian
+algebra of quantum symmetries, the \myHighlight{$E_{7}$}\coordHE{} does not define a positive
+integral graph algebra and the \myHighlight{$D_{2n+1}$}\coordHE{} do not define any integral
+graph algebra at all; ``only'' \myHighlight{$E_{6}$}\coordHE{} and \myHighlight{$E_{8}$}\coordHE{} lead, somehow, to
+a similar
+treatment.
+
+The structure of the present paper is as follows:
+after a first section devoted to a general overview of the theory, we
+examine separately all types of \myHighlight{$ADE$}\coordHE{} Dynkin diagrams. In each case,
+\ie in each section, after having presented the graph algebra associated
+with the chosen diagram (when it exists), we describe
+explicitly the structure of an associative algebra that we can
+associate with its corresponding Ocneanu graph, express it
+in terms of (usual) graph algebras and deduce, from this
+algebra structure, the corresponding toric matrices.
+In order not to clutter the paper with sparse matrices of big size,
+we list only the
+sesquilinear forms -- \ie the twisted partition functions --
+associated with these toric matrices. For pedagogical reasons we prefer to
+perform this analysis in the following order: \myHighlight{$A_n$}\coordHE{}, \myHighlight{$E_{6}$}\coordHE{}, \myHighlight{$E_{8}$}\coordHE{},
+       \myHighlight{$D_{2n}$}\coordHE{}, \myHighlight{$D_{2n+1}$}\coordHE{}, \myHighlight{$E_{7}$}\coordHE{}.
+
+
+\section{Summary of the algebraic constructions}
+\subsection{Foreword}
+To every pair of \myHighlight{$ADE$}\coordHE{} Dynkin diagrams with the same Coxeter number,
+one may associate (Ocneanu) an algebra of quantum symmetries. Its
+elements (also called ``connections'' on the given pair of graphs) can
+be added and multiplied in a way analogous to what is done for
+representation of groups; in particular, this algebra has a unit, and one may
+consider
+a set of ``irreducible'' quantum symmetries, that, by definition, build up a
+basis of linear generators for this algebra (an analogue of the notion
+of irreducible representations). Using multiplication, we may also
+single out, in each case, two (algebraic) generators, usually called
+``chiral left'' and ``chiral right'' generators,  playing the role of
+fundamental representations for groups: all other irreducible elements can be
+obtained as linear combinations of products of these two
+generators. The Ocneanu graph precisely encodes this algebraic
+structure: its number of vertices is equal to the number
+of irreducible elements and edges encode multiplication by the two
+generators.
+
+When the two chosen Dynkin diagrams coincide, we can find
+another interpretation for the Ocneanu graph (and algebra)
+of quantum symmetries. This is actually the case of interest, for us, in
+the present paper. Here is a sketch of the theory.
+One first considers elementary paths (\ie genuine
+paths) on the chosen Dynkin diagram \myHighlight{$G$}\coordHE{}; one then build the
+Hilbert space \myHighlight{$Path(G)$}\coordHE{} of all paths, by taking linear
+combinations of elementary paths and declaring that elementary paths
+are orthogonal. This vector space provides a path model for the Jones
+algebra associated with \myHighlight{$G$}\coordHE{}. The next step is to consider the vector subspace
+\myHighlight{$EssPath(G)$}\coordHE{} of essential paths: by definition, they span the
+intersection of kernels of all Jones projectors; in the classical
+situation, the essential paths starting from the origin
+would correspond to projectors on the symmetric
+representations of
+\myHighlight{$SU(2)$}\coordHE{} (or of finite subgroups of \myHighlight{$SU(2)$}\coordHE{}). We refer to the paper
+\cite{Coque:Karpacz} (to be contrasted with \cite{Coque:qtetra}) where a
+geometrical study of the classical binary polyhedral groups \cite{Klein}
+(symmetries of Platonic
+bodies) is performed, using McKay correspondence \cite{McKay}, by
+studying paths and essential paths on the
+affine Dynkin diagrams of type \myHighlight{$E_{6}^{(1)}$}\coordHE{}, \myHighlight{$E_{7}^{(1)}$}\coordHE{} and
+\myHighlight{$E_{8}^{(1)}$}\coordHE{}.
+Essential paths start somewhere (\myHighlight{$a$}\coordHE{}), end somewhere (\myHighlight{$b$}\coordHE{}) and have a
+certain length (\myHighlight{$n$}\coordHE{}).
+The finite dimensional vector space \myHighlight{$EssPath(G)$}\coordHE{} is therefore graded by
+the length \myHighlight{$n$}\coordHE{} of the paths: \myHighlight{$EssPath(G) =
+\bigoplus_{n} EssPath^{n}(G)$}\coordHE{}. Notice that essential paths are usually
+linear combinations of elementary paths. We may then build the graded
+algebra \myHighlight{${\cal A} \doteq \bigoplus_{n} End(EssPath^{n}(G))$}\coordHE{} where
+each summand is the space of endomorphisms of \myHighlight{$EssPath^{n}(G)$}\coordHE{};
+they can be explicitly written as  square matrices.
+The algebra \myHighlight{${\cal A}$}\coordHE{} is not only an algebra (for the obvious
+composition \myHighlight{$\circ$}\coordHE{} of endomorphisms) but also a {\sl bi}-algebra:
+using concatenation of elementary paths together with the existence 
+of a scalar product on \myHighlight{$Path(G)$}\coordHE{},  one can define
+a convolution product \myHighlight{$\ast$}\coordHE{} on \myHighlight{${\cal A}$}\coordHE{}.
+Details concerning this construction, also due to Ocneanu, and about
+its interpretation in
+the case of affine \myHighlight{$ADE$}\coordHE{} diagrams (\ie in the case of \myHighlight{$SU(2)$}\coordHE{} itself
+and the usual polyhedral groups) will be found in \cite{CoGaTr:triangles}.
+\myHighlight{${\cal A}$}\coordHE{} is therefore a kind of finite dimensional and quantum
+analogue of the
+Racah-Wigner bi-algebra. Being semi-simple for both algebra
+structures \myHighlight{$\circ$}\coordHE{} and \myHighlight{$\ast$}\coordHE{}, we may decompose \myHighlight{${\cal A}$}\coordHE{} as
+a sum of square matrices (blocks) in two different ways. For the first
+structure (\myHighlight{$\circ$}\coordHE{}), which is obvious from its very definition,
+the corresponding projectors are labeled by \myHighlight{$n$}\coordHE{} (the length of
+essential paths). For the second structure (\myHighlight{$\ast$}\coordHE{}), the blocks
+are labeled by an index, that we shall call \myHighlight{$x$}\coordHE{}; the Ocneanu algebra
+is then precisely the algebra spanned by those \myHighlight{$x$}\coordHE{}, \ie by the
+corresponding projectors: this is an analogue of the table of multiplication of
+characters (convolution product) for a  finite group.
+The underlying vector space of \myHighlight{${\cal A}$}\coordHE{}
+possesses two adapted basis, one is expressed in terms of the ``double
+triangles of Ocneanu'' (that we prefer to draw as a ``fermionic''
+diffusion graph
+with a connecting vertical ``photon'' line labeled by \myHighlight{$n$}\coordHE{}), the other in terms
+of diffusion graphs with horizontal ``very thick lines'' labeled by \myHighlight{$x$}\coordHE{}, the
+vertices of the Ocneanu graph. The change of basis between the two
+adapted basis can be thought of as a duality relation; it is a kind
+of generalized Fourier
+transform involving quantum Racah symbols at a particular root of unity
+depending on the chosen
+Dynkin diagram. It will also be conceptually important to
+consider the length \myHighlight{$n$}\coordHE{} as labelling a particular vertex of a \myHighlight{$A_{N}$}\coordHE{}
+graph (the first vertex to the left being labeled \myHighlight{$0$}\coordHE{}).
+
+Several constructions used in our paper can certainly be understood in terms of
+planar algebras \cite{Jones:planar} (see also \cite{Jones:book}), nets of subfactors
+\cite{Evans-1}, \cite{Evans-2},  or in
+terms of braided categories
+\cite{Kirilov:ADE}, but we shall not discuss this here.
+We do not plan, in the present paper, to give any interpretation of
+these constructions in terms of standard Hopf algebra constructions:
+this has not been worked out, yet.
+
+
+\subsection{Structure of the following sections}
+
+\subsubsection{The diagram (ADE) and its adjacency matrix}
+
+We give the diagram \myHighlight{$G$}\coordHE{} itself, choose a particular labelling for vertices
+and give the adjacency matrix \myHighlight{${\cal G}$}\coordHE{} in a specified basis.
+We consider vertices \myHighlight{$\sigma_{v}$}\coordHE{} of \myHighlight{$G$}\coordHE{}
+as would-be irreducible representations for a quantum analogue of a
+group algebra \myHighlight{${\cal
+H}_{G}$}\coordHE{} that we do not need to define.
+We also write down the norm \myHighlight{$\beta$}\coordHE{} of \myHighlight{$G$}\coordHE{} (the biggest
+eigenvalue of \myHighlight{${\cal G}$}\coordHE{}) and the Perron-Frobenius eigenvector \myHighlight{$D$}\coordHE{} (\ie
+the normalized eigenvector corresponding  to \myHighlight{$\beta$}\coordHE{}, with its
+smallest component, associated with the vertex \myHighlight{$\sigma_0$}\coordHE{},
+normalized to the integer
+\myHighlight{$1$}\coordHE{}).
+The components of \myHighlight{$D$}\coordHE{} give (by definition)
+the quantum dimensions  of the
+irreducible representations \myHighlight{$\sigma_{v}$}\coordHE{}.
+In all cases, \myHighlight{$\beta$}\coordHE{} is equal to the \myHighlight{$q$}\coordHE{}-number\footnote{We define
+\myHighlight{$[n]_{q}=\frac{q^n - q^{-n}}{q - q^{-1}}$}\coordHE{}, where \myHighlight{$q=exp(\frac{i\pi}{\kappa})$}\coordHE{}.}
+\myHighlight{$[2]_{q} = q + \frac{1}{q} = 2 \cos(\frac{\pi}{\kappa})$}\coordHE{}.
+This value \myHighlight{$\kappa$}\coordHE{} is, by  definition, the Coxeter number of the graph.
+In all cases, the \myHighlight{$q$}\coordHE{}-dimension of \myHighlight{$\sigma_{0}$}\coordHE{} (the marked vertex) is
+\myHighlight{$[1]_{q}=1$}\coordHE{}.
+More information can be gathered, for instance, from the book \cite{FMS:book}.
+
+We should remember the values of Coxeter numbers for the various ADE
+Dynkin diagrams:
+$$\coord{}\boxMath{\begin{array}{|c|ccccc|}
+\hline
+{} & A_n & D_{n+2} & E_6 & E_7 & E_8 \\
+\hline
+\text{Coxeter number} & n+1 & 2(n+1) & 12 & 18 & 30 \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+
+\subsubsection{The graph algebra of the Dynkin diagram and the quantum table of
+characters}
+
+The next step is to associate with the diagram \myHighlight{$G$}\coordHE{}, when possible, a
+commutative algebra playing the role of an algebra of characters.
+This algebra is linearly generated, as a vector space, by the vertices
+\myHighlight{$\sigma_v$}\coordHE{} of \myHighlight{$G$}\coordHE{}. As an  associative algebra, it admits a unit \myHighlight{$\sigma_0$}\coordHE{} and
+one generator \myHighlight{$\sigma_{1}$}\coordHE{}, with quantum dimension \myHighlight{$[2]_{q}$}\coordHE{}. The
+relations of this associative algebra
+are defined by the graph \myHighlight{$G$}\coordHE{} itself, considered as encoding
+multiplication by the generator \myHighlight{$\sigma_{1}$}\coordHE{}: the irreducible representations
+appearing in the decomposition of \myHighlight{$\sigma_1 \sigma$}\coordHE{}, with \myHighlight{$\sigma$}\coordHE{}, a
+vertex of \myHighlight{$G$}\coordHE{}, are the neighbours of
+\myHighlight{$\sigma$}\coordHE{} on the diagram \myHighlight{$G$}\coordHE{}.
+We impose, furthermore, that the structure constants of this algebra
+should be positive integers, as it is the case for irreducible
+representations of
+groups or, more generally, of Hopf algebras.
+It is (almost well) known, since  \cite{Pasquier:alg} that, for
+ADE diagrams, the solution to the above problem does not exist for
+       \myHighlight{$E_{7}$}\coordHE{} and \myHighlight{$D_{odd}$}\coordHE{}. For all other \myHighlight{$ADE$}\coordHE{} diagrams, there exists a
+unique solution. This algebra is called the the graph algebra
+associated with \myHighlight{$G$}\coordHE{}, or the fusion algebra associated
+with \myHighlight{$G$}\coordHE{} and sometimes  (\cite{Zuber:Bariloche}),
+the dual Pasquier algebra of \myHighlight{$G$}\coordHE{}.
+Such a commutative algebra is also  a ``positive integral hypergroup'',
+or simply an hypergroup, when no confusion arises (see \cite{hypergroups} and
+references therein).
+We shall denote this algebra by the same symbol as the graph itself,
+and hope that no confusion with the simple Lie group bearing the same
+name will arise.
+Practically, we have to build a multiplication table,
+the first two rows and columns being already known (multiplication by
+the unit \myHighlight{$\sigma_{0}$}\coordHE{} and
+by the generator \myHighlight{$\sigma_{1}$}\coordHE{}).
+The table is  built in a very straightforward way, by imposing associativity.
+For instance, in the case of the graph \myHighlight{$A_{n}$}\coordHE{}, \myHighlight{$n>4$}\coordHE{}, let us calculate,
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+\sigma_{2} \sigma_{2}  & = & (\sigma_{1}\sigma_{1} - \sigma_{0})\sigma_{2}
+\leftCoord{}= \sigma_{1}\sigma_{1} \sigma_{2}- \sigma_{0}\sigma_{2}  \\\leftCoord{} {} & = &
+\sigma_{1}(\sigma_{1}+\sigma_{3}) - \sigma_{2} =
+\sigma_{0}+\sigma_{2} + \sigma_{2} + \sigma_{4} - \sigma_{2} =
+\sigma_{0}+\sigma_{2}  + \sigma_{4}
+\rightCoord{}}{0mm}{3}{2}{
+\sigma_{2} \sigma_{2}  & = & (\sigma_{1}\sigma_{1} - \sigma_{0})\sigma_{2}
+= \sigma_{1}\sigma_{1} \sigma_{2}- \sigma_{0}\sigma_{2}  \\ {} & = &
+\sigma_{1}(\sigma_{1}+\sigma_{3}) - \sigma_{2} =
+\sigma_{0}+\sigma_{2} + \sigma_{2} + \sigma_{4} - \sigma_{2} =
+\sigma_{0}+\sigma_{2}  + \sigma_{4}
+}{1}\coordE{}\end{eqnarray*}
+
+In every case (except \myHighlight{$E_{7}$}\coordHE{} and \myHighlight{$D_{odd}$}\coordHE{})
+we shall give the multiplication table of the graph algebra. When
+writing down this table, and in order to save space, we shall drop the
+symbols \myHighlight{$\sigma$}\coordHE{} and refer to the different vertices only by their subscript.
+
+The  graph matrix algebra of the \myHighlight{$ADE$}\coordHE{} diagram \myHighlight{$G$}\coordHE{}, with \myHighlight{$r$}\coordHE{} vertices,
+       is a matrix algebra linearly generated by \myHighlight{$r$}\coordHE{} matrices of
+size \myHighlight{$r\times r$}\coordHE{}  providing a
+faithful realization of the  graph algebra spanned by the \myHighlight{$\sigma_{a}$}\coordHE{}'s. Its
+construction is straightforward: to \myHighlight{$\sigma_{0}$}\coordHE{} one associates the
+unit matrix (call it \myHighlight{$G_0$}\coordHE{}) and to the generator  \myHighlight{$\sigma_{1}$}\coordHE{} we associate a
+matrix \myHighlight{$G_1$}\coordHE{} equal to the adjacency matrix \myHighlight{${\cal G}$}\coordHE{} of the diagram;
+to the other vertices \myHighlight{$\sigma_a$}\coordHE{}, expressed in terms of
+\myHighlight{$\sigma_0$}\coordHE{} and \myHighlight{$\sigma_1$}\coordHE{} we associate the corresponding matrices \myHighlight{$G_a$}\coordHE{}
+given in terms of \myHighlight{$G_0$}\coordHE{} and \myHighlight{$G_1$}\coordHE{}.
+Since these last two matrices are already explicitly known, in order
+to save space,
+we shall just give the
+polynomial expressions giving the \myHighlight{$G_j$}\coordHE{} in terms of these two.
+
+In the particular case of \myHighlight{$A_N$}\coordHE{} graphs, the fusion matrices \myHighlight{$G_{i}$}\coordHE{} will
+be also called \myHighlight{$N_i$}\coordHE{}.
+
+The \myHighlight{$r$}\coordHE{} matrices \myHighlight{$G_a$}\coordHE{} commute with one another (they are all polynomials in one and 
+the same \myHighlight{$G_1$}\coordHE{}) and can be simultaneously
+diagonalized thanks to a matrix \myHighlight{$S_{G}$}\coordHE{}.
+If the \myHighlight{$\sigma_a$}\coordHE{}'s were irreducible representations of a finite group,
+this matrix \myHighlight{$S_{G}$}\coordHE{} would be the table of characters for this finite
+group, \ie the
+result of the pairing between conjugacy classes and irreducible characters
+(notice that we do not need
+to build explicitly the conjugacy classes!). In the present situation,
+\myHighlight{$S_{G}$}\coordHE{} is the quantum analogue of a table of characters.
+In the case of \myHighlight{$A_{N}$}\coordHE{} graphs, the same matrix, simply denoted by
+\myHighlight{$S$}\coordHE{}, represents one of the
+generators of the
+modular group \myHighlight{$SL(2,\ZZ)$}\coordHE{} (Verlinde - Hurwitz representation).
+
+\subsubsection{Essential matrices and paths}
+The general definition of essential paths on a graph was defined by
+A. Ocneanu (\cite{Ocneanu:paths}), but we do not need this precise
+definition here because we just need
+to count these particular paths. We shall nevertheless recall this
+definition in the appendix. It is enough to know that
+the general notion of essential paths generalizes the notion of symmetric
+(or \myHighlight{$q-symmetric$}\coordHE{}) representations (at least for those paths starting
+from the origin). Some general comments and
+particular cases (diagrams \myHighlight{$E_6$}\coordHE{} and
+\myHighlight{$E_6^{(1)}$}\coordHE{}) can be read in \cite{Coque:Karpacz} and \cite{Coque:qtetra}.
+The number \myHighlight{$E_a[p,b]$}\coordHE{} of essential paths of length \myHighlight{$p$}\coordHE{} starting at some
+vertex \myHighlight{$a$}\coordHE{} and ending on the vertex \myHighlight{$b$}\coordHE{} is given by \myHighlight{$b$}\coordHE{}-th component of the
+row vector \myHighlight{$E_a(p)$}\coordHE{} defined as follows:
+\begin{itemize}
+\item \myHighlight{$E_a(0)$}\coordHE{} is the  (line) vector characterizing the chosen initial
+vertex
+\item \myHighlight{$E_a(1) \doteq E_a(0).{\cal G}$}\coordHE{}
+\item \myHighlight{$E_a (p) \doteq  E_a(p-1).{\cal G} - E_a (p-2)$}\coordHE{}
+\end{itemize}
+
+The expression of \myHighlight{$E_a(0)$}\coordHE{} depends on the chosen ordering of vertices; it is
+convenient
+anyway to set \myHighlight{$E_0(0)=(1,0,0,\ldots)$}\coordHE{} for the unit \myHighlight{$\sigma_{0}$}\coordHE{} of \myHighlight{$G$}\coordHE{}, and
+\myHighlight{$E_1(0)=(0,1,0,\ldots)$}\coordHE{} for the generator
+\myHighlight{$\sigma_1$}\coordHE{}.
+For a graph with \myHighlight{$r$}\coordHE{} vertices, starting from \myHighlight{$E_a(0)$}\coordHE{}, we {\sl
+would} obtain in this way \myHighlight{$r$}\coordHE{} rectangular
+matrices \myHighlight{$E_a$}\coordHE{} with infinitely many rows (labeled by \myHighlight{$p=0,1,2,\ldots$}\coordHE{})
+       and \myHighlight{$r$}\coordHE{} columns (labeled by \myHighlight{$b$}\coordHE{}).
+
+
+The reader can check that, for Dynkin \myHighlight{$ADE$}\coordHE{} diagrams,
+the numbers \myHighlight{$E_a(p)$}\coordHE{} are positive integers {\sl
+provided} \myHighlight{$0 \leq p \leq \kappa-2$}\coordHE{} (\myHighlight{$\kappa$}\coordHE{} being the Coxeter number
+of the graph),
+but this ceases to be true as soon as \myHighlight{$p>\kappa-2$}\coordHE{}. For instance, in
+the case of the \myHighlight{$E_6$}\coordHE{} graph,
+where \myHighlight{$\kappa = 12$}\coordHE{}, we get \myHighlight{$E_0(11) = (0,0,0,0,0,0)$}\coordHE{},  \myHighlight{$E_0(12) =
+(0,0,0,0,-1,0)$}\coordHE{}.
+This reflects the fact (Ocneanu \cite{Ocneanu:paths}) that essential
+paths on these graphs,with a length bigger
+than \myHighlight{$\kappa-2$}\coordHE{}, do not exist.
+We call ``essential matrices''  the \myHighlight{$r$}\coordHE{} rectangular \myHighlight{$(\kappa-1) \times
+r$}\coordHE{} matrices
+obtained by keeping only the first \myHighlight{$\kappa-1$}\coordHE{} rows of the \myHighlight{$E_a(.)'s.$}\coordHE{}
+For every \myHighlight{$ADE$}\coordHE{} diagram, these finite dimensional rectangular
+matrices will still be
+denoted\footnote{
+not to be confused with the symbol used for the exceptional Dynkin diagrams
+themselves!} by \myHighlight{$E_a$}\coordHE{}.
+The components of the rectangular matrix \myHighlight{$E_a$}\coordHE{} are denoted by  \myHighlight{$E_a[p,b]$}\coordHE{}.
+Matrix elements of these matrices can be displayed as vertices
+with three edges labeled by \myHighlight{$a,b,p$}\coordHE{} (or, dually, as triangles).
+Warning: the smallest value for \myHighlight{$p$}\coordHE{}, the length of essential paths,
+is \myHighlight{$0$}\coordHE{}, and not \myHighlight{$1$}\coordHE{}.
+
+
+
+In order to save space, we shall not give explicitly all these
+matrices \myHighlight{$E_a$}\coordHE{}, although
+they are absolutely crucial for obtaining the next results;
+however their calculation,
+using the above recurrence formulae, is totally straightforward, once
+the matrix
+\myHighlight{$G_1 \equiv {\cal G}$}\coordHE{} is known.
+The pattern of non-zero entries of an essential matrix \myHighlight{$E_a$}\coordHE{},
+associated with some
+graph \myHighlight{$G$}\coordHE{},
+gives a figure expressing ``visually'' the structure of the space of
+essential paths
+starting
+from \myHighlight{$a$}\coordHE{}. These essential matrices were introduced in \cite{Coque:qtetra} as a
+convenient
+tool, but the geometrical patterns themselves were first obtained  by
+A.Ocneanu (the essential paths starting from all possible vertices
+are displayed, for all \myHighlight{$ADE$}\coordHE{} graphs, in the appendix of
+\cite{Ocneanu:paths}).  In the coming sections, we shall only display the
+essential matrix \myHighlight{$E_{0}$}\coordHE{} that encodes essential paths starting from the
+origin. Let us finally mention that a list of
+the rectangular matrices \myHighlight{$E_{0}$}\coordHE{}'s (not the \myHighlight{$E_{a}$}\coordHE{}'s), interpreted 
+in the context of RSOS models, can be found in
+\cite{PearceZhou:RSOS}.
+
+
+When the diagram is not an \myHighlight{$ADE$}\coordHE{} but an {\sl affine} \myHighlight{$ADE$}\coordHE{}, the
+essential matrices are no longer of finite size: they have infinitely
+many rows; they can be interpreted in terms of the classical
+induction/restriction theory for representations of \myHighlight{$SU(2)$}\coordHE{} and
+its finite subgroups (binary polyhedral groups). See the lecture notes
+\cite{Coque:Karpacz} for a study of the corresponding classical geometries,
+along the above lines.
+
+
+For Dynkin diagrams of type \myHighlight{$A_N$}\coordHE{}, we have the relation
+\myHighlight{$N_i =  N_{i-1}.{\cal G} - N_{i-2}$}\coordHE{},
+and from the above definition of essential matrices, we see that
+there is no difference, in this case, between the
+fusion graph matrices \myHighlight{$G_{i} = N_i$}\coordHE{} and the essential matrices \myHighlight{$E_i$}\coordHE{}.
+
+
+Before ending this section, we should point out the fact that since
+rows of the essential
+matrices associated with a particular Dynkin diagram \myHighlight{$G$}\coordHE{} have labels
+\myHighlight{$p$}\coordHE{} running
+from \myHighlight{$0$}\coordHE{} to \myHighlight{$\kappa-1$}\coordHE{}, they are therefore also indexed by the
+vertices \myHighlight{$\tau_p$}\coordHE{}
+of the Dynkin diagram \myHighlight{$A_{\kappa - 1}$}\coordHE{}. In this way, we can interpret these
+essential
+matrices as a kind of quantum analogue of the theory of induction/restriction:
+irreducible representations of \myHighlight{$A_{\kappa - 1}$}\coordHE{} can be ``reduced'' to
+irreducible
+representations
+of \myHighlight{$G$}\coordHE{} (essential matrices can be read ``horizontally'' in this way) and
+irreducible representations of \myHighlight{$G$}\coordHE{} can ``induce'' irreducible
+representations of
+\myHighlight{$A_{\kappa - 1}$}\coordHE{}
+       (essential matrices can be read ``vertically'' in this way).
+Rather than displaying the essential matrices, or the corresponding
+spaces of paths,
+we shall only give, for each vertex of the graph \myHighlight{$G$}\coordHE{}, the list of induced
+representations of \myHighlight{$A_{\kappa - 1}$}\coordHE{}.
+This information can be deduced immediately from the essential matrix
+\myHighlight{$E_0$}\coordHE{}. In other
+words,
+we consider, for  each vertex \myHighlight{$\sigma_v$}\coordHE{} of \myHighlight{$G$}\coordHE{}  an associated quantum vector
+bundle
+and decompose the space of its sections into irreducible representations
+of \myHighlight{$A_{\kappa
+- 1}$}\coordHE{}.
+
+\subsubsection{Dimensions of blocks for the  Racah-Wigner-Ocneanu
+bi-algebras}
+The Racah-Wigner-Ocneanu  bi-algebra \myHighlight{${\cal A}$}\coordHE{} is a direct sum of
+blocks in two different ways (see section 2.1). Its dimension
+is obtained either by
+summing the squares \myHighlight{$d_n^2$}\coordHE{} where \myHighlight{$d_n$}\coordHE{} is the number of essential
+paths of length
+\myHighlight{$n$}\coordHE{}, or by summing the squares \myHighlight{$d_{x}^{2}$}\coordHE{}, where the \myHighlight{$d_{x}$}\coordHE{} are
+the sizes of the Ocneanu blocks.
+The integers \myHighlight{$d_{n}$}\coordHE{} are obtained by summing all matrix elements of
+the row \myHighlight{$n+1$}\coordHE{}
+over all essential matrices \myHighlight{$E_{a}$}\coordHE{} (all vertices \myHighlight{$a$}\coordHE{} of a given diagram).
+This first calculation is relatively easy.
+
+The integers \myHighlight{$d_{x}$}\coordHE{} giving the number of ``vertices'' labeled by
+\myHighlight{$(a,b,x)$}\coordHE{} can be obtained from the multiplication table of \myHighlight{${\cal H}_{Oc(G)}$}\coordHE{}.
+If the label \myHighlight{$x$}\coordHE{} of an Ocneanu block
+is of the type \myHighlight{$a \otimesdot b$}\coordHE{}, or a linear combination of such elements
+(the notation \myHighlight{$\otimesdot$}\coordHE{} is
+introduced later in the text), and
+when \myHighlight{${\cal H}_{Oc(G)}$}\coordHE{} is commutative and contains two (left and right)
+subalgebras  isomorphic with the graph algebra of the Dynkin diagram \myHighlight{$G$}\coordHE{},
+the integers \myHighlight{$d_{x} = d_{a \otimesdot b}$}\coordHE{} can be obtained simply by
+summing all matrix elements \myHighlight{${(\Sigma_{x})^{c}}_{d}$}\coordHE{} of the matrices
+\myHighlight{$\Sigma_{x} \doteq G_{a}G_{b}$}\coordHE{}, where \myHighlight{$G_{a}$}\coordHE{} and \myHighlight{$G_{b}$}\coordHE{} are fusion matrices
+of the Dynkin diagram \myHighlight{$G$}\coordHE{}. This holds in particular for \myHighlight{$A_{N}$}\coordHE{} and
+for the exceptional cases \myHighlight{$E_{6}$}\coordHE{} and \myHighlight{$E_{8}$}\coordHE{}.
+The other cases -- in particular the case of \myHighlight{$E_{7}$}\coordHE{} -- are slightly more
+involved. We refer to the corresponding sections.
+
+The knowledge of integers \myHighlight{$d_{n}$}\coordHE{}, \myHighlight{$d_{x}$}\coordHE{} was implicit in the work
+of Ocneanu, already presented to several audiences years ago (for
+instance \cite{Ocneanu:Marseille}). The values of \myHighlight{$d_{n}$}\coordHE{} and \myHighlight{$d_{x}$}\coordHE{}
+were first published, for the \myHighlight{$E_{6}$}\coordHE{} case, in \cite{Coque:qtetra} (the
+treatment  of the \myHighlight{$E_{8}$}\coordHE{} case being the same). General results, for all
+cases, were published in \cite{PetZub:Oc}.
+We take advantage of the explicit realization that we
+find for the bialgebra \myHighlight{${\cal H}_{Oc(G)}$}\coordHE{} to recover easily all the
+results, including the more difficult \myHighlight{$E_{7}$}\coordHE{} case (see the
+corresponding section).
+
+We give the integers \myHighlight{$d_{n}$}\coordHE{}, \myHighlight{$d_{x}$}\coordHE{} and the sums
+\myHighlight{$\sum d_n$}\coordHE{}, \myHighlight{$\sum d_x$}\coordHE{} and \myHighlight{$\sum d_n^2 = \sum d_x^2$}\coordHE{}.
+The equality of squares is a direct consequence of the bi-algebra
+structure. In most cases (not \myHighlight{$D_{even}$}\coordHE{}) one finds also that \myHighlight{$\sum d_n =
+\sum d_x$}\coordHE{}; this can be understood as coming from a change of basis in
+the vector
+space \myHighlight{$EssPath(G)$}\coordHE{}. The equality of sums can actually be also
+achieved for \myHighlight{$D_{even}$}\coordHE{} by performing the summation only on particular
+classes of elements (see the discussion made in \cite{PetZub:Oc}.)
+
+
+\subsubsection{The Ocneanu graph corresponding to a Dynkin diagram and
+its algebra}
+
+The Ocneanu graph \myHighlight{$Oc(G)$}\coordHE{} associated with a Dynkin diagram \myHighlight{$G$}\coordHE{} was already
+discussed in the present introduction.
+As already stated, we take it directly from reference \cite{Ocneanu:paths}.
+
+One of our purposes is to give an explicit presentation for the
+corresponding algebras, that will be called
+\myHighlight{${\cal H}_{Oc(G)}$}\coordHE{}. In most cases it will be obtained from the tensor square
+of some graph algebra, by
+taking the tensor product over a particular subalgebra (not over the complex
+numbers).
+The multiplication is the natural
+one, namely: \myHighlight{$(a_1 \otimes b_1)\times (a_2 \otimes b_2) = a_1 a_2
+\otimes b_1 b_2$}\coordHE{}, and we shall identify \myHighlight{$a u \otimes b$}\coordHE{} and \myHighlight{$a \otimes
+ub$}\coordHE{}, whenever \myHighlight{$u$}\coordHE{} belongs to
+the particular subalgebra over which the tensor product is taken 
+(we use the notation \myHighlight{$\otimesdot$}\coordHE{}).
+In other words we take the quotient of the tensor square of the
+appropriate graph algebra by the two-sided ideal generated by
+elements \myHighlight{$0\otimes u - u \otimes 0$}\coordHE{}, where \myHighlight{$0$}\coordHE{} is the unit of the
+graph algebra of \myHighlight{$G$}\coordHE{}. In the cases of \myHighlight{$D_{odd}$}\coordHE{} and \myHighlight{$E_{7}$}\coordHE{}, the above
+construction has to be ``twisted'': some elements \myHighlight{$a u \otimes b$}\coordHE{}
+have to be identified with \myHighlight{$a \otimes \rho(u) b$}\coordHE{}, but \myHighlight{$\rho$}\coordHE{} is not
+the identity map.
+
+In most cases, the graph algebra to be used
+in the above construction is the graph algebra of  \myHighlight{$G$}\coordHE{} itself.
+In the case of
+the diagram \myHighlight{$E_7$}\coordHE{}, however,
+one has to use the graph algebra of \myHighlight{$D_{10}$}\coordHE{}.
+For the diagram \myHighlight{$D_{2n+1}$}\coordHE{} one has to use the graph algebra of
+\myHighlight{$A_{4n-1}$}\coordHE{}. For the diagram \myHighlight{$D_{2n}$}\coordHE{}, elements of \myHighlight{${\cal H}_{Oc(D_{2n})}$}\coordHE{}
+also involve  \myHighlight{$2\times 2$}\coordHE{} matrices.
+
+
+In general, the elements \myHighlight{$u$}\coordHE{} that are used to define the appropriate
+two-sided ideal belong to a subalgebra \myHighlight{$U$}\coordHE{} that
+admits a complementary subspace
+\myHighlight{$P$}\coordHE{} which is invariant by left and right \myHighlight{$U$}\coordHE{}-multiplications (a 
+general feature since the algebra \myHighlight{$U$}\coordHE{} is semi-simple).
+This property implies that elements
+of \myHighlight{${\cal H}_{Oc(G)}$}\coordHE{} can be decomposed into linear combinations of
+only four types of elements belonging to \myHighlight{$0\otimesdot U$}\coordHE{}, \myHighlight{$0\otimesdot
+P$}\coordHE{}, \myHighlight{$P\otimesdot 0$}\coordHE{} and \myHighlight{$P \otimesdot P$}\coordHE{}.
+
+Following Ocneanu terminology, we call ``chiral left subalgebra'' or ``chiral
+right subalgebra'' the subalgebras spanned by left or right generators (\myHighlight{$\sigma_1 \otimes \sigma_0$}\coordHE{} or \myHighlight{$\sigma_0
+\otimes \sigma_1$}\coordHE{})
+       and ``ambichiral'' the intersection of the chiral parts. Left and
+       right subalgebra are respectively described on Ocneanu graphs by
+fat continuous lines,
+       and fat dashed lines. The thin lines (continuous or dashed) represent
+       right or left cosets.
+
+       \smallskip
+
+       Warning:  A given algebra  \myHighlight{${\cal H}_{Oc(G)}$}\coordHE{} is, in a
+sense, already defined
+       by its graph \myHighlight{$Oc(G)$}\coordHE{} since the later describes multiplication by
+       the two chiral generators. What we do in this paper is to
+propose, for all Dynkin diagram
+       \myHighlight{$G$}\coordHE{}, an explicit  realization of these algebras \myHighlight{${\cal
+       H}_{Oc(G)}$}\coordHE{}, in terms of usual graph algebras. In turn,
+       this realization allows us in a simple way to determine all the
+toric matrices
+       associated with a given diagram (see below).
+         We stress the fact that the quantum graphs \myHighlight{$Oc(G)$}\coordHE{} are taken from
+       \cite{Ocneanu:paths}, however the proposed realizations for the
+       algebras \myHighlight{${\cal H}_{Oc(G)}$}\coordHE{} are ours.
+
+       \smallskip
+       
+The number of vertices of
+\myHighlight{$Oc(G)$}\coordHE{} depends very much of the choice of \myHighlight{$G$}\coordHE{} itself (for instance
+\myHighlight{$Oc(E_6)$}\coordHE{} contains \myHighlight{$12$}\coordHE{}
+points, \myHighlight{$Oc(E_7)$}\coordHE{} contains \myHighlight{$17$}\coordHE{} points, \myHighlight{$Oc(E_8)$}\coordHE{} contains \myHighlight{$32$}\coordHE{}
+points).
+
+\subsubsection{Modular invariant partition functions and twisted
+partition functions}
+
+To every vertex \myHighlight{$x$}\coordHE{} of the Ocneanu graph \myHighlight{$Oc(G)$}\coordHE{} of the Dynkin diagram \myHighlight{$G$}\coordHE{}, one
+associates a particular ``toric matrix'' \myHighlight{$ W_{x}$}\coordHE{}. 
+These matrices are related to the study of paths on the Ocneanu
+graphs: the matrix element \myHighlight{$ ({W_{x}})_{i,j}$}\coordHE{} of  \myHighlight{$ W_{x}$}\coordHE{} gives the 
+number of independent  paths leaving the vertex \myHighlight{$x$}\coordHE{} of 
+\myHighlight{$Oc(G)$}\coordHE{} and reaching the origin \myHighlight{$0 \otimesdot 0$}\coordHE{} of \myHighlight{$Oc(G)$}\coordHE{} after 
+having performed \myHighlight{$i$}\coordHE{} essential steps 
+(resp. \myHighlight{$j$}\coordHE{} essential steps) on the left (resp. right) chiral subgraphs.
+These matrices have other uses and interpretations 
+(in particular in terms of the cell calculus or in terms of
+the ``chiral modular splitting'' (\cite{Ocneanu:MSRI})
+but this will not be discussed here.
+
+As written in the introduction, these toric matrices
+were defined and obtained by Ocneanu (unpublished but advertised in
+several conferences since 1995, for instance \cite{Ocneanu:Marseille}).
+The article \cite{PetZub:Oc} gives closed formulae for the
+determination of these objects, in the language of conformal field theory.
+One of our purposes, in the present paper,
+is to find them by another method, which consists in
+a straightforward generalization of
+the technique introduced in \cite{Coque:qtetra}. This method uses
+explicitly our realization of the algebras \myHighlight{${\cal H}_{Oc(G)}$}\coordHE{} in
+terms of graph algebras.
+
+Our first step is to compute the appropriate essential matrices
+(those of the graph
+associated with the graph algebra
+involved in the previous step); generally, \ie not for \myHighlight{$E_7$}\coordHE{} or
+\myHighlight{$D_{odd}$}\coordHE{}, these are
+the \myHighlight{$r$}\coordHE{} essential
+matrices of the graph \myHighlight{$G$}\coordHE{} itself.  As discussed previously, they are
+rectangular matrices \myHighlight{$E_a$}\coordHE{} of size
+\myHighlight{$(\kappa -1) \times r$}\coordHE{}.
+We then construct ``reduced essential matrices'' \myHighlight{$E_a^{red}$}\coordHE{} by
+keeping only those columns associated
+with the subalgebra over which the tensor product is taken (\ie we
+replace the other entries by \myHighlight{$0$}\coordHE{}). These are again
+rectangular matrices of
+size \myHighlight{$ (\kappa -1) \times r$}\coordHE{}.
+
+We then define matrices \myHighlight{$W[a,b]$}\coordHE{} associated with elements \myHighlight{$x =  a \otimes b$}\coordHE{}
+of the algebra \myHighlight{${\cal H}_{Oc(G)}$}\coordHE{} as square
+matrices of size \myHighlight{$(\kappa -1) \times (\kappa -1)$}\coordHE{} by setting
+
+$$\coord{}\boxMath{
+W[a,b] \doteq E_a . \widetilde{E_b}^{red} \equiv (E_a).
+transpose(E_b^{red}) =
+(E_a)^{red}. transpose(E_b^{red})
+}{dollar}{0pt}\coordE{}$$
+
+The points \myHighlight{$x$}\coordHE{} of \myHighlight{$Oc(G)$}\coordHE{} are, in general, linear combinations of
+elements of the type \myHighlight{$a \otimesdot b$}\coordHE{}.
+The toric matrices  \myHighlight{$W_{x}$}\coordHE{} associated with points \myHighlight{$x = \sum a \otimesdot b$}\coordHE{}
+of \myHighlight{$Oc(G)$}\coordHE{} are square matrices of size \myHighlight{$(\kappa -1) \times (\kappa -1)$}\coordHE{}.
+They are  obtained  by setting $$\coord{}\boxMath{ W_{x}= \sum W[a,b] }{dollar}{0pt}\coordE{}$$
+
+
+In the case of \myHighlight{$E_{7}$}\coordHE{} and \myHighlight{$D_{odd}$}\coordHE{} the above construction should be
+slightly twisted (see the relevant sections for details).
+
+\smallskip
+
+There are several ways to display the results: one possibility is to give
+the collection of
+all toric matrices
+\myHighlight{$W_{x} = W[a,b]$}\coordHE{} with matrix elements \myHighlight{$W[a,b](i,j)$}\coordHE{}, another one is to fix
+\myHighlight{$i$}\coordHE{} and \myHighlight{$j$}\coordHE{} (with
+\myHighlight{$1\leq i,j\leq \kappa -1$}\coordHE{})
+and display the Ocneanu graph itself labeled by the entries
+\myHighlight{$W[a,b](i,j)$}\coordHE{}. For
+physical reasons (at
+least for traditional reasons)  we prefer to display the
+corresponding (twisted)
+partition functions: setting \myHighlight{$\chi \doteq \{\chi_0, \chi_1, \chi_2, \ldots,
+\chi_{\kappa -2}\}$}\coordHE{}, we
+associate with \myHighlight{$W_x = W[a,b]$}\coordHE{}
+a partition function:
+       $$\coord{}\boxMath{Z_x \equiv Z[a,b] \doteq \overline{\chi} \, W[a,b] \, \chi .}{dollar}{0pt}\coordE{}$$
+
+       To ease the reading of the paper we  put all these partition functions in
+       tables to be found at the end of the article. The matrix elements
+       of all \myHighlight{$W[a,b]$}\coordHE{} are always positive integers. However, in order
+       to display the results in tables, we had sometimes to group together
+       several terms and introduce minus signs that will disappear if
+       the sesquilinear forms are expanded.
+
+These quantities can be interpreted in terms of twisted partition functions for
+ADE boundary conformal field theories (see\footnote{This is also
+discussed in a very recent preprint \cite{Otto}.}\cite{PetZub:Oc} and \cite{PetkovaZuber:bulk}).
+
+
+The partition function \myHighlight{$Z[0,0]$}\coordHE{} associated with the origin \myHighlight{$\sigma_0 \otimes
+\sigma_0$}\coordHE{} is the usual
+modular invariant partition function of Itzykson, Capelli, Zuber. The
+others are not modular invariant. We should remember, at that point, that
+the representation of the modular group provided by the usual \myHighlight{$S$}\coordHE{} and \myHighlight{$T$}\coordHE{}
+matrices, in the representation of Verlinde-Hurwitz, is usually not effective:
+for instance in the case of \myHighlight{$E_{6}$}\coordHE{}, where \myHighlight{$\kappa = 12$}\coordHE{}, on top of
+relations  \myHighlight{$S^4=(ST)^3=1$}\coordHE{}, one
+gets \myHighlight{$T^{4 \kappa = 48} = 1$}\coordHE{} (and \myHighlight{$T^s \neq 1$}\coordHE{} for smaller powers of \myHighlight{$T$}\coordHE{}). The
+representation actually factorizes through a congruence subgroup of
+\myHighlight{$SL(2,\ZZ)$}\coordHE{} and one obtains a representation of  \myHighlight{$SL(2,\ZZ/48 \ZZ)$}\coordHE{}
+(one can check that all the defining relations given in
+\cite{CosteGannon:modular} are verified).
+
+\eject
+
+\subsubsection{Summary of notations}
+\begin{itemize}
+
+\item   \myHighlight{$G$}\coordHE{} is the chosen Dynkin diagram of type \myHighlight{$ADE$}\coordHE{}. It has \myHighlight{$r$}\coordHE{}
+vertices. We also call \myHighlight{$G$}\coordHE{} the fusion algebra (graph algebra) of this
+Dynkin diagram, when it exists.
+
+\item  \myHighlight{${\cal G}$}\coordHE{}  is the adjacency matrix of \myHighlight{$G$}\coordHE{}.
+
+\item  \myHighlight{${\kappa }$}\coordHE{} is the Coxeter number of \myHighlight{$G$}\coordHE{}.
+
+\item  \myHighlight{$q$}\coordHE{} is a primitive root of unity such that \myHighlight{$q^{2\kappa}=1$}\coordHE{}.
+
+\item  \myHighlight{$A_{\kappa -1}$}\coordHE{} is the graph of type \myHighlight{$A$}\coordHE{} with same Coxeter number
+\myHighlight{$\kappa$}\coordHE{} as \myHighlight{$G$}\coordHE{}.
+
+\item  \myHighlight{$N_{i}=(N_{i})^{j}_{k}$}\coordHE{} are the fusion matrices for the graph algebra
+(fusion algebra) of \myHighlight{$A_{\kappa -1}$}\coordHE{}.
+
+\item  \myHighlight{$G_{a}=(G_{a})^{b}_{c}$}\coordHE{} are the fusion matrices for the graph algebra
+(fusion algebra) of \myHighlight{$G$}\coordHE{}, when it exists.
+
+\item \myHighlight{$S_{G}$}\coordHE{} is a \myHighlight{$r \times r$}\coordHE{} matrix that (in all cases but \myHighlight{$E_{7}$}\coordHE{}
+and \myHighlight{$D_{odd}$}\coordHE{}) diagonalizes simultaneously the \myHighlight{$r$}\coordHE{} fusion matrices \myHighlight{$G_{a}$}\coordHE{}
+of the diagram \myHighlight{$G$}\coordHE{}. When the diagram \myHighlight{$G$}\coordHE{} is of type \myHighlight{$A$}\coordHE{}, we just call
+it \myHighlight{$S$}\coordHE{}.
+
+\item  \myHighlight{$E_{a} = (E_{a})^{i}_{b}$}\coordHE{} are the essential matrices for the graph
+\myHighlight{$G$}\coordHE{}.
+
+\item  \myHighlight{$F_{i} = (F_{i})^{a}_{b} \doteq (E_{a})^{i}_{b}$}\coordHE{} provide a
+representation of the graph algebra of \myHighlight{$A_{\kappa -1}$}\coordHE{}.
+Matrices \myHighlight{$F_i$}\coordHE{} (or \myHighlight{$E_a$}\coordHE{}) describe the couplings between vertices
+\myHighlight{$a,b$}\coordHE{} of \myHighlight{$G$}\coordHE{} and the vertex \myHighlight{$i$}\coordHE{} of \myHighlight{$A_{\kappa -1}$}\coordHE{}.
+
+
+
+\item  \myHighlight{$Oc(G)$}\coordHE{} is the Ocneanu graph associated with \myHighlight{$G$}\coordHE{}.
+
+\item  \myHighlight{$\Sigma_{x} = (\Sigma_{x})^{a}_{b}$}\coordHE{} are matrices describing the dual
+couplings between vertices \myHighlight{$a,b$}\coordHE{} of \myHighlight{$G$}\coordHE{}  and the vertex \myHighlight{$x$}\coordHE{} of
+the Ocneanu graph \myHighlight{$Oc(G)$}\coordHE{}.
+
+\item  \myHighlight{$W_{x} = (W_{x})^{i}_{j}$}\coordHE{} are the toric matrices (of size \myHighlight{$(\kappa
+-1)\times (\kappa -1)$}\coordHE{}) associated with the vertices of \myHighlight{$Oc(G)$}\coordHE{}.
+
+\item  \myHighlight{$Z_{x}$}\coordHE{} is the twisted partition function associated with \myHighlight{$W_{x}$}\coordHE{}.
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The \myHighlight{$A_n$}\coordHE{} cases}
+
+
+\subsection{\myHighlight{$A_4$}\coordHE{}}
+The \myHighlight{$A_4$}\coordHE{} Dynkin diagram and its adjacency matrix are displayed below,
+where we use the following order for the basis: \myHighlight{$\{ \tau_0, \tau_1,
+\tau_2, \tau_3 \}$}\coordHE{}.
+
+\begin{figure}[hhh]
+\unitlength 0.8mm
+\begin{center}
+\begin{picture}(55,20)(0,10)
+\put(5,10){\line(1,0){45}}
+\multiput(5,10)(15,0){4}{\circle*{2}}
+\put(5,3){\makebox(0,0){[\myHighlight{$\tau_{0}$}\coordHE{}]}}
+\put(20,3){\makebox(0,0){[\myHighlight{$\tau_{1}$}\coordHE{}]}}
+\put(35,3){\makebox(0,0){[\myHighlight{$\tau_{2}$}\coordHE{}]}}
+\put(50,3){\makebox(0,0){[\myHighlight{$\tau_{3}$}\coordHE{}]}}
+\end{picture}
+\qquad \qquad
+\myHighlight{$
+{\cal G}_{A_4} =
+\left( \begin{array}{cccc}
+     0 & 1 & 0 & 0 \\
+     1 & 0 & 1 & 0  \\
+     0 & 1 & 0 & 1   \\
+     0 & 0 & 1 & 0   \\
+\end{array}
+\right)
+$}\coordHE{}
+\caption{The \myHighlight{$A_4$}\coordHE{} Dynkin diagram and its adjacency matrix}
+\label{grA4}
+\end{center}
+\end{figure}
+
+Here \myHighlight{$\kappa = 5$}\coordHE{} and the norm of the graph is the golden number
+\myHighlight{$\beta = 2 \cos
+(\frac{\pi}{5}) = \frac{1+\sqrt 5}{2}$}\coordHE{},
+and the normalized Perron-Frobenius vector is
+\myHighlight{$D = \left( [1]_q, [2]_q, [2]_q, [1]_q \right) $}\coordHE{}. \\
+The \myHighlight{$A_4$}\coordHE{} Dynkin diagram determines in a unique way the graph
+algebra of \myHighlight{$A_4$}\coordHE{}, whose multiplication table is displayed below.
+
+\begin{table}[hhh]
+$$\coord{}\boxMath{
+\begin{array}{|c||c|c|c|c|}
+\hline
+{} & 0 & 1 & 2 & 3 \\
+\hline
+\hline
+0 & 0 & 1 & 2 & 3 \\
+1 & 1 & 0+2 & 1+3 & 2 \\
+2 & 2 & 1+3 & 0+2 & 1 \\
+3 & 3 & 2 & 1 & 0 \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\caption{Multiplication table for the \myHighlight{$A_4$}\coordHE{} graph algebra}
+\end{table}
+The fusion matrices \myHighlight{$N_{i}$}\coordHE{} are given by the following polynomials:
+$$\coord{}\boxMath{
+\begin{array}{ll}
+N_0  = Id_4 \mathrm{\;(the \; identity \; matrix)} \qquad \qquad&
+N_2  = N_1 . N_1 - N_0 \\
+N_1  = {\cal G}_{A_4} &
+N_3  = N_1 . N_1 . N_1 - 2 . N_1 \\
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+They provide a faithful realization of the fusion algebra \myHighlight{$A_4$}\coordHE{}.
+In the chosen basis, they read:
+\scriptsize
+$$\coord{}\boxMath{
+N_0 = \left( \begin{array}{cccc}
+     1 & 0 & 0 & 0 \\
+     0 & 1 & 0 & 0 \\
+     0 & 0 & 1 & 0 \\
+     0 & 0 & 0 & 1 \\
+\end{array}
+\right)
+\quad
+N_1 = \left( \begin{array}{cccc}
+     0 & 1 & 0 & 0 \\
+     1 & 0 & 1 & 0 \\
+     0 & 1 & 0 & 1 \\
+     0 & 0 & 1 & 0 \\
+\end{array}
+\right)
+\quad
+N_2 = \left( \begin{array}{cccc}
+     0 & 0 & 1 & 0 \\
+     0 & 1 & 0 & 1 \\
+     1 & 0 & 1 & 0 \\
+     0 & 1 & 0 & 0 \\
+\end{array}
+\right)
+\quad
+N_3 = \left( \begin{array}{cccc}
+     0 & 0 & 0 & 1 \\
+     0 & 0 & 1 & 0 \\
+     0 & 1 & 0 & 0 \\
+     1 & 0 & 0 & 0 \\
+\end{array}
+\right)
+}{dollar}{0pt}\coordE{}$$
+
+\normalsize
+
+We form the tensor product \myHighlight{$A_4 \otimes A_4$}\coordHE{}, whose dimension is 16, but
+we take it over \myHighlight{$A_4$}\coordHE{}. The Ocneanu algebra
+of \myHighlight{$A_4$}\coordHE{}  can be realized as the algebra of dimension 4 defined by:
+$$\coord{}\boxMath{
+{\cal H}_{Oc(A_4)} = A_4 \otimesdot A_4 \doteq
+\frac{A_4 \otimes A_4 }{A_4} = A_4 \otimes_{A_4} A_4.
+}{dollar}{0pt}\coordE{}$$
+It is spanned by a basis with 4 elements:
+$$\coord{}\boxMath{
+\ud0 = 0 \otimesdot 0, \qquad \qquad  \ud1 = 1 \otimesdot 0, \qquad \qquad
+\ud2 = 2 \otimesdot 0, \qquad \qquad  \ud3 = 3 \otimesdot 0, \qquad \qquad
+}{dollar}{0pt}\coordE{}$$
+and is isomorphic to the graph algebra \myHighlight{$A_4$}\coordHE{} itself.
+For this reason, the Ocneanu graph \myHighlight{$Oc(A_4)$}\coordHE{} is the same as
+the Dynkin diagram \myHighlight{$A_4$}\coordHE{}.
+Its elements are of the kind \myHighlight{$m \otimesdot n = 0 \otimesdot mn = mn
+\otimesdot 0$}\coordHE{}.
+The dimensions \myHighlight{$d_{n}$}\coordHE{}, with \myHighlight{$n$}\coordHE{} in \myHighlight{$(0,1,2,3)$}\coordHE{},
+for the four blocks of the Racah-Wigner-Ocneanu bi-algebra \myHighlight{$\cal A$}\coordHE{}
+endowed with its first multiplicative law are respectively:
+\myHighlight{$(4,6,6,4).$}\coordHE{}
+For its other multiplicative law (convolution), the dimensions \myHighlight{$d_x$}\coordHE{}
+of the four blocks, labeled with \myHighlight{$x$}\coordHE{} in the list (\myHighlight{$0 \otimesdot 0, 1
+\otimesdot 0, 2 \otimesdot 0, 3 \otimesdot 0$}\coordHE{}) are also respectively:
+\myHighlight{$(4,6,6,4)$}\coordHE{}.\\
+We have of course \myHighlight{$\sum d_{n} = \sum d_{x} = 20$}\coordHE{} and \myHighlight{$\sum d_{n}^2 = \sum
+d_{n}^2 = 104$}\coordHE{} but this observation is trivial in that case.
+
+In the \myHighlight{$A_4$}\coordHE{} case (as in all \myHighlight{$A_{n}$}\coordHE{} cases) the essential matrices
+\myHighlight{$E_i$}\coordHE{} happen to be the same as
+the \myHighlight{$N_i$}\coordHE{} matrices.
+The four toric matrices \myHighlight{$W_{ab}$}\coordHE{} of the \myHighlight{$A_4$}\coordHE{} model are also equal
+to the \myHighlight{$N_i$}\coordHE{} matrices, \myHighlight{$W_{00} = N_0$}\coordHE{} being the  modular invariant.
+We write them as sesquilinear forms (the twisted partition functions
+given in the appendix).
+
+
+\subsection{\myHighlight{$A_n$}\coordHE{}}
+We display below the Dynkin diagram of \myHighlight{$A_n$}\coordHE{}, for \myHighlight{$n > 4$}\coordHE{}.
+\begin{figure}[hhh]
+\unitlength 0.8mm
+\begin{center}
+\begin{picture}(90,20)(0,10)
+\thinlines
+\multiput(15,10)(15,0){2}{\circle*{2}}
+\multiput(60,10)(15,0){2}{\circle*{2}}
+\thicklines
+\multiput(30,10)(5,0){6}{\line(1,0){2}}
+\put(15,10){\line(1,0){15}}
+\put(60,10){\line(1,0){15}}
+\put(15,3){\makebox(0,0){[\myHighlight{$\tau_0$}\coordHE{}]}}
+\put(30,3){\makebox(0,0){[\myHighlight{$\tau_1$}\coordHE{}]}}
+\put(60,3){\makebox(0,0){[\myHighlight{$\tau_{n-2}$}\coordHE{}]}}
+\put(75,3){\makebox(0,0){[\myHighlight{$\tau_{n-1}$}\coordHE{}]}}
+\end{picture}
+\myHighlight{$
+{\cal G}_{A_n} =
+\left( \begin{array}{cccccccc}
+     0 & 1 & . & . & . & \cdots & . & .  \\
+     1 & 0 & 1 & . & . & \cdots & . & .  \\
+     . & 1 & 0 & 1 & . & \cdots & . & .  \\
+     . & . & 1 & 0 & 1 & \cdots & . & .  \\
+     . & . & . & 1 & 0 & \cdots & . & .  \\
+     \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & . & .  \\
+     . & . & . & . & . & . & . & 1  \\
+     . & . & . & . & . & . & 1 & 0  \\
+\end{array}
+\right)
+$}\coordHE{}
+\caption{The \myHighlight{$A_n$}\coordHE{} Dynkin diagram and its adjacency matrix}
+\label{grAn}
+\end{center}
+\end{figure}
+
+In all \myHighlight{$A_n$}\coordHE{} cases, the graph algebra is completely determined,
+in a unique way, by the data of the corresponding Dynkin diagram.
+The Ocneanu algebra of \myHighlight{$A_n$}\coordHE{} can be realized as:
+$$\coord{}\boxMath{
+{\cal H}_{Oc(A_n)} = A_n \otimesdot A_n \doteq A_{n} \otimes_{A_n} \, A_n,
+}{dollar}{0pt}\coordE{}$$
+and appears to be isomorphic to the graph algebra \myHighlight{$A_n$}\coordHE{} itself.
+Due to this fact,
+which occurs only in the \myHighlight{$A_n$}\coordHE{} cases, the Ocneanu graphs are also
+equal to the corresponding Dynkin diagrams.
+The fusion matrices \myHighlight{$N_{i}$}\coordHE{} are given by the following polynomials:
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+N_0 &=& Id_n      \rightCoord{}\\\leftCoord{}
+N_1 &=& {\cal G}_{A_n}  \rightCoord{}\\\leftCoord{}
+N_2 &=& N_1 . N_1 - N_0 \rightCoord{}\\\leftCoord{}
+\vdots &=& \vdots \rightCoord{}\\\leftCoord{}
+N_i &=& N_{i-1}.N_1 - N_{i-2}
+\rightCoord{}}{0mm}{5}{6}{
+N_0 &=& Id_n      \\
+N_1 &=& {\cal G}_{A_n}  \\
+N_2 &=& N_1 . N_1 - N_0 \\
+\vdots &=& \vdots \\
+N_i &=& N_{i-1}.N_1 - N_{i-2}
+}{1}\coordE{}\end{eqnarray*}
+The essential matrices, as well as the \myHighlight{$n$}\coordHE{} toric matrices of the \myHighlight{$A_n$}\coordHE{}
+model are equal to these fusion matrices.
+We just give the modular-invariant in sesquilinear form:
+$$\coord{}\boxMath{
+A_n: \qquad Z_{\ud0} = \sum_{i=0}^{n} \xa{n} \qquad \forall n \geq 3
+}{dollar}{0pt}\coordE{}$$
+It is easy to see that, for \myHighlight{$A_{n}$}\coordHE{}, the dimensions \myHighlight{$d_p$}\coordHE{} of the blocks, for
+\myHighlight{$p$}\coordHE{} from 0 to \myHighlight{$n-1$}\coordHE{} are given by \myHighlight{$d_{p} = (p+1)(n-p)$}\coordHE{}.
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The \myHighlight{$E_{6}$}\coordHE{} case}
+The \myHighlight{$E_6$}\coordHE{} diagram and its adjacency matrix are displayed below. We
+use the following order for the vertices: \myHighlight{$\{\sigma_0, \sigma_1,
+\sigma_2,
+\sigma_5, \sigma_4, \sigma_3\}$}\coordHE{}.
+
+\begin{figure}[hhh]
+\unitlength 0.8mm
+\begin{center}
+\begin{picture}(80,30)(0,10)
+\thinlines
+\multiput(15,10)(15,0){5}{\circle*{2}}
+\put(45,25){\circle*{2}}
+\thicklines
+\put(15,10){\line(1,0){60}}
+\put(45,10){\line(0,1){15}}
+\put(15,3){\makebox(0,0){\myHighlight{$[\sigma_0]$}\coordHE{}}}
+\put(30,3){\makebox(0,0){\myHighlight{$[\sigma_1]$}\coordHE{}}}
+\put(45,3){\makebox(0,0){\myHighlight{$[\sigma_2]$}\coordHE{}}}
+\put(60,3){\makebox(0,0){\myHighlight{$[\sigma_5]$}\coordHE{}}}
+\put(75,3){\makebox(0,0){\myHighlight{$[\sigma_4]$}\coordHE{}}}
+\put(51,25){\makebox(0,0){\myHighlight{$[\sigma_3]$}\coordHE{}}}
+\end{picture}
+\qquad \qquad
+\myHighlight{$
+{\cal G}_{E_6} =
+\left( \begin{array}{cccccc}
+      0 & 1 & 0 & 0 & 0 & 0  \\
+      1 & 0 & 1 & 0 & 0 & 0  \\
+      0 & 1 & 0 & 1 & 0 & 1  \\
+      0 & 0 & 1 & 0 & 1 & 0  \\
+      0 & 0 & 0 & 1 & 0 & 0  \\
+      0 & 0 & 1 & 0 & 0 & 0  \\
+\end{array}
+\right)
+$}\coordHE{}
+\label{grE6}
+\end{center}
+\caption{The \myHighlight{$E_6$}\coordHE{} Dynkin diagram and its adjacency matrix}
+\end{figure}
+
+Here \myHighlight{$\kappa = 12$}\coordHE{}, the norm of the graph is \myHighlight{$\beta = 2 \cos
+(\frac{\pi}{12}) = \frac{1 + \sqrt 3 }{\sqrt 2}$}\coordHE{}
+and the normalized Perron-Frobenius vector is
+\myHighlight{$D = \left( [1]_q, [2]_q, [3]_q, [2]_q, [1]_q, \frac{[3]_q}{[2]_q}
+\right)$}\coordHE{}.\\
+The \myHighlight{$E_6$}\coordHE{} Dynkin diagram determines in a unique way the multiplication
+table for the graph algebra of \myHighlight{$E_6$}\coordHE{}, displayed below.
+
+\begin{table}[hhh]
+$$\coord{}\boxMath{
+\begin{array}{||c||c|c|c|c|c|c||}
+\hline
+{}& 0 & 1  & 2 & 5 & 4 & 3  \\
+\hline
+\hline
+0 & 0  & 1      & 2       & 5     & 4 & 3    \\
+1 & 1  & 0+2    & 1+3+5   & 2+4   & 5 & 2    \\
+2 & 2  & 1+3+5  & 0+2+2+4 & 1+3+5 & 2 & 1+5  \\
+5 & 5  & 2+4    & 1+3+5   & 0+2   & 1 & 2    \\
+4 & 4  & 5      & 2       & 1     & 0 & 3    \\
+3 & 3  & 2      & 1+5     & 2     & 3 & 0+4  \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\caption{Multiplication table for the graph algebra of \myHighlight{$E_6$}\coordHE{}}
+\end{table}
+
+The fusion matrices \myHighlight{$G_{i}$}\coordHE{} are given by the following polynomials:
+$$\coord{}\boxMath{
+\begin{array}{ll}
+G_0 = Id_6  &
+G_4 = G_1.G_1.G_1.G_1 - 4 G_1.G_1 + 2 G_0 \\
+G_1 = {\cal G}_{E_6} &
+G_5 = G_1.G_4 \\
+G_2 = G_1.G_1 - G_0 \qquad \qquad \qquad &
+G_3 =  - G_1.(G_4 - G_1.G_1 + 2 G_0)
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+
+
+Essential matrices have \myHighlight{$6$}\coordHE{} columns and \myHighlight{$11$}\coordHE{} rows. They are labeled
+by vertices of diagrams  \myHighlight{$E_{6}$}\coordHE{} and \myHighlight{$A_{11}$}\coordHE{}.
+They are calculated as explained in section 2.2.3.
+With the order chosen for vertices \myHighlight{$(012543)$}\coordHE{} notice that  the first
+row of matrix \myHighlight{$E_5$}\coordHE{}, for example, is \myHighlight{$E_5(0) = (000100)$}\coordHE{}.
+The first essential matrix \myHighlight{$E_{0}$}\coordHE{} (essential paths leaving the
+origin) is given in Fig \ref{E6:E0}, together with the corresponding
+induction-restriction graph (\myHighlight{$E_6$}\coordHE{} diagram with vertices labeled by
+\myHighlight{$A_{11}$}\coordHE{} vertices).
+
+\begin{figure}[hhh]
+\unitlength 0.7mm
+\begin{center}
+\myHighlight{$
+E_0 =
+\left( \begin{array}{cccccc}
+        1 & . & . & . & . & . \cr . &
+        1 & . & . & . & . \cr . & . &
+        1 & . & . & . \cr . & . & . &
+        1 & . & 1 \cr . & . & 1 & . &
+        1 & . \cr . & 1 & . & 1 & . &
+        . \cr 1 & . & 1 & . & . & . \cr
+        . & 1 & . & . & . & 1 \cr . &
+        . & 1 & . & . & . \cr . & . &
+        . & 1 & . & . \cr . & . & . &
+        . & 1 & . \end{array} \right)
+$}\coordHE{}
+\begin{picture}(95,35)
+\thinlines
+\multiput(25,10)(15,0){5}{\circle*{2}}
+\put(55,25){\circle*{2}}
+\put(25,12){\myHighlight{$\ast$}\coordHE{}}
+\thicklines
+\put(25,10){\line(1,0){60}}
+\put(55,10){\line(0,1){15}}
+
+\put(25,3){\makebox(0,0){\myHighlight{$0$}\coordHE{}}}
+\put(25,-2){\makebox(0,0){\myHighlight{$6$}\coordHE{}}}
+
+\put(40,3){\makebox(0,0){\myHighlight{$1$}\coordHE{}}}
+\put(40,-2){\makebox(0,0){\myHighlight{$5$}\coordHE{}}}
+\put(40,-7){\makebox(0,0){\myHighlight{$7$}\coordHE{}}}
+
+\put(55,3){\makebox(0,0){\myHighlight{$2$}\coordHE{}}}
+\put(55,-2){\makebox(0,0){\myHighlight{$4$}\coordHE{}}}
+\put(55,-7){\makebox(0,0){\myHighlight{$6$}\coordHE{}}}
+\put(55,-12){\makebox(0,0){\myHighlight{$8$}\coordHE{}}}
+
+
+\put(70,3){\makebox(0,0){\myHighlight{$3$}\coordHE{}}}
+\put(70,-2){\makebox(0,0){\myHighlight{$5$}\coordHE{}}}
+\put(70,-7){\makebox(0,0){\myHighlight{$9$}\coordHE{}}}
+
+\put(85,3){\makebox(0,0){\myHighlight{$4$}\coordHE{}}}
+\put(85,-2){\makebox(0,0){\myHighlight{$10$}\coordHE{}}}
+
+\put(63,27){\makebox(0,0){\myHighlight{$3,7$}\coordHE{}}}
+\end{picture}
+\bigskip
+\caption{Essential matrix \myHighlight{$E_0$}\coordHE{} and Essential Paths from the vertex 0
+for the \myHighlight{$E_6$}\coordHE{}-model}
+\label{E6:E0}
+\end{center}
+\end{figure}
+
+
+The subspace \myHighlight{$A_3$}\coordHE{} generated by the elements \myHighlight{$\{ 0, 3, 4 \}$}\coordHE{} is a
+subalgebra of the graph
+algebra of \myHighlight{$E_6$}\coordHE{} and leaves invariant (by multiplication) the
+complementary vector subspace generated by \myHighlight{$\{ 1, 2, 5 \}$}\coordHE{}.
+In other words the subalgebra \myHighlight{$A_{3}$}\coordHE{} of \myHighlight{$E_{6}$}\coordHE{} admits a two-sided
+\myHighlight{$A_{3}$}\coordHE{}-invariant complement.
+We form the tensor product \myHighlight{$E_6 \otimes E_6$}\coordHE{}, but we take it over
+the subalgebra \myHighlight{$A_3$}\coordHE{} and define the following algebra:
+$$\coord{}\boxMath{
+{\cal H}_{Oc(E_6)} = E_6 \otimesdot E_6 \doteq
+\frac{E_6 \otimes E_6}{A_3} = E_6 \otimes_{A_3} E_6 .
+}{dollar}{0pt}\coordE{}$$
+We have, for example, \myHighlight{$3 \otimesdot 1 = 0 \otimesdot 31 = 0 \otimesdot
+2$}\coordHE{}, and \myHighlight{$4 \otimesdot 1 = 0 \otimesdot 41 = 0 \otimesdot 5$}\coordHE{}.\\
+\myHighlight{${\cal H}_{Oc(E_6)}$}\coordHE{} is spanned by a basis with 12 elements:
+$$\coord{}\boxMath{
+\begin{array}{lclcrcr}
+\ud0 = 0 \otimesdot 0, & \qquad \qquad  & \ud3 = 3 \otimesdot 0, &
+\qquad \qquad &
+\ud{1^{'}} = 0 \otimesdot 1,  & \qquad \qquad & \ud{31^{'}}=  3
+\otimesdot 1, \\
+\ud1 = 1 \otimesdot 0, & \qquad & \ud4 = 4 \otimesdot 0, & \qquad &
+\ud{11^{'}}=  1 \otimesdot 1, & \qquad & \ud{41^{'}}=  4 \otimesdot 1, \\
+\ud2 = 2 \otimesdot 0, & \qquad & \ud5 = 5 \otimesdot 0, & \qquad &
+\ud{21^{'}}=  2 \otimesdot 1, & \qquad & \ud{51^{'}}=  5 \otimesdot 1.
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+The element \myHighlight{$ 0 \otimesdot 0$}\coordHE{} is the identity. The elements \myHighlight{$1 \otimesdot
+0$}\coordHE{} and \myHighlight{$0 \otimesdot 1$}\coordHE{} are respectively the chiral left and right
+generators; they span separately two subalgebras \myHighlight{$E_{6}\otimes 0$}\coordHE{} and
+\myHighlight{$0 \otimes E_{6}$}\coordHE{}, both isomorphic with the graph algebra itself.
+    The ambichiral part is the linear span of \myHighlight{$\{\ud0, \ud3, \ud4 \}$}\coordHE{}.
+We can easily check that multiplication by generators of
+\myHighlight{${\cal H}_{Oc(E_6)}$}\coordHE{} is indeed encoded by the Ocneanu graph
+of \myHighlight{$E_6$}\coordHE{}, represented in Fig \ref{grocE6}. The full lines encode
+multiplication by the chiral left generator \myHighlight{$\ud1$}\coordHE{}. For example:
+\myHighlight{$\ud1 . \ud2 = \ud1 + \ud3 + \ud5$}\coordHE{} and in the \myHighlight{$E_6$}\coordHE{} Ocneanu graph the
+vertices \myHighlight{$\ud1, \ud3$}\coordHE{} and \myHighlight{$\ud5$}\coordHE{} are joined to the vertex \myHighlight{$\ud2$}\coordHE{} by a
+full line.
+The dashed lines encode multiplication by the chiral right generator
+\myHighlight{$\ud{1^{'}}$}\coordHE{}. For example: \myHighlight{$\ud{1^{'}} . \ud4 = \ud{41^{'}}$}\coordHE{} and in
+the \myHighlight{$E_6$}\coordHE{} Ocneanu graph the vertices \myHighlight{$\ud4$}\coordHE{} and \myHighlight{$\ud{41^{'}}$}\coordHE{} are
+joined  by a dashed line.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%  E6  %%%%%%%%%%%%
+\begin{figure}[hhh]
+\unitlength 1.0mm
+\begin{center}
+\begin{picture}(50,70)
+\multiput(25,5)(0,10){3}{\circle*{2}}
+\multiput(25,45)(0,10){3}{\circle{2}}
+\multiput(5,25)(0,10){3}{\circle*{2}}
+\multiput(45,25)(0,10){3}{\circle*{2}}
+
+%%% lignes continues
+\thicklines
+\put(5,45){\line(1,1){20}}
+\put(5,35){\line(1,1){20}}
+\put(5,25){\line(1,1){20}}
+\put(5,25){\line(0,1){20}}
+
+\thinlines
+\put(45,45){\line(-1,-1){20}}
+\put(45,35){\line(-1,-1){20}}
+\put(45,25){\line(-1,-1){20}}
+\put(25.3,5){\line(0,1){20}}
+
+%%% lignes pointillees
+\thicklines
+\dashline[50]{1}(45,45)(25,65)
+\dashline[50]{1}(45,35)(25,55)
+\dashline[50]{1}(45,25)(25,45)
+\dashline[50]{1}(45,25)(45,45)
+
+\thinlines
+\dashline[50]{1}(5,45)(25,25)
+\dashline[50]{1}(5,35)(25,15)
+\dashline[50]{1}(5,25)(25,5)
+\dashline[50]{1}(24.7,5)(24.7,25)
+
+\small
+\put(25,68){\makebox(0,0){\ud0}}
+\put(25,58){\makebox(0,0){\ud3}}
+\put(25,48){\makebox(0,0){\ud4}}
+\put(1,45){\makebox(0,0){\ud1}}
+\put(1,35){\makebox(0,0){\ud2}}
+\put(1,25){\makebox(0,0){\ud5}}
+\put(49,45){\makebox(0,0){\myHighlight{$\ud{1^{'}}$}\coordHE{}}}
+\put(49,35){\makebox(0,0){\myHighlight{$\ud{31^{'}}$}\coordHE{}}}
+\put(49,25){\makebox(0,0){\myHighlight{$\ud{41^{'}}$}\coordHE{}}}
+\put(21,25){\makebox(0,0){\myHighlight{$\ud{11^{'}}$}\coordHE{}}}
+\put(21,15){\makebox(0,0){\myHighlight{$\ud{21^{'}}$}\coordHE{}}}
+\put(21,5){\makebox(0,0){\myHighlight{$\ud{51^{'}}$}\coordHE{}}}
+\normalsize
+
+\end{picture}
+\caption{The \myHighlight{$E_6$}\coordHE{} Ocneanu graph}
+\label{grocE6}
+\end{center}
+\end{figure}
+
+The dimensions \myHighlight{$d_{n}$}\coordHE{}, with \myHighlight{$n$}\coordHE{} in \myHighlight{$(0,1,2,\ldots 10)$}\coordHE{},
+for the eleven blocks of the Racah-Wigner-Ocneanu
+bi-algebra \myHighlight{${\cal A}$}\coordHE{} endowed with its first multiplicative law are
+respectively
+$$\coord{}\boxMath{
+(6,10,14,18,20,20,20,18,14,10,6)
+}{dollar}{0pt}\coordE{}$$
+For its other multiplicative law (convolution), the dimensions
+\myHighlight{$d_{x}$}\coordHE{} of the twelve blocks, labeled with \myHighlight{$x$}\coordHE{} in the list
+\myHighlight{$(0\otimesdot 0, 3\otimesdot 0, 4\otimesdot 0,
+1\otimesdot 0,2\otimesdot 0,5 \otimesdot 0,
+0 \otimesdot1,0 \otimesdot 2,0 \otimesdot 5,
+1 \otimesdot 1,2 \otimesdot 1,5 \otimesdot 1)$}\coordHE{} are respectively
+$$\coord{}\boxMath{
+(6,8,6,10,14,10,10,14,10,20,28,20)
+}{dollar}{0pt}\coordE{}$$
+Notice that
+\myHighlight{$\sum {d_{n}} = \sum {d_{x}} = 156$}\coordHE{} and \myHighlight{$\sum {d_{n}^{2}} =
+\sum {d_{x}^{2}} = 2512 .$}\coordHE{}
+
+
+The twelve toric matrices \myHighlight{$W_{ab}$}\coordHE{} of the \myHighlight{$E_{6}$}\coordHE{} model are obtained
+as explained in section 2.2.5;  for instance \myHighlight{$W_{4\otimesdot 1}=
+E_{4}.\widetilde{E_{1}}^{red}$}\coordHE{}.
+We recall only the matrix expression
+of \myHighlight{$W_{00}$}\coordHE{} (the modular invariant itself).  The eleven other
+matrices\footnote{They were already given in \cite{Coque:qtetra}.}, are
+written as sesquilinear forms  in
+the appendix (they are the twisted partition functions).
+
+$$\coord{}\boxMath{
+W_{00}=\left( \begin{array}{ccccccccccc}
+1 & . & . & . & . & . & 1 & . & . & . & . \\
+. & . & . & . & . & . & . & . & . & . & . \\
+. & . & . & . & . & . & . & . & . & . & . \\
+. & . & . & 1 & . & . & . & 1 & . & . & . \\
+. & . & . & . & 1 & . & . & . & . & . & 1 \\
+. & . & . & . & . & . & . & . & . & . & . \\
+1 & . & . & . & . & . & 1 & . & . & . & . \\
+. & . & . & 1 & . & . & . & 1 & . & . & . \\
+. & . & . & . & . & . & . & . & . & . & . \\
+. & . & . & . & . & . & . & . & . & . & . \\
+. & . & . & . & 1 & . & . & . & . & . & 1 \\
+\end{array}
+\right)
+}{dollar}{0pt}\coordE{}$$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The \myHighlight{$E_{8}$}\coordHE{} case}
+
+The \myHighlight{$E_8$}\coordHE{} Dynkin diagram and its adjacency matrix are displayed
+below. We use the following order for the vertices: \myHighlight{$\{\sigma_0,
+\sigma_1, \sigma_2,
+\sigma_3, \sigma_4, \sigma_7, \sigma_6, \sigma_5 \}$}\coordHE{}.
+
+\begin{figure}[hhh]
+\unitlength 0.7mm
+\begin{center}
+\begin{picture}(120,30)(0,10)
+\thinlines
+\multiput(15,10)(15,0){7}{\circle*{2}}
+\put(75,25){\circle*{2}}
+\thicklines
+\put(15,10){\line(1,0){90}}
+\put(75,10){\line(0,1){15}}
+\put(15,3){\makebox(0,0){[\myHighlight{$\sigma_0$}\coordHE{}]}}
+\put(30,3){\makebox(0,0){[\myHighlight{$\sigma_1$}\coordHE{}]}}
+\put(45,3){\makebox(0,0){[\myHighlight{$\sigma_2$}\coordHE{}]}}
+\put(60,3){\makebox(0,0){[\myHighlight{$\sigma_3$}\coordHE{}]}}
+\put(75,3){\makebox(0,0){[\myHighlight{$\sigma_4$}\coordHE{}]}}
+\put(90,3){\makebox(0,0){[\myHighlight{$\sigma_7$}\coordHE{}]}}
+\put(105,3){\makebox(0,0){[\myHighlight{$\sigma_6$}\coordHE{}]}}
+\put(81,25){\makebox(0,0){[\myHighlight{$\sigma_5$}\coordHE{}]}}
+\end{picture}
+\footnotesize
+\myHighlight{$
+{\cal G}_{E_8} =
+\left( \begin{array}{cccccccc}
+      0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+      1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+      0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 \\
+      0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 1 & 0 & 1 & 0 & 1 \\
+      0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+\end{array}
+\right)
+$}\coordHE{}
+\normalsize
+\caption{The \myHighlight{$E_8$}\coordHE{} Dynkin diagram and its adjacency matrix}
+\label{grE8}
+\end{center}
+\end{figure}
+Here \myHighlight{$\kappa = 30$}\coordHE{}, the norm of the graph is \myHighlight{$\beta = 2 \cos
+(\frac{\pi}{30})$}\coordHE{} and the normalized Perron-Frobenius vector is
+\myHighlight{$D = \left( [1]_q, [2]_q, [3]_q, [4]_q, [5]_q, \frac{[7]_q}{[2]_q} ,
+\frac{[5]_q}{[3]_q},
+\frac{[5]_q}{[2]_q} \right)$}\coordHE{}.  \\
+As for the \myHighlight{$E_6$}\coordHE{} case, the \myHighlight{$E_8$}\coordHE{} Dynkin diagram determines in a
+unique way the multiplication table for the graph algebra of
+\myHighlight{$E_8$}\coordHE{}, displayed below.
+
+
+\begin{table}[hhh]
+\scriptsize
+$$\coord{}\boxMath{
+\begin{array}{||c||c|c|c|c|c|c|c|c||}
+\hline
+{}& 0 & 1  & 2 & 3 & 4 & 7 & 6 & 5 \\
+\hline
+\hline
+0 & 0 & 1     & 2       & 3           &   4         &  7        & 6
+& 5       \\
+1 & 1 & 0+2   & 1+3     & 2+4         & 3+5+7       & 4+6       & 7
+& 4       \\
+2 & 2 & 1+3   & 0+2+4   & 1+3+5+7     & 2+4_2+6     & 3+5+7     & 4
+& 3+7     \\
+3 & 3 & 2+4   & 1+3+5+7 & 0+2+4_2+6   & 1+3_2+5+7_2 & 2+4_2     & 3+5
+& 2+4+6   \\
+4 & 4 & 3+5+7 & 2+4_2+6 & 1+3_2+5+7_2 & 0+2_2+4_3+6 & 1+3_2+5+7 & 2+4
+& 1+3+5+7 \\
+7 & 7 & 4+6   & 3+5+7   & 2+4+4       & 1+3_2+5+7   & 0+2+4+6   & 1+7
+& 2+4     \\
+6 & 6 & 7     & 4       & 3+5         & 2+4         & 1+7       & 0+6
+& 3       \\
+5 & 5 & 4     & 3+7     & 2+4+6       & 1+3+5+7     & 2+4       & 3
+& 0+4     \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\normalsize
+\caption{Multiplication table for the graph algebra of \myHighlight{$E_8$}\coordHE{}}
+\end{table}
+
+The fusion matrices \myHighlight{$G_{i}$}\coordHE{} are given by the following polynomials:
+$$\coord{}\boxMath{
+\begin{array}{ll}
+G_0 = Id_8   &
+G_4 = G_1.G_1.G_1.G_1 - 3 G_1.G_1 + G_0 \\
+G_1 = {\cal G}_{E_8} &
+G_6 = G_2.G_4 - G_2 - 2 G_4 \\
+G_2 = G_1.G_1 - G_0 &
+G_7 = G_1.G_6 \\
+G_3 = G_1.G_1.G_1 - 2 G_1 \qquad \qquad &
+G_5 = G_2.G_7 - G_3 - G_7
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+
+Essential matrices have \myHighlight{$8$}\coordHE{} columns and \myHighlight{$29$}\coordHE{} rows. They are labeled
+by vertices of diagrams  \myHighlight{$E_{8}$}\coordHE{} and \myHighlight{$A_{29}$}\coordHE{}.
+The first essential matrix \myHighlight{$E_{0}$}\coordHE{} (essential paths leaving the
+origin) is given in Fig \ref{E8:E0}, together with the corresponding
+induction-restriction graph (\myHighlight{$E_8$}\coordHE{} diagram with vertices labeled by
+\myHighlight{$A_{29}$}\coordHE{} vertices).
+
+\begin{figure}[hhh]
+\unitlength 0.7mm
+\begin{center}
+\scriptsize
+\myHighlight{$
+E_0 =
+\left(
+\begin{array}{cccccccc}
+1& .& .& .& .& .& .& .\\
+.& 1& .& .& .& .& .& .\\
+.& .& 1& .& .& .& .& .\\
+.& .& .& 1& .& .& .& .\\
+.& .& .& .& 1& .& .& .\\
+.& .& .& .& .& 1& .& 1\\
+.& .& .& .& 1& .& 1& .\\
+.& .& .& 1& .& 1& .& .\\
+.& .& 1& .& 1& .& .& .\\
+.& 1& .& 1& .& .& .& 1\\
+1& .& 1& .& 1& .& .& .\\
+.& 1& .& 1& .& 1& .& .\\
+.& .& 1& .& 1& .& 1& .\\
+.& .& .& 1& .& 1& .& 1\\
+.& .& .& .& 2& .& .& .\\
+.& .& .& 1& .& 1& .& 1\\
+.& .& 1& .& 1& .& 1& .\\
+.& 1& .& 1& .& 1& .& .\\
+1& .& 1& .& 1& .& .& .\\
+.& 1& .& 1& .& .& .& 1\\
+.& .& 1& .& 1& .& .& .\\
+.& .& .& 1& .& 1& .& .\\
+.& .& .& .& 1& .& 1& .\\
+.& .& .& .& .& 1& .& 1\\
+.& .& .& .& 1& .& .& .\\
+.& .& .& 1& .& .& .& .\\
+.& .& 1& .& .& .& .& .\\
+.& 1& .& .& .& .& .& .\\
+1& .& .& .& .& .& .& .
+\end{array}
+\right)
+\normalsize
+\qquad
+$}\coordHE{}
+\begin{picture}(90,40)
+\thinlines
+\multiput(0,20)(15,0){7}{\circle*{2}}
+\put(60,35){\circle*{2}}
+\put(0,22){\myHighlight{$\ast$}\coordHE{}}
+\thicklines
+\put(0,20){\line(1,0){90}}
+\put(60,20){\line(0,1){15}}
+
+\put(0,13){\makebox(0,0){\myHighlight{$0$}\coordHE{}}}
+\put(0,8){\makebox(0,0){\myHighlight{$10$}\coordHE{}}}
+\put(0,3){\makebox(0,0){\myHighlight{$18$}\coordHE{}}}
+\put(0,-2){\makebox(0,0){\myHighlight{$28$}\coordHE{}}}
+
+\put(15,13){\makebox(0,0){\myHighlight{$1$}\coordHE{}}}
+\put(15,8){\makebox(0,0){\myHighlight{$9$}\coordHE{}}}
+\put(15,3){\makebox(0,0){\myHighlight{$11$}\coordHE{}}}
+\put(15,-2){\makebox(0,0){\myHighlight{$17$}\coordHE{}}}
+\put(15,-7){\makebox(0,0){\myHighlight{$19$}\coordHE{}}}
+\put(15,-12){\makebox(0,0){\myHighlight{$27$}\coordHE{}}}
+
+\put(30,13){\makebox(0,0){\myHighlight{$2$}\coordHE{}}}
+\put(30,8){\makebox(0,0){\myHighlight{$8$}\coordHE{}}}
+\put(30,3){\makebox(0,0){\myHighlight{$10$}\coordHE{}}}
+\put(30,-2){\makebox(0,0){\myHighlight{$12$}\coordHE{}}}
+\put(30,-7){\makebox(0,0){\myHighlight{$16$}\coordHE{}}}
+\put(30,-12){\makebox(0,0){\myHighlight{$18$}\coordHE{}}}
+\put(30,-17){\makebox(0,0){\myHighlight{$20$}\coordHE{}}}
+\put(30,-22){\makebox(0,0){\myHighlight{$26$}\coordHE{}}}
+
+\put(45,13){\makebox(0,0){\myHighlight{$3$}\coordHE{}}}
+\put(45,8){\makebox(0,0){\myHighlight{$7$}\coordHE{}}}
+\put(45,3){\makebox(0,0){\myHighlight{$9$}\coordHE{}}}
+\put(45,-2){\makebox(0,0){\myHighlight{$11$}\coordHE{}}}
+\put(45,-7){\makebox(0,0){\myHighlight{$13$}\coordHE{}}}
+\put(45,-12){\makebox(0,0){\myHighlight{$15$}\coordHE{}}}
+\put(45,-17){\makebox(0,0){\myHighlight{$17$}\coordHE{}}}
+\put(45,-22){\makebox(0,0){\myHighlight{$19$}\coordHE{}}}
+\put(45,-27){\makebox(0,0){\myHighlight{$21$}\coordHE{}}}
+\put(45,-32){\makebox(0,0){\myHighlight{$25$}\coordHE{}}}
+
+\put(60,13){\makebox(0,0){\myHighlight{$4$}\coordHE{}}}
+\put(60,8){\makebox(0,0){\myHighlight{$6$}\coordHE{}}}
+\put(60,3){\makebox(0,0){\myHighlight{$8$}\coordHE{}}}
+\put(60,-2){\makebox(0,0){\myHighlight{$10$}\coordHE{}}}
+\put(60,-7){\makebox(0,0){\myHighlight{$12$}\coordHE{}}}
+\put(60,-12){\makebox(0,0){\myHighlight{$(14)_2$}\coordHE{}}}
+\put(60,-17){\makebox(0,0){\myHighlight{$16$}\coordHE{}}}
+\put(60,-22){\makebox(0,0){\myHighlight{$18$}\coordHE{}}}
+\put(60,-27){\makebox(0,0){\myHighlight{$20$}\coordHE{}}}
+\put(60,-32){\makebox(0,0){\myHighlight{$22$}\coordHE{}}}
+\put(60,-37){\makebox(0,0){\myHighlight{$24$}\coordHE{}}}
+
+\put(75,13){\makebox(0,0){\myHighlight{$5$}\coordHE{}}}
+\put(75,8){\makebox(0,0){\myHighlight{$7$}\coordHE{}}}
+\put(75,3){\makebox(0,0){\myHighlight{$11$}\coordHE{}}}
+\put(75,-2){\makebox(0,0){\myHighlight{$13$}\coordHE{}}}
+\put(75,-7){\makebox(0,0){\myHighlight{$15$}\coordHE{}}}
+\put(75,-12){\makebox(0,0){\myHighlight{$17$}\coordHE{}}}
+\put(75,-17){\makebox(0,0){\myHighlight{$21$}\coordHE{}}}
+\put(75,-22){\makebox(0,0){\myHighlight{$23$}\coordHE{}}}
+
+\put(90,13){\makebox(0,0){\myHighlight{$6$}\coordHE{}}}
+\put(90,8){\makebox(0,0){\myHighlight{$12$}\coordHE{}}}
+\put(90,3){\makebox(0,0){\myHighlight{$16$}\coordHE{}}}
+\put(90,-2){\makebox(0,0){\myHighlight{$22$}\coordHE{}}}
+
+\put(60,40){\makebox(0,0){\myHighlight{$5,9,13,15,19,23$}\coordHE{}}}
+
+\end{picture}
+\bigskip
+\caption{Essential matrix \myHighlight{$E_0$}\coordHE{} and Essential Paths from the vertex 0
+for the \myHighlight{$E_8$}\coordHE{}-model}
+\label{E8:E0}
+\end{center}
+\end{figure}
+
+The subspace \myHighlight{$A_2$}\coordHE{} generated by the elements \myHighlight{$\{ 0, 6 \}$}\coordHE{} is a
+subalgebra of the graph algebra of \myHighlight{$E_8$}\coordHE{} that admits a two-sided
+\myHighlight{$A_2$}\coordHE{}-invariant complement.
+We form the tensor product \myHighlight{$E_8 \otimes E_8$}\coordHE{}, but we take it over
+the subalgebra \myHighlight{$A_2$}\coordHE{}. The Ocneanu algebra of \myHighlight{$E_8$}\coordHE{} can be realized as:
+$$\coord{}\boxMath{
+{\cal H}_{Oc(E_8)} = E_8 \otimesdot E_8 \doteq
+\frac{E_8 \otimes E_8}{A_2} = E_8 \otimes_{A_2} E_8.
+}{dollar}{0pt}\coordE{}$$
+For instance \myHighlight{$6 \otimesdot 0 = 0 \otimesdot 6$}\coordHE{}, \myHighlight{$6 \otimesdot 1 = 0 \otimesdot
+7$}\coordHE{}, \myHighlight{$6 \otimesdot 2 = 0 \otimesdot 4$}\coordHE{}, \myHighlight{$6 \otimesdot 5 = 0 \otimesdot
+3$}\coordHE{}.\\
+\myHighlight{${\cal H}_{Oc(E_8)}$}\coordHE{} is spanned by a basis with 32 elements:
+$$\coord{}\boxMath{
+\begin{array}{cccc}
+\ud0 =0 \otimesdot 0, & \qquad\qquad \ud{1^{'}}  =0 \otimesdot 1, &
+\qquad\qquad \ud{2^{'}}  =0 \otimesdot 2, & \qquad\qquad \ud{5^{'}} =0
+\otimesdot 5,\\
+\ud1 =1 \otimesdot 0, & \qquad\qquad \ud{11^{'}} =1 \otimesdot 1, &
+\qquad\qquad \ud{12^{'}} =1 \otimesdot 2, & \qquad\qquad \ud{15^{'}}=1
+\otimesdot 5,\\
+\ud2 =2 \otimesdot 0, & \qquad\qquad \ud{21^{'}} =2 \otimesdot 1, &
+\qquad\qquad \ud{22^{'}} =2 \otimesdot 2, & \qquad\qquad \ud{25^{'}}=2
+\otimesdot 5,\\
+\ud3 =3 \otimesdot 0, & \qquad\qquad \ud{31^{'}} =3 \otimesdot 1, &
+\qquad\qquad \ud{32^{'}} =3 \otimesdot 2, & \qquad\qquad \ud{35^{'}}=3
+\otimesdot 5,\\
+\ud4 =4 \otimesdot 0, & \qquad\qquad \ud{41^{'}} =4 \otimesdot 1, &
+\qquad\qquad \ud{42^{'}} =4 \otimesdot 2, & \qquad\qquad \ud{45^{'}}=4
+\otimesdot 5,\\
+\ud5 =5 \otimesdot 0, & \qquad\qquad \ud{51^{'}} =5 \otimesdot 1, &
+\qquad\qquad \ud{52^{'}} =5 \otimesdot 2, & \qquad\qquad \ud{55^{'}}=5
+\otimesdot 5,\\
+\ud6 =6 \otimesdot 0, & \qquad\qquad \ud{61^{'}} =6 \otimesdot 1, &
+\qquad\qquad \ud{62^{'}} =6 \otimesdot 2, & \qquad\qquad \ud{65^{'}}=6
+\otimesdot 5,\\
+\ud7 =7 \otimesdot 0, & \qquad\qquad \ud{71^{'}} =7 \otimesdot 1, &
+\qquad\qquad \ud{72^{'}} =7 \otimesdot 2, & \qquad\qquad \ud{75^{'}}=7
+\otimesdot 5.\\
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+
+The element \myHighlight{$ 0 \otimesdot 0$}\coordHE{} is the identity. The elements \myHighlight{$1 \otimesdot
+0$}\coordHE{} and \myHighlight{$0 \otimesdot 1$}\coordHE{} are respectively the chiral left and right
+generators; they span independently the subalgebras \myHighlight{$E_{8}\otimes 0$}\coordHE{}
+and \myHighlight{$0 \otimes E_{8}$}\coordHE{}.
+One can easily check that
+multiplication by these two generators is indeed encoded by the Ocneanu
+graph of \myHighlight{$E_8$}\coordHE{}, represented in Fig \ref{grocE8}. Full lines (resp.
+dashed lines) encode multiplication by the chiral left (resp. chiral right)
+generator.
+The  ambichiral part is the linear span of \myHighlight{$\{\ud0, \ud6 \}$}\coordHE{}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%  Graphe d'Ocneanu de E8 (sans underline!!)  %%%%%%%%%%%%
+\begin{figure}[hhh]
+\unitlength 1.0mm
+\begin{center}
+\begin{picture}(70,80)
+\multiput(5,35)(0,10){2}{\circle*{2}}
+\multiput(15,25)(0,10){4}{\circle*{2}}
+\multiput(25,15)(0,10){6}{\circle*{2}}
+\multiput(35,5)(0,10){6}{\circle*{2}}
+\multiput(35,65)(0,10){2}{\circle{2}}
+\multiput(45,15)(0,10){6}{\circle*{2}}
+\multiput(55,25)(0,10){4}{\circle*{2}}
+\multiput(65,35)(0,10){2}{\circle*{2}}
+
+
+%%%% Ici ce sont les lignes continues
+\thicklines
+\put(35,75){\line(-1,-1){20}}
+\put(5,35){\line(1,1){30}}
+\put(5,35){\line(1,2){10}}
+\put(5,45){\line(1,0){10}}
+
+\thinlines
+\put(45,65){\line(-1,-1){20}}
+\put(15,25){\line(1,1){30}}
+\put(15,25){\line(1,2){10}}
+\put(15,35){\line(1,0){10}}
+
+\put(55,55){\line(-1,-1){20}}
+\put(25,15){\line(1,1){30}}
+\put(25,15){\line(1,2){10}}
+\put(25,25){\line(1,0){10}}
+
+\put(65,45){\line(-1,-1){20}}
+\put(35,5){\line(1,1){30}}
+\put(35,5){\line(1,2){10}}
+\put(35,15){\line(1,0){10}}
+
+
+%%%% Ici ce sont les lignes pointillees
+\thicklines
+\dashline[50]{1}(35,75)(55,55)
+\dashline[50]{1}(65,35)(35,65)
+\dashline[50]{1}(65,35)(55,55)
+\dashline[50]{1}(65,45)(55,45)
+
+\thinlines
+\dashline[50]{1}(25,65)(45,45)
+\dashline[50]{1}(55,25)(25,55)
+\dashline[50]{1}(55,25)(45,45)
+\dashline[50]{1}(55,35)(45,35)
+
+\dashline[50]{1}(15,55)(35,35)
+\dashline[50]{1}(45,15)(15,45)
+\dashline[50]{1}(45,15)(35,35)
+\dashline[50]{1}(45,25)(35,25)
+
+\dashline[50]{1}(5,45)(25,25)
+\dashline[50]{1}(35,5)(5,35)
+\dashline[50]{1}(35,5)(25,25)
+\dashline[50]{1}(35,15)(25,15)
+
+%%%%%%% les points
+\scriptsize
+\put(35,78){\makebox(0,0){0}}
+\put(35,68){\makebox(0,0){6}}
+\put(35,59){\makebox(0,0){\myHighlight{$11^{'}$}\coordHE{}}}
+\put(35,49){\makebox(0,0){\myHighlight{$71^{'}$}\coordHE{}}}
+\put(35,39){\makebox(0,0){\myHighlight{$22^{'}$}\coordHE{}}}
+\put(35,29){\makebox(0,0){\myHighlight{$42^{'}$}\coordHE{}}}
+\put(35,19){\makebox(0,0){\myHighlight{$55^{'}$}\coordHE{}}}
+\put(35.5,10){\makebox(0,0){\myHighlight{$35^{'}$}\coordHE{}}}
+
+\put(25,68){\makebox(0,0){1}}
+\put(25,58){\makebox(0,0){7}}
+\put(25,49){\makebox(0,0){\myHighlight{$21^{'}$}\coordHE{}}}
+\put(25,39){\makebox(0,0){\myHighlight{$41^{'}$}\coordHE{}}}
+\put(25,29){\makebox(0,0){\myHighlight{$52^{'}$}\coordHE{}}}
+\put(24.5,19){\makebox(0,0){\myHighlight{$32^{'}$}\coordHE{}}}
+
+\put(46,69){\makebox(0,0){\myHighlight{$1^{'}$}\coordHE{}}}
+\put(45,59){\makebox(0,0){\myHighlight{$61^{'}$}\coordHE{}}}
+\put(45,49){\makebox(0,0){\myHighlight{$12^{'}$}\coordHE{}}}
+\put(45,39){\makebox(0,0){\myHighlight{$72^{'}$}\coordHE{}}}
+\put(45,29){\makebox(0,0){\myHighlight{$25^{'}$}\coordHE{}}}
+\put(46,19){\makebox(0,0){\myHighlight{$45^{'}$}\coordHE{}}}
+
+\put(15,58){\makebox(0,0){2}}
+\put(15,48){\makebox(0,0){4}}
+\put(15,39){\makebox(0,0){\myHighlight{$51^{'}$}\coordHE{}}}
+\put(15,29){\makebox(0,0){\myHighlight{$31^{'}$}\coordHE{}}}
+
+\put(56,59){\makebox(0,0){\myHighlight{$2^{'}$}\coordHE{}}}
+\put(55,49){\makebox(0,0){\myHighlight{$62^{'}$}\coordHE{}}}
+\put(55,39){\makebox(0,0){\myHighlight{$15^{'}$}\coordHE{}}}
+\put(56,29){\makebox(0,0){\myHighlight{$75^{'}$}\coordHE{}}}
+
+\put(5,48){\makebox(0,0){5}}
+\put(5,38){\makebox(0,0){3}}
+
+\put(66,49){\makebox(0,0){\myHighlight{$5^{'}$}\coordHE{}}}
+\put(66.5,39){\makebox(0,0){\myHighlight{$65^{'}$}\coordHE{}}}
+
+\normalsize
+\end{picture}
+\caption{The \myHighlight{$E_8$}\coordHE{} Ocneanu graph}
+\label{grocE8}
+\end{center}
+\end{figure}
+
+The dimensions \myHighlight{$d_{n}$}\coordHE{}, with \myHighlight{$n$}\coordHE{} in \myHighlight{$(0,1,2,\ldots 28)$}\coordHE{},
+for the twenty nine blocks of the Racah-Wigner-Ocneanu
+bi-algebra \myHighlight{${\cal A}$}\coordHE{} endowed with its first multiplicative law are
+respectively:
+\small
+$$\coord{}\boxMath{
+(8,14,20,26,32,38,44,48,52,56,60,62,64,64,64,64,64,62,60,56,52,48,44,38,32,26,20,14,8).
+}{dollar}{0pt}\coordE{}$$
+\normalsize
+For its other multiplicative law (convolution), the dimensions
+\myHighlight{$d_{x}$}\coordHE{} of the thirty two blocks, labeled with \myHighlight{$x$}\coordHE{} in the list
+\myHighlight{$
+    (0 \otimesdot 0 ,1 \otimesdot 0 ,2 \otimesdot 0 ,3 \otimesdot 0 ,4
+\otimesdot 0 ,5 \otimesdot 0
+		,6 \otimesdot 0 ,7 \otimesdot 0 ,0 \otimesdot 1 ,1
+\otimesdot 1 ,2 \otimesdot 1 ,3 \otimesdot 1 ,4 \otimesdot 1 ,5
+\otimesdot 1
+		,6 \otimesdot 1 ,7 \otimesdot 1 ,0 \otimesdot 2 ,1
+\otimesdot 2 ,2 \otimesdot 2 ,3 \otimesdot 2 ,4 \otimesdot 2 ,5
+\otimesdot 2
+		,6 \otimesdot 2 ,7 \otimesdot 2 ,0 \otimesdot 5 ,1
+\otimesdot 5 ,2 \otimesdot 5 ,3 \otimesdot 5 ,4 \otimesdot 5 ,5
+\otimesdot 5
+		,6 \otimesdot 5 ,7 \otimesdot 5)
+$}\coordHE{}
+are respectively given by:
+\footnotesize
+$$\coord{}\boxMath{
+(8, 14, 20, 26, 32, 16, 12, 22, 14, 28, 40, 52, 64, 32, 22, 44, 20, 40,
+         60, 78, 96, 48, 32, 64, 16, 32, 48, 64, 78, 40, 26, 52).
+}{dollar}{0pt}\coordE{}$$
+\normalsize
+Notice that
+\myHighlight{$\sum d_{n} = \sum d_{x} = 1240$}\coordHE{} and \myHighlight{$\sum d_{n}^{2} =
+\sum d_{x}^{2} = 63136 .$}\coordHE{}
+
+
+The thirty two toric matrices \myHighlight{$W_{ab}$}\coordHE{} of the \myHighlight{$E_{8}$}\coordHE{} model are obtained
+as explained in section 2.2.5 ;  for instance \myHighlight{$W_{\ud{52^{'}}} =
+W_{5\otimesdot 2}=
+E_{5}.\widetilde{E_{2}}^{red}$}\coordHE{}.
+We recall only the matrix expression of
+the modular invariant \myHighlight{$W_{00}$}\coordHE{}.  The partition functions
+corresponding to all the toric matrices are given as
+sesquilinear forms in the appendix.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\scriptsize
+$$\coord{}\boxMath{
+W_{00}=\left(
+\begin{array}{ccccccccccccccccccccccccccccc}
+1 &. &. &. &. &. &. &. &. &. &1 &. &. &. &. &. &. &. &1 &. &. &. &.
+&. &. &. &. &. &1 \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &1 &. &. &. &. &. &1 &. &. &. &1 &. &. &. &. &. &1
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+1 &. &. &. &. &. &. &. &. &. &1 &. &. &. &. &. &. &. &1 &. &. &. &.
+&. &. &. &. &. &1 \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &1 &. &. &. &. &. &1 &. &. &. &1 &. &. &. &. &. &1
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &1 &. &. &. &. &. &1 &. &. &. &1 &. &. &. &. &. &1
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+1 &. &. &. &. &. &. &. &. &. &1 &. &. &. &. &. &. &. &1 &. &. &. &.
+&. &. &. &. &. &1 \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &1 &. &. &. &. &. &1 &. &. &. &1 &. &. &. &. &. &1
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &. &.
+&. &. &. &. &. &. \\
+1 &. &. &. &. &. &. &. &. &. &1 &. &. &. &. &. &. &. &1 &. &. &. &.
+&. &. &. &. &. &1 \\
+\end{array}
+\right)
+}{dollar}{0pt}\coordE{}$$
+\normalsize
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The \myHighlight{$D_{even}$}\coordHE{} case}
+
+General formulae valid for all cases of this family are a bit heavy\ldots
+We therefore only provide a detailed treatment of the cases \myHighlight{$D_{4}$}\coordHE{}
+and \myHighlight{$D_{6}$}\coordHE{} but
+generalization is straightforward.
+
+\subsection{The \myHighlight{$D_4$}\coordHE{} case}
+
+The \myHighlight{$D_4$}\coordHE{} diagram and its adjacency matrix are displayed below. We
+use the following order for the vertices: \myHighlight{$\{\sigma_0, \sigma_1,
+\sigma_2, \sigma_{2^{' }} \}$}\coordHE{}.
+
+\begin{figure}[hhh]
+\unitlength 0.8mm
+\begin{center}
+\begin{picture}(45,20)(0,10)
+\thinlines
+\multiput(5,10)(15,0){2}{\circle*{2}}
+\put(35,17,5){\circle*{2}}
+\put(35,2,5){\circle*{2}}
+\thicklines
+\put(5,10){\line(1,0){15}}
+\put(20,10){\line(2,1){15}}
+\put(20,10){\line(2,-1){15}}
+\put(5,5){\makebox(0,0){[\myHighlight{$\sigma_0$}\coordHE{}]}}
+\put(20,5){\makebox(0,0){[\myHighlight{$\sigma_1$}\coordHE{}]}}
+\put(40,18){\makebox(0,0){[\myHighlight{$\sigma_2$}\coordHE{}]}}
+\put(41,3){\makebox(0,0){[\myHighlight{$\sigma_{2^{'}}$}\coordHE{}]}}
+\end{picture}
+\qquad \qquad \qquad
+\myHighlight{$
+{\cal G}_{D_4} =
+\left( \begin{array}{cccc}
+      0 & 1 & 0 & 0   \\
+      1 & 0 & 1 & 1   \\
+      0 & 1 & 0 & 0   \\
+      0 & 1 & 0 & 0   \\
+\end{array}
+\right)
+$}\coordHE{}
+\caption{The \myHighlight{$D_4$}\coordHE{} Dynkin diagram and its adjacency matrix}
+\label{grD4}
+\end{center}
+\end{figure}
+Here \myHighlight{$\kappa = 6$}\coordHE{}, the norm of the graph is \myHighlight{$\beta = 2 \cos
+(\frac{\pi}{6}) = \sqrt 3$}\coordHE{} and the normalized Perron-Frobenius vector is
+\myHighlight{$D = \left( [1]_q, [2]_q, \frac{[2]_q}{[2]_q} = 1,
+\frac{[2]_q}{[2]_q}=1 \right)$}\coordHE{}.\\
+For the \myHighlight{$D_4$}\coordHE{} case (as for all the \myHighlight{$D_{2n}$}\coordHE{} cases), we have to impose that
+the structure constants of its graph algebra should be positive
+integers, in order for the Dynkin diagram to determine in a unique way the
+multiplication table of the graph algebra, displayed below.
+
+\begin{table}[hhh]
+$$\coord{}\boxMath{
+\begin{array}{||c||c|c|c|c||}
+\hline
+{}& 0 & 1  & 2 & 2^{'}   \\
+\hline
+\hline
+0     & 0     & 1         & 2     & 2^{'}  \\
+1     & 1     & 0+2+2^{'} & 1     & 1      \\
+2     & 2     & 1         & 2^{'} & 0      \\
+2^{'} & 2^{'} & 1         & 0     & 2      \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\caption{Multiplication table for the graph algebra of \myHighlight{$D_4$}\coordHE{} }
+\end{table}
+The fusion matrices \myHighlight{$G_{i}$}\coordHE{} are given by the following polynomials:
+$$\coord{}\boxMath{
+G_0 = Id_4
+\qquad \qquad \qquad
+G_1 = {\cal G}_{D_4} \qquad \qquad \qquad
+G_2 + G_{2^{'}} = G_1.G_1 - G_0
+}{dollar}{0pt}\coordE{}$$
+Imposing that entries of \myHighlight{$G_2$}\coordHE{} and \myHighlight{$G_{2^{'}}$}\coordHE{} should be positive
+integers leads to a unique solution (up to \myHighlight{$G_2 \leftrightarrow
+G_{2^{'}}$}\coordHE{}), namely:
+$$\coord{}\boxMath{
+G_2 = \left( \begin{array}{cccc}
+0 & 0 & 0 & 1 \\
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+\end{array}
+\right)
+\qquad \qquad \qquad
+G_2^{'} = \left( \begin{array}{cccc}
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 0 \\
+\end{array}
+\right)
+}{dollar}{0pt}\coordE{}$$
+
+
+
+Essential matrices have 4 columns and 5 rows. They are labeled
+by vertices of diagrams \myHighlight{$D_4$}\coordHE{} and \myHighlight{$A_{5}$}\coordHE{}. The first essential
+matrix \myHighlight{$E_0$}\coordHE{} is given in Fig \ref{D4:E0}, together with the corresponding
+induction-restriction graph (\myHighlight{$D_4$}\coordHE{} diagram with vertices labeled
+by \myHighlight{$A_5$}\coordHE{} vertices).
+
+\begin{figure}[hhh]
+\unitlength 0.7mm
+\begin{center}
+\myHighlight{$
+E_0 =
+\left(
+\begin{array}{cccc}
+1 & . & . & . \cr
+. & 1 & . & . \cr
+. & . & 1 & 1 \cr
+. & 1 & . & . \cr
+1 & . & . & . \cr
+\end{array}
+\right)
+$}\coordHE{}
+\qquad \qquad
+\unitlength 1.0mm
+\begin{picture}(45,20)(0,10)
+\thinlines
+\multiput(5,10)(15,0){2}{\circle*{1.5}}
+\put(35,17,5){\circle*{1.5}}
+\put(35,2,5){\circle*{1.5}}
+\put(5,12){\myHighlight{$\ast$}\coordHE{}}
+\thinlines
+\put(5,10){\line(1,0){15}}
+\put(20,10){\line(2,1){15}}
+\put(20,10){\line(2,-1){15}}
+\put(5,5){\makebox(0,0){0}}
+\put(5,0){\makebox(0,0){4}}
+\put(20,5){\makebox(0,0){1}}
+\put(20,0){\makebox(0,0){3}}
+\put(35,13){\makebox(0,0){2}}
+\put(35,-2){\makebox(0,0){2}}
+\end{picture}
+\bigskip
+\caption{Essential matrix \myHighlight{$E_0$}\coordHE{} and Essential Paths from the vertex 0
+for the \myHighlight{$D_4$}\coordHE{} model}
+\label{D4:E0}
+\end{center}
+\end{figure}
+
+
+
+The subspace \myHighlight{$J_3$}\coordHE{} generated by the elements \myHighlight{$\{ 0, 2, 2^{'} \}$}\coordHE{}, is a
+subalgebra of the graph algebra of \myHighlight{$D_4$}\coordHE{} that admits a two-sided
+\myHighlight{$J_3$}\coordHE{}-invariant complement.
+We first form the tensor product \myHighlight{$D_4 \otimes D_4$}\coordHE{}, but we take it over
+the subalgebra \myHighlight{$J_3$}\coordHE{}.
+We get the algebra \myHighlight{$D_4^{\otimesdot} = D_4 \otimesdot D_4 \doteq
+D_4 \otimes_{J_3} D_4$}\coordHE{},
+spanned by a basis with 6 elements:
+$$\coord{}\boxMath{
+0 \otimesdot 0, \qquad \quad 1 \otimesdot 0, \qquad \quad  2 \otimesdot 0,
+\qquad \quad  2^{'} \otimesdot 0, \qquad \quad 0 \otimesdot 1, \qquad \quad
+1 \otimesdot 1.
+}{dollar}{0pt}\coordE{}$$
+The Ocneanu algebra of \myHighlight{$D_4$}\coordHE{}, \myHighlight{${\cal H}_{Oc(D_4)}$}\coordHE{}, can be realized as
+a subalgebra of dimension 8 of the following non-commutative algebra:
+$$\coord{}\boxMath{
+D_4^{\otimesdot} \; \oplus \; M(2,\mathbb{C})
+}{dollar}{0pt}\coordE{}$$
+The 8 elements of the basis are given by:
+$$\coord{}\boxMath{
+\begin{array}{cccclcc}
+\underline{0} = 0     \otimesdot 0 &+&
+\left( \begin{array}{cc} 1 & 0 \\ 0 & 1 \\ \end{array} \right)
+& \qquad \qquad \qquad \qquad&
+\; \underline{\epsilon} \; = \frac{1}{3} (1 \otimesdot 1) &+&
+\theta \left( \begin{array}{cc} 0 & 1 \\ 1 & 0 \\ \end{array} \right)\\
+\underline{1}         = 1     \otimesdot 0 &+&
+\left( \begin{array}{cc} 0 & 0 \\ 0 & 0 \\ \end{array} \right)
+& {} &
+\underline{1\epsilon} = \quad \, 0     \otimesdot 1 &+&
+\; \; \left( \begin{array}{cc} 0 & 0 \\ 0 & 0 \\ \end{array} \right) \\
+\underline{2}         = 2     \otimesdot 0 &+&
+\left( \begin{array}{cc} \alpha & 0 \\ 0 & \beta \\ \end{array} \right)
+& {} &
+\underline{2\epsilon} = \frac{1}{3} (1 \otimesdot 1) &+&
+\theta \left( \begin{array}{cc} 0 & \alpha \\ \beta & 0 \\
+\end{array} \right) \\
+\underline{2^{'}}     = 2^{'} \otimesdot 0 &+&
+\left( \begin{array}{cc} \beta & 0 \\ 0 & \alpha \\ \end{array} \right)
+& {} &
+\underline{2^{'}\epsilon} = \frac{1}{3}(1 \otimesdot 1) &+&
+\theta \left( \begin{array}{cc} 0 & \beta \\ \alpha & 0 \\ \end{array} \right)
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+where:
+$$\coord{}\boxMath{
+\theta^2 = 0 \qquad \text{Grassmann parameter}, \qquad \qquad
+\alpha   = \frac{-1+i\sqrt{3}}{2}, \qquad\qquad
+\text{and} \qquad
+\beta    = \frac{-1-i\sqrt{3}}{2}.
+}{dollar}{0pt}\coordE{}$$
+The multiplication in this algebra is defined by:
+$$\coord{}\boxMath{
+\left( (e1 \otimesdot f1) + A \right) . \left( (e2 \otimesdot f2) + B \right) =
+      (e1.e2) \otimesdot (f1.f2)
+      + A.B,
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$ e_1, f_1, e_2, f_2 \in D_4^{\otimesdot}$}\coordHE{} and \myHighlight{$A, B \in M(2,
+\mathbb{C})$}\coordHE{}.\\
+The numbers \myHighlight{$\alpha$}\coordHE{} and \myHighlight{$\beta$}\coordHE{} are determined by the multiplication table
+of \myHighlight{${\cal H}_{Oc(D_4)}$}\coordHE{}.
+For example, the relations \myHighlight{$\ud1 . \ud1 = \ud0 + \ud2 + \ud{2^{'}}$}\coordHE{}, \myHighlight{$\ud2 .
+\ud2 = \ud{2^{'}}$}\coordHE{} and \myHighlight{$\ud2 . \ud{2^{'}} = \ud0$}\coordHE{} lead to the equations:
+\myHighlight{$\alpha + \beta = -1, \alpha . \beta = 1, \alpha^2=\beta$}\coordHE{} and \myHighlight{$\beta^2 =
+\alpha$}\coordHE{}, that determines uniquely \myHighlight{$\alpha$}\coordHE{} and \myHighlight{$\beta$}\coordHE{}.
+
+
+\ud{Sketch of our construction}:
+We first define \myHighlight{$D_4^{\otimesdot}$}\coordHE{} by quotienting the tensor square
+of \myHighlight{$D_{4}$}\coordHE{} by the subalgebra \myHighlight{$J_{3}$}\coordHE{} that admits a two-sided
+\myHighlight{$J_3$}\coordHE{}-invariant complement.
+   From the graph \myHighlight{$Oc(D_{4})$}\coordHE{} taken from \cite{Ocneanu:paths}, we see
+that \myHighlight{$\ud{1}$}\coordHE{} and \myHighlight{$\ud{1\epsilon}$}\coordHE{} separately generate the left and
+right subalgebras isomorphic with the graph algebra of \myHighlight{$D_{4}$}\coordHE{},
+therefore we set \myHighlight{$\ud{1} = 1 \otimesdot 0$}\coordHE{} and \myHighlight{$\ud{1\epsilon} = 0
+\otimesdot 1$}\coordHE{}. We also see that \myHighlight{$\ud{1} . \ud{\epsilon} =
+\ud{1\epsilon}$}\coordHE{}; this equality implies that the \myHighlight{$D_4^{\otimesdot}$}\coordHE{} part of
+\myHighlight{$\ud{\epsilon}$}\coordHE{} should be proportional to \myHighlight{$1\otimesdot 1$}\coordHE{} since
+\myHighlight{$(1 \otimesdot 0)(1 \otimesdot 1)=(0+2+2^{'})\otimesdot 1 = 3 (0 \otimesdot
+1)$}\coordHE{}. The matrix part of \myHighlight{${\epsilon}$}\coordHE{} and of the other generators (the
+coefficients \myHighlight{$\alpha$}\coordHE{} and \myHighlight{$\beta$}\coordHE{}) can then be determined
+by imposing that the obtained multiplication table should
+coincide with the multiplication table constructed from the Ocneanu
+graph \myHighlight{$Oc(D_{4})$}\coordHE{}. Such a construction can be generalized to all
+\myHighlight{$D_{even}$}\coordHE{} cases.
+
+
+The element \myHighlight{$\underline{0}$}\coordHE{} is the identity. The elements
+\myHighlight{$\underline{1}$}\coordHE{} and \myHighlight{$\underline{1\epsilon}$}\coordHE{} are respectively the
+chiral left and right generators.
+The multiplication table of this algebra is given in Table \ref{multOcd4},
+and we can check that multiplication by the generators is indeed
+encoded by the Ocneanu graph of \myHighlight{$D_4$}\coordHE{}, represented in Fig \ref{grocD4}.
+Warning: the table is not symmetric (the multiplication is not
+commutative); for instance \myHighlight{$\ud{2\epsilon} = \ud{2}.\ud{\epsilon}
+\neq \ud{\epsilon}.\ud{2}$}\coordHE{}.
+The  ambichiral part is the linear span of \myHighlight{$\{\ud0, \ud{2}, \ud{2^{'}}  \}$}\coordHE{}.
+
+\begin{table}[hhh]
+$$\coord{}\boxMath{
+\begin{array}{|c||c|c|c|c|c|c|c|c|}
+\hline
+{}   & \ud0 & \ud1 & \ud{1\ep} & \ud{\ep} & \ud{2} & \ud{2^{'}} &
+\ud{2\ep} & \ud{2^{'}\ep} \\
+\hline
+\hline
+\ud0 & \ud0 & \ud1 & \ud{1\ep} & \ud{\ep} & \ud{2} & \ud{2^{'}} &
+\ud{2\ep} & \ud{2^{'}\ep} \\
+\ud1 & \ud1 & \ud0 + \ud2 + \ud{2^{'}} & \ud{\ep} + \ud{2\ep} +
+\ud{2^{'}\ep} & \ud{1\ep} & \ud1 &
+            \ud1 & \ud{1\ep} & \ud{1\ep} \\
+\ud{1\ep} & \ud{1\ep} & \ud{\ep} + \ud{2\ep} + \ud{2^{'}\ep} & \ud0 +
+\ud2 + \ud{2^{'}} & \ud1 &
+            \ud{1\ep} & \ud{1\ep} & \ud1 & \ud1 \\
+\ud{\ep} & \ud{\ep} & \ud{1\ep} & \ud1 & \ud{\eta} & \ud{2^{'}\ep} &
+\ud{2\ep} & \ud{2^{'}\eta} &
+            \ud{2\eta} \\
+\ud2 & \ud2 & \ud1 & \ud{1\ep} & \ud{2\ep} & \ud{2^{'}} & \ud0 &
+\ud{2^{'}\ep} & \ud{\ep} \\
+\ud{2^{'}} & \ud{2^{'}} & \ud1 & \ud{1\ep} & \ud{2^{'}\ep} & \ud0 &
+\ud2 & \ud{\ep} & \ud{2\ep} \\
+\ud{2\ep} & \ud{2\ep} & \ud{1\ep} & \ud1 & \ud{2\eta} & \ud{\ep} &
+\ud{2^{'}\ep} & \ud{\eta} &
+            \ud{2^{'}\eta} \\
+\ud{2^{'}\ep} & \ud{2^{'}\ep} & \ud{1\ep} & \ud1 & \ud{2^{'}\eta} &
+\ud{2\ep} & \ud{\ep} &
+            \ud{2\eta} & \ud{\eta} \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\qquad \qquad \qquad where \myHighlight{$\eta = \frac{1}{3} (\ud0 + \ud2 + \ud{2^{'}})$}\coordHE{}
+\caption{Multiplication table of the Ocneanu algebra of \myHighlight{$D_4$}\coordHE{}}
+\label{multOcd4}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Graphe d'Ocneanu de D4  %%%%%%%%%%%%
+
+\begin{figure}[hhh]
+\unitlength 0.8mm
+\begin{center}
+\begin{picture}(120,70)
+\multiput(25,5)(0,10){2}{\circle*{2}}
+\multiput(25,25)(0,10){2}{\circle{2}}
+\put(25,45){\circle*{2}}
+\put(5,35){\circle*{2}}
+\put(25,65){\circle{2}}
+\put(45,35){\circle*{2}}
+
+%%%% Ici ce sont les lignes continues
+\thicklines
+\put(5,35){\line(1,0){20}}
+\put(5,35){\line(2,-1){20}}
+\put(5,35){\line(2,3){20}}
+
+\thinlines
+\put(45,35){\line(-1,-1){20}}
+\put(45,35){\line(-2,-3){20}}
+\put(45,35){\line(-2,1){20}}
+
+%%%% Ici ce sont les lignes pointillees
+\thicklines
+\dashline[50]{1}(45,35)(25,35)
+\dashline[50]{1}(45,35)(25,65)
+\dashline[50]{1}(45,35)(25,25)
+
+\thinlines
+\dashline[50]{1}(5,35)(25,45)
+\dashline[50]{1}(5,35)(25,15)
+\dashline[50]{1}(5,35)(25,5)
+
+\scriptsize
+\put(25,68){\makebox(0,0){\myHighlight{$\ud{0}$}\coordHE{}}}
+\put(25,48){\makebox(0,0){\myHighlight{$\ud{\epsilon}$}\coordHE{}}}
+\put(25,38){\makebox(0,0){\myHighlight{$\ud{2}$}\coordHE{}}}
+\put(25,29){\makebox(0,0){\myHighlight{$\ud{2^{'}}$}\coordHE{}}}
+\put(25,19){\makebox(0,0){\myHighlight{$\ud{2\epsilon}$}\coordHE{}}}
+\put(21,5){\makebox(0,0){\myHighlight{$\ud{2^{'}\epsilon}$}\coordHE{}}}
+\put(49,35){\makebox(0,0){\myHighlight{$\ud{1\epsilon}$}\coordHE{}}}
+\put(2,35){\makebox(0,0){\myHighlight{$\ud{1}$}\coordHE{}}}
+\normalsize
+\put(100,35){\makebox(0,0){\myHighlight{$
+W_{00}=\left( \begin{array}{ccccc}
+1 & . & . & . & 1 \\
+. & . & . & . & . \\
+. & . & 2 & . & . \\
+. & . & . & . & . \\
+1 & . & . & . & 1 \\
+\end{array} \right)
+$}\coordHE{}
+}}
+\end{picture}
+\caption{The \myHighlight{$D_4$}\coordHE{} Ocneanu graph and the modular invariant matrix}
+\label{grocD4}
+\end{center}
+\end{figure}
+
+The dimensions \myHighlight{$d_{n}$}\coordHE{}, with \myHighlight{$n = 0,1,2,3,4$}\coordHE{}
+  are respectively  \myHighlight{$(4,6,8,6,4)$}\coordHE{}.
+We find that \myHighlight{$\sum d_{n} = 28$}\coordHE{} and \myHighlight{$\sum d_{n}^{2} = 168.$}\coordHE{}
+
+The eight toric matrices \myHighlight{$W_{ab}$}\coordHE{} of the \myHighlight{$D_{4}$}\coordHE{} model
+and the corresponding partition functions
+are obtained as usual. For instance \myHighlight{$W_{\ud{\epsilon}} =
+W_{\ud{2\epsilon}} = W_{\ud{2^{'}\epsilon}} = \frac{1}{3} E_{1} {\widetilde
+E_{1}}^{red}.$}\coordHE{}
+We recall the matrix expression of
+the modular invariant \myHighlight{$W_{00}$}\coordHE{} and give the others toric matrices as
+sesquilinear forms in the appendix\footnote{The toric matrices of \myHighlight{$D_{4}$}\coordHE{}
+were already published in \cite{PetZub:bcft}}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The \myHighlight{$D_6$}\coordHE{} case}
+
+The \myHighlight{$D_6$}\coordHE{} Dynkin diagram and its adjacency matrix are displayed
+below. We use the following order for the vertices: \myHighlight{$\{\sigma_0,
+\sigma_1, \sigma_2, \sigma_3, \sigma_4, \sigma_{4^{' }} \}$}\coordHE{}.
+
+\begin{figure}[hhh]
+\unitlength 0.8mm
+\begin{center}
+\begin{picture}(75,20)(0,10)
+\thinlines
+\multiput(5,10)(15,0){4}{\circle*{2}}
+\put(65,17,5){\circle*{2}}
+\put(65,2,5){\circle*{2}}
+\thicklines
+\put(5,10){\line(1,0){45}}
+\put(50,10){\line(2,1){15}}
+\put(50,10){\line(2,-1){15}}
+\put(5,5){\makebox(0,0){[\myHighlight{$\sigma_0$}\coordHE{}]}}
+\put(20,5){\makebox(0,0){[\myHighlight{$\sigma_1$}\coordHE{}]}}
+\put(35,5){\makebox(0,0){[\myHighlight{$\sigma_2$}\coordHE{}]}}
+\put(50,5){\makebox(0,0){[\myHighlight{$\sigma_3$}\coordHE{}]}}
+\put(70,18){\makebox(0,0){[\myHighlight{$\sigma_4$}\coordHE{}]}}
+\put(71,3){\makebox(0,0){[\myHighlight{$\sigma_4^{'}$}\coordHE{}]}}
+\end{picture}
+\qquad \qquad
+\myHighlight{$
+{\cal G}_{D_6} =
+\left( \begin{array}{cccccc}
+      0 & 1 & 0 & 0 & 0 & 0   \\
+      1 & 0 & 1 & 0 & 0 & 0   \\
+      0 & 1 & 0 & 1 & 0 & 0   \\
+      0 & 0 & 1 & 0 & 1 & 1   \\
+      0 & 0 & 0 & 1 & 0 & 0   \\
+      0 & 0 & 0 & 1 & 0 & 0   \\
+\end{array}
+\right)
+$}\coordHE{}
+\caption{The \myHighlight{$D_6$}\coordHE{} Dynkin diagram and its adjacency matrix}
+\label{grD6}
+\end{center}
+\end{figure}
+Here \myHighlight{$\kappa = 10$}\coordHE{}, the norm of the graph is
+\myHighlight{$\beta = [2]_q = 2 \cos (\frac{\pi}{10})= \sqrt{\frac{5 + \sqrt
+5}{2}}$}\coordHE{} and the normalized Perron-Frobenius vector is
+\myHighlight{$D = \left( [1]_q, [2]_q, [3]_q, [4]_q, \frac{[4]_q}{[2]_q},
+\frac{[4]_q}{[2]_q} \right)$}\coordHE{}.\\
+Imposing positivity, the table of multiplication of the graph
+algebra of \myHighlight{$D_6$}\coordHE{} is completely determined by its Dynkin diagram.
+
+\begin{table}[hhh]
+$$\coord{}\boxMath{
+\begin{array}{||c||c|c|c|c|c|c||}
+\hline
+{}& 0 & 1 & 2 & 3 & 4 & 4^{'}   \\
+\hline
+\hline
+0     & 0     & 1         & 2           & 3             & 4       & 4^{'}    \\
+1     & 1     & 0+2       & 1+3         & 2+4+4^{'}     & 3       & 3        \\
+2     & 2     & 1+3       & 0+2+4+4^{'} & 1+3+3         & 2+4^{'} & 2+4      \\
+3     & 3     & 2+4+4^{'} & 1+3+3       & 0+2+2+4+4^{'} & 1+3     & 1+3      \\
+4     & 4     & 3         & 2+4^{'}     & 1+3           & 0+4     & 2        \\
+4^{'} & 4^{'} & 3         & 2+4         & 1+3           & 2       & 0+4^{'}  \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\caption{Multiplication table for the graph algebra of \myHighlight{$D_6$}\coordHE{}}
+\end{table}
+The fusion matrices \myHighlight{$G_{i}$}\coordHE{} are given by the following polynomials:
+$$\coord{}\boxMath{
+\begin{array}{lll}
+G_0 = Id_6 \qquad \qquad &   G_2 = G_1.G_1 - G_0 \qquad \qquad & G_4
++ G_{4^{'}} = G_1.G_3 - G_2 \\
+G_1 = {\cal G}_{D_6}  & G_3 = G_2.G_1 - G_1 &  {}
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+Imposing that entries of \myHighlight{$G_4$}\coordHE{} and \myHighlight{$G_{4^{'}}$}\coordHE{} should be positive
+integers leads to a unique solution (up to \myHighlight{$G_4 \leftrightarrow
+G_{4^{'}}$}\coordHE{}), namely:
+$$\coord{}\boxMath{
+G_4 = \left( \begin{array}{cccccc}
+0 & 0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0 & 0 & 1 \\
+\end{array}
+\right)
+\qquad \qquad \qquad
+G_4^{'} = \left( \begin{array}{cccccc}
+0 & 0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 1 \\
+0 & 1 & 0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 \\
+\end{array}
+\right)
+}{dollar}{0pt}\coordE{}$$
+
+
+Essential matrices have 6 columns and 9 rows. They are labeled
+by vertices of diagrams \myHighlight{$D_6$}\coordHE{} and \myHighlight{$A_9$}\coordHE{}. The first essential
+matrix \myHighlight{$E_0$}\coordHE{} is given in Fig \ref{D6:E0}, together with the corresponding
+induction-restriction graph (\myHighlight{$D_6$}\coordHE{} diagram with vertices labeled
+by \myHighlight{$A_9$}\coordHE{} vertices).
+
+\begin{figure}[hhh]
+\unitlength 0.7mm
+\begin{center}
+\myHighlight{$
+E_0 =
+\left(
+\begin{array}{cccccc}
+1 & . & . & . & . & . \cr
+. & 1 & . & . & . & . \cr
+. & . & 1 & . & . & . \cr
+. & . & . & 1 & . & . \cr
+. & . & . & . & 1 & 1 \cr
+. & . & . & 1 & . & . \cr
+. & . & 1 & . & . & . \cr
+. & 1 & . & . & . & . \cr
+1 & . & . & . & . & . \cr
+\end{array}
+\right)
+$}\coordHE{}
+\qquad \qquad
+\unitlength 0.8mm
+\begin{picture}(75,20)(0,10)
+\thinlines
+\multiput(5,10)(15,0){4}{\circle*{1.5}}
+\put(65,17,5){\circle*{1.5}}
+\put(65,2,5){\circle*{1.5}}
+\put(5,12){\myHighlight{$\ast$}\coordHE{}}
+\thinlines
+\put(5,10){\line(1,0){45}}
+\put(50,10){\line(2,1){15}}
+\put(50,10){\line(2,-1){15}}
+\put(5,5){\makebox(0,0){0}}
+\put(5,0){\makebox(0,0){8}}
+\put(20,5){\makebox(0,0){1}}
+\put(20,0){\makebox(0,0){7}}
+\put(35,5){\makebox(0,0){2}}
+\put(35,0){\makebox(0,0){6}}
+\put(50,5){\makebox(0,0){3}}
+\put(50,0){\makebox(0,0){5}}
+\put(65,13){\makebox(0,0){4}}
+\put(65,-2){\makebox(0,0){4}}
+\end{picture}
+\bigskip
+\caption{Essential matrix \myHighlight{$E_0$}\coordHE{} and Essential Paths from the vertex 0
+for the \myHighlight{$D_6$}\coordHE{} model}
+\label{D6:E0}
+\end{center}
+\end{figure}
+
+
+The subspace \myHighlight{$J_4$}\coordHE{} generated by the elements \myHighlight{$\{ 0, 2, 4, 4^{'} \}$}\coordHE{}
+is a subalgebra of the graph algebra of \myHighlight{$D_6$}\coordHE{}
+that admits a two-sided \myHighlight{$J_4$}\coordHE{}-invariant complement.
+We first form the tensor product \myHighlight{$D_6 \otimes D_6$}\coordHE{}, but we take it over
+the subalgebra \myHighlight{$J_4$}\coordHE{}. We get the algebra \myHighlight{$D_6^{\otimesdot} =
+D_6 \otimesdot D_6 \doteq
+D_6 \otimes_{J_4} D_6$}\coordHE{}, spanned by a basis with 10 elements:
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&\leftCoord{}0 \otimesdot 0,& \qquad 1 \otimesdot 0, \qquad 2 \otimesdot 0, \qquad 3 \rightCoord{}
+\otimesdot 0, \qquad 4 \otimesdot 0, \rightCoord{}\\
+&\leftCoord{}4^{'} \otimesdot 0,& \qquad 0 \otimesdot 1,\qquad 0 \otimesdot 3,\qquad 1 \rightCoord{}
+\otimesdot 1,\qquad 1 \otimesdot 3. \rightCoord{}
+\rightCoord{}}{0mm}{2}{6}{
+&0 \otimesdot 0,& \qquad 1 \otimesdot 0, \qquad 2 \otimesdot 0, \qquad 3 
+\otimesdot 0, \qquad 4 \otimesdot 0, \\
+&4^{'} \otimesdot 0,& \qquad 0 \otimesdot 1,\qquad 0 \otimesdot 3,\qquad 1 
+\otimesdot 1,\qquad 1 \otimesdot 3. 
+}{1}\coordE{}\end{eqnarray*}
+The Ocneanu algebra of \myHighlight{$D_6$}\coordHE{}, \myHighlight{${\cal H}_{Oc(D_6)}$}\coordHE{}, can be realized as
+a subalgebra of dimension
+12 of the following non-commutative algebra:
+$$\coord{}\boxMath{
+D_6^{\otimesdot} \; \oplus \; M(2,\mathbb{C})
+}{dollar}{0pt}\coordE{}$$
+The 12 elements of the basis are given by:
+$$\coord{}\boxMath{
+\begin{array}{cccclcc}
+\underline{0}         = 0     \otimesdot 0 &+&
+\left( \begin{array}{cc} 1 & 0 \\ 0 & 1 \\ \end{array} \right)
+& \qquad \qquad &
+\underline{\epsilon}  = \frac{3}{5} (1 \otimesdot 1) - \frac{1}{5} (3
+\otimesdot 1)                       &+&
+\theta \left( \begin{array}{cc} 0 & 1 \\ 1 & 0 \\ \end{array} \right) \\
+\underline{1}         = 1     \otimesdot 0 &+&
+\left( \begin{array}{cc} 0 & 0 \\ 0 & 0 \\ \end{array} \right)
+&{}&
+\underline{1\epsilon} = 0     \otimesdot 1 &+&
+\left( \begin{array}{cc} 0 & 0 \\ 0 & 0 \\ \end{array} \right) \\
+\underline{2}         = 2     \otimesdot 0 &+&
+\left( \begin{array}{cc} -1 & 0 \\ 0 & -1 \\ \end{array} \right)
+&{}&
+\underline{2\epsilon} = \frac{2}{5} (1 \otimesdot 1) + \frac{1}{5} (3
+\otimesdot 1)                      &+&
+\theta \left( \begin{array}{cc} 0 & -1 \\ -1 & 0 \\ \end{array} \right)\\
+\underline{3}         = 3     \otimesdot 0 &+&
+\left( \begin{array}{cc} 0 & 0 \\ 0 & 0 \\ \end{array} \right)
+&{}&
+\underline{3\epsilon} = 0     \otimesdot 3 &+&
+\left( \begin{array}{cc} 0 & 0 \\ 0 & 0 \\ \end{array} \right)\\
+\underline{4}         = 4     \otimesdot 0 &+&
+\left( \begin{array}{cc} \alpha & 0 \\ 0 & \beta \\ \end{array} \right)
+&{}&
+\underline{4\epsilon} = -\frac{1}{5} (1 \otimesdot 1) + \frac{2}{5} (3
+\otimesdot 1)                     &+&
+\theta \left( \begin{array}{cc} 0 & \alpha \\ \beta & 0 \\
+\end{array} \right) \\
+\underline{4^{'}}     = 4^{'} \otimesdot 0 &+&
+\left( \begin{array}{cc} \beta & 0 \\ 0 & \alpha \\ \end{array} \right)
+&{}&
+\underline{4^{'}\epsilon} = -\frac{1}{5} (1 \otimesdot 1) + \frac{2}{5}
+(3 \otimesdot 1)                      &+&
+\theta \left( \begin{array}{cc} 0 & \beta \\ \alpha & 0 \\ \end{array} \right)
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+where:
+$$\coord{}\boxMath{
+\theta^2 = 0, \qquad \qquad
+\alpha   = \frac{-1+\sqrt{5}}{2}, \qquad \qquad
+\text{and} \qquad
+\beta    = \frac{-1-\sqrt{5}}{2}
+}{dollar}{0pt}\coordE{}$$
+The element \myHighlight{$\underline{0}$}\coordHE{} is the identity. The elements
+\myHighlight{$\underline{1}$}\coordHE{} and \myHighlight{$\underline{1\epsilon}$}\coordHE{} are respectively the
+chiral left and right generators.
+The multiplication by these generators is encoded by the Ocneanu
+graph of \myHighlight{$D_6$}\coordHE{}, represented in Fig \ref{grocD6}.
+The ambichiral part is the linear span of \myHighlight{$\{ \ud0, \ud{2}, \ud{4},
+\ud{4^{'}} \}$}\coordHE{}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%  Graphe d'Ocneanu de D6  %%%%%%%%%%%%
+\begin{figure}[hhh]
+\unitlength 0.8mm
+\begin{center}
+\begin{picture}(160,110)
+\multiput(25,5)(0,10){2}{\circle*{2}}
+\multiput(25,25)(0,10){2}{\circle{2}}
+\put(25,45){\circle*{2}}
+\put(5,35){\circle*{2}}
+\put(45,35){\circle*{2}}
+
+\put(5,75){\circle*{2}}
+\put(45,75){\circle*{2}}
+\put(25,65){\circle{2}}
+\put(25,85){\circle*{2}}
+\put(25,105){\circle{2}}
+
+
+%%%% Ici ce sont les lignes continues
+\thicklines
+\put(5,35){\line(1,0){20}}
+\put(5,35){\line(2,-1){20}}
+\put(5,35){\line(2,3){20}}
+\put(5,75){\line(2,-1){20}}
+\put(5,75){\line(2,3){20}}
+
+\thinlines
+\put(45,35){\line(-1,-1){20}}
+\put(45,35){\line(-2,-3){20}}
+\put(45,35){\line(-2,1){20}}
+\put(45,75){\line(-2,1){20}}
+\put(45,75){\line(-2,-3){20}}
+
+
+%%%% Ici ce sont les lignes pointillees
+\thicklines
+\dashline[50]{1}(45,35)(25,35)
+\dashline[50]{1}(45,35)(25,65)
+\dashline[50]{1}(45,35)(25,25)
+\dashline[50]{1}(45,75)(25,65)
+\dashline[50]{1}(45,75)(25,105)
+
+\thinlines
+\dashline[50]{1}(5,35)(25,45)
+\dashline[50]{1}(5,35)(25,15)
+\dashline[50]{1}(5,35)(25,5)
+\dashline[50]{1}(5,75)(25,85)
+\dashline[50]{1}(5,75)(25,45)
+
+\scriptsize
+\put(25,109){\makebox(0,0){\myHighlight{$\ud{0}$}\coordHE{}}}
+\put(25,88){\makebox(0,0){\myHighlight{$\ud{\epsilon}$}\coordHE{}}}
+\put(2,75){\makebox(0,0){\myHighlight{$\ud{1}$}\coordHE{}}}
+\put(48,75){\makebox(0,0){\myHighlight{$\ud{1\epsilon}$}\coordHE{}}}
+\put(25,68){\makebox(0,0){\myHighlight{$\ud{2}$}\coordHE{}}}
+\put(25,49){\makebox(0,0){\myHighlight{$\ud{2\epsilon}$}\coordHE{}}}
+\put(25,38){\makebox(0,0){\myHighlight{$\ud{4}$}\coordHE{}}}
+\put(25,29){\makebox(0,0){\myHighlight{$\ud{4^{'}}$}\coordHE{}}}
+\put(25,19){\makebox(0,0){\myHighlight{$\ud{4\epsilon}$}\coordHE{}}}
+\put(21,5){\makebox(0,0){\myHighlight{$\ud{4^{'}\epsilon}$}\coordHE{}}}
+\put(48,35){\makebox(0,0){\myHighlight{$\ud{3\epsilon}$}\coordHE{}}}
+\put(2,35){\makebox(0,0){\myHighlight{$\ud{3}$}\coordHE{}}}
+\normalsize
+\put(120,55){\makebox(0,0){
+\myHighlight{$
+W_{00}=\left( \begin{array}{ccccccccc}
+1 & . & . & . & . & . & . & . & 1 \\
+. & . & . & . & . & . & . & . & . \\
+. & . & 1 & . & . & . & 1 & . & . \\
+. & . & . & . & . & . & . & . & . \\
+. & . & . & . & 2 & . & . & . & . \\
+. & . & . & . & . & . & . & . & . \\
+. & . & 1 & . & . & . & 1 & . & . \\
+. & . & . & . & . & . & . & . & . \\
+1 & . & . & . & . & . & . & . & 1 \\
+\end{array}
+\right)
+$}\coordHE{}}}
+\end{picture}
+\caption{The \myHighlight{$D_6$}\coordHE{} Ocneanu graph and the modular invariant matrix}
+\label{grocD6}
+\end{center}
+\end{figure}
+
+
+The dimensions \myHighlight{$d_{n}$}\coordHE{}, with \myHighlight{$n=0,1,2,\ldots,8$}\coordHE{},
+  are respectively \myHighlight{$(6,10,14,16,18,16,14,10,6)$}\coordHE{}.
+Therefore, \myHighlight{$\sum {d_{n}} = 110$}\coordHE{}  and \myHighlight{$\sum {d_{n}^{2}} = 1500.$}\coordHE{}
+
+The twelve toric matrices \myHighlight{$W_{ab}$}\coordHE{} of the \myHighlight{$D_{6}$}\coordHE{} model
+and the corresponding partition functions
+are obtained as usual. For instance \myHighlight{$W_{\ud{2 \epsilon}}=
+\frac{2}{5} E_{1} {\widetilde E_{1}}^{red} + \frac{1}{5} E_{3}
+{\widetilde E_{1}}^{red}.$}\coordHE{}
+We recall the matrix expression of the modular invariant \myHighlight{$W_{00}$}\coordHE{} and
+give the others as
+sesquilinears forms in the appendix.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The \myHighlight{$D_{even}$}\coordHE{} case}
+
+In the case of \myHighlight{$D_{2s}$}\coordHE{}, we first build \myHighlight{$D_{2s}^{\otimesdot} =
+D_{2s} \otimes D_{2s} / J_{s+1}$}\coordHE{}, of dimension \myHighlight{$4s-2$}\coordHE{}
+by dividing the tensor square of \myHighlight{$D_{2s}$}\coordHE{} by the two-sided ideal
+generated by \myHighlight{$u\otimes 0 - 0 \otimes u$}\coordHE{}, where \myHighlight{$u$}\coordHE{} belongs to the
+subalgebra \myHighlight{$J_{s+1}$}\coordHE{} spanned by \myHighlight{$\{0,2,4,6,\ldots, (2s-4), (2s-2),
+(2s-2)^{'}\}$}\coordHE{}. This subalgebra admits a two-sided \myHighlight{$J_{s+1}$}\coordHE{}-invariant
+complement.
+We then define \myHighlight{${\cal H}_{Oc(D_{2s})}$}\coordHE{} as a subalgebra
+of dimension \myHighlight{$4s$}\coordHE{} of  \myHighlight{$D_{2s}^{\otimesdot} \oplus M(2,\CC)$}\coordHE{}. It is
+enough to know \myHighlight{$\ud{0}, \ud{1}$}\coordHE{} and \myHighlight{$\ud{\epsilon}$}\coordHE{} to build explicitly
+an algebra \myHighlight{${\cal H}_{Oc(D_{2s}})$}\coordHE{} from the graph \myHighlight{$Oc(D_{2s})$}\coordHE{}.
+We fix:
+$$\coord{}\boxMath{\ud{0} = 0 \otimesdot 0 + \left(
+\begin{array}{cc} 1 & 0 \\ 0 & 1 \end{array} \right)
+\qquad
+\ud{1} = 1 \otimesdot 0 + \left(
+\begin{array}{cc} 0 & 0 \\ 0 & 0 \end{array} \right)
+\qquad
+\ud{1\epsilon} = 0 \otimesdot 1 + \left(
+\begin{array}{cc} 0 & 0 \\ 0 & 0 \end{array} \right)
+}{dollar}{0pt}\coordE{}$$
+and set:
+$$\coord{}\boxMath{\ud{\epsilon} = \sum a_{\alpha} \alpha \otimesdot 1 + \theta
+\left( \begin{array}{cc} 0 & 1 \\ 1 & 0 \\ \end{array} \right)
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$\alpha \in \{1,3,\ldots, 2s-3\}$}\coordHE{} and where the \myHighlight{$a_{\alpha}$}\coordHE{} are
+scalars uniquely determined by the (linear) equation \myHighlight{$\ud1 .
+\ud{\epsilon} = \ud{1\epsilon}$}\coordHE{}.
+The \myHighlight{$D_{2s}^{\otimesdot}$}\coordHE{} parts of the other elements are then uniquely
+fixed. For the elements \myHighlight{$(\ud2, \ud3, \cdots, \ud{(2s-2)}, \ud{(2s-2)^{'}})$}\coordHE{},
+it is: \myHighlight{$(2 \otimesdot 0, 3 \otimesdot 0, \cdots)$}\coordHE{}. \\
+We write the matrix part of \myHighlight{$\ud{(2s-2)}, \ud{(2s-2)^{'}})$}\coordHE{} as:
+$$\coord{}\boxMath{
+\ud{(2s-2)} = \cdots + \theta \left(
+\begin{array}{cc} \alpha & 0 \\ 0 & \beta \end{array} \right)
+\qquad \qquad
+\ud{(2s-2)^{'}} = \cdots + \theta \left(
+\begin{array}{cc} \beta & 0 \\ 0 & \alpha \end{array} \right)
+}{dollar}{0pt}\coordE{}$$
+By imposing that the obtained multiplication table should coincide with the
+multiplication table constructed from the Ocneanu graph \myHighlight{$Oc(D_{2s})$}\coordHE{},
+we determine uniquely the expression of the others elements,
+and find also the values of \myHighlight{$\theta, \alpha$}\coordHE{} and \myHighlight{$\beta$}\coordHE{}.
+In every case \myHighlight{$\theta^2 = 0$}\coordHE{}. For \myHighlight{$\alpha$}\coordHE{} and \myHighlight{$\beta$}\coordHE{} we find:
+\begin{itemize}
+\item[-] s even : \myHighlight{$\alpha$}\coordHE{} and \myHighlight{$\beta$}\coordHE{} are complexes:
+$$\coord{}\boxMath{
+\alpha = \frac{-1+i\sqrt{(2s-1)}}{2} \qquad \qquad
+\beta = \frac{-1-i\sqrt{(2s-1)}}{2} = \overline{\alpha}.
+}{dollar}{0pt}\coordE{}$$
+\item[-] s odd: \myHighlight{$\alpha$}\coordHE{} and \myHighlight{$\beta$}\coordHE{} are reals:
+$$\coord{}\boxMath{
+\alpha = \frac{-1+ \sqrt{(2s-1)}}{2} \qquad \qquad
+\beta = \frac{ -1- \sqrt{(2s-1)}}{2} .
+}{dollar}{0pt}\coordE{}$$
+\end{itemize}
+The tables of fusion for the cases s even and s odd have also a different
+structure, as it is clear from the examples \myHighlight{$D_4$}\coordHE{} and \myHighlight{$D_6$}\coordHE{} given in the
+previous sections.
+
+
+
+
+\section{The \myHighlight{$D_{odd}$}\coordHE{} case}
+
+General formulae valid for all cases of this family are a bit heavy\ldots
+We therefore only provide a detailed treatment of the cases \myHighlight{$D_{5}$}\coordHE{} and
+\myHighlight{$D_{7}$}\coordHE{} but  generalization is straightforward.
+
+
+\subsection{The \myHighlight{$D_5$}\coordHE{} case}
+The \myHighlight{$D_5$}\coordHE{} Dynkin diagram and its adjacency matrix are displayed
+below. We use the following order for the vertices: \myHighlight{$\{\sigma_0,
+\sigma_1, \sigma_2, \sigma_3,
+\sigma_{3^{'}} \}$}\coordHE{}.
+
+\begin{figure}[hhh]
+\unitlength 0.8mm
+\begin{center}
+\begin{picture}(60,20)(0,7.5)
+\thinlines
+\multiput(5,10)(15,0){3}{\circle*{2}}
+\put(50,17,5){\circle*{2}}
+\put(50,2,5){\circle*{2}}
+\thicklines
+\put(5,10){\line(1,0){30}}
+\put(35,10){\line(2,1){15}}
+\put(35,10){\line(2,-1){15}}
+\put(5,5){\makebox(0,0){[\myHighlight{$\sigma_0$}\coordHE{}]}}
+\put(20,5){\makebox(0,0){[\myHighlight{$\sigma_1$}\coordHE{}]}}
+\put(35,5){\makebox(0,0){[\myHighlight{$\sigma_2$}\coordHE{}]}}
+\put(55,18){\makebox(0,0){[\myHighlight{$\sigma_3$}\coordHE{}]}}
+\put(56,3){\makebox(0,0){[\myHighlight{$\sigma_3^{'}$}\coordHE{}]}}
+\end{picture}
+\qquad \qquad
+\myHighlight{$
+{\cal G}_{D_5} =
+\left( \begin{array}{ccccc}
+      0 & 1 & 0 & 0 & 0   \\
+      1 & 0 & 1 & 0 & 0   \\
+      0 & 1 & 0 & 1 & 1   \\
+      0 & 0 & 1 & 0 & 0   \\
+      0 & 0 & 1 & 0 & 0   \\
+\end{array}
+\right)
+$}\coordHE{}
+\caption{The \myHighlight{$D_5$}\coordHE{} Dynkin diagram and its adjacency matrix}
+\label{grD5}
+\end{center}
+\end{figure}
+
+Here \myHighlight{$\kappa = 8$}\coordHE{}, the norm of the graph is \myHighlight{$\beta = [2]_q = 2 \cos
+(\frac{\pi}{8}) = \sqrt{2 + \sqrt 2}$}\coordHE{} and the normalized
+Perron-Frobenius vector is
+\myHighlight{$D = \left( [1]_q, [2]_q, [3]_q, \frac{[3]_q}{[2]_q}, \frac{[3]_q}{[2]_q}
+     \right)$}\coordHE{}. \\
+In the \myHighlight{$D_{5}$}\coordHE{} case, as in all \myHighlight{$D_{odd}$}\coordHE{} cases, it is not possible to define a
+graph algebra at all.\\
+Essential matrices of \myHighlight{$D_{5}$}\coordHE{} have 5 columns and 7 rows. They are labeled
+by vertices of diagrams \myHighlight{$D_5$}\coordHE{} and \myHighlight{$A_{7}$}\coordHE{}. The first essential
+matrix \myHighlight{$E_0$}\coordHE{} is given in Fig \ref{D5:E0}, together with the corresponding
+induction-restriction graph (\myHighlight{$D_5$}\coordHE{} diagram with vertices labeled
+by \myHighlight{$A_7$}\coordHE{} vertices).
+
+
+\begin{figure}[hhh]
+\unitlength 0.7mm
+\begin{center}
+\myHighlight{$
+E_0 =
+\left(
+\begin{array}{ccccc}
+1 & . & . & . & .  \cr
+. & 1 & . & . & .  \cr
+. & . & 1 & . & .  \cr
+. & . & . & 1 & 1  \cr
+. & . & 1 & . & .  \cr
+. & 1 & . & . & .  \cr
+1 & . & . & . & .  \cr
+\end{array}
+\right)
+$}\coordHE{}
+\qquad \qquad
+\unitlength 0.8mm
+\begin{picture}(60,20)(0,10)
+\thinlines
+\multiput(5,10)(15,0){3}{\circle*{1.5}}
+\put(50,17,5){\circle*{1.5}}
+\put(50,2,5){\circle*{1.5}}
+\put(5,12){\myHighlight{$\ast$}\coordHE{}}
+\thinlines
+\put(5,10){\line(1,0){30}}
+\put(35,10){\line(2,1){15}}
+\put(35,10){\line(2,-1){15}}
+\put(5,5){\makebox(0,0){0}}
+\put(5,0){\makebox(0,0){6}}
+\put(20,5){\makebox(0,0){1}}
+\put(20,0){\makebox(0,0){5}}
+\put(35,5){\makebox(0,0){2}}
+\put(35,0){\makebox(0,0){4}}
+\put(50,12.5){\makebox(0,0){3}}
+\put(50,-2.5){\makebox(0,0){3}}
+\end{picture}
+\bigskip
+\caption{Essential matrix \myHighlight{$E_0$}\coordHE{} and Essential Paths from the vertex 0
+for the \myHighlight{$D_5$}\coordHE{} model}
+\label{D5:E0}
+\end{center}
+\end{figure}
+
+
+
+The Ocneanu algebra of \myHighlight{$D_5$}\coordHE{} can be realized by using the graph
+algebra of \myHighlight{$A_7$}\coordHE{}.
+For \myHighlight{$D_{2n+1}$}\coordHE{}, we have to use the graph algebra of \myHighlight{$A_{4n-1}$}\coordHE{}.\\
+We form the tensor product \myHighlight{$A_7 \otimes A_7$}\coordHE{}, and define an application
+\myHighlight{$\rho: A_7 \rightarrow A_7$}\coordHE{} such that:
+$$\coord{}\boxMath{
+\rho(i) = i \qquad \text{for} i \in \{0,2,3,4,6,7 \} \qquad \text{and} \quad
+\rho(1) = 5, \quad \rho(5) =1.
+}{dollar}{0pt}\coordE{}$$
+We take the tensor product over \myHighlight{$\rho$}\coordHE{}, and define the Ocneanu
+algebra of \myHighlight{$D_5$}\coordHE{} as:
+$$\coord{}\boxMath{
+{\cal{H}}_{Oc(D_5)}= A_7 \otimesdot A_7  \doteq \frac{A_7 \otimes
+A_7}{\rho(A_7)}.
+}{dollar}{0pt}\coordE{}$$
+For instance \myHighlight{$2 \otimesdot 0 = 0 \otimesdot \rho (2) = 0 \otimesdot 2$}\coordHE{}, and
+\myHighlight{$1 \otimesdot 0 = 0 \otimesdot \rho (1) = 0 \otimesdot 5$}\coordHE{}.\\
+\myHighlight{${\cal{H}}_{Oc(D_5)}$}\coordHE{} is spanned by a basis with 7 elements:
+$$\coord{}\boxMath{
+\begin{array}{lcc}
+\ud0 = 0 \otimesdot 0, & {} & \ud4 = 4 \otimesdot 0 = 0 \otimesdot 4, \\
+\ud1 = 1 \otimesdot 0 = 0 \otimesdot 5, & \qquad \qquad \qquad & \ud5 = 5
+\otimesdot 0 = 0 \otimesdot 1, \\
+\ud2 = 2 \otimesdot 0 = 0 \otimesdot 2, & {} & \ud6 = 6 \otimesdot 0
+= 0 \otimesdot 6. \\
+\ud3 = 3 \otimesdot 0 = 0 \otimesdot 3, & {} & {} \\
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+
+\myHighlight{$1 \otimesdot 0$}\coordHE{} and \myHighlight{$0 \otimesdot 1$}\coordHE{} are respectively the chiral
+left and right
+generators. The multiplication by these generators is encoded by the
+Ocneanu graph
+of \myHighlight{$D_5$}\coordHE{}, represented in Fig \ref{grocD5}.
+All the points are ambichiral.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%  D5  %%%%%%%%%%%%
+\begin{figure}[hhh]
+\unitlength 0.8mm
+\begin{center}
+\begin{picture}(120,70)
+\multiput(20,5)(0,15){5}{\circle{2}}
+\put(5,35){\circle{2}}
+\put(35,35){\circle{2}}
+
+%%%% Ici ce sont les lignes continues
+\thicklines
+\put(5,35){\line(1,1){15}}
+\put(5,35){\line(1,2){15}}
+\put(35,35){\line(-1,-1){15}}
+\put(35,35){\line(-1,-2){15}}
+\put(19.5,50){\line(0,-1){15}}
+\put(20.5,20){\line(0,1){15}}
+
+%%%% Ici ce sont les lignes pointillees
+\thicklines
+\dashline[50]{1}(5,35)(20,20)
+\dashline[50]{1}(5,35)(20,5)
+\dashline[50]{1}(35,35)(20,50)
+\dashline[50]{1}(35,35)(20,65)
+\dashline[80]{1}(20.5,50)(20.5,35)
+\dashline[80]{1}(19.5,20)(19.5,35)
+
+
+%%%% les points %%%%%
+\small
+\put(20,69){\makebox(0,0){\myHighlight{$\ud{0}$}\coordHE{}}}
+\put(20,54){\makebox(0,0){\myHighlight{$\ud{2}$}\coordHE{}}}
+\put(23,35){\makebox(0,0){\myHighlight{$\ud{3}$}\coordHE{}}}
+\put(20,16){\makebox(0,0){\myHighlight{$\ud{4}$}\coordHE{}}}
+\put(1,35){\makebox(0,0){\myHighlight{$\ud{1}$}\coordHE{}}}
+\put(39,35){\makebox(0,0){\myHighlight{$\ud{5}$}\coordHE{}}}
+\put(20,1){\makebox(0,0){\myHighlight{$\ud{6}$}\coordHE{}}}
+\normalsize
+\put(100,35){\makebox(0,0){\myHighlight{$W_{00}=\left( \begin{array}{ccccccc}
+1 & . & . & . & . & . & .  \\
+. & . & . & . & . & 1 & .  \\
+. & . & 1 & . & . & . & .  \\
+. & . & . & 1 & . & . & .  \\
+. & . & . & . & 1 & . & .  \\
+. & 1 & . & . & . & . & .  \\
+. & . & . & . & . & . & 1  \\
+\end{array}
+\right)
+$}\coordHE{}}}
+
+\end{picture}
+\caption{The \myHighlight{$D_5$}\coordHE{} Ocneanu graph and the modular invariant matrix}
+\label{grocD5}
+\end{center}
+\end{figure}
+
+To obtain the toric matrices of the \myHighlight{$D_5$}\coordHE{} model, we need the essential
+matrices \myHighlight{$E_i(A_7)$}\coordHE{} of the \myHighlight{$A_7$}\coordHE{} case (we recall that in the
+\myHighlight{$A_n$}\coordHE{} cases, the essential matrices are equal to the fusion matrices
+\myHighlight{$N_i$}\coordHE{} ). We define new essential matrices \myHighlight{$E_i^{\rho}(A_7)$}\coordHE{} by
+permuting the columns of \myHighlight{$E_i(A_7)$}\coordHE{} associated with the vertices 1 and 5.
+The toric matrices of the \myHighlight{$D_5$}\coordHE{} model are then obtained by setting:
+$$\coord{}\boxMath{
+W[a,b] \doteq E_a(A_7) . \widetilde{ (E_b^{\rho}(A_7))}
+}{dollar}{0pt}\coordE{}$$
+We recall the matrix expression of the modular invariant \myHighlight{$W_{00}$}\coordHE{} and give
+the others as sesquilinears forms in the appendix.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The \myHighlight{$D_7$}\coordHE{} case}
+The \myHighlight{$D_7$}\coordHE{} Dynkin diagram and its adjacency matrix are displayed
+below. We use the following order for the vertices: \myHighlight{$\{\sigma_0,
+\sigma_1, \sigma_2, \sigma_3, \sigma_4, \sigma_5, \sigma_{5^{'}} \}$}\coordHE{}.
+
+\begin{figure}[hhh]
+\unitlength 0.8mm
+\begin{center}
+\begin{picture}(90,20)(0,10)
+\thinlines
+\multiput(5,10)(15,0){5}{\circle*{2}}
+\put(80,17,5){\circle*{2}}
+\put(80,2,5){\circle*{2}}
+\thicklines
+\put(5,10){\line(1,0){60}}
+\put(65,10){\line(2,1){15}}
+\put(65,10){\line(2,-1){15}}
+\put(5,5){\makebox(0,0){[\myHighlight{$\sigma_0$}\coordHE{}]}}
+\put(20,5){\makebox(0,0){[\myHighlight{$\sigma_1$}\coordHE{}]}}
+\put(35,5){\makebox(0,0){[\myHighlight{$\sigma_2$}\coordHE{}]}}
+\put(50,5){\makebox(0,0){[\myHighlight{$\sigma_3$}\coordHE{}]}}
+\put(65,5){\makebox(0,0){[\myHighlight{$\sigma_4$}\coordHE{}]}}
+\put(85,18){\makebox(0,0){[\myHighlight{$\sigma_5$}\coordHE{}]}}
+\put(86,3){\makebox(0,0){[\myHighlight{$\sigma_5^{'}$}\coordHE{}]}}
+\end{picture}
+\qquad \qquad
+\myHighlight{$
+{\cal G}_{D_7} =
+\left( \begin{array}{ccccccc}
+      0 & 1 & 0 & 0 & 0 & 0 & 0  \\
+      1 & 0 & 1 & 0 & 0 & 0 & 0  \\
+      0 & 1 & 0 & 1 & 0 & 0 & 0  \\
+      0 & 0 & 1 & 0 & 1 & 0 & 0  \\
+      0 & 0 & 0 & 1 & 0 & 1 & 1  \\
+      0 & 0 & 0 & 0 & 1 & 0 & 0  \\
+      0 & 0 & 0 & 0 & 1 & 0 & 0  \\
+      \end{array}
+\right)
+$}\coordHE{}
+\caption{The \myHighlight{$D_7$}\coordHE{} Dynkin diagram and its adjacency matrix}
+\label{grD7}
+\end{center}
+\end{figure}
+
+Here \myHighlight{$\kappa = 12$}\coordHE{}, the norm of the graph is \myHighlight{$\beta = [2]_q = 2 \cos
+(\frac{\pi}{12}) = \frac{1+\sqrt 3}{\sqrt 2}$}\coordHE{} and the normalized
+Perron-Frobenius vector is
+\myHighlight{$D = \left( [1]_q, [2]_q, [3]_q, [4]_q, [5]_q, \frac{[5]_q}{[2]_q},
+\frac{[5]_q}{[2]_q}
+     \right)$}\coordHE{}.  \\
+Essential matrices have 7 columns and 11 rows. They are labeled by
+vertices of diagrams \myHighlight{$D_7$}\coordHE{} and \myHighlight{$A_{11}$}\coordHE{}. The first essential matrix
+\myHighlight{$E_0$}\coordHE{} is given in Fig \ref{D7:E0}, together with the corresponding
+induction-restriction graph (\myHighlight{$D_7$}\coordHE{} diagram with vertices labeled
+by \myHighlight{$A_{11}$}\coordHE{} vertices).
+
+\begin{figure}[hhh]
+\unitlength 0.7mm
+\begin{center}
+\myHighlight{$
+E_0 =
+\left(
+\begin{array}{ccccccc}
+1 & . & . & . & . & . & .  \cr
+. & 1 & . & . & . & . & .  \cr
+. & . & 1 & . & . & . & .  \cr
+. & . & . & 1 & . & . & .  \cr
+. & . & . & . & 1 & . & .  \cr
+. & . & . & . & . & 1 & 1  \cr
+. & . & . & . & 1 & . & .  \cr
+. & . & . & 1 & . & . & .  \cr
+. & . & 1 & . & . & . & .  \cr
+. & 1 & . & . & . & . & .  \cr
+1 & . & . & . & . & . & .  \cr
+\end{array}
+\right)
+$}\coordHE{}
+\qquad \qquad
+\unitlength 0.8mm
+\begin{picture}(90,20)(0,10)
+\thinlines
+\multiput(5,10)(15,0){5}{\circle*{1.5}}
+\put(80,17,5){\circle*{1.5}}
+\put(80,2,5){\circle*{1.5}}
+\put(5,12){\myHighlight{$\ast$}\coordHE{}}
+\thinlines
+\put(5,10){\line(1,0){60}}
+\put(65,10){\line(2,1){15}}
+\put(65,10){\line(2,-1){15}}
+\put(5,5){\makebox(0,0){0}}
+\put(5,0){\makebox(0,0){10}}
+\put(20,5){\makebox(0,0){1}}
+\put(20,0){\makebox(0,0){9}}
+\put(35,5){\makebox(0,0){2}}
+\put(35,0){\makebox(0,0){8}}
+\put(50,5){\makebox(0,0){3}}
+\put(50,0){\makebox(0,0){7}}
+\put(65,5){\makebox(0,0){4}}
+\put(65,0){\makebox(0,0){6}}
+\put(80,12.5){\makebox(0,0){5}}
+\put(80,-2.5){\makebox(0,0){5}}
+\end{picture}
+\bigskip
+\caption{Essential matrix \myHighlight{$E_0$}\coordHE{} and Essential Paths from the vertex 0
+for the \myHighlight{$D_7$}\coordHE{} model}
+\label{D7:E0}
+\end{center}
+\end{figure}
+
+
+The Ocneanu algebra of \myHighlight{$D_7$}\coordHE{} can be realized by using the graph algebra
+of \myHighlight{$A_{11}$}\coordHE{}. We form the tensor product \myHighlight{$A_{11}\otimes A_{11}$}\coordHE{},
+and define an application
+\myHighlight{$\rho: A_{11} \rightarrow A_{11}$}\coordHE{} such that:
+$$\coord{}\boxMath{
+\rho(i) = i \quad \text{for} \quad i \in \{0,2,4,5,6,8,10\}  \quad
+\text{and} \quad
+\rho(1) = 9, \quad \rho(3) =7, \quad \rho(7) = 3, \quad \rho(9) =1.
+}{dollar}{0pt}\coordE{}$$
+We take the tensor product over \myHighlight{$\rho$}\coordHE{}, and define the Ocneanu
+algebra of \myHighlight{$D_7$}\coordHE{} as:
+$$\coord{}\boxMath{
+{\cal{H}}_{Oc(D_7)} = A_{11} \otimesdot A_{11} \doteq \frac{A_{11}
+\otimes A_{11}}{\rho(A_{11})}.
+}{dollar}{0pt}\coordE{}$$
+It is spanned by a basis with 11 elements:
+$$\coord{}\boxMath{
+\begin{array}{lll}
+\ud0 = 0 \otimesdot 0               & \qquad \qquad \ud4 = 4 \otimesdot 0 =
+0 \otimesdot 4 &
+\qquad \qquad \; \; \ud8 = \; 8 \, \otimesdot 0 = 0 \otimesdot 8 \\
+\ud1 = 0 \otimesdot 0 = 0 \otimesdot 9 & \qquad \qquad \ud5 = 5 \otimesdot 0 =
+0 \otimesdot 5 &
+\qquad \qquad \; \; \ud9 = \; 9 \, \otimesdot 0 = 0 \otimesdot 1 \\
+\ud2 = 2 \otimesdot 0 = 0 \otimesdot 2 & \qquad \qquad \ud6 = 6 \otimesdot 0 =
+0 \otimesdot 6 &
+\qquad \qquad \ud10 = 10 \otimesdot 0 = 0 \otimesdot 10 \\
+\ud3 = 3 \otimesdot 0 = 0 \otimesdot 7 & \qquad \qquad \ud7 = 7 \otimesdot 0 =
+0 \otimesdot 3 &
+\qquad \qquad
+\end{array}
+}{dollar}{0pt}\coordE{}$$  \myHighlight{$1 \otimesdot 0$}\coordHE{} and \myHighlight{$0 \otimesdot 1$}\coordHE{} are respectively the chiral
+left and right
+generators. The multiplication by these generators is encoded by the
+Ocneanu graph
+of \myHighlight{$D_{7}$}\coordHE{}, represented in Fig \ref{grocD7}.
+All the points are ambichiral.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%  D7  %%%%%%%%%%%%
+\begin{figure}[hhh]
+\unitlength 0.7mm
+\begin{center}
+\begin{picture}(190,100)
+\multiput(35,5)(0,15){7}{\circle{2}}
+\multiput(5,50)(15,0){5}{\circle{2}}
+
+%%%% Ici ce sont les lignes continues
+\thicklines
+\put(20,50){\line(1,1){15}}
+\put(20,50){\line(1,2){15}}
+\put(50,50){\line(-1,-1){15}}
+\put(50,50){\line(-1,-2){15}}
+\put(34.5,65){\line(0,-1){15}}
+\put(35.5,35){\line(0,1){15}}
+
+\put(5,50){\line(1,1){30}}
+\put(5,50){\line(2,3){30}}
+\put(65,50){\line(-1,-1){30}}
+\put(65,50){\line(-2,-3){30}}
+
+%%%% Ici ce sont les lignes pointillees
+\thicklines
+\dashline[50]{1}(20,50)(35,35)
+\dashline[50]{1}(20,50)(35,20)
+\dashline[50]{1}(50,50)(35,65)
+\dashline[50]{1}(50,50)(35,80)
+\dashline[80]{1}(35.5,65)(35.5,50)
+\dashline[80]{1}(34.5,35)(34.5,50)
+
+\dashline[50]{1}(65,50)(35,80)
+\dashline[50]{1}(65,50)(35,95)
+\dashline[50]{1}(5,50)(35,15)
+\dashline[50]{1}(5,50)(35,5)
+
+%%% les points %%%
+%%%% les points %%%%%
+\small
+\put(35,99){\makebox(0,0){\myHighlight{$\ud{0}$}\coordHE{}}}
+\put(35,84){\makebox(0,0){\myHighlight{$\ud{2}$}\coordHE{}}}
+\put(35,69){\makebox(0,0){\myHighlight{$\ud{4}$}\coordHE{}}}
+\put(38,50){\makebox(0,0){\myHighlight{$\ud{5}$}\coordHE{}}}
+\put(35,31){\makebox(0,0){\myHighlight{$\ud{6}$}\coordHE{}}}
+\put(35,16){\makebox(0,0){\myHighlight{$\ud{8}$}\coordHE{}}}
+\put(35,1){\makebox(0,0){\myHighlight{$\ud{10}$}\coordHE{}}}
+\put(1,50){\makebox(0,0){\myHighlight{$\ud{1}$}\coordHE{}}}
+\put(54,50){\makebox(0,0){\myHighlight{$\ud{7}$}\coordHE{}}}
+\put(69,50){\makebox(0,0){\myHighlight{$\ud{9}$}\coordHE{}}}
+\put(16,50){\makebox(0,0){\myHighlight{$\ud{3}$}\coordHE{}}}
+\normalsize
+\put(140,50){\makebox(0,0){\myHighlight{$W_{00}=\left( \begin{array}{ccccccccccc}
+1 & . & . & . & . & . & . & . & . & . & . \\
+. & . & . & . & . & . & . & . & . & 1 & . \\
+. & . & 1 & . & . & . & . & . & . & . & . \\
+. & . & . & . & . & . & . & 1 & . & . & . \\
+. & . & . & . & 1 & . & . & . & . & . & . \\
+. & . & . & . & . & 1 & . & . & . & . & . \\
+. & . & . & . & . & . & 1 & . & . & . & . \\
+. & . & . & 1 & . & . & . & . & . & . & . \\
+. & . & . & . & . & . & . & . & 1 & . & . \\
+. & 1 & . & . & . & . & . & . & . & . & . \\
+. & . & . & . & . & . & . & . & . & . & 1 \\
+\end{array}
+\right)
+$}\coordHE{}}}
+
+\end{picture}
+\caption{The \myHighlight{$D_7$}\coordHE{} Ocneanu graph and the modular invariant matrix}
+\label{grocD7}
+\end{center}
+\end{figure}
+
+
+To obtain the toric matrices of the \myHighlight{$D_7$}\coordHE{} model, we need the
+essential matrices \myHighlight{$E_i(A_{11})$}\coordHE{} of the \myHighlight{$A_{11}$}\coordHE{} case. We define new
+essential matrices \myHighlight{$E_i^{\rho}(A_{11})$}\coordHE{} defined by
+permuting the columns of \myHighlight{$E_i(A_{11})$}\coordHE{} associated to the vertices 1
+and 9, 3 and 7.
+The toric matrices of the \myHighlight{$D_7$}\coordHE{} model are then obtained by setting:
+$$\coord{}\boxMath{
+W[a,b] \doteq E_a(A_{11}) . \widetilde{  (E_b^{\rho}(A_{11}))}
+}{dollar}{0pt}\coordE{}$$
+We recall the matrix expression of the modular invariant \myHighlight{$W_{00}$}\coordHE{} and
+give the others as sesquilinears forms in the appendix.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The \myHighlight{$E_{7}$}\coordHE{} case}
+
+The \myHighlight{$E_7$}\coordHE{} Dynkin diagram and its adjacency matrix are displayed
+below. We use the following order for the vertices: \myHighlight{$\{\sigma_0,
+\sigma_1, \sigma_2, \sigma_3,
+\sigma_6, \sigma_5, \sigma_4 \}$}\coordHE{}.
+
+\begin{figure}[hhh]
+\unitlength 0.8mm
+\begin{center}
+\begin{picture}(115,30)(0,10)
+\thinlines
+\multiput(15,10)(15,0){6}{\circle*{2}}
+\put(60,25){\circle*{2}}
+\thicklines
+\put(15,10){\line(1,0){75}}
+\put(60,10){\line(0,1){15}}
+\put(15,3){\makebox(0,0){[\myHighlight{$\sigma_0$}\coordHE{}]}}
+\put(30,3){\makebox(0,0){[\myHighlight{$\sigma_1$}\coordHE{}]}}
+\put(45,3){\makebox(0,0){[\myHighlight{$\sigma_2$}\coordHE{}]}}
+\put(60,3){\makebox(0,0){[\myHighlight{$\sigma_3$}\coordHE{}]}}
+\put(75,3){\makebox(0,0){[\myHighlight{$\sigma_6$}\coordHE{}]}}
+\put(90,3){\makebox(0,0){[\myHighlight{$\sigma_5$}\coordHE{}]}}
+\put(68,25){\makebox(0,0){[\myHighlight{$\sigma_4$}\coordHE{}]}}
+\end{picture}
+\myHighlight{$
+{\cal G}_{E_7} =
+\left( \begin{array}{ccccccc}
+      0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+      1 & 0 & 1 & 0 & 0 & 0 & 0 \\
+      0 & 1 & 0 & 1 & 0 & 0 & 0 \\
+      0 & 0 & 1 & 0 & 1 & 0 & 1 \\
+      0 & 0 & 0 & 1 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+      0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+\end{array}
+\right)
+$}\coordHE{}
+\caption{The \myHighlight{$E_7$}\coordHE{} Dynkin diagram and its adjacency matrix}
+\label{grE7}
+\end{center}
+\end{figure}
+Here \myHighlight{$\kappa = 18$}\coordHE{}, the norm of the graph is
+\myHighlight{$\beta = [2]_q = 2 \cos (\frac{\pi}{18})$}\coordHE{} and the normalized
+Perron-Frobenius vector is
+\myHighlight{$D = \left( [1]_q, [2]_q, [3]_q, [4]_q, \frac{[6]_q}{[2]_q},
+\frac{[4]_q}{[3]_q}, \frac{[4]_q}{[2]_q} \right) $}\coordHE{}.  \\
+The graph algebra of the Dynkin diagram \myHighlight{$E_7$}\coordHE{} is not a positive integral
+graph algebra. We give it for illustration but it will not be used in the
+sequel.
+
+\begin{table}[hhh]
+$$\coord{}\boxMath{
+\begin{array}{||c||c|c|c|c|c|c|c||}
+\hline
+E_7& 0 & 1  & 2 & 3 & 6 & 5 & 4  \\
+\hline
+\hline
+0 & 0 & 1     & 2       & 3           & 6     & 5     & 4     \\
+1 & 1 & 0+2   & 1+3     & 2+4+6       & 3+5   & 6     & 3     \\
+2 & 2 & 1+3   & 0+2+4+6 & 1+3_2+5     & 2+4+6 & 3     & 2+6   \\
+3 & 3 & 2+4+6 & 1+3_2+5 & 0+2_2+4+6_2 & 1+3_2 & 2+4   & 1+3+5 \\
+6 & 6 & 3+5   & 2+4+6   & 1+3_2       & 0+2+6 & 1+5   & 2+4   \\
+5 & 5 & 6     & 3       & 2+4         & 1+5   & 0-4+6 & 3-5   \\
+4 & 4 & 3     & 2+6     & 1+3+5       & 2+4   & 3-5   & 0+6   \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\caption{Multiplication table of the graph algebra \myHighlight{$E_7$}\coordHE{}}
+\end{table}
+The fusion matrices \myHighlight{$G_{i}$}\coordHE{} are given by the following polynomials:
+$$\coord{}\boxMath{
+\begin{array}{ll}
+G_0 = Id_7  \qquad \qquad \qquad \qquad \qquad \qquad &
+G_5 = G_3.G_2 - G_1 - 2.G_3 \\
+G_1 = \cal{G} &
+G_4 = G_5.G_2 \\
+G_2 = G_1.G_1 - G_0 &
+G_6 = G_5.G_4 - G_2 \\
+G_3 = G_1.G_2 - G_1 & {}
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+
+Essential matrices of \myHighlight{$E_{7}$}\coordHE{} have 7 columns and 17 rows. They are labeled
+by vertices of diagrams \myHighlight{$E_7$}\coordHE{} and \myHighlight{$A_{17}$}\coordHE{}. The first essential
+matrix \myHighlight{$E_0$}\coordHE{} is given below, together with the corresponding
+induction-restriction graph. To obtain the toric matrices, we also
+need to know the essential matrices for the \myHighlight{$D_{10}$}\coordHE{} case. They are
+obtained as usual (we also display
+the essential matrix \myHighlight{$E_0$}\coordHE{} of the \myHighlight{$D_{10}$}\coordHE{} case below).
+
+
+\begin{figure}[hhh]
+\unitlength 0.7mm
+\begin{center}
+\myHighlight{$
+E_0 (E_7)=
+\left(
+\begin{array}{ccccccc}
+1 & . & . & . & . & . & . \cr
+. & 1 & . & . & . & . & . \cr
+. & . & 1 & . & . & . & . \cr
+. & . & . & 1 & . & . & . \cr
+. & . & . & . & 1 & . & 1 \cr
+. & . & . & 1 & . & 1 & . \cr
+. & . & 1 & . & 1 & . & . \cr
+. & 1 & . & 1 & . & . & . \cr
+1 & . & 1 & . & . & . & 1 \cr
+. & 1 & . & 1 & . & . & . \cr
+. & . & 1 & . & 1 & . & . \cr
+. & . & . & 1 & . & 1 & . \cr
+. & . & . & . & 1 & . & 1 \cr
+. & . & . & 1 & . & . & . \cr
+. & . & 1 & . & . & . & . \cr
+. & 1 & . & . & . & . & . \cr
+1 & . & . & . & . & . & . \cr
+\end{array}
+\right)
+$}\coordHE{}
+\begin{picture}(110,35)
+\thinlines
+\multiput(25,10)(15,0){6}{\circle*{2}}
+\put(70,25){\circle*{2}}
+\put(25,12){\myHighlight{$\ast$}\coordHE{}}
+\thicklines
+\put(25,10){\line(1,0){75}}
+\put(70,10){\line(0,1){15}}
+
+\put(25,3){\makebox(0,0){\myHighlight{$0$}\coordHE{}}}
+\put(25,-2){\makebox(0,0){\myHighlight{$8$}\coordHE{}}}
+\put(25,-7){\makebox(0,0){\myHighlight{$16$}\coordHE{}}}
+
+\put(40,3){\makebox(0,0){\myHighlight{$1$}\coordHE{}}}
+\put(40,-2){\makebox(0,0){\myHighlight{$7$}\coordHE{}}}
+\put(40,-7){\makebox(0,0){\myHighlight{$9$}\coordHE{}}}
+\put(40,-12){\makebox(0,0){\myHighlight{$15$}\coordHE{}}}
+
+\put(55,3){\makebox(0,0){\myHighlight{$2$}\coordHE{}}}
+\put(55,-2){\makebox(0,0){\myHighlight{$6$}\coordHE{}}}
+\put(55,-7){\makebox(0,0){\myHighlight{$8$}\coordHE{}}}
+\put(55,-12){\makebox(0,0){\myHighlight{$10$}\coordHE{}}}
+\put(55,-17){\makebox(0,0){\myHighlight{$14$}\coordHE{}}}
+
+
+\put(70,3){\makebox(0,0){\myHighlight{$3$}\coordHE{}}}
+\put(70,-2){\makebox(0,0){\myHighlight{$5$}\coordHE{}}}
+\put(70,-7){\makebox(0,0){\myHighlight{$7$}\coordHE{}}}
+\put(70,-12){\makebox(0,0){\myHighlight{$9$}\coordHE{}}}
+\put(70,-17){\makebox(0,0){\myHighlight{$11$}\coordHE{}}}
+\put(70,-22){\makebox(0,0){\myHighlight{$13$}\coordHE{}}}
+
+\put(85,3){\makebox(0,0){\myHighlight{$4$}\coordHE{}}}
+\put(85,-2){\makebox(0,0){\myHighlight{$6$}\coordHE{}}}
+\put(85,-7){\makebox(0,0){\myHighlight{$10$}\coordHE{}}}
+\put(85,-12){\makebox(0,0){\myHighlight{$12$}\coordHE{}}}
+
+\put(100,3){\makebox(0,0){\myHighlight{$5$}\coordHE{}}}
+\put(100,-2){\makebox(0,0){\myHighlight{$11$}\coordHE{}}}
+
+\put(70,30){\makebox(0,0){\myHighlight{$4,8,12$}\coordHE{}}}
+\end{picture}
+\bigskip
+\caption{Essential matrix \myHighlight{$E_0$}\coordHE{} and Essential Paths from the vertex 0
+for the \myHighlight{$E_7$}\coordHE{}-model}
+\label{E7:E0}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+$$
+E_0 (D_{10})=
+\left(
+\begin{array}{cccccccccc}
+
+1 & . & . & . & . & . & . & . & . & . \cr
+
+. & 1 & . & . & . & . & . & . & . & . \cr
+
+. & . & 1 & . & . & . & . & . & . & . \cr
+
+. & . & . & 1 & . & . & . & . & . & . \cr
+
+. & . & . & . & 1 & . & . & . & . & . \cr
+
+. & . & . & . & . & 1 & . & . & . & . \cr
+
+. & . & . & . & . & . & 1 & . & . & . \cr
+
+. & . & . & . & . & . & . & 1 & . & . \cr
+
+. & . & . & . & . & . & . & . & 1 & 1 \cr
+
+. & . & . & . & . & . & . & 1 & . & . \cr
+
+. & . & . & . & . & . & 1 & . & . & . \cr
+
+. & . & . & . & . & 1 & . & . & . & . \cr
+
+. & . & . & . & 1 & . & . & . & . & . \cr
+
+. & . & . & 1 & . & . & . & . & . & . \cr
+
+. & . & 1 & . & . & . & . & . & . & . \cr
+
+. & 1 & . & . & . & . & . & . & . & . \cr
+
+1 & . & . & . & . & . & . & . & . & . \cr
+
+\end{array}
+\right)
+$$
+\end{center}
+\caption{Essential matrix \myHighlight{$E_0$}\coordHE{} for \myHighlight{$D_{10}$}\coordHE{}}
+\end{figure}
+
+We form the tensor product \myHighlight{$D_{10} \otimes D_{10}$}\coordHE{}, and
+identify \myHighlight{$a u \otimes b$}\coordHE{} with \myHighlight{$a \otimes \rho(u) b$}\coordHE{} where
+
+$$\coord{}\boxMath{
+\begin{array}{ccc}
+\rho(0)=0, & \qquad \qquad \rho(4)=4, & \qquad \qquad \rho(8)=2,  \\
+\rho(2)=8, & \qquad \qquad \rho(6)=6, & \qquad \qquad \rho(8^{'})=8^{'},
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+
+The Ocneanu algebra of \myHighlight{$E_7$}\coordHE{} can be realized as:
+$$\coord{}\boxMath{
+{\cal{H}}_{Oc(E_7)}= D_{10} \otimesdot D_{10} \doteq
+\frac{D_{10} \otimes D_{10}}{\rho}.
+}{dollar}{0pt}\coordE{}$$
+It is spanned by a basis with 17 elements:
+$$\coord{}\boxMath{
+\begin{array}{cclcccl}
+\ud0 &=& 0 \otimesdot 0  & \qquad \qquad & \ud{(0)} &=& 0 \otimesdot 1   \\
+\ud1 &=& 1 \otimesdot 0  & \qquad \qquad & \ud{(1)} &=& 1 \otimesdot 1   \\
+\ud2 &=& 2 \otimesdot 0 = 0 \otimesdot 8 & \qquad \qquad & \ud{(2)} &=& 2
+\otimesdot 1 = 0 \otimesdot 7  \\
+\ud3 &=& 3 \otimesdot 0  & \qquad \qquad & \ud{(3)} &=& 3 \otimesdot 1 = 1
+\otimesdot 3  \\
+\ud4 &=& 4 \otimesdot 0 = 0 \otimesdot 4 & \qquad \qquad & \ud{(4)} &=& 0
+\otimesdot 3   \\
+\ud5 &=& 5 \otimesdot 0  & \qquad \qquad & \ud{(5)} &=& 5 \otimesdot 1 - 3
+\otimesdot 1  \\
+\ud6 &=& 6 \otimesdot 0 = 0 \otimesdot 6 & \qquad \qquad & &=&1 \otimesdot 5 -
+1 \otimesdot 3   \\
+\ud7 &=& 7 \otimesdot 0  & \qquad \qquad & \ud{(6)} &=& 0 \otimesdot 5   \\
+\ud8 &=& 8 \otimesdot 0 = 0 \otimesdot 2 & \qquad \qquad & & &   \\
+\ud{8^{'}} &=& 8^{'} \otimesdot 0 = 0 \otimesdot 8^{'} & \qquad
+\qquad & & &   \\
+\end{array}
+}{dollar}{0pt}\coordE{}$$  \myHighlight{$\ud1$}\coordHE{} and \myHighlight{$\ud{(0)}$}\coordHE{} are respectively the left and right generators.
+The ambichiral part is the linear span of
+\myHighlight{$\{\ud{0},\ud{2},\ud{4},\ud{6},\ud{8},\ud{8^{'}}\}$}\coordHE{}.
+The multiplication of the elements of this algebra by the generators
+is shown in the following table.
+We can observe on the Ocneanu graph \myHighlight{$Oc(E_{7})$}\coordHE{} that \myHighlight{$E_7$}\coordHE{}
+does not appear as a subalgebra of \myHighlight{${\cal H}_{Oc(E_{7}})$}\coordHE{}
+but as a quotient (there are two such quotients).
+
+The seventeen toric matrices \myHighlight{$W_{ab}$}\coordHE{} of the \myHighlight{$E_{7}$}\coordHE{} model are obtained
+as explained in section 2.2.5, but with a twist: We use the essential
+matrices \myHighlight{$E_{a}(D_{10})$}\coordHE{}, and replace the matrix elements of the
+columns associated with
+vertices \myHighlight{$1,3,5,7$}\coordHE{} of the graph \myHighlight{$D_{10}$}\coordHE{} by \myHighlight{$0$}\coordHE{}; this being done, we
+permute the columns associated with vertices \myHighlight{$2$}\coordHE{} and \myHighlight{$8$}\coordHE{} of \myHighlight{$D_{10}$}\coordHE{}
+(with our ordering, these are columns \myHighlight{$3$}\coordHE{} and \myHighlight{$9$}\coordHE{}). The reduced and twisted
+matrix so obtained is called \myHighlight{$E_{a}^{\rho}(D_{10})$}\coordHE{}.
+The seventeen toric matrices of the \myHighlight{$E_{7}$}\coordHE{} model are then obtained by setting:
+$$\coord{}\boxMath{
+W[a,b] \doteq E_a(D_{10}) . \widetilde{ (E_b^{\rho}(D_{10}))}
+}{dollar}{0pt}\coordE{}$$
+For instance \myHighlight{$W_{\ud{(5)}}=  W[5,1] - W[3,1] = E_5(D_{10}) .
+\widetilde{ (E_1^{\rho}(D_{10}))}
+- E_3(D_{10}) . \widetilde{ (E_1^{\rho}(D_{10}))}$}\coordHE{}.
+We recall the matrix expression of the modular invariant \myHighlight{$W_{00}$}\coordHE{} and give
+the others as sesquilinears forms in the appendix.
+
+
+
+
+\begin{table}[hhh]
+$$\coord{}\boxMath{
+\begin{array}{|c|c|}
+\hline
+"D_{10}" & \ud1 \\
+\hline
+\ud0 & \ud1 \\
+\ud1 & \ud0 + \ud2 \\
+\ud2 & \ud1 + \ud3 \\
+\ud3 & \ud2 + \ud4 \\
+\ud4 & \ud3 + \ud5 \\
+\ud5 & \ud4 + \ud6 \\
+\ud6 & \ud5 + \ud7 \\
+\ud7 & \ud6 + \ud8 + \ud{8^{'}}\\
+\ud8 & \ud7 \\
+\ud{8^{'}} & \ud7 \\
+\hline
+\hline
+"E_7" & \ud1 \\
+\hline
+\ud{(0)} & \ud{(1)} \\
+\ud{(1)} & \ud{(0)} + \ud{(2)} \\
+\ud{(2)} & \ud{(1)} + \ud{(3)} \\
+\ud{(3)} & \ud{(2)} + \ud{(4)} + \ud{(6)} \\
+\ud{(4)} & \ud{(3)} \\
+\ud{(6)} & \ud{(3)} + \ud{(5)} \\
+\ud{(5)} & \ud{(6)} \\
+\hline
+\end{array}
+\qquad \qquad \qquad \qquad
+\begin{array}{|c|c|}
+\hline
+"D_{10}" & \ud{(0)} \\
+\hline
+\ud0 & \ud{(0)} \\
+\ud{(0)} & \ud0 + \ud8 \\
+\ud8 & \ud{(0)} + \ud{(4)} \\
+\ud{(4)} & \ud8 + \ud4 \\
+\ud4 & \ud{(4)} + \ud{(6)} \\
+\ud{(6)} & \ud4 + \ud6 \\
+\ud6 & \ud{(6)} + \ud{(2)} \\
+\ud{(2)} & \ud2 + \ud6 + \ud{8^{'}}\\
+\ud2 & \ud{(2)} \\
+\ud8^{'} & \ud{(2)} \\
+\hline
+\hline
+"E_7" & \ud{(0)} \\
+\hline
+\ud1 & \ud{(1)} \\
+\ud{(1)} & \ud1 + \ud7 \\
+\ud7 & \ud{(1)} + \ud{(3)} \\
+\ud{(3)} & \ud3+\ud5+\ud7 \\
+\ud3 & \ud{(3)} \\
+\ud5 & \ud{(3)} + \ud{(5)} \\
+\ud{(5)} & \ud5 \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\caption{Multiplication of the elements of the Ocneanu algebra of
+\myHighlight{$E_7$}\coordHE{} by the generators}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%  Graphe d'Ocneanu de E7  %%%%%%%%%%%%
+\begin{figure}[hhh]
+\unitlength 0.8mm
+\begin{center}
+\begin{picture}(50,90)
+\put(25,5){\circle*{2}}
+\multiput(25,15)(0,10){2}{\circle{2}}
+\put(25,35){\circle*{2}}
+\put(25,45){\circle{2}}
+\put(25,75){\circle*{2}}
+\put(25,85){\circle{2}}
+\multiput(5,10)(0,20){2}{\circle*{2}}
+\multiput(5,60)(0,20){2}{\circle*{2}}
+\multiput(45,10)(0,20){2}{\circle*{2}}
+\multiput(45,60)(0,20){2}{\circle*{2}}
+\put(20,60){\circle{2}}
+\put(30,60){\circle{2}}
+
+%%%% Ici ce sont les lignes continues
+\thicklines
+\put(5,80){\line(4,1){20}}
+\put(5,80){\line(5,-4){25}}
+\put(5,60){\line(1,0){15}}
+\put(5,60){\line(4,-3){20}}
+\dashline[100]{8}(5,60)(25,25)
+\put(5,30){\line(5,6){25}}
+\put(5,30){\line(4,-3){20}}
+\put(5,10){\line(4,3){20}}
+\put(5,10){\line(4,1){20}}
+
+\thinlines
+\put(45,80){\line(-4,-1){20}}
+\put(45,60){\line(-4,3){20}}
+\put(45,60){\line(-4,-5){20}}
+\put(45,30){\line(-4,1){20}}
+\put(45,10){\line(-4,5){20}}
+\put(45,10){\line(-4,-1){20}}
+
+
+%%%% Ici ce sont les lignes pointillees
+\thicklines
+\dashline[50]{1}(45,80)(25,85)
+\dashline[50]{1}(45,80)(20,60)
+\dashline[50]{1}(45,60)(30,60)
+\dashline[50]{1}(45,60)(25,45)
+\dashline[50]{1}(45,60)(25,25)
+\dashline[50]{1}(45,30)(20,60)
+\dashline[50]{1}(45,30)(25,15)
+\dashline[50]{1}(45,10)(25,25)
+\dashline[50]{1}(45,10)(25,15)
+
+\thinlines
+\dashline[50]{1}(5,80)(25,75)
+\dashline[50]{1}(5,60)(25,75)
+\dashline[50]{1}(5,60)(25,35)
+\dashline[50]{1}(5,30)(25,35)
+\dashline[50]{1}(5,10)(25,35)
+\dashline[50]{1}(5,10)(25,5)
+
+
+%%%%%%%% les points %%%%%%%%%%
+\scriptsize
+\put(25,88){\makebox(0,0){\myHighlight{$\ud{0}$}\coordHE{}}}
+\put(25,78){\makebox(0,0){\myHighlight{$(\ud{1})$}\coordHE{}}}
+\put(25,49.5){\makebox(0,0){\myHighlight{$\ud{8^{'}}$}\coordHE{}}}
+\put(25,39.5){\makebox(0,0){\myHighlight{$(\ud{3})$}\coordHE{}}}
+\put(25,28){\makebox(0,0){\myHighlight{$\ud{6}$}\coordHE{}}}
+\put(25,18){\makebox(0,0){\myHighlight{$\ud{4}$}\coordHE{}}}
+\put(25,8){\makebox(0,0){\myHighlight{$(\ud{5})$}\coordHE{}}}
+
+\put(1,10){\makebox(0,0){\myHighlight{$\ud{5}$}\coordHE{}}}
+\put(1,30){\makebox(0,0){\myHighlight{$\ud{3}$}\coordHE{}}}
+\put(1,60){\makebox(0,0){\myHighlight{$\ud{7}$}\coordHE{}}}
+\put(1,80){\makebox(0,0){\myHighlight{$\ud{1}$}\coordHE{}}}
+
+\put(49,10){\makebox(0,0){\myHighlight{$(\ud{6})$}\coordHE{}}}
+\put(49,30){\makebox(0,0){\myHighlight{$(\ud{4})$}\coordHE{}}}
+\put(49,60){\makebox(0,0){\myHighlight{$(\ud{2})$}\coordHE{}}}
+\put(49,80){\makebox(0,0){\myHighlight{$(\ud{0})$}\coordHE{}}}
+
+\put(31,63){\makebox(0,0){\myHighlight{$\ud{2}$}\coordHE{}}}
+\put(19,63){\makebox(0,0){\myHighlight{$\ud{8}$}\coordHE{}}}
+
+\normalsize
+\end{picture}
+\caption{Ocneanu graph \myHighlight{$E_7 $}\coordHE{}}
+\label{grocE7}
+\end{center}
+\end{figure}
+
+
+
+$$\coord{}\boxMath{
+W_{00}=\left( \begin{array}{ccccccccccccccccc}
+1 & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . & 1 \\
+. & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . \\
+. & . & . & . & . & . & . & . & 1 & . & . & . & . & . & . & . & . \\
+. & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . \\
+. & . & . & . & 1 & . & . & . & . & . & . & . & 1 & . & . & . & . \\
+. & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . \\
+. & . & . & . & . & . & 1 & . & . & . & 1 & . & . & . & . & . & . \\
+. & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . \\
+. & . & 1 & . & . & . & . & . & 1 & . & . & . & . & . & 1 & . & . \\
+. & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . \\
+. & . & . & . & . & . & 1 & . & . & . & 1 & . & . & . & . & . & . \\
+. & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . \\
+. & . & . & . & 1 & . & . & . & . & . & . & . & 1 & . & . & . & . \\
+. & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . \\
+. & . & . & . & . & . & . & . & 1 & . & . & . & . & . & . & . & . \\
+. & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . \\
+1 & . & . & . & . & . & . & . & . & . & . & . & . & . & . & . & 1
+\end{array}
+\right)
+}{dollar}{0pt}\coordE{}$$
+
+We conclude this section with the determination of the integers \myHighlight{$d_{n}$}\coordHE{} and
+\myHighlight{$d_{x}$}\coordHE{}.\\
+The integers \myHighlight{$d_{n}$}\coordHE{} associated with endomorphisms of essential paths
+on the graph \myHighlight{$E_{7}$}\coordHE{} are determined easily by the usual method.
+For \myHighlight{$n=1,2,\ldots 17$}\coordHE{} one finds
+$$\coord{}\boxMath{
+d_{n} = 7,12,17,22,27,30,33,34,35,34,33,30,27,22,17,12,7.
+}{dollar}{0pt}\coordE{}$$
+In order to determine the integers \myHighlight{$d_x$}\coordHE{}, we need to know the
+multiplication table defined by the Ocneanu graph \myHighlight{$Oc(E_7)$}\coordHE{}.
+   The full table of \myHighlight{${\cal H}_{Oc(E_7)}$}\coordHE{} has the
+following structure: \myHighlight{$"D_{10}" \times "D_{10}" \rightarrow "D_{10}"$}\coordHE{},
+\myHighlight{$"D_{10}" \times "E_7" \rightarrow "E_7"$}\coordHE{}, and
+\myHighlight{$"E_7" \times "E_7" \rightarrow "D_{10}"$}\coordHE{}, where \myHighlight{$"D_{10}"$}\coordHE{} is the
+subalgebra linearly spanned by \myHighlight{$\ud{0}, \ud{1}, \ldots, \ud{8}, \ud{8^{'}}$}\coordHE{} and
+\myHighlight{$"E_7"$}\coordHE{} is the linear subspace  linearly spanned by \myHighlight{$\ud{(0)},
+\ud{(1)}, \ldots,
+\ud{(6)}$}\coordHE{}. Actually, it is enough, four our purpose, to know the smaller table
+obtained by restriction to the \myHighlight{$E_7$}\coordHE{} quotients, \ie the
+\myHighlight{$"E_7" \times "E_7" \rightarrow "D_{10}"$}\coordHE{} table.
+
+We encode this multiplication table by a set of \myHighlight{$10$}\coordHE{} matrices \myHighlight{$s_p$}\coordHE{}
+(labeled by
+\myHighlight{$D_{10}$}\coordHE{}, of size \myHighlight{$7\times 7$}\coordHE{} (labeled by \myHighlight{$E_7$}\coordHE{})).
+The result of a given multiplication, such as
+\myHighlight{$\ud{(4)} \times \ud{(5)} = \ud{3} + \ud{7}$}\coordHE{}
+is indicated by the presence of the integer \myHighlight{$1$}\coordHE{} in position \myHighlight{$(4,5)$}\coordHE{} in both
+matrices \myHighlight{$s_3$}\coordHE{} and \myHighlight{$s_7$}\coordHE{}.
+
+Since we have an explicit realization of \myHighlight{${\cal H}_{Oc(E_7)}$}\coordHE{}, it is not too
+difficult to find
+
+{\small
+$$\coord{}\boxMath{
+s_0 = \left( \begin{array}{ccccccc}
+   1 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \
+& 0 & 0 & 0 \\ 0 & 0 & 0 & 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 1 & 0 & 0 \
+\\ 0 & 0 & 0 & 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+\end{array}
+\right)
+\qquad \qquad \qquad
+s_1 = \left( \begin{array}{ccccccc}
+   0 & 1 & 0 & 0 & 0 & 0 & 0 \\ 1 & 0 & 1 & 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 1 \
+& 0 & 0 & 0 \\ 0 & 0 & 1 & 0 & 1 & 0 & 1 \\ 0 & 0 & 0 & 1 & 0 & 0 & 0 \
+\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 & 0 & 1 & 0 \\
+\end{array}
+\right)
+}{dollar}{0pt}\coordE{}$$
+
+$$\coord{}\boxMath{
+s_2 = \left( \begin{array}{ccccccc}
+   0 & 0 & 1 & 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 1 & 0 & 0 & 0 \\ 1 & 0 & 1 & 0 \
+& 1 & 0 & 1 \\ 0 & 1 & 0 & 2 & 0 & 1 & 0 \\ 0 & 0 & 1 & 0 & 0 & 0 & 1 \
+\\ 0 & 0 & 0 & 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 & 1 & 0 & 1 \\
+\end{array}
+\right)
+\qquad \qquad \qquad
+s_3 = \left( \begin{array}{ccccccc}
+   0 & 0 & 0 & 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 & 1 & 0 & 1 \\ 0 & 1 & 0 & 2 \
+& 0 & 1 & 0 \\ 1 & 0 & 2 & 0 & 1 & 0 & 2 \\ 0 & 1 & 0 & 1 & 0 & 1 & 0 \
+\\ 0 & 0 & 1 & 0 & 1 & 0 & 0 \\ 0 & 1 & 0 & 2 & 0 & 0 & 0 \\
+\end{array}
+\right)
+}{dollar}{0pt}\coordE{}$$
+
+$$\coord{}\boxMath{
+s_4 = \left( \begin{array}{ccccccc}
+   0 & 0 & 0 & 0 & 1 & 0 & 1 \\ 0 & 0 & 0 & 2 & 0 & 1 & 0 \\ 0 & 0 & 2 & 0 \
+& 1 & 0 & 2 \\ 0 & 2 & 0 & 3 & 0 & 1 & 0 \\ 1 & 0 & 1 & 0 & 1 & 0 & 1 \
+\\ 0 & 1 & 0 & 1 & 0 & 0 & 0 \\ 1 & 0 & 2 & 0 & 1 & 0 & 1 \\
+\end{array}
+\right)
+\qquad \qquad \qquad
+s_5= \left( \begin{array}{ccccccc}
+   0 & 0 & 0 & 1 & 0 & 1 & 0 \\ 0 & 0 & 1 & 0 & 1 & 0 & 2 \\ 0 & 1 & 0 & 3 \
+& 0 & 1 & 0 \\ 1 & 0 & 3 & 0 & 2 & 0 & 2 \\ 0 & 1 & 0 & 2 & 0 & 0 & 0 \
+\\ 1 & 0 & 1 & 0 & 0 & 0 & 1 \\ 0 & 2 & 0 & 2 & 0 & 1 & 0 \\
+\end{array}
+\right)
+}{dollar}{0pt}\coordE{}$$
+
+$$\coord{}\boxMath{
+s_6 = \left( \begin{array}{ccccccc}
+   0 & 0 & 1 & 0 & 0 & 0 & 1 \\ 0 & 1 & 0 & 2 & 0 & 1 & 0 \\ 1 & 0 & 2 & 0 \
+& 2 & 0 & 2 \\ 0 & 2 & 0 & 4 & 0 & 1 & 0 \\ 0 & 0 & 2 & 0 & 1 & 0 & 1 \
+\\ 0 & 1 & 0 & 1 & 0 & 1 & 0 \\ 1 & 0 & 2 & 0 & 1 & 0 & 2 \\
+\end{array}
+\right)
+\qquad \qquad \qquad
+s_7 = \left( \begin{array}{ccccccc}
+   0 & 1 & 0 & 1 & 0 & 0 & 0 \\ 1 & 0 & 2 & 0 & 1 & 0 & 1 \\ 0 & 2 & 0 & 3 \
+& 0 & 1 & 0 \\ 1 & 0 & 3 & 0 & 2 & 0 & 3 \\ 0 & 1 & 0 & 2 & 0 & 1 & 0 \
+\\ 0 & 0 & 1 & 0 & 1 & 0 & 1 \\ 0 & 1 & 0 & 3 & 0 & 1 & 0 \\
+\end{array}
+\right)
+}{dollar}{0pt}\coordE{}$$
+
+$$\coord{}\boxMath{
+s_8 = \left( \begin{array}{ccccccc}
+   1 & 0 & 0 & 0 & 1 & 0 & 0 \\ 0 & 1 & 0 & 1 & 0 & 0 & 0 \\ 0 & 0 & 2 & 0 \
+& 0 & 0 & 1 \\ 0 & 1 & 0 & 2 & 0 & 1 & 0 \\ 1 & 0 & 0 & 0 & 1 & 0 & 1 \
+\\ 0 & 0 & 0 & 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 & 1 & 0 & 1 \\
+\end{array}
+\right)
+\qquad \qquad \qquad
+s_{8^{'}} = \left( \begin{array}{ccccccc}
+   0 & 0 & 1 & 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 1 & 0 & 0 & 0 \\ 1 & 0 & 1 & 0 \
+& 1 & 0 & 1 \\ 0 & 1 & 0 & 2 & 0 & 1 & 0 \\ 0 & 0 & 1 & 0 & 0 & 0 & 1 \
+\\ 0 & 0 & 0 & 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 & 1 & 0 & 1 \\
+\end{array}
+\right)
+}{dollar}{0pt}\coordE{}$$
+}
+
+The sum of matrix elements of the \myHighlight{$10$}\coordHE{} matrices \myHighlight{$s_{p}$}\coordHE{}, for
+\myHighlight{$p = 0,1,2,\ldots 8, 8^{'}$}\coordHE{} is \\
+\myHighlight{$7,12,17,22,27,30,33,34,18,17$}\coordHE{}.
+
+To each linear generator \myHighlight{$x = \sum a \otimes b$}\coordHE{} (for instance \myHighlight{$\ud{(5)} =
+5\otimesdot 1 - 3 \otimesdot 1$}\coordHE{}) of the Ocneanu algebra of \myHighlight{$E_{7}$}\coordHE{} (the
+basis with \myHighlight{$17$}\coordHE{} elements was given previously) we associate
+a matrix \myHighlight{$\Sigma_{x} = \sum s_{a}s_{b}$}\coordHE{} (for instance
+\myHighlight{$\Sigma_{\ud{(5)}} = s_{5}s_{1} - s_{3}s_{1})$}\coordHE{}.  The integer \myHighlight{$d_{x}$}\coordHE{}
+is the sum of matrix elements of the matrix \myHighlight{$\Sigma_{x}$}\coordHE{} (for
+instance \myHighlight{$d_{\ud{(5)}} = 16$}\coordHE{}). In particular, the \myHighlight{$d_{x}$}\coordHE{} associated
+with the \myHighlight{$"D_{10}"$}\coordHE{} part of the graph are just given by sum of
+matrix elements of matrices \myHighlight{$s_{p}$}\coordHE{}.
+
+The final list of integers \myHighlight{$d_{x}$}\coordHE{}, associated with blocks
+\myHighlight{$\ud{0},\ud{1},\ldots, \ud{8},\ud{8^{'}}; \ud{(0)}, \ud{(1)},\ldots \ud{(6)}$}\coordHE{}
+is
+$$\coord{}\boxMath{
+d_x = 7,12,17,22,27,30,33,34,18,17,12,24,34,44,22,16,30.
+}{dollar}{0pt}\coordE{}$$
+Note that \myHighlight{$\sum d_{n} = \sum d_{x} = 399$}\coordHE{} and that  \myHighlight{$\sum d_{n}^2 = \sum
+d_{x}^2 = 10905$}\coordHE{}.
+
+The above results agree\footnote{The preprint version of \cite{PetZub:Oc},
+available on
+the web, contains a typing misprint: the last values of \myHighlight{$d_{x}$}\coordHE{} should be
+read \myHighlight{$44,30,16,22$}\coordHE{} and not \myHighlight{$442, 30, 16, 22$}\coordHE{}.}
+with those obtained by \cite{PetZub:Oc}.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Acknowledgements}
+
+G. Schieber would like to thank the Conselho Nacional de Desenvolvimento
+Cient\'{\i}fico e Tecnol\'ogico, CNPq (Brazilian Research Agency) for financial
+support.
+
+We thank C. Mercat, O. Ogievetsky and J.B. Zuber for their comments about the first preprint version
+of this manuscript.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\section{The general notion of essential paths on a graph \myHighlight{$G$}\coordHE{}}
+
+The general definitions given here are adapted from (\cite{Ocneanu:paths}).
+
+Call \myHighlight{$\beta$}\coordHE{} the norm of the graph \myHighlight{$G$}\coordHE{} (the biggest eigenvalue of  the
+adjacency matrix \myHighlight{${\cal G}$}\coordHE{})
+and  \myHighlight{$D_{i}$}\coordHE{} the components of the (normalized) Perron-Frobenius eigenvector.
+Call \myHighlight{$\sigma_{i}$}\coordHE{} the vertices of \myHighlight{$G$}\coordHE{} and, if
+\myHighlight{$\sigma_{j}$}\coordHE{} is a neighbour of
+\myHighlight{$\sigma_{i}$}\coordHE{}, call \myHighlight{$\xi_{ij}$}\coordHE{} the oriented edge
+from \myHighlight{$\sigma_{i}$}\coordHE{} to \myHighlight{$\sigma_{j}$}\coordHE{}. If \myHighlight{$G$}\coordHE{} is unoriented (the case for \myHighlight{$ADE$}\coordHE{}
+and affine \myHighlight{$ADE$}\coordHE{} diagrams), each edge should be considered  as carrying
+both orientations.
+
+An elementary path can be written either as a finite
+sequence of consecutive (neighbours on the graph) vertices,
+\myHighlight{$[\sigma_{a_1} \sigma_{a_2} \sigma_{a_3} \ldots ]$}\coordHE{},
+or as a sequence \myHighlight{$(\xi(1)\xi(2)\ldots)$}\coordHE{} of consecutive edges, with
+\myHighlight{$\xi(1) = \xi_{a_{1}a_{2}}= \sigma_{a_1} \sigma_{a_2} $}\coordHE{},
+\myHighlight{$\xi(2) = \xi_{a_{2}a_{3}} = \sigma_{a_2}  \sigma_{a_3} $}\coordHE{}, \etc
+Vertices are considered as paths of length \myHighlight{$0$}\coordHE{}.
+
+The length of the (possibly backtracking) path \myHighlight{$( \xi(1)\xi(2)\ldots
+\xi(p) )$}\coordHE{} is \myHighlight{$p$}\coordHE{}.
+We call \myHighlight{$r(\xi_{ij})=\sigma_{j}$}\coordHE{}, the range of \myHighlight{$\xi_{ij}$}\coordHE{}
+and \myHighlight{$s(\xi_{ij})=\sigma_{i}$}\coordHE{}, the source of \myHighlight{$\xi_{ij}$}\coordHE{}.
+
+For all edges \myHighlight{$\xi(n+1) = \xi_{ij}$}\coordHE{} that appear in an elementary path,
+we set  \myHighlight{${\xi(n+1)}^{-1} \doteq \xi{ji}$}\coordHE{}.
+
+For every integer \myHighlight{$n >0$}\coordHE{}, the annihilation operator \myHighlight{$C_{n}$}\coordHE{},
+acting on elementary paths of length \myHighlight{$p$}\coordHE{} is defined
+as follows:  if \myHighlight{$p \leq n$}\coordHE{}, \myHighlight{$C_{n}$}\coordHE{} vanishes and if \myHighlight{$ p \geq  n+1$}\coordHE{} then
+$$\coord{}\boxMath{
+C_{n} (\xi(1)\xi(2)\ldots\xi(n)\xi(n+1)\ldots) =
+\sqrt\frac{D_{r(\xi(n))}}{D_{s(\xi(n))}}
+\delta_{\xi(n),{\xi(n+1)}^{-1}}
+      (\xi(1)\xi(2)\ldots{\hat\xi(n)}{\hat\xi(n+1)}\ldots)
+}{dollar}{0pt}\coordE{}$$
+Here, the symbol ``hat'' ( like  in \myHighlight{$\hat \xi$}\coordHE{}) denotes omission.
+The result is therefore either \myHighlight{$0$}\coordHE{} or a linear combination of paths
+of length \myHighlight{$p-2$}\coordHE{}.
+Intuitively, \myHighlight{$C_{n}$}\coordHE{} chops the round trip that possibly appears
+at positions \myHighlight{$n,n+1$}\coordHE{}.
+
+A path is called essential if it belongs to
+the intersection of the kernels
+of the annihilators \myHighlight{$C_{n}$}\coordHE{}'s.
+
+For instance, in the case of the diagram \myHighlight{$E_{6}$}\coordHE{},
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+C_{3}(\xi_{01}\xi_{12}\xi_{23}\xi_{32}) &=&  \sqrt \frac {\leftCoord{}1}{\rightCoord{}[2]}
+\leftCoord{}(\xi_{01}\xi_{12}) \rightCoord{}\\\leftCoord{}
+C_{3}(\xi_{01}\xi_{12}\xi_{25}\xi_{52}) &=&  \sqrt \frac {\leftCoord{}[2]}{\rightCoord{}[3]}
+\leftCoord{}(\xi_{01}\xi_{12})
+\rightCoord{}}{0mm}{6}{5}{
+C_{3}(\xi_{01}\xi_{12}\xi_{23}\xi_{32}) &=&  \sqrt \frac {1}{[2]}
+(\xi_{01}\xi_{12}) \\
+C_{3}(\xi_{01}\xi_{12}\xi_{25}\xi_{52}) &=&  \sqrt \frac {[2]}{[3]}
+(\xi_{01}\xi_{12})
+}{1}\coordE{}\end{eqnarray*}
+
+The following difference of non essential paths of length \myHighlight{$4$}\coordHE{}
+starting at \myHighlight{$\sigma_{0}$}\coordHE{} and ending at \myHighlight{$\sigma_{2}$}\coordHE{}
+is an essential path of length \myHighlight{$4$}\coordHE{}  on \myHighlight{$E_{6}$}\coordHE{}:
+$$\coord{}\boxMath{\sqrt{[2]} (\xi_{01}\xi_{12}\xi_{23}\xi_{32})  - \sqrt
+\frac{[3]}{[2]} (\xi_{01}\xi_{12}\xi_{25}\xi_{52})
+= \sqrt {[2]}  [0,1,2,3,2]- \sqrt \frac{[3]}{[2]}[0,1,2,5,2]}{dollar}{0pt}\coordE{}$$
+Here the values of q-numbers are \myHighlight{$[2] = \frac{\sqrt 2}{\sqrt 3 -1}$}\coordHE{} and \myHighlight{$[3] =
+\frac{2}{\sqrt 3 -1}$}\coordHE{}.
+
+Acting on an elementary path of length \myHighlight{$p$}\coordHE{}, the creating operators
+\myHighlight{$C^{\dag}_{n}$}\coordHE{} are defined as follows:
+if \myHighlight{$n > p+1$}\coordHE{}, \myHighlight{$C^{\dag}_{n}$}\coordHE{} vanishes and, if \myHighlight{$n \leq p+1$}\coordHE{} then,
+setting \myHighlight{$j = r(\xi(n-1))$}\coordHE{},
+$$\coord{}\boxMath{
+C^{\dag}_{n} (\xi(1)\ldots\xi(n-1)\ldots) = \sum_{d(j,k)=1}
+\sqrt(\frac{D_{k}}{D_{j}})  (\xi(1)\ldots\xi(n-1)\xi_{jk}\xi_{kj}\ldots)
+}{dollar}{0pt}\coordE{}$$
+The above sum is taken over the neighbours \myHighlight{$\sigma_{k}$}\coordHE{} of
+\myHighlight{$\sigma_{j}$}\coordHE{} on the graph.
+Intuitively, this operator adds one  (or several) small round trip(s)
+at position \myHighlight{$n$}\coordHE{}.
+The result is therefore either \myHighlight{$0$}\coordHE{} or a linear combination of paths of
+length \myHighlight{$p+2$}\coordHE{}.
+
+For instance, on paths of length zero (\ie vertices),
+$$\coord{}\boxMath{
+C^{\dag}_{1} (\sigma_{j}) = \sum_{d(j,k)=1}
+\sqrt(\frac{D_{k}}{D_{j}}) \xi_{jk}\xi_{kj} = \sum_{d(j,k)=1}
+\sqrt(\frac{D_{k}}{D_{j}}) \, [\sigma_{j}\sigma_{k}\sigma_{j}]
+}{dollar}{0pt}\coordE{}$$
+
+Jones' projectors \myHighlight{$e_{k}$}\coordHE{} can be defined (as endomorphisms of
+\myHighlight{$Path^p$}\coordHE{}) by
+$$\coord{}\boxMath{
+e_{k} \doteq \frac{1}{\beta} C^{\dag}_{k} C_{k}
+}{dollar}{0pt}\coordE{}$$
+
+The reader can check that all Jones-Temperley-Lieb relations
+between the \myHighlight{$e_i$}\coordHE{} are satisfied.
+Essential paths can also be defined as elements of the intersection of the
+kernels of the Jones projectors \myHighlight{$e_{i}$}\coordHE{}'s.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Twisted partition functions for the \myHighlight{$ADE$}\coordHE{} models}
+
+
+%%%%%%%%%%  A4  %%%%%%%%%%%%%
+
+\begin{table}[hhh]
+$$\coord{}\boxMath{
+\begin{array}{|c||l|}
+\hline
+Point & Z \\
+\hline
+{}   & {} \\
+\ud0 & \xa{0} + \xa{1} + \xa{2} + \xa{3} \\
+{}   & {} \\
+\hline
+{}   & {} \\
+\ud1 & [(\xx{0}{1} + \xx{1}{2} + \xx{2}{3}) + h.c.] \\
+{}   & {} \\
+\hline
+{}   & {} \\
+\ud2 & \xa{1} + \xa{2} + [(\xx{0}{2} + \xx{1}{3}) + h.c.]  \\
+{}   & {} \\
+\hline
+{}   & {} \\
+\ud3 & [(\xx{0}{3} + \xx{1}{2}) + h.c.] \\
+{}   & {} \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\normalsize
+\caption{Twisted partition functions for the \myHighlight{$A_4$}\coordHE{} model}
+\end{table}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%  E6  %%%%%%%%%%%%%%%%%%%
+
+
+\begin{table}
+\scriptsize
+$$\coord{}\boxMath{
+\begin{array}{|c||l|}
+\hline
+Point & \mathcal{Z} \\
+\hline
+\hline
+{}  &  {}  \\
+\ud0  & \xaa{0}{6} + \xaa{3}{7} + \xaa{4}{10}   \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud3  & (\ch{0} + \ch{4} + \ch{6} + \ch{10}).(\och{3} + \och{7}) + h.c. \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud4  & \xaa{3}{7} + [ (\ch{0} + \ch{6}).(\och{4} + \och{10})+ h.c.] \\
+{}  &  {}  \\
+\hline
+\hline
+{}  &  {}  \\
+\ud{11^{'}}  & \xaaa{1}{5}{7} + \xaaaa{2}{4}{6}{8} + \xaaa{3}{5}{9}\\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud{21^{'}}  & (\ch{1} + \ch{3} + 2\, (\ch{5}) + \ch{7} + \ch{9}).
+         (\och{2} + \och{4} + \och{6} + \och{8}) + h.c.  \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud{51^{'}}  &  \xaaaa{2}{4}{6}{8} + 2\, \xa{5} + \left( [(\ch{1} + \ch{7}).
+         (\och{3} + \och{5} + \och{9}) + \xx{3}{5} + \xx{5}{9}]
+         + h.c. \right) \\
+{}  &  {}  \\
+\hline
+\hline
+{}  &  {}  \\
+\ud1  &   (\ch{0} + \ch{6}).(\och{1} + \och{5} + \och{7}) +
+    (\ch{3} + \ch{7}).(\och{2} + \och{4} + \och{6} + \och{8})
++ (\ch{4} + \ch{10}).(\och{3} + \och{5} + \och{9})  \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud{1^{'}} & h.c. (Z_{\ud1}) \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud2  & \xaa{3}{7} + \xaa{4}{6} +
+(\ch{0} + \ch{10}).(\och{2} + \och{4} + \och{6} + \och{8})
++ (\ch{3} + \ch{7}).(\och{1} + 2\,(\och{5}) + \och{9})
++ (\ch{4} + \ch{6}).(\och{2} + \och{8}) \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud{31^{'}} & h.c. (Z_{\ud2}) \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud5  & (\ch{0} + \ch{6}).(\och{3} + \och{5} + \och{9})
++  (\ch{3} + \ch{7}).(\och{2} + \och{4} + \och{6} + \och{8})
++  (\ch{4} + \ch{10}).(\och{1} + \och{5} + \och{7})  \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud{41^{'}} & h.c. (Z_{\ud5}) \\
+{}  &  {}  \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\normalsize
+\caption{Twisted partition functions for the \myHighlight{$E_6$}\coordHE{} model}
+\end{table}
+
+
+
+
+%%%%%%%%%%   E8    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}
+\scriptsize
+$$\coord{}\boxMath{
+\begin{array}{|c||l|}
+\hline
+Point & \mathcal{Z} \\
+\hline
+\hline
+{}  &  {}  \\
+\ud0  & \xaaaa{0}{10}{18}{28} + \xaaaa{6}{12}{16}{22}  \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud6  & \xaaaaaa{0}{6}{12}{16}{22}{28} - \xaa{0}{28} + [(\ch{6} + \ch{12} +
+    \ch{16} + \ch{22}).(\och{10} + \och{18}) + h.c.] \\
+{}  &  {}  \\
+\hline
+\hline
+{}  & {} \\
+\ud{11^{'}}  &  \xaaaaaa{1}{9}{11}{17}{19}{27} +
+\xaaaaaaaa{5}{7}{11}{13}{15}{17}{21}{23} \\
+{}  &  {} \\
+\hline
+{}  & {} \\
+\ud{71^{'}}  & |\ch{1} + \ch{5} + \ch{7} + \ch{11} + \ch{13} +
+\ch{15} + \ch{17} + \ch{21} + \ch{23} + \ch{27}|^{2} +
+\xaaaaaa{9}{11}{13}{15}{17}{19} - \\
+{}  & \xaa{1}{27} + \xaa{11}{17}  - \xaa{13}{15} - \xaa{9}{19} +
+[(\ch{5} + \ch{7} + \ch{21} + \ch{23}).(\och{9} + \och{11} + \och{17}
++ \och{19}) + h.c.]  \\
+{}  &  {} \\
+\hline
+{}  & {} \\
+\ud{22^{'}}  & \xaa{2}{26} + | \sum_{i=2}^{12}(\ch{2i})|^{2} +
+|\sum_{i=4}^{10}(\ch{2i})|^{2}
+         + 2|\ch{14}|^{2} + \\
+{}  & [\left( (\ch{2} + \ch{26}).(\och{8} + \och{10} + \och{12} +
+\och{16} + \och{18} + \och{20}) + (\ch{4} + \ch{6} + \ch{22} +
+\ch{24}).(\och{14}) \right) + h.c.] \\
+{}  & {} \\
+\hline
+{}  & {}  \\
+\ud{42^{'}}  & |\sum_{i=1}^{13}(\ch{2i})|^{2} - \xaa{2}{24} +
+|\sum_{i=2}^{12}(\ch{2i})|^{2}
+        - \xaaaa{4}{6}{22}{24} + \\
+{}  & |\sum_{i=4}^{10}(\ch{2i})|^{2} + [(\ch{2}+\sum_{i=4}^{10}(\ch{2i})
++ \ch{26}).\och{14} + h.c.] \\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{55^{'}}  & \xaaaaaa{5}{9}{13}{15}{19}{23} + |\ch{3} +
+\sum_{i=3}^{10}(\ch{2i+1}) + \ch{25}|^{2} \\
+{}  & {}  \\
+\hline
+{}  & {}  \\
+\ud{35^{'}}  & |\sum_{i=1}^{12}(\ch{2i+1})|^{2} +
+|\sum_{i=3}^{10}(\ch{2i+1})|^{2} +
+          \xaaaa{9}{13}{15}{19} - \xaaaa{7}{11}{17}{21} - \xaa{5}{23} + \\
+{}  & [(\ch{3} + \ch{25}).(\och{9} + \och{13} + \och{15} + \och{19}) + h.c.] \\
+{}  & {} \\
+\hline
+\hline
+{}  &  {}  \\
+\ud1  &  \quad (\ch{0} + \ch{10} + \ch{18} + \ch{28}).
+(\och{1} + \och{9} + \och{11} + \och{17} + \och{19} + \och{27})
+           \\
+{}  & + \,(\ch{6} + \ch{12} + \ch{16} + \ch{22}).
+(\och{5} + \och{7} + \och{11} + \och{13} + \och{15} + \och{17}
++ \och{21} + \och{23})\\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud{1^{'}}  &  h.c. (Z_{\ud1}) \\
+{}  &  {}  \\
+\hline
+{}  &  {} \\
+\ud2  & \quad \xaaaa{6}{12}{16}{22} + (\ch{0} +\ch{10} + \ch{18} +
+\ch{28}).(\och{2} + \och{8} + \och{10} + \och{12} + \och{16} +
+\och{18} + \och{20} + \och{26}) \\
+{}  & + \, (\ch{6} +\ch{12} + \ch{16} + \ch{22}).(\och{4} + \och{8} +
+\och{10} + 2\,(\och{14}) + \och{18} + \och{20} + \och{24}) \\
+{}  & {} \\
+\hline
+{}  &  {} \\
+\ud{2^{'}}  &  h.c. (Z_{\ud2}) \\
+{}  &  {}  \\
+\hline
+{}  &  {} \\
+\ud3  &  \quad (\ch{0} +\ch{10} + \ch{18} + \ch{28}) .\left( \och{3}
++ \sum_{i=3}^{10}(\och{2i+1}) + \och{25} \right)  \\
+{}  & + \, (\ch{6} +\ch{12} + \ch{16} + \ch{22}). \left(
+\sum_{i=1}^{12}(\och{2i+1}) + \och{9} + \och{13} + \och{15}
++ \och{19} \right)\\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{65^{'}}  &  h.c. (Z_{\ud3}) \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud4  & \xaaaaaa{6}{10}{12}{16}{18}{22} + \xaa{12}{16} + (\ch{6} +
+\ch{22}).(\och{12} + \och{16}) + \\
+{}  & (\ch{0} + \ch{10} + \ch{18} + \ch{28}).(\och{4} + \och{8} +
+2\,(\och{14}) + \och{20} + \och{24})
++ (\ch{0} + \ch{28}).(\och{6} + \och{10} + \och{12} + \och{16} +
+\och{18} + \och{22}) + \\
+{}  & (\ch{6} + \ch{12} + \ch{16} + \ch{22}).(\och{2} + \och{4} +
+2\,(\och{8}) +  \och{10} + 2\,(\och{14}) + \och{18} + 2\,(\och{20}) +
+\och{24} + \och{26}) \\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{62^{'}}  & h.c. (Z_{\ud4}) \\
+{}  &  {}  \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\normalsize
+\caption{Twisted partition functions for the \myHighlight{$E_8$}\coordHE{} model (part 1.)}
+\end{table}
+
+\begin{table}
+\scriptsize
+$$\coord{}\boxMath{
+\begin{array}{|c||l|}
+\hline
+Point & Z \\
+\hline
+{}  & {} \\
+\ud5  & (\ch{0} + \ch{10} + \ch{18} + \ch{28}).(\och{5} + \och{9} +
+\och{13} + \och{15} + \och{19} + \och{23}) + (\ch{6} + \ch{12} +
+\ch{16} + \ch{22}).(\och{3} + \sum_{i=3}^{10}(\och{2i+1}) + \och{25})
+\\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{5^{'}}  & h.c. (Z_{\ud5}) \\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud7  & (\ch{0} + \ch{10} + \ch{18} + \ch{28}).(\och{5} + \och{7} +
+\och{11} + \och{13} + \och{15} + \och{17} + \och{21} + \och{23}) +  \\
+{}  & (\ch{6} + \ch{12} + \ch{16} + \ch{22}).(\och{1} +
+\sum_{i=2}^{11}(\och{2i+1}) + \och{11} + \och{17} + \och{27}) \\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{61^{'}}  & h.c. (Z_{\ud7}) \\
+{}  & {} \\
+\hline
+\hline
+{}   & {} \\
+\ud{21^{'}} & (\ch{1} + \ch{9} + \ch{11} + \ch{17} + \ch{19} +
+\ch{27}).(\och{2} + \och{8} + \och{10} + \och{12} + \och{16} +
+\och{18} + \och{20}
++ \och{26})\\
+{} & + (\ch{5} + \ch{7} + \ch{11} + \ch{13} + \ch{15} + \ch{17} +
+\ch{21} + \ch{23}).(\sum_{i=2}^{12}(\och{2i}) + \och{14}) \\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{12^{'}}  & h.c.(Z_{\ud{21^{'}}}) \\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{41^{'}}  & (\ch{1} + \ch{9} + \ch{11} + \ch{17} + \ch{19} +
+\ch{27}).(\sum_{i=2}^{12}(\och{2i}) + \och{14}) +  \\
+{}  & (\ch{5} + \ch{7} + \ch{11} + \ch{13} + \ch{15} + \ch{17} +
+\ch{21} + \ch{23}).(\sum_{i=1}^{13}(\och{2i}) +
+\sum_{i=4}^{10}(\och{2i})) \\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{72^{'}}  & h.c.(Z_{\ud{41^{'}}}) \\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{52^{'}}  & (\ch{2} + \ch{8} + \ch{10} + \ch{12} + \ch{16} +
+\ch{18} + \ch{20}+ \ch{26}).(\och{5} + \och{9} + \och{13} + \och{15}
++ \och{19} + \och{23}) + \\
+{}  & (\sum_{i=2}^{12}(\ch{2i}) + \ch{14}).(\och{3} +
+\sum_{i=3}^{10}(\och{2i+1}) + \och{25}) \\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{25^{'}}  & h.c.(Z_{\ud{52^{'}}}) \\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{32^{'}}  & (\ch{2} + \ch{8} + \ch{10} + \ch{12} + \ch{16} +
+\ch{18} + \ch{20}+ \ch{26}).(\och{3} + \sum_{i=3}^{10}(\och{2i+1}) +
+\och{25})+  \\
+{}  & (\sum_{i=2}^{12}(\ch{2i}) +
+\ch{14}).(\sum_{i=1}^{12}(\och{2i+1}) + \och{9} + \och{13} + \och{15}
++ \och{19}) \\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{45^{'}}  & h.c.(Z_{\ud{32^{'}}}) \\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{51^{'}}  & (\ch{1} + \ch{9} + \ch{11} + \ch{17} + \ch{19} +
+\ch{27}).(\och{5} + \och{9} + \och{13} + \och{15} + \och{19} +
+\och{23}) + \\
+{}  & (\ch{5} + \ch{7} + \ch{11} + \ch{13} + \ch{15} + \ch{17} +
+\ch{21}+ \ch{23}).(\och{3} + \sum_{i=3}^{10}(\och{2i+1}) + \och{25})
+\\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{15^{'}}  & h.c.(Z_{\ud{51^{'}}}) \\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{31^{'}}  & |\sum_{i=2}^{11}(\ch{2i+1})|^2 + (\ch{1} + \ch{11} +
+\ch{17} + \ch{27}).(\och{3} + \sum_{i=3}^{10}(\och{2i+1}) + \och{25})
++ (\ch{9} + \ch{19}) .(\och{3} - \och{5} - \och{23} + \och{25})\\
+{}  & (\ch{5} + \ch{7} + \ch{11} + \ch{13} + \ch{15} + \ch{17} +
+\ch{21}+ \ch{23}).(\och{3} + \och{9} + \och{13} + \och{15} + \och{19}
++ \och{25}) \\
+{}  & {} \\
+\hline
+{}  & {} \\
+\ud{75^{'}}  & h.c.(Z_{\ud{31^{'}}}) \\
+{}  & {} \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\normalsize
+\caption{Twisted partition functions for the \myHighlight{$E_8$}\coordHE{} model (part 2.)}
+\end{table}
+
+
+
+%%%%%%%%%%%%%%%%  D4  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}
+\scriptsize
+$$\coord{}\boxMath{
+\begin{array}{|c||l|}
+\hline
+Point & Z \\
+\hline
+{}   & {} \\
+\ud0 & \xaa{0}{4} + 2\xa{2} \\
+{}   & {} \\
+\hline
+{}   & {} \\
+\ud2, \; \ud{2^{'}} & \xa{2} + [(\ch{0} + \ch{4}).\och{2} + h.c.] \\
+{}   & {} \\
+\hline
+\hline
+{}   & {} \\
+\ud{\ep}, \; \ud{2\ep}, \; \ud{2^{'}\ep} & \xaa{1}{3} \\
+{}   & {} \\
+\hline
+\hline
+{}   & {} \\
+\ud1 & (\ch{0} + 2\, (\ch{2}) + \ch{4}).(\och{1} + \och{3}) \\
+{}   & {} \\
+\hline
+{}   & {} \\
+\ud{1\ep} & h.c. (Z_{\ud1}) \\
+{}   & {} \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\normalsize
+\caption{Twisted partition functions for the \myHighlight{$D_4$}\coordHE{} model}
+\end{table}
+
+
+
+%%%%%%%%%%%%%%%%%%  D6  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}
+\scriptsize
+$$\coord{}\boxMath{
+\begin{array}{|c||l|}
+\hline
+Point & Z \\
+\hline
+{}   & {} \\
+\ud0 & \xaa{0}{8} + \xaa{2}{6} + 2\xa{4} \\
+{}   & {} \\
+\hline
+{}   & {} \\
+{}   & {} \\
+\ud2 & \xaa{2}{6} + 2\xa{4} + [(\ch{0} + 2\, (\ch{4}) +
+\ch{8}).(\och{2} + \och{6}) +  h.c.] \\
+{}   & {} \\
+\hline
+{}   & {} \\
+\ud4, \; \ud{4^{'}} & \xaaa{2}{4}{6} +[(\ch{0} + \ch{8}).\och{4})+ h.c.] \\
+{}   & {} \\
+\hline
+\hline
+{}   & {} \\
+\ud{\ep} & \xaa{1}{7} + \xaa{3}{5} \\
+{}   & {} \\
+\hline
+{}   & {} \\
+\ud{2\ep} & \xaaaa{1}{3}{5}{7} + \xaa{3}{5} \\
+{}   & {} \\
+\hline
+{}   & {} \\
+\ud{4\ep}, \; \ud{4^{'}\ep} & \xaaaa{1}{3}{5}{7} - \xaa{1}{7} \\
+{}   & {} \\
+\hline
+\hline
+{}   & {} \\
+\ud1 & (\ch{0} + \ch{2} + \ch{6} + \ch{8}).(\och{1} + \och{7}) +
+(\ch{2} + 2\, (\ch{4})+ \ch{6}).(\och{3} + \och{5})  \\
+{}   & {} \\
+\hline
+{}   & {} \\
+\ud{1\ep} & h.c. (Z_{\ud1}) \\
+{}   & {} \\
+\hline
+{}   & {} \\
+\ud3 & (\ch{0} + \ch{2} + \ch{6} + \ch{8}).(\och{3} + \och{5}) +
+(\ch{2} + 2\, (\ch{4}) + \ch{6}).(\och{1} + \och{3} + \och{5} +
+\och{7}) \\
+{}   & {} \\
+\hline
+{}   & {} \\
+\ud{3\ep} & h.c. (Z_{\ud3}) \\
+{}   & {} \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\normalsize
+\caption{Twisted partition functions for the \myHighlight{$D_6$}\coordHE{} model}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%  D5  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}
+\scriptsize
+$$\coord{}\boxMath{
+\begin{array}{|c||l|}
+\hline
+Point & \mathcal{Z} \\
+\hline
+\hline
+{}  &  {}  \\
+\ud0  & \xa{0} + \xa{2} + \xa{3} + \xa{4} + \xa{6} + (\xx{1}{5} + h.c.) \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud2  & \xaa{2}{4} + \xa{3} + [( \xx{0}{2} + \xx{1}{3} + \xx{1}{5} +
+\xx{3}{5} + \xx{4}{6}) + h.c.] \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud3  & [(\ch{0} + \ch{2} + \ch{4} + \ch{6}).\och{3} + (\ch{1} + \ch{5}).
+(\och{2} + \ch{4})  + h.c.]  \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud4  & \xa{1} + \xa{3} + \xa{5} + \xaa{2}{4} + [ (\xx{0}{4} + \xx{1}{3}
+       + \xx{2}{6} + \xx{3}{5} ) + h.c. ] \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud6  &  \xa{1} + \xa{3} + \xa{5} + [(\xx{0}{6} + \xx{2}{4}) + h.c.] \\
+{}  &  {}  \\
+\hline
+\hline
+{}  &  {}  \\
+\ud1  & (\ch{0} + \ch{2}).\och{1} + \ch{5}.(\och{0} + \och{2}) +
+\ch{1} .(\och{4} + \och{6})+ (\ch{4} + \ch{6}).\och{5} + [(\xx{2}{3}
++ \xx{3}{4}) + h.c.]\\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud5  &  h.c.(Z_{\ud1}) \\
+{}  &  {}  \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\normalsize
+\caption{Twisted partition functions for the \myHighlight{$D_5$}\coordHE{} model}
+\end{table}
+
+
+
+%%%%%%%%%%%%%%%%%%%  D7  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}
+\scriptsize
+$$\coord{}\boxMath{
+\begin{array}{|c||l|}
+\hline
+Point & \mathcal{Z} \\
+\hline
+\hline
+{}  &  {}  \\
+\ud0  & \xa{0} + \xa{2} + \xa{4} + \xa{5} + \xa{6} + \xa{8} + \xa{10} +
+       [(\xx{1}{9} + \xx{3}{7}) + h.c.] \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud2  & \xaa{2}{4} + \xa{5} + \xaa{6}{8} + [( \xx{0}{2} + (\ch{1} + \ch{3}).
+(\och{7} + \och{9}) + \xx{3}{5} + \xx{4}{6}+  \xx{5}{7}  +
+\xx{8}{10}) + h.c.] \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud4  & \xaaaa{2}{4}{6}{8} + \xaaa{3}{5}{7} + [\xx{0}{4} +
+\ch{1}.(\och{5} + \och{7}) - \xx{2}{8} + (\ch{3} + \ch{5}).\och{9} +
+\xx{6}{10}) + h.c.] \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud5  &  [(\ch{0} + \ch{2} + \ch{4} + \ch{6} + \ch{8} + \ch{10}).\och{5} +
+(\ch{1} + \ch{3} + \ch{7} + \ch{9}).(\och{4} + \och{6}) +
+(\ch{2} + \ch{8}).(\och{3} + \och{7}) + h.c.] \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud6  &  \xaaaa{2}{4}{6}{8} + \xaaa{3}{5}{7} - \xa{2} - \xa{8} + [(\xx{0}{6}
++ \ch{1}.(\och{3} + \och{5}) + \xx{4}{10} + (\ch{5} +
+\ch{7}).\och{9}) + h.c.] \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud8  &   \xaa{1}{3} + \xaa{4}{6}+ \xaa{7}{9} + \xa{5} + [(\xx{0}{8} +
+\ch{2}.(\och{6} + \och{8} + \och{10}) + \xx{3}{5} + \xx{4}{8} + \xx{5}{7})
++ h.c.] \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud{10} & \xa{1} + \xa{3} + \xa{5} + \xa{7} + \xa{9} + [(\xx{0}{10} +
+\xx{2}{8} + \xx{4}{6}) + h.c.]   \\
+{}  &  {}  \\
+\hline
+\hline
+{}  & {} \\
+\ud1  & (\ch{0} + \ch{2}).\och{1} + \ch{9}.(\och{0} + \och{2}) +
+         (\ch{2} + \ch{4}).\och{3} + \ch{7}.(\och{2} + \och{4}) +
+         (\ch{6} + \ch{8}).\och{7} + \ch{3}.(\och{6} + \och{8})  + \\
+{}  & (\ch{8} + \ch{10}).\och{9} + \ch{1}.(\och{8} + \och{10})+
+      [(\ch{4} + \ch{6}).\och{5} + h.c.] \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud9  &  h.c.(Z_{\ud1})  \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud3  &  \ch{7}.(\och{0} + \och{2}) + (\ch{2} + \ch{4}).\och{1} +
+          \ch{9}.(\och{2} + \och{4})+ (\ch{0} + \ch{2}).\och{3} +
+          \ch{1}.(\och{6} + \och{8}) + (\ch{8} + \ch{10}).\och{7}+ \\
+{}  &  \ch{3}.(\och{8} + \och{10}) + (\ch{6} + \ch{8}).\och{9} +
+          [(\ch{2} + \ch{4} + \ch{6} + \ch{8}).\och{5} +
+           (\ch{3} + \ch{7}).(\ch{4} + \ch{6}) + h.c.] \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud7  &  h.c.(Z_{\ud3})  \\
+{}  &  {}  \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\normalsize
+\caption{Twisted partition functions for the \myHighlight{$D_7$}\coordHE{} model}
+\end{table}
+
+
+
+
+%%%%%%%%%%%%%%%  E7  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}
+\scriptsize
+$$\coord{}\boxMath{
+\begin{array}{|c||l|}
+\hline
+Point & \mathcal{Z} \\
+\hline
+\hline
+{}  &  {}  \\
+\ud0 & \xaa{0}{16}+ \xaa{4}{12} + \xaa{6}{10} + \xa{8} + [(\ch{2} +
+\ch{14}).\och{8} + h.c.] \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud2  & \xaaaaa{4}{6}{8}{10}{12} - (\ch{4} + \ch{12}).\och{8} +
+\ch{8}.(\och{0} + \och{16}) + \\
+{} & (\ch{0} + \ch{4} + \ch{8} + \ch{12} + \ch{16}).(\och{2} +
+\och{14}) + (\ch{2} + \ch{14}).(\och{6} + \och{8} + \och{10}) +
+(\ch{6} + \ch{10}).\och{8} \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud4  & \xaaaaaaa{2}{4}{6}{8}{10}{12}{14} - \xaa{2}{14} +
+\xaaa{6}{8}{10} - \xa{8} + \\
+{}  & [(\ch{0} + \ch{8} + \ch{16}).(\och{4} + \och{12}) + h.c.] \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud6  & \xaaaaaaa{2}{4}{6}{8}{10}{12}{14} + \xaaaaa{4}{6}{8}{10}{12}
+- \xaa{4}{12} + \xa{8} + \\
+{}  & [(\ch{0} + \ch{16}).(\och{6} + \och{12}) + h.c.] \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud8  & \xaaaaa{4}{6}{8}{10}{12} - \ch{8}.(\och{4} + \och{12}) +
+(\ch{2} + \ch{14}).(\och{0} + \och{4} + \och{8} + \och{12} +
+\och{16}) + \\
+{}  & (\ch{6} + \ch{8} + \ch{10}).(\och{2} + \och{14}) + (\ch{0} +
+\ch{16}).\och{8} + \ch{8}.(\och{6} + \och{10}) \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud{8^{'}} & \xaaaa{2}{6}{10}{14} - \xaa{6}{10} +
+\xaaaaa{4}{6}{8}{10}{12} + \xa{8} + [(\ch{0} + \ch{16}).\och{8}+
+h.c.] \\
+{}  &  {}  \\
+\hline
+\hline
+{}  &  {}  \\
+(\ud1)  &  \xaaaa{1}{7}{9}{15} + \xaaaaaa{3}{5}{7}{9}{11}{13} + \xaa{5}{11} \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+(\ud3)  & |\sum_{i=0}^{7}(\ch{2i+1})|^{2} + |\sum_{i=1}^{6}(\ch{2i+1})|^{2} +
+|\sum_{i=2}^{5}(\ch{2i+1})|^{2} - \xaa{1}{15} - \xaa{3}{13} - \xaa{5}{11} \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+(\ud5)   & \xaaaa{3}{7}{9}{13} + \xaaaa{5}{7}{9}{11}- \xaa{7}{9} +
+[(\ch{1}+  \ch{15}).(\och{5} + \och{11}) + h.c.] \\
+{}  &  {}  \\
+\hline
+\hline
+{}  &  {} \\
+\ud1  & (\ch{0} + \ch{8} + \ch{16}).(\och{1} + \och{15}) + (\ch{4} +
+\ch{8} + \ch{12}).(\och{3} + \och{13}) + (\ch{4} + \ch{6} + \ch{10} +
+\ch{12}).(\och{5} + \och{11}) + \\
+{} &  (\ch{2} + \ch{6} + \ch{8} +\ch{10} + \ch{14}).(\och{7} + \och{9}) \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+(\ud0)  &  h.c.(Z_{\ud1}) \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud7  &  (\ch{2} + \ch{6} + \ch{8} + \ch{10} +
+\ch{14}).(\sum_{i=0}^{7}(\och{2i+1}))+ (\ch{4} + \ch{6} + \ch{10} +
+\ch{12}).(\sum_{i=1}^{6}(\och{2i+1})) + \\
+{}  & (\ch{4} + \ch{8} + \ch{12}).(\och{5} + \och{7} + \och{9} + \och{11})
++ (\ch{0} + \ch{8} + \ch{16}).(\och{7} + \och{9}) \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+(\ud2)  &  h.c.(Z_{\ud7}) \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud3  & (\ch{4} + \ch{8} + \ch{12}).(\sum_{i=0}^{7}(\och{2i+1})) +
+(\ch{0} + \ch{6} + \ch{10} + \ch{16}).(\och{3} + \och{12}) + \\
+{}  & (\ch{2} + \ch{6} + \ch{10} + \ch{14}).(\och{5} + \och{7} +
+\och{9} + \och{11}) + (\ch{6} + \ch{10}).(\och{7} + \och{9}) +
+\ch{8}.(\och{5} + \och{11}) \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+(\ud4)  &  h.c.(Z_{\ud3}) \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+\ud5  & (\ch{4} + \ch{6} + \ch{10} + \ch{12}).(\sum_{i=0}^{7}(\och{2i+1})) +
+(\ch{2} + 2\, (\ch{8}) + \ch{14}).(\sum_{i=1}^{6}(\och{2i+1})) + \\
+{}  & (\ch{0} + \ch{6} + \ch{10} + \ch{16}).(\och{5} + \och{11}) +
+(\ch{4} + \ch{6} + \ch{10} + \ch{12}).(\och{7} + \och{9}) \\
+{}  &  {}  \\
+\hline
+{}  &  {}  \\
+(\ud6)  &  h.c.(Z_{\ud5}) \\
+{}  &  {}  \\
+\hline
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+\caption{Twisted partition functions for the \myHighlight{$E_7$}\coordHE{} model}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%
+
+
+\begin{thebibliography}{99}
+
+\bibitem{hypergroups} Applications of hypergroups and related
+measure algebras, Seattle Conference, 1993, AMS, Contemporary
+Mathematics, 183. W. Connet, M.-O. Gebuher and A. L. Schwartz eds.
+
+\bibitem{Evans-1} J. B\"ockenhauer and D. Evans, Modular invariants, graphs and \myHighlight{$\alpha$}\coordHE{} induction for nets of subfactors II,
+Commun. Math. Phys. 200(1990)57-103.
+
+\bibitem{Evans-2} J. B\"ockenhauer and D. Evans, Modular invariants from subfactors, D. Evans lectures at Bariloche Summer School,
+Argentina, Jan 2000. To appear in AMS Contemporary Mathematics, R. Coquereaux, A. Garcia and R. Trinchero eds.
+
+\bibitem{CapItzZub} A.Cappelli, C.Itzykson et J.B. Zuber, The
+ADE classification of minimal and \myHighlight{$A_1^{(1)}$}\coordHE{} conformal invariant
+theories, Comm. Math. Phys. 13(1987)1.
+
+\bibitem{Otto} C. H. Otto Chui, C. Mercat, W. Orrick and P. A. Pearce, Integrable Lattice 
+Realizations of Conformal Twisted Boundary Conditions, hep-th/0106182.
+
+\bibitem{Coque:qtetra} R. Coquereaux, Notes on the quantum
+tetrahedron, math-ph/0011006.
+
+\bibitem{Coque:Karpacz} R. Coquereaux, Classical and quantum
+polyhedra: A fusion graph algebra point of view, Lectures given at
+the Karpacz winter school, February 2001, hep-th/0105239. 
+
+\bibitem{CoGaTr:triangles} R. Coquereaux, A. Garcia, R. Trinchero,
+Racah-Wigner bi-algebras and Ocneanu quantum symmetries, in preparation.
+
+\bibitem{CosteGannon:modular} A. Coste and T. Gannon, Congruence subgroups and rational conformal field theory, math.QA/9909080.
+
+\bibitem{FMS:book} P.Di Francesco, P. Matthieu, D. Senechal, Conformal Field Theory (Springer, 1997).
+
+\bibitem{Jones:book} F.M. Goodman, P. de la Harpe and V.F.R Jones, Coxeter graphs and towers of algebras, MSRI publications 14 (Springer, 1989).
+
+\bibitem{Jones:planar} V.F.R Jones, Planar algebras, V.F.R
+Jones home page.
+
+\bibitem{Kirilov:ADE} A. Kirillov and V. Ostrik, On q-analog
+of McKay correspondence and ADE classification of SL2 conformal field
+theories, math.QA/0101219.
+
+
+\bibitem{Klein} F. Klein, Lectures on the Icosahedron and the
+solution of the equation of the fifth degree, Reprog. Nachdr. d.
+Ausg. Leipzig (1884), Teubner. Dover Pub, New York, Inc IX, 289p
+(1956).
+
+\bibitem{McKay} J. McKay, Graphs, singularities and finite
+groups, Proc. Symp. Pure Math. 37(1980)183.
+
+
+\bibitem{Ocneanu:paths} A. Ocneanu, Paths on Coxeter diagrams: from
+Platonic solids and singularities to minimal models and subfactors.
+Notes taken by S. Goto, Fields Institute Monographs (Rajarama Bhat et al eds, AMS, 1999).
+
+\bibitem{Ocneanu:MSRI} A. Ocneanu, Higher Coxeter systems, Talk given at
+MSRI, http://www.msri.org/publications/ln/msri/2000/subfactors/ocneanu.
+
+
+\bibitem{Ocneanu:Marseille} A. Ocneanu, Paths on Coxeter
+diagrams: from Platonic solids and singularities to minimal models
+and subfactors, Talks given at the Centre de Physique Th\'eorique,
+Luminy, Marseille, 1995.
+
+\bibitem{Pasquier:alg} V. Pasquier, Operator contents of the ADE
+lattice models, J. Phys A20 (1987) 5707.
+
+%%\bibitem{Pasquier} V. Pasquier, Two-dimensional critical
+%%systems labeled by Dynkin diagrams, Nucl.Phys. B 285(1987)162.
+
+\bibitem{PetkovaZuber:bulk} V.B. Petkova and J.B. Zuber, BCFT:
+from the boundary to the bulk, Proc. of Nonperturbative Quantum
+Effects 2000, hep-th/0009219.
+
+\bibitem{PetZub:bcft} V.B. Petkova and J.B. Zuber, Generalized
+twisted partition functions, Phys. Lett. B 504(1-2)(2001)157,
+hep-th/0011021.
+
+\bibitem{PetZub:Oc} V.B. Petkova and J.B. Zuber, The many faces
+of Ocneanu cells, Nucl. Phys. B 603(2001)449, hep-th/0101151.
+
+\bibitem{PearceZhou:RSOS} P.A. Pearce and Y. Zhou, Intertwiners and 
+A-D-E lattice models, IJMPhys B, Vol 7, Nos 20-21 (1993) 3469, hep-th/9304009.
+
+\bibitem{Roche:Oc} Ph. Roche, Ocneanu cell calculus and
+integrable lattice models, Comm.Math.Phys. 127(1990)395.
+
+\bibitem{Zuber:Bariloche} J.B. Zuber, CFT, BCFT, ADE and all that, 
+Lectures at Bariloche Summer School, Argentina, Jan 2000, hep-th/0006151.
+To appear in AMS Contemporary Mathematics, R. Coquereaux, A. Garcia
+and R. Trinchero eds.
+
+
+
+
+
+
+
+
+
+
+\end{thebibliography}
+
+
+\end{document}
+
+\bye

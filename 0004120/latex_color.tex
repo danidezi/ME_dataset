@@ -1,0 +1,1672 @@
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{amssymb}
+\usepackage{amsopn}
+%
+
+\def\hybrid{\topmargin 0pt	\oddsidemargin 0pt 
+	\headheight 0pt	\headsep 0pt
+	\textheight 9in		% US paper
+	\textwidth 6.1in	% A4 paper (old 6.25in)
+	\marginparwidth .875in
+	\parskip 5pt plus 1pt	\jot = 1.5ex}
+
+\hybrid
+
+\def\baselinestretch{1.2}
+
+\catcode`\@=11
+
+\def\numberbysection{\@addtoreset{equation}{section}
+	\def\theequation{\thesection.\arabic{equation}}}
+
+\def\underline#1{\relax\ifmmode\@@underline#1\else
+	\myHighlight{$\@@underline{\hbox{#1}}$}\coordHE{}\relax\fi}
+
+
+\def\titlepage{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
+     \else \newpage \fi \thispagestyle{empty}\c@page\z@	
+	\def\thefootnote{\fnsymbol{footnote}} }
+
+\def\endtitlepage{\if@restonecol\twocolumn \else \newpage \fi
+	\def\thefootnote{\arabic{footnote}} 
+	\setcounter{footnote}{0}}  %\c@footnote\z@ }
+
+\catcode`@=12
+\relax
+\numberbysection
+\DeclareMathOperator{\so}{\mathfrak{s}\mathfrak{o}}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Orth}{O}
+\DeclareMathOperator{\SOrth}{SO}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\ad}{ad}
+\providecommand{\hodge}{*_{\Sigma}}
+\providecommand{\lieg}{\mathfrak{g}}
+\providecommand{\liek}{\mathfrak{k}}
+\providecommand{\lieh}{\mathfrak{h}}
+\providecommand{\liem}{\mathfrak{m}}
+\providecommand{\liep}{\mathfrak{p}}
+\providecommand{\Btil}{\widetilde{B}}
+\providecommand{\Gtil}{\widetilde{G}}
+\providecommand{\Htil}{\widetilde{H}}
+\providecommand{\Qtil}{\widetilde{Q}}
+\providecommand{\Mtil}{\widetilde{M}}
+\providecommand{\Rtil}{\widetilde{R}}
+\providecommand{\Tij}{T^{i}{}_{j}}
+\providecommand{\Tik}{T^{i}{}_{k}}
+\providecommand{\Tjk}{T^{j}{}_{k}}
+\providecommand{\Tkj}{T^{k}{}_{j}}
+\providecommand{\Ttil}{\widetilde{T}}
+\providecommand{\alphatil}{\tilde{\alpha}}
+\providecommand{\dalem}{\partial^{2}_{+-}}
+\providecommand{\dminus}{\partial_{-}}
+\providecommand{\dplus}{\partial_{+}}
+\providecommand{\gtil}{\tilde{g}}
+\providecommand{\half}{\frac{1}{2}}
+\providecommand{\ktil}{\tilde{k}}
+\providecommand{\bbR}{\mathbb{R}}
+\providecommand{\omegatil}{\tilde{\omega}}
+\providecommand{\sigtil}{\tilde{\sigma}}
+\providecommand{\rtil}{\tilde{r}}
+\providecommand{\thetatil}{\tilde{\theta}}
+\providecommand{\xtil}{\tilde{x}}
+
+\usepackage{useful_macros}
+\begin{document}
+\begin{titlepage}
+\mbox{April 2000}\hfill\mbox{UMTG--223}\newline
+\strut\hfill\mbox{\tt hep-th/0004120}
+\par\vspace{.5in}
+\begin{center}
+    {\bf\large Target Space Pseudoduality}\\
+    {\bf\large Between Dual Symmetric Spaces\footnote{This work
+    was supported in part by National Science Foundation grant
+    PHY--9870101.}}\\[.4in]
+    {\bf Orlando Alvarez\footnote{email: 
+    \texttt{oalvarez@miami.edu}}}\\
+    {\em Department of Physics}\\
+    {\em University of Miami}\\
+    {\em P.O. Box 248046}\\
+    {\em Coral Gables, FL 33124 USA}\\
+\end{center}
+
+\vspace{.5in}
+\begin{abstract}
+A  set of on shell duality equations is proposed that leads to a
+map between strings moving on symmetric spaces with opposite
+curvatures.  The transformation maps ``waves'' on a riemannian
+symmetric space \myHighlight{$M$}\coordHE{} to ``waves'' on its dual riemannian symmetric
+space \myHighlight{$\Mtil$}\coordHE{}.  This transformation preserves the energy momentum
+tensor though it is not a canonical transformation.  The preservation
+of the energy momentum tensor has a natural geometrical
+interpretation. The transformation maps ``particle-like solutions'' into 
+static ``soliton-like solutions''. The results presented here 
+generalize earlier results of E.~Ivanov.
+\end{abstract}
+
+\vspace{.5in}
+\noindent
+PACS: 11.25-w, 03.50-z, 02.40-k\newline
+Keywords: duality, strings, geometry
+
+\end{titlepage}
+
+\section{Introduction}
+\label{sec:intro}
+
+We take spacetime \myHighlight{$\Sigma$}\coordHE{} to be two dimensional Minkowski space.  Let
+\myHighlight{$\sigma^{\pm} = \tau\pm\sigma$}\coordHE{} be the standard lightcone coordinates
+and let \myHighlight{$\varphi$}\coordHE{} be a massless free scalar field satisfying the wave
+equation \myHighlight{$\dalem\varphi=0$}\coordHE{}.  The standard abelian duality
+transformations (for a review see \cite{Giveon:1994fu}) are
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    \dplus\tilde{\varphi} & = & +\dplus\varphi\;, \rightCoord{}
+    \label{eq:olddualp}  \rightCoord{}\\\leftCoord{}
+     \dminus\tilde{\varphi} & = & -\dminus\varphi\;. \rightCoord{}
+    \label{eq:olddualm}
+\rightCoord{}}{0mm}{2}{5}{
+    \dplus\tilde{\varphi} & = & +\dplus\varphi\;, 
+    \\
+     \dminus\tilde{\varphi} & = & -\dminus\varphi\;. 
+    }{1}\coordE{}\end{eqnarray}
+The integrability conditions for the above are precisely the equations
+of motion \myHighlight{$\dalem\varphi=0$}\coordHE{}.  This means that we can construct
+\myHighlight{$\tilde{\varphi}(\sigma^{+},\sigma^{-})$}\coordHE{} and verify that as a
+consequence of the above \myHighlight{$\dalem\tilde{\varphi}=0$}\coordHE{}.  A generalization
+of the above are the pseudochiral models of the type introduced by
+Zakharov and Mikhailov \cite{Zakharov:1978pp}.  
+Consider a standard sigma model with target space a Lie group \myHighlight{$G$}\coordHE{}
+and with equations of motions \myHighlight{$\partial^{a}(g^{-1}\partial_{a}g)=0$}\coordHE{}. 
+Introduce the dual Lie algebra valued field \myHighlight{$\phi$}\coordHE{} by
+$$\coord{}\boxMath{
+    g^{-1}\partial_{a}g = -\epsilon_{a}{}^{b}\partial_{b}\phi\,.
+}{dollar}{0pt}\coordE{}$$
+It was shown by Nappi that these two descriptions were not quantum
+mechanically equivalent \cite{Nappi:1980ig}.  The correct dual models
+were found by Fridling and Jevicki \cite{Fridling:1984ha} and by
+Fradkin and Tseytlin \cite{Fradkin:1985ai}.  It was eventually
+understood that the duality transformation should be a canonical
+transformation \cite{Curtright:1994be,Alvarez:1994wj} and the
+transformation in the pseudochiral model is not.  Nevertheless the
+pseudochiral model has a variety of interesting field theoretic
+features \cite{Curtright:1994be,Zachos:1994fa}.  Motivated by string
+theory, there is now a vast literature on nonabelian duality
+\cite{Kiritsis:1991zt,Rocek:1992ps,Giveon:1992jj,delaOssa:1993vc,%
+Gasperini:1993nz,Giveon:1994mw,Giveon:1994ai,Giveon:1994ph,%
+Alvarez:1994zr,Alvarez:1994qi,Lozano:1995jx,Lozano:1996sc,%
+Alvarez:1995uc}
+and Poisson-Lie duality
+\cite{Klimcik:1995ux,Klimcik:1996dy,Klimcik:1996kw,%
+Sfetsos:1998pi,Sfetsos:1996xj,Stern:1998my}.
+
+Following up on recent work \cite{Alvarez:2000bh} we consider a
+variant of the duality equations proposed there.  These equations are
+a generalization of the ones of Zakharov and Mikhailov.  In light of
+the introductory paragraph it will be interesting to study the
+physical and mathematical properties of these equations.  Here we
+point out that there is an interesting transformation that maps
+solutions of the wave equation on a symmetric space into solutions of
+the wave equation on a symmetric space with the opposite curvature 
+(see the next paragraph). 
+We note that it was pointed out in \cite{Zachos:1994fa} that the
+opposite signs found by Nappi in the beta functions for the dual
+models of Zakharov and Mikhailov are explained by observing that the
+generalized curvatures in the models have opposite signs.
+
+The results presented here are a generalization\footnote{I am thankful
+to E.~Ivanov for bringing his work to my attention.} of results of
+E.~Ivanov~\cite{Ivanov:1987yv}.  There is a large body of literature
+discussing conserved currents in sigma models based on groups or coset
+spaces.  A seminal work was Pohlmeyer's
+construction~\cite{Pohlmeyer:1975nb} for an infinite number of
+conserved currents in sigma models with target space \myHighlight{$S^{n}$}\coordHE{}.  This
+was generalized by Eichenherr and Forger
+\cite{Eichenherr:1979ci,Eichenherr:1981sk} who showed that the
+construction generalized to symmetric spaces.  Ivanov expanded on
+these ideas and in doing so introduced the notion the \emph{dual
+algebra} and the \emph{dual sigma model}.  He states, 
+\begin{quote}
+    ``\ldots\ in
+    which we show that the equations of any \myHighlight{$d=2$}\coordHE{}  \myHighlight{$\sigma$}\coordHE{} model on a
+    symmetric space simultaneously describe a \myHighlight{$d=2$}\coordHE{}  \myHighlight{$\sigma$}\coordHE{} model on some
+    other, dual factor space\ldots'' \cite[p.  475]{Ivanov:1987yv}.
+\end{quote}
+He explicitly works out the example of a sigma model with target a
+compact real Lie group \myHighlight{$G$}\coordHE{} (with zero \myHighlight{$B$}\coordHE{}-field).  He views \myHighlight{$G$}\coordHE{} as a
+symmetric space \myHighlight{$G\times G/G$}\coordHE{} and he explicitly shows that the sigma
+model on \myHighlight{$G$}\coordHE{} is dual to the sigma model on \myHighlight{$G^{\mathbb{C}}/G$}\coordHE{} where
+\myHighlight{$G^{\mathbb{C}}$}\coordHE{} is the complexification of \myHighlight{$G$}\coordHE{}.  He subsequently
+asserts that the construction generalizes to a generic symmetric 
+space. Ivanov's construction for a symmetric space is given in 
+Section~\ref{sec:ivanov}.  The work here generalizes Ivanov's in that
+we assume a general riemannian manifold and show that it must be a
+symmetric space.
+
+We first establish some
+notation.  The sigma model with target space \myHighlight{$M$}\coordHE{}, metric \myHighlight{$g$}\coordHE{} and
+\myHighlight{$2$}\coordHE{}-form \myHighlight{$B$}\coordHE{} will be denoted by \myHighlight{$(M,g,B)$}\coordHE{} and has lagrangian
+\begin{equation}\coord{}\boxEquation{
+    \mathcal{L} = \half g_{ij}(x)
+    \left(
+    \frac{\partial x^{i}}{\partial \tau}
+    \frac{\partial x^{j}}{\partial \tau}
+    -\frac{\partial x^{i}}{\partial \sigma}
+    \frac{\partial x^{j}}{\partial \sigma}
+    \right) +
+    B_{ij}(x)
+    \frac{\partial x^{i}}{\partial \tau}
+    \frac{\partial x^{j}}{\partial \sigma}
+    \label{eq:lag}
+}{
+    \mathcal{L} = \half g_{ij}(x)
+    \left(
+    \frac{\partial x^{i}}{\partial \tau}
+    \frac{\partial x^{j}}{\partial \tau}
+    -\frac{\partial x^{i}}{\partial \sigma}
+    \frac{\partial x^{j}}{\partial \sigma}
+    \right) +
+    B_{ij}(x)
+    \frac{\partial x^{i}}{\partial \tau}
+    \frac{\partial x^{j}}{\partial \sigma}
+    }{ecuacion}\coordE{}\end{equation}
+with canonical momentum density
+\begin{equation}\coord{}\boxEquation{
+    \pi_{i}= \frac{\partial\mathcal{L}}{\partial \dot{x}^{i}} =
+    g_{ij}\dot{x}^{j} + B_{ij}x'^{j}\;.
+    \label{eq:canmomentum}
+}{
+    \pi_{i}= \frac{\partial\mathcal{L}}{\partial \dot{x}^{i}} =
+    g_{ij}\dot{x}^{j} + B_{ij}x'^{j}\;.
+    }{ecuacion}\coordE{}\end{equation}
+The stress energy tensor for this sigma model is given by
+\myHighlight{$\Theta_{+-}=0$}\coordHE{},
+\begin{equation}\coord{}\boxEquation{
+    \Theta_{++}= g_{ij}(x) \dplus x^{i} \dplus x^{j} \quad\mbox{and}\quad
+    \Theta_{--}= g_{ij}(x) \dminus x^{i} \dminus x^{j}\,.
+    \label{eq:Tmunu}
+}{
+    \Theta_{++}= g_{ij}(x) \dplus x^{i} \dplus x^{j} \quad\mbox{and}\quad
+    \Theta_{--}= g_{ij}(x) \dminus x^{i} \dminus x^{j}\,.
+    }{ecuacion}\coordE{}\end{equation}
+
+In general a duality transformation between sigma models \myHighlight{$(M,g,B)$}\coordHE{} and
+\myHighlight{$(\Mtil,\gtil,\Btil)$}\coordHE{} is a canonical transformation between the
+respective phase spaces that preserves the respective hamiltonian
+densities.  We can study a less restrictive situation where we only
+have ``on shell duality''.  By this we mean that we only require that
+a map exists between solutions to the equations of motion of \myHighlight{$(M,g,B)$}\coordHE{}
+and solutions of the equations of motion of \myHighlight{$(\Mtil,\gtil,\Btil)$}\coordHE{}. 
+The ``on shell'' transformation proposed below will be
+referred to as \emph{pseudoduality}.  There is a certain naturalness
+to the pseudoduality transformation because it preserves the stress
+energy tensor.
+
+As in \cite{Alvarez:2000bh} it is convenient to choose an orthonormal
+frame \myHighlight{$\{\omega^{i}\}$}\coordHE{} with the antisymmetric riemannian connection
+\myHighlight{$\omega_{ij}$}\coordHE{}.  The Cartan structural equations are
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+    d\omega^{i} & = & -\omega_{ij}\wedge\omega^{j}\;, \rightCoord{}\\\leftCoord{}
+    d\omega_{ij} & = & -\omega_{ik}\wedge\omega_{kj}
+    \leftCoord{}+\half R_{ijkl}\omega^{k}\wedge\omega^{l}\;.\rightCoord{}
+\rightCoord{}}{0mm}{3}{4}{
+    d\omega^{i} & = & -\omega_{ij}\wedge\omega^{j}\;, \\
+    d\omega_{ij} & = & -\omega_{ik}\wedge\omega_{kj}
+    +\half R_{ijkl}\omega^{k}\wedge\omega^{l}\;.
+}{1}\coordE{}\end{eqnarray*}
+We also define the curvature \myHighlight{$2$}\coordHE{}-forms by \myHighlight{$\Omega_{ij} = \half
+R_{ijkl}\omega^{k}\wedge\omega^{l}$}\coordHE{}.  Consider two sigma models
+\myHighlight{$(M,g,B)$}\coordHE{} and \myHighlight{$(\Mtil,\gtil,\Btil)$}\coordHE{}.  Using the orthonormal frame we
+define the appropriate \myHighlight{$\sigma^{a}$}\coordHE{} derivative of the maps
+\myHighlight{$x:\Sigma\to M$}\coordHE{} and \myHighlight{$\xtil:\Sigma \to \Mtil$}\coordHE{} by\footnote{More
+correctly these equations are pullbacks of the type \myHighlight{$x^{*}\omega^{i}=
+x^{i}{}_{a} d\sigma^{a}$}\coordHE{}.  In the field of exterior differential
+systems \cite{BCG3} the pullback is implicit and not usually written. 
+We adhere to that convention.}
+\begin{equation}\coord{}\boxEquation{
+    \omega^{i}=x^{i}{}_{a}d\sigma^{a}\quad\mbox{and}\quad
+    \omegatil^{i}=\xtil^{i}{}_{a}d\sigma^{a}\,.
+    \label{eq:defvel}
+}{
+    \omega^{i}=x^{i}{}_{a}d\sigma^{a}\quad\mbox{and}\quad
+    \omegatil^{i}=\xtil^{i}{}_{a}d\sigma^{a}\,.
+    }{ecuacion}\coordE{}\end{equation}
+In order to describe the equations of motion for the sigma model we
+need to consider second derivatives.  The covariant derivatives of
+\myHighlight{$x^{i}{}_{a}$}\coordHE{} are \myHighlight{$x^{i}{}_{ab}$}\coordHE{} and are defined by
+\begin{equation}\coord{}\boxEquation{
+    dx^{i}{}_{a} + \omega_{ij}x^{j}{}_{a} = x^{i}{}_{ab}d\sigma^{b}\;.
+    \label{eq:covder}
+}{
+    dx^{i}{}_{a} + \omega_{ij}x^{j}{}_{a} = x^{i}{}_{ab}d\sigma^{b}\;.
+    }{ecuacion}\coordE{}\end{equation}
+Taking the exterior derivative of \myHighlight{$\omega^{i}=x^{i}{}_{a}d\sigma^{a}$}\coordHE{}
+we learn that \myHighlight{$x^{i}{}_{ab}= x^{i}{}_{ba}$}\coordHE{}.  The equations of motion
+coming from (\ref{eq:lag}) are
+\begin{equation}\coord{}\boxEquation{
+    x^{k}{}_{+-} = -\half H_{kij}x^{i}{}_{+} x^{j}{}_{-}\,,
+    \label{eq:eomgen}
+}{
+    x^{k}{}_{+-} = -\half H_{kij}x^{i}{}_{+} x^{j}{}_{-}\,,
+    }{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$H=dB$}\coordHE{}.  There are similar definitions and equations for
+\myHighlight{$\xtil^{i}$}\coordHE{}.
+
+The lagrangian version of the hamiltonian duality equations in
+\cite{Alvarez:2000bh} may be written as
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    \xtil_{+}(\sigma) & = & +T_{+}(x,\xtil) x_{+}(\sigma)\rightCoord{}\,,
+    \label{eq:plus}  \rightCoord{}\\\leftCoord{}
+    \xtil_{-}(\sigma) & = & -T_{-}(x,\xtil) x_{-}(\sigma)\rightCoord{}\,.\rightCoord{}
+    \label{eq:minus}
+\rightCoord{}}{0mm}{2}{6}{
+    \xtil_{+}(\sigma) & = & +T_{+}(x,\xtil) x_{+}(\sigma)\,,
+    \\
+    \xtil_{-}(\sigma) & = & -T_{-}(x,\xtil) x_{-}(\sigma)\,.
+    }{1}\coordE{}\end{eqnarray}
+The orthogonal matrix valued functions \myHighlight{$T_{\pm}:M \times \Mtil \to
+\SOrth(n)$}\coordHE{} are not arbitrary but related by
+\begin{equation}\coord{}\boxEquation{
+    T_{+}(I+n) = T_{-}(I-n)\,,
+    \label{eq:Trel}
+}{
+    T_{+}(I+n) = T_{-}(I-n)\,,
+    }{ecuacion}\coordE{}\end{equation}
+where the antisymmetric tensor \myHighlight{$n_{ij}$}\coordHE{} on \myHighlight{$M\times\Mtil$}\coordHE{} satisfies
+some PDEs given in \cite{Alvarez:2000bh}.  In this article we relax
+such restrictions on \myHighlight{$T_{\pm}$}\coordHE{} and consider orthogonal matrix valued
+functions \myHighlight{$T_{\pm}:\Sigma \to \SOrth(n)$}\coordHE{} with the constraint that
+solutions to the the sigma model \myHighlight{$(M,g,B)$}\coordHE{} are mapped into solutions
+of \myHighlight{$(\Mtil,\gtil,\Btil)$}\coordHE{} and vice versa.  We will refer to these
+equations as the \emph{pseudoduality equations}.  Note that the
+pseudoduality transformations satisfy \myHighlight{$\widetilde{\Theta}_{\pm\pm}
+=\Theta_{\pm\pm}$}\coordHE{}.  This is very different than in
+\cite{Alvarez:2000bh} where \myHighlight{$T_{\pm}$}\coordHE{} are functions on \myHighlight{$M\times
+\Mtil$}\coordHE{}.  In other words, we allow explicit dependence on \myHighlight{$\sigma$}\coordHE{} in
+\myHighlight{$T$}\coordHE{} where as in \cite{Alvarez:2000bh} the dependence occurs because
+\myHighlight{$x$}\coordHE{} and \myHighlight{$\xtil$}\coordHE{} depend on \myHighlight{$\sigma$}\coordHE{}.
+
+We specialize in this article to the case where \myHighlight{$T_{+}=T_{-}=T: \Sigma
+\to \SOrth(n)$}\coordHE{} and \myHighlight{$H=0$}\coordHE{}, \myHighlight{$\Htil=0$}\coordHE{}.  In this case the equations of
+motion become\footnote{We remind the reader that solutions to
+Laplace's equation are called harmonic functions yet solutions to the
+wave equation are simply called ``waves''.} \myHighlight{$x_{+-}=\xtil_{+-}=0$}\coordHE{} and
+the duality equations are
+\begin{equation}\coord{}\boxEquation{
+    \xtil_{\pm}(\sigma) = \pm T(\sigma) x_{\pm}(\sigma)\,.
+    \label{eq:special}
+}{
+    \xtil_{\pm}(\sigma) = \pm T(\sigma) x_{\pm}(\sigma)\,.
+    }{ecuacion}\coordE{}\end{equation}
+We point out that when \myHighlight{$H=\Htil=0$}\coordHE{} the sigma models are worldsheet
+parity and worldsheet time reversal invariant.  The isometry \myHighlight{$T$}\coordHE{} is
+odd under worldsheet parity and under worldsheet time reversal.  Note
+that in the pseudochiral model \myHighlight{$\Htil \neq 0$}\coordHE{} and therefore it is not
+covered in this paper.  The general case with generic \myHighlight{$H$}\coordHE{} and \myHighlight{$\Htil$}\coordHE{}
+will be treated elsewhere~\cite{Alvarez:psd2}.
+
+Duality equations (\ref{eq:special}) are mathematically quite
+interesting.  We digress a bit and discuss the question of local
+riemannian isometries.  Assume we have a map \myHighlight{$f:M\to\Mtil$}\coordHE{} and we wish
+for this map to be an isometry.  If \myHighlight{$\{\omega^{j}\}$}\coordHE{} and
+\myHighlight{$\{\omegatil^{i}\}$}\coordHE{} are local orthonormal frames then we require that
+the metric be preserved: \myHighlight{$f^{*}(\omegatil^{i}\otimes\omegatil^{i}) =
+\omega^{j}\otimes\omega^{j}$}\coordHE{}.  The solution to this equation is
+\myHighlight{$f^{*}\omegatil = T\omega$}\coordHE{} where \myHighlight{$T:M \to \Orth(n)$}\coordHE{}.  This Pfaffian
+system of equations is integrable \cite{BCG3} if the Riemann curvature
+tensor and its higher order covariant derivatives in the two spaces
+agree when identified via \myHighlight{$T$}\coordHE{}.  For more details see the discussion in
+the paragraph following (\ref{eq:kktil}).  In our case we begin with
+maps \myHighlight{$x:\Sigma \to M$}\coordHE{}, \myHighlight{$\xtil:\Sigma \to \Mtil$}\coordHE{} that satisfy
+hyperbolic Lorentz invariant equations.  We fix a Lorentz frame and we
+observe that we are interested in maps from \myHighlight{$\{x:\Sigma\to M\,|\,
+x_{+-}=0\}$}\coordHE{} into \myHighlight{$\{\xtil:\Sigma\to\Mtil\,|\, \xtil_{+-}=0\}$}\coordHE{} that
+preserve the two independent components of the energy momentum tensor
+\myHighlight{$\Theta_{++}$}\coordHE{} and \myHighlight{$\Theta_{--}$}\coordHE{}.  A linearity assumption and
+(\ref{eq:Tmunu}) tells us that the maps have to be of form
+(\ref{eq:plus}) and (\ref{eq:minus}) with the more general
+\myHighlight{$T_{\pm}(\sigma)$}\coordHE{}.  Given a map \myHighlight{$x:\Sigma\to M$}\coordHE{} there are two
+preferred tangent vector fields \myHighlight{$\partial/\partial\sigma^{+}$}\coordHE{} and
+\myHighlight{$\partial/\partial\sigma^{-}$}\coordHE{}.  The conditions that require \myHighlight{$\Theta$}\coordHE{}
+to be preserved are very geometric: the lengths of
+\myHighlight{$\partial/\partial\sigma^{+}$}\coordHE{} and \myHighlight{$\partial/\partial\sigma^{-}$}\coordHE{} are
+preserved by the map.  If \myHighlight{$\hodge$}\coordHE{} denotes the Hodge duality operation
+on \myHighlight{$\Sigma$}\coordHE{}, our equations may be written as \myHighlight{$\omegatil = \hodge
+(T\omega)$}\coordHE{} where we interpret \myHighlight{$\omega$}\coordHE{} and \myHighlight{$\omegatil$}\coordHE{} as pull backs
+to \myHighlight{$\Sigma$}\coordHE{}.  It is the desire to have the \myHighlight{$\hodge$}\coordHE{} operation that
+introduces a \myHighlight{$-1$}\coordHE{} in (\ref{eq:minus}) even though in principle the
+\myHighlight{$-1$}\coordHE{} could be absorbed\footnote{We may have to allow \myHighlight{$T_{\pm} \in
+\Orth(n)$}\coordHE{}.} into \myHighlight{$T_{-}$}\coordHE{}.  Here we show that there are interesting
+maps between ``waves'' on \myHighlight{$M$}\coordHE{} and ``waves'' on \myHighlight{$\Mtil$}\coordHE{} that preserve
+natural geometrical structures.  This may be of interest to
+researchers who study two dimensional wave equations.
+
+
+This paper is organized in the following way.  In
+Section~\ref{sec:pedagogic} we discuss pseudoduality between the
+\myHighlight{$2$}\coordHE{}-sphere \myHighlight{$S^{2}$}\coordHE{} and the \myHighlight{$2$}\coordHE{}-dimensional hyperbolic space \myHighlight{$H^{2}$}\coordHE{} very
+concretely.  In particular we explicitly verify the necessity for the
+the orthogonal matrix valued function \myHighlight{$T$}\coordHE{}.  In
+Section~\ref{sec:constant} we become a bit more abstract but still
+concrete by working with explicit metrics and show that there is
+pseudoduality  between \myHighlight{$S^{n}$}\coordHE{} and \myHighlight{$H^{n}$}\coordHE{}.  In
+Section~\ref{sec:general} we assume general metrics and show that the
+manifolds \myHighlight{$M$}\coordHE{} and \myHighlight{$\Mtil$}\coordHE{} must be symmetric spaces with the ``opposite
+curvatures''.  In Section~\ref{sec:dualsym} we construct many examples
+by discussing the theory of dual symmetric spaces. 
+Section~\ref{sec:discussion} is a discussion of the results of this
+article.
+
+\section{A Pedagogic Example}
+\label{sec:pedagogic}
+
+It is worthwhile to be very concrete and to consider the pseudoduality
+between strings moving on a \myHighlight{$2$}\coordHE{}-sphere \myHighlight{$S^{2}$}\coordHE{} and those moving on a
+\myHighlight{$2$}\coordHE{}-hyperboloid \myHighlight{$H^{2}$}\coordHE{}.  This example illustrates the necessity for
+the matrix \myHighlight{$T$}\coordHE{}.  We use a different coordinate version of the constant
+curvature metric than in Section~\ref{sec:constant} to emphasize that
+everything is independent of the choice of coordinates.  The
+respective constant curvature metrics on \myHighlight{$S^{2}$}\coordHE{} and \myHighlight{$H^{2}$}\coordHE{} in polar
+normal coordinates are
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+    ds^{2} & = & dr^{2} + \frac{\leftCoord{}\sin^{2}\alpha r}{\rightCoord{}\alpha^{2}}d\theta^{2}\;, \rightCoord{}
+    \rightCoord{}\\\leftCoord{}
+    d\tilde{s}^{2} & = & d\rtil^{2} + \frac{\leftCoord{}\sinh^{2}\alphatil
+    \rtil}{\alphatil^{2}}d\thetatil^{2}\;. \rightCoord{}
+\rightCoord{}}{0mm}{4}{6}{
+    ds^{2} & = & dr^{2} + \frac{\sin^{2}\alpha r}{\alpha^{2}}d\theta^{2}\;, 
+    \\
+    d\tilde{s}^{2} & = & d\rtil^{2} + \frac{\sinh^{2}\alphatil
+    \rtil}{\alphatil^{2}}d\thetatil^{2}\;. 
+}{1}\coordE{}\end{eqnarray*}
+The equations of motion for the sigma models are:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    \partial^{2}_{+-} r & = & (\sin \alpha r \cos\alpha r)/\alpha \;
+    	\partial_{+}\theta \partial_{-}\theta\;,
+	\label{eq:EOMr}\rightCoord{}\\\leftCoord{}
+    \leftCoord{}(\sin\alpha r)/\alpha\; \partial^{2}_{+-} \theta & = & 
+    	\leftCoord{}- \cos \alpha r (\partial_{+}r \partial_{-}\theta 
+	\leftCoord{}+ \partial_{-}r \partial_{+}\theta)\;,
+	\label{eq:EOMtheta}\rightCoord{}\\\leftCoord{}
+    \partial^{2}_{+-} \rtil & = & 
+    	\leftCoord{}(\sinh \alphatil \rtil \cosh\alphatil \rtil)/\alphatil \; \rightCoord{} 
+    	\partial_{+}\thetatil \partial_{-}\thetatil\;,
+	\label{eq:EOMrtil}\rightCoord{}\\\leftCoord{}
+    \leftCoord{}(\sinh\alphatil \rtil)/\alphatil\; \partial^{2}_{+-} \thetatil & = & 
+    	\leftCoord{}- \cosh \alphatil \rtil (\partial_{+}\rtil \partial_{-}\thetatil 
+	\leftCoord{}+ \partial_{-}\rtil \partial_{+}\thetatil)\;.\rightCoord{}
+	\label{eq:EOMthetatil}
+\rightCoord{}}{0mm}{11}{7}{
+    \partial^{2}_{+-} r & = & (\sin \alpha r \cos\alpha r)/\alpha \;
+    	\partial_{+}\theta \partial_{-}\theta\;,
+	\\
+    (\sin\alpha r)/\alpha\; \partial^{2}_{+-} \theta & = & 
+    	- \cos \alpha r (\partial_{+}r \partial_{-}\theta 
+	+ \partial_{-}r \partial_{+}\theta)\;,
+	\\
+    \partial^{2}_{+-} \rtil & = & 
+    	(\sinh \alphatil \rtil \cosh\alphatil \rtil)/\alphatil \;  
+    	\partial_{+}\thetatil \partial_{-}\thetatil\;,
+	\\
+    (\sinh\alphatil \rtil)/\alphatil\; \partial^{2}_{+-} \thetatil & = & 
+    	- \cosh \alphatil \rtil (\partial_{+}\rtil \partial_{-}\thetatil 
+	+ \partial_{-}\rtil \partial_{+}\thetatil)\;.
+	}{1}\coordE{}\end{eqnarray}
+
+This elementary example illustrates the importance of the matrix \myHighlight{$T$}\coordHE{}. 
+Assume \myHighlight{$T=I$}\coordHE{} then two of the duality equations in this coordinate
+system would be \myHighlight{$\partial_{+}\rtil = \partial_{+} r$}\coordHE{} and
+\myHighlight{$\partial_{-}\rtil = -\partial_{-} r$}\coordHE{}.  This would imply that
+\myHighlight{$\partial^{2}_{+-}r=0$}\coordHE{} and \myHighlight{$\partial^{2}_{+-}\rtil=0$}\coordHE{} but these are
+not the equations of motion. We will see that with a \myHighlight{$T\neq I$}\coordHE{} we can 
+construct a pseudoduality transformation.
+
+First we need an orthonormal frame. On \myHighlight{$S^{2}$}\coordHE{} we have \myHighlight{$\omega^{r} = dr$}\coordHE{} and 
+\myHighlight{$\omega^{\theta}=\sin\alpha r/\alpha\;d\theta$}\coordHE{}. From this it 
+follows that the connection and the curvature are respectively given by 
+\myHighlight{$\omega_{r\theta}= -\cos(\alpha r) \; d\theta$}\coordHE{} and
+\myHighlight{$d\omega_{r\theta} = \alpha^{2}\omega^{r}\wedge\omega^{\theta}$}\coordHE{}.
+On \myHighlight{$H^{2}$}\coordHE{} we have \myHighlight{$\omegatil^{\rtil} = d\rtil$}\coordHE{} and 
+\myHighlight{$\omegatil^{\thetatil}=\sinh\alpha \rtil/\alpha\;d\thetatil$}\coordHE{}.  From 
+this we see that the connection and the curvature are respectively given by 
+\myHighlight{$\omegatil_{\rtil\thetatil}= -\cosh(\alphatil \rtil) \; d\thetatil$}\coordHE{} and 
+\myHighlight{$d\omegatil_{\rtil\thetatil} = 
+-\alphatil^{2}\omegatil^{\rtil}\wedge\omegatil^{\thetatil}$}\coordHE{}.
+
+We need a \myHighlight{$2\times 2$}\coordHE{} orthogonal matrix that we parametrize by a 
+rotation angle \myHighlight{$\phi$}\coordHE{}. The duality equations are
+\begin{equation}\coord{}\boxEquation{
+    \left(
+    \begin{array}{c}
+        \partial_{\pm}\rtil  \\
+        \sinh (\alphatil\rtil)/\alphatil\; \partial_{\pm}\thetatil
+    \end{array}
+    \right) = \pm
+    \left(
+    \begin{array}{rr}
+        \cos\phi & \sin\phi  \\
+        -\sin\phi & \cos\phi
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{c}
+        \partial_{\pm} r  \\
+        \sin (\alpha r)/\alpha \; \partial_{\pm}\theta
+    \end{array}
+    \right)\,.
+    \label{eq:dualrot}
+}{
+    \left(
+    \begin{array}{c}
+        \partial_{\pm}\rtil  \\
+        \sinh (\alphatil\rtil)/\alphatil\; \partial_{\pm}\thetatil
+    \end{array}
+    \right) = \pm
+    \left(
+    \begin{array}{rr}
+        \cos\phi & \sin\phi  \\
+        -\sin\phi & \cos\phi
+    \end{array}
+    \right)
+    \left(
+    \begin{array}{c}
+        \partial_{\pm} r  \\
+        \sin (\alpha r)/\alpha \; \partial_{\pm}\theta
+    \end{array}
+    \right)\,.
+    }{ecuacion}\coordE{}\end{equation}
+The integrability conditions on the above lead to the equation
+\begin{equation}\coord{}\boxEquation{
+	d\phi = -\cosh(\alphatil\rtil)\; d\thetatil
+		+ \cos(\alpha r)\; d\theta\,.
+	\label{eq:dphi}
+}{
+	d\phi = -\cosh(\alphatil\rtil)\; d\thetatil
+		+ \cos(\alpha r)\; d\theta\,.
+	}{ecuacion}\coordE{}\end{equation}
+This is integrable if \myHighlight{$\alpha=\alphatil$}\coordHE{} where \emph{integrable} means 
+integrable modulo the equations of motion.
+
+What happens to the point particle geodesics on \myHighlight{$S^{2}$}\coordHE{}?  One easily
+verifies that for constant \myHighlight{$a$}\coordHE{}, the functions \myHighlight{$r=a\cdot
+(\sigma^{+}+\sigma^{-}) = a\cdot (2\tau)$}\coordHE{} and \myHighlight{$\theta=0$}\coordHE{} give a
+solution of equations (\ref{eq:EOMr}) and (\ref{eq:EOMtheta}).  This
+corresponds to ``particle geodesics'' on \myHighlight{$S^{2}$}\coordHE{}.  We would like to
+understand what are the dual solutions to the particle geodesics.  If
+we note that \myHighlight{$\partial_{\pm}r = a$}\coordHE{} and \myHighlight{$\partial_{\pm}\theta=0$}\coordHE{} we see
+that the duality equations become
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    \partial_{\pm}\rtil & = & \pm a \cos\phi
+    \label{eq:dr}  \rightCoord{}\\\leftCoord{}
+    \sinh (\alphatil\rtil)/\alphatil\; \partial_{\pm}\thetatil& = & 
+    	\mp a \sin\phi
+    \label{eq:dtheta}
+\rightCoord{}}{0mm}{2}{3}{
+    \partial_{\pm}\rtil & = & \pm a \cos\phi
+    \\
+    \sinh (\alphatil\rtil)/\alphatil\; \partial_{\pm}\thetatil& = & 
+    	\mp a \sin\phi
+    }{1}\coordE{}\end{eqnarray}
+An immediate consequence of the above is that
+\myHighlight{$(\partial_{+}+\partial_{-})\rtil=0$}\coordHE{} and
+\myHighlight{$(\partial_{+}+\partial_{-})\thetatil=0$}\coordHE{}.  We conclude that
+\myHighlight{$\rtil=\rtil(\sigma^{+}-\sigma^{-}) =\rtil(2\sigma)$}\coordHE{} and
+\myHighlight{$\thetatil=\thetatil(\sigma^{+}-\sigma^{-}) =\thetatil(2\sigma)$}\coordHE{}. 
+Thus we get static solutions on the hyperboloid.  Note that
+(\ref{eq:dphi}) immediately tells us that
+\myHighlight{$\phi=\phi(\sigma^{+}-\sigma^{-}) =\phi(2\sigma)$}\coordHE{}.  Since everything
+is a function of \myHighlight{$2\sigma =\sigma^{+}-\sigma^{-}$}\coordHE{} the situation
+reduces to functions of a single variable.  The transformed solutions
+will be static solutions (\myHighlight{$\tau$}\coordHE{} independent).  Note that equations
+(\ref{eq:dr}) and (\ref{eq:dtheta}) lead to
+\begin{equation}\coord{}\boxEquation{
+    (\partial_{+}\rtil)^{2} + 
+    \left(\frac{\sinh\alphatil\rtil}{\alphatil}\; 
+    \partial_{+}\thetatil\right)^{2} = a^{2}\,.
+    \label{eq:energy}
+}{
+    (\partial_{+}\rtil)^{2} + 
+    \left(\frac{\sinh\alphatil\rtil}{\alphatil}\; 
+    \partial_{+}\thetatil\right)^{2} = a^{2}\,.
+    }{ecuacion}\coordE{}\end{equation}
+This is the ``conservation of energy'' equation associated with the 
+particle lagrangian
+$$\coord{}\boxMath{
+	L = \half\left[ (\partial_{+}\rtil)^{2} + 
+	\left(\frac{\sinh\alphatil\rtil}{\alphatil}\; 
+	\partial_{+}\thetatil\right)^{2} \right]
+}{dollar}{0pt}\coordE{}$$
+This is a standard problem in classical mechanics. The canonical 
+momentum
+$$\coord{}\boxMath{
+	\tilde{J} = \frac{\partial
+	L}{\partial(\partial_{+}\thetatil)} =
+	\left(\frac{\sinh\alphatil\rtil}{\alphatil} \right)^{2}\;
+	\partial_{+}\thetatil
+}{dollar}{0pt}\coordE{}$$
+is a constant of the motion. Thus the energy integral 
+(\ref{eq:energy}) may be written as
+\begin{equation}\coord{}\boxEquation{
+    (\partial_{+}\rtil)^{2} +
+    \frac{\alphatil^{2}\tilde{J}^{2}}{\sinh^{2}\alphatil\rtil} =
+    a^{2}\;
+}{
+    (\partial_{+}\rtil)^{2} +
+    \frac{\alphatil^{2}\tilde{J}^{2}}{\sinh^{2}\alphatil\rtil} =
+    a^{2}\;
+}{ecuacion}\coordE{}\end{equation}
+and this problem is reducible to quadrature.  This is interesting
+because we know that there exists crystallographic subgroups \myHighlight{$\Gamma$}\coordHE{}
+of \myHighlight{$\SL(2,\bbR)$}\coordHE{} such that \myHighlight{$H/\Gamma$}\coordHE{} is a genus \myHighlight{$g>1$}\coordHE{} compact Riemann
+surface.  Such a surface has closed geodesics of minimal length and
+some of these are the static ``soliton-like'' solutions 
+\myHighlight{$(\rtil(2\sigma),\thetatil(2\sigma))$}\coordHE{} we are
+constructing above.
+
+\section{Constant Curvature Metric}
+\label{sec:constant}
+
+Before presenting the general theory we study the special case of
+constant curvature spaces.  Again we take \myHighlight{$T_{+}=T_{-}=T$}\coordHE{}. 
+The two dimensional nonlinear sigma model on a space with constant
+positive curvature \myHighlight{$k>0$}\coordHE{} is shown to be pseudodual to the nonlinear
+sigma model on a space with constant negative curvature \myHighlight{$-k$}\coordHE{}. 
+The pseudoduality equations are used to map solutions of one model into
+solutions of the other model.
+
+Locally, a metric on a space with constant curvature is may be written 
+in the Poincar\'{e} form
+\begin{equation}\coord{}\boxEquation{
+    ds^{2} = \frac{dx^{i}\otimes dx^{i}}{\left(1 + k x^{2}\right)^{2}}\;.
+    \label{eq:constcurv}
+}{
+    ds^{2} = \frac{dx^{i}\otimes dx^{i}}{\left(1 + k x^{2}\right)^{2}}\;.
+    }{ecuacion}\coordE{}\end{equation}
+An orthonormal frame in this metric is
+\begin{equation}\coord{}\boxEquation{
+    \omega^{i} = \frac{dx^{i}}{1 + kx^{2}}\;.
+    \label{eq:frame}
+}{
+    \omega^{i} = \frac{dx^{i}}{1 + kx^{2}}\;.
+    }{ecuacion}\coordE{}\end{equation}
+The connection one-forms (with respect to the orthonormal frame) are
+\begin{equation}\coord{}\boxEquation{
+    \omega_{ij} = 2k\; \frac{x^{i}dx^{j}-x^{j}dx^{i}}{1+kx^{2}}\;.
+    \label{eq:connection}
+}{
+    \omega_{ij} = 2k\; \frac{x^{i}dx^{j}-x^{j}dx^{i}}{1+kx^{2}}\;.
+    }{ecuacion}\coordE{}\end{equation}
+The first Cartan structural equation is \myHighlight{$d\omega^{i}= 
+-\omega_{ij}\wedge\omega^{j}$}\coordHE{}. The second structural equation gives the
+the curvature two forms
+\begin{equation}\coord{}\boxEquation{
+    \Omega_{ij} = d\omega_{ij} + \omega_{ik}\wedge\omega_{kj} 
+    =\half R_{ijkl}\omega^{k}\wedge\omega^{l} = 
+    4k\,\omega^{i}\wedge\omega^{j}\;.
+    \label{eq:curvature}
+}{
+    \Omega_{ij} = d\omega_{ij} + \omega_{ik}\wedge\omega_{kj} 
+    =\half R_{ijkl}\omega^{k}\wedge\omega^{l} = 
+    4k\,\omega^{i}\wedge\omega^{j}\;.
+    }{ecuacion}\coordE{}\end{equation}
+Technically the curvature is \myHighlight{$4k$}\coordHE{}.
+
+The lagrangian for the sigma model is
+\begin{equation}\coord{}\boxEquation{
+    \mathcal{L} = 
+    \frac{2\dplus x^{i} \dminus x^{i}}{\left(1 + k x^{2}\right)^{2}}\;.
+    \label{eq:lagrangian}
+}{
+    \mathcal{L} = 
+    \frac{2\dplus x^{i} \dminus x^{i}}{\left(1 + k x^{2}\right)^{2}}\;.
+    }{ecuacion}\coordE{}\end{equation}
+The equations of motion associated with this lagrangian are
+\begin{equation}\coord{}\boxEquation{
+    \dalem x^{i} = 2k\;
+    \frac{x^{j}\dplus x^{j}\dminus x^{i}
+    	+ x^{j}\dminus x^{j} \dplus x^{i}
+	- x^{i}\dplus x^{j} \dminus x^{j}}{1 + kx^{2}}\;.
+    \label{eq:eom}
+}{
+    \dalem x^{i} = 2k\;
+    \frac{x^{j}\dplus x^{j}\dminus x^{i}
+    	+ x^{j}\dminus x^{j} \dplus x^{i}
+	- x^{i}\dplus x^{j} \dminus x^{j}}{1 + kx^{2}}\;.
+    }{ecuacion}\coordE{}\end{equation}
+
+Assume we have two constant curvature spaces \myHighlight{$M$}\coordHE{} and \myHighlight{$\Mtil$}\coordHE{} with
+respective curvatures \myHighlight{$k$}\coordHE{} and \myHighlight{$\ktil$}\coordHE{}.  We would like to see if it is
+possible to have a duality transformation between them.  Assume we
+have a solution \myHighlight{$x(\sigma)$}\coordHE{} of the sigma model on \myHighlight{$M$}\coordHE{}.  We attempt to
+construct a solution of the sigma model on \myHighlight{$\Mtil$}\coordHE{} by requiring that
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    \frac{\leftCoord{}\dplus \xtil^{i}}{\rightCoord{}1 + \ktil \xtil^{2}} & = & \rightCoord{} 
+    	\Tij\; \frac{\leftCoord{}\dplus x^{j}}{\rightCoord{}1 + k x^{2}}\;, \rightCoord{}
+    \label{eq:dualp}  \rightCoord{}\\\leftCoord{}
+    \frac{\leftCoord{}\dminus \xtil^{i}}{\rightCoord{}1 + \ktil \xtil^{2}} & = & \rightCoord{} 
+    	\leftCoord{}-\Tij\; \frac{\leftCoord{}\dminus x^{j}}{\rightCoord{}1 + k x^{2}}\;, \rightCoord{}
+    \label{eq:dualm}
+\rightCoord{}}{0mm}{7}{11}{
+    \frac{\dplus \xtil^{i}}{1 + \ktil \xtil^{2}} & = &  
+    	\Tij\; \frac{\dplus x^{j}}{1 + k x^{2}}\;, 
+    \\
+    \frac{\dminus \xtil^{i}}{1 + \ktil \xtil^{2}} & = &  
+    	-\Tij\; \frac{\dminus x^{j}}{1 + k x^{2}}\;, 
+    }{1}\coordE{}\end{eqnarray}
+where \myHighlight{$T$}\coordHE{} is an orthogonal matrix, \myHighlight{$\det T=1$}\coordHE{}.  Note that the stress
+energy tensors satisfy \myHighlight{$\Theta_{\pm\pm}=\widetilde{\Theta}_{\pm\pm}$}\coordHE{}. 
+
+The first step towards the integrability conditions for the above 
+system is to differentiate (\ref{eq:dualp}) with respect to 
+\myHighlight{$\sigma^{-}$}\coordHE{} and 
+(\ref{eq:dualm}) with respect to \myHighlight{$\sigma^{+}$}\coordHE{}:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    \frac{\leftCoord{}\dminus(\dplus \xtil^{i})}{\rightCoord{}1 + \ktil \xtil^{2}} \rightCoord{}
+    	\leftCoord{}- 2\ktil \frac{\leftCoord{}\xtil^{j}\dminus \xtil^{j} \dplus 
+    	\xtil^{i}}{(1 + \ktil \xtil^{2})^{2}} & = & \rightCoord{} 
+	\leftCoord{}(\dminus \Tij) \frac{\leftCoord{}\dplus x^{j}}{\rightCoord{}1 + kx^{2}} \rightCoord{} 
+    \nonumber  \rightCoord{}\\
+&\leftCoord{}+ & \Tij\; \frac{\leftCoord{}\dalem x^{j}}{\rightCoord{}1 + k x^{2}} - \rightCoord{}
+     \leftCoord{}2 k \Tij\; \frac{\leftCoord{}x^{k}\dminus x^{k}\dplus x^{j}}{\rightCoord{}(1 + k x^{2})^{2}}\;, \rightCoord{}
+    \label{eq:intp} \rightCoord{}\\\leftCoord{}
+    \leftCoord{}-\frac{\leftCoord{}\dplus(\dminus \xtil^{i})}{\rightCoord{}1 + \ktil \xtil^{2}} \rightCoord{}
+    	\leftCoord{}+ 2\ktil \frac{\leftCoord{}\xtil^{j}\dplus \xtil^{j} \dminus 
+    	\xtil^{i}}{(1 + \ktil \xtil^{2})^{2}} & = & \rightCoord{} 
+	\leftCoord{}(\dplus \Tij) \frac{\leftCoord{}\dminus x^{j}}{\rightCoord{}1 + kx^{2}} \rightCoord{} 
+    \nonumber  \rightCoord{}\\
+&\leftCoord{}+ & \Tij\; \frac{\leftCoord{}\dalem x^{j}}{\rightCoord{}1 + k x^{2}} - \rightCoord{}
+     \leftCoord{}2 k \Tij\; \frac{\leftCoord{}x^{k}\dplus x^{k}\dminus x^{j}}{\rightCoord{}(1 + k x^{2})^{2}}\;. \rightCoord{}
+    \label{eq:intm}
+\rightCoord{}}{0mm}{21}{23}{
+    \frac{\dminus(\dplus \xtil^{i})}{1 + \ktil \xtil^{2}} 
+    	- 2\ktil \frac{\xtil^{j}\dminus \xtil^{j} \dplus 
+    	\xtil^{i}}{(1 + \ktil \xtil^{2})^{2}} & = &  
+	(\dminus \Tij) \frac{\dplus x^{j}}{1 + kx^{2}}  
+    \\
+&+ & \Tij\; \frac{\dalem x^{j}}{1 + k x^{2}} - 
+     2 k \Tij\; \frac{x^{k}\dminus x^{k}\dplus x^{j}}{(1 + k x^{2})^{2}}\;, 
+    \\
+    -\frac{\dplus(\dminus \xtil^{i})}{1 + \ktil \xtil^{2}} 
+    	+ 2\ktil \frac{\xtil^{j}\dplus \xtil^{j} \dminus 
+    	\xtil^{i}}{(1 + \ktil \xtil^{2})^{2}} & = &  
+	(\dplus \Tij) \frac{\dminus x^{j}}{1 + kx^{2}}  
+    \\
+&+ & \Tij\; \frac{\dalem x^{j}}{1 + k x^{2}} - 
+     2 k \Tij\; \frac{x^{k}\dplus x^{k}\dminus x^{j}}{(1 + k x^{2})^{2}}\;. 
+    }{1}\coordE{}\end{eqnarray}
+By imposing the integrability conditions \myHighlight{$\dplus(\dminus\xtil^{i}) = 
+\dminus(\dplus\xtil^{i})$}\coordHE{} we can add the above two equations to 
+eliminate \myHighlight{$\dalem \xtil$}\coordHE{} and by imposing {\em only} the equations of motion 
+for \myHighlight{$x^{i}$}\coordHE{} and the duality relations we obtain
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    \leftCoord{}(\dminus \Tij) \frac{\leftCoord{}\dplus x^{j}}{\rightCoord{}1 + kx^{2}} \rightCoord{}
+    \leftCoord{}+ (\dplus \Tij) \frac{\leftCoord{}\dminus x^{j}}{\rightCoord{}1 + kx^{2}} \rightCoord{}
+&\leftCoord{}= & 2\ktil\; \rightCoord{}
+     	\frac{\leftCoord{}\xtil^{j}\dminus \xtil^{i} \rightCoord{}
+	\leftCoord{}- \xtil^{i}\dminus \xtil^{j}}{1 + \ktil \xtil^{2}}\; \rightCoord{}
+	\Tjk\; \frac{\leftCoord{}\dplus x^{k}}{\rightCoord{}1 + k x^{2}} \rightCoord{}
+      \nonumber\rightCoord{}\\
+&\leftCoord{}+ & 2\ktil\; \rightCoord{}
+     	\frac{\leftCoord{}\xtil^{j}\dplus \xtil^{i} \rightCoord{}
+	\leftCoord{}- \xtil^{i}\dplus \xtil^{j}}{1 + \ktil \xtil^{2}}\; \rightCoord{}
+	\Tjk\; \frac{\leftCoord{}\dminus x^{k}}{\rightCoord{}1 + k x^{2}} \rightCoord{}
+      \nonumber\rightCoord{}\\
+&\leftCoord{}- & 2k\; \rightCoord{}
+     	\Tij\; \frac{\leftCoord{}x^{k} \dminus x^{j} - x^{j} \dminus x^{k}}{\rightCoord{}1 + kx^{2}} \rightCoord{}
+	\leftCoord{}\; \frac{\leftCoord{}\dplus x^{k}}{\rightCoord{}1 + k x^{2}} \rightCoord{}
+	\nonumber\rightCoord{}\\
+&\leftCoord{}- & 2k\; \rightCoord{}
+     	\Tij\; \frac{\leftCoord{}x^{k} \dplus x^{j} - x^{j} \dplus x^{k}}{\rightCoord{}1 + kx^{2}} \rightCoord{}
+	\leftCoord{}\; \frac{\leftCoord{}\dminus x^{k}}{\rightCoord{}1 + k x^{2}}\;. \rightCoord{}
+    \label{eq:integrability}
+\rightCoord{}}{0mm}{21}{29}{
+    (\dminus \Tij) \frac{\dplus x^{j}}{1 + kx^{2}} 
+    + (\dplus \Tij) \frac{\dminus x^{j}}{1 + kx^{2}} 
+&= & 2\ktil\; 
+     	\frac{\xtil^{j}\dminus \xtil^{i} 
+	- \xtil^{i}\dminus \xtil^{j}}{1 + \ktil \xtil^{2}}\; 
+	\Tjk\; \frac{\dplus x^{k}}{1 + k x^{2}} 
+      \\
+&+ & 2\ktil\; 
+     	\frac{\xtil^{j}\dplus \xtil^{i} 
+	- \xtil^{i}\dplus \xtil^{j}}{1 + \ktil \xtil^{2}}\; 
+	\Tjk\; \frac{\dminus x^{k}}{1 + k x^{2}} 
+      \\
+&- & 2k\; 
+     	\Tij\; \frac{x^{k} \dminus x^{j} - x^{j} \dminus x^{k}}{1 + kx^{2}} 
+	\; \frac{\dplus x^{k}}{1 + k x^{2}} 
+	\\
+&- & 2k\; 
+     	\Tij\; \frac{x^{k} \dplus x^{j} - x^{j} \dplus x^{k}}{1 + kx^{2}} 
+	\; \frac{\dminus x^{k}}{1 + k x^{2}}\;. 
+    }{1}\coordE{}\end{eqnarray}
+The particular combinations in the above follow from the general
+theory and the form of (\ref{eq:connection}).  Note that at any point
+\myHighlight{$\sigma$}\coordHE{} we can make \myHighlight{$\partial_{\pm}x^{i}(\sigma)$}\coordHE{} arbitrary thus we
+need that
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    \dminus \Tik & = &  2\ktil\; \frac{\leftCoord{}\xtil^{j}\dminus \xtil^{i} \rightCoord{}
+	\leftCoord{}- \xtil^{i}\dminus \xtil^{j}}{1 + \ktil \xtil^{2}}\;\Tjk
+      \leftCoord{}-  2k\; \rightCoord{}
+     \Tij\; \frac{\leftCoord{}x^{k} \dminus x^{j} - x^{j} \dminus x^{k}}{\rightCoord{}1 + \rightCoord{} 
+     kx^{2}}\;, \rightCoord{}
+	\label{eq:dmT} \rightCoord{}\\\leftCoord{}
+    \dplus \Tik & = & 2\ktil\; \rightCoord{}
+     	\frac{\leftCoord{}\xtil^{j}\dplus \xtil^{i} \rightCoord{}
+	\leftCoord{}- \xtil^{i}\dplus \xtil^{j}}{1 + \ktil \xtil^{2}}\;\Tjk
+      \leftCoord{}-  2k\;\Tij\; \rightCoord{} 
+	\frac{\leftCoord{}x^{k} \dplus x^{j} - x^{j} \dplus x^{k}}{\rightCoord{}1 + kx^{2}}\;. \rightCoord{}
+	\label{eq:dpT}
+\rightCoord{}}{0mm}{10}{13}{
+    \dminus \Tik & = &  2\ktil\; \frac{\xtil^{j}\dminus \xtil^{i} 
+	- \xtil^{i}\dminus \xtil^{j}}{1 + \ktil \xtil^{2}}\;\Tjk
+      -  2k\; 
+     \Tij\; \frac{x^{k} \dminus x^{j} - x^{j} \dminus x^{k}}{1 +  
+     kx^{2}}\;, 
+	\\
+    \dplus \Tik & = & 2\ktil\; 
+     	\frac{\xtil^{j}\dplus \xtil^{i} 
+	- \xtil^{i}\dplus \xtil^{j}}{1 + \ktil \xtil^{2}}\;\Tjk
+      -  2k\;\Tij\;  
+	\frac{x^{k} \dplus x^{j} - x^{j} \dplus x^{k}}{1 + kx^{2}}\;. 
+	}{1}\coordE{}\end{eqnarray}
+We interpret the above as the pullback under the map \myHighlight{$\sigma 
+\to (x(\sigma), \xtil(\sigma))$}\coordHE{} of the \myHighlight{$1$}\coordHE{}-form
+\begin{equation}\coord{}\boxEquation{
+    d\Tij = -\omegatil_{ik}\Tkj + \Tik\omega_{kj}\;.
+    \label{eq:dT}
+}{
+    d\Tij = -\omegatil_{ik}\Tkj + \Tik\omega_{kj}\;.
+    }{ecuacion}\coordE{}\end{equation}
+
+We can immediately verify that if one inserts (\ref{eq:dmT}) into 
+equation~(\ref{eq:intp}) we get the equations for motion for 
+\myHighlight{$\xtil$}\coordHE{}, \emph{i.e.}, equations~(\ref{eq:eom}) with all quantities with 
+tildes. Thus far we have shown that if one starts with a solution of 
+the sigma model defined by lagrangian (\ref{eq:lagrangian}) and we 
+impose the generalized duality equations then we find a solution to 
+the ``tilde'' sigma model provided that we can satisfy equations 
+(\ref{eq:dpT}) and (\ref{eq:dmT}).
+
+The integrability conditions for the \myHighlight{$dT$}\coordHE{} equation are found by taking the 
+exterior derivative leading to
+\begin{equation}\coord{}\boxEquation{
+    0 = - \widetilde{\Omega}_{ik}\Tkj + \Tik\Omega_{kj}
+    \label{eq:dTintegrability}
+}{
+    0 = - \widetilde{\Omega}_{ik}\Tkj + \Tik\Omega_{kj}
+    }{ecuacion}\coordE{}\end{equation}
+In our case the curvature is very simple and the above reduces to 
+\begin{equation}\coord{}\boxEquation{
+    -4\ktil\, \omegatil^{i}\wedge\omegatil^{k}\Tkj + 4k\, \Tik 
+    \omega^{k}\wedge\omega^{j}=0\;.
+    \label{eq:kktil}
+}{
+    -4\ktil\, \omegatil^{i}\wedge\omegatil^{k}\Tkj + 4k\, \Tik 
+    \omega^{k}\wedge\omega^{j}=0\;.
+    }{ecuacion}\coordE{}\end{equation}
+
+
+First we discuss what equation~(\ref{eq:dTintegrability}) \emph{is
+not} and afterwards we discuss what \emph{it is}.  This equation shows
+up in the study of local riemannian isometries \cite{BCG3}.  If we
+have two riemannian manifolds \myHighlight{$M$}\coordHE{} and \myHighlight{$\Mtil$}\coordHE{} and a map \myHighlight{$f:M\to\Mtil$}\coordHE{}
+then the conditions that \myHighlight{$f$}\coordHE{} be a local isometry is that there exists
+an orthogonal transformation \myHighlight{$T$}\coordHE{} such that
+\myHighlight{$\omegatil^{i}=\Tij\omega^{j}$}\coordHE{}.  When one works out the integrability
+conditions for this system one finds that (\ref{eq:dT}) must be
+satisfied along with its integrability condition which is
+(\ref{eq:dTintegrability}).  This tells us that
+\myHighlight{$\widetilde{R}_{ijkl}T^{k}{}_{m}T^{l}{}_{n}= T^{i}{}_{k}T^{j}{}_{l}
+R_{klmn}$}\coordHE{}.  There are further integrability conditions which tell us
+that the covariant derivatives of the curvatures also satisfy similar
+relations.  This is the classical theorem of Christoffel on local
+isometries between riemannian manifolds as reformulated by E.~Cartan. 
+In our constant curvature example the requirement simply becomes
+\myHighlight{$k=\ktil$}\coordHE{}.
+
+Our situation is very different.  In effect our setup\footnote{We
+avoid discussing jet bundles.} is a map from \myHighlight{$\Sigma$}\coordHE{} to
+\myHighlight{$M\times\Mtil$}\coordHE{}.  This tells us that
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+    \omega^{i}= \frac{\leftCoord{}(\partial_{a}x^{i})d\sigma^{a}}{\rightCoord{}1 + k x^{2}} 
+    \quad\mbox{and}\quad
+    \omegatil^{i} =\frac{\leftCoord{}(\partial_{a}\xtil^{i})d\sigma^{a}}{\rightCoord{}1 + 
+    \ktil \xtil^{2}}\;. \rightCoord{}
+\rightCoord{}}{0mm}{3}{5}{
+    \omega^{i}= \frac{(\partial_{a}x^{i})d\sigma^{a}}{1 + k x^{2}} 
+    \quad\mbox{and}\quad
+    \omegatil^{i} =\frac{(\partial_{a}\xtil^{i})d\sigma^{a}}{1 + 
+    \ktil \xtil^{2}}\;. 
+}{1}\coordE{}\end{eqnarray*}
+Substituting these into (\ref{eq:kktil}), using duality relations 
+(\ref{eq:dualp}) and (\ref{eq:dualm}), and noting that at 
+any \myHighlight{$(\sigma^{+},\sigma^{-})$}\coordHE{} we are free to arbitrarily specify 
+\myHighlight{$\partial_{\pm}x^{i}(\sigma)$}\coordHE{} leads to \myHighlight{$k = -\ktil$}\coordHE{}.  The 
+change in sign is due to the negative sign in (\ref{eq:dualm}). Thus we 
+discover that the duality equations can be implemented if the 
+constant curvature manifolds have the opposite curvature.
+
+
+\section{General Theory}
+\label{sec:general}
+
+This problem is best analyzed in the bundle of orthogonal
+frames~\cite{Alvarez:psd2}.  Because most physicists are not familiar
+with this approach we work things out on the base manifold
+\myHighlight{$M\times\Mtil$}\coordHE{}.  First thing to do is to take the exterior derivative
+of (\ref{eq:special})
+$$\coord{}\boxMath{
+    d\xtil_{\pm} = \pm (dT) x_{\pm} \pm T dx_{\pm}
+}{dollar}{0pt}\coordE{}$$
+and use the definitions of the covariant derivative (\ref{eq:covder}) 
+to obtain
+$$\coord{}\boxMath{
+    -\omegatil \xtil_{\pm} + \xtil_{\pm a}d\sigma^{a}
+    = \pm (dT) x_{\pm} \mp T \omega x_{\pm}
+    \pm T x_{\pm a} d\sigma^{a}\,.
+}{dollar}{0pt}\coordE{}$$
+If we use the duality equations (\ref{eq:special}) we have
+$$\coord{}\boxMath{
+    \mp \omegatil T x_{\pm} + \xtil_{\pm a}d\sigma^{a}
+    = \pm (dT) x_{\pm} \mp T \omega x_{\pm}
+    \pm T x_{\pm a} d\sigma^{a}\,.
+}{dollar}{0pt}\coordE{}$$
+A little algebra shows that
+\begin{equation}\coord{}\boxEquation{
+     \xtil_{\pm a}d\sigma^{a}
+    = \pm (dT  -  T \omega  + \omegatil T)x_{\pm}
+    \pm T x_{\pm a} d\sigma^{a}\,.   
+    \label{eq:pseudodual}
+}{
+     \xtil_{\pm a}d\sigma^{a}
+    = \pm (dT  -  T \omega  + \omegatil T)x_{\pm}
+    \pm T x_{\pm a} d\sigma^{a}\,.   
+    }{ecuacion}\coordE{}\end{equation}
+We wish to isolate the integrability conditions so wedge the above 
+with \myHighlight{$d\sigma^{\pm}$}\coordHE{}.
+$$\coord{}\boxMath{
+     \xtil_{\pm \mp}d\sigma^{\mp} \wedge d\sigma^{\pm}
+    = \pm (dT  -  T \omega  + \omegatil T)x_{\pm} \wedge d\sigma^{\pm}
+    \pm T x_{\pm \mp} d\sigma^{\mp} \wedge d\sigma^{\pm}\,.   
+}{dollar}{0pt}\coordE{}$$
+We have two equations
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+     \xtil_{+ -}d\sigma^{-} \wedge d\sigma^{+}
+&\leftCoord{}=& + (dT  -  T \omega  + \omegatil T)x_{+} \wedge d\sigma^{+}
+    \leftCoord{}+ T x_{+ -} d\sigma^{-} \wedge d\sigma^{+}\rightCoord{}\,,   \rightCoord{}\\\leftCoord{}
+     \xtil_{- +}d\sigma^{+} \wedge d\sigma^{-}
+&\leftCoord{}=& - (dT  -  T \omega  + \omegatil T)x_{-} \wedge d\sigma^{-}
+    \leftCoord{}- T x_{- +} d\sigma^{+} \wedge d\sigma^{-}\rightCoord{}\,.   \rightCoord{}
+\rightCoord{}}{0mm}{6}{6}{
+     \xtil_{+ -}d\sigma^{-} \wedge d\sigma^{+}
+&=& + (dT  -  T \omega  + \omegatil T)x_{+} \wedge d\sigma^{+}
+    + T x_{+ -} d\sigma^{-} \wedge d\sigma^{+}\,,   \\
+     \xtil_{- +}d\sigma^{+} \wedge d\sigma^{-}
+&=& - (dT  -  T \omega  + \omegatil T)x_{-} \wedge d\sigma^{-}
+    - T x_{- +} d\sigma^{+} \wedge d\sigma^{-}\,.   
+}{1}\coordE{}\end{eqnarray*}
+In principle we wish that the integrability conditions
+\myHighlight{$\xtil_{+-}=\xtil_{-+}$}\coordHE{} are satisfied if the equations of motion
+\myHighlight{$x_{+-}=0$}\coordHE{} hold.  Subsequently we would like that this implies that
+\myHighlight{$\xtil_{+-}=0$}\coordHE{}.  We might as well substitute \myHighlight{$x_{+-}=0$}\coordHE{} and
+\myHighlight{$\xtil_{+-}=0$}\coordHE{} into the equations above and find
+$$\coord{}\boxMath{
+    0 = (dT - T \omega + \omegatil T)x_{\pm}\wedge
+    d\sigma^{\pm}\,.
+}{dollar}{0pt}\coordE{}$$
+Since \myHighlight{$x^{i}_{\pm}$}\coordHE{} may be  arbitrarily specified at any \myHighlight{$\sigma$}\coordHE{} we 
+have
+$$\coord{}\boxMath{
+    0 = (dT - T \omega + \omegatil T)\wedge d\sigma^{\pm}\,.    
+}{dollar}{0pt}\coordE{}$$
+Since \myHighlight{$x:\Sigma\to M$}\coordHE{} and \myHighlight{$\xtil:\Sigma\to\Mtil$}\coordHE{} are maps of a two 
+dimensional worldsheet we conclude that on the worldsheet, the 
+covariant derivative of \myHighlight{$T$}\coordHE{} vanishes
+\begin{equation}\coord{}\boxEquation{
+    dT - T \omega + \omegatil T =0\,.    
+    \label{eq:covT}
+}{
+    dT - T \omega + \omegatil T =0\,.    
+    }{ecuacion}\coordE{}\end{equation}
+The reason is that the covariant differential of \myHighlight{$T$}\coordHE{} is a \myHighlight{$1$}\coordHE{}-form. 
+All our objects arise from maps with domain \myHighlight{$\Sigma$}\coordHE{} so the covariant
+differential of \myHighlight{$T$}\coordHE{} is a \myHighlight{$1$}\coordHE{}-form on \myHighlight{$\Sigma$}\coordHE{}.  You are pulling back
+both \myHighlight{$\omega$}\coordHE{} and \myHighlight{$\omegatil$}\coordHE{} to \myHighlight{$\Sigma$}\coordHE{}.  Note that a covariantly
+constant tensor is determined its value at one point on the
+worldsheet; the values elsewhere are determined by parallel transport. 
+In order to construct such a \myHighlight{$T$}\coordHE{} we need to verify the integrability
+conditions for the above.  These lead to important constraints on the
+geometry of \myHighlight{$M$}\coordHE{} and \myHighlight{$\Mtil$}\coordHE{}.  Taking the exterior derivative and using
+the Cartan structural equations leads to
+$$\coord{}\boxMath{
+    -T^{i}{}_{k}\Omega_{kj} + \widetilde{\Omega}_{ik}T^{k}{}_{j}=0
+}{dollar}{0pt}\coordE{}$$
+with special case (\ref{eq:dTintegrability}). Expanding the above gives
+$$\coord{}\boxMath{
+    -\half T^{i}{}_{k}R_{kjlm}\omega^{l}\wedge\omega^{m}
+    + \Rtil_{iklm}T^{k}{}_{j} \omegatil^{l}\wedge\omegatil^{m}=0\,.
+}{dollar}{0pt}\coordE{}$$
+If we now substitute (\ref{eq:defvel}) and use the pseudoduality 
+equations (\ref{eq:special}) we see that
+\begin{equation}\coord{}\boxEquation{
+    T^{i}{}_{k}T^{j}{}_{l}R_{klmn}= 
+    -\widetilde{R}_{ijkl}T^{k}{}_{m}T^{l}{}_{n}\;.
+    \label{eq:pCurv}
+}{
+    T^{i}{}_{k}T^{j}{}_{l}R_{klmn}= 
+    -\widetilde{R}_{ijkl}T^{k}{}_{m}T^{l}{}_{n}\;.
+    }{ecuacion}\coordE{}\end{equation}
+Thus we conclude that the manifolds \myHighlight{$M$}\coordHE{} and \myHighlight{$\Mtil$}\coordHE{} ``have the 
+opposite curvature''. Next we take the exterior derivative of the 
+above to look for further conditions. If the covariant differential of 
+\myHighlight{$R$}\coordHE{} is defined by \myHighlight{$D R_{ijkl} = R_{ijkl;m}\omega^{m}$}\coordHE{} and similarly 
+for \myHighlight{$\Rtil$}\coordHE{} we find
+$$\coord{}\boxMath{
+    T^{i}{}_{k}T^{j}{}_{l}R_{klmn;p} \omega^{p} =
+    -\widetilde{R}_{ijkl;p}T^{k}{}_{m}T^{l}{}_{n}\omegatil^{p}\,.
+}{dollar}{0pt}\coordE{}$$
+If we now substitute (\ref{eq:defvel}) into the above and use the 
+pseudoduality equations (\ref{eq:special}) we obtain two equations 
+since \myHighlight{$d\sigma^{+}$}\coordHE{} and \myHighlight{$d\sigma^{-}$}\coordHE{} are independent:
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+    T^{i}{}_{k}T^{j}{}_{l}R_{klmn;q} & = & 
+    \leftCoord{}-\widetilde{R}_{ijkl;p}T^{k}{}_{m}T^{l}{}_{n} T^{p}{}_{q}\rightCoord{}\,,\rightCoord{}\\\leftCoord{}
+    T^{i}{}_{k}T^{j}{}_{l}R_{klmn;q} & = & 
+    \leftCoord{}+\widetilde{R}_{ijkl;p}T^{k}{}_{m}T^{l}{}_{n} T^{p}{}_{q}\rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{4}{6}{
+    T^{i}{}_{k}T^{j}{}_{l}R_{klmn;q} & = & 
+    -\widetilde{R}_{ijkl;p}T^{k}{}_{m}T^{l}{}_{n} T^{p}{}_{q}\,,\\
+    T^{i}{}_{k}T^{j}{}_{l}R_{klmn;q} & = & 
+    +\widetilde{R}_{ijkl;p}T^{k}{}_{m}T^{l}{}_{n} T^{p}{}_{q}\,.
+}{1}\coordE{}\end{eqnarray*}
+The solution of the above is immediate
+\begin{equation}\coord{}\boxEquation{
+    R_{klmn;q}=0\quad\mbox{and}\quad \widetilde{R}_{ijkl;p} =0\,.
+    \label{eq:DR0}
+}{
+    R_{klmn;q}=0\quad\mbox{and}\quad \widetilde{R}_{ijkl;p} =0\,.
+    }{ecuacion}\coordE{}\end{equation}
+The manifolds \myHighlight{$M$}\coordHE{} and \myHighlight{$\Mtil$}\coordHE{} must be \emph{locally symmetric spaces} with the 
+``opposite curvature''. 
+
+\section{Dual Symmetric Spaces}
+\label{sec:dualsym}
+
+There is a large class of examples of pairs of symmetric spaces with
+opposite curvature.  These pairs are called dual symmetric
+spaces.  The simplest pair is the \myHighlight{$n$}\coordHE{}-sphere \myHighlight{$S^{n}$}\coordHE{} and the
+\myHighlight{$n$}\coordHE{}-dimensional hyperbolic space \myHighlight{$H^{n}$}\coordHE{}.  More complicated pairs are
+given by the Grassmann manifolds\footnote{\myHighlight{$\Orth_{0}(p,q)$}\coordHE{} is the
+component of \myHighlight{$\Orth(p,q)$}\coordHE{} connected to the identity.}
+\myHighlight{$\SOrth(p+q)/\SOrth(p)\times\SOrth(q)$}\coordHE{} and
+\myHighlight{$\Orth_{0}(p,q)/\SOrth(p)\times\SOrth(q)$}\coordHE{}.
+
+The general theory of symmetric spaces is very extensive
+\cite{Helgason:DG,Wolf:CC}.  For our purposes we take a lighter
+approach \cite[Chapter 11]{ONeill:SRG} and a more restrictive view and
+consider what are called \emph{normal symmetric spaces}.  These are
+specified by a triplet of data \myHighlight{$(G/H,\sigma,Q)$}\coordHE{} where \myHighlight{$G$}\coordHE{} is a real
+Lie group, \myHighlight{$H$}\coordHE{} is a closed subgroup of \myHighlight{$G$}\coordHE{} and \myHighlight{$\sigma$}\coordHE{} is an
+involutive automorphism of \myHighlight{$G$}\coordHE{}.  Let \myHighlight{$\lieg$}\coordHE{} be the Lie algebra of \myHighlight{$G$}\coordHE{}
+and denote the action of the automorphism \myHighlight{$\sigma$}\coordHE{} on \myHighlight{$\lieg$}\coordHE{} by \myHighlight{$s$}\coordHE{}. 
+Let \myHighlight{$\lieh$}\coordHE{} be the \myHighlight{$+1$}\coordHE{} eigenspace of \myHighlight{$s$}\coordHE{} and let \myHighlight{$\liem$}\coordHE{} be the \myHighlight{$-1$}\coordHE{}
+eigenspace of \myHighlight{$s$}\coordHE{}.  Since \myHighlight{$\half(I \pm s)$}\coordHE{} are projectors we have
+\myHighlight{$\lieg=\lieh \oplus \liem$}\coordHE{}.  The following are also required in a 
+normal symmetric space:
+\begin{enumerate}
+    \item If \myHighlight{$F$}\coordHE{} is the fixed point set of \myHighlight{$\sigma$}\coordHE{} and \myHighlight{$F_{0}$}\coordHE{} is its
+    identity component then \myHighlight{$F_{0}\subset H\subset F$}\coordHE{}.  This is a
+    technical requirement that for our purposes we take it to mean
+    that the Lie algebra of \myHighlight{$H$}\coordHE{} is \myHighlight{$\lieh$}\coordHE{}.
+
+    \item \myHighlight{$Q$}\coordHE{} is an \myHighlight{$\Ad(G)$}\coordHE{}-invariant inner product on \myHighlight{$\lieg$}\coordHE{}.  An
+    ordinary symmetric space only requires \myHighlight{$Q$}\coordHE{} to be an
+    \myHighlight{$\Ad(H)$}\coordHE{}-invariant inner product\footnote{An \myHighlight{$\Ad(H)$}\coordHE{}-invariant
+    inner product on \myHighlight{$\liem$}\coordHE{} leads to a \myHighlight{$G$}\coordHE{}-invariant metric on \myHighlight{$M$}\coordHE{}, 
+    see \cite[p. 312]{ONeill:SRG}.}
+    on \myHighlight{$\liem$}\coordHE{}.  Here \myHighlight{$\Ad(G)$}\coordHE{} is the adjoint action of the group \myHighlight{$G$}\coordHE{}
+    on its Lie algebra \myHighlight{$\lieg$}\coordHE{}.
+    
+    \item \myHighlight{$Q$}\coordHE{} is \myHighlight{$s$}\coordHE{}-invariant. This is not required for an 
+    ordinary symmetric space.
+\end{enumerate}
+It follows that \myHighlight{$[\lieh,\lieh]\subset\lieh$}\coordHE{},
+\myHighlight{$[\lieh,\liem]\subset\liem$}\coordHE{} and \myHighlight{$[\liem,\liem]\subset\lieh$}\coordHE{}.  The
+\myHighlight{$s$}\coordHE{}-invariance of \myHighlight{$Q$}\coordHE{} tells us that the direct sum decomposition is an
+orthogonal decomposition.  Note that \myHighlight{$\lieh$}\coordHE{} and \myHighlight{$\liem$}\coordHE{} are
+orthogonal with respect to any \myHighlight{$s$}\coordHE{}-invariant quadratic form such as
+the Killing form \myHighlight{$\Tr(\ad(X)\ad(Y))$}\coordHE{}.
+
+
+We pick an origin for the symmetric space \myHighlight{$G/H$}\coordHE{} and associate \myHighlight{$\liem$}\coordHE{}
+with the tangent space at that point.  For a normal symmetric space
+the sectional curvature associated to the \myHighlight{$2$}\coordHE{}-plane spanned by \myHighlight{$X,Y
+\in \liem$}\coordHE{} is given by the following simple formula~\cite[p. 319]{ONeill:SRG}
+\begin{equation}\coord{}\boxEquation{
+    K(X,Y) = 
+    \frac{Q([X,Y],[X,Y])}{Q(X,X)Q(Y,Y)-Q(X,Y)^{2}}
+    \label{eq:sectional}
+}{
+    K(X,Y) = 
+    \frac{Q([X,Y],[X,Y])}{Q(X,X)Q(Y,Y)-Q(X,Y)^{2}}
+    }{ecuacion}\coordE{}\end{equation}
+that requires the \myHighlight{$\Ad(G)$}\coordHE{}-invariance of \myHighlight{$Q$}\coordHE{} in its derivation.
+We remind the reader that knowing all sectional curvatures is
+equivalent to knowing the curvature tensor \cite{ONeill:SRG} and that
+they are related by
+$$\coord{}\boxMath{
+    K(X,Y) = 
+    \frac{R_{ijkl}X^{i}Y^{j}X^{k}Y^{l}}{Q(X,X)Q(Y,Y)-Q(X,Y)^{2}}\;.
+}{dollar}{0pt}\coordE{}$$
+
+Normal symmetric spaces \myHighlight{$(G/H,\sigma,Q)$}\coordHE{} and 
+\myHighlight{$(\Gtil/\Htil,\sigtil,\Qtil)$}\coordHE{} are said to be \emph{dual 
+symmetric spaces} if there exist
+\begin{enumerate}
+    \item a Lie algebra isomorphism \myHighlight{$S:\lieh\to
+    \tilde{\lieh}$}\coordHE{} such that \myHighlight{$\Qtil(S V,S W) = - Q(V,W)$}\coordHE{} 
+    for all \myHighlight{$V,W \in \mathfrak{h}$}\coordHE{}.
+
+    \item a linear isometry \myHighlight{$T:\liem \to \widetilde{\liem}$}\coordHE{} such that 
+    \myHighlight{$[TX,TY]=-S[X,Y]$}\coordHE{} for all \myHighlight{$X,Y \in \liem$}\coordHE{}.
+\end{enumerate}
+In item (1) above the Lie algebra isomorphism tells us that brackets
+in \myHighlight{$\lieh$}\coordHE{} are the same as in \myHighlight{$\tilde{\lieh}$}\coordHE{}.  While the isometry in
+item (2) tells us that inner product on \myHighlight{$\liem$}\coordHE{} is the same as in
+\myHighlight{$\widetilde{\liem}$}\coordHE{}.
+
+For dual symmetric spaces it is easy to see that the 
+sectional curvatures are related by \myHighlight{$\widetilde{K}(TX,TY) = -K(X,Y)$}\coordHE{}.
+
+It is worthwhile to work this out explicitly for the example of the dual
+symmetric spaces \myHighlight{$\SOrth(p+q)/\SOrth(p)\times\SOrth(q)$}\coordHE{} and
+\myHighlight{$\Orth_{0}(p,q)/\SOrth(p)\times\SOrth(q)$}\coordHE{}.  For \myHighlight{$g\in G=\SOrth(p+q)$}\coordHE{}
+or \myHighlight{$g\in \Gtil=\Orth_{0}(p,q)$}\coordHE{} we take \myHighlight{$\sigma$}\coordHE{} and
+\myHighlight{$\sigtil$}\coordHE{} to be given by
+$$\coord{}\boxMath{
+    g \mapsto
+    \left(
+    \begin{array}{cc}
+        I_{p} & 0  \\
+        0 & -I_{q}
+    \end{array}
+    \right) g
+    \left(
+    \begin{array}{cc}
+        I_{p} & 0  \\
+        0 & -I_{q}
+    \end{array}
+    \right)\,.
+}{dollar}{0pt}\coordE{}$$
+One easily verifies that \myHighlight{$\lieh=\tilde{\lieh} = \so(p) \oplus \so(q)$}\coordHE{} 
+where the matrices are of the form
+$$\coord{}\boxMath{
+    \left(
+    \begin{array}{cc}
+        a & 0  \\
+        0 & c
+    \end{array}
+    \right) \,
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$a \in \so(p)$}\coordHE{} and \myHighlight{$c\in \so(q)$}\coordHE{}. One also sees that 
+\myHighlight{$X\in\liem$}\coordHE{} and \myHighlight{$\widetilde{X}\in \widetilde{\liem}$}\coordHE{} are of the form
+$$\coord{}\boxMath{
+    X = \left(
+    \begin{array}{cc}
+        0 & -b^{t}  \\
+        b & 0
+    \end{array}
+    \right)
+    \quad\mbox{and}\quad
+    \widetilde{X} = \left(
+    \begin{array}{cc}
+        0 & b^{t}  \\
+        b & 0
+    \end{array}
+    \right)\,,
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$b$}\coordHE{} is an arbitrary \myHighlight{$q\times p$}\coordHE{} matrix.  For the inner products
+we take \myHighlight{$Q(X,Y) = -\half\Tr(XY)$}\coordHE{} and
+\myHighlight{$\Qtil(\widetilde{X},\widetilde{Y}) =
++\half\Tr(\widetilde{X}\widetilde{Y})$}\coordHE{}.  These will be ``riemannian''
+dual symmetric spaces because the metrics on \myHighlight{$\liem$}\coordHE{} and
+\myHighlight{$\widetilde{\liem}$}\coordHE{} are positive definite.  We take the subgroups \myHighlight{$H$}\coordHE{}
+and \myHighlight{$\Htil$}\coordHE{} to be \myHighlight{$\SOrth(p)\times\SOrth(q)$}\coordHE{} and the Lie algebra
+isomorphism \myHighlight{$S:\lieh \to \tilde{\lieh}$}\coordHE{} is the identity
+transformation.  The isometry \myHighlight{$T:\liem\to \widetilde{\liem}$}\coordHE{} is taken
+to be
+$$\coord{}\boxMath{
+    T:
+    \left(
+    \begin{array}{cc}
+        0 & -b^{t}  \\
+        b & 0
+    \end{array}
+    \right)
+    \mapsto
+    \left(
+    \begin{array}{cc}
+        0 & b^{t}  \\
+        b & 0
+    \end{array}
+    \right)\,.
+}{dollar}{0pt}\coordE{}$$    
+A brief computation shows that \myHighlight{$[TX,TY] = -[X,Y]$}\coordHE{}.  From this we see
+that \myHighlight{$\SOrth(p+q)/\SOrth(p)\times\SOrth(q)$}\coordHE{} is a space with positive
+sectional curvature and \myHighlight{$\Orth_{0}(p,q)/\SOrth(p)\times\SOrth(q)$}\coordHE{} is a
+space with negative sectional curvature.
+
+A more extensive discussion of dual symmetric spaces requires a 
+thorough discussion of the theory of orthogonal involutive Lie 
+algebras (orthogonal symmetric Lie algebras), 
+see~\cite{Helgason:DG,Wolf:CC}.
+
+\section{Ivanov's Construction}
+\label{sec:ivanov}
+
+
+In this article we have limited ourselves to studying sigma models on
+an arbitrary riemannian manifold with vanishing \myHighlight{$3$}\coordHE{}-form \myHighlight{$H_{ijk}$}\coordHE{}. 
+Ivanov analyzed  a subset of those models.  He studied sigma models
+that are Lie group theoretic in origin.  In this case we can use
+special properties of Lie groups to simplify the analysis.  Assume we
+have a normal symmetric space \myHighlight{$G/H$}\coordHE{} as in Section~\ref{sec:dualsym}. 
+We can choose an orthonormal basis that respects the decomposition
+\myHighlight{$\lieg = \lieh \oplus \liem$}\coordHE{}.  If \myHighlight{$\{T_{i}\}$}\coordHE{} is such a basis with Lie
+bracket relations
+$$\coord{}\boxMath{
+    [T_{i}, T_{j}] = f^{k}{}_{ij}T_{k}
+}{dollar}{0pt}\coordE{}$$
+then the \myHighlight{$\Ad(G)$}\coordHE{}-invariance of \myHighlight{$Q$}\coordHE{} tells us that \myHighlight{$f_{ijk}$}\coordHE{} are 
+totally antisymmetric. The indices \myHighlight{$a,b,c,\ldots$}\coordHE{} are associated to  
+the basis elements that are in  \myHighlight{$\lieh$}\coordHE{} and the indices 
+\myHighlight{$\alpha,\beta,\gamma,\ldots$}\coordHE{} are associated to basis elements in 
+\myHighlight{$\liem$}\coordHE{}. With this notation the Lie algebra bracket relations are
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    \leftCoord{}[T_{a},T_{b}] & = & f^{c}{}_{ab}T_{c}\rightCoord{}\,,
+    \label{eq:hhh}  \\\leftCoord{} \relax
+    \leftCoord{}[T_{a},T_{\beta}] & = & f^{\gamma}{}_{a\beta}T_{\gamma}\rightCoord{}\,,
+    \label{eq:hmm}  \\\leftCoord{} \relax
+    \leftCoord{}[T_{\alpha},T_{\beta}] & = & f^{c}{}_{\alpha\beta}T_{c}\rightCoord{}\,.\rightCoord{}
+    \label{eq:mmh}
+\rightCoord{}}{0mm}{6}{6}{
+    [T_{a},T_{b}] & = & f^{c}{}_{ab}T_{c}\,,
+    \\ \relax
+    [T_{a},T_{\beta}] & = & f^{\gamma}{}_{a\beta}T_{\gamma}\,,
+    \\ \relax
+    [T_{\alpha},T_{\beta}] & = & f^{c}{}_{\alpha\beta}T_{c}\,.
+    }{1}\coordE{}\end{eqnarray}
+Let \myHighlight{$\theta^{i}$}\coordHE{} be the the Maurer-Cartan forms for the Lie group \myHighlight{$G$}\coordHE{} 
+that satisfy the Maurer-Cartan equations
+$$\coord{}\boxMath{
+    d\theta^{i} + \half f^{i}{}_{jk}\theta^{j}\wedge\theta^{k}
+    =0\;.
+}{dollar}{0pt}\coordE{}$$
+Using the decomposition \myHighlight{$\lieg=\lieh\oplus\liem$}\coordHE{} we may write the 
+equations above as
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    d\theta^{a} + \half f^{a}{}_{bc}\theta^{b}\wedge \theta^{c}
+&\leftCoord{}= & - \half f^{a}{}_{\beta\gamma} 
+    \theta^{\beta}\wedge\theta^{\gamma}\rightCoord{}\,, \rightCoord{}
+    \label{eq:Hcurv}  \rightCoord{}\\\leftCoord{}
+    d\theta^{\beta} + f^{\beta}{}_{b\gamma} 
+    \theta^{b}\wedge\theta^{\gamma} & = & 0\;. \rightCoord{}
+    \label{eq:covm}
+\rightCoord{}}{0mm}{3}{6}{
+    d\theta^{a} + \half f^{a}{}_{bc}\theta^{b}\wedge \theta^{c}
+&= & - \half f^{a}{}_{\beta\gamma} 
+    \theta^{\beta}\wedge\theta^{\gamma}\,, 
+    \\
+    d\theta^{\beta} + f^{\beta}{}_{b\gamma} 
+    \theta^{b}\wedge\theta^{\gamma} & = & 0\;. 
+    }{1}\coordE{}\end{eqnarray}
+It is worthwhile discussing the geometric meaning of the above
+equations.  It is well known that \myHighlight{$G$}\coordHE{} is a principal \myHighlight{$H$}\coordHE{}-bundle over
+\myHighlight{$G/H$}\coordHE{}.  The \myHighlight{$H$}\coordHE{}-connection \myHighlight{$\theta^{a}T_{a}$}\coordHE{} on \myHighlight{$G$}\coordHE{} defines the
+horizontal tangent spaces.  Its curvature is given by the right hand
+side of (\ref{eq:Hcurv}).  Equation (\ref{eq:covm}) states that the
+covariant differential of the \myHighlight{$\liem$}\coordHE{}-valued \myHighlight{$1$}\coordHE{}-form
+\myHighlight{$\theta^{\beta}T_{\beta}$}\coordHE{} is zero.
+
+The equations of motion nonlinear sigma model with target space \myHighlight{$G/H$}\coordHE{}
+may be formulated in terms of a map \myHighlight{$g:\Sigma \to G$}\coordHE{} that satisfies the
+equations
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    d\theta^{a} + \half f^{a}{}_{bc}\theta^{b}\wedge \theta^{c}
+&\leftCoord{}= & - \half f^{a}{}_{\beta\gamma} 
+    \theta^{\beta}\wedge\theta^{\gamma}\rightCoord{}\,, \rightCoord{}
+    \label{eq:Hcurv1}  \rightCoord{}\\\leftCoord{}
+    d\theta^{\beta} + f^{\beta}{}_{b\gamma} 
+    \theta^{b}\wedge\theta^{\gamma} & = & 0\;, \rightCoord{}\\\leftCoord{}
+    \label{eq:covm1}
+    d(\hodge\theta^{\beta}) + f^{\beta}{}_{b\gamma} 
+    \theta^{b}\wedge (\hodge\theta^{\gamma}) & = & 0\;. \rightCoord{}
+    \label{eq:wave1} 
+\rightCoord{}}{0mm}{4}{7}{
+    d\theta^{a} + \half f^{a}{}_{bc}\theta^{b}\wedge \theta^{c}
+&= & - \half f^{a}{}_{\beta\gamma} 
+    \theta^{\beta}\wedge\theta^{\gamma}\,, 
+    \\
+    d\theta^{\beta} + f^{\beta}{}_{b\gamma} 
+    \theta^{b}\wedge\theta^{\gamma} & = & 0\;, \\
+    d(\hodge\theta^{\beta}) + f^{\beta}{}_{b\gamma} 
+    \theta^{b}\wedge (\hodge\theta^{\gamma}) & = & 0\;. 
+    }{1}\coordE{}\end{eqnarray}
+Here we implicitly interpret \myHighlight{$\theta^{i}$}\coordHE{} as the pullback under 
+\myHighlight{$g:\Sigma\to G/H$}\coordHE{}. More properly we should have 
+written \myHighlight{$g^{*}\theta^{i}$}\coordHE{}. 
+We use \myHighlight{$\hodge$}\coordHE{} to denote the Hodge duality operation on \myHighlight{$\Sigma$}\coordHE{}. On 
+\myHighlight{$1$}\coordHE{}-forms it is given by \myHighlight{$\hodge(d\sigma^{\pm})= \pm d\sigma^{\pm}$}\coordHE{}. 
+The first two equations above are just the pullbacks to \myHighlight{$\Sigma$}\coordHE{} of the 
+Maurer-Cartan equations for \myHighlight{$G$}\coordHE{}. The third equation (\ref{eq:wave1}) 
+is essentially the wave equation.
+For future reference we note that if \myHighlight{$\alpha$}\coordHE{}, \myHighlight{$\beta$}\coordHE{} are \myHighlight{$1$}\coordHE{}-forms on 
+\myHighlight{$\Sigma$}\coordHE{} then 
+\begin{equation}\coord{}\boxEquation{
+    (\hodge \alpha)\wedge(\hodge\beta) = - 
+    \alpha\wedge\beta\,,
+    \label{eq:hodge}
+}{
+    (\hodge \alpha)\wedge(\hodge\beta) = - 
+    \alpha\wedge\beta\,,
+    }{ecuacion}\coordE{}\end{equation}
+and that \myHighlight{$(\hodge)^{2}\alpha=\alpha$}\coordHE{}.
+
+Ivanov observed that if we define \myHighlight{$\thetatil^{\beta} = 
+\hodge\theta^{\beta}$}\coordHE{} and \myHighlight{$\thetatil^{a}=\theta^{a}$}\coordHE{} then the 
+equations above become
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    d\thetatil^{a} + \half f^{a}{}_{bc}\thetatil^{b}\wedge \thetatil^{c}
+&\leftCoord{}= & + \half f^{a}{}_{\beta\gamma} 
+    \thetatil^{\beta}\wedge\thetatil^{\gamma}\rightCoord{}\,, \rightCoord{}
+    \label{eq:Hcurv2}  \rightCoord{}\\\leftCoord{}
+    d\thetatil^{\beta} + f^{\beta}{}_{b\gamma} 
+    \thetatil^{b}\wedge\thetatil^{\gamma} & = & 0\;, \rightCoord{}\\\leftCoord{}
+    \label{eq:covm2}
+    d(\hodge\thetatil^{\beta}) + f^{\beta}{}_{b\gamma} 
+    \thetatil^{b}\wedge (\hodge\thetatil^{\gamma}) & = & 0\;. \rightCoord{}
+    \label{eq:wave2} 
+\rightCoord{}}{0mm}{4}{7}{
+    d\thetatil^{a} + \half f^{a}{}_{bc}\thetatil^{b}\wedge \thetatil^{c}
+&= & + \half f^{a}{}_{\beta\gamma} 
+    \thetatil^{\beta}\wedge\thetatil^{\gamma}\,, 
+    \\
+    d\thetatil^{\beta} + f^{\beta}{}_{b\gamma} 
+    \thetatil^{b}\wedge\thetatil^{\gamma} & = & 0\;, \\
+    d(\hodge\thetatil^{\beta}) + f^{\beta}{}_{b\gamma} 
+    \thetatil^{b}\wedge (\hodge\thetatil^{\gamma}) & = & 0\;. 
+    }{1}\coordE{}\end{eqnarray}
+These equations may be interpreted as the equations of motion for a
+sigma model on the symmetric space \myHighlight{$\Gtil/H$}\coordHE{} where \myHighlight{$\Gtil$}\coordHE{} is a real
+Lie group with real Lie algebra \myHighlight{$\tilde{\lieg} = \lieh \oplus
+(i\liem)$}\coordHE{}.  This Lie algebra has Lie brackets given by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    \leftCoord{}[\Ttil_{a},\Ttil_{b}] & = & f^{c}{}_{ab}\Ttil_{c}\rightCoord{}\,,
+    \label{eq:hhhtil}  \\\leftCoord{} \relax
+    \leftCoord{}[\Ttil_{a},\Ttil_{\beta}] & = & f^{\gamma}{}_{a\beta}\Ttil_{\gamma}\rightCoord{}\,,
+    \label{eq:hmmtil}  \\\leftCoord{} \relax
+    \leftCoord{}[\Ttil_{\alpha},\Ttil_{\beta}] & = & -f^{c}{}_{\alpha\beta}\Ttil_{c}\rightCoord{}\,.\rightCoord{}
+    \label{eq:mmhtil}
+\rightCoord{}}{0mm}{6}{6}{
+    [\Ttil_{a},\Ttil_{b}] & = & f^{c}{}_{ab}\Ttil_{c}\,,
+    \\ \relax
+    [\Ttil_{a},\Ttil_{\beta}] & = & f^{\gamma}{}_{a\beta}\Ttil_{\gamma}\,,
+    \\ \relax
+    [\Ttil_{\alpha},\Ttil_{\beta}] & = & -f^{c}{}_{\alpha\beta}\Ttil_{c}\,.
+    }{1}\coordE{}\end{eqnarray}
+In the above we have \myHighlight{$\Ttil_{a}=T_{a}$}\coordHE{} and \myHighlight{$\Ttil_{\beta}=
+iT_{\beta}$}\coordHE{}.  Note that if you think of \myHighlight{$\Gtil$}\coordHE{} as a principal
+\myHighlight{$H$}\coordHE{}-bundle then the curvature of \myHighlight{$\Gtil$}\coordHE{}, given by (\ref{eq:Hcurv2}), is
+``opposite'' to that of \myHighlight{$G$}\coordHE{}, given by (\ref{eq:Hcurv1}).
+
+
+\section{Discussion}
+\label{sec:discussion}
+
+In \cite{Alvarez:2000bh} it was shown that a necessary condition for
+target space duality is that the target spaces be parallelizable
+manifolds.  In the scenario presented here where we only require ``on
+shell'' pseudoduality and we see that the parallelizable requirement
+is weakened substantially but we still find natural geometric
+restrictions on the target spaces.  In the models considered here
+where the \myHighlight{$3$}\coordHE{}-forms \myHighlight{$H$}\coordHE{} and \myHighlight{$\Htil$}\coordHE{} vanish we saw that pseudoduality
+requires that the target spaces be symmetric spaces with the
+``opposite curvature'' generalizing a result of Ivanov
+\cite{Ivanov:1987yv}.  The class of riemannian dual symmetric spaces
+provides a wealth of examples.  In particular we studied explicitly
+the example of dual Grassmann manifolds
+\myHighlight{$\SOrth(p+q)/\SOrth(p)\times\SOrth(q)$}\coordHE{} and
+\myHighlight{$\Orth_{0}(p+q)/\SOrth(p)\times\SOrth(q)$}\coordHE{}.  We also saw the importance
+of the isometry \myHighlight{$T$}\coordHE{}.  Note that we never explicitly solved for \myHighlight{$T$}\coordHE{} but
+we discovered conditions that guarantee its existence.  Finally it
+should be emphasized that \myHighlight{$T$}\coordHE{} depends on the path since it comes from
+integrating (\ref{eq:covT}) along the path.
+
+We note that equations (\ref{eq:special}) may also be written as
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    \xtil_{\tau} & = & T x_{\sigma}\rightCoord{}\,,
+    \label{eq:psd00}  \rightCoord{}\\\leftCoord{}
+    \xtil_{\sigma} & = & T x_{\tau}\rightCoord{}\,.\rightCoord{}
+    \label{eq:psd11}
+\rightCoord{}}{0mm}{2}{6}{
+    \xtil_{\tau} & = & T x_{\sigma}\,,
+    \\
+    \xtil_{\sigma} & = & T x_{\tau}\,.
+    }{1}\coordE{}\end{eqnarray}
+Thus we immediately see that ``particle-like'' solutions (\myHighlight{$\sigma$}\coordHE{} 
+independent) on \myHighlight{$M$}\coordHE{} get mapped into static ``soliton-like'' solutions 
+on \myHighlight{$\Mtil$}\coordHE{} and vice-versa. If say \myHighlight{$\Mtil$}\coordHE{} has noncontractible loops 
+then there will be stable ``soliton-like'' solutions.
+
+Recently Evans and Mountain \cite{Evans:2000qx} constructed an
+infinite number of local conserved commuting charges on sigma models
+with the target space being a compact symmetric space.  It would be
+interesting to apply the results of this paper to the construction of
+Evans and Mountain.
+
+\section*{Acknowledgments}
+
+I would like to thank T.L.~Curtright, H.~Fenderya, L.A.~Ferreira,
+L.~Mezincescu, R.~Nepomechie, J.~S\'{a}nchez Guill\'{e}n, I.M.~Singer
+and C.~Zachos for comments and discussions.  I would also thank
+E.~Ivanov for bringing to my attention reference~\cite{Ivanov:1987yv}. 
+This work was supported in part by National Science Foundation grant
+PHY--9870101.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{Giveon:1994fu}
+A.~Giveon, M.~Porrati, and E.~Rabinovici, ``Target space duality in string
+  theory,'' {\em Phys. Rept.} {\bf 244} (1994) 77--202,
+\href{http://www.arXiv.org/abs/hep-th/9401139}{{\tt hep-th/9401139}}.
+%%CITATION = PRPLC,244,77;%%.
+
+\bibitem{Zakharov:1978pp}
+V.~E. Zakharov and A.~V. Mikhailov, ``Relativistically invariant
+  two-dimensional models in field theory integrable by the inverse problem
+  technique. (in {Russian}),'' {\em Sov. Phys. JETP} {\bf 47} (1978)
+1017--1027.
+%%CITATION = SPHJA,47,1017;%%.
+
+\bibitem{Nappi:1980ig}
+C.~R. Nappi, ``Some properties of an analog of the nonlinear sigma model,''
+  {\em Phys. Rev.} {\bf D21} (1980)
+418.
+%%CITATION = PHRVA,D21,418;%%.
+
+\bibitem{Fridling:1984ha}
+B.~E. Fridling and A.~Jevicki, ``Dual representations and ultraviolet
+  divergences in nonlinear sigma models,'' {\em Phys. Lett.} {\bf B134} (1984)
+70.
+%%CITATION = PHLTA,B134,70;%%.
+
+\bibitem{Fradkin:1985ai}
+E.~S. Fradkin and A.~A. Tseytlin, ``Quantum equivalence of dual field
+  theories,'' {\em Ann. Phys.} {\bf 162} (1985)
+31.
+%%CITATION = APNYA,162,31;%%.
+
+\bibitem{Curtright:1994be}
+T.~Curtright and C.~Zachos, ``Currents, charges, and canonical structure of
+  pseudodual chiral models,'' {\em Phys. Rev.} {\bf D49} (1994) 5408--5421,
+\href{http://www.arXiv.org/abs/hep-th/9401006}{{\tt hep-th/9401006}}.
+%%CITATION = PHRVA,D49,5408;%%.
+
+\bibitem{Alvarez:1994wj}
+E.~Alvarez, L.~Alvarez-Gaume, and Y.~Lozano, ``A canonical approach to duality
+  transformations,'' {\em Phys. Lett.} {\bf B336} (1994) 183--189,
+\href{http://www.arXiv.org/abs/hep-th/9406206}{{\tt hep-th/9406206}}.
+%%CITATION = PHLTA,B336,183;%%.
+
+\bibitem{Zachos:1994fa}
+C.~K. Zachos and T.~L. Curtright, ``The paradigm of pseudodual chiral models,''
+  in {\em {PASCOS} '94}, K.~C. Wali, ed., pp.~381--390.
+\newblock 1995.
+\newblock
+\href{http://www.arXiv.org/abs/hep-th/9407044}{{\tt hep-th/9407044}}.
+\newblock
+%%CITATION = HEP-TH 9407044;%%.
+
+\bibitem{Kiritsis:1991zt}
+E.~B. Kiritsis, ``Duality in gauged {WZW} models,'' {\em Mod. Phys. Lett.} {\bf
+  A6} (1991)
+2871--2880.
+%%CITATION = MPLAE,A6,2871;%%.
+
+\bibitem{Rocek:1992ps}
+M.~Rocek and E.~Verlinde, ``Duality, quotients, and currents,'' {\em Nucl.
+  Phys.} {\bf B373} (1992) 630--646,
+\href{http://www.arXiv.org/abs/hep-th/9110053}{{\tt hep-th/9110053}}.
+%%CITATION = NUPHA,B373,630;%%.
+
+\bibitem{Giveon:1992jj}
+A.~Giveon and M.~Rocek, ``Generalized duality in curved string backgrounds,''
+  {\em Nucl. Phys.} {\bf B380} (1992) 128--146,
+\href{http://www.arXiv.org/abs/hep-th/9112070}{{\tt hep-th/9112070}}.
+%%CITATION = NUPHA,B380,128;%%.
+
+\bibitem{delaOssa:1993vc}
+X.~C. de~la Ossa and F.~Quevedo, ``Duality symmetries from nonabelian
+  isometries in string theory,'' {\em Nucl. Phys.} {\bf B403} (1993) 377--394,
+\href{http://www.arXiv.org/abs/hep-th/9210021}{{\tt hep-th/9210021}}.
+%%CITATION = NUPHA,B403,377;%%.
+
+\bibitem{Gasperini:1993nz}
+M.~Gasperini, R.~Ricci, and G.~Veneziano, ``A problem with nonabelian
+  duality?,'' {\em Phys. Lett.} {\bf B319} (1993) 438--444,
+\href{http://www.arXiv.org/abs/hep-th/9308112}{{\tt hep-th/9308112}}.
+%%CITATION = PHLTA,B319,438;%%.
+
+\bibitem{Giveon:1994mw}
+A.~Giveon and M.~Rocek, ``Introduction to duality,''
+\href{http://www.arXiv.org/abs/hep-th/9406178}{{\tt hep-th/9406178}}.
+%%CITATION = HEP-TH 9406178;%%.
+
+\bibitem{Giveon:1994ai}
+A.~Giveon and M.~Rocek, ``On nonabelian duality,'' {\em Nucl. Phys.} {\bf B421}
+  (1994) 173--190,
+\href{http://www.arXiv.org/abs/hep-th/9308154}{{\tt hep-th/9308154}}.
+%%CITATION = NUPHA,B421,173;%%.
+
+\bibitem{Giveon:1994ph}
+A.~Giveon and E.~Kiritsis, ``Axial vector duality as a gauge symmetry and
+  topology change in string theory,'' {\em Nucl. Phys.} {\bf B411} (1994)
+  487--508,
+\href{http://www.arXiv.org/abs/hep-th/9303016}{{\tt hep-th/9303016}}.
+%%CITATION = NUPHA,B411,487;%%.
+
+\bibitem{Alvarez:1994zr}
+E.~Alvarez, L.~Alvarez-Gaume, and Y.~Lozano, ``On nonabelian duality,'' {\em
+  Nucl. Phys.} {\bf B424} (1994) 155--183,
+\href{http://www.arXiv.org/abs/hep-th/9403155}{{\tt hep-th/9403155}}.
+%%CITATION = NUPHA,B424,155;%%.
+
+\bibitem{Alvarez:1994qi}
+E.~Alvarez, L.~Alvarez-Gaume, J.~L.~F. Barbon, and Y.~Lozano, ``Some global
+  aspects of duality in string theory,'' {\em Nucl. Phys.} {\bf B415} (1994)
+  71--100,
+\href{http://www.arXiv.org/abs/hep-th/9309039}{{\tt hep-th/9309039}}.
+%%CITATION = NUPHA,B415,71;%%.
+
+\bibitem{Lozano:1995jx}
+Y.~Lozano, ``Nonabelian duality and canonical transformations,'' {\em Phys.
+  Lett.} {\bf B355} (1995) 165--170,
+\href{http://www.arXiv.org/abs/hep-th/9503045}{{\tt hep-th/9503045}}.
+%%CITATION = PHLTA,B355,165;%%.
+
+\bibitem{Lozano:1996sc}
+Y.~Lozano, ``Duality and canonical transformations,'' {\em Mod. Phys. Lett.}
+  {\bf A11} (1996) 2893--2914,
+\href{http://www.arXiv.org/abs/hep-th/9610024}{{\tt hep-th/9610024}}.
+%%CITATION = MPLAE,A11,2893;%%.
+
+\bibitem{Alvarez:1995uc}
+O.~Alvarez and C.-H. Liu, ``Target space duality between simple compact lie
+  groups and lie algebras under the hamiltonian formalism: 1. remnants of
+  duality at the classical level,'' {\em Commun. Math. Phys.} {\bf 179} (1996)
+  185,
+\href{http://www.arXiv.org/abs/hep-th/9503226}{{\tt hep-th/9503226}}.
+%%CITATION = CMPHA,179,185;%%.
+
+\bibitem{Klimcik:1995ux}
+C.~Klimcik and P.~Severa, ``Dual nonabelian duality and the {Drinfeld}
+  double,'' {\em Phys. Lett.} {\bf B351} (1995) 455--462,
+\href{http://www.arXiv.org/abs/hep-th/9502122}{{\tt hep-th/9502122}}.
+%%CITATION = PHLTA,B351,455;%%.
+
+\bibitem{Klimcik:1996dy}
+C.~Klimcik and P.~Severa, ``Poisson-{Lie} {T}-duality and loop groups of
+  {Drinfeld} doubles,'' {\em Phys. Lett.} {\bf B372} (1996) 65--71,
+\href{http://www.arXiv.org/abs/hep-th/9512040}{{\tt hep-th/9512040}}.
+%%CITATION = PHLTA,B372,65;%%.
+
+\bibitem{Klimcik:1996kw}
+C.~Klimcik and P.~Severa, ``Poisson-{Lie} {T}-duality: Open strings and
+  d-branes,'' {\em Phys. Lett.} {\bf B376} (1996) 82--89,
+\href{http://www.arXiv.org/abs/hep-th/9512124}{{\tt hep-th/9512124}}.
+%%CITATION = PHLTA,B376,82;%%.
+
+\bibitem{Sfetsos:1998pi}
+K.~Sfetsos, ``Canonical equivalence of non-isometric sigma-models and
+  {Poisson-Lie} {T}-duality,'' {\em Nucl. Phys.} {\bf B517} (1998) 549--566,
+\href{http://www.arXiv.org/abs/hep-th/9710163}{{\tt hep-th/9710163}}.
+%%CITATION = NUPHA,B517,549;%%.
+
+\bibitem{Sfetsos:1996xj}
+K.~Sfetsos, ``{Poisson-Lie} {T}-duality and supersymmetry,'' {\em Nucl. Phys.
+  Proc. Suppl.} {\bf 56B} (1997) 302,
+\href{http://www.arXiv.org/abs/hep-th/9611199}{{\tt hep-th/9611199}}.
+%%CITATION = NUPHZ,56B,302;%%.
+
+\bibitem{Stern:1998my}
+A.~Stern, ``Hamiltonian approach to {Poisson} {Lie} {T}-duality,'' {\em Phys.
+  Lett.} {\bf B450} (1999) 141,
+\href{http://www.arXiv.org/abs/hep-th/9811256}{{\tt hep-th/9811256}}.
+%%CITATION = PHLTA,B450,141;%%.
+
+\bibitem{Alvarez:2000bh}
+O.~Alvarez, ``Target space duality {I}: General theory,''
+\href{http://www.arXiv.org/abs/hep-th/0003177}{{\tt hep-th/0003177}}.
+%%CITATION = HEP-TH 0003177;%%.
+
+\bibitem{Ivanov:1987yv}
+E.~A. Ivanov, ``Duality in d = 2 sigma models of chiral field with anomaly,''
+  {\em Theor. Math. Phys.} {\bf 71} (1987)
+474--484.
+%%CITATION = TMPHA,71,474;%%.
+
+\bibitem{Pohlmeyer:1975nb}
+K.~Pohlmeyer, ``Integrable hamiltonian systems and interactions through
+  quadratic constraints,'' {\em Commun. Math. Phys.} {\bf 46} (1976)
+207.
+%%CITATION = CMPHA,46,207;%%.
+
+\bibitem{Eichenherr:1979ci}
+H.~Eichenherr and M.~Forger, ``On the dual symmetry of the nonlinear sigma
+  models,'' {\em Nucl. Phys.} {\bf B155} (1979)
+381.
+%%CITATION = NUPHA,B155,381;%%.
+
+\bibitem{Eichenherr:1981sk}
+H.~Eichenherr and M.~Forger, ``Higher local conservation laws for nonlinear
+  sigma models on symmetric spaces,'' {\em Commun. Math. Phys.} {\bf 82} (1981)
+227.
+%%CITATION = CMPHA,82,227;%%.
+
+\bibitem{BCG3}
+R.~L. Bryant, S.~S. Chern, R.~B. Gardner, H.~L. Goldschmidt, and P.~A.
+  Griffiths, {\em Exterior Differential Systems}.
+\newblock Springer-Verlag, 1991.
+
+\bibitem{Alvarez:psd2}
+O.~Alvarez, ``Pseudoduality: General theory.'' In preparation.
+
+\bibitem{Helgason:DG}
+S.~Helgason, {\em Differential Geometry, Lie Groups, and Symmetric Spaces}.
+\newblock Academic Press, 1978.
+
+\bibitem{Wolf:CC}
+J.~A. Wolf, {\em Spaces of Constant Curvature}.
+\newblock Publish or Perish, Inc., fifth~ed., 1984.
+
+\bibitem{ONeill:SRG}
+B.~O'Neill, {\em Semi-{R}iemannian Geometry}.
+\newblock Academic Press, 1983.
+
+\bibitem{Evans:2000qx}
+J.~M. Evans and A.~J. Mountain, ``Commuting charges and symmetric spaces,''
+\href{http://www.arXiv.org/abs/hep-th/0003264}{{\tt hep-th/0003264}}.
+%%CITATION = HEP-TH 0003264;%%.
+
+\end{thebibliography}\endgroup
+
+
+\end{document}
+
+
+\bye

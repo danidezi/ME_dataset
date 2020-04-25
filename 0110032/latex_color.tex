@@ -1,0 +1,718 @@
+
+\documentclass[a4paper,10pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+\usepackage{amsmath}
+\usepackage{amssymb} 
+%% \usepackage{a4}
+
+%% ---------------------------------------
+
+\providecommand{\Z}{\mathbb{Z}} % Integer numbers
+\providecommand{\R}{\mathbb{R}} % Real numbers
+\providecommand{\C}{\mathbb{C}} % Complex numbers
+\providecommand{\M}{\mathbb{M}}
+
+\providecommand{\half}{\frac{1}{2}}
+\providecommand{\fourth}{\frac{1}{4}}
+\providecommand{\const}{\operatorname{const}}
+\providecommand{\sdet}{\operatorname{sdet}}
+\providecommand{\tr}{\operatorname{tr}}
+\providecommand{\str}{\operatorname{str}}
+\providecommand{\cycl}{\operatorname{cycl}}
+\providecommand{\gcycl}{\operatorname{gcycl}}
+
+\providecommand{\Hodge}{\star} % Hodge dual
+\providecommand{\Lie}{\mathscr{L}} % Lie derivative
+\providecommand{\D}{D} % Exterior covariant derivative
+\providecommand{\SD}{\mathcal{D}} % SUSY covariant ext. derivative
+
+\providecommand{\BMf}{\mathcal{M}}
+\providecommand{\TSp}{\mathcal{N}}
+\providecommand{\Poisson}{\mathcal{P}}
+\providecommand{\Casimir}{C}
+\providecommand{\casimir}{c}
+\providecommand{\Lagrange}{\mathcal{L}}
+\providecommand{\Action}{L}
+
+\providecommand{\N}{N}
+
+%% Macros for Indexed Quantities
+\renewcommand{\^}{{}^}
+\renewcommand{\_}{\!{}_}
+
+%% Left- and Right-Vectors
+\providecommand{\lvec}[1]{\overset{\raisebox{-0.5ex}{\myHighlight{$\scriptscriptstyle
+      \leftarrow$}\coordHE{}}}{#1}{}}
+\providecommand{\rvec}[1]{\overset{\,
+    \raisebox{-0.5ex}{\myHighlight{$\scriptscriptstyle \rightarrow$}\coordHE{}}}{#1}{}}
+\providecommand{\textlvec}[1]{\overset{\!
+    \raisebox{-0.5ex}{\myHighlight{$\scriptscriptstyle \leftarrow$}\coordHE{}}}{\mathrm{#1}}}
+\providecommand{\textrvec}[1]{\overset{\raisebox{-0.5ex}{\myHighlight{$\scriptscriptstyle
+      \rightarrow$}\coordHE{}}}{\mathrm{#1}}}
+
+\providecommand{\lpartial}{\lvec{\partial}}
+\providecommand{\rpartial}{\rvec{\partial}}
+
+%% ----------------------------------------
+
+\def\ul{\underline}
+
+%% \catcode`\%=12
+\providecommand\ap[3]    
+		{{\it Ann.\ Phys.\ (NY) }{\bf #1} (#2) #3}
+\providecommand\cqg[3]  
+		{{\it Class.\ and Quant.\ Grav.\ }{\bf #1} (#2) #3}
+\providecommand\ijmpa[3] 
+		{{\it Int.\ J.\ Mod.\ Phys.\ }{\bf A #1} (#2) #3}
+\providecommand\jhep[3]  
+		{{\it J. High Energy Phys.\ }{\bf #1} (#2) #3}
+\providecommand\jpha[3]  
+		{{\it J. Phys.\ }{\bf A #1} (#2) #3}
+\providecommand\jmp[3]   
+		{{\it J.\ Math.\ Phys.\ }{\bf #1} (#2) #3}
+\providecommand\mpla[3]  
+		{{\it Mod.\ Phys.\ Lett.\ }{\bf A #1} (#2) #3}
+\providecommand\npb[3]   
+		{{\it Nucl.\ Phys.\ }{\bf B #1} (#2) #3}
+\providecommand\plb[3]   
+		{{\it Phys.\ Lett.\ }{\bf B #1} (#2) #3}
+\providecommand\prd[3]   
+		{{\it Phys.\ Rev.\ }{\bf D #1} (#2) #3}
+\providecommand\prep[3]  
+		{{\it Phys.\ Rept.\ }{\bf #1} (#2) #3}
+\providecommand\tmp[3]
+		{{\it Theor.\ Math.\ Phys.\ }{\bf #1} (#2) #3}
+
+%% ------------------------------
+
+
+\usepackage{useful_macros}
+\begin{document}
+
+\begin{titlepage} 
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\hfill{}TUW--01--24 \\
+
+{\par\centering \vspace{1cm}\par}
+
+{\par\centering \textbf{\Large 
+All minimal supergravity extensions\\
+ of 2d dilaton theories\myHighlight{$^{+)}$}\coordHE{} 
+}\large \par}
+
+{\par\centering \vspace{2.0cm} %% \vfill
+\renewcommand{\baselinestretch}{1}\par}
+
+{\par\centering \textbf{W.\ Kummer\myHighlight{${}^{1}$}\coordHE{}\footnotemark[1] 
+M.\ Ertl\myHighlight{${}^{1}$}\coordHE{}\footnotemark[2] and T.\ Strobl\myHighlight{${}^{2}$}\coordHE{}
+\footnotemark[3]{}} 
+\vspace{7ex}\par}
+
+{\par\centering \myHighlight{\( ^{1} \)}\coordHE{}Institute for Theoretical Physics, 
+Vienna University of Technology, Vienna, Austria \vspace{2ex}
+\par}
+
+{\par
+\centering \myHighlight{\( ^{2} \)}\coordHE{}Institute for Theoretical Physics, 
+FSU Jena,  Jena, Germany
+\par}
+\vspace{10ex}
+{\par\centering
+\footnotetext[1]{e-mail: \texttt{wkummer@tph.tuwien.ac.at}} 
+\footnotetext[2]{e-mail: 
+\texttt{ertl@tph.tuwien.ac.at}} \footnotetext[3]{
+e-mail:\texttt{pth@tpi.uni-jena.de}}
+\par}
+
+\abstract{The formulation of 2d-dilaton theories, like 
+spherically reduced Einstein gravity, is greatly facilitated 
+in a formulation as a first order theory with nonvanishing 
+bosonic torsion. This is especially also true at the 
+quantum level. The interpretation of superextensions as 
+graded Poisson sigma models is found to cover generically 
+all possible 2d supergravities. Superfields and thus 
+superfluous auxiliary fields are avoided altogether. The 
+procedure shows that generalizations of bosonic 2d models 
+are highly ambiguous. }
+\\[2.0cm]
+\footnoterule
+\mbox{}
+{\par
+\noindent
+\myHighlight{${}^{+)}\;$}\coordHE{} Talk by W.\ Kummer at Int.\ Europhysics Conference for High 
+Energy Physics, Budapest, 12-18 July 2001. 
+\par}
+\end{titlepage}
+
+%% ----------------------------------------
+
+Despite the fact that so far no tangible direct evidence for
+supersymmetry has been discovered in nature, supersymmetry
+\cite{Wess:1977fn} managed to retain continual interest within the aim to
+arrive at a fundamental `theory of everything' ever since its
+discovery: first in supergravity \cite{Freedman:1976xh} in \myHighlight{$d = 4$}\coordHE{}, then in
+generalizations to higher dimensions of higher \myHighlight{$\N$}\coordHE{}
+\cite{Vafa:1996xn}, and finally incorporated as a low energy limit of
+superstrings \cite{Witten:1995ex} or of even more fundamental theories
+\cite{Sezgin:1997cj} in 11 dimensions.
+
+Even before the advent of strings and superstrings the importance of
+studies in \myHighlight{$1+1$}\coordHE{} `spacetime' had been emphasized \cite{Howe:1979ia}
+in connection with the study of possible superspace formulations. 
+To the best of our knowledge, however, to this
+day there have been only few attempts  to generalize the supergravity
+formulation of (trivial) Einstein-gravity in \myHighlight{$d = 2$}\coordHE{} to the
+consideration of two-dimensional \myHighlight{$(1, 1)$}\coordHE{} supermanifolds for which the
+condition of vanishing (bosonic) torsion is removed 
+\cite{Ertl:Diss,EKK}. Only attempts to
+formulate theories with higher powers of curvature (at vanishing
+torsion) seem to exist \cite{Hindawi:1996fy}. There seem to be only
+very few exact solutions of supergravity in \myHighlight{$d = 4$}\coordHE{} as well
+\cite{Aichelburg:1978fn}.
+
+Especially at times when the number of arguments in favour of the
+existence of an, as yet undiscovered, fundamental theory 
+increases 
+\cite{Vafa:1996xn} it may seem appropriate to also exploit --- if
+possible --- \emph{all}  generalizations of the
+two-dimensional stringy world sheet. Actually, such an undertaking can
+be (and indeed is) successful, as suggested by the recent much
+improved insight, attained for all (non-supersymmetric)
+two-dimensional diffeomorphism invariant theories, including dilaton
+theory, and also comprising torsion besides curvature \cite{Katanaev:1986wk} 
+in the most general manner. In the absence of
+matter-fields (non-geometrical degrees of freedom) all these models
+are integrable at the classical level and admit the analysis of all
+global solutions \cite{Katanaev:1993fu}. 
+ Even many aspects of quantization
+of any such theory now seem to be well understood
+\cite{Kummer:1997hy}. 
+By contrast, in the presence of matter and if singularities like black
+holes (BH) occur in such models, integrable solutions are known only for
+very few cases. These include interactions with fermions of one
+chirality \cite{kummer92} and, if scalar fields are present, only the
+dilaton black hole \cite{Mandal:1991tz}, ``chiral'' scalars 
+\cite{Strobl:1998ch} and models which have
+asymptotical Rindler behaviour \cite{Fabbri:1996bz}.  Therefore, a
+supersymmetric extension of the matterless case suggests that the
+solvability may carry over, in general. Then, at least part 
+of  ``matter'' could be
+represented by superpartners of the geometric bosonic field 
+variables. At the quantum level for bosonic gravity in two 
+dimensions the path integral formalism has proved 
+to be invaluable to exactly integrate geometry and to treat 
+matter in a consistent perturbation theory \cite{Kummer:1997jj}. 
+Also this exact geometrical integration should carry over to 
+the supergravity case.\\ 
+Within the realm of bosonic two dimensional gravity theories, 
+including those with nonvanishing torsion, the reformulation 
+as a first order action \cite{Schaller:1994es,Strobl:1999Habil} 
+ with auxiliary fields 
+\myHighlight{$\phi$}\coordHE{} and \myHighlight{$X^a$}\coordHE{} (\myHighlight{$ Y =  X^aX_a/2$}\coordHE{}) 
+\begin{equation}\coord{}\boxEquation{
+  \Action^\mathrm{FOG} = \int_\BMf \phi d\omega + X_a De^a + \epsilon
+  v(\phi,Y) 
+  \label{FOG}
+}{
+  \Action^\mathrm{FOG} = \int_\BMf \phi d\omega + X_a De^a + \epsilon
+  v(\phi,Y) 
+  }{ecuacion}\coordE{}\end{equation}
+has led to new insights. Indeed \myHighlight{$\Action^\mathrm{FOG}$}\coordHE{} for 
+a potential \myHighlight{$v$}\coordHE{} quadratic in torsion
+\begin{equation}\coord{}\boxEquation{
+  \label{vdil}
+  v^{\mathrm{dil}}(\phi,Y) = Y Z(\phi) + V(\phi).
+}{
+  v^{\mathrm{dil}}(\phi,Y) = Y Z(\phi) + V(\phi).
+}{ecuacion}\coordE{}\end{equation}
+is exatly equivalent \cite{Katanaev:1993fu},\cite{Kummer:1997jj} 
+to a generalized dilaton theory 
+\begin{equation}\coord{}\boxEquation{
+  \label{dil}
+  \Action^{\mathrm{dil}} = \int d^2\!x \sqrt{-g}
+  \left[
+    \frac{\widetilde{R}}{2} \phi - \half Z(\phi) (\partial^n \phi)
+    (\partial_n \phi) + V(\phi)
+  \right].
+}{
+  \Action^{\mathrm{dil}} = \int d^2\!x \sqrt{-g}
+  \left[
+    \frac{\widetilde{R}}{2} \phi - \half Z(\phi) (\partial^n \phi)
+    (\partial_n \phi) + V(\phi)
+  \right].
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\tilde{R}$}\coordHE{} represents the torsion free curvature. A 
+special case of such dilaton theories is spherically reduced 
+Einstein gravity (SRG) in \myHighlight{$D$}\coordHE{} dimensions 
+\begin{equation}\coord{}\boxEquation{
+\begin{split}
+Z_{SRG} &= - \frac{D-3}{D-2} \; \phi^{-1}\\
+V_{SRG} &= - \lambda^2\, \phi^{\frac{D-4}{D-2}}
+\end{split}
+\label{eq:ddim}
+}{
+\begin{split}
+Z_{SRG} &= - \frac{D-3}{D-2} \; \phi^{-1}\\
+V_{SRG} &= - \lambda^2\, \phi^{\frac{D-4}{D-2}}
+\end{split}
+}{split}\coordE{}\end{equation}
+with the Schwarzschild BH solution. Also the 
+so-called dilaton BH \cite{Mandal:1991tz}
+ (\myHighlight{$D\to \infty$}\coordHE{} in (\ref{eq:ddim})) and a
+``Poincar\'e gauge'' \cite{Hehl:1995ue}  theory 
+ quadratic in curvature 
+and torsion \cite{Katanaev:1986wk} and simpler models with \myHighlight{$Z=0$}\coordHE{}, like the 
+Jackiw-Teitelboim gravity (\myHighlight{$v=-\Lambda\phi$}\coordHE{}) \cite{jackiw84} are 
+covered by (\ref{dil}) and thus also by (\ref{FOG}). \\
+Our present approach to obtain the minimal supergravity 
+extensions of generic models of type (\ref{FOG}) is based upon the 
+concept of the Poisson-Sigma models (PSM)  
+\cite{Schaller:1994es,Ikeda:1994aa,Schaller:1994uj}. 
+ 
+
+Collecting zero form and
+one-form fields, respectively, within (\ref{FOG}) as
+\begin{equation}\coord{}\boxEquation{
+  \label{ident1}
+  (X^i) := (\phi,X^a), \qquad
+  (A_i) = (dx^m A_{mi}(x)) := (\omega,e_a),
+}{
+  (X^i) := (\phi,X^a), \qquad
+  (A_i) = (dx^m A_{mi}(x)) := (\omega,e_a),
+}{ecuacion}\coordE{}\end{equation}
+and after a partial integration, the action (\ref{FOG}) may be
+rewritten as
+\begin{equation}\coord{}\boxEquation{
+  \label{PSM}
+  \Action^{\mathrm{PSM}} = \int_\BMf dX^i \wedge A_i + \half
+  \Poisson^{ij} A_j \wedge A_i,
+}{
+  \Action^{\mathrm{PSM}} = \int_\BMf dX^i \wedge A_i + \half
+  \Poisson^{ij} A_j \wedge A_i,
+}{ecuacion}\coordE{}\end{equation}
+where the matrix \myHighlight{$\Poisson^{ij}$}\coordHE{} may be read off by direct comparison.
+The basic observation in this framework is that this matrix defines a
+Poisson bracket on the space spanned by target space 
+coordinates \myHighlight{$X^i$}\coordHE{} of a Sigma Model. In the
+present context the related  bracket \myHighlight{$\{ X^i , X^j \} := \Poisson^{ij}$}\coordHE{} has
+the form
+\begin{align}\coord{}\boxAlignEqnarray{
+  \leftCoord{}\{ X^{\leftCoord{}a}, \phi \} &= X^{\leftCoord{}b} \epsilon_b\^{\leftCoord{}a}, \label{LorentzB}\rightCoord{}\\
+  \leftCoord{}\{ X^{\leftCoord{}a}, X^{\leftCoord{}b} \} &= v(\phi,Y) \epsilon^{\leftCoord{}ab}\; .  \label{PB}
+}{0mm}{8}{2}{
+  \{ X^{a}, \phi \} &= X^{b} \epsilon_b\^{a}, \\
+  \{ X^{a}, X^{b} \} &= v(\phi,Y) \epsilon^{ab}\; .  }{0}\coordE{}\end{align} 
+This bracket may be verified to obey the Jacobi identity 
+\myHighlight{$\{ \{X^a, X^b\}, X^c \} + \mbox{cycl. perm.} = 0$}\coordHE{}. 
+Eq.\ (\ref{LorentzB}) shows that \myHighlight{$\phi$}\coordHE{} is the generator of
+Lorentz transformations (with respect to that bracket) on the target
+space \myHighlight{$\R^3$}\coordHE{}. Minimal supersymmetric extensions are obtained 
+\cite{Ikeda:1994ab,Izquierdo:1998hg} and \cite{Strobl:1999zz}
+ by adding additional anticommuting target 
+space coordinates \myHighlight{$\chi^\alpha$}\coordHE{} and corresponding 
+Rarita-Schwinger 1-form fields \myHighlight{$\psi_\alpha $}\coordHE{}  in 
+(\ref{ident1}), \myHighlight{$X^I = (X^i, 
+\chi^\alpha)$}\coordHE{} and \myHighlight{$A_I = (A_i, \psi_\alpha))$}\coordHE{}. 
+
+Thus the PSM action (\ref{PSM}) generalizes to
+\begin{equation}\coord{}\boxEquation{
+  \label{gPSM}
+  L^\mathrm{gPSM} = \int_\BMf dX^I A_I + \half \Poisson^{IJ} A_J 
+  A_I\, .
+}{
+  L^\mathrm{gPSM} = \int_\BMf dX^I A_I + \half \Poisson^{IJ} A_J 
+  A_I\, .
+}{ecuacion}\coordE{}\end{equation}
+Both \myHighlight{$\chi^\alpha$}\coordHE{} and \myHighlight{$\psi_\alpha$}\coordHE{} denote Majorana fields, 
+when, as in what follows, \myHighlight{$N=1$}\coordHE{} supergravity is considered. 
+The graded Poisson tensor \myHighlight{$\mathcal{P}^{IJ} = (-1)^{IJ+1} 
+\mathcal{P}^{JI}$}\coordHE{} is again assumed to fulfil a ``graded'' Jacobi 
+identity 
+\begin{equation}\coord{}\boxEquation{
+  J^{IJK} = \Poisson^{IL} \rpartial_L \Poisson^{JK} + \gcycl(IJK) 
+  = 0 \, .
+  \label{gJacobi} 
+}{
+  J^{IJK} = \Poisson^{IL} \rpartial_L \Poisson^{JK} + \gcycl(IJK) 
+  = 0 \, .
+  }{ecuacion}\coordE{}\end{equation}
+Together with (\ref{gJacobi}) the e.o.m-s with right derivatives 
+\myHighlight{$\rvec{\partial}_I = \frac{\rpartial}{\partial X^I}$}\coordHE{}
+\begin{gather}\coord{}\boxAlignEqnarray{
+  \leftCoord{}dX^I + \Poisson^{IJ} A_J = 0, \label{gPSM-eomX}\rightCoord{}\\
+  \leftCoord{}dA_I + \half (\rpartial_I \Poisson^{JK}) A_K A_J = 0
+  \label{gPSM-eomA}
+}{0mm}{2}{2}{
+  dX^I + \Poisson^{IJ} A_J = 0, \\
+  dA_I + \half (\rpartial_I \Poisson^{JK}) A_K A_J = 0
+  }{0}\coordE{}\end{gather}
+provide the on-shell symmetries of the action (\ref{gPSM}) 
+\begin{equation}\coord{}\boxEquation{
+  \label{gPSM-symms}
+  \delta X^I = \Poisson^{IJ} \epsilon_J, \qquad
+  \delta A_I = -d\epsilon_I - (\rpartial_I \Poisson^{JK}) \epsilon_K 
+  A_J\, ,
+}{
+  \delta X^I = \Poisson^{IJ} \epsilon_J, \qquad
+  \delta A_I = -d\epsilon_I - (\rpartial_I \Poisson^{JK}) \epsilon_K 
+  A_J\, ,
+}{ecuacion}\coordE{}\end{equation}
+which depend on infinitesimal local parameters \myHighlight{$\epsilon_I = 
+(\epsilon_\phi, \epsilon_a, \epsilon_\alpha)$}\coordHE{}. The mixed 
+components \myHighlight{$\mathcal{P}^{\alpha\phi} $}\coordHE{} are constructed by 
+analogy to \myHighlight{$\mathcal{P}^{a\phi}$}\coordHE{} in (\ref{LorentzB}) 
+with the appropriate 
+generator \myHighlight{$(-\gamma_5/2)$}\coordHE{} of Lorentz transformations in 2d 
+spinor space. Then \myHighlight{$d\epsilon_\alpha$}\coordHE{} in the second set of 
+eq.\ (\ref{gPSM-symms}) acquires an additional term casting it into the 
+covariant \myHighlight{$(D\epsilon )_\alpha$}\coordHE{}, with covariant derivative 
+\myHighlight{$D$}\coordHE{}  appropriate for a supergravity transformation. \\
+As the Poisson tensor \myHighlight{$\mathcal{P}^{IJ}$}\coordHE{} is not of full 
+rank, Casimir functions \myHighlight{$\mathcal{C} (Y,\phi,\chi^2)$}\coordHE{} exist 
+which are the solutions of \myHighlight{$\left\{ X^I, \mathcal{C} 
+\right\} = \mathcal{P}^{IJ} \partial_J \mathcal{C} = 0$}\coordHE{} and 
+thus correspond to conserved quantities \myHighlight{$d \mathcal{C} = 
+dX^I\, \partial_I \mathcal{C} = 0$}\coordHE{} when (\ref{gPSM-eomX}) is used.   
+The bosonic \myHighlight{$\mathcal{C}$}\coordHE{} in  supergravity is of the form 
+\begin{equation}\coord{}\boxEquation{
+  \label{Casimir}
+  \mathcal{C} = \casimir + \half \chi^2 \casimir_2\, ,
+}{
+  \mathcal{C} = \casimir + \half \chi^2 \casimir_2\, ,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\casimir$}\coordHE{} and \myHighlight{$\casimir_2$}\coordHE{} are functions of \myHighlight{$\phi$}\coordHE{} 
+and \myHighlight{$Y$}\coordHE{} only. 
+However, also 
+fermionic Casimir functions may occur (see below). In the 
+pure bosonic case (\myHighlight{$\chi = \psi = 0$}\coordHE{}) and for the potential 
+(\ref{vdil}) the differential equation for \myHighlight{$\mathcal{C}$}\coordHE{} allows an 
+analytic solution. For instance, \myHighlight{$c$}\coordHE{} for SRG simply coincides 
+(up to a factor) with the ADM mass of the Schwarzschild BH. 
+It is interesting, though, that such a conservation law 
+continues to exist also in interactions with additional 
+matter contributions \cite{Kummer:1995qv}, i.e.\ beyond the range of 
+validity of the PSM concept. \\
+The determination of all possible minimal supergravities 
+\cite{EKS,Ertl:Diss} now reduces to finding the solutions of the Jacobi 
+identities (\ref{gJacobi}). In the general ansatz for 
+\myHighlight{$\mathcal{P}^{IJ}$}\coordHE{} 
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\mathcal{P}^{\leftCoord{}ab} &=  V\, \epsilon^{\leftCoord{}ab}\, ,\label{pija}\rightCoord{}\\
+\leftCoord{}\mathcal{P}^{b\phi} &=  X^{\leftCoord{}a}\, \epsilon_a{}^{\leftCoord{}b}\, ,\label{pijb}\rightCoord{}\\
+\leftCoord{}\mathcal{P}^{\alpha\phi} &=  -\frac{\leftCoord{}1}{\rightCoord{}2} \chi^\beta 
+\leftCoord{}(\gamma_5)_\beta{}^\alpha\, ,\label{pijc}\rightCoord{}\\
+\leftCoord{}\mathcal{P}^{\alpha b} &=  \chi^\beta (F^{\leftCoord{}b})_\beta{}^\alpha\, 
+\leftCoord{},\label{pijd}\rightCoord{}\\
+\leftCoord{}\mathcal{P}^{\alpha\beta} &=  v^{\alpha\beta} + 
+\leftCoord{}\frac{\leftCoord{}\chi^{\leftCoord{}2}}{\rightCoord{}2} \, v_2^{\alpha\beta} \, ,
+\label{pije}
+}{0mm}{16}{7}{
+\mathcal{P}^{ab} &=  V\, \epsilon^{ab}\, ,\\
+\mathcal{P}^{b\phi} &=  X^{a}\, \epsilon_a{}^{b}\, ,\\
+\mathcal{P}^{\alpha\phi} &=  -\frac{1}{2} \chi^\beta 
+(\gamma_5)_\beta{}^\alpha\, ,\\
+\mathcal{P}^{\alpha b} &=  \chi^\beta (F^{b})_\beta{}^\alpha\, 
+,\\
+\mathcal{P}^{\alpha\beta} &=  v^{\alpha\beta} + 
+\frac{\chi^{2}}{2} \, v_2^{\alpha\beta} \, ,
+}{0}\coordE{}\end{align}
+the function 
+\begin{equation}\coord{}\boxEquation{
+\label{yphi}
+V = v (\phi,Y) + \frac{\chi^2}{2} \, v_2 (\phi,Y) 
+}{
+V = v (\phi,Y) + \frac{\chi^2}{2} \, v_2 (\phi,Y) 
+}{ecuacion}\coordE{}\end{equation}
+contains the original bosonic potential \myHighlight{$v$}\coordHE{}. As explained 
+above, eqs.\ (\ref{pijb}) and 
+(\ref{pijc}) are fixed by Lorentz invariance. Each one of 
+the (symmetric) 
+spinor-tensors \myHighlight{$v^{\alpha\beta}$}\coordHE{} and \myHighlight{$v_2^{\alpha,\beta}$}\coordHE{} 
+in (\ref{pije}) can be further 
+expanded into three scalar functions of \myHighlight{$Y$}\coordHE{} and \myHighlight{$\phi$}\coordHE{}, multiplying 
+the symmetric matrices \myHighlight{$(\gamma_5)^{\alpha\beta}, X^a(\gamma_a)^{\alpha\beta}, 
+X^a (\gamma_5\gamma_a)^{\alpha\beta}$}\coordHE{}. The quantity 
+\myHighlight{$(F^b)_\beta{}^\alpha$}\coordHE{} is easily seen to depend on another 
+set of eight scalar functions. Thus the task to solve the Jacobi 
+identities (\ref{gJacobi}), which are differential 
+equations, at first 
+sight seems to be quite formidable.\\
+Fortunately, in the course of our extensive analysis 
+\cite{EKS,Ertl:Diss} 
+it turned out that by starting from the solutions of the 
+Casimir functions, obeying equations like the one sketched 
+after eq.\ (\ref{Casimir}), the problem, relating the many unknown 
+functions above to the original bosonic potential \myHighlight{$v$}\coordHE{}, may be 
+reduced to the solution of \textit{algebraic} equations.\\
+We have classified the different cases according to the rank 
+of \myHighlight{$\mathcal{P}^{IJ}$}\coordHE{}, when the fermionic degrees of freedom 
+are included. The bosonic sub-space is odd-dimensional which 
+produced one Casimir function \myHighlight{$c$}\coordHE{}. 
+For full ``fermionic rank'', i.e.\ when  
+the rank of \myHighlight{$v^{\alpha\beta}$}\coordHE{} in (\ref{pije} 
+is two, the single Casimir function 
+(\ref{Casimir}) appears  and the general solution still depends on 
+five  
+arbitrary (bosonic) functions of \myHighlight{$\phi$}\coordHE{} and \myHighlight{$Y$}\coordHE{} beside \myHighlight{$v$}\coordHE{}. 
+\\
+If the fermionic rank is reduced by one, beside the bosonic 
+Casimir function (\ref{Casimir}) a fermionic one exists. It is of the 
+generic form 
+\begin{equation}\coord{}\boxEquation{
+\label{phix}
+\mathcal{C}^{(\pm)} = 
+\chi^\pm \; \left\vert\, 
+\frac{X^{--}}{X^{++}}\,\right\vert^{\pm 1/4}\; 
+c_{(\pm)}\, (\phi, X)
+}{
+\mathcal{C}^{(\pm)} = 
+\chi^\pm \; \left\vert\, 
+\frac{X^{--}}{X^{++}}\,\right\vert^{\pm 1/4}\; 
+c_{(\pm)}\, (\phi, X)
+}{ecuacion}\coordE{}\end{equation}
+and owes its Lorentz invariance to the abelian boost 
+transformation \myHighlight{$\exp (\pm \beta)$}\coordHE{} of the light cone 
+coordinates \myHighlight{$X^{\pm\pm}$}\coordHE{}, related to \myHighlight{$X^a$}\coordHE{} and \myHighlight{$\exp (\pm 
+\beta/2)$}\coordHE{} of the chiral spinor components \myHighlight{$\chi^{\pm}$}\coordHE{}. Then 
+the general solution of the gPSM algebra 
+contains four arbitrary functions beside \myHighlight{$v$}\coordHE{}.\\
+For rank zero of the fermionic extension, i.e.\ rank three as in 
+the pure bosonic case, in \myHighlight{$\mathcal{P}^{IJ}$}\coordHE{} beside 
+(\ref{Casimir}) 
+both fermionic Casimir functions (\ref{phix}) are conserved and 
+three functions remain arbitrary for a given bosonic 
+potential \myHighlight{$v$}\coordHE{}. \\
+This arbitrariness can be understood as well 
+by studying  
+reparametrizations of the target space, spanned by the \myHighlight{$X^I$}\coordHE{} 
+in the gPSM. Those reparametrizations may generate  new 
+models. Therefore, they can be useful to create a more 
+general gPSM from a simpler one, although this 
+approach is 
+difficult to handle if \myHighlight{$v$}\coordHE{} in (\ref{yphi}) is assumed to be 
+the given 
+starting point. However, within the present context the 
+subset of those reparametrizations may be analysed which 
+leaves the bosonic theory unchanged. Again the same number 
+of arbitrary functions emerges for the different cases 
+described in the paragraphs above. \\
+A generic property of the fermionic extensions obtained in 
+our analysis was the appearance of ``obstructions''. The 
+first type of those consisted in singular functions of the 
+bosonic variables \myHighlight{$\phi$}\coordHE{} and \myHighlight{$Y$}\coordHE{}, multiplying the fermionic 
+parts of a supergravity action, when no such singularities 
+were present in the bosonic part. But even in the absence of 
+such additional singularities, the relation of the original 
+potential to some prepotential dictated by the 
+corresponding supergravity theory, either led to a 
+restriction of the range of \myHighlight{$\phi$}\coordHE{} and/or \myHighlight{$Y$}\coordHE{} as given by 
+the original bosonic one, or even altogether prevented any 
+extension of the latter. Remarkably, a known 2d supergravity 
+model like the one of Howe \cite{Howe:1979ia} which 
+originally had been  constructed 
+with the full machinery of the superfield technique, escapes 
+such obstructions. There, in our language, the PSM potential 
+\myHighlight{$v = -2 \lambda^2 
+\phi^3$}\coordHE{} permits an expansion in terms of the prepotential \myHighlight{$u 
+(\phi)$}\coordHE{} through \myHighlight{$v = -du^2/d\phi$}\coordHE{}. An example where 
+obstructions seem to be inevitable is the KV-model \cite{Katanaev:1986wk} 
+with quadratic bosonic torsion. \\
+The hope that a link could be found between the possibility 
+of reducing the arbitariness of extensions referred to above, and the 
+absence of such obstructions, did not materialize. We could 
+give several counter examples, including different singular 
+and nonsingular extensions of SRG. \\
+Another very important point concerns the ``triviality'', 
+proved earlier by one of us \cite{Strobl:1999zz}. It was based upon the 
+observation that locally a formulation of the dynamics in 
+terms of Darboux  coordinates allows to elevate the 
+infinitesimal transformations (\ref{gPSM-symms}) to finite ones. 
+Then the  
+latter may be used to gauge the fermionic fields to zero. 
+Providing now the explicit form of those Darboux coordinates 
+in the explicit solution of a generic model we also give 
+additional support to the original argument of \cite{Strobl:1999zz}. 
+However, the appearance of the obstructions and the ensuing 
+singular factors in the transition to the Darboux 
+coordinates may introduce a new aspect. When those new 
+singularities appear at isolated points without restriction 
+of the range for the original bosonic field variable, they 
+may be interpreted and discarded much like coordinate singularities. 
+Another way to circumvent this problem in the presence of 
+restrictions to the range and thus to 
+retain triviality is to 
+allow a continuation of our (real) theory to complex 
+variables.  This triviality disappears anyhow, when 
+interactions with additional matter fields are introduced, 
+obeying the same symmetry as given by the gPSM-theory. An 
+example for this has been proposed already in ref.\  
+\cite{Izquierdo:1998hg}. \\
+In order to eliminate the arbitrariness of superdilaton 
+extensions the only viable argument seems to consist in 
+starting from a supergravity theory in higher dimensions 
+(e.g.\ \myHighlight{$D=4$}\coordHE{}) and to reduce it (spherically or  toroidally)  
+ to a \myHighlight{$D=2$}\coordHE{} effective theory. However, the Killing spinors 
+needed in that case must be Dirac spinors, requiring the 
+generalization of the work \cite{EKS,Ertl:Diss} 
+described here to (at least) 
+\myHighlight{$N=2$}\coordHE{}, where, however, the same technique of gPSM-s can  
+be applied. \\[1.5cm]
+\noindent
+{\large\bf Acknowledgments}
+\\[0.5cm]
+This research has been supported by Austrian Science 
+Foundation (FWF), project P-12815-TPH and P-14650-TPH. 
+
+
+\begin{thebibliography}{99}
+
+\bibitem{Wess:1977fn}
+J.~Wess and B.~Zumino, \plb{66}{1977}{361};
+\plb{74}{1978}{51}.
+
+\bibitem{Freedman:1976xh}
+D.~Z. Freedman, P.~{van Nieuwenhuizen}, and S.~Ferrara, 
+\prd{13}{1976}{3214}; 
+D.~Z. Freedman and P.~{van Nieuwenhuizen}, 
+\prd{14}{1976}{912};\\ 
+S.~Deser and B.~Zumino, \plb{62}{1976}{335}; 
+S.~Deser and B.~Zumino, \plb{65}{1976}{369}; \\
+R.~Grimm, J.~Wess, and B.~Zumino, \plb{73}{1978}{415}. 
+
+\bibitem{Vafa:1996xn}
+C.~Vafa, \npb{469}{1996}{403}. 
+
+\bibitem{Witten:1995ex}
+E.~Witten, \npb{443}{1995}{85}. 
+
+\bibitem{Sezgin:1997cj}
+E.~Sezgin, \plb{392}{1997}{323}. 
+
+\bibitem{Howe:1979ia}
+P.~S. Howe, \jpha{12}{1979}{393}.
+
+\bibitem{Ertl:Diss}
+M.\ Ertl, ``Supergravity in Two Spacetime Dimensions'', PHD 
+thesis, Vienna University of Technology, Jan.\ 2001 
+\texttt{(hep-th/0102140)}. 
+
+\bibitem{EKK}
+M.~F. Ertl, M.~O. Katanaev, and W.~Kummer, 
+\npb{530}{1998}{457}.
+
+\bibitem{Hindawi:1996fy}
+A.~Hindawi, B.~A. Ovrut, and D.~Waldram, 
+\npb{471}{1996}{409}\, . 
+
+\bibitem{Aichelburg:1978fn}
+P.~C. Aichelburg and T.~Dereli, \prd{18}{1978}{1754}\, .
+
+\bibitem{Katanaev:1986wk}
+M.~O. Katanaev and I.~V. Volovich, \plb{175}{1986}{413}; 
+M.~O. Katanaev and I.~V. Volovich, \ap{197}{1990}{1}. 
+
+\bibitem{Katanaev:1993fu}
+M.~O. Katanaev, \jmp{34}{1993}{700}; 
+M.~O. Katanaev, \jmp{38}{1997}{946}; \\
+T.~Kl{\"o}sch and T.~Strobl, 
+\cqg{13}{1996}{965}; Erratum  \cqg{14}{1997}{825}; 
+T.~Kl{\"o}sch and T.~Strobl, \cqg{13}{1996}{2395}; 
+T.~Kl{\"o}sch and T.~Strobl, \cqg{14}{1997}{1689}; 
+T.~Kl{\"o}sch and T.~Strobl, \prd{57}{1998}{1034};\\ 
+M.~O. Katanaev, W.~Kummer, and H.~Liebl, \prd{53}{1996}{5609}; 
+M.~O. Katanaev, W.~Kummer, and H.~Liebl, 
+\npb{486}{1997}{353}. 
+
+\bibitem{Kummer:1997hy}
+W.~Kummer, H.~Liebl, and D.~V. Vassilevich, 
+\npb{493}{1997}{491}; \\ 
+P.~Schaller and T.~Strobl, \cqg{11}{1994}{331}; \\
+W.~Kummer and D.~J. Schwarz, \npb{382}{1992}{171}; \\
+T.~Strobl, \prd{50}{1994}{7346}\; \\
+F.~Haider and W.~Kummer, \ijmpa{9}{1994}{207}.  
+
+\bibitem{kummer92}
+W.~Kummer, 
+in {\em Hadron Structure '92}, D.~Brunsko and J.~Urb\'an, eds.,
+  pp.~48--56, 
+\newblock Ko\v sice University, 1992; \\
+
+\bibitem{Mandal:1991tz}
+G.~Mandal, A.~M. Sengupta, and S.~R. Wadia, 
+\mpla{6}{1991}{1685}; \\
+S.~Elitzur, A.~Forge, and E.~Rabinovici, 
+\npb{359}{1991}{581}; \\
+E.~Witten, \prd{44}{1991}{314}; \\
+C.~G. {Callan Jr.}, S.~B. Giddings, J.~A. Harvey, and A.~Strominger,
+\prd{45}{1992}{1005}. 
+
+\bibitem{Strobl:1998ch}
+H.\ Pelzer, T.\ Strobl, \cqg{15}{1998}{3803}. 
+
+\bibitem{Fabbri:1996bz}
+A.~Fabbri and J.~G. Russo, \prd{53}{1996}{6995}.  
+
+\bibitem{Kummer:1997jj}
+W.~Kummer, H.~Liebl, and D.~V. Vassilevich, 
+\npb{513}{1998}{723}; 
+\npb{544}{1999}{403};  
+\npb{580}{2000}{438}.  
+
+\bibitem{Schaller:1994es}
+P.~Schaller and T.~Strobl, \mpla{9}{1994}{3129}.  
+
+\bibitem{Strobl:1999Habil}
+T.~Strobl, {\em Gravity in Two Spacetime Dimensions}.
+\newblock Habilitationsschrift, Rheinisch-Westf\"alische Technische Hochschule
+  Aachen, 1999.
+
+\bibitem{Hehl:1995ue}
+F.~W. Hehl, J.~D. McCrea, E.~W. Mielke, and Y.~Ne{'e}man, 
+\prep{258}{1995}{1}. 
+
+\bibitem{jackiw84}
+B.M.\ Barbashov, V.V.\ Nesterenko and A.M.\ Chervjakov, 
+\tmp{40}{1979}{15}; \\
+C.\ Teitelboim, \plb{126}{1983}{41}; \\
+R.~Jackiw, ``{L}iouville field theory: a two-dimensional model for gravity,''
+  in {\em Quantum Theory of Gravity. Essays in Honor of the 60th Birthday of
+  Bryce S. DeWitt}, S.~Christensen, ed., pp.~403--420.
+\newblock Hilger, Bristol, 1984.
+\bibitem{Ikeda:1994aa}
+N.\ Ikeda, \ap{235}{1994}{435}. 
+\bibitem{Schaller:1994uj}
+P.~Schaller and T.~Strobl, ``{P}oisson sigma models: {A} generalization of 2d
+  gravity {Y}ang-{M}ills systems'', Proc.\ Conference on 
+  Integrable Systems, Dubna, July 1994, 
+  \texttt{hep-th/9411163}; 
+P.~Schaller and T.~Strobl, ``Introduction to {Poisson-\myHighlight{$\sigma$}\coordHE{}} models,'' in
+  {\em Low-Dimensional Models in Statistical Physics and Quantum Field Theory},
+  H.~Grosse and L.~Pittner, eds., vol.~469 of {\em Lecture Notes in Physics},
+  p.~321.
+\newblock Springer, Berlin, 1996.
+\bibitem{Ikeda:1994ab}
+N.\ Ikeda, \ijmpa{9}{1994}{1137}. 
+
+\bibitem{Izquierdo:1998hg}
+J.~M. Izquierdo, \prd{59}{1999}{084017}.
+
+\bibitem{Strobl:1999zz}
+T.~Strobl, \plb{460}{1999}{87}. 
+
+\bibitem{Kummer:1995qv}
+W.~Kummer and P.~Widerin, \prd{52}{1995}{6965};\\ 
+D.~Grumiller and W.~Kummer, 
+\prd{61}{2000}{064006}.  
+
+\bibitem{EKS}
+M.\ Ertl, W.\ Kummer, T.\ Strobl,  
+\jhep{01}{2001}{042}. 
+
+\end{thebibliography}
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bye

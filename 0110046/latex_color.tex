@@ -1,0 +1,1655 @@
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{epsfig,amsmath}
+\tolerance=3000
+\mathsurround=2pt
+
+\setlength{\textwidth}{480pt}
+\setlength{\textheight}{605pt}
+\setlength{\topmargin}{15pt}
+\setlength{\oddsidemargin}{-10pt}
+\setlength{\evensidemargin}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\footnotesep}{10pt}
+\setlength{\parskip}{9pt}
+\renewcommand{\baselinestretch}{1.2}
+\addtolength{\footskip}{10pt}
+
+
+
+\renewenvironment{itemize}
+  {\begin{list}%
+     {}%
+     {\setlength{\topsep}{-6pt}%
+      \setlength{\partopsep}{-6pt}%
+      \setlength{\itemsep}{-3pt}%
+      \setlength{\labelsep}{5pt}%
+      \setlength{\itemindent}{0pt}%
+     }%
+  }%
+  {\end{list}}
+
+
+
+
+\def\cD{{\cal D}}
+\def\cR{{\cal R}}
+\def\cA{{\cal A}}
+\def\cJ{{\cal J}}
+\def\cO{{\cal O}}
+\def\cQ{{\cal Q}}
+\def\cX{{\cal X}}
+
+\def\A{{\rm A}}
+\def\B{{\rm B}}
+\def\C{{\rm C}}
+\def\E{{\rm E}}
+\def\F{{\rm F}}
+\def\W{{\rm W}}
+\def\Z{{\rm Z}}
+
+\def\a{\alpha} 
+\def\b{\beta}
+\def\d{\delta}          
+\def\De{\Delta}
+\def\ga{\gamma}         
+\def\gm{\Gamma}
+\def\e{\eta} 
+\def\la{\lambda}        
+\def\La{\Lambda}
+\def\ka{\kappa}
+\def\m{\mu}
+\def\n{\nu}
+\def\r{\rho}
+\def\s{\sigma}
+\def\t{\tau}
+\def\th{\theta}
+\def\eps{\epsilon}
+\def\ee{\varepsilon}
+\def\om{\omega}         
+\def\Om{\Omega}
+
+\def\oom{\bar\omega}
+\def\uom{\underline\omega}
+
+
+
+\def\Aslash{{\A\mkern-12mu/}}
+\def\Bslash{{\B\mkern-12mu/}}
+\def\Dirac{{D\mkern-12mu/}}
+\def\prslash{{\partial\mkern-9mu/}}
+\def\poneslash{{p\mkern-8mu/}_1{\!}} 
+\def\ptwoslash{{p\mkern-8mu/}_2{\!}}
+\def\pthreeslash{{p\mkern-8mu/}_3{\!}}
+\def\prslash{{\partial\mkern-9mu/}}    %%_standard_Dirac_operator
+\def\qslash{{q\mkern-8mu/}{\!}}
+
+
+
+\def\tg{\tilde{g}}
+\def\hg{\hat{g}}
+\def\tp{\tilde{p}}
+\def\tk{\tilde{k}}
+\def\hp{\hat{p}}
+\def\pones{\tilde{p}_1^2}
+\def\ptwos{\tilde{p}_2^2}
+\def\pthrees{\tilde{p}_3^2}
+\def\pfours{\tilde{p}_4^2}
+\def\vs{(\tilde{p}_1+\tilde{p}_2)^2}
+\def\vt{(\tilde{p}_2+\tilde{p}_3)^2}
+\def\vu{(\tilde{p}_1+\tilde{p}_3)^2}
+\def\sumlogs{\sum_{i=1}^4\, \ln \tp_i^2}
+
+
+\def\cosppp{\cos\!\left(\frac{p_1\wedge p_2 + p_1\wedge p_3 
+                              + p_2\wedge p_3}{2}\right)}
+\def\cosppm{\cos\!\left(\frac{p_1\wedge p_2 + p_1\wedge p_3 
+                              - p_2\wedge p_3}{2}\right)}
+\def\cospmm{\cos\!\left(\frac{p_1\wedge p_2 - p_1\wedge p_3 
+                              - p_2\wedge p_3}{2}\right)}
+
+\def\etaonetwothreefour{\eta_{\m_1\m_2}\eta_{\m_3\m_4}}
+\def\etaonethreetwofour{\eta_{\m_1\m_3}\eta_{\m_2\m_4}}
+\def\etaonefourtwothree{\eta_{\m_1\m_4}\eta_{\m_2\m_3}}
+
+
+
+\def\triangle{\rm{triang}}
+\def\swordfish{\rm{sfish}}
+\def\boxd{\rm{box}}
+\def\lynx{\rm{lynx}}
+\def\fish{\rm{bub}}
+
+
+
+\def\idp{\int\! \frac{d^4\!p}{(2\pi)^4} \,\,}
+\def\idpn{\int\! \frac{d^{2n}\!p}{(2\pi)^{2n}} \,\,}
+\def\idq{\int\! \frac{d^4\!q}{(2\pi)^4} \,\,}
+\def\idqn{\int\! \frac{d^{2n}\!q}{(2\pi)^{2n}} \,\,}
+\def\idx{\int\! d^4\!x \,}
+\def\idxn{\int\! d^{2n}\!x \,}
+
+\def\ot{\otimes}
+\def\ds{\displaystyle}
+\def\RR{{\rm I\!\!\, R}}
+\def\MM{{\rm I\!\!\, M}}
+\def\unit{{\rm I\!\!\, I}}
+\def\bracl{ [\!\!\, [}
+\def\bracr{ ]\!\!\, ]}
+
+\usepackage{useful_macros}
+\begin{document}
+\begin{titlepage}
+\rightline{UCM-FT/00-65-2001}
+
+
+\vskip 1.5 true cm
+\begin{center}
+{\Large \bf The covariant form of the gauge anomaly\\[9pt]
+on noncommutative \myHighlight{$\RR^{2 n}$}\coordHE{}}\\ 
+\vskip 1.2 true cm 
+{\rm C.P. Mart\'{\i}n}\footnote{E-mail: carmelo@elbereth.fis.ucm.es}
+\vskip 0.3 true cm
+{\it Departamento de F\'{\i}sica Te\'orica I}\\
+{\it Facultad de Ciencias F\'{\i}sicas}\\ 
+{\it Universidad Complutense de Madrid}\\
+{\it 28040 Madrid, Spain}\\
+\vskip 1.2 true cm
+
+{\leftskip=45pt \rightskip=45pt 
+\noindent
+The covariant form of the non-Abelian gauge anomaly on noncommutative 
+\myHighlight{$\RR^{2 n}$}\coordHE{} is computed for \myHighlight{$U(N)$}\coordHE{} groups. Its origin and  properties  
+are analyzed.  
+Its connection with the consistent form of the gauge anomaly is established. 
+We show along the way that bi-fundamental \myHighlight{$U(N)\times U(M)$}\coordHE{} chiral matter 
+carries no mixed anomalies, and interpret this result as a consequence of 
+the half-dipole structure which  characterizes the charged non-commutative 
+degrees of freedom. \par }
+\end{center}
+
+\vfil
+
+
+
+\end{titlepage}
+\setcounter{page}{2}
+
+
+
+\section{Introduction}
+
+Field theories of fermions with chiral couplings to gauge fields on  
+commutative manifolds play a prominent role --at least up to a few Tev-- in 
+the description of Nature.
+Field theories over noncommutative 
+space-time~\cite{Douglas:2001ba, Szabo:2001kg} may 
+turn out to be phenomenologically relevant at the Tev scale and 
+above~\cite{Riad:2000vy, Arfaei:2000kh, Hewett:2001zp, Mathews:2001we, Baek:2001ty, Grosse:2001ei, Grosse:2001xz, 
+Chaichian:2001py, Wang:2001ig}.
+It is therefore a must to understand the properties of quantum 
+field theories of fermions chirally coupled to gauge fields on
+noncommutative manifolds. See refs.~\cite{Connes:1994, Madore:1999, Landi:1997sh, Gracia-Bondia:2001tr} for the mathematics of noncommutative manifolds.
+
+The chief feature of quantum field theories of chiral fermions interacting 
+with gauge fields is that they are liable to carry gauge anomalies --other 
+types of anomalies such the conformal anomaly~\cite{Nakajima:2001uh} will not 
+be discussed here.
+It is a well 
+established fact~\cite{Alvarez-Gaume:1984cs, Fujikawa:1984bg, Bardeen:1984pm,  
+Alvarez-Gaume:1985dr, Fujikawa:1985pt, Banerjee:1986bu, Banerjee:1999up}
+ that if space-time is  
+commutative, a gauge anomaly comes in either of two guises, namely,
+its consistent form or its covariant form. The consistent form of the anomaly
+satisfies the Wess-Zumino consistency conditions~\cite{Wess:1971yu},  
+the covariant form does not.
+One can retrieve  either form of the anomaly from the other by adding 
+to the corresponding current a polynomial of the gauge fields and its 
+derivatives. For noncommutative \myHighlight{$\RR^4$}\coordHE{} the consistent form of the gauge 
+anomaly has been obtained in a number of papers~\cite{Gracia-Bondia:2000pz, Bonora:2000he, Grisaru:2001sk} --see also 
+ref.~\cite{Langmann:1995ub, Perrot:1999vc, Harvey:2001pd} for general 
+analysis of chiral anomalies on noncommutative spaces and 
+ref.~\cite{Ardalan:2001cy, Ardalan:2000qk} for explicit computations. 
+As for its covariant form, there is as yet no thorough discussion of the
+gauge anomaly for noncommutative space-time --although some results have 
+been issued in ref.~\cite{Martin:2001wc}. The purpose of this paper is to
+remedy this situation. First, by using path integral techniques,  we shall   
+compute explicitly the form of the gauge anomaly on noncommutative 
+\myHighlight{$\RR^{2 n}$}\coordHE{} for \myHighlight{$U(N)$}\coordHE{} groups. In so doing, we shall see that the covariant 
+form of the gauge anomaly is associated with a given 
+definition of the path integral. This definition being a \myHighlight{$*\!$}\coordHE{}-deformation of
+the ordinary one as given in ref.~\cite{Fujikawa:1984bg, Banerjee:1986bu, 
+ Banerjee:1999up}. Then, we
+shall show that the covariant form of the gauge anomaly can be turned 
+into the  consistent form of it, by adding to the covariant 
+current a \myHighlight{$*\!$}\coordHE{}-polynomial of the gauge field and the field strength; this 
+\myHighlight{$*\!$}\coordHE{}-polynomial been a \myHighlight{$*\!$}\coordHE{}-deformation of the polynomial for the commutative 
+\myHighlight{$\RR^{2 n}$}\coordHE{} case. Finally, we shall analyze the transformation properties, 
+under gauge transformations of the gauge field, of both
+the  both the consistent and covariant currents. We shall thus show that 
+in the presence of the gauge anomaly the consistent current --that which 
+can be obtained by functional differentiation of the effective action--  cannot 
+transform covariantly; whereas, the covariant current does transform 
+covariantly and, hence,  it cannot be  the functional derivative  of 
+the effective action with respect to the gauge field. 
+For  commutative \myHighlight{$\RR^{2 n}$}\coordHE{}, these properties of the currents were 
+established in refs.~\cite{Bardeen:1984pm, Alvarez-Gaume:1985dr, Banerjee:1986bu, Banerjee:1999up}.
+
+\section{The covariant form of the gauge anomaly: fundamental matter}
+
+Let \myHighlight{$\psi^j_{\rm R}$}\coordHE{} denote a right handed fermion, 
+\myHighlight{$\psi^j_{\rm R}\!=\!{\rm P}_{+}\psi^{j}$}\coordHE{}, \myHighlight{${\rm P}_{+}=(1+\gamma_{2n+1})/2$}\coordHE{},  
+carrying the fundamental representation of the group \myHighlight{$U(N)$}\coordHE{}. 
+The matrix \myHighlight{$\gamma_{2n+1}$}\coordHE{} is given by \myHighlight{$\gamma_{2n+1}=(-i)^{n}\prod_{\mu=1}^{2n}\,\gamma^{\mu}$}\coordHE{}, where the gamma matrices \myHighlight{$\gamma^{\mu}$}\coordHE{}, \myHighlight{$\mu=1,\cdots,2n$}\coordHE{}, are Hermitian matrices 
+which satisfy 
+\myHighlight{$\{\gamma^{\mu},\gamma^{\nu}\}=2\delta^{\mu\nu}$}\coordHE{}. 
+The physics of \myHighlight{$\psi^j_{\rm R}$}\coordHE{} interacting 
+with a background \myHighlight{$U(N)$}\coordHE{}  gauge field on noncommutative \myHighlight{$\RR^{2n}$}\coordHE{} 
+is ruled by the classical action 
+\begin{equation}\coord{}\boxEquation{
+{\rm S}\;=\;\idxn\;\bar{\psi}_i\, i\hat{D}(\A)^i_{\;\;j}\,\psi^j.
+\label{chiralclassact}
+}{
+{\rm S}\;=\;\idxn\;\bar{\psi}_i\, i\hat{D}(\A)^i_{\;\;j}\,\psi^j.
+}{ecuacion}\coordE{}\end{equation}
+The operator \myHighlight{$i\hat{D}(\A)$}\coordHE{}, which acts on the Dirac spinor \myHighlight{$\psi^j$}\coordHE{} as follows 
+\myHighlight{$i\hat{D}(\A)^{i}_{\;\;j}\,\psi^j =i(\prslash\psi^{i} +
+\A^{i}_{\mu\,j}\star\gamma^{\mu} {\rm P}_{+}\psi^{j})$}\coordHE{},
+is not an Hermitian operator, but it is an elliptic operator.
+The Dirac spinor \myHighlight{$\psi^j$}\coordHE{}  carries the fundamental 
+representation of \myHighlight{$U(N)$}\coordHE{} and the complex matrix \myHighlight{$\A^{i}_{\mu\,j}$}\coordHE{}, with 
+\myHighlight{$(\A^{i}_{\mu\,j})^*=-\A^{j}_{\mu\,i}$}\coordHE{}, is the \myHighlight{$U(N)$}\coordHE{} gauge field. 
+The indices \myHighlight{$i,j$}\coordHE{} run from \myHighlight{$1$}\coordHE{} to \myHighlight{$N$}\coordHE{}. The previous action is invariant under
+the following chiral gauge transformations:
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{c}
+{\big(\delta_{\omega} \A_{\mu}\big)^i_{\;j}= 
+-\partial_{\mu}\omega^i_{\;j}\,-\,\A^i_{\mu\,k}\star\omega^k_{\;j}\,+
+\,\omega^i_{\;k}\star\A^k_{\mu\,j},}\\[9pt] 
+{(\delta_{\omega}\psi)^i=\,\omega^i_{\;j}\star {\rm P}_{+}\,\psi^j,\quad
+(\delta_{\omega} \bar{\psi})_{k}=
+-\bar{\psi}_k\star\omega^{k}_{\;i}{\rm P}_{-},}\\[9pt]
+\end{array}
+\label{chiraltrans}
+}{
+\begin{array}{c}
+{\big(\delta_{\omega} \A_{\mu}\big)^i_{\;j}= 
+-\partial_{\mu}\omega^i_{\;j}\,-\,\A^i_{\mu\,k}\star\omega^k_{\;j}\,+
+\,\omega^i_{\;k}\star\A^k_{\mu\,j},}\\[9pt] 
+{(\delta_{\omega}\psi)^i=\,\omega^i_{\;j}\star {\rm P}_{+}\,\psi^j,\quad
+(\delta_{\omega} \bar{\psi})_{k}=
+-\bar{\psi}_k\star\omega^{k}_{\;i}{\rm P}_{-},}\\[9pt]
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{${\rm P}_{-}\!=\!(1-\gamma_{2n+1})/2$}\coordHE{}. The complex functions  
+\myHighlight{$\omega^i_{\;j}=-\omega^{*\,j}_{\quad i}$}\coordHE{}, \myHighlight{$i,j=1,\cdots, N$}\coordHE{}, 
+are the infinitesimal gauge  transformation parameters. The symbol \myHighlight{$\star$}\coordHE{} 
+denotes  the Moyal product of functions on \myHighlight{$\RR^{2n}$}\coordHE{}.
+The Moyal product is given by
+\myHighlight{$(f\star g)(x)= 
+\idpn\idqn\;e^{i(p+q)_{\mu}x^{\mu}} \;
+e^{-\frac{i}{2}\theta^{\mu\nu}p_{\mu}q_{\nu}}\;\hat{f}(p)\hat{g}(q)$}\coordHE{}.
+Here, \myHighlight{$\theta^{\mu\nu}$}\coordHE{} is an anti-symmetric real matrix  either of  
+magnetic type or light-like type. It is for these choices of 
+matrix \myHighlight{$\theta$}\coordHE{} that a unitary theory exists at the quantum 
+level~\cite{Gomis:2000zz, Aharony:2000gz, Alvarez-Gaume:2001ka, Bassetto:2001vf}.
+
+To define the partition function, 
+\begin{equation}\coord{}\boxEquation{
+\Z[\A] \;\equiv\;\int  d\bar{\psi}d\,\psi\quad e^{-{\rm S}[\A]},
+\label{partitionfunct}
+}{
+\Z[\A] \;\equiv\;\int  d\bar{\psi}d\,\psi\quad e^{-{\rm S}[\A]},
+}{ecuacion}\coordE{}\end{equation}
+of the quantum theory with classical action given in 
+eq.~(\ref{chiralclassact}), we shall follow Fujikawa~\cite{Fujikawa:1984bg} and use the
+the set of eigenvalues and the set of eigenfunctions of the Hermitian 
+operators  
+\myHighlight{$\Big(i\hat{D}(\A)\Big)^{\dagger}i\hat{D}(\A)$}\coordHE{} and 
+\myHighlight{$i\hat{D}(\A) \Big(i\hat{D}(\A)\Big)^{\dagger}$}\coordHE{}. These sets are defined by
+the following equations:
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{l}
+{\ds \Big(i\hat{D}(\A)\Big)^{\dagger}i\hat{D}(\A)\varphi_m\,=\,\lambda^2_m\,
+\varphi_m,\quad i\hat{D}(\A) \Big(i\hat{D}(\A)\Big)^{\dagger}\phi_m\,=\,
+\lambda^2_m\,\phi_m,}\\[9pt]
+{\ds \phi_m\,=\,\frac{1}{\lambda_m}\,i\hat{D}(\A)\varphi_m,\;\;{\rm  if}\;
+\lambda_m\neq 0,\;\;\; {\rm and}\;\; i\hat{D}(\A)\varphi_m\,=\,0,\;\;{\rm if}\;
+\lambda_m =0},\\[9pt]
+{\ds \varphi_m\,=\,\frac{1}{\lambda_m}\,\Big(i\hat{D}(\A)\Big)^{\dagger}\phi_m,\;\;}{\rm if}\;
+{\ds\lambda_m\neq 0,}\;\;\; {\rm and}\;\;{\ds \;\Big(i\hat{D}(\A)\Big)^{\dagger}\phi_m\,=\,0,\;\;}{\rm if}\;
+{\ds\lambda_m =0},\\[9pt]
+{\ds \idxn\; \varphi_m^{\dagger}(x)\,\varphi_{m'}(x)\;=\;\delta_{mm'},\quad
+ \idxn\; \phi_m^{\dagger}(x)\,\phi_{m'}(x)\;=\;\delta_{mm'}.}\\[9pt]
+\end{array}
+\label{definitions}
+}{
+\begin{array}{l}
+{\ds \Big(i\hat{D}(\A)\Big)^{\dagger}i\hat{D}(\A)\varphi_m\,=\,\lambda^2_m\,
+\varphi_m,\quad i\hat{D}(\A) \Big(i\hat{D}(\A)\Big)^{\dagger}\phi_m\,=\,
+\lambda^2_m\,\phi_m,}\\[9pt]
+{\ds \phi_m\,=\,\frac{1}{\lambda_m}\,i\hat{D}(\A)\varphi_m,\;\;{\rm  if}\;
+\lambda_m\neq 0,\;\;\; {\rm and}\;\; i\hat{D}(\A)\varphi_m\,=\,0,\;\;{\rm if}\;
+\lambda_m =0},\\[9pt]
+{\ds \varphi_m\,=\,\frac{1}{\lambda_m}\,\Big(i\hat{D}(\A)\Big)^{\dagger}\phi_m,\;\;}{\rm if}\;
+{\ds\lambda_m\neq 0,}\;\;\; {\rm and}\;\;{\ds \;\Big(i\hat{D}(\A)\Big)^{\dagger}\phi_m\,=\,0,\;\;}{\rm if}\;
+{\ds\lambda_m =0},\\[9pt]
+{\ds \idxn\; \varphi_m^{\dagger}(x)\,\varphi_{m'}(x)\;=\;\delta_{mm'},\quad
+ \idxn\; \phi_m^{\dagger}(x)\,\phi_{m'}(x)\;=\;\delta_{mm'}.}\\[9pt]
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+We take without loss of generality \myHighlight{$\lambda_{m}\geq 0$}\coordHE{}. We next define the 
+fermionic measure as follows
+\begin{equation}\coord{}\boxEquation{
+d\bar{\psi}d\,\psi\quad=\prod_m\,d\bar{b}_m da_{m}.
+\label{measure}
+}{
+d\bar{\psi}d\,\psi\quad=\prod_m\,d\bar{b}_m da_{m}.
+}{ecuacion}\coordE{}\end{equation}
+Here,    
+\myHighlight{$a_m$}\coordHE{} and \myHighlight{$\bar{b}_m$}\coordHE{} are Grassmann variables defined by the expansions
+\myHighlight{$\psi=\sum_{m}a_m\varphi_m$}\coordHE{} and \myHighlight{$\bar{\psi}=\sum_{m}\bar{b}_m\phi_m^{\dagger}$}\coordHE{}.
+Notice that this definition of \myHighlight{$d\bar{\psi}d\,\psi$}\coordHE{} is the obvious 
+generalization to the noncommutative framework of the definition in 
+refs.~\cite{Banerjee:1986bu, Banerjee:1999up}. Then, 
+\begin{displaymath}\coord{}\boxMath{
+\int  d\bar{\psi}d\,\psi\quad e^{-{\rm S}[\A,\psi,\bar{\psi}]}\equiv 
+\int \prod_m\,d\bar{b}_m\,da_m\;e^{-\sum_m\;\lambda_m\,\bar{b}_m\,a_m};
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+which after Grassmann integration leads to 
+\myHighlight{$\Z[\A]\equiv \prod_m\,\lambda_m$}\coordHE{}. Notice that we have taken into account 
+eq.~(\ref{partitionfunct}). Hence, we have formally defined the 
+partition function of the theory, \myHighlight{$\Z[\A]$}\coordHE{}, as the determinant of the 
+square root of the operator  
+\myHighlight{$\Big(i\hat{D}(\A)\Big)^{\dagger}i\hat{D}(\A)$}\coordHE{}. 
+
+Now, it is not difficult to show that if \myHighlight{$g=1+\omega$}\coordHE{} is an infinitesimal 
+gauge transformation, one has \myHighlight{$(1+\omega{\rm P}_{+})\Big(i\hat{D}(\A^g)\Big)^{\dagger}i\hat{D}(\A^g)
+ (1-\omega{\rm P}_{+})=\Big(i\hat{D}(\A)\Big)^{\dagger}i\hat{D}(\A)+
+0(\omega^2)$}\coordHE{}. Hence, \myHighlight{$\lambda_m(\A^g)=\lambda_m(\A)+O(\omega^2)$}\coordHE{}, so that
+\myHighlight{$\Z[\A]$}\coordHE{}, as defined above, is formally gauge invariant under infinitesimal 
+gauge transformations. We can make this statement rigorous by using Pauli-Villars regularization or zeta function regularization. It is thus clear that 
+for our definition of partition function the chiral gauge anomaly cannot be 
+interpreted as the lack of invariance of \myHighlight{$\W[\A]$}\coordHE{} (\myHighlight{$\W[\A]=-\ln\,\Z[\A]$}\coordHE{})
+under infinitesimal gauge transformations. An interpretation which holds 
+true for the consistent form of the  
+anomaly~\cite{Alvarez-Gaume:1984cs, Bardeen:1984pm}. Let us show 
+next that, as in the ordinary case~\cite{Fujikawa:1984bg}, the covariant 
+form of the anomaly comes
+from the lack of invariance under infinitesimal chiral gauge transformations
+of the fermionic measure defined above --see 
+eq.~(\ref{measure}). 
+Let \myHighlight{$\psi'=\psi+\delta_{\omega}\psi$}\coordHE{} and  
+\myHighlight{$\bar{\psi}'=\bar{\psi}+\delta_{\omega}\bar{\psi}$}\coordHE{}, where \myHighlight{$\delta_{\omega}$}\coordHE{} is
+given in eq.~(\ref{chiraltrans}). Let \myHighlight{$\{a'_m\}_m$}\coordHE{} and \myHighlight{$\{\bar{b}'_m\}_m$}\coordHE{} be
+given by the expansions  
+\myHighlight{$\psi'=\sum_ma'_m\varphi_m$}\coordHE{} and 
+\myHighlight{$\bar{\psi}'=\sum_m\bar{b}'_m\phi_m^{\dagger}$}\coordHE{}. Then, the identity
+\begin{displaymath}\coord{}\boxMath{
+\int  d\bar{\psi}d\,\psi\quad e^{-{\rm S}[\A,\psi,\bar{\psi}]}\equiv 
+\int  d\bar{\psi}'d\,\psi'\quad e^{-{\rm S}[\A,\psi',\bar{\psi}']},
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+leads to 
+\begin{equation}\coord{}\boxEquation{
+\idxn\,\omega^i_{\;j}(x)\, 
+\big(D_{\mu}[\A]\,\cJ_\mu^{(cov)}\big)^{j}_{\;\,i}(x)
+\,=\,-\,\delta\,J\,\equiv\,\cA[\omega,\A]^{(cov)}.
+\label{formalanom}
+}{
+\idxn\,\omega^i_{\;j}(x)\, 
+\big(D_{\mu}[\A]\,\cJ_\mu^{(cov)}\big)^{j}_{\;\,i}(x)
+\,=\,-\,\delta\,J\,\equiv\,\cA[\omega,\A]^{(cov)}.
+}{ecuacion}\coordE{}\end{equation}
+\myHighlight{$\delta\,J$}\coordHE{}, which is defined by the equation
+\myHighlight{$\prod_m\,d\bar{b}'_m\,da'_m-
+\prod_m\,d\bar{b}_m\,da_m=\delta\,J+O(\omega^2)$}\coordHE{}, is equal to
+\begin{displaymath}\coord{}\boxMath{
+\idxn\sum_m\{\phi^{\dagger}_m
+\star\omega\star P_{-}\phi_m-
+\varphi^{\dagger}_m\star\omega\star P_{+}\varphi_m\}
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+and the current \myHighlight{$\cJ_\mu^{(cov)}$}\coordHE{} is defined by the identity 
+\begin{displaymath}\coord{}\boxMath{
+\big(\cJ_\mu^{(cov)}\big)^{j}_{\;\,i}(x)=
+-i\langle \big(\psi^i_{\beta}\star\bar{\psi}_{\alpha\,j}\big)(x)
+\big(\gamma_{\mu}{\rm P}_{+}\big)_{\alpha\beta}\rangle.
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+\myHighlight{$\langle\cdots \rangle$}\coordHE{} denotes the vacuum expectation value as given by 
+\begin{displaymath}\coord{}\boxMath{
+\langle\cdots \rangle\,=\,
+\frac{\int  d\bar{\psi}d\,\psi\quad\langle\cdots \rangle\quad e^{-{\rm S}[\A]}}
+{\int  d\bar{\psi}d\,\psi\quad  e^{-{\rm S}[\A]}},
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+with the fermionic measure \myHighlight{$d\bar{\psi}d\,\psi$}\coordHE{} as defined by 
+eq.~(\ref{measure}).
+
+As it stands, the right hand side of eq.~(\ref{formalanom}) is ill-defined; 
+we shall obtain a well-defined object out of it by using 
+the Gaussian cut-off furnished by the eigenvalues \myHighlight{$\lambda^2_m$}\coordHE{} in 
+eq.~(\ref{definitions}). This well-defined object, which we shall denote
+by \myHighlight{$\cA[\omega,\A]^{(cov)}$}\coordHE{}, is the covariant form of the gauge anomaly:
+\begin{displaymath}\coord{}\boxMath{
+\begin{array}{l}
+{\cA[\omega,\A]^{(cov)}=\mbox{lim}_{\Lambda\rightarrow\infty}\;
+\idxn\sum_m\;
+e^{-\frac{\lambda_m^2}{\Lambda^2}}\Big\{\varphi_m^{\dagger}\star\omega\star
+{\rm P}_{+}\varphi_m
+-\phi_m^{\dagger}\star\omega\star
+{\rm P}_{-}\phi_m\Big\}}\\[9pt]
+{\phantom{\cA[\omega,\A]^{(cov)}}=
+\mbox{lim}_{\Lambda\rightarrow\infty}\;
+\idxn\sum_m\;\omega\star\Big\{
+\big({\rm P}_{+}e^{-\frac{\lambda_m^2}{\Lambda^2}}
+\varphi_m\big)\star\varphi_m^{\dagger}-
+\big({\rm P}_{-}e^{-\frac{\lambda_m^2}{\Lambda^2}}
+\phi_m\big)\star\phi_m^{\dagger}\Big\}}\\[9pt]
+{\phantom{\cA[\omega,\A]^{(cov)}}=
+\mbox{lim}_{\Lambda\rightarrow\infty}\;
+\idxn\sum_m\;\omega\star\Big\{
+\big({\rm P}_{+}e^{-\frac{(i\hat{D}(\A))^{\dagger}i\hat{D}(\A)}{\Lambda^2}}
+\varphi_m\big)\star\varphi_m^{\dagger}-
+\big({\rm P}_{-}e^{-\frac{i\hat{D}(\A)(i\hat{D}(\A))^{\dagger}}{\Lambda^2}}
+\phi_m\big)\star\phi_m^{\dagger}\Big\}}\\[9pt]
+{\phantom{\cA[\omega,\A]^{(cov)}}=
+\mbox{lim}_{\Lambda\rightarrow\infty}\;
+\idxn{\rm Tr}\;\omega\star\idpn\,{\rm tr}\;\Big\{
+\Big(\gamma_{2n+1}\,e^{-\frac{(i\Dirac(\A))^2}{\Lambda^2}}\,e^{ipx}\Big)\star
+e^{-ipx}\Big\}.}\\[9pt]
+\end{array}
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+The last line of the previous equation is obtained by changing to a plane-wave 
+basis. In this last line \myHighlight{$i\Dirac(\A)=i(\prslash+\Aslash\star)$}\coordHE{} denotes 
+the Dirac operator, and \myHighlight{${\rm Tr}$}\coordHE{} and \myHighlight{${\rm tr}$}\coordHE{} stand for traces over 
+the \myHighlight{$U(N)$}\coordHE{} and Dirac matrices, respectively. 
+
+Let \myHighlight{${\rm D(\A)}_{\mu}=\partial_{\mu}+\A_{\mu}\star$}\coordHE{}. Taking into account that 
+\myHighlight{$(i\Dirac(\A))^2=-({\rm D(\A)}^{\mu}{\rm D(\A)}_{\mu}+
+\frac{1}{2}\gamma^{\mu}\gamma^{\nu}{\rm F}_{\mu\nu})$}\coordHE{} and that  
+\myHighlight{${\rm D(\A)}^{\mu}{\rm D(\A)}_{\mu}(f\star e^{ipx})=
+((ip_{\mu}+\partial_{\mu}+\A_{\mu}\star)^2\,f)\star e^{ipx}$}\coordHE{}, and that the
+Moyal product is associative,  one can  show that
+\begin{displaymath}\coord{}\boxMath{
+\begin{array}{l}
+{\mbox{lim}_{\Lambda\rightarrow\infty}\;
+\idxn {\rm Tr}\;\omega\star\idpn\,{\rm tr}\;\Big\{
+\Big(\gamma_{2n+1}\,e^{-\frac{(i\Dirac(\A))^2}{\Lambda^2}}\,e^{ipx}\Big)\star
+e^{-ipx}\Big\}=}\\[9pt]
+{\idxn\, {\rm Tr}\;\omega\star\sum_{m=0}^{\infty}\Big\{ 
+\mbox{lim}_{\Lambda\rightarrow\infty}\frac{1}{m!\Lambda^{2m}}\idpn\, 
+e^{-\frac{p^2}{\Lambda^2}}}\\[9pt]
+{\,{\rm tr}
+\Big\{\gamma_{2n+1}\,\big[(\partial_{\mu}+\A_{\mu}\star)^2+2ip_{\mu}(\partial_{\mu}+\A_{\mu}\star)+\frac{1}{2}
+\gamma^{\mu}\gamma^{\nu}{\rm F}_{\mu\nu}\star\big]^m\,\unit\Big\}\star e^{ipx}
+\star e^{-ipx}\Big\}.}\\[9pt]
+\end{array}
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+Putting it all together, we conclude that 
+\begin{displaymath}\coord{}\boxMath{
+\cA[\omega,\A]^{(cov)}\,=\,
+\frac{i^n}{(4\pi)^n\,n!}\,\varepsilon^{\mu_1\cdots\mu_{2n}}\,{\rm Tr}\,\idxn\,
+\omega\star\F_{\mu_1\mu_2}\star\cdots\star\F_{\mu_{2n-1}\mu_{2n}}(x).
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+It is clear that \myHighlight{$\cA[\omega,\A]^{(cov)}$}\coordHE{} does not satisfy the Wess-Zumino 
+consistency conditions
+\begin{displaymath}\coord{}\boxMath{
+\delta_{\omega_{\,1}}\cA(\omega_{2},\A)\;-\;
+\delta_{\omega_{\,2}}\cA(\omega_1,\A)\;=\;
+\cA([\omega_1,\omega_2],\A).
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+Hence, \myHighlight{$\cJ^{(con)}_{\mu}(x)$}\coordHE{} cannot be expressed as the derivative of 
+effective action \myHighlight{$\W[\A]\,=\,-\ln \Z[\A]$}\coordHE{} with respect to the gauge field.
+
+\section{The covariant form of the gauge anomaly: bi-fundamental and adjoint chiral matter}
+
+We shall consider  a bi-fundamental~\cite{Terashima:2000xq} chiral fermion
+\myHighlight{$\psi^{i}_{R\,j}={\rm P}_{+}\psi^{i}_{\,j}$}\coordHE{}, \myHighlight{$i=1,\cdots, N$}\coordHE{} and \myHighlight{$j=1,\cdots, M$}\coordHE{}  coupled  to a \myHighlight{$U(N)$}\coordHE{} gauge field, say,  \myHighlight{$\A_{\mu}$}\coordHE{}, 
+and a \myHighlight{$U(M)$}\coordHE{} gauge field, say, \myHighlight{$\B_{\mu}$}\coordHE{}. The classical action of this
+theory reads
+\begin{equation}\coord{}\boxEquation{
+{\rm S}\;=\;\idxn\; \bar{\psi}^{j}_{\;i}
+\star(i\hat{D}(\A,\B)\psi)^{i}_{\;j}.
+\label{biaction}
+}{
+{\rm S}\;=\;\idxn\; \bar{\psi}^{j}_{\;i}
+\star(i\hat{D}(\A,\B)\psi)^{i}_{\;j}.
+}{ecuacion}\coordE{}\end{equation}
+The elliptic operator \myHighlight{$i\hat{D}(\A,\B)$}\coordHE{} acts on the bi-fundamental 
+Dirac spinor \myHighlight{$\psi^{i}_{\;j}$}\coordHE{} as follows
+\begin{displaymath}\coord{}\boxMath{
+(i\hat{D}(\A,\B)\psi)^{i_1}_{\; j_1}\,=\,i\big(
+\prslash\,\delta^{i_1}_{\; i_2}\delta_{j_1}^{\; j_2}
++ \A^{i_1}_{\mu\,i_2}\star\,\delta_{j_1}^{\; j_2}\gamma^{\mu}{\rm P}_{+}
+- \delta^{i_1}_{\; i_2} \star\B_{\mu\,j_1}^{j_2}\gamma^{\mu}{\rm P}_{+}\big)
+\psi^{i_2}_{\; j_2}.
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+We are using the following notation with regard to the \myHighlight{$\star$}\coordHE{}-product: 
+\myHighlight{$\A_{\mu}\star\big)\psi\equiv \A_{\mu}\star\psi$}\coordHE{} and 
+\myHighlight{$\star \B_{\mu}\big)\psi\equiv \psi \star \B_{\mu} $}\coordHE{}. Throughout this section, 
+the \myHighlight{$i$}\coordHE{}-indices run from \myHighlight{$1$}\coordHE{} to \myHighlight{$N$}\coordHE{} and the \myHighlight{$j$}\coordHE{}-indices run from \myHighlight{$1$}\coordHE{} to \myHighlight{$M$}\coordHE{}. 
+\myHighlight{$\A_{\mu}$}\coordHE{} and \myHighlight{$\B_{\mu}$}\coordHE{} are anti-Hermitian matrices.  
+
+
+
+
+The action in eq.~(\ref{biaction}) is invariant under the following 
+infinitesimal gauge  transformations
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{l}
+{(\delta_{(\omega,\chi)} \psi)^{i_1}_{\;j_1}=
+\bigg(\omega^{i_1}_{\;i_2}\star {\rm P}_{+}\psi^{i_2}_{\;j_1}
+-{\rm P}_{+}\psi^{i_1}_{\;j_2}\star\chi^{j_2}_{\;j_1}\bigg),}\\[9pt]
+{(\delta_{(\omega,\chi)} \bar{\psi})^{j_1}_{\;i_1}=
+-\bigg(\bar{\psi}^{j_1}_{\;i_2}\star\omega^{i_2}_{\;i_1}{\rm P}_{-} 
+-\chi^{j_1}_{\;j_2}\star\bar{\psi}^{j_2}_{\;j_1}{\rm P}_{-}\bigg),}\\[9pt]
+{\big(\delta_{\omega} \A_{\mu}\big)^{i_1}_{\;i_2} = 
+-\partial_{\mu}\omega^{i_1}_{\;i_2}-\,\A^{i_1}_{\mu\,i_3}\star
+\omega^{i_3}_{\;i_2}+
+\,\omega^{i_1}_{\;i_3}\star\A^{i_3}_{\mu\,i_2},}\\[9pt]
+{\big(\delta_{\chi} {\B}_{\mu}\big)^{j_1}_{\;j_2} =- 
+\partial_{\mu}\chi^{j_1}_{\;j_2}-
+\,{\B}^{j_1}_{\mu\,j_3}\star\chi^{j_3}_{\;j_2}+
+\,\chi^{j_1}_{\;j_3}\star{\B}^{j_3}_{\mu\,j_2},}\\[9pt]
+\end{array}
+\label{bitrans}
+}{
+\begin{array}{l}
+{(\delta_{(\omega,\chi)} \psi)^{i_1}_{\;j_1}=
+\bigg(\omega^{i_1}_{\;i_2}\star {\rm P}_{+}\psi^{i_2}_{\;j_1}
+-{\rm P}_{+}\psi^{i_1}_{\;j_2}\star\chi^{j_2}_{\;j_1}\bigg),}\\[9pt]
+{(\delta_{(\omega,\chi)} \bar{\psi})^{j_1}_{\;i_1}=
+-\bigg(\bar{\psi}^{j_1}_{\;i_2}\star\omega^{i_2}_{\;i_1}{\rm P}_{-} 
+-\chi^{j_1}_{\;j_2}\star\bar{\psi}^{j_2}_{\;j_1}{\rm P}_{-}\bigg),}\\[9pt]
+{\big(\delta_{\omega} \A_{\mu}\big)^{i_1}_{\;i_2} = 
+-\partial_{\mu}\omega^{i_1}_{\;i_2}-\,\A^{i_1}_{\mu\,i_3}\star
+\omega^{i_3}_{\;i_2}+
+\,\omega^{i_1}_{\;i_3}\star\A^{i_3}_{\mu\,i_2},}\\[9pt]
+{\big(\delta_{\chi} {\B}_{\mu}\big)^{j_1}_{\;j_2} =- 
+\partial_{\mu}\chi^{j_1}_{\;j_2}-
+\,{\B}^{j_1}_{\mu\,j_3}\star\chi^{j_3}_{\;j_2}+
+\,\chi^{j_1}_{\;j_3}\star{\B}^{j_3}_{\mu\,j_2},}\\[9pt]
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+where 
+\myHighlight{$\omega^{i_1}_{\;i_2}=-\omega^{*\,i_2}_{\quad i_1}$}\coordHE{}, \myHighlight{$i_1 , i_2=1,\cdots,N$}\coordHE{}, 
+and \myHighlight{$\chi^{j_1}_{\;j_2}=-\chi^{*\,j_2}_{\quad j_1}$}\coordHE{}, \myHighlight{$j_1, j_2 =1,\cdots,M$}\coordHE{}, 
+are the infinitesimal gauge transformation parameters.
+
+Following the strategy developed in the previous section, we obtain
+\begin{displaymath}\coord{}\boxMath{
+\Z[\A, \B] \;\equiv\;\int  d\bar{\psi}d\,\psi\quad e^{-{\rm S}[\A,\B]}\,=\,
+\int\,\prod_{m}\,d{\bar b}_m da_m\; e^{-\sum_{n}\lambda_m {\bar b}_m a_m}\,=\,
+\prod_{m}\lambda_m[\A,\B].
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+The Grassmann variables, \myHighlight{$a_m$}\coordHE{} and \myHighlight{${\bar b}_m$}\coordHE{}, are given now by
+the expansions \myHighlight{$\psi=\sum_{m}a_m\varphi_m$}\coordHE{} and \myHighlight{$\bar{\psi}=\sum_{m}\bar{b}_m\phi_m^{\dagger}$}\coordHE{}; \myHighlight{$\varphi_m$}\coordHE{} and \myHighlight{$\phi_m$}\coordHE{} being the eigenvectors solving 
+the eigenvalue problems and satisfying the identities that one gets by  replacing in eq.~(\ref{definitions}) \myHighlight{$i\hat{D}(\A)$}\coordHE{}  with \myHighlight{$i\hat{D}(\A,\B)$}\coordHE{}. 
+\myHighlight{$\lambda_m^2[\A,\B]$}\coordHE{} are the eigenvalues of the problems so obtained. These 
+eigenvalues are invariant under the infinitesimal gauge transformations of eq.~(\ref{bitrans}). Hence, the zeta 
+regularization version of \myHighlight{$\Z[\A, \B]$}\coordHE{} above is gauge invariant.
+
+Proceeding as in the previous section, one obtains the covariant form the 
+gauge anomaly equation for bi-fundamental chiral matter:
+\begin{equation}\coord{}\boxEquation{
+\idxn\,\Big[\omega^{i_1}_{\;i_2}\star\, 
+\big(D_{\mu}[\A]\,\cJ^{(\A,\,cov)}_\mu\big)^{i_2}_{\;\,i_1}\,+\,
+\chi^{j_1}_{\;j_2}\star\, 
+\big(D_{\mu}[\B]\,\cJ^{(\B,\, cov)}_\mu\big)^{j_2}_{\;\,j_1}
+\,=\,\cA[\omega,\chi;\A,\B]^{(cov)}.
+\label{bianom}
+}{
+\idxn\,\Big[\omega^{i_1}_{\;i_2}\star\, 
+\big(D_{\mu}[\A]\,\cJ^{(\A,\,cov)}_\mu\big)^{i_2}_{\;\,i_1}\,+\,
+\chi^{j_1}_{\;j_2}\star\, 
+\big(D_{\mu}[\B]\,\cJ^{(\B,\, cov)}_\mu\big)^{j_2}_{\;\,j_1}
+\,=\,\cA[\omega,\chi;\A,\B]^{(cov)}.
+}{ecuacion}\coordE{}\end{equation}
+Here the currents \myHighlight{$\cJ^{(\A,\,cov)}_\mu$}\coordHE{} and 
+\myHighlight{$\cJ^{(\B,\,cov)}_\mu$}\coordHE{} 
+are  defined, respectively, by the identities 
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{c}
+{\big(\cJ^{(\A,\,cov)}_\mu\big)^{i_1}_{\;\,i_2}(x)=
+-i\langle \big(\psi^{i_1}_{\beta\,j_1}\star\bar{\psi}^{j_1}_{\alpha\,i_2}\big)(x)
+\big(\gamma_{\mu}{\rm P}_{+}\big)_{\alpha\beta}\rangle,
+}\\[9pt]
+{\big(\cJ^{(\B,\,cov)}_\mu\big)^{j_1}_{\;\,j_2}(x)=
+-i\langle \big(\bar{\psi}^{j_1}_{\alpha\,i_1}\star \psi^{i_1}_{\beta\,j_2}\big)(x)
+\big(\gamma_{\mu}{\rm P}_{+}\big)_{\alpha\beta}\rangle;}\\[9pt]
+\end{array}
+\label{bicurrents}
+}{
+\begin{array}{c}
+{\big(\cJ^{(\A,\,cov)}_\mu\big)^{i_1}_{\;\,i_2}(x)=
+-i\langle \big(\psi^{i_1}_{\beta\,j_1}\star\bar{\psi}^{j_1}_{\alpha\,i_2}\big)(x)
+\big(\gamma_{\mu}{\rm P}_{+}\big)_{\alpha\beta}\rangle,
+}\\[9pt]
+{\big(\cJ^{(\B,\,cov)}_\mu\big)^{j_1}_{\;\,j_2}(x)=
+-i\langle \big(\bar{\psi}^{j_1}_{\alpha\,i_1}\star \psi^{i_1}_{\beta\,j_2}\big)(x)
+\big(\gamma_{\mu}{\rm P}_{+}\big)_{\alpha\beta}\rangle;}\\[9pt]
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+and \myHighlight{$\cA[\omega,\chi;\A,\B]^{(cov)}$}\coordHE{} is given by
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{l}
+{\cA[\omega,\chi;\A,\B]^{(cov)}=\mbox{lim}_{\Lambda\rightarrow\infty}\;
+\idxn\sum_m\;
+e^{-\frac{\lambda_m^2[\A,\B]}{\Lambda^2}}\Big\{\varphi_m^{\dagger}\star\omega\star
+{\rm P}_{+}\varphi_m
+-\phi_m^{\dagger}\star\omega\star
+{\rm P}_{-}\phi_m\Big\}-}\\[9pt]
+{\phantom{\cA[\omega,\chi;\A,\B]^{(cov)}=\;}
+\mbox{lim}_{\Lambda\rightarrow\infty}\;
+\idxn\sum_m\;
+e^{-\frac{\lambda_m^2[\A,\B]}{\Lambda^2}}\Big\{\chi\star\varphi_m^{\dagger}
+\star{\rm P}_{+}\varphi_m
+-\chi\star\phi_m^{\dagger}\star{\rm P}_{-}\phi_m\Big\}.}\\[9pt]
+\end{array}
+\label{bianomaly}
+}{
+\begin{array}{l}
+{\cA[\omega,\chi;\A,\B]^{(cov)}=\mbox{lim}_{\Lambda\rightarrow\infty}\;
+\idxn\sum_m\;
+e^{-\frac{\lambda_m^2[\A,\B]}{\Lambda^2}}\Big\{\varphi_m^{\dagger}\star\omega\star
+{\rm P}_{+}\varphi_m
+-\phi_m^{\dagger}\star\omega\star
+{\rm P}_{-}\phi_m\Big\}-}\\[9pt]
+{\phantom{\cA[\omega,\chi;\A,\B]^{(cov)}=\;}
+\mbox{lim}_{\Lambda\rightarrow\infty}\;
+\idxn\sum_m\;
+e^{-\frac{\lambda_m^2[\A,\B]}{\Lambda^2}}\Big\{\chi\star\varphi_m^{\dagger}
+\star{\rm P}_{+}\varphi_m
+-\chi\star\phi_m^{\dagger}\star{\rm P}_{-}\phi_m\Big\}.}\\[9pt]
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+
+Let \myHighlight{$i\Dirac(\A,\B)=i(1_{N\times N}\ot 1_{M\times M}\,
+\prslash\,+\,1_{M\times M}\ot \Aslash\star\,+\,
+\star\Bslash\,\ot 1_{N\times N}\;)$}\coordHE{} the Dirac
+operator acting on the bi-fundamental Dirac  spinor \myHighlight{$\psi^{i}_{\; j}$}\coordHE{}, 
+where \myHighlight{$1_{N\times N}$}\coordHE{} and \myHighlight{$1_{M\times M}$}\coordHE{} denote the unit matrices. It
+can be shown that the right hand side of eq.~(\ref{bianomaly}) can be written
+as follows
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{l}
+{\mbox{lim}_{\Lambda\rightarrow\infty}\;
+\idxn\;{\rm Tr}_{\,\MM_{N\times N}}\,{\rm Tr}_{\,\MM_{M\times M}}\;\omega\star\idpn\,{\rm tr}\;\Big\{
+\Big(\gamma_{2n+1}\,e^{-\frac{(i\Dirac(\A,\B))^2}{\Lambda^2}}\,e^{ipx}\Big)\star
+e^{-ipx}\Big\}-}\\[9pt]
+{\mbox{lim}_{\Lambda\rightarrow\infty}\;
+\idxn\;{\rm Tr}_{\,\MM_{N\times N}}\,{\rm Tr}_{\,\MM_{M\times M}}\;
+\chi\star\idpn\,{\rm tr}\;\Big\{
+e^{-ipx}\star\Big(\gamma_{2n+1}\,e^{-\frac{(i\Dirac(\A,\B))^2}
+{\Lambda^2}}\,e^{ipx}\Big)\Big\}.}\\[9pt]
+\end{array}
+\label{preparecomputation}
+}{
+\begin{array}{l}
+{\mbox{lim}_{\Lambda\rightarrow\infty}\;
+\idxn\;{\rm Tr}_{\,\MM_{N\times N}}\,{\rm Tr}_{\,\MM_{M\times M}}\;\omega\star\idpn\,{\rm tr}\;\Big\{
+\Big(\gamma_{2n+1}\,e^{-\frac{(i\Dirac(\A,\B))^2}{\Lambda^2}}\,e^{ipx}\Big)\star
+e^{-ipx}\Big\}-}\\[9pt]
+{\mbox{lim}_{\Lambda\rightarrow\infty}\;
+\idxn\;{\rm Tr}_{\,\MM_{N\times N}}\,{\rm Tr}_{\,\MM_{M\times M}}\;
+\chi\star\idpn\,{\rm tr}\;\Big\{
+e^{-ipx}\star\Big(\gamma_{2n+1}\,e^{-\frac{(i\Dirac(\A,\B))^2}
+{\Lambda^2}}\,e^{ipx}\Big)\Big\}.}\\[9pt]
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+\myHighlight{${\rm tr}$}\coordHE{} denotes the trace over the gamma matrices, and 
+\myHighlight{${\rm Tr}_{\,\MM_{N\times N}}$}\coordHE{} and
+\myHighlight{${\rm Tr}_{\,\MM_{N\times N}}$}\coordHE{} stand for the trace over  \myHighlight{$N\times N$}\coordHE{}  and 
+\myHighlight{$M\times M$}\coordHE{} complex matrices, respectively. 
+It is not difficult to see that
+\begin{displaymath}\coord{}\boxMath{
+\begin{array}{l}
+{(\Dirac(\A,\B))^2=(1_{N\times N}\ot \,1_{M\times M}\,\partial_{\mu}\,+
+\,1_{M\times M}\ot\,\A_{\mu}\star\,-\, \star\B_{\mu}\ot 1_{N\times N})^2\,+}\\[9pt]
+{\phantom{(\Dirac(\A,\B))^2=}\frac{1}{2}\gamma^{\mu}\gamma^{\nu}\,(1_{M\times M}\ot F_{\mu\nu}[\A]\star\,-\,\star 
+F_{\mu\nu}[\B]\ot 1_{N\times N}).}
+\end{array}
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+In the previous equation \myHighlight{$\A_{\mu}\star$}\coordHE{}, \myHighlight{$\star\B_{\mu}$}\coordHE{},  
+\myHighlight{$F_{\mu\nu}[\A]\star$}\coordHE{} and \myHighlight{$\star F_{\mu\nu}[\B]$}\coordHE{} are to be understood as 
+operators acting on a appropriate matrix valued functions \myHighlight{$f$}\coordHE{} and \myHighlight{$g$}\coordHE{} as 
+follows: \myHighlight{$\A_{\mu}\star)f=\A_{\mu}\star f$}\coordHE{}, 
+\myHighlight{$\star\B_{\mu})g=g \star\B_{\mu}$}\coordHE{}, 
+\myHighlight{$F_{\mu\nu}[\A]\star)f=F_{\mu\nu}[\A]\star f$}\coordHE{}, 
+\myHighlight{$\star F_{\mu\nu}[\B])g=g \star F_{\mu\nu}[\B]$}\coordHE{}. \myHighlight{$f$}\coordHE{} takes values on  
+\myHighlight{$N\times N$}\coordHE{} complex matrices and \myHighlight{$g$}\coordHE{} takes values on the \myHighlight{$M\times M$}\coordHE{} complex 
+matrices. \myHighlight{$F_{\mu\nu}[\A]$}\coordHE{} and
+\myHighlight{$F_{\mu\nu}[\B]$}\coordHE{} are the field strengths of \myHighlight{$\A$}\coordHE{} and \myHighlight{$\B$}\coordHE{}, respectively. 
+\myHighlight{$1_{N\times N}$}\coordHE{} and \myHighlight{$1_{M\times M}$}\coordHE{} are, respectively, the identity matrices 
+of rank \myHighlight{$N$}\coordHE{} and \myHighlight{$M$}\coordHE{}. Now, taking into  account that 
+\myHighlight{$
+e^{ipx}\star f(x)\star e^{-ipx}\,=\,f(x+\theta p)$}\coordHE{},
+with \myHighlight{$(\theta p)^{\mu}=\theta^{\mu\nu}p_{\nu}$}\coordHE{}, it is not difficult to show 
+that eq.~(\ref{preparecomputation}) can be cast into the form
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{l}
+{\idxn\,{\rm Tr}_{\,\MM_{N\times N}}{\rm Tr}_{\,\MM_{M\times M}} \;
+\omega\star\sum_{m=0}^{\infty}\Bigg\{ 
+\mbox{lim}_{\Lambda\rightarrow\infty}\frac{1}{m!\Lambda^{2m}} 
+\,\idpn\,e^{-\frac{p^2}{\Lambda^2}}}\\[9pt]
+{{\rm tr}\Big\{\gamma_{2n+1}\,\Big[\big[1_{N\times N}\ot 1_{M\times M}\,
+\partial_{\mu}+1_{M\times M}\ot A_{\mu}(x)\star -
+\star\B_{\mu}(x+\theta p)\,\ot 1_{N\times N}\big]^2+}\\[9pt]
+{\phantom{{\rm tr}\Big\{\gamma_{2n+1}\,\Big[\;}2ip_{\mu}
+\big[1_{N\times N}\ot 1_{M\times M}\,
+\partial_{\mu}+1_{M\times M}\ot\A_{\mu}(x)\star -
+\star\B_{\mu}(x+\theta p)\,\ot 1_{N\times N}\big]+}\\[9pt]
+{\phantom{\Big\{\gamma_{2n+1}\,\Big[[\;}\frac{1}{2}
+\gamma^{\mu}\gamma^{\nu}\big[1_{M\times M}\ot {\rm F}_{\mu\nu}[\A](x)\star- \star{\rm F}_{\mu\nu}[\B](x+\theta p)\,\ot 1_{N\times N}
+\big]\Big]^m\,\unit\Big\}\star e^{ipx}
+\star e^{-ipx}\Bigg\}-}\\[9pt]
+{\idxn\,{\rm Tr}_{\,\MM_{N\times N}}{\rm Tr}_{\,\MM_{M\times M}} \;
+\chi\star\sum_{m=0}^{\infty}\Bigg\{
+\mbox{lim}_{\Lambda\rightarrow\infty}\frac{1}{m!\Lambda^{2m}}  
+\,\idpn\,e^{-\frac{p^2}{\Lambda^2}}}\\[9pt]
+{{\rm tr}\Big\{\gamma_{2n+1}\, e^{-ipx}\star e^{ipx}\star
+\Big[\big[1_{N\times N}\ot 1_{M\times M}\,\partial_{\mu}+ 1_{M\times M}\ot A_{\mu}(x-\theta p)\star -\star\B_{\mu}(x)\,\ot 1_{N\times N}\big]^2+}\\[9pt]
+{\phantom{{\rm tr}\Big\{\gamma_{2n+1}\, e^{-ipx}\star e^{ipx}\star
+\Big[\big[} 2ip_{\mu}\big[1_{N\times N}\ot 1_{M\times M}\,
+\partial_{\mu}+ 1_{M\times M}\ot \A_{\mu}(x-\theta p)\star -
+\star\B_{\mu}(x)\,\ot 1_{N\times N}\big]+}\\[9pt]
+{\phantom{\Big\{\gamma_{2n+1}\,\Big[[\;}\frac{1}{2}
+\gamma^{\mu}\gamma^{\nu}\big[1_{M\times M}\ot {\rm F}_{\mu\nu}[\A](x-\theta p)\star- \star{\rm F}_{\mu\nu}[\B](x)\,\ot 1_{N\times N}\big]\Big]^m\,\unit\Big\}\Bigg\}.}\\[9pt]
+\end{array}
+}{
+\begin{array}{l}
+{\idxn\,{\rm Tr}_{\,\MM_{N\times N}}{\rm Tr}_{\,\MM_{M\times M}} \;
+\omega\star\sum_{m=0}^{\infty}\Bigg\{ 
+\mbox{lim}_{\Lambda\rightarrow\infty}\frac{1}{m!\Lambda^{2m}} 
+\,\idpn\,e^{-\frac{p^2}{\Lambda^2}}}\\[9pt]
+{{\rm tr}\Big\{\gamma_{2n+1}\,\Big[\big[1_{N\times N}\ot 1_{M\times M}\,
+\partial_{\mu}+1_{M\times M}\ot A_{\mu}(x)\star -
+\star\B_{\mu}(x+\theta p)\,\ot 1_{N\times N}\big]^2+}\\[9pt]
+{\phantom{{\rm tr}\Big\{\gamma_{2n+1}\,\Big[\;}2ip_{\mu}
+\big[1_{N\times N}\ot 1_{M\times M}\,
+\partial_{\mu}+1_{M\times M}\ot\A_{\mu}(x)\star -
+\star\B_{\mu}(x+\theta p)\,\ot 1_{N\times N}\big]+}\\[9pt]
+{\phantom{\Big\{\gamma_{2n+1}\,\Big[[\;}\frac{1}{2}
+\gamma^{\mu}\gamma^{\nu}\big[1_{M\times M}\ot {\rm F}_{\mu\nu}[\A](x)\star- \star{\rm F}_{\mu\nu}[\B](x+\theta p)\,\ot 1_{N\times N}
+\big]\Big]^m\,\unit\Big\}\star e^{ipx}
+\star e^{-ipx}\Bigg\}-}\\[9pt]
+{\idxn\,{\rm Tr}_{\,\MM_{N\times N}}{\rm Tr}_{\,\MM_{M\times M}} \;
+\chi\star\sum_{m=0}^{\infty}\Bigg\{
+\mbox{lim}_{\Lambda\rightarrow\infty}\frac{1}{m!\Lambda^{2m}}  
+\,\idpn\,e^{-\frac{p^2}{\Lambda^2}}}\\[9pt]
+{{\rm tr}\Big\{\gamma_{2n+1}\, e^{-ipx}\star e^{ipx}\star
+\Big[\big[1_{N\times N}\ot 1_{M\times M}\,\partial_{\mu}+ 1_{M\times M}\ot A_{\mu}(x-\theta p)\star -\star\B_{\mu}(x)\,\ot 1_{N\times N}\big]^2+}\\[9pt]
+{\phantom{{\rm tr}\Big\{\gamma_{2n+1}\, e^{-ipx}\star e^{ipx}\star
+\Big[\big[} 2ip_{\mu}\big[1_{N\times N}\ot 1_{M\times M}\,
+\partial_{\mu}+ 1_{M\times M}\ot \A_{\mu}(x-\theta p)\star -
+\star\B_{\mu}(x)\,\ot 1_{N\times N}\big]+}\\[9pt]
+{\phantom{\Big\{\gamma_{2n+1}\,\Big[[\;}\frac{1}{2}
+\gamma^{\mu}\gamma^{\nu}\big[1_{M\times M}\ot {\rm F}_{\mu\nu}[\A](x-\theta p)\star- \star{\rm F}_{\mu\nu}[\B](x)\,\ot 1_{N\times N}\big]\Big]^m\,\unit\Big\}\Bigg\}.}\\[9pt]
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+\myHighlight{$\unit$}\coordHE{} is the symbol for the unit function on \myHighlight{$\RR^{2n}$}\coordHE{}. Let us now recall that
+\myHighlight{${\rm tr}\,(\gamma_{2n+1}\gamma^{\mu_1}\cdots \gamma^{\mu_k})=0$}\coordHE{}, if 
+\myHighlight{$k<2n$}\coordHE{}; and that for a given value of \myHighlight{$m$}\coordHE{} the limit 
+\myHighlight{${\lim}_{\Lambda\rightarrow\infty}$}\coordHE{} above vanishes, if the number of powers 
+of \myHighlight{$\Lambda$}\coordHE{} turns negative upon  rescaling \myHighlight{$p$}\coordHE{} to \myHighlight{$\Lambda p$}\coordHE{}. Keeping these 
+two results in mind, one can show that 
+the expression in the previous equation is equal to
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{l}
+{\idxn\,{\rm Tr}_{\,\MM_{N\times N}}{\rm Tr}_{\,\MM_{M\times M}} \;
+\omega\star\Bigg\{
+\mbox{lim}_{\Lambda\rightarrow\infty}\frac{i^n}{n!} 
+\,\idpn\,e^{-p^2}\varepsilon^{\mu_1\cdots\mu_{2n}}}\\[9pt]
+{\big[{\rm F}_{\mu_1\mu_2}[\A](x)\star - 
+\star{\rm F}_{\mu_1\mu_2}[\B](x+\Lambda\,\theta p)\big]
+\cdots\big[{\rm F}_{\mu_{2n-1}\mu_{2n}}[\A](x)\star - 
+\star{\rm F}_{\mu_{2n-1}\mu_{2n}}[\B](x+\Lambda\,\theta p)\big]\,\unit\Bigg\}
+-}\\[9pt]
+{\idxn\,{\rm Tr}_{\,\MM_{N\times N}}{\rm Tr}_{\,\MM_{M\times M}} \;
+\chi\star\Bigg\{ 
+\mbox{lim}_{\Lambda\rightarrow\infty}\frac{i^n}{n!} 
+\,\idpn\,e^{-p^2}\varepsilon^{\mu_1\cdots\mu_{2n}}}\\[9pt]
+{\big[{\rm F}_{\mu_1\mu_2}[\A](x-\Lambda\,\theta p)\star - 
+\star{\rm F}_{\mu_1\mu_2}[\B](x)\big]\cdots
+\big[{\rm F}_{\mu_{2n-1}\mu_{2n}}[\A](x-\Lambda\,\theta p)\star - 
+\star{\rm F}_{\mu_{2n-1}\mu_{2n}}[\B](x)\big]\,\unit\Bigg\}.}\\[9pt]
+\end{array}
+\label{bimixed}
+}{
+\begin{array}{l}
+{\idxn\,{\rm Tr}_{\,\MM_{N\times N}}{\rm Tr}_{\,\MM_{M\times M}} \;
+\omega\star\Bigg\{
+\mbox{lim}_{\Lambda\rightarrow\infty}\frac{i^n}{n!} 
+\,\idpn\,e^{-p^2}\varepsilon^{\mu_1\cdots\mu_{2n}}}\\[9pt]
+{\big[{\rm F}_{\mu_1\mu_2}[\A](x)\star - 
+\star{\rm F}_{\mu_1\mu_2}[\B](x+\Lambda\,\theta p)\big]
+\cdots\big[{\rm F}_{\mu_{2n-1}\mu_{2n}}[\A](x)\star - 
+\star{\rm F}_{\mu_{2n-1}\mu_{2n}}[\B](x+\Lambda\,\theta p)\big]\,\unit\Bigg\}
+-}\\[9pt]
+{\idxn\,{\rm Tr}_{\,\MM_{N\times N}}{\rm Tr}_{\,\MM_{M\times M}} \;
+\chi\star\Bigg\{ 
+\mbox{lim}_{\Lambda\rightarrow\infty}\frac{i^n}{n!} 
+\,\idpn\,e^{-p^2}\varepsilon^{\mu_1\cdots\mu_{2n}}}\\[9pt]
+{\big[{\rm F}_{\mu_1\mu_2}[\A](x-\Lambda\,\theta p)\star - 
+\star{\rm F}_{\mu_1\mu_2}[\B](x)\big]\cdots
+\big[{\rm F}_{\mu_{2n-1}\mu_{2n}}[\A](x-\Lambda\,\theta p)\star - 
+\star{\rm F}_{\mu_{2n-1}\mu_{2n}}[\B](x)\big]\,\unit\Bigg\}.}\\[9pt]
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+Generally speaking, in noncommutative quantum field theory, the 
+limits \myHighlight{$\Lambda\rightarrow\infty$}\coordHE{} and \myHighlight{$\theta p\rightarrow 0$}\coordHE{} do not 
+commute as a consequence of the intriguing 
+UV/IR mixing~\cite{Minwalla:2000px}. 
+Then, to define the renormalized theory, one  has make a choice regarding 
+the order of these limits. One would like to obtain the renormalized 
+noncommutative theory at \myHighlight{$\theta p = 0$}\coordHE{} by taking the limit \myHighlight{$\theta p\rightarrow 0$}\coordHE{} of renormalized one at \myHighlight{$\theta p \neq 0$}\coordHE{}. Hence, we shall take  
+the limit \myHighlight{$\Lambda\rightarrow\infty$}\coordHE{} first and then take 
+the limit \myHighlight{$\theta p\rightarrow 0$}\coordHE{}. Now, the gauge fields \myHighlight{$\A_{\mu}$}\coordHE{} and 
+\myHighlight{$\B_{\mu}$}\coordHE{} satisfy the boundary conditions \myHighlight{$\F_{\mu\nu}[\A](y)\rightarrow 0$}\coordHE{} 
+and \myHighlight{$\F_{\mu\nu}[\B](y)\rightarrow 0$}\coordHE{} as \myHighlight{$|y|\rightarrow \infty$}\coordHE{}. It is thus 
+plain  that ~(\ref{bimixed}) is equal to
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{l}
+{M\,\frac{i^n}{(4\pi)^n\,n!}\,\varepsilon^{\mu_1\cdots\mu_{2n}}\,
+{\rm Tr}_{\,\MM_{N\times N}}\,\idxn\,\omega\star
+\F_{\mu_1\mu_2}[\A]\star\cdots\star\F_{\mu_{2n-1}\mu_{2n}}[\A](x)\,-}\\[9pt]
+{N\,\frac{(-i)^n}{(4\pi)^n\,n!}\,\varepsilon^{\mu_1\cdots\mu_{2n}}\,{\rm Tr}_{\,\MM_{M\times M}}\,\idxn\,\omega\star
+\F_{\mu_1\mu_2}[\B]\star\cdots\star\F_{\mu_{2n-1}\mu_{2n}}[\B](x).}\\[9pt]
+\end{array}
+\label{bicompu}
+}{
+\begin{array}{l}
+{M\,\frac{i^n}{(4\pi)^n\,n!}\,\varepsilon^{\mu_1\cdots\mu_{2n}}\,
+{\rm Tr}_{\,\MM_{N\times N}}\,\idxn\,\omega\star
+\F_{\mu_1\mu_2}[\A]\star\cdots\star\F_{\mu_{2n-1}\mu_{2n}}[\A](x)\,-}\\[9pt]
+{N\,\frac{(-i)^n}{(4\pi)^n\,n!}\,\varepsilon^{\mu_1\cdots\mu_{2n}}\,{\rm Tr}_{\,\MM_{M\times M}}\,\idxn\,\omega\star
+\F_{\mu_1\mu_2}[\B]\star\cdots\star\F_{\mu_{2n-1}\mu_{2n}}[\B](x).}\\[9pt]
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+Putting it all together (see~(\ref{bianom})--(\ref{bicompu})), we conclude that the covariant form of the anomaly
+\myHighlight{$\cA[\omega,\chi;\A,\B]^{(cov)}$}\coordHE{} reads thus
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{l}
+{\cA[\omega,\chi;\A,\B]^{(cov)}\,=\, M\,\frac{i^n}{(4\pi)^n\,n!}\,\varepsilon^{\mu_1\cdots\mu_{2n}}\,
+{\rm Tr}_{\,\MM_{N\times N}}\,\idxn\,\omega\star
+\F_{\mu_1\mu_2}[\A]\star\cdots\star\F_{\mu_{2n-1}\mu_{2n}}[\A](x)\,-}\\[9pt]
+{\phantom{\cA[\omega,\chi;\A,\B]^{(cov)}\,=\,\;}N\,\frac{(-i)^n}{(4\pi)^n\,n!}\,\varepsilon^{\mu_1\cdots\mu_{2n}}\,{\rm Tr}_{\,\MM_{M\times M}}\,\idxn\,\omega\star
+\F_{\mu_1\mu_2}[\B]\star\cdots\star\F_{\mu_{2n-1}\mu_{2n}}[\B](x).}\\[9pt]
+\end{array}
+\label{bicovanom}
+}{
+\begin{array}{l}
+{\cA[\omega,\chi;\A,\B]^{(cov)}\,=\, M\,\frac{i^n}{(4\pi)^n\,n!}\,\varepsilon^{\mu_1\cdots\mu_{2n}}\,
+{\rm Tr}_{\,\MM_{N\times N}}\,\idxn\,\omega\star
+\F_{\mu_1\mu_2}[\A]\star\cdots\star\F_{\mu_{2n-1}\mu_{2n}}[\A](x)\,-}\\[9pt]
+{\phantom{\cA[\omega,\chi;\A,\B]^{(cov)}\,=\,\;}N\,\frac{(-i)^n}{(4\pi)^n\,n!}\,\varepsilon^{\mu_1\cdots\mu_{2n}}\,{\rm Tr}_{\,\MM_{M\times M}}\,\idxn\,\omega\star
+\F_{\mu_1\mu_2}[\B]\star\cdots\star\F_{\mu_{2n-1}\mu_{2n}}[\B](x).}\\[9pt]
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+Notice that as in the consistent 
+case~\cite{Martin:2000qf, Intriligator:2001yu} there are no
+mixed anomalies. Also notice that if in~ (\ref{bimixed}) we set \myHighlight{$\theta = 0$}\coordHE{} 
+before sending \myHighlight{$\Lambda$}\coordHE{} to \myHighlight{$\infty$}\coordHE{}, ie, we go to commutative space,  
+the mixed anomalies pop-up back; and that it is the characteristic  
+half-dipole structure of the charged degrees of freedom of the 
+noncommutative field theories 
+--see the \myHighlight{${\rm F}_{\mu_{i}\mu_{i+1}}[\A](x-\Lambda\,\theta p)$}\coordHE{} and 
+\myHighlight{${\rm F}_{\mu_{i}\mu_{i+1}}[\B](x+\Lambda\,\theta p)$}\coordHE{} terms in the mixed contributions of~ (\ref{bimixed})-- which is responsible for 
+the lack of mixed anomalies in the noncommutative arena. That charged degrees 
+of freedom have a  half-dipole structure rather than a dipole structure
+~\cite{Sheikh-Jabbari:1999vm, Bigatti:2000iz}  was 
+unveiled in ref.~\cite{Alvarez-Gaume:2001bv}.
+
+  The consistent form of the gauge anomaly for an adjoint right-handed fermion can be obtained by setting \myHighlight{$\A\,=\,\B$}\coordHE{} in eq.~(\ref{bicovanom}). We thus 
+conclude that if \myHighlight{$D=4m$}\coordHE{} (\myHighlight{$D$}\coordHE{} is the space-time dimension) there is no gauge anomaly, but if \myHighlight{$D=4m+2$}\coordHE{}, the anomaly is \myHighlight{$2N$}\coordHE{} times the anomaly in the 
+fundamental representation.
+
+\section{Redefinition  of currents}
+
+In this section we shall show that there exists a \myHighlight{$*$}\coordHE{}-polynomial, \myHighlight{$\cX^{\mu}$}\coordHE{}, 
+of \myHighlight{$\A$}\coordHE{} and \myHighlight{$\F$}\coordHE{}, such that 
+\begin{equation}\coord{}\boxEquation{
+\cJ^{(con)}_{\mu}(x)=\cJ^{(cov)}_{\mu}(x)\,+\,\cX_{\mu}(x).
+\label{redefinition}
+}{
+\cJ^{(con)}_{\mu}(x)=\cJ^{(cov)}_{\mu}(x)\,+\,\cX_{\mu}(x).
+}{ecuacion}\coordE{}\end{equation}
+Here \myHighlight{$\cJ^{(con)}_{\mu}(x)$}\coordHE{} denotes the consistent gauge current for a 
+fundamental right handed fermion  
+--see ref.~\cite{Gracia-Bondia:2000pz, Bonora:2000he, Grisaru:2001sk}-- and
+\myHighlight{$\cJ^{(cov)}_{\mu}(x)$}\coordHE{} stands for the corresponding covariant gauge current. 
+In view of the results presented in the previous section,  
+the generalization of the analysis we are about to begin to  bi-fundamental and/or adjoint right handed fermions is trivial. 
+
+  To compute \myHighlight{$\cX^{\mu}$}\coordHE{} we shall adapt to the 
+case at hand the techniques of ref.~\cite{Alvarez-Gaume:1985dr}. To do so we 
+shall employ the  formalism of differential forms and BRST cohomology 
+introduced  in ref.~\cite{Bonora:2000he}. 
+
+Let \myHighlight{$\cJ^{(con)}$}\coordHE{} and  \myHighlight{$\cJ^{(cov)}$}\coordHE{}   be the dual 
+currents         
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{l} 
+{\cJ^{(con)}=\frac{1}{(2n-1)!}\,
+\varepsilon^{\mu_1}_{\phantom{\mu_1}\mu_2\cdots\mu_{2n}}\,
+\cJ_{\mu_1}^{(con)}\,dx^{\mu_2}\cdots dx^{\mu_{2n}},}\\[9pt]
+{\cJ^{(cov)}=\frac{1}{(2n-1)!}\,
+\varepsilon^{\mu_1}_{\phantom{\mu_1}\mu_2\cdots\mu_{2n}}\,
+\cJ_{\mu_1}^{(cov)}\,dx^{\mu_2}\cdots dx^{\mu_{2n}}.}\\[9pt]
+\end{array}
+\label{dualcurrents}
+}{
+\begin{array}{l} 
+{\cJ^{(con)}=\frac{1}{(2n-1)!}\,
+\varepsilon^{\mu_1}_{\phantom{\mu_1}\mu_2\cdots\mu_{2n}}\,
+\cJ_{\mu_1}^{(con)}\,dx^{\mu_2}\cdots dx^{\mu_{2n}},}\\[9pt]
+{\cJ^{(cov)}=\frac{1}{(2n-1)!}\,
+\varepsilon^{\mu_1}_{\phantom{\mu_1}\mu_2\cdots\mu_{2n}}\,
+\cJ_{\mu_1}^{(cov)}\,dx^{\mu_2}\cdots dx^{\mu_{2n}}.}\\[9pt]
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+These currents are \myHighlight{$(2n-1)$}\coordHE{}-differential forms in the sense of  
+ref.~\cite{Bonora:2000he}. Let
+\myHighlight{$\C$}\coordHE{} be the ghost zero-form introduced through the BRST transformations:
+\myHighlight{$sA=D\C=d\C+[\A,\C]$}\coordHE{}, \myHighlight{$sc=\C\star\C$}\coordHE{}. \myHighlight{$s$}\coordHE{} is the BRST operator,  
+\myHighlight{$d$}\coordHE{} is the exterior derivative and \myHighlight{$\A=\A_{\mu}\,dx^{\mu}$}\coordHE{}. \myHighlight{$s$}\coordHE{} and \myHighlight{$d$}\coordHE{} 
+satisfy \myHighlight{$s^2\,=\,d^2\,=\,sd+ds\,=\,0$}\coordHE{}.
+We  introduce next the two-form field-strength    
+\myHighlight{$\F=\frac{1}{2}\F_{\mu\nu}\,dx^{\mu}dx^{\nu}\,=\,d\A\,+\,\A\star\A$}\coordHE{}.
+Then, \myHighlight{$\cJ^{(con)}$}\coordHE{} and \myHighlight{$\cJ^{(cov)}$}\coordHE{} are defined so that they 
+satisfy, respectively, the consistent form and the covariant form
+of gauge anomaly equation:
+\begin{equation}\coord{}\boxEquation{
+\int {\rm Tr}\ D\C\star\cJ^{(con)}\,=\,\cA(\C,\A)^{(con)}\qquad
+\mbox{\rm  and}\qquad
+\int {\rm Tr}\ D\C\star\cJ^{(cov)}\,=\,\cA(\C,\A)^{(cov)},
+\label{anomalyindifforms}
+}{
+\int {\rm Tr}\ D\C\star\cJ^{(con)}\,=\,\cA(\C,\A)^{(con)}\qquad
+\mbox{\rm  and}\qquad
+\int {\rm Tr}\ D\C\star\cJ^{(cov)}\,=\,\cA(\C,\A)^{(cov)},
+}{ecuacion}\coordE{}\end{equation}
+where
+\begin{equation}\coord{}\boxEquation{
+\cA(\C,\A)^{(con)}\,=\,\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\, \cQ^{1}_{\;\,2n}
+\,(\C,\A,\F)
+\label{conform}
+}{
+\cA(\C,\A)^{(con)}\,=\,\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\, \cQ^{1}_{\;\,2n}
+\,(\C,\A,\F)
+}{ecuacion}\coordE{}\end{equation}
+and 
+\begin{equation}\coord{}\boxEquation{
+\cA(\C,\A)^{(cov)}\,=\,\frac{i^n}{(2\pi)^n\,n!}\,\int\,
+\bracl{\rm Tr}\;\C\star \F^n\bracr.
+\label{covform}
+}{
+\cA(\C,\A)^{(cov)}\,=\,\frac{i^n}{(2\pi)^n\,n!}\,\int\,
+\bracl{\rm Tr}\;\C\star \F^n\bracr.
+}{ecuacion}\coordE{}\end{equation}
+\myHighlight{$\cQ^{1}_{2n}\,(\C,\A,\F)$}\coordHE{}, which can be obtained by solving the descent 
+equations, reads  
+\begin{equation}\coord{}\boxEquation{
+\cQ^{1}_{\;\,2n}\,(\C,\A,\F)\,=\,
+(n+1)\int_{0}^{1}dt\,(1-t)\,\sum_{k=0}^{n-1}\,\bracl{\rm Tr}\;
+\C\star d(\F_t^{k}\star\A\star \F_t^{n-1-k})\bracr,
+\label{Qform}
+}{
+\cQ^{1}_{\;\,2n}\,(\C,\A,\F)\,=\,
+(n+1)\int_{0}^{1}dt\,(1-t)\,\sum_{k=0}^{n-1}\,\bracl{\rm Tr}\;
+\C\star d(\F_t^{k}\star\A\star \F_t^{n-1-k})\bracr,
+}{ecuacion}\coordE{}\end{equation}
+with \myHighlight{$\F_t=d\A_t+\A_t^2$}\coordHE{} and \myHighlight{$\A_t=t\A$}\coordHE{}. 
+\myHighlight{$\F^k$}\coordHE{} denotes the \myHighlight{$k$}\coordHE{}-th power of \myHighlight{$\F$}\coordHE{} with respect to the Moyal product. 
+An expression like \myHighlight{$\bracl
+{\rm Tr}\;( \E_1 \star\E_2\star\cdots\star\E_m)\bracr$}\coordHE{} denotes
+the equivalence class obtained by imposing on the space of objects of the type 
+\myHighlight{${\rm Tr}\,( \E_1 \star\E_2\star\cdots\star\E_m)$}\coordHE{} the relationship 
+\myHighlight{${\rm Tr}\;( \E_1 \star\E_2\star\cdots\star\E_m)\equiv 
+(-1)^{k_m(k_1+\cdots+k_{m-1})}
+{\rm Tr}\;( \E_m \star\E_1\star\cdots\star\E_{m-1})$}\coordHE{}. 
+\myHighlight{$\E_i$}\coordHE{} denotes a form of degree  \myHighlight{$k_i$}\coordHE{}. See ref.~\cite{Bonora:2000he} for 
+further details. 
+
+ To find \myHighlight{$\cX$}\coordHE{}, 
+\begin{equation}\coord{}\boxEquation{
+{\cX}=\frac{1}{(2n-1)!}\,
+\varepsilon^{\mu_1}_{\phantom{\mu_1}\mu_2\cdots\mu_{2n}}\,
+\cX_{\mu_1}\,dx^{\mu_2}\cdots dx^{\mu_{2n}},
+\label{Xform}
+}{
+{\cX}=\frac{1}{(2n-1)!}\,
+\varepsilon^{\mu_1}_{\phantom{\mu_1}\mu_2\cdots\mu_{2n}}\,
+\cX_{\mu_1}\,dx^{\mu_2}\cdots dx^{\mu_{2n}},
+}{ecuacion}\coordE{}\end{equation}
+such that \myHighlight{$\cX_{\mu}$}\coordHE{} satisfies eq.~(\ref{redefinition}), we shall first
+show that \myHighlight{$\cQ^{1}_{\;\,2n}\,(\C,\A,\F)$}\coordHE{} in eq.~(\ref{Qform}) is also
+given by the following equation 
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{l}
+{\cQ^{1}_{\;\,2n}\,(\C,\A,\F)\,=\,(n+1)\bracl{\rm Tr}\;\C\star \F^n\bracr\,-\,}
+\\[9pt]
+{\phantom{\cQ^{1}_{\;\,2n}\,(\C,\A,\F)\,=\,}
+(n+1)\int_{0}^{1}dt\,\bracl{\rm Tr}\;\C\star D(
+\sum_{k=0}^{n-1}\,\F_t^{k}\star\A_t\star \F_t^{n-1-k})\bracr.}\\[9pt]
+\end{array}
+\label{newexpression}
+}{
+\begin{array}{l}
+{\cQ^{1}_{\;\,2n}\,(\C,\A,\F)\,=\,(n+1)\bracl{\rm Tr}\;\C\star \F^n\bracr\,-\,}
+\\[9pt]
+{\phantom{\cQ^{1}_{\;\,2n}\,(\C,\A,\F)\,=\,}
+(n+1)\int_{0}^{1}dt\,\bracl{\rm Tr}\;\C\star D(
+\sum_{k=0}^{n-1}\,\F_t^{k}\star\A_t\star \F_t^{n-1-k})\bracr.}\\[9pt]
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+It can be shown that the right hand side of eq.~(\ref{Qform}) is equal to
+\begin{equation}\coord{}\boxEquation{
+(n+1)\int_{0}^{1}dt\,\bracl{\rm Tr}\;\C\star \F_t^n\bracr\,+\,
+(n+1)\int_{0}^{1}dt\,\sum_{k=0}^{n-1}\,(t-1)\,\bracl{\rm Tr}\;
+(\F_t^{k}\star\A_t\star \F_t^{n-1-k}\star[\A,\C])\bracr.
+\label{eqone}
+}{
+(n+1)\int_{0}^{1}dt\,\bracl{\rm Tr}\;\C\star \F_t^n\bracr\,+\,
+(n+1)\int_{0}^{1}dt\,\sum_{k=0}^{n-1}\,(t-1)\,\bracl{\rm Tr}\;
+(\F_t^{k}\star\A_t\star \F_t^{n-1-k}\star[\A,\C])\bracr.
+}{ecuacion}\coordE{}\end{equation}
+Now, taking into account that \myHighlight{$(D_t-D)\C\,=\,(t-1)[\A,\C]$}\coordHE{} and that 
+\myHighlight{$\bracl{\rm Tr} D\cO\bracr\,=\,d\bracl{\rm Tr} \cO\bracr$}\coordHE{} for a form,  
+\myHighlight{$\cO$}\coordHE{}, of even degree; one readily shows that eq.~(\ref{eqone}) can
+be turned into the following expression
+\begin{displaymath}\coord{}\boxMath{
+\begin{array}{l}
+{(n+1)\Big(\int_{0}^{1}dt\,\bracl{\rm Tr}\;\C\star \F_t^n\bracr\,
+\,-\, d\,\int_{0}^{1}dt\,\sum_{k=0}^{n-1}\,\bracl{\rm Tr}\;
+(\F_t^{k}\star\A_t\star \F_t^{n-1-k}\star\C)\bracr\,+\,}\\[9pt] 
+{\int_{0}^{1}dt\,\sum_{k=0}^{n-1}\,\bracl{\rm Tr}\;
+(\F_t^{k}\star D_t\A_t\star \F_t^{n-1-k}\star\C)\bracr\,-\,
+\int_{0}^{1}dt\,\sum_{k=0}^{n-1}\,\bracl{\rm Tr}\;
+(\F_t^{k}\star \A_t\star \F_t^{n-1-k}\star D\C)\bracr\Big).}\\[9pt] 
+\end{array}
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+Upon employing that \myHighlight{$D_t\A_t=t\partial_t\F_t$}\coordHE{} and that \myHighlight{$\partial_t\F_t^n\,=\,
+\sum_{k=0}^{n-1}\F_t^{k}\star\partial_t\F_t \star \F_t^{n-1-k}$}\coordHE{}, 
+the previous equation can be converted into the following one
+\begin{displaymath}\coord{}\boxMath{
+\begin{array}{l}
+{(n+1)\Big(\int_{0}^{1}dt\,\bracl{\rm Tr}\;\C\star \F_t^n\bracr\,
+\,-\, d\,\int_{0}^{1}dt\,\sum_{k=0}^{n-1}\,\bracl{\rm Tr}\;
+(\F_t^{k}\star\A_t\star \F_t^{n-1-k}\star\C)\bracr\,+\,}\\[9pt] 
+{\phantom{(n+1)\Big(}\int_{0}^{1}dt\,t\; \partial_t\;\bracl{\rm Tr}\;
+(\F_t^n\star\C)\bracr\,-\,
+\int_{0}^{1}dt\,\sum_{k=0}^{n-1}\,\bracl{\rm Tr}\;
+(\F_t^{k}\star \A_t\star \F_t^{n-1-k}\star D\C)\bracr\Big).}\\[9pt] 
+\end{array}
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+Partial integration yields then 
+\begin{displaymath}\coord{}\boxMath{
+\begin{array}{l}
+{(n+1)\Big(\bracl{\rm Tr}\;\C\star \F^n\bracr\,-\,
+\int_{0}^{1}dt\,\sum_{k=0}^{n-1}\,\bracl{\rm Tr}\;
+(\F_t^{k}\star \A_t\star \F_t^{n-1-k}\star D\C)\bracr\,-\,}\\[9pt]
+{\phantom{(n+1)\Big(} d\,\int_{0}^{1}dt\,\sum_{k=0}^{n-1}\,\bracl{\rm Tr}\;
+(\F_t^{k}\star\A_t\star \F_t^{n-1-k}\star\C)\bracr\Big).}\\[9pt] 
+\end{array}
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+This equation and 
+\begin{displaymath}\coord{}\boxMath{
+d\,\bracl{\rm Tr}\;
+(\F_t^{k}\star\A_t\star \F_t^{n-1-k}\star\C)\bracr\,=\,
+\bracl{\rm Tr}\;(D(\F_t^{k}\star\A_t\star \F_t^{n-1-k})\star\C)\bracr
+-\bracl{\rm Tr}\;
+(\F_t^{k}\star\A_t\star \F_t^{n-1-k}\star D\C)\bracr
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+finally lead to eq.~(\ref{newexpression}).
+ 
+We are now ready to compute \myHighlight{$\cX$}\coordHE{} so that eqs.~(\ref{redefinition}) and~ 
+(\ref{Xform}) hold:
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{l}
+{\int {\rm Tr}\ \C\star D\cX\,=\,\int {\rm Tr}\ \C\star D\cJ^{(con)}\,-\,
+\int {\rm Tr}\ \C\star D\cJ^{(cov)}}\\[9pt]
+{\phantom{\int {\rm Tr}\ D\C\star\cX}
+ \,=\,\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\,\Big( \cQ^{1}_{\;\,2n}
+\,(\C,\A,\F)\,-(n+1)\,
+\bracl{\rm Tr}\;\C\star \F^n\bracr\Big)}\\[9pt]
+{\phantom{\int {\rm Tr}\ D\C\star\cX}
+ \,=\,\frac{i^{(n+2)}}{(2\pi)^n\,n!}\,\int\,
+\int_{0}^{1}dt\,\bracl{\rm Tr}\;\C\star D(
+\sum_{k=0}^{n-1}\,\F_t^{k}\star\A_t\star \F_t^{n-1-k})\bracr.}\\[9pt]
+\end{array}
+\label{Xequation}
+}{
+\begin{array}{l}
+{\int {\rm Tr}\ \C\star D\cX\,=\,\int {\rm Tr}\ \C\star D\cJ^{(con)}\,-\,
+\int {\rm Tr}\ \C\star D\cJ^{(cov)}}\\[9pt]
+{\phantom{\int {\rm Tr}\ D\C\star\cX}
+ \,=\,\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\,\Big( \cQ^{1}_{\;\,2n}
+\,(\C,\A,\F)\,-(n+1)\,
+\bracl{\rm Tr}\;\C\star \F^n\bracr\Big)}\\[9pt]
+{\phantom{\int {\rm Tr}\ D\C\star\cX}
+ \,=\,\frac{i^{(n+2)}}{(2\pi)^n\,n!}\,\int\,
+\int_{0}^{1}dt\,\bracl{\rm Tr}\;\C\star D(
+\sum_{k=0}^{n-1}\,\F_t^{k}\star\A_t\star \F_t^{n-1-k})\bracr.}\\[9pt]
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+To obtain the previous array of identities, eqs.~(\ref{anomalyindifforms})--
+(\ref{newexpression}) are to be taken into account. In view of 
+eq.~(\ref{Xequation}), we conclude that the following choice of \myHighlight{$\cX$}\coordHE{}, 
+\begin{equation}\coord{}\boxEquation{ 
+\cX\,=\,\frac{i^{(n+2)}}{(2\pi)^n\,n!}\,
+\int_{0}^{1}dt\;
+\sum_{k=0}^{n-1}\,\F_t^{k}\star\A_t\star \F_t^{n-1-k},
+\label{ValueofX}
+}{ 
+\cX\,=\,\frac{i^{(n+2)}}{(2\pi)^n\,n!}\,
+\int_{0}^{1}dt\;
+\sum_{k=0}^{n-1}\,\F_t^{k}\star\A_t\star \F_t^{n-1-k},
+}{ecuacion}\coordE{}\end{equation}
+would do the job. Notice that the result we have obtained is the naive 
+\myHighlight{$\star$}\coordHE{}-deformation of the ordinary expression without symmetrization.
+
+\section{Currents and gauge transformations}
+
+In this section we shall study the behaviour under gauge transformations 
+of the consistent and covariant dual currents --\myHighlight{$\cJ^{(con)}$}\coordHE{} and
+\myHighlight{$\cJ^{(cov)}$}\coordHE{} in eq.~(\ref{dualcurrents}), respectively. We shall employ the
+techniques of ref.~\cite{Alvarez-Gaume:1985dr} and show that, when
+there is an anomaly, the following equation does not hold
+\begin{displaymath}\coord{}\boxMath{
+s\,\cJ^{(con)}\,=\,[\C,\cJ^{(con)}],
+}{corchetes}{0pt}\coordE{}\end{displaymath} 
+but the following equation does
+\begin{equation}\coord{}\boxEquation{
+s\,\cJ^{(cov)}\,=\,[\C,\cJ^{(cov)}].
+\label{covlaw}
+}{
+s\,\cJ^{(cov)}\,=\,[\C,\cJ^{(cov)}].
+}{ecuacion}\coordE{}\end{equation}
+
+ The consistent current is obtained from the effective action \myHighlight{$\W[\A]$}\coordHE{} by
+functional differentiation of the latter, ie,
+\begin{displaymath}\coord{}\boxMath{
+\delta\,\W[\A]\,=\,\int\,{\rm Tr}\,\delta\A\, \star\,\cJ^{(con)}.
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+The operator \myHighlight{$\delta$}\coordHE{} is given by \myHighlight{$\int\,\delta\A\star\frac{\delta}{\delta\A}$}\coordHE{}.
+The BRST variation of infinitesimal one-form \myHighlight{$\delta\A$}\coordHE{} is defined to be
+\myHighlight{$s\,\delta\A\,=\,[\delta\A,\C]$}\coordHE{}. It can be readily seen that 
+\myHighlight{$s\delta=\delta s$}\coordHE{}.
+We next introduce the anti-derivation \myHighlight{$l$}\coordHE{} as follows
+\myHighlight{$l\A\,=\,0$}\coordHE{}, \myHighlight{$l\F\,=\,\delta\A.$}\coordHE{} It can be shown that 
+\myHighlight{$l\,d\,+\,d\,l\,=\,\delta$}\coordHE{}, on the space of polynomials of \myHighlight{$\A$}\coordHE{} and \myHighlight{$\F$}\coordHE{} 
+with respect to the Moyal product. 
+
+The consistent form of the gauge anomaly equation runs thus in terms 
+of \myHighlight{$\W[\A]$}\coordHE{}:
+\begin{displaymath}\coord{}\boxMath{
+s\W[\A]\,=\,\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\, \cQ^{1}_{\;\,2n}
+\,(\C,\A,\F).  
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+\myHighlight{$\cQ^{1}_{\;\,2n}\,(\C,\A,\F)$}\coordHE{} is given in eq.~(\ref{Qform}).  
+Acting with \myHighlight{$\delta$}\coordHE{} on both sides of the previous equation, one obtains
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{l}
+{\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\, \delta\,\cQ^{1}_{\;\,2n}
+\,(\C,\A,\F)\,=\,\delta\,s\W[\A]\,=\,s\,\delta\W[\A]
+\,=\,s\,\int\,{\rm Tr}\,\delta\A\, \star\,\cJ^{(con)}}\\[9pt]
+{\phantom{\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\, \delta\,\cQ^{1}_{\;\,2n}}
+\,=\,s\,\int\,{\rm Tr}\,\delta\A\, \star\,\cJ^{(con)}
+   \,=\,-\int\,{\rm Tr}\,\delta\A\star\big\{s\cJ^{(con)}\,-\,
+[\C,\cJ^{(con)}]
+\big\}.}\\[9pt]
+\end{array}
+\label{lackofcovar}
+}{
+\begin{array}{l}
+{\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\, \delta\,\cQ^{1}_{\;\,2n}
+\,(\C,\A,\F)\,=\,\delta\,s\W[\A]\,=\,s\,\delta\W[\A]
+\,=\,s\,\int\,{\rm Tr}\,\delta\A\, \star\,\cJ^{(con)}}\\[9pt]
+{\phantom{\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\, \delta\,\cQ^{1}_{\;\,2n}}
+\,=\,s\,\int\,{\rm Tr}\,\delta\A\, \star\,\cJ^{(con)}
+   \,=\,-\int\,{\rm Tr}\,\delta\A\star\big\{s\cJ^{(con)}\,-\,
+[\C,\cJ^{(con)}]
+\big\}.}\\[9pt]
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+Hence, the existence of the gauge anomaly 
+--\myHighlight{$\cQ^{1}_{\;\,2n}\,(\C,\A,\F)$}\coordHE{} does not vanish-- prevents \myHighlight{$\cJ^{(con)}$}\coordHE{} 
+from transforming covariantly. Notice that eq.~(\ref{lackofcovar}) tell us 
+that the behaviour of \myHighlight{$\cJ^{(con)}$}\coordHE{} under gauge transformations is given  
+by the anomaly. 
+
+Let us finally show that the covariant current, \myHighlight{$\cJ^{(cov)}$}\coordHE{}, obtained 
+by subtracting \myHighlight{$\cX$}\coordHE{} in eq.~(\ref{ValueofX}) from \myHighlight{$\cJ^{(con)}$}\coordHE{}, deserves that 
+name indeed, ie, it satisfies eq.~(\ref{covlaw}). In view of 
+eq.~(\ref{lackofcovar}), we just have to show that
+\begin{displaymath}\coord{}\boxMath{
+\int\,{\rm Tr}\,\delta\A\star\big\{-s\cX\,+\,
+[\C,\cX]\big\}\,=\,
+\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\, \delta\,\cQ^{1}_{\;\,2n},
+\,(\C,\A,\F).
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+with \myHighlight{$\cX$}\coordHE{} given in eq.~(\ref{Xform}). Taking into account the (graded) 
+cyclicity of \myHighlight{$\int\,{\rm Tr}\, E_{k_1}\star\cdots E_{k_n}$}\coordHE{}, and 
+that \myHighlight{$t\delta\A=l\,\F_t$}\coordHE{} and that \myHighlight{$l\,\F_t^n = \sum_{k=0}^{n}\,
+\F_t^{n-1-k}\star l\F_t\star\F_t^k$}\coordHE{}, with \myHighlight{$\F_t\,=\,d\A_t\,+\,\A_t^2$}\coordHE{}; 
+one shows that  
+\begin{displaymath}\coord{}\boxMath{
+\begin{array}{l}
+{\int\,{\rm Tr}\,\delta\A\star\big\{-s\cX\,+\,
+[\C,\cX]\big\}\,=\,s\int\,{\rm Tr}\,\delta\A\star\cX}\\[9pt]
+{\phantom{-\int\,{\rm Tr}\,\delta\A\star\big\{s\cX\,-\,
+[\C,\cX]\big\}} -\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\,s\,l\,\big\{(n+1)\,
+\int_{0}^{1}\,dt\;{\rm Tr} \A\star\F_t^n\;\big\}.}\\[9pt]
+\end{array}
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+It is plain that 
+\begin{displaymath}\coord{}\boxMath{
+\int\,s\,l\,\big\{(n+1)\,
+\int_{0}^{1}\,dt\;{\rm Tr} \A\star\F_t^n\;\big\}\,=\,
+\int\,s\,l\,\big\{(n+1)\,
+\int_{0}^{1}\,dt\;\bracl{\rm Tr} \A\star\F_t^n\bracr\;\big\}.
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+Now, the descent equation formalism of ref.~\cite{Bonora:2000he} leads to  
+\myHighlight{$s\cQ^{0}_{\;\,2n+1}\,(\A,\F)\,=\,d\cQ^{1}_{\;\,2n}\,(\C,\A,\F)$}\coordHE{}
+where \myHighlight{$\cQ^{0}_{\;\,2n+1}\,(\A,\F)\,=\,(n+1)\,
+\int_{0}^{1}\,dt\;\bracl{\rm Tr} \A\star\F_t^n\bracr$}\coordHE{} and \myHighlight{$\cQ^{1}_{\;\,2n}\,(\C,\A,\F)$}\coordHE{} is given in eq.~(\ref{Qform}). Putting it all together, we get 
+\begin{displaymath}\coord{}\boxMath{
+\begin{array}{l}
+{\int\,{\rm Tr}\,\delta\A\star\big\{-s\cX\,+\,
+[\C,\cX]\big\}\,=\,
+-\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\,s\,l\,\cQ^{0}_{\;\,2n+1}\,(\A,\F)
+\,=\,}\\[9pt]
+{\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\,l\,s\,\cQ^{0}_{\;\,2n+1}\,(\A,\F)
+\,=\,\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\,l\,
+d\,\cQ^{1}_{\;\,2n}\,(\C,\A,\F)\,=\,}\\[9pt]
+{\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\,(-dl\,+\,\delta)
+\,\cQ^{1}_{\;\,2n}\,(\C,\A,\F)
+\,=\,
+\frac{i^n}{(2\pi)^n\,(n+1)!}\,\int\,\delta
+\,\cQ^{1}_{\;\,2n}\,(\C,\A,\F).}\\[9pt]
+\end{array}
+}{corchetes}{0pt}\coordE{}\end{displaymath}
+
+
+\section{Conclusions}
+
+In this paper we have considered the noncommutative gauge anomaly for \myHighlight{$U(N)$}\coordHE{} 
+gauge groups.
+We have shown that the covariant form of gauge anomaly on noncommutative
+\myHighlight{$\RR^{2n}$}\coordHE{} can be understood as the lack of invariance of the 
+fermionic measure under chiral gauge transformations of the fermion fields. 
+This lack of invariance is given by a non-trivial Jacobian, which when
+defined by using an appropriate regularization  yields the covariant form 
+of the anomaly. By using these path integral techniques, we have finally 
+computed the convariant form of the gauge anomaly on \myHighlight{$\RR^{2n}$}\coordHE{} to show 
+that it is given by a \myHighlight{$\star$}\coordHE{}-polynomial of the gauge field strength.
+The covariant form of the gauge anomaly on even dimensional space is thus 
+seen to be given by an appropriate \myHighlight{$\star$}\coordHE{}-deformation of the ordinary 
+expression.   
+
+We have  proved that one can trade the covariant form of the gauge
+anomaly for the consistent one by adding to the covariant current a
+\myHighlight{$\star$}\coordHE{}-polynomial of the gauge field and the gauge field strength.
+We have computed this polynomial explicitly.
+Gauge anomalies are thus given by local expressions in the sense of 
+noncommutative geometry --of course, these expressions are non-local from 
+the ordinary quantum field theory point of view. 
+
+We have seen that the gauge transformation properties of the consistent 
+current are given by the consistent form of the gauge the anomaly. The 
+existence of the gauge anomaly  prevents 
+the consistent current from transforming covariantly, but allows  
+the covariant current to  transform covariantly under 
+gauge transformations of the gauge field.      
+
+
+It is worth stressing that in the course of our path integral computations 
+ we have proved that on noncommutative \myHighlight{$\RR^{2n}$}\coordHE{} the covariant form 
+of the gauge anomaly for bi-fundamental  
+chiral matter  carries no mixed anomaly. For the noncommutative 
+theory, the absence of these mixed anomalies is interpreted 
+--see ref.~\cite{Intriligator:2001yu}  for an 
+interpretation in terms of the Green-Schwarz mechanism-- as a consequence 
+of the half-dipole structure~\cite{Alvarez-Gaume:2001bv} which is 
+characteristic of the noncommutative charged fields. 
+From the covariant form of the gauge anomaly for bi-fundamental chiral matter,
+one readily obtains the covariant form of the anomaly form adjoint chiral 
+fermions. If \myHighlight{$D$}\coordHE{} denotes the espace dimension, our results -for adjoint chiral right-handed fermion in the continuum-- run thus: there is no anomaly at \myHighlight{$D=4m$}\coordHE{}; at \myHighlight{$D=4m+2$}\coordHE{}, the anomaly is \myHighlight{$2N$}\coordHE{} times the fundamental anomaly. Interestingly enough one can formulate such theories on the lattice in an anomaly 
+free manner for any even integer \myHighlight{$D$}\coordHE{}~\cite{Nishimura:2001dq}. 
+
+It is an interesting task to try to extend the results presented here to 
+groups  other than the \myHighlight{$U(N)$}\coordHE{} groups. New techniques and ideas such us the 
+ones introduced in refs.~\cite{Bonora:2000td, Jurco:2001rq} will be 
+unavoidably needed, if one is to succeed. 
+
+Finally, as we were writing the closing sentences in this paper, we 
+became aware of ref.~\cite{Bonora:2001fa}. The results discussed above are
+in complete harmony with the results presented in this last reference.
+
+\begin{thebibliography}{99}
+
+
+\bibitem{Douglas:2001ba}
+M.~R.~Douglas and N.~A.~Nekrasov,
+``Noncommutative field theory,''
+[arXiv:hep-th/0106048].
+%%CITATION = HEP-TH 0106048;%%
+
+\bibitem{Szabo:2001kg}
+R.~J.~Szabo,
+``Quantum field theory on noncommutative spaces,''
+[arXiv:hep-th/0109162].
+%%CITATION = HEP-TH 0109162;%%
+
+
+\bibitem{Riad:2000vy}
+I.~F.~Riad and M.~M.~Sheikh-Jabbari,
+JHEP {\bf 0008} (2000) 045
+[arXiv:hep-th/0008132].
+%%CITATION = HEP-TH 0008132;%%
+
+
+\bibitem{Arfaei:2000kh}
+H.~Arfaei and M.~H.~Yavartanoo,
+``Phenomenological consequences of non-commutative QED,''
+[arXiv:hep-th/0010244].
+%%CITATION = HEP-TH 0010244;%%
+
+\bibitem{Hewett:2001zp}
+J.~L.~Hewett, F.~J.~Petriello and T.~G.~Rizzo,
+Phys.\ Rev.\ D {\bf 64} (2001) 075012
+[arXiv:hep-ph/0010354].
+%%CITATION = HEP-PH 0010354;%%
+
+\bibitem{Mathews:2001we}
+P.~Mathews,
+Phys.\ Rev.\ D {\bf 63} (2001) 075007
+[arXiv:hep-ph/0011332].
+%%CITATION = HEP-PH 0011332;%%
+
+
+
+\bibitem{Baek:2001ty}
+S.~Baek, D.~K.~Ghosh, X.~He and W.~Y.~Hwang,
+Phys.\ Rev.\ D {\bf 64} (2001) 056001
+[arXiv:hep-ph/0103068].
+%%CITATION = HEP-PH 0103068;%%
+
+\bibitem{Grosse:2001ei}
+H.~Grosse and Y.~Liao,
+``Anomalous C-violating three photon decay of the neutral pion in  noncommutative quantum electrodynamics,''
+[arXiv:hep-ph/0104260].
+%%CITATION = HEP-PH 0104260;%%
+
+
+\bibitem{Grosse:2001xz}
+H.~Grosse and Y.~Liao,
+``Pair production of neutral Higgs bosons through noncommutative QED  interactions at linear colliders,''
+[arXiv:hep-ph/0105090].
+%%CITATION = HEP-PH 0105090;%%
+
+
+
+\bibitem{Chaichian:2001py}
+M.~Chaichian, P.~Presnajder, M.~M.~Sheikh-Jabbari and A.~Tureanu,
+``Noncommutative standard model: Model building,''
+[arXiv:hep-th/0107055].
+%%CITATION = HEP-TH 0107055;%%
+
+
+\bibitem{Wang:2001ig}
+X.~Wang and M.~Yan,
+``Noncommutative QED and muon anomalous magnetic moment,''
+[arXiv:hep-th/0109095].
+%%CITATION = HEP-TH 0109095;%%
+
+
+
+
+\bibitem{Connes:1994}
+A.~Connes,
+``Noncommutative geometry,''
+{\it  Academic Press (1994) 661 p}.
+
+\bibitem{Madore:1999}
+J.~Madore,
+``An introduction to nomcommutative geometry and its applications,''
+{\it  Cambridge University Press (1999) }.
+
+
+\bibitem{Landi:1997sh}
+G.~Landi,
+``An introduction to noncommutative spaces and their geometry,''
+[arXiv:hep-th/9701078].
+%%CITATION = HEP-TH 9701078;%%
+
+\bibitem{Gracia-Bondia:2001tr}
+J.~M.~Gracia-Bondia, J.~C.~Varilly and H.~Figueroa,
+``Elements of noncommutative geometry,''
+{\it  Boston, USA: Birkhaeuser (2001) 685 p}.
+
+
+\bibitem{Nakajima:2001uh}
+T.~Nakajima,
+``Conformal anomalies in noncommutative gauge theories,''
+[arXiv:hep-th/0108158].
+%%CITATION = HEP-TH 0108158;%%
+
+
+
+
+\bibitem{Alvarez-Gaume:1984cs}
+L.~Alvarez-Gaume and P.~Ginsparg,
+Nucl.\ Phys.\ B {\bf 243} (1984) 449.
+%%CITATION = NUPHA,B243,449;%%
+
+\bibitem{Fujikawa:1984bg}
+K.~Fujikawa,
+Phys.\ Rev.\ D {\bf 29} (1984) 285.
+%%CITATION = PHRVA,D29,285;%%
+
+\bibitem{Bardeen:1984pm}
+W.~A.~Bardeen and B.~Zumino,
+Nucl.\ Phys.\ B {\bf 244} (1984) 421.
+%%CITATION = NUPHA,B244,421;%%
+
+\bibitem{Alvarez-Gaume:1985dr}
+L.~Alvarez-Gaume and P.~Ginsparg,
+Annals Phys.\  {\bf 161} (1985) 423
+[Erratum-ibid.\  {\bf 171} (1985) 233].
+%%CITATION = APNYA,161,423;%%
+
+\bibitem{Fujikawa:1985pt}
+K.~Fujikawa,
+Phys.\ Rev.\ D {\bf 31} (1985) 341.
+%%CITATION = PHRVA,D31,341;%%
+
+\bibitem{Banerjee:1986bu}
+H.~Banerjee, R.~Banerjee and P.~Mitra,
+Z.\ Phys.\ C {\bf 32} (1986) 445.
+%%CITATION = ZEPYA,C32,445;%%
+
+\bibitem{Banerjee:1999up}
+H.~Banerjee,
+``Chiral anomalies in field theories,''
+[arXiv:hep-th/9907162].
+%%CITATION = HEP-TH 9907162;%%
+
+\bibitem{Wess:1971yu}
+J.~Wess and B.~Zumino,
+Phys.\ Lett.\ B {\bf 37} (1971) 95.
+%%CITATION = PHLTA,B37,95;%%
+
+
+\bibitem{Gracia-Bondia:2000pz}
+J.~M.~Gracia-Bondia and C.~P.~Martin,
+Phys.\ Lett.\ B {\bf 479} (2000) 321
+[arXiv:hep-th/0002171].
+%%CITATION = HEP-TH 0002171;%%
+
+\bibitem{Bonora:2000he}
+L.~Bonora, M.~Schnabl and A.~Tomasiello,
+Phys.\ Lett.\ B {\bf 485} (2000) 311
+[arXiv:hep-th/0002210].
+%%CITATION = HEP-TH 0002210;%%
+
+\bibitem{Grisaru:2001sk}
+M.~T.~Grisaru and S.~Penati,
+Phys.\ Lett.\ B {\bf 504} (2001) 89
+[arXiv:hep-th/0010177].
+%%CITATION = HEP-TH 0010177;%%
+
+\bibitem{Langmann:1995ub}
+E.~Langmann,
+``On Anomalies and noncommutative geometry,''
+[arXiv:hep-th/9507088].
+%%CITATION = HEP-TH 9507088;%%
+
+\bibitem{Perrot:1999vc}
+D.~Perrot,
+Lett.\ Math.\ Phys.\  {\bf 50} (1999) 135
+[arXiv:math-ph/9910044].
+%%CITATION = MATH-PH 9910044;%%
+
+\bibitem{Harvey:2001pd}
+J.~A.~Harvey,
+``Topology of the gauge group in noncommutative gauge theory,''
+[arXiv:hep-th/0105242].
+%%CITATION = HEP-TH 0105242;%%
+
+\bibitem{Ardalan:2001cy}
+F.~Ardalan and N.~Sadooghi,
+Int.\ J.\ Mod.\ Phys.\ A {\bf 16} (2001) 3151
+[arXiv:hep-th/0002143].
+%%CITATION = HEP-TH 0002143;%%
+
+\bibitem{Ardalan:2000qk}
+F.~Ardalan and N.~Sadooghi,
+``Anomaly and nonplanar diagrams in noncommutative gauge theories,''
+[arXiv:hep-th/0009233].
+%%CITATION = HEP-TH 0009233;%%
+
+\bibitem{Martin:2001wc}
+C.~P.~Martin,
+Mod.\ Phys.\ Lett.\ A {\bf 16} (2001) 311
+[arXiv:hep-th/0102066].
+%%CITATION = HEP-TH 0102066;%%
+
+\bibitem{Gomis:2000zz}
+J.~Gomis and T.~Mehen,
+Nucl.\ Phys.\ B {\bf 591} (2000) 265
+[arXiv:hep-th/0005129].
+%%CITATION = HEP-TH 0005129;%%
+
+\bibitem{Aharony:2000gz}
+O.~Aharony, J.~Gomis and T.~Mehen,
+JHEP {\bf 0009} (2000) 023
+[arXiv:hep-th/0006236].
+%%CITATION = HEP-TH 0006236;%%
+
+
+\bibitem{Alvarez-Gaume:2001ka}
+L.~Alvarez-Gaume, J.~L.~Barbon and R.~Zwicky,
+JHEP {\bf 0105} (2001) 057
+[arXiv:hep-th/0103069].
+%%CITATION = HEP-TH 0103069;%%
+
+\bibitem{Bassetto:2001vf}
+A.~Bassetto, L.~Griguolo, G.~Nardelli and F.~Vian,
+JHEP {\bf 0107} (2001) 008
+[arXiv:hep-th/0105257].
+%%CITATION = HEP-TH 0105257;%%
+
+\bibitem{Terashima:2000xq}
+S.~Terashima,
+Phys.\ Lett.\ B {\bf 482} (2000) 276
+[arXiv:hep-th/0002119].
+%%CITATION = HEP-TH 0002119;%%
+
+
+
+\bibitem{Minwalla:2000px}
+S.~Minwalla, M.~Van Raamsdonk and N.~Seiberg,
+JHEP {\bf 0002} (2000) 020
+[arXiv:hep-th/9912072].
+%%CITATION = HEP-TH 9912072;%%
+
+
+\bibitem{Martin:2000qf}
+C.~P.~Martin,
+``The UV and IR origin of non-Abelian chiral gauge anomalies on  noncommutative Minkowski space-time,''
+[arXiv:hep-th/0008126].
+%%CITATION = HEP-TH 0008126;%%
+
+
+\bibitem{Intriligator:2001yu}
+K.~Intriligator and J.~Kumar,
+``*-wars episode I: The phantom anomaly,''
+[arXiv:hep-th/0107199].
+%%CITATION = HEP-TH 0107199;%%
+
+\bibitem{Sheikh-Jabbari:1999vm}
+M.~M.~Sheikh-Jabbari,
+Phys.\ Lett.\ B {\bf 455} (1999) 129
+[arXiv:hep-th/9901080].
+%%CITATION = HEP-TH 9901080;%%
+
+\bibitem{Bigatti:2000iz}
+D.~Bigatti and L.~Susskind,
+Phys.\ Rev.\ D {\bf 62} (2000) 066004
+[arXiv:hep-th/9908056].
+%%CITATION = HEP-TH 9908056;%%
+
+
+\bibitem{Alvarez-Gaume:2001bv}
+L.~Alvarez-Gaume and J.~L.~Barbon,
+Int.\ J.\ Mod.\ Phys.\ A {\bf 16} (2001) 1123
+[arXiv:hep-th/0006209].
+%%CITATION = HEP-TH 0006209;%%
+
+
+
+
+
+
+
+\bibitem{Nishimura:2001dq}
+J.~Nishimura and M.~A.~Vazquez-Mozo,
+JHEP {\bf 0108} (2001) 033
+[arXiv:hep-th/0107110].
+%%CITATION = HEP-TH 0107110;%%
+
+
+
+
+
+\bibitem{Bonora:2000td}
+L.~Bonora, M.~Schnabl, M.~M.~Sheikh-Jabbari and A.~Tomasiello,
+Nucl.\ Phys.\ B {\bf 589}, 461 (2000)
+[arXiv:hep-th/0006091].
+%%CITATION = HEP-TH 0006091;%%
+
+
+\bibitem{Jurco:2001rq}
+B.~Jurco, L.~Moller, S.~Schraml, P.~Schupp and J.~Wess,
+Eur.\ Phys.\ J.\ C {\bf 21} (2001) 383
+[arXiv:hep-th/0104153].
+%%CITATION = HEP-TH 0104153;%%
+
+\bibitem{Bonora:2001fa}
+L.~Bonora and A.~Sorin,
+``Chiral anomalies in noncommutative YM theories,''
+[arXiv:hep-th/0109204].
+%%CITATION = HEP-TH 0109204;%%
+
+
+
+
+
+\end{thebibliography}
+
+
+\end{document}
+
+
+\bye

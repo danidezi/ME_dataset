@@ -1,0 +1,987 @@
+
+\documentclass[a4paper,a4paper]{article}
+
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amscd}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{dfn}[thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+
+\providecommand{\Z}{\mathbb{Z}}
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\C}{\mathbb{C}}
+\providecommand{\T}{\mathbb{T}}
+
+\providecommand{\g}{\mathfrak{g}}
+\providecommand{\A}{\mathcal{A}}
+\providecommand{\B}{\mathcal{B}}
+\providecommand{\sC}{\mathcal{C}}
+\providecommand{\D}{\mathcal{D}}
+\providecommand{\G}{\mathcal{G}}
+\providecommand{\sT}{\mathcal{T}}
+\providecommand{\Tr}{\mathrm{Tr}}
+\providecommand{\Id}{\mathrm{Id}}
+\providecommand{\hq}{\widehat{q}}
+\renewcommand{\S}{\mathcal{S}}
+
+\def\h#1{ \widehat{#1} }
+\def\M#1{ \mathrm{Map}({#1},G) } 
+
+
+
+\title{Gerbes in classical Chern-Simons theory}
+
+\author{Kiyonori Gomi
+\thanks{The author's research is supported by Research Fellowship of the Japan Society for the Promotion of Science for Young Scientists.}}
+
+\date{}
+
+
+\usepackage{useful_macros}
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We construct geometrically a gerbe assigned to a connection on a principal \myHighlight{$SU(2)$}\coordHE{}-bundle over a closed oriented 1-dimensional manifold. If the connection is given by the restriction of a connection on a bundle over a compact 2-manifold bounding the 1-manifold, then we have a natural object in the gerbe. The gerbes and the objects satisfy certain fundamental properties, e.g.\ gluing law. 
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+It is well known that the value of the Chern-Simons action functional (CS action) \cite{F1, R-S-W, W} of a connection \myHighlight{$A$}\coordHE{} on a principal \myHighlight{$SU(2)$}\coordHE{}-bundle \myHighlight{$P$}\coordHE{} over a closed oriented 3-manifold \myHighlight{$M$}\coordHE{} is well-defined as a complex number of unit norm: \myHighlight{$e^{2\pi\sqrt{-1} S_M(A)} \in \T$}\coordHE{}. For a principal bundle \myHighlight{$Q$}\coordHE{} over a closed oriented 2-manifold \myHighlight{$\Sigma$}\coordHE{}, there exists a Hermitian line bundle over the space of connections on \myHighlight{$Q$}\coordHE{}. We call the line bundle Chern-Simons line bundle and denote the unit norm elements of the fiber at a connection \myHighlight{$a$}\coordHE{} by \myHighlight{$T_Q(a)$}\coordHE{}. This set admits a simply transitive action of \myHighlight{$\T$}\coordHE{} and is so-called a \textit{principal \myHighlight{$\T$}\coordHE{}-space}, or a \textit{\myHighlight{$\T$}\coordHE{}-torsor}. If the 3-manifold \myHighlight{$M$}\coordHE{} has boundary, then the value of the CS action depends on a certain boundary condition. Hence the CS action is defined as \myHighlight{$e^{2\pi\sqrt{-1} S_M(A)} \in T_{\partial P}(\partial A)$}\coordHE{}. The CS action and the CS line bundle (or \myHighlight{$\T$}\coordHE{}-torsor \myHighlight{$T_Q(a)$}\coordHE{}) satisfy certain fundamental properties \cite{F1, F2} which are the classical counterpart of the axioms of the Topological Quantum Field Theory \cite{A}. In particular, we can compute the CS action with \myHighlight{$\partial M = \emptyset$}\coordHE{} from the CS action with \myHighlight{$\partial M \neq \emptyset$}\coordHE{}.
+
+For a 2-manifold with boundary we cannot define the CS line bundle without any choice of a certain boundary condition \cite{F1}. This is similar to the definition of the CS action for a 3-manifold with boundary. According to Freed \cite{F2}, these phenomena arise in all dimensions and are described by using higher analogue of principal homogeneous spaces. For a closed 2-manifold we already have the \myHighlight{$\T$}\coordHE{}-torsor \myHighlight{$T_Q(a)$}\coordHE{} assigned to each connection on \myHighlight{$Q$}\coordHE{}. For a closed 1-manifold a sort of category called a \textit{\myHighlight{$\T$}\coordHE{}-gerbe} \cite{F2} appears. Let \myHighlight{$\sT$}\coordHE{} be the category of \myHighlight{$\T$}\coordHE{}-torsors. The category has an abelian group-like structure (Proposition \ref{prop_agls_torsors}). A category on which \myHighlight{$\sT$}\coordHE{} acts simply transitively in the categorical sense is called a \myHighlight{$\T$}\coordHE{}-gerbe (see Section \ref{la_intro_gerbe}). 
+
+In the case of Chern-Simons theory with a finite structure group, the \myHighlight{$\T$}\coordHE{}-gerbes associated with closed 1-manifolds are given by a certain integration theory of cocycles \cite{F2}. In the case of Chern-Simons theory with a continuous structure group, a construction of the \myHighlight{$\T$}\coordHE{}-gerbes is proposed extending the integration theory \cite{F3, F4}. The purpose of this paper is a geometric construction of the \myHighlight{$\T$}\coordHE{}-gerbes. We only consider the case that the structure group \myHighlight{$G$}\coordHE{} is \myHighlight{$SU(2)$}\coordHE{}, since we can easily generalize the construction to the case that \myHighlight{$G$}\coordHE{} is a simple, simply connected, connected, compact Lie group.
+
+Here we briefly explain the construction. Let \myHighlight{$S$}\coordHE{} be a closed oriented 1-manifold (disjoint union of unparameterized circles), and \myHighlight{$R$}\coordHE{} a principal bundle over \myHighlight{$S$}\coordHE{} whose structure group is \myHighlight{$G = SU(2)$}\coordHE{}. We denote the space of connections on \myHighlight{$R$}\coordHE{} by \myHighlight{$\A_R$}\coordHE{}, the space of sections of \myHighlight{$R$}\coordHE{} by \myHighlight{$\S_R$}\coordHE{}, and the loop group \cite{P-S} by \myHighlight{$\G_S = \M{S}$}\coordHE{}. Because \myHighlight{$\G_S$}\coordHE{} acts on \myHighlight{$\S_R$}\coordHE{} by the pointwise product, we have a (trivial) \myHighlight{$\G_S$}\coordHE{}-bundle \myHighlight{$B_R = \A_R \times \S_R$}\coordHE{} on \myHighlight{$\A_R$}\coordHE{}. We denote by \myHighlight{$B_R(a)$}\coordHE{} the fiber at \myHighlight{$a \in \A_R$}\coordHE{}. Obviously \myHighlight{$B_R(a)$}\coordHE{} admits a simply transitive action of \myHighlight{$\G_S$}\coordHE{}, and is a \myHighlight{$\G_S$}\coordHE{}-torsor. Using the method of Mickelsson \cite{Mi} we can construct a central extension of \myHighlight{$\G_S$}\coordHE{} by \myHighlight{$\T$}\coordHE{}  $$\coord{}\boxMath{
+\begin{CD}
+1 @>>> \T @>>> \h{\G}_S @>>> \G_S @>>> 1.
+\end{CD}
+}{dollar}{0pt}\coordE{}$$
+For this central extension a \textit{lifting} of \myHighlight{$B_R(a)$}\coordHE{} is a pair \myHighlight{$(\h{B}, \hq)$}\coordHE{}, where \myHighlight{$\h{B}$}\coordHE{} is a manifold with a simply transitive \myHighlight{$\h{\G}_S$}\coordHE{}-action (i.e.\ \myHighlight{$\h{\G}_S$}\coordHE{}-torsor) and \myHighlight{$\hq : \h{B} \to B_R(a)$}\coordHE{} is an equivariant map under the actions of the groups. The category \myHighlight{$\B_R(a)$}\coordHE{} of liftings of \myHighlight{$B_R(a)$}\coordHE{} admits an action of \myHighlight{$\sT$}\coordHE{} and we have a \myHighlight{$\T$}\coordHE{}-gerbe assigned to each connection \myHighlight{$a \in \A_R$}\coordHE{}. We can regard \myHighlight{$\B_R(a)$}\coordHE{} as the category of liftings of the structure group of the bundle \myHighlight{$B_R(a) \to \{a\}$}\coordHE{} to the central extension. Moreover we construct a lifting \myHighlight{$\h{B}_Q(A) \in \textrm{Obj}(\B_{\partial Q}(\partial A))$}\coordHE{} assigned to a connection \myHighlight{$A$}\coordHE{} on a bundle \myHighlight{$Q$}\coordHE{} over a 2-manifold \myHighlight{$\Sigma$}\coordHE{} with boundary. As is also indicated in \cite{F2}, the \myHighlight{$\T$}\coordHE{}-gerbes and the liftings satisfy the fundamental properties (Theorem \ref{thm_axiom_CSgerbe}) such as gluing law.
+
+We remark that the description of gerbes in this paper is \textit{local}. As the CS line bundle corresponding to \myHighlight{$T_Q(a)$}\coordHE{} is defined over \myHighlight{$\A_Q$}\coordHE{}, there exists a global geometric object over \myHighlight{$\A_R$}\coordHE{} corresponding to \myHighlight{$\B_R(a)$}\coordHE{}. Such a geometric object is described as a \textit{Dixmier-Douady sheaf of groupoids} or a \textit{DD gerbe} \cite{Br1,Br2}, and will be observed in the forthcoming paper \cite{Go}.
+
+\medskip
+
+This paper is organized as follows. In Section \ref{la_CSaction_CSlinebundle} we recall the CS action and the CS line bundle. In Section \ref{la_WZ_ce} we study the Wess-Zumino term and the construction of the central extensions of loop groups. The construction is essential to the main properties of the \myHighlight{$\T$}\coordHE{}-gerbes and the liftings. In Section \ref{la_intro_gerbe} we introduce \myHighlight{$\T$}\coordHE{}-torsors and \myHighlight{$\T$}\coordHE{}-gerbes. In Section \ref{la_lifting_gerbe} we define a \myHighlight{$\T$}\coordHE{}-gerbe associated with liftings. We observe the correspondence between the operations on liftings and that on \myHighlight{$\T$}\coordHE{}-gerbes. In Section \ref{la_results} we state the main results of this paper. We define the \myHighlight{$\T$}\coordHE{}-gerbe \myHighlight{$\B_R(a)$}\coordHE{} and the lifting \myHighlight{$\h{B}_Q(A)$}\coordHE{}. The fundamental properties are proved here.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The Chern-Simons action functional and the Chern-Simons line bundle}
+\label{la_CSaction_CSlinebundle}
+
+We recall the Chern-Simons action and the Chern-Simons line bundle \cite{F1, R-S-W, W}. 
+
+\smallskip
+
+In this paper \myHighlight{$G$}\coordHE{} represents \myHighlight{$SU(2)$}\coordHE{} otherwise stated. Let \myHighlight{$M$}\coordHE{} be a compact oriented smooth 3-manifold, and \myHighlight{$\pi : P \to M$}\coordHE{} a smooth principal \myHighlight{$G$}\coordHE{}-bundle. We denote the space of smooth connections on \myHighlight{$P$}\coordHE{} by \myHighlight{$\A_P$}\coordHE{} and the space of smooth sections of \myHighlight{$P$}\coordHE{} by \myHighlight{$\S_P$}\coordHE{}. Because any \myHighlight{$SU(2)$}\coordHE{}-bundle over a compact manifold whose dimension is less than 4 is topologically trivial, \myHighlight{$\S_P$}\coordHE{} is not empty. The space of smooth maps \myHighlight{$\G_M = \M{M}$}\coordHE{} is a Lie group by the pointwise product and acts on \myHighlight{$\S_P$}\coordHE{} by \myHighlight{$s \mapsto s \cdot g$}\coordHE{}. We fix an integer \myHighlight{$k$}\coordHE{} throughout this paper.
+
+\begin{lem}
+For \myHighlight{$A \in \A_P$}\coordHE{} and \myHighlight{$s \in \S_P$}\coordHE{} we put
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\tilde{S}_M(A,s) = \frac{\leftCoord{}k}{\rightCoord{}8\pi^2} \int_M 
+s^* \Tr \left( A \wedge dA + \frac{\leftCoord{}2}{\rightCoord{}3} A \wedge A \wedge A \right) . \rightCoord{}
+\rightCoord{}}{0mm}{3}{5}{
+\tilde{S}_M(A,s) = \frac{k}{8\pi^2} \int_M 
+s^* \Tr \left( A \wedge dA + \frac{2}{3} A \wedge A \wedge A \right) . 
+}{1}\coordE{}\end{eqnarray}
+For \myHighlight{$g \in \G_M$}\coordHE{} we have
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{} 
+\tilde{S}_M(A,s \cdot g) - \tilde{S}_M(A,s) 
+&\leftCoord{}= & \rightCoord{} 
+\frac{\leftCoord{}k}{\rightCoord{}8\pi^2} \int_{\leftCoord{}\partial M} \Tr(s^*A \wedge dg g^{-1})
+\label{difference_CS} \rightCoord{}\\
+&\leftCoord{}- & \rightCoord{}
+\frac{\leftCoord{}k}{\rightCoord{}24\pi^2} \int_M \Tr(g^{-1}dg \wedge g^{-1}dg \wedge g^{-1}dg) .\rightCoord{}
+\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{6}{9}{ 
+\tilde{S}_M(A,s \cdot g) - \tilde{S}_M(A,s) 
+&= &  
+\frac{k}{8\pi^2} \int_{\partial M} \Tr(s^*A \wedge dg g^{-1})
+\\
+&- & 
+\frac{k}{24\pi^2} \int_M \Tr(g^{-1}dg \wedge g^{-1}dg \wedge g^{-1}dg) .
+}{1}\coordE{}\end{eqnarray}
+\end{lem}
+
+This lemma is checked by a direct calculation. If a 3-manifold \myHighlight{$M$}\coordHE{} is compact and has no boundary (closed), then the first term of the right hand side of (\ref{difference_CS}) vanishes and the second term is an integer. So we have the following.
+
+\begin{prop}
+Let \myHighlight{$M$}\coordHE{} be a closed oriented smooth 3-manifold. If we put \myHighlight{$\exp 2\pi \sqrt{-1} S_M(A) := \exp 2\pi \sqrt{-1} \tilde{S}_M (A,s)$}\coordHE{} for some \myHighlight{$s \in \S_P$}\coordHE{}, then the \textit{Chern-Simons action functional} (CS action) is well-defined as an element of the unit circle \myHighlight{$\T = \{ z \in \C |\ |z| = 1 \}$}\coordHE{}
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+e^{ 2\pi\sqrt{-1} S_M(A) } \in \T.\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+e^{ 2\pi\sqrt{-1} S_M(A) } \in \T.
+}{1}\coordE{}\end{eqnarray}
+\end{prop}
+
+In order to formulate the CS action in the case that a 3-manifold has boundary, we need a certain line bundle.
+
+\begin{lem}
+Let \myHighlight{$\Sigma$}\coordHE{} be a closed oriented smooth 2-manifold. 
+
+(a) For \myHighlight{$g \in \G_\Sigma$}\coordHE{} we define the \textit{Wess-Zumino term (WZ term)} by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+e^{ W_\Sigma(g) } = \exp \frac{\leftCoord{}k\sqrt{-1}}{\rightCoord{}12\pi} 
+\int_{\leftCoord{}\tilde{\Sigma}} \Tr( \tilde{g}^{-1} d\tilde{g} )^3 ,
+\label{WZ_closed}
+\rightCoord{}}{0mm}{3}{3}{
+e^{ W_\Sigma(g) } = \exp \frac{k\sqrt{-1}}{12\pi} 
+\int_{\tilde{\Sigma}} \Tr( \tilde{g}^{-1} d\tilde{g} )^3 ,
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$\tilde{\Sigma}$}\coordHE{} is a compact 3-manifold bounding \myHighlight{$\Sigma$}\coordHE{} and \myHighlight{$\tilde{g} \in \G_{\tilde{\Sigma}}$}\coordHE{} is an extension of \myHighlight{$g$}\coordHE{}. Then the WZ term satisfies the Polyakov-Wiegmann formula
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+e^{ W_\Sigma(g_1 g_2) } & = &
+\exp \Gamma_\Sigma(g_1,g_2) e^{ W_\Sigma(g_1) } e^{ W_\Sigma(g_2) } ,
+\label{PW-formula_1} \rightCoord{}\\\leftCoord{}
+\Gamma_\Sigma(g_1, g_2) & = &
+\leftCoord{}-\frac{\leftCoord{}k\sqrt{-1}}{\rightCoord{}4\pi} \int_\Sigma 
+\Tr( {g_1}^{-1}dg_1 \wedge dg_2 {g_2}^{-1}) .\rightCoord{}
+\label{cocycle_2}
+\rightCoord{}}{0mm}{4}{5}{
+e^{ W_\Sigma(g_1 g_2) } & = &
+\exp \Gamma_\Sigma(g_1,g_2) e^{ W_\Sigma(g_1) } e^{ W_\Sigma(g_2) } ,
+\\
+\Gamma_\Sigma(g_1, g_2) & = &
+-\frac{k\sqrt{-1}}{4\pi} \int_\Sigma 
+\Tr( {g_1}^{-1}dg_1 \wedge dg_2 {g_2}^{-1}) .
+}{1}\coordE{}\end{eqnarray}
+
+(b) For a smooth \myHighlight{$G$}\coordHE{}-bundle \myHighlight{$Q$}\coordHE{} over \myHighlight{$\Sigma$}\coordHE{} we define a function \myHighlight{$c_\Sigma : \A_Q \times \S_Q \times \G_\Sigma \to \T$}\coordHE{} by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+c_\Sigma(A,s,g) = 
+\exp \frac{\leftCoord{}k\sqrt{-1}}{\rightCoord{}4\pi} \int_\Sigma \Tr(s^*A \wedge dgg^{-1}) \cdot 
+\left( e^{W_\Sigma(g)} \right)^{-1} . \rightCoord{}\label{cocycle_1}
+\rightCoord{}}{0mm}{2}{4}{
+c_\Sigma(A,s,g) = 
+\exp \frac{k\sqrt{-1}}{4\pi} \int_\Sigma \Tr(s^*A \wedge dgg^{-1}) \cdot 
+\left( e^{W_\Sigma(g)} \right)^{-1} . }{1}\coordE{}\end{eqnarray}
+The function satisfies the following formula
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+c_\Sigma(A,s,g_1 g_2) = c_\Sigma(A,s \cdot g_1,g_2) c_\Sigma(A,s,g_1) .\rightCoord{}
+\label{cocycle_condition_1}
+\rightCoord{}}{0mm}{1}{3}{
+c_\Sigma(A,s,g_1 g_2) = c_\Sigma(A,s \cdot g_1,g_2) c_\Sigma(A,s,g_1) .
+}{1}\coordE{}\end{eqnarray}
+\end{lem}
+
+The WZ term (\ref{WZ_closed}) is independent of the choice of the bounding manifolds and the extensions. So it is well-defined as an element of \myHighlight{$\T$}\coordHE{}. A direct calculation establishes the above lemma.
+
+\begin{prop} \label{thm_cslinebundle}
+For a closed oriented smooth 2-manifold \myHighlight{$\Sigma$}\coordHE{} we define a quotient space 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+L_{(Q,\Sigma)} = \A_Q \times \S_Q \times \C / \sim 
+\rightCoord{}}{0mm}{1}{2}{
+L_{(Q,\Sigma)} = \A_Q \times \S_Q \times \C / \sim 
+}{1}\coordE{}\end{eqnarray}
+by \myHighlight{$(A, s, z) \sim (A, s \cdot g, c_\Sigma(A,s,g) z)$}\coordHE{} for \myHighlight{$g \in \G_\Sigma$}\coordHE{}. If we define a projection \myHighlight{$\Pi : L_{(Q,\Sigma)} \to \A_Q$}\coordHE{} by \myHighlight{$\Pi([A,s,z]) := A$}\coordHE{}, then we have a line bundle. Moreover the line bundle has a Hermitian structure defined by the standard one on \myHighlight{$\C$}\coordHE{}.
+\end{prop}
+
+\begin{proof}
+We can check the well-definedness of the equivalence relation using (\ref{cocycle_condition_1}). Because \myHighlight{$\G_\Sigma$}\coordHE{} freely acts on \myHighlight{$\S_Q$}\coordHE{}, \myHighlight{$L_{(Q, \Sigma)}$}\coordHE{} is indeed a line bundle. The function \myHighlight{$c_\Sigma$}\coordHE{} is \myHighlight{$\T$}\coordHE{}-valued, so the standard Hermitian structure on \myHighlight{$\C$}\coordHE{} defines that on \myHighlight{$L_\Sigma$}\coordHE{}.
+\end{proof}
+
+We call the line bundle the \textit{Chern-Simons line bundle}. We denote the set of unit norm elements of the fiber of \myHighlight{$L_{(Q, \Sigma)}$}\coordHE{} at \myHighlight{$a$}\coordHE{} by \myHighlight{$T_{(Q, \Sigma)}(a)$}\coordHE{}. It is clear that \myHighlight{$T_{(Q, \Sigma)}(a)$}\coordHE{} is a \myHighlight{$\T$}\coordHE{}-torsor (see Definition \ref{dfn_torsor}). When the underlying manifold \myHighlight{$\Sigma$}\coordHE{} is obvious, we abbreviate \myHighlight{$L_{(Q, \Sigma)}$}\coordHE{} and \myHighlight{$T_{(Q, \Sigma)}(a)$}\coordHE{} as \myHighlight{$L_Q$}\coordHE{} and \myHighlight{$T_Q(a)$}\coordHE{}.
+
+\begin{prop} \label{thm_csaction_boundary}
+Let \myHighlight{$P \to M$}\coordHE{} be a \myHighlight{$G$}\coordHE{}-bundle over a compact oriented smooth 3-manifold with boundary. If we define the \textit{CS action} by \myHighlight{$e^{ 2\pi\sqrt{-1} S_M(A) } := [ \partial A, \partial s, e^{ 2\pi\sqrt{-1} \tilde{S}_M(A,s)} ]$}\coordHE{} for some \myHighlight{$s \in \S_P$}\coordHE{}, then the CS action is well-defined as a unit norm element of the fiber of the CS line bundle 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+e^{ 2\pi\sqrt{-1} S_M(A) } \in T_{(\partial P, \partial M)}(\partial A).\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+e^{ 2\pi\sqrt{-1} S_M(A) } \in T_{(\partial P, \partial M)}(\partial A).
+}{1}\coordE{}\end{eqnarray}
+\end{prop}
+
+\begin{proof}
+If we take the other section \myHighlight{$s'$}\coordHE{}, then there exists a unique \myHighlight{$g \in \G_M$}\coordHE{} such that \myHighlight{$s' = s \cdot g$}\coordHE{}. By (\ref{difference_CS}) we have
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+\leftCoord{}[\partial A, \partial s', e^{ 2\pi\sqrt{-1} \tilde{S}_M(A,s')} ] 
+&\leftCoord{}= & \rightCoord{}
+\leftCoord{}[\partial A, \partial s \cdot \partial g, \rightCoord{} 
+c_{\partial M}(\partial A, \partial s, \partial g)
+e^{ 2\pi\sqrt{-1} \tilde{S}_M(A,s)} ] \rightCoord{}\\
+&\leftCoord{}= & \rightCoord{} 
+\leftCoord{}[\partial A, \partial s, e^{ 2\pi\sqrt{-1} \tilde{S}_M(A,s)} ] .\rightCoord{}
+\rightCoord{}}{0mm}{6}{7}{
+[\partial A, \partial s', e^{ 2\pi\sqrt{-1} \tilde{S}_M(A,s')} ] 
+&= & 
+[\partial A, \partial s \cdot \partial g,  
+c_{\partial M}(\partial A, \partial s, \partial g)
+e^{ 2\pi\sqrt{-1} \tilde{S}_M(A,s)} ] \\
+&= &  
+[\partial A, \partial s, e^{ 2\pi\sqrt{-1} \tilde{S}_M(A,s)} ] .
+}{1}\coordE{}\end{eqnarray*}
+Hence the CS action is well-defined. Obviously it is of unit norm.
+\end{proof}
+
+The CS action and the CS line bundle are compatible with some operations on manifolds. These fundamental properties are summarized in \cite{F1}. We do not state here, but the same type of properties for the WZ term are described in the next section (Proposition \ref{thm_axioms_WZ}).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The Wess-Zumino term and the central extensions of loop groups}
+\label{la_WZ_ce}
+
+We observe the definition of the WZ term in the case that the 2-manifold has boundary and the construction of the central extensions of loop groups. The properties of the WZ term and the central extensions play an essential role in the main result of this paper.
+
+\smallskip
+
+First we associate a disk to each closed 1-manifold.
+
+\begin{dfn}
+Let \myHighlight{$S$}\coordHE{} be a closed smooth 1-manifold.
+
+(a) If \myHighlight{$S$}\coordHE{} is connected \myHighlight{$(S \cong S^1)$}\coordHE{}, then we define a disk \myHighlight{$D_S$}\coordHE{} as the cone 
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+D_S = S \times [0,1] / S \times \{0\} , 
+\rightCoord{}}{0mm}{1}{2}{
+D_S = S \times [0,1] / S \times \{0\} , 
+}{1}\coordE{}\end{eqnarray*}
+i.e.\ the set obtained from \myHighlight{$S \times [0,1]$}\coordHE{} by collapsing \myHighlight{$S \times \{0\}$}\coordHE{} to a point. The disk \myHighlight{$D_S$}\coordHE{} has the topology coinduced by the projection \myHighlight{$S \times [0,1] \to D_S$}\coordHE{}. The structure of smooth manifold is defined by taking \myHighlight{$D_S$}\coordHE{} itself as an open cover of \myHighlight{$D_S$}\coordHE{}, and constructing a coordinate function \myHighlight{$D_S \to D^2$}\coordHE{} from an identification \myHighlight{$S \to S^1$}\coordHE{}. If \myHighlight{$S$}\coordHE{} is oriented, then \myHighlight{$D_S$}\coordHE{} is oriented too.
+
+(b) If \myHighlight{$S$}\coordHE{} is not connected, then we can express \myHighlight{$S = S_1 \sqcup \cdots \sqcup S_n$}\coordHE{} (disjoint union), where \myHighlight{$S_i$}\coordHE{} is a circle. In this case we put \myHighlight{$D_S := D_{S_1} \sqcup \cdots \sqcup D_{S_n}$}\coordHE{}.
+\end{dfn}
+
+
+\begin{lem} \label{lem_axiom_disk}
+Let \myHighlight{$S$}\coordHE{} be a closed oriented smooth 1-manifold. We have \myHighlight{$\partial D_S = S$}\coordHE{} with orientation. The assignment \myHighlight{$S \mapsto D_s$}\coordHE{} satisfies the following.
+
+(a)(Functoriality) If \myHighlight{$f : S \to S'$}\coordHE{} is an orientation preserving diffeomorphism of closed oriented smooth 1-manifolds, then there exists a natural orientation preserving diffeomorphism \myHighlight{$F : D_S \to D_{S'}$}\coordHE{} such that \myHighlight{$\partial F = f$}\coordHE{}.
+
+(b)(Orientation) Let \myHighlight{$-S$}\coordHE{} be the manifold with the opposite orientation to \myHighlight{$S$}\coordHE{}. There exists a natural identification \myHighlight{$D_{-S} \cong - D_S$}\coordHE{}.
+\end{lem}
+
+\begin{proof}
+If an orientation preserving diffeomorphism \myHighlight{$f$}\coordHE{} is given, then we have the orientation preserving diffeomorphism \myHighlight{$f \times \mathrm{id} : S \times [0,1] \to S' \times [0,1]$}\coordHE{}. This diffeomorphism induces the orientation preserving diffeomorphism \myHighlight{$F$}\coordHE{}. This proves (a). (b) is obvious from the definition of \myHighlight{$D_S$}\coordHE{}.
+\end{proof}
+
+We extend the definition of the WZ term \myHighlight{$e^{W_\Sigma(g)}$}\coordHE{} to the case that \myHighlight{$\Sigma$}\coordHE{} has boundary and the restriction of \myHighlight{$g$}\coordHE{} to the boundary is the constant map whose values are the unit \myHighlight{$e \in G$}\coordHE{}. We put \myHighlight{$\G_{\Sigma,0} = \{ h \in \G_\Sigma | \partial h = e \}$}\coordHE{}.
+
+\begin{dfn} \label{dfn_WZ_boundary_unit}
+Let \myHighlight{$\Sigma$}\coordHE{} be a compact oriented smooth 2-manifold with boundary \myHighlight{$\partial \Sigma = S_1 \sqcup \cdots \sqcup S_n$}\coordHE{}. For \myHighlight{$h \in \G_{\Sigma,0}$}\coordHE{} we define the WZ term by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\exp W_\Sigma(h) = \exp W_{\Sigma \cup D} (h \cup e) ,
+\rightCoord{}}{0mm}{1}{2}{
+\exp W_\Sigma(h) = \exp W_{\Sigma \cup D} (h \cup e) ,
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$\Sigma \cup D$}\coordHE{} is a closed 2-manifold obtained by patching disks \myHighlight{$D = D_1 \sqcup \cdots \sqcup D_n$}\coordHE{}, and \myHighlight{$h \cup e$}\coordHE{} is the extension of \myHighlight{$h$}\coordHE{} on the closed 2-manifold by the unit.
+\end{dfn}
+
+\begin{lem}
+For a compact oriented smooth 2-manifold \myHighlight{$\Sigma$}\coordHE{} with boundary, we define a function \myHighlight{$\chi_\Sigma : \G_\Sigma \times \G_{\Sigma,0} \to \T$}\coordHE{} by \myHighlight{$\chi_\Sigma(f, h) := \exp \left\{ \Gamma_\Sigma (f, h) + W_\Sigma(h) \right\}$}\coordHE{}. This function satisfies the following formula
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\chi_\Sigma(f, h_1 h_2) = \chi_\Sigma(f h_1, h_2) \chi_\Sigma(f, h_1).\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+\chi_\Sigma(f, h_1 h_2) = \chi_\Sigma(f h_1, h_2) \chi_\Sigma(f, h_1).
+}{1}\coordE{}\end{eqnarray}
+\end{lem}
+
+\begin{proof}
+We can easily check the formula
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\Gamma_\Sigma(h_1, h_2) + \Gamma_\Sigma(h_0, h_1 h_2) 
+\leftCoord{}= \Gamma_\Sigma(h_0 h_1, h_2) + \Gamma_\Sigma(h_0, h_1) .\rightCoord{}
+\label{cocycle_condition_2}
+\rightCoord{}}{0mm}{2}{3}{
+\Gamma_\Sigma(h_1, h_2) + \Gamma_\Sigma(h_0, h_1 h_2) 
+= \Gamma_\Sigma(h_0 h_1, h_2) + \Gamma_\Sigma(h_0, h_1) .
+}{1}\coordE{}\end{eqnarray}
+Using (\ref{cocycle_condition_2}) and (\ref{PW-formula_1}) we can prove this lemma.
+\end{proof}
+
+We define a Hermitian line bundle over \myHighlight{$\G_S$}\coordHE{} and the Wess-Zumino term in the case that \myHighlight{$\Sigma$}\coordHE{} has boundary by the similar way to the CS line bundle (Proposition \ref{thm_cslinebundle}) and the CS action (Proposition \ref{thm_csaction_boundary}).
+
+\begin{dfn} \label{dfn_WZ_boundary}
+(a) Let \myHighlight{$S$}\coordHE{} be a closed oriented smooth 1-manifold. We define a line bundle over \myHighlight{$\G_S$}\coordHE{} by putting
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+K_S = \G_{D_S} \times \C / \sim ,
+\rightCoord{}}{0mm}{1}{2}{
+K_S = \G_{D_S} \times \C / \sim ,
+}{1}\coordE{}\end{eqnarray}
+where the equivalence relation is \myHighlight{$(f, z) \sim (fh, \chi_{-D_S}(f,h) z)$}\coordHE{} for \myHighlight{$h \in \G_{\Sigma,0}$}\coordHE{}. The projection \myHighlight{$q_S : K_S \to \G_S$}\coordHE{} is defined by \myHighlight{$q_S([f, z]) := \partial f$}\coordHE{} and the Hermitian structure is defined by the standard Hermitian structure on \myHighlight{$\C$}\coordHE{}. We denote the fiber of the line bundle as \myHighlight{$K_S(\gamma) := K_S|_\gamma$}\coordHE{}.
+
+(b) Let \myHighlight{$\Sigma$}\coordHE{} be a compact oriented smooth 2-manifold with boundary \myHighlight{$\partial \Sigma = S$}\coordHE{}. For \myHighlight{$g \in \G_\Sigma$}\coordHE{} we put \myHighlight{$\gamma = \partial g$}\coordHE{}. We define the WZ term as an element of unit norm in \myHighlight{$K_S(\gamma)$}\coordHE{} by the following.
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+e^{ W_\Sigma(g) } = [ f, e^{ W_{\Sigma \cup (-D_S)}(g \cup f) } ],
+\rightCoord{}}{0mm}{1}{2}{
+e^{ W_\Sigma(g) } = [ f, e^{ W_{\Sigma \cup (-D_S)}(g \cup f) } ],
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$f \in \G_{-D_S} = \G_{D_S}$}\coordHE{} is an element such that \myHighlight{$\partial f = \gamma$}\coordHE{}.
+\end{dfn}
+
+\begin{rem}
+If we identify \myHighlight{$\C$}\coordHE{} with \myHighlight{$K_S(e)$}\coordHE{}, then Definition \ref{dfn_WZ_boundary_unit} is compatible with Definition \ref{dfn_WZ_boundary}.
+\end{rem}
+
+The Hermitian line bundle \myHighlight{$K_S$}\coordHE{} and the WZ term \myHighlight{$e^{ W_\Sigma(g) }$}\coordHE{} satisfy the following fundamental properties. The CS line bundle and the CS action satisfy similar properties \cite{F1}.
+
+\begin{prop}[\cite{F1}] \label{thm_axioms_WZ}
+Let \myHighlight{$S$}\coordHE{} be a closed oriented smooth 1-manifold and \myHighlight{$\Sigma$}\coordHE{} a compact oriented smooth 2-manifold with boundary. The assignments
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+\gamma \in \G_S & \longmapsto & K_S(\gamma) , \rightCoord{}\\\leftCoord{}
+g \in \G_\Sigma & \longmapsto & e^{ W_\Sigma(g) } 
+\in K_{\partial \Sigma}(\partial g)
+\rightCoord{}}{0mm}{2}{3}{
+\gamma \in \G_S & \longmapsto & K_S(\gamma) , \\
+g \in \G_\Sigma & \longmapsto & e^{ W_\Sigma(g) } 
+\in K_{\partial \Sigma}(\partial g)
+}{1}\coordE{}\end{eqnarray*}
+satisfy the following properties.
+
+(a) (Functoriality) If \myHighlight{$f : S' \to S$}\coordHE{} be an orientation preserving diffeomorphism, then we have a natural isometry
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\h{\phi}_f : K_S(\gamma) \to K_{S'}(f^*\gamma) .\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+\h{\phi}_f : K_S(\gamma) \to K_{S'}(f^*\gamma) .
+}{1}\coordE{}\end{eqnarray}
+Moreover if there exists an orientation preserving diffeomorphism \myHighlight{$F : \Sigma' \to \Sigma$}\coordHE{} for 2-manifolds \myHighlight{$\Sigma$}\coordHE{} and \myHighlight{$\Sigma'$}\coordHE{} such that \myHighlight{$\partial \Sigma = S, \partial \Sigma' = S'$}\coordHE{} and \myHighlight{$\partial F = f$}\coordHE{}, then we have
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\h{\phi}_f \left( e^{ W_\Sigma(g) } \right) = e^{ W_{\Sigma'}(F^*g) } .\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+\h{\phi}_f \left( e^{ W_\Sigma(g) } \right) = e^{ W_{\Sigma'}(F^*g) } .
+}{1}\coordE{}\end{eqnarray}
+
+(b) (Orientation) Let \myHighlight{$-S$}\coordHE{} be the manifold with the opposite orientation to \myHighlight{$S$}\coordHE{}. Then we have a natural isomorphism
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+K_{-S}(\gamma) \cong K_{S}^*(\gamma)
+\hspace{1cm} \textrm{(the dual line bundle)}. \rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+K_{-S}(\gamma) \cong K_{S}^*(\gamma)
+\hspace{1cm} \textrm{(the dual line bundle)}. 
+}{1}\coordE{}\end{eqnarray}
+Moreover if \myHighlight{$\partial \Sigma = S$}\coordHE{} then we have
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+e^{ W_{-\Sigma}(g) }  = \overline{ e^{ W_\Sigma(g) } }
+\hspace{1cm} \textrm{(complex conjugation)}. \rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+e^{ W_{-\Sigma}(g) }  = \overline{ e^{ W_\Sigma(g) } }
+\hspace{1cm} \textrm{(complex conjugation)}. 
+}{1}\coordE{}\end{eqnarray}
+
+(c) (Additivity) If \myHighlight{$S = S_1 \sqcup \cdots \sqcup S_n$}\coordHE{} with \myHighlight{$\gamma = \gamma_1 \sqcup \cdots \sqcup \gamma_n$}\coordHE{}, then we have a natural isomorphism
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+K_S(\gamma) \cong 
+K_{S_1}(\gamma_1) \otimes \cdots \otimes K_{S_n}(\gamma_n).\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+K_S(\gamma) \cong 
+K_{S_1}(\gamma_1) \otimes \cdots \otimes K_{S_n}(\gamma_n).
+}{1}\coordE{}\end{eqnarray}
+Moreover if \myHighlight{$S$}\coordHE{} is the boundary of \myHighlight{$\Sigma = \Sigma_1 \sqcup \cdots \sqcup \Sigma_n$}\coordHE{} with \myHighlight{$g = g_1 \sqcup \cdots \sqcup g_n$}\coordHE{}, then we have
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+e^{ W_\Sigma(g) } = 
+e^{ W_{\Sigma_1}(g_1) } \otimes \cdots \otimes e^{ W_{\Sigma_n}(g_n) }
+\rightCoord{}}{0mm}{1}{2}{
+e^{ W_\Sigma(g) } = 
+e^{ W_{\Sigma_1}(g_1) } \otimes \cdots \otimes e^{ W_{\Sigma_n}(g_n) }
+}{1}\coordE{}\end{eqnarray}
+under the identification.
+
+(d) (Gluing) Let \myHighlight{$\Sigma$}\coordHE{} be a 2-manifold, \myHighlight{$S$}\coordHE{} a closed 1-manifold, \myHighlight{$j : S \to \Sigma$}\coordHE{} an embedding, and \myHighlight{$\Sigma_c$}\coordHE{} the manifold obtained by cutting \myHighlight{$\Sigma$}\coordHE{} along \myHighlight{$S$}\coordHE{}. For \myHighlight{$g \in \G_\Sigma$}\coordHE{} we denote the corresponding element in \myHighlight{$\G_{\Sigma_c}$}\coordHE{} by \myHighlight{$g_c$}\coordHE{}. Using the contraction at \myHighlight{$\gamma := j^*g$}\coordHE{}
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\Tr_\gamma : K_{\partial \Sigma_c}(\partial g_c) \cong 
+K_{\partial \Sigma}(\partial g) \otimes K_S^*(\gamma) \otimes K_S(\gamma)
+\rightarrow K_{\partial \Sigma}(\partial g) 
+\rightCoord{}}{0mm}{1}{2}{
+\Tr_\gamma : K_{\partial \Sigma_c}(\partial g_c) \cong 
+K_{\partial \Sigma}(\partial g) \otimes K_S^*(\gamma) \otimes K_S(\gamma)
+\rightarrow K_{\partial \Sigma}(\partial g) 
+}{1}\coordE{}\end{eqnarray}
+we have
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\Tr_\gamma e^{ W_{\Sigma_c}(g_c) } = e^{ W_\Sigma(g) } .\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+\Tr_\gamma e^{ W_{\Sigma_c}(g_c) } = e^{ W_\Sigma(g) } .
+}{1}\coordE{}\end{eqnarray}
+\end{prop}
+
+\begin{proof}
+These properties are the consequences of the properties of the disk \myHighlight{$D_S$}\coordHE{}. (a) and (b) are proved directly using Lemma \ref{lem_axiom_disk}. (c) is proved by the definition of the disk \myHighlight{$D_S$}\coordHE{}. We can prove (d) by writing explicitly the contraction of the line bundles \myHighlight{$K_S^* \otimes K_S \cong \G_S \times \C$}\coordHE{}.
+\end{proof}
+
+Using the Hermitian line bundle \myHighlight{$K_S$}\coordHE{} over \myHighlight{$\G_S$}\coordHE{} we define the central extension of the loop group \myHighlight{$\G_S$}\coordHE{} based on Mickelsson's construction \cite{Mi}. The central extension is called the Kac-Moody group and is studied in detail \cite{P-S}. 
+
+\begin{dfn}[\cite{Mi}] \label{dfn_KM_group}
+Let \myHighlight{$S$}\coordHE{} be a closed oriented smooth 1-manifold. We define a group structure on
+\myHighlight{$\h{\G}_S = \{ \h{\gamma} \in K_S |\ |\h{\gamma}| = 1  \}$}\coordHE{}
+as follows. Any element \myHighlight{$\h{\gamma} \in \h{\G}_S$}\coordHE{} is expressed as \myHighlight{$\h{\gamma} = [g, u]$}\coordHE{} for \myHighlight{$g \in \G_{D_S}$}\coordHE{} and \myHighlight{$u \in \T$}\coordHE{}. For \myHighlight{$\h{\gamma}_1 = [f_1, u_1]$}\coordHE{} and \myHighlight{$\h{\gamma}_2 = [f_2, u_2]$}\coordHE{} we put
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+\h{\gamma_1} \cdot \h{\gamma_2} 
+&\leftCoord{}= & \rightCoord{} 
+\leftCoord{}[f_1, u_1] \cdot [f_2, u_2]  \rightCoord{}\\
+&\leftCoord{}:= & \rightCoord{}
+\leftCoord{}[f_1 f_2, u_1 u_2 \exp \Gamma_{-D_S}(f_1, f_2)]
+\rightCoord{}}{0mm}{5}{5}{
+\h{\gamma_1} \cdot \h{\gamma_2} 
+&= &  
+[f_1, u_1] \cdot [f_2, u_2]  \\
+&:= & 
+[f_1 f_2, u_1 u_2 \exp \Gamma_{-D_S}(f_1, f_2)]
+}{1}\coordE{}\end{eqnarray*}
+The unit is \myHighlight{$\hat{e} = [e, 1]$}\coordHE{} and the inverse of \myHighlight{$[f, u]$}\coordHE{} is \myHighlight{$[f, u]^{-1} = [f^{-1}, u^{-1}]$}\coordHE{}. The group \myHighlight{$\h{\G}_S$}\coordHE{} is a central extension of the loop group \myHighlight{$\G_S$}\coordHE{} by \myHighlight{$\T$}\coordHE{}  $$\coord{}\boxMath{
+\begin{CD}
+1 @>>> \T @>i_S>> \h{\G}_S @>q_S>> \G_S @>>>1 ,
+\end{CD}
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$i_S(u) = u \cdot \hat{e} = [e, u]$}\coordHE{}.
+\end{dfn}
+
+Note that the value of the WZ term formulated in Definition \ref{dfn_WZ_boundary} is an element of this group. We can easily check the following by (\ref{PW-formula_1}).
+
+\begin{prop}
+Let \myHighlight{$\Sigma$}\coordHE{} be a compact oriented smooth 2-manifold with boundary \myHighlight{$\partial \Sigma = S$}\coordHE{}. As an element of \myHighlight{$\h{\G}_S$}\coordHE{} the WZ term \myHighlight{$e^{ W_\Sigma (\cdot) }$}\coordHE{} satisfies the Polyakov-Wiegmann formula
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+e^{ W_\Sigma(g_1 g_2) } = 
+\exp \Gamma_\Sigma(g_1,g_2) e^{ W_\Sigma(g_1) } \cdot e^{ W_\Sigma(g_2) } .\rightCoord{}
+\label{PW-formula_2}
+\rightCoord{}}{0mm}{1}{3}{
+e^{ W_\Sigma(g_1 g_2) } = 
+\exp \Gamma_\Sigma(g_1,g_2) e^{ W_\Sigma(g_1) } \cdot e^{ W_\Sigma(g_2) } .
+}{1}\coordE{}\end{eqnarray}
+\end{prop}
+
+The following is essential to the construction of the liftings in Section \ref{la_results}.
+
+\begin{cor}
+Let \myHighlight{$Q$}\coordHE{} be a smooth principal \myHighlight{$G$}\coordHE{}-bundle over a compact oriented smooth 2-manifold \myHighlight{$\Sigma$}\coordHE{} with boundary. Using the WZ term of Definition \ref{dfn_WZ_boundary} we define a function \myHighlight{$c_\Sigma : \A_Q \times \S_Q \times \G_\Sigma \to \h{\G}_{\partial \Sigma}$}\coordHE{} by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+c_\Sigma(A,s,g) = 
+\exp \frac{\leftCoord{}k\sqrt{-1}}{\rightCoord{}4\pi} \int_\Sigma \Tr(s^*A \wedge dgg^{-1}) \cdot \left( e^{W_\Sigma(g)} \right)^{-1} .\rightCoord{}
+\label{cocycle_3}
+\rightCoord{}}{0mm}{2}{4}{
+c_\Sigma(A,s,g) = 
+\exp \frac{k\sqrt{-1}}{4\pi} \int_\Sigma \Tr(s^*A \wedge dgg^{-1}) \cdot \left( e^{W_\Sigma(g)} \right)^{-1} .
+}{1}\coordE{}\end{eqnarray}
+Then \myHighlight{$c_\Sigma$}\coordHE{} satisfies the following formula
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+c_\Sigma(A,s,g_1 g_2) = c_\Sigma(A,s \cdot g_1,g_2) \cdot c_\Sigma(A,s,g_1) ,
+\label{cocycle_condition_3}
+\rightCoord{}}{0mm}{1}{2}{
+c_\Sigma(A,s,g_1 g_2) = c_\Sigma(A,s \cdot g_1,g_2) \cdot c_\Sigma(A,s,g_1) ,
+}{1}\coordE{}\end{eqnarray}
+where the right hand side is the group product in \myHighlight{$\h{\G}_{\partial \Sigma}$}\coordHE{}.
+\end{cor}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction to \myHighlight{$\T$}\coordHE{}-gerbes}
+\label{la_intro_gerbe}
+
+\textit{Gerbes} are invented by Giraud \cite{Gi}. In \cite{Br1}, Brylinski investigates \textit{Dixmier-Douady sheaves of groupoids} or \textit{DD gerbes} as geometric objects corresponding to degree 3 integral cohomology classes. The gerbe with which we deal in this paper is thought of as a ``fiber" of a DD gerbe. The formulations here are based on \cite{F2}. 
+
+\begin{dfn} \label{dfn_torsor}
+A manifold \myHighlight{$T$}\coordHE{} is called a \textit{\myHighlight{$\T$}\coordHE{}-torsor}, or a \textit{principal \myHighlight{$\T$}\coordHE{}-space}, if there exists a simply transitive (right) action \myHighlight{$T \times \T \to T$}\coordHE{}. A morphism of principal \myHighlight{$\T$}\coordHE{}-torsors is a map \myHighlight{$f : T_1 \to T_2$}\coordHE{} which commutes with the \myHighlight{$\T$}\coordHE{}-actions. We denote the category of \myHighlight{$\T$}\coordHE{}-torsors by \myHighlight{$\sT$}\coordHE{}.
+\end{dfn}
+
+\myHighlight{$\T$}\coordHE{} itself is a \myHighlight{$\T$}\coordHE{}-torsor and called the trivial \myHighlight{$\T$}\coordHE{}-torsor. If a \myHighlight{$\T$}\coordHE{}-bundle over \myHighlight{$X$}\coordHE{} is given, then the fiber at a point in \myHighlight{$X$}\coordHE{} is a \myHighlight{$\T$}\coordHE{}-torsor. Note that each \myHighlight{$\T$}\coordHE{}-torsor is isomorphic to the trivial \myHighlight{$\T$}\coordHE{}-torsor \myHighlight{$\T$}\coordHE{}, because a choice of a point on a \myHighlight{$\T$}\coordHE{}-torsor gives an isomorphism. But, in general, we have no preferred point and there are no canonical isomorphisms between \myHighlight{$\T$}\coordHE{}-torsors. Note also that all morphisms of \myHighlight{$\T$}\coordHE{}-torsors are invertible. Hence the category \myHighlight{$\sT$}\coordHE{} is a \textit{groupoid}.
+
+\begin{dfn}
+(a) Let \myHighlight{$T_1$}\coordHE{} and \myHighlight{$T_2$}\coordHE{} be \myHighlight{$\T$}\coordHE{}-torsors. We define an equivalence relation on the manifold \myHighlight{$T_1 \times T_2$}\coordHE{} by \myHighlight{$\left( t_1 \cdot u, t_2 \right) \sim \left( t_1, t_2 \cdot u \right)$}\coordHE{} for \myHighlight{$u \in \T$}\coordHE{}. We denote the equivalence class of \myHighlight{$(t_1, t_2)$}\coordHE{} by \myHighlight{$t_1 \otimes t_2$}\coordHE{}. The quotient space is a \myHighlight{$\T$}\coordHE{}-torsor called the \textit{product} of \myHighlight{$T_1$}\coordHE{} and \myHighlight{$T_2$}\coordHE{}, under the action \myHighlight{$t_1 \otimes t_2 \mapsto t_1 \otimes (t_2 \cdot u)$}\coordHE{}. 
+
+(b) For a \myHighlight{$\T$}\coordHE{}-torsor \myHighlight{$T$}\coordHE{} an isomorphism \myHighlight{$f : T \to \T$}\coordHE{} of \myHighlight{$\T$}\coordHE{}-torsors is called a \textit{trivialization} of \myHighlight{$T$}\coordHE{}. We denote by \myHighlight{$T^*$}\coordHE{} the set of all trivializations of \myHighlight{$T$}\coordHE{}. This manifold is a \myHighlight{$\T$}\coordHE{}-torsor called the \textit{inverse} of \myHighlight{$T$}\coordHE{} under the action \myHighlight{$f \mapsto f \cdot u$}\coordHE{}, where \myHighlight{$f \cdot u : T \to \T$}\coordHE{} is defined by \myHighlight{$(f \cdot u)(t) := f(t) \cdot u$}\coordHE{}. 
+\end{dfn}
+
+The product and the inverse give \myHighlight{$\sT$}\coordHE{} an abelian group-like structure \cite{F2}. The structure is illustrated by the following proposition, which is easily proved.
+
+\begin{prop} \label{prop_agls_torsors}
+There exist natural isomorphisms of \myHighlight{$\T$}\coordHE{}-torsors which commute with each other: 
+
+(a) (associativity) \myHighlight{$(T_1 \otimes T_2) \otimes T_3 \cong T_1 \otimes (T_2 \otimes T_3)$}\coordHE{}.
+
+(b) (unit) \myHighlight{$\T \otimes T \cong T \cong T \otimes \T$}\coordHE{}.
+
+(c) (inverse) \myHighlight{$T^* \otimes T \cong \T \cong T \otimes T^*$}\coordHE{}.
+
+(d) (commutativity) \myHighlight{$T_1 \otimes T_2 \cong T_2 \otimes T_1$}\coordHE{}.
+\end{prop}
+
+Now we introduce a \myHighlight{$\T$}\coordHE{}-gerbe as a category with a ``simply transitive action of \myHighlight{$\sT$}\coordHE{}." The precise treatment of categories takes too many pages, so we often omit details. The notation such as \myHighlight{$P \in \sC$}\coordHE{} means that \myHighlight{$P$}\coordHE{} is an object in a category \myHighlight{$\sC$}\coordHE{}.
+
+\begin{dfn}
+Let \myHighlight{$\sC$}\coordHE{} be a category and \myHighlight{$\varphi : \sC \times \sT \to \sC$}\coordHE{} a functor. The functor is called a \textit{\myHighlight{$\sT$}\coordHE{}-action} if it makes the following diagrams commutative up to natural equivalences.
+$$\coord{}\boxMath{
+\begin{CD}
+\sC \times \sT \times \sT @>{\Id \times \otimes}>> \sC \times \sT \\
+@V{\varphi \times \Id}VV     @VV{\varphi}V  \\
+\sC \times \sT @>>{\varphi}> \sC
+\end{CD}
+\hspace{2cm}
+\begin{CD}
+\sC @>{(\Id, e_\T)}>> \sC \times \sT \\
+@|     @VV{\varphi}V  \\
+\sC @>>{\Id}> \sC
+\end{CD}
+}{dollar}{2cm}\coordE{}$$
+In these diagrams \myHighlight{$\otimes : \sT \times \sT \to \sT$}\coordHE{} is the functor defined by the product of \myHighlight{$\T$}\coordHE{}-torsors, and \myHighlight{$e_\T : \sC \rightarrow \sT$}\coordHE{} is the functor assigning all objects in \myHighlight{$\sC$}\coordHE{} to \myHighlight{$\T$}\coordHE{} and all morphisms to the identity \myHighlight{$1 : \T \to \T$}\coordHE{}. We also require that \myHighlight{$\varphi$}\coordHE{} is compatible with the isomorphisms of Proposition \ref{prop_agls_torsors}. A \myHighlight{$\sT$}\coordHE{}-action is \textit{simply transitive} if the functor \myHighlight{$\sC \times \sT \to \sC \times \sC$}\coordHE{} defined by \myHighlight{$(P, T) \mapsto (P, \varphi(P, T))$}\coordHE{} is an equivalence of categories. 
+\end{dfn}
+
+Because an object in a category may have inner structures, we have to distinguish equalities and isomorphisms strictly. For objects \myHighlight{$P \in \sC$}\coordHE{} and \myHighlight{$T \in \sT$}\coordHE{} we denote \myHighlight{$\varphi(P, T) = P \cdot T$}\coordHE{}. The commutativity of two diagrams means that there are natural isomorphisms \myHighlight{$P \cdot \T \cong P$}\coordHE{} and \myHighlight{$(P \cdot T_1) \cdot T_2 \cong P \cdot (T_1 \otimes T_2)$}\coordHE{}. The simply transitivity of a \myHighlight{$\sT$}\coordHE{}-action amounts to the existence of a unique \myHighlight{$\T$}\coordHE{}-torsor \myHighlight{$T(P, Q)$}\coordHE{} for \myHighlight{$P, Q \in \sC$}\coordHE{} together with a unique isomorphism \myHighlight{$P \cdot T(P, Q) \cong Q$}\coordHE{}.
+
+\begin{dfn}
+A category \myHighlight{$\sC$}\coordHE{} is called a \textit{\myHighlight{$\T$}\coordHE{}-gerbe} if it is a groupoid (i.e.\ all morphisms are invertible) and has a simply transitive \myHighlight{$\sT$}\coordHE{}-action. An isomorphism of \myHighlight{$\T$}\coordHE{}-gerbes \myHighlight{$F : \sC_1 \to \sC_2$}\coordHE{} is an equivalence of categories which makes the following diagram commutative up to a natural equivalence.
+$$\coord{}\boxMath{
+\begin{CD}
+\sC_1 \times \sT @>{\varphi_1}>> \sC_1 \\
+@V{F \times \Id}VV  @VV{F}V \\
+\sC_2 \times \sT @>{\varphi_2}>> \sC_2
+\end{CD}
+}{dollar}{0pt}\coordE{}$$
+\end{dfn}
+
+\begin{rem}
+We can consider a \myHighlight{$\T$}\coordHE{}-gerbe as a ``DD gerbe \cite{Br1,Br2} on the space consisting of one point," because we can identify \myHighlight{$\T$}\coordHE{} with the group of automorphisms of an object in a \myHighlight{$\T$}\coordHE{}-gerbe by means of the natural isomorphism \myHighlight{$P \cdot \T \cong P$}\coordHE{}.
+\end{rem}
+
+If we define a \myHighlight{$\sT$}\coordHE{}-action on \myHighlight{$\sT$}\coordHE{} itself by the product, then \myHighlight{$\sT$}\coordHE{} is a \myHighlight{$\T$}\coordHE{}-gerbe and is called the trivial \myHighlight{$\T$}\coordHE{}-gerbe. Note that each \myHighlight{$\T$}\coordHE{}-gerbe are isomorphic to the trivial \myHighlight{$\T$}\coordHE{}-gerbe \myHighlight{$\sT$}\coordHE{} as in the case of \myHighlight{$\T$}\coordHE{}-torsors. \myHighlight{$\T$}\coordHE{}-gerbes also have product and inverse. These operations give the ``category of \myHighlight{$\T$}\coordHE{}-gerbes" an abelian group-like structure. In this paper, we distinguish the products of gerbes from that of torsors by using \myHighlight{$\odot$}\coordHE{}.
+
+\begin{dfn}
+(a) For \myHighlight{$\T$}\coordHE{}-gerbes \myHighlight{$\sC_1$}\coordHE{} and \myHighlight{$\sC_2$}\coordHE{} we define the \textit{product} \myHighlight{$\sC_1 \odot \sC_2$}\coordHE{} as follows. The objects in \myHighlight{$\sC_1 \odot \sC_2$}\coordHE{} are the same as \myHighlight{$\sC_1 \times \sC_2$}\coordHE{}. The morphisms of \myHighlight{$\sC_1 \odot \sC_2$}\coordHE{} are that of \myHighlight{$\sC_1 \times \sC_2$}\coordHE{} and formal isomorphisms \myHighlight{$(P_1, P_2) \to (P_1 \cdot T, P_2 \cdot T^*)$}\coordHE{} for \myHighlight{$T \in \sT$}\coordHE{} and \myHighlight{$(P_1, P_2) \in \sC_1 \times \sC_2$}\coordHE{}. The \myHighlight{$\sT$}\coordHE{}-action is defined as \myHighlight{$(P_1, P_2) \cdot T = (P_1, P_2 \cdot T)$}\coordHE{}. We denote the object in \myHighlight{$\sC_1 \odot \sC_2$}\coordHE{} corresponding to an object \myHighlight{$(P_1, P_2)$}\coordHE{} in \myHighlight{$\sC_1 \times \sC_2$}\coordHE{} by \myHighlight{$P_1 \odot P_2$}\coordHE{}. 
+
+(b) The \textit{inverse} \myHighlight{$\sC^*$}\coordHE{} of a \myHighlight{$\T$}\coordHE{}-gerbe \myHighlight{$\sC$}\coordHE{} is defined as the following category. The objects are isomorphisms of \myHighlight{$\T$}\coordHE{}-gerbes \myHighlight{$F : \sC \to \sT$}\coordHE{}. The morphisms are natural equivalences between isomorphisms of \myHighlight{$\T$}\coordHE{}-gerbes. The \myHighlight{$\sT$}\coordHE{}-action is defined as \myHighlight{$F \mapsto F \cdot T$}\coordHE{}, where \myHighlight{$F \cdot T$}\coordHE{} is the functor assigning an object \myHighlight{$P$}\coordHE{} to \myHighlight{$F(P) \otimes T$}\coordHE{}.
+\end{dfn}
+
+\begin{prop}
+There exist natural isomorphisms of \myHighlight{$\sT$}\coordHE{}-gerbes which commute with each other: 
+
+(a) (associativity) \myHighlight{$(\sC_1 \odot \sC_2) \odot \sC_3 \cong \sC_1 \odot (\sC_2 \odot \sC_3)$}\coordHE{}.
+
+(b) (unit) \myHighlight{$\sT \odot \sC \cong \sC \cong \sC \odot \sT$}\coordHE{}.
+
+(c) (inverse) \myHighlight{$\sC^* \odot \sC \cong \sT \cong \sC \odot \sC^*$}\coordHE{}.
+
+(d) (commutativity) \myHighlight{$\sC_1 \odot \sC_2 \cong \sC_2 \odot \sC_1$}\coordHE{}.
+\end{prop}
+
+We denote the isomorphism of (c) by \myHighlight{$\Tr$}\coordHE{} and call the \textit{contraction}.
+
+\begin{proof}
+For (a), we construct the functor by \myHighlight{$(P_1 \odot P_2) \odot P_3 \mapsto P_1 \odot (P_2 \odot P_3)$}\coordHE{}. For (d), we construct the functor by \myHighlight{$P_1 \odot P_2 \mapsto P_2 \odot P_1$}\coordHE{}. By the definition of the product of \myHighlight{$\T$}\coordHE{}-gerbes these functors give the isomorphism of \myHighlight{$\T$}\coordHE{}-gerbes. For (b), the functor \myHighlight{$\sC \odot \sT \to \sC$}\coordHE{} is given by \myHighlight{$P \odot T \mapsto P \cdot T$}\coordHE{}. For (c), the functor \myHighlight{$\sC^* \odot \sC \to \sT$}\coordHE{} is given by \myHighlight{$F \odot P \mapsto F(P)$}\coordHE{}. Because \myHighlight{$\sT$}\coordHE{} acts on \myHighlight{$\sC$}\coordHE{} simply transitively, these functors are isomorphisms of \myHighlight{$\T$}\coordHE{}-gerbes.
+\end{proof}
+
+We could define higher gerbes \cite{F2} by the inductive construction using the abelian group-like structures. But these are beyond the scope of this paper.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Gerbes associated with liftings}
+\label{la_lifting_gerbe}
+
+We introduce the \myHighlight{$\T$}\coordHE{}-gerbes given by liftings of torsors and relate the operations on liftings with that on gerbes. 
+
+\smallskip
+
+First, we generalize the \myHighlight{$\T$}\coordHE{}-torsors by replacing \myHighlight{$\T$}\coordHE{} by a Lie group which may be non-abelian. When a manifold \myHighlight{$\Xi$}\coordHE{} admits a simply transitive (right) action of a Lie group \myHighlight{$\Gamma$}\coordHE{}, we call \myHighlight{$\Xi$}\coordHE{} a \textit{\myHighlight{$\Gamma$}\coordHE{}-torsor} (recall Definition \ref{dfn_torsor}). A typical example of a \myHighlight{$\Gamma$}\coordHE{}-torsor is a fiber of a principal \myHighlight{$\Gamma$}\coordHE{}-bundle.
+
+\begin{dfn}
+Let \myHighlight{$\Gamma$}\coordHE{} be a Lie group and \myHighlight{$\h{\Gamma}$}\coordHE{} a central extension \myHighlight{$\h{\Gamma}$}\coordHE{} by \myHighlight{$\T$}\coordHE{} 
+$$\coord{}\boxMath{
+\begin{CD}
+1 @>>> \T @>i>> \h{\Gamma} @>q>> \Gamma @>>> 1.
+\end{CD}
+}{dollar}{0pt}\coordE{}$$
+A \textit{lifting} of a \myHighlight{$\Gamma$}\coordHE{}-torsor \myHighlight{$\Xi$}\coordHE{} is a pair \myHighlight{$(\h{\Xi}, \hq)$}\coordHE{}, where \myHighlight{$\h{\Xi}$}\coordHE{} is a \myHighlight{$\h{\Gamma}$}\coordHE{}-torsor and \myHighlight{$\hq : \h{\Xi} \to \Xi$}\coordHE{} is an equivariant map under the group actions: \myHighlight{$\hq(\h{\xi} \cdot \h{\gamma}) = \hq(\h{\xi}) \cdot q(\h{\gamma})$}\coordHE{}. A morphism from \myHighlight{$(\h{\Xi}, \hq)$}\coordHE{} to \myHighlight{$(\h{\Xi}', \hq')$}\coordHE{} is a morphism \myHighlight{$f : \h{\Xi} \to \h{\Xi}'$}\coordHE{} as \myHighlight{$\h{\Gamma}$}\coordHE{}-torsors which induces the identity morphism on \myHighlight{$\Xi$}\coordHE{}.
+\end{dfn}
+
+We often abbreviate \myHighlight{$(\h{\Xi}, \hq)$}\coordHE{} as \myHighlight{$\h{\Xi}$}\coordHE{}.
+
+\begin{lem} \label{lem_dfn_sTaction}
+Let \myHighlight{$\Xi$}\coordHE{} be a \myHighlight{$\Gamma$}\coordHE{}-torsor and \myHighlight{$\h{\Gamma}$}\coordHE{} be a central extension of \myHighlight{$\Gamma$}\coordHE{}. For a lifting \myHighlight{$(\h{\Xi}, \hq)$}\coordHE{} of \myHighlight{$\Xi$}\coordHE{} we put \myHighlight{$\h{\Xi} \otimes T := (\h{\Xi} \times T)/\sim$}\coordHE{}, where the equivalence relation \myHighlight{$\sim$}\coordHE{} is defined by \myHighlight{$(\h{\xi} \cdot u, t) \sim (\h{\xi}, t \cdot u)$}\coordHE{} for \myHighlight{$u \in \T$}\coordHE{}. We denote the equivalence class of \myHighlight{$(\h{\xi}, t)$}\coordHE{} as \myHighlight{$\h{\xi} \otimes t$}\coordHE{}. We define a map \myHighlight{$\hq' : \h{\Xi} \otimes T \to \Xi$}\coordHE{} by \myHighlight{$\hq'(\h{\xi} \otimes t) = \hq(\h{\xi})$}\coordHE{}. If we define a \myHighlight{$\h{\Gamma}$}\coordHE{}-action on \myHighlight{$\h{\Xi} \otimes T$}\coordHE{} by \myHighlight{$\h{\xi} \otimes t \mapsto (\h{\xi} \cdot \h{\gamma}) \otimes t$}\coordHE{}, then \myHighlight{$(\h{\Xi} \otimes T, \hq')$}\coordHE{} is a lifting of \myHighlight{$\Xi$}\coordHE{}.
+\end{lem}
+
+\begin{proof}
+Since \myHighlight{$\T$}\coordHE{} is the center of \myHighlight{$\h{\Gamma}$}\coordHE{}, we can easily show this lemma.
+\end{proof}
+
+\begin{thm}
+Let \myHighlight{$\sT_{\h{\Gamma}}(\Xi)$}\coordHE{} be the category of liftings of a \myHighlight{$\Gamma$}\coordHE{}-torsor \myHighlight{$\Xi$}\coordHE{} for a central extension \myHighlight{$\h{\Gamma}$}\coordHE{} of \myHighlight{$\Gamma$}\coordHE{}. If we define a \myHighlight{$\sT$}\coordHE{}-action on \myHighlight{$\sT_{\h{\Gamma}}(\Xi)$}\coordHE{} by \myHighlight{$(\h{\Xi}, \hq) \mapsto (\h{\Xi} \otimes T, \hq')$}\coordHE{} using Lemma \ref{lem_dfn_sTaction}, then \myHighlight{$\sT_{\h{\Gamma}}(\Xi)$}\coordHE{} is a \myHighlight{$\T$}\coordHE{}-gerbe.
+\end{thm}
+
+\begin{proof}
+The map \myHighlight{$\h{\Xi} \otimes \T \to \h{\Xi}$}\coordHE{} defined by \myHighlight{$\h{\xi} \otimes u \mapsto \h{\xi}u$}\coordHE{} gives the isomorphism of the liftings. We can also construct the isomorphism \myHighlight{$(\h{\Xi} \otimes T_1) \otimes T_2 \cong \h{\Xi} \otimes (T_1 \otimes T_2)$}\coordHE{} easily. These isomorphisms give rise to a \myHighlight{$\sT$}\coordHE{}-action on \myHighlight{$\sT_{\h{\Gamma}}(\Xi)$}\coordHE{}. For liftings \myHighlight{$\h{\Xi}_1, \h{\Xi}_2$}\coordHE{} the set of all morphisms from \myHighlight{$\h{\Xi}_1$}\coordHE{} to \myHighlight{$\h{\Xi}_2$}\coordHE{} give rise to a \myHighlight{$\T$}\coordHE{}-torsor which we denote by \myHighlight{$T(\h{\Xi}_1, \h{\Xi}_2)$}\coordHE{}. There is a unique isomorphism \myHighlight{$\h{\Xi}_1 \otimes T(\h{\Xi}_1, \h{\Xi}_2) \to \h{\Xi}_2$}\coordHE{}. Using this \myHighlight{$\T$}\coordHE{}-torsor we can prove that the \myHighlight{$\sT$}\coordHE{}-action is simply transitive.
+\end{proof}
+
+The following corollary will be used in Section \ref{la_results} to define the \myHighlight{$\T$}\coordHE{}-gerbe assigned to a connection on a principal bundle over a 1-manifold.
+
+\begin{cor} \label{cor_gerbe_bundle}
+Let \myHighlight{$p : B \to X$}\coordHE{} be a principal \myHighlight{$\Gamma$}\coordHE{}-bundle and \myHighlight{$\h{\Gamma}$}\coordHE{} be a central extension of \myHighlight{$\Gamma$}\coordHE{} by \myHighlight{$\T$}\coordHE{}. For each \myHighlight{$x \in X$}\coordHE{} we have a \myHighlight{$\T$}\coordHE{}-gerbe \myHighlight{$\sT_{\h{\Gamma}}(B(x))$}\coordHE{}, where \myHighlight{$B(x) := B|_x$}\coordHE{} is the fiber of \myHighlight{$B$}\coordHE{} at \myHighlight{$x$}\coordHE{}.
+\end{cor}
+
+\begin{rem}
+The notion of lifting is usually defined for principal bundles. For a \myHighlight{$\Gamma$}\coordHE{}-bundle \myHighlight{$p : B \to X$}\coordHE{} and a central extension \myHighlight{$\h{\Gamma}$}\coordHE{}, a lifting \myHighlight{$(\h{B}, \h{q})$}\coordHE{} is a principal \myHighlight{$\h{\Gamma}$}\coordHE{}-bundle \myHighlight{$\h{p} : \h{B} \to X$}\coordHE{} together with a map \myHighlight{$\hq : \h{B} \to B$}\coordHE{} satisfying \myHighlight{$\hq(\h{b} \cdot \h{\gamma}) = \hq(\h{b}) \cdot q(\h{\gamma})$}\coordHE{}. Therefor the \myHighlight{$\T$}\coordHE{}-gerbe \myHighlight{$\sT_{\h{\Gamma}}(B(x))$}\coordHE{} can be identified with the category of liftings of \myHighlight{$\Gamma$}\coordHE{}-bundle \myHighlight{$B(x) \to \{ x \}$}\coordHE{}.
+\end{rem}
+
+Since a central extension \myHighlight{$\h{\Gamma}$}\coordHE{} of a Lie group \myHighlight{$\Gamma$}\coordHE{} by \myHighlight{$\T$}\coordHE{} is a \myHighlight{$\T$}\coordHE{}-bundle over \myHighlight{$\Gamma$}\coordHE{}, there exist operations on central extensions corresponding to that on \myHighlight{$\T$}\coordHE{}-bundles.
+
+\begin{dfn} \label{dfn_operations_ce}
+(a) (contracted product) Let \myHighlight{$\h{\Gamma}_1$}\coordHE{} and \myHighlight{$\h{\Gamma}_2$}\coordHE{} be central extensions of \myHighlight{$\Gamma$}\coordHE{}. We denote the units by \myHighlight{$\hat{e}_1$}\coordHE{} and \myHighlight{$\hat{e}_2$}\coordHE{} respectively. We define a group product in the contracted product \myHighlight{$\h{\Gamma}_1 \otimes \h{\Gamma}_2$}\coordHE{} of \myHighlight{$\T$}\coordHE{}-bundles by \myHighlight{$(\h{\gamma}_1 \otimes \h{\gamma}_2) \cdot (\h{\eta}_1 \otimes \h{\eta}_2) := (\h{\gamma}_1 \cdot \h{\eta}_1) \otimes (\h{\gamma}_2 \cdot \h{\eta}_2)$}\coordHE{}. The unit is \myHighlight{$\hat{e}_1 \otimes \hat{e}_2$}\coordHE{}. This group is a central extension
+$$\coord{}\boxMath{
+\begin{CD}
+1 @>>> \T @>i_1 \otimes i_2>> 
+\h{\Gamma}_1 \otimes \h{\Gamma}_2 @>q_1 \otimes q_2>>  \Gamma @>>> 1, 
+\end{CD}
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$(i_1 \otimes i_2)(u) := u \h{e}_1 \otimes \h{e}_2$}\coordHE{} and \myHighlight{$(q_1 \otimes q_2)(\h{\gamma}_1 \otimes \h{\gamma}_2) := q_1(\h{\gamma}_1) = q_2(\h{\gamma}_2)$}\coordHE{}.
+
+(b) (inverse) Let \myHighlight{$\h{\Gamma}^*$}\coordHE{} be the same manifold as \myHighlight{$\h{\Gamma}$}\coordHE{}. We denote the element corresponding to \myHighlight{$\h{\gamma} \in \h{\Gamma}$}\coordHE{} by \myHighlight{$\h{\gamma}^* \in \h{\Gamma}^*$}\coordHE{}. We define a group product in \myHighlight{$\h{\Gamma}^*$}\coordHE{} by \myHighlight{$\h{\gamma}^*_1 \cdot \h{\gamma}^*_2 := ( \h{\gamma}_2 \cdot \h{\gamma}_1 )^*$}\coordHE{}. This group is a central extension
+$$\coord{}\boxMath{
+\begin{CD}
+1 @>>> \T @>i^*>> \h{\Gamma}^* @>q^*>> \Gamma @>>> 1,
+\end{CD}
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$i^*(u) := \overline{u} \h{e}^*$}\coordHE{} (\myHighlight{$\overline{u}$}\coordHE{} denotes the complex conjugate of \myHighlight{$u$}\coordHE{}) and \myHighlight{$q^*(\h{\gamma}^*) := q(\h{\gamma})^{-1}$}\coordHE{}.
+
+(c) (external product)
+Let \myHighlight{$\h{\Gamma}_1$}\coordHE{} and \myHighlight{$\h{\Gamma}_2$}\coordHE{} be central extensions of \myHighlight{$\Gamma_1$}\coordHE{} and \myHighlight{$\Gamma_2$}\coordHE{} respectively. We denote the projections by \myHighlight{$p_i : \Gamma_1 \times \Gamma_2 \to \Gamma_i$}\coordHE{}. The external product \myHighlight{$\h{\Gamma}_1 \boxtimes \h{\Gamma}_2 := p_1^* \h{\Gamma}_1 \otimes p_2^* \h{\Gamma}_2$}\coordHE{} of \myHighlight{$\T$}\coordHE{}-bundles is a central extension
+$$\coord{}\boxMath{
+\begin{CD}
+1 @>>> \T @>\iota>> \h{\Gamma}_1 \boxtimes \h{\Gamma}_2 
+@>q_1 \boxtimes q_2>> \Gamma_1 \times \Gamma_2 @>>> 1 ,
+\end{CD}
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$\iota(u) := u \h{e}_1 \boxtimes \h{e}_2$}\coordHE{} and \myHighlight{$(q_1 \boxtimes q_2) (\h{\gamma}_1 \boxtimes \h{\gamma}_2) := (q_1(\h{\gamma}_1), q_2(\h{\gamma}_2))$}\coordHE{}.
+\end{dfn}
+
+\begin{lem} \label{lem_tr_ce}
+Let \myHighlight{$\h{\Gamma}$}\coordHE{} be a central extension of \myHighlight{$\Gamma$}\coordHE{}, and \myHighlight{$\h{\Gamma}^*$}\coordHE{} the inverse of \myHighlight{$\h{\Gamma}$}\coordHE{}. We define a homomorphism of groups
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+\Tr : \h{\Gamma}^* \otimes \h{\Gamma} \rightarrow \Gamma \times \T
+\rightCoord{}}{0mm}{1}{2}{
+\Tr : \h{\Gamma}^* \otimes \h{\Gamma} \rightarrow \Gamma \times \T
+}{1}\coordE{}\end{eqnarray*}
+by \myHighlight{$\Tr(\h{\gamma}^* \otimes \h{\eta}) := (q(\h{\eta}), \h{\gamma} \h{\eta})$}\coordHE{}. This is an isomorphism of central extensions.
+\end{lem}
+
+\begin{proof}
+By the definition of the product we have \myHighlight{$q^*(\h{\gamma}^*) = q(\h{\eta})$}\coordHE{}. So \myHighlight{$\h{\gamma} \h{\eta}$}\coordHE{} are expressed as an element of \myHighlight{$\T$}\coordHE{} and the map \myHighlight{$\Tr$}\coordHE{} is well-defined. The map is a homomorphism because \myHighlight{$\T$}\coordHE{} is the center. We can easily verify that the homomorphism is an isomorphism of groups which makes the following diagram commutative. 
+$$\coord{}\boxMath{
+\begin{CD}
+1 @>>> \T @>i^* \otimes i>> 
+\h{\Gamma}^* \otimes \h{\Gamma} @>q^* \otimes q>>  \Gamma @>>> 1 \\
+@. @| @V{\Tr}VV @| @. \\
+1 @>>> \T @>>> \Gamma \times \T @>>> \Gamma @>>> 1
+\end{CD}
+}{dollar}{0pt}\coordE{}$$
+\end{proof}
+
+These operations on central extensions give corresponding operations on liftings of \myHighlight{$\Gamma$}\coordHE{}-torsors.
+
+\begin{prop} \label{prop_operations_liftings}
+(a)
+Let \myHighlight{$\Xi$}\coordHE{} be a \myHighlight{$\Gamma$}\coordHE{}-torsor, \myHighlight{$(\h{\Xi}_1, \hq_1)$}\coordHE{} and \myHighlight{$(\h{\Xi}_2, \hq_2)$}\coordHE{} liftings for central extensions \myHighlight{$\h{\Gamma}_1$}\coordHE{} and \myHighlight{$\h{\Gamma}_2$}\coordHE{} of \myHighlight{$\Gamma$}\coordHE{} respectively. On the contracted product \myHighlight{$\hq_1 \otimes \hq_2 : \h{\Xi}_1 \otimes \h{\Xi}_2 \to \Xi$}\coordHE{} as \myHighlight{$\T$}\coordHE{}-bundles, we define a right action of \myHighlight{$\h{\Gamma}_1 \otimes \h{\Gamma}_2$}\coordHE{} by \myHighlight{$(\h{\xi}_1 \otimes \h{\xi}_2) \cdot (\h{\gamma}_1 \otimes \h{\gamma}_2) := (\h{\xi}_1 \cdot \h{\gamma}_1) \otimes (\h{\xi}_2 \cdot \h{\gamma}_2)$}\coordHE{}. Then \myHighlight{$(\h{\Xi}_1 \otimes \h{\Xi}_2, \hq_1 \otimes \hq_2)$}\coordHE{} is a lifting for \myHighlight{$\h{\Gamma}_1 \otimes \h{\Gamma}_2$}\coordHE{}.
+
+(b)
+Let \myHighlight{$\Xi$}\coordHE{} be a \myHighlight{$\Gamma$}\coordHE{}-torsor and \myHighlight{$(\h{\Xi}, \hq)$}\coordHE{} a lifting for \myHighlight{$\h{\Gamma}$}\coordHE{}. We define a right action of the inverse \myHighlight{$\h{\Gamma}^*$}\coordHE{} on \myHighlight{$\h{\Xi}$}\coordHE{} by \myHighlight{$\h{\xi} \cdot \h{\gamma}^* := \h{\xi} \cdot \h{\gamma}^{-1}$}\coordHE{}. We denote the manifold \myHighlight{$\h{\Xi}$}\coordHE{} with the right action of \myHighlight{$\h{\Gamma}^*$}\coordHE{} by \myHighlight{$\h{\Xi}^*$}\coordHE{}. If we define a map \myHighlight{$\hq^* : \h{\Xi}^* \to \Xi$}\coordHE{} by \myHighlight{$\hq^* := \hq$}\coordHE{}, then we have a lifting \myHighlight{$(\h{\Xi}^*, \hq^*)$}\coordHE{} of \myHighlight{$\Xi$}\coordHE{} for \myHighlight{$\h{\Gamma}^*$}\coordHE{}.
+
+(c)
+Let \myHighlight{$\Xi_i$}\coordHE{} be a \myHighlight{$\Gamma_i$}\coordHE{}-torsor, \myHighlight{$\h{\Gamma}_i$}\coordHE{} a central extension of \myHighlight{$\Gamma_i$}\coordHE{}, and \myHighlight{$p_i : \Xi_1 \times \Xi_2 \to \Xi_i$}\coordHE{} the projection \myHighlight{$(i= 1, 2)$}\coordHE{}. For liftings \myHighlight{$(\h{\Xi}_i, \hq_i)$}\coordHE{} of \myHighlight{$\Xi_i$}\coordHE{} for \myHighlight{$\h{\Gamma}_i$}\coordHE{}, the external product \myHighlight{$\h{\Xi}_1 \boxtimes \h{\Xi}_2 := p_1^*\h{\Xi}_1 \otimes p_2^*\h{\Xi}_2$}\coordHE{} as \myHighlight{$\T$}\coordHE{}-bundles gives a lifting \myHighlight{$(\h{\Xi}_1 \boxtimes \h{\Xi}_2, \hq_1 \boxtimes \hq_2)$}\coordHE{} of the \myHighlight{$\Gamma_1 \times \Gamma_2$}\coordHE{}-torsor \myHighlight{$\Xi_1 \times \Xi_2$}\coordHE{} for the central extension \myHighlight{$\h{\Gamma}_1 \boxtimes \h{\Gamma}_2$}\coordHE{}.
+\end{prop}
+
+\begin{proof}
+We can directly show this proposition using Definition \ref{dfn_operations_ce}.
+\end{proof}
+
+
+\begin{lem} \label{lem_tr_lifting}
+Let \myHighlight{$\h{\Gamma}$}\coordHE{} be a central extension of \myHighlight{$\Gamma$}\coordHE{} and \myHighlight{$(\h{\Xi}, \hq)$}\coordHE{} be a lifting of a \myHighlight{$\Gamma$}\coordHE{}-torsor \myHighlight{$\Xi$}\coordHE{} for \myHighlight{$\h{\Gamma}$}\coordHE{}. Using the isomorphism of Lemma \ref{lem_tr_ce} we consider \myHighlight{$\h{\Xi}^* \otimes \h{\Xi}$}\coordHE{} as a \myHighlight{$\Gamma \times \T$}\coordHE{}-torsor. There exists the isomorphism of liftings
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+\Tr : \h{\Xi}^* \otimes \h{\Xi} \rightarrow \Xi \times \T
+\rightCoord{}}{0mm}{1}{2}{
+\Tr : \h{\Xi}^* \otimes \h{\Xi} \rightarrow \Xi \times \T
+}{1}\coordE{}\end{eqnarray*}
+defined by \myHighlight{$\Tr(\h{\xi}^* \otimes \h{\theta}) := (q(\h{\theta}), \zeta(\h{\xi}, \h{\theta}))$}\coordHE{}, where \myHighlight{$\h{\xi} \cdot \zeta(\h{\xi}, \h{\theta}) = \h{\theta}$}\coordHE{}.
+\end{lem}
+
+\begin{proof}
+We can show this lemma in the proof of Lemma \ref{lem_tr_ce}.
+\end{proof}
+
+We describe the relation between these operations on liftings and the abelian group-like structure of \myHighlight{$\T$}\coordHE{}-gerbes, which is helpful to the proof of Theorem \ref{thm_axiom_CSgerbe}.
+
+\begin{thm} \label{thm_gerbe_lifting}
+Let \myHighlight{$\Xi$}\coordHE{} be a \myHighlight{$\Gamma$}\coordHE{}-torsor. There exist natural isomorphisms of \myHighlight{$\T$}\coordHE{}-gerbes
+
+(a) \myHighlight{$\sT_{\h{\Gamma}_1}(\Xi) \odot \sT_{\h{\Gamma}_2}(\Xi) \cong \sT_{\h{\Gamma}_1 \otimes \h{\Gamma}_2}(\Xi)$}\coordHE{}.
+
+(b) \myHighlight{$\sT_{\Gamma \times \T}(\Xi) \cong \sT$}\coordHE{}.
+
+(c) \myHighlight{$\sT_{\h{\Gamma}}(\Xi)^* \cong \sT_{\h{\Gamma}^*}(\Xi)$}\coordHE{}.
+\end{thm}
+
+\begin{proof}
+For (a), let \myHighlight{$\h{\Xi}_1$}\coordHE{} and \myHighlight{$\h{\Xi}_2$}\coordHE{} be objects in \myHighlight{$\sT_{\h{\Gamma}_1}(\Xi)$}\coordHE{} and \myHighlight{$\sT_{\h{\Gamma}_2}(\Xi)$}\coordHE{} respectively. We define the functor \myHighlight{$\sT_{\h{\Gamma}_1}(\Xi) \odot \sT_{\h{\Gamma}_2}(\Xi) \to \sT_{\h{\Gamma}_1 \otimes \h{\Gamma}_2}(\Xi)$}\coordHE{} by assigning the formal object \myHighlight{$\h{\Xi}_1 \odot \h{\Xi}_2$}\coordHE{} to the product of liftings \myHighlight{$\h{\Xi}_1 \otimes \h{\Xi}_2$}\coordHE{}. By the definition of \myHighlight{$\sT$}\coordHE{}-action on \myHighlight{$\sT_{\h{\Gamma}_1}(\Xi) \odot \sT_{\h{\Gamma}_2}(\Xi)$}\coordHE{} the functor is well-defined.
+
+The quasi-inverse functor of this functor is constructed as follows. Let \myHighlight{$\h{\Xi}$}\coordHE{} be a lifting of \myHighlight{$\Xi$}\coordHE{} for \myHighlight{$\h{\Gamma}_1 \otimes \h{\Gamma}_2$}\coordHE{}. Take a trivialization \myHighlight{$\h{\varphi} : \h{\Xi} \to \h{\Gamma}_1 \otimes \h{\Gamma}_2$}\coordHE{}. This induces the trivialization \myHighlight{$\varphi : \Xi \to \Gamma$}\coordHE{}. We put \myHighlight{$\h{\Xi}_i = \varphi^* \h{\Gamma}_i$}\coordHE{} for \myHighlight{$i = 1, 2$}\coordHE{}. The trivialization \myHighlight{$\h{\varphi}$}\coordHE{} induces the natural isomorphism of liftings \myHighlight{$\h{\Xi} \cong \h{\Xi}_1 \otimes \h{\Xi}_2$}\coordHE{}. The lifting \myHighlight{$\h{\Xi}_1 \otimes \h{\Xi}_2$}\coordHE{} is unique up to the unique isomorphisms defined below. If \myHighlight{$\h{\varphi}'$}\coordHE{} is the other trivialization, there exists a unique element \myHighlight{$\h{\gamma} \in \h{\Gamma}_1 \otimes \h{\Gamma}_2$}\coordHE{} such that \myHighlight{$\h{\gamma} \cdot \h{\varphi}(\h{\xi}) = \h{\varphi}'(\h{\xi})$}\coordHE{} for all \myHighlight{$\h{\xi} \in \h{\Xi}$}\coordHE{}. By multiplying \myHighlight{$\h{\gamma}$}\coordHE{} we have the unique isomorphism \myHighlight{$f : \h{\Xi}_1 \otimes \h{\Xi}_2 \to \h{\Xi}'_1 \otimes \h{\Xi}'_2$}\coordHE{}. The unique isomorphism commute with the natural isomorphism from \myHighlight{$\h{\Xi}$}\coordHE{} to the product of liftings. Then the assignment \myHighlight{$\h{\Xi} \mapsto \h{\Xi}_1 \odot \h{\Xi}_2$}\coordHE{} gives the quasi-inverse functor.
+
+For (b), let \myHighlight{$\h{\Xi}$}\coordHE{} be a lifting of \myHighlight{$\Xi$}\coordHE{} for the trivial central extension \myHighlight{$\Gamma \times \T$}\coordHE{}. Since the quotient space \myHighlight{$\h{\Xi}/\Gamma$}\coordHE{} is a \myHighlight{$\T$}\coordHE{}-torsor, we have a functor \myHighlight{$\sT_{\Gamma \times \T}(\Xi) \to \sT$}\coordHE{}. If a \myHighlight{$\T$}\coordHE{}-torsor \myHighlight{$T$}\coordHE{} is given, then \myHighlight{$\Xi \times T$}\coordHE{} is clearly a lifting of \myHighlight{$\Xi$}\coordHE{} for the trivial central extension. This gives the quasi-inverse functor.
+
+For (c), by the help of Lemma \ref{lem_tr_lifting} and the isomorphism of (b), a lifting \myHighlight{$\h{\Xi}^*$}\coordHE{} for \myHighlight{$\h{\Gamma}^*$}\coordHE{} defines a functor \myHighlight{$F_{\h{\Xi}^*} : \sT_{\h{\Gamma}}(\Xi) \to \sT$}\coordHE{}. The assignment \myHighlight{$\h{\Xi}^* \mapsto F_{\h{\Xi}^*}$}\coordHE{} gives the isomorphism of \myHighlight{$\T$}\coordHE{}-gerbes \myHighlight{$\sT_{\h{\Gamma}^*}(\Xi) \to \sT_{\h{\Gamma}}(\Xi)^*$}\coordHE{}.
+\end{proof}
+
+\begin{cor} \label{cor_external_gerbe}
+Let \myHighlight{$\Xi$}\coordHE{} be a \myHighlight{$\Gamma_i$}\coordHE{}-torsor and \myHighlight{$\h{\Gamma}_i$}\coordHE{} a central extension of \myHighlight{$\Gamma_i$}\coordHE{} for \myHighlight{$i = 1, 2$}\coordHE{}. We have a natural isomorphism of \myHighlight{$\T$}\coordHE{}-gerbes
+$$\coord{}\boxMath{
+\sT_{\h{\Gamma}_1}(\Xi_1) \odot \sT_{\h{\Gamma}_1}(\Xi_2) \cong 
+\sT_{\h{\Gamma}_1 \boxtimes \h{\Gamma}_2}(\Xi_1 \times \Xi_2).
+}{dollar}{0pt}\coordE{}$$
+\end{cor}
+
+\begin{proof}
+By using Proposition \ref{prop_operations_liftings} (c) the assignment \myHighlight{$\h{\Xi}_1 \odot \h{\Xi}_2 \mapsto \h{\Xi}_1 \boxtimes \h{\Xi}_2$}\coordHE{} defines the functor above. We construct a quasi-inverse functor of this functor as follows. Let \myHighlight{$\h{\Xi}$}\coordHE{} be a lifting of \myHighlight{$\Xi_1 \times \Xi_2$}\coordHE{} for the central extension \myHighlight{$\h{\Gamma}_1 \boxtimes \h{\Gamma}_2 := p_1^*\h{\Gamma}_1 \otimes p_2^*\h{\Gamma}_2$}\coordHE{}. By the help of Theorem \ref{thm_gerbe_lifting} (a) we can write \myHighlight{$\h{\Xi} \cong \tilde{\Xi}_1 \otimes \tilde{\Xi}_2$}\coordHE{}, where \myHighlight{$\tilde{\Xi}_i$}\coordHE{} is a lifting of \myHighlight{$\Xi_1 \times \Xi_2$}\coordHE{} for the central extension \myHighlight{$p_i^*\h{\Gamma}_i$}\coordHE{}  \myHighlight{$(i = 1, 2)$}\coordHE{}. Since \myHighlight{$p_1^*\h{\Gamma}_1 \cong \h{\Gamma}_1 \times \Gamma_2$}\coordHE{}, we obtain the lifting \myHighlight{$\tilde{\Xi}_1 / \Gamma_2$}\coordHE{}  of \myHighlight{$\Xi_1$}\coordHE{} for \myHighlight{$\h{\Gamma}_1$}\coordHE{}. Similarly we obtain the lifting \myHighlight{$\tilde{\Xi}_2 / \Gamma_1$}\coordHE{}  of \myHighlight{$\Xi_2$}\coordHE{} for \myHighlight{$\h{\Gamma}_2$}\coordHE{}. Then the assignment \myHighlight{$\h{\Xi} \mapsto (\tilde{\Xi}_1 / \Gamma_2) \odot (\tilde{\Xi}_2 / \Gamma_1)$}\coordHE{} gives the quasi-inverse functor.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Main results}
+\label{la_results}
+
+Here we state the main results of this paper. We fix a Lie group \myHighlight{$G = SU(2)$}\coordHE{}.
+
+\begin{dfn}
+Let \myHighlight{$S$}\coordHE{} be a closed oriented smooth 1-manifold and \myHighlight{$R \to S$}\coordHE{} a smooth principal \myHighlight{$G$}\coordHE{}-bundle. We have a central extension \myHighlight{$\h{\G}_S$}\coordHE{} of \myHighlight{$\G_S$}\coordHE{} and a \myHighlight{$\G_S$}\coordHE{}-bundle \myHighlight{$B_R = \A_R \times \S_R$}\coordHE{} over \myHighlight{$\A_R$}\coordHE{}, where the loop group acts only on the space \myHighlight{$\S_R$}\coordHE{} of smooth sections of \myHighlight{$R$}\coordHE{}. Using Corollary \ref{cor_gerbe_bundle} We define a \myHighlight{$\T$}\coordHE{}-gerbe assigned to \myHighlight{$a \in \A_R$}\coordHE{} by \myHighlight{${\B}_{(R, S)}(a) := \sT_{\h{\G}_S}(B_R(a))$}\coordHE{}.
+\end{dfn}
+
+\begin{thm}
+Let \myHighlight{$Q$}\coordHE{} be a smooth principal \myHighlight{$G$}\coordHE{}-bundle over a compact oriented smooth 2-manifold \myHighlight{$\Sigma$}\coordHE{} with boundary. For a connection \myHighlight{$A$}\coordHE{} on \myHighlight{$Q$}\coordHE{} we define a quotient space 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\h{B}_{(Q, \Sigma)}(A) = 
+\leftCoord{}\{A\} \times \S_Q \times \h{\G}_{\partial \Sigma} / \sim
+\rightCoord{}}{0mm}{2}{2}{
+\h{B}_{(Q, \Sigma)}(A) = 
+\{A\} \times \S_Q \times \h{\G}_{\partial \Sigma} / \sim
+}{1}\coordE{}\end{eqnarray} 
+by the equivalence relation \myHighlight{$(A, s, \h{\gamma}) \sim (A, s \cdot g, c_\Sigma(A,s,g) \cdot \h{\gamma})$}\coordHE{} for \myHighlight{$g \in \G_\Sigma$}\coordHE{}, where \myHighlight{$c_\Sigma$}\coordHE{} is defined by (\ref{cocycle_3}). If we define a right action by \myHighlight{$[A, s,\h{\gamma}] \cdot \h{\eta} = [A, s,\h{\gamma} \cdot \h{\eta}]$}\coordHE{} and a map \myHighlight{$\hq_{(Q, \Sigma)} : \h{B}_{(Q, \Sigma)}(A)  \to  B_{\partial Q}(\partial A)$}\coordHE{} by \myHighlight{$\hq_{(Q, \Sigma)}([A, s, \h{\gamma}]) = (\partial A, \partial s \cdot q_S(\h{\gamma}))$}\coordHE{}, then \myHighlight{$(\h{B}_{(Q,\Sigma)}, \hq_{(Q, \Sigma)})$}\coordHE{} is a lifting of \myHighlight{$B_{\partial Q}(\partial A)$}\coordHE{}, i.e.\ an object in \myHighlight{$\B_{(\partial Q, \partial \Sigma)}(\partial A)$}\coordHE{}.
+\end{thm}
+
+\begin{proof}
+The relation \myHighlight{$\sim$}\coordHE{} is indeed an equivalence relation because of (\ref{cocycle_condition_3}). Clearly the right action is well-defined and is simply transitive. The map \myHighlight{$\hq_{(Q, \Sigma)}$}\coordHE{} is also well-defined since \myHighlight{$q_S(c_\Sigma(A, s, g)) = \partial g^{-1}$}\coordHE{}. We can easily check that it commutes with the actions of the groups.
+\end{proof}
+
+When the underlying manifolds are obvious, we abbreviate the notations as \myHighlight{$\B_{(R, S)} = \B_R$}\coordHE{} and \myHighlight{$(\h{B}_{(Q, \Sigma)}, \hq_{(Q, \Sigma)}) = (\h{B}_Q, \hq_Q)$}\coordHE{}.
+
+\begin{rem}
+The construction above gives directly a lifting \myHighlight{$(\h{B}_Q, \hq_Q)$}\coordHE{} on the \myHighlight{$\G_{\partial \Sigma}$}\coordHE{}-bundle \myHighlight{$r^*B_{\partial Q} \to \A_Q$}\coordHE{}, where \myHighlight{$r : \A_Q \to \A_{\partial Q}$}\coordHE{} is the restriction map. We can consider the lifting as a \myHighlight{$\T$}\coordHE{}-bundle over \myHighlight{$r^*B_{\partial Q} = \A_Q \times \S_{\partial Q}$}\coordHE{}. The Hermitian line bundle associated with this \myHighlight{$\T$}\coordHE{}-bundle corresponds to the Chern-Simons line bundle with \myHighlight{$\partial \Sigma \neq \emptyset$}\coordHE{} defined by Freed in \cite{F1}. 
+\end{rem}
+
+\begin{thm} \label{thm_axiom_CSgerbe}
+Let \myHighlight{$R \to S$}\coordHE{} be a \myHighlight{$G$}\coordHE{}-bundle over a closed oriented smooth 1-manifold, and \myHighlight{$Q \to \Sigma$}\coordHE{} be a \myHighlight{$G$}\coordHE{}-bundle over a compact oriented smooth 2-manifold with boundary. The assignments
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+a \in \A_R & \longmapsto & \B_R(a), \rightCoord{}\\\leftCoord{}
+A \in \A_Q & \longmapsto & (\h{B}_Q(A), \hq_Q) \in \B_{\partial Q}(\partial A)
+\rightCoord{}}{0mm}{2}{3}{
+a \in \A_R & \longmapsto & \B_R(a), \\
+A \in \A_Q & \longmapsto & (\h{B}_Q(A), \hq_Q) \in \B_{\partial Q}(\partial A)
+}{1}\coordE{}\end{eqnarray*}
+satisfy the following properties.
+
+(a) (Functoriality) If \myHighlight{$f : R' \to R$}\coordHE{} be a bundle map covering an orientation preserving diffeomorphism of 1-manifolds, then we have a natural isomorphism of \myHighlight{$\T$}\coordHE{}-gerbes
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\h{\Psi}_f : \B_R(a) \rightarrow \B_{R'}(f^*a) .\rightCoord{}
+\label{axiom_CS_a1}
+\rightCoord{}}{0mm}{1}{3}{
+\h{\Psi}_f : \B_R(a) \rightarrow \B_{R'}(f^*a) .
+}{1}\coordE{}\end{eqnarray}
+Moreover if there are compact 2-manifolds \myHighlight{$Q$}\coordHE{}, \myHighlight{$Q'$}\coordHE{} such that \myHighlight{$\partial Q = R, \partial Q' = R'$}\coordHE{} and a bundle map \myHighlight{$F : Q' \to Q$}\coordHE{} covering an orientation preserving diffeomorphism such that \myHighlight{$\partial F = f$}\coordHE{}, then we have a natural isomorphism of liftings
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\h{\Psi}_f \left( (\h{B}_Q(A), \hq_Q) \right) \cong 
+\leftCoord{}(\h{B}_{Q'}(F^*A), \hq_{Q'}).\rightCoord{}
+\rightCoord{}}{0mm}{2}{3}{
+\h{\Psi}_f \left( (\h{B}_Q(A), \hq_Q) \right) \cong 
+(\h{B}_{Q'}(F^*A), \hq_{Q'}).
+}{1}\coordE{}\end{eqnarray}
+
+(b) (Orientation) Let \myHighlight{$-S$}\coordHE{} be the manifold with the opposite orientation to \myHighlight{$S$}\coordHE{}. Then we have a natural isomorphism of \myHighlight{$\T$}\coordHE{}-gerbes
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\B_{(R, -S)}(a) \cong \B_{(R, S)}(a)^* .\rightCoord{}
+\label{axiom_CS_b1}
+\rightCoord{}}{0mm}{1}{3}{
+\B_{(R, -S)}(a) \cong \B_{(R, S)}(a)^* .
+}{1}\coordE{}\end{eqnarray}
+Moreover if \myHighlight{$\partial \Sigma = S$}\coordHE{} then we have a natural isomorphism of liftings
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\leftCoord{}( \h{B}_{(Q, -\Sigma)}(A),  \hq_{(Q, -\Sigma)}  ) \cong 
+\leftCoord{}( \h{B}_{(Q, \Sigma)}(A)^*, \hq_{(Q, \Sigma)}^* ) .\rightCoord{}
+\label{axiom_CS_b2}
+\rightCoord{}}{0mm}{3}{3}{
+( \h{B}_{(Q, -\Sigma)}(A),  \hq_{(Q, -\Sigma)}  ) \cong 
+( \h{B}_{(Q, \Sigma)}(A)^*, \hq_{(Q, \Sigma)}^* ) .
+}{1}\coordE{}\end{eqnarray}
+
+(c) (Additivity) If \myHighlight{$R = R_1 \sqcup \cdots \sqcup R_n$}\coordHE{} with \myHighlight{$a = a_1 \sqcup \cdots \sqcup a_n$}\coordHE{}, then we have a natural isomorphism of \myHighlight{$\T$}\coordHE{}-gerbes
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\B_R(a) \cong 
+\B_{R_1}(a_1) \odot \cdots \odot \B_{R_n}(a_n). \rightCoord{}
+\label{axiom_CS_c1}
+\rightCoord{}}{0mm}{1}{3}{
+\B_R(a) \cong 
+\B_{R_1}(a_1) \odot \cdots \odot \B_{R_n}(a_n). 
+}{1}\coordE{}\end{eqnarray}
+Moreover if \myHighlight{$R$}\coordHE{} is the boundary of \myHighlight{$Q = Q_1 \sqcup \cdots \sqcup Q_n$}\coordHE{} with \myHighlight{$A = A_1 \sqcup \cdots \sqcup A_n$}\coordHE{}, then we have a natural isomorphism of liftings
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\leftCoord{}(\h{B}_Q(A), \hq_Q) 
+&\leftCoord{}\cong & \rightCoord{}
+\leftCoord{}(\h{B}_{Q_1}(A_1), \hq_{Q_1}) \odot \cdots \odot 
+\leftCoord{}(\h{B}_{Q_n}(A_n), \hq_{Q_n}) .\rightCoord{}
+\label{axiom_CS_c2}
+\rightCoord{}}{0mm}{5}{4}{
+(\h{B}_Q(A), \hq_Q) 
+&\cong & 
+(\h{B}_{Q_1}(A_1), \hq_{Q_1}) \odot \cdots \odot 
+(\h{B}_{Q_n}(A_n), \hq_{Q_n}) .
+}{1}\coordE{}\end{eqnarray}
+
+(d) (Gluing) Let \myHighlight{$\Sigma$}\coordHE{} be a 2-manifold, \myHighlight{$S$}\coordHE{} a closed 1-manifold, \myHighlight{$j : S \to \Sigma$}\coordHE{} an embedding, and \myHighlight{$\Sigma_c$}\coordHE{} the manifold obtained by cutting \myHighlight{$\Sigma$}\coordHE{} along \myHighlight{$S$}\coordHE{}. For a \myHighlight{$G$}\coordHE{}-bundle \myHighlight{$Q$}\coordHE{} over \myHighlight{$\Sigma$}\coordHE{} we have the induced \myHighlight{$G$}\coordHE{}-bundle \myHighlight{$Q_c$}\coordHE{} over \myHighlight{$\Sigma_c$}\coordHE{} and \myHighlight{$R := j^*Q$}\coordHE{} over \myHighlight{$S$}\coordHE{}. For a connection \myHighlight{$A \in \A_Q$}\coordHE{} we denote the corresponding connections by \myHighlight{$A_c \in \A_{Q_c}$}\coordHE{} and \myHighlight{$a := j^*A \in \A_R$}\coordHE{}. We have a natural isomorphism of liftings
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\Tr_a \left( (\h{B}_{Q_c}(A_c), \hq_{Q_c}) \right)
+\cong (\h{B}_Q(A), \hq_Q) ,
+\label{axiom_CS_d1}
+\rightCoord{}}{0mm}{1}{2}{
+\Tr_a \left( (\h{B}_{Q_c}(A_c), \hq_{Q_c}) \right)
+\cong (\h{B}_Q(A), \hq_Q) ,
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$\Tr_a$}\coordHE{} is the contraction of \myHighlight{$\T$}\coordHE{}-gerbes
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\Tr_a : \B_{\partial Q_c}(\partial A_c) \cong 
+\B_{\partial Q}(\partial A) \odot \B_R(a)^* \odot \B_R(a) 
+\rightarrow \B_{\partial Q}(\partial A) .\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+\Tr_a : \B_{\partial Q_c}(\partial A_c) \cong 
+\B_{\partial Q}(\partial A) \odot \B_R(a)^* \odot \B_R(a) 
+\rightarrow \B_{\partial Q}(\partial A) .
+}{1}\coordE{}\end{eqnarray}
+\end{thm}
+
+\begin{proof}
+For (a), \myHighlight{$\overline{f} : S' \to S$}\coordHE{} denotes the diffeomorphism covered by \myHighlight{$f$}\coordHE{}. Let \myHighlight{$(\h{B}, \hq)$}\coordHE{} be a lifting of the \myHighlight{$\G_S$}\coordHE{}-bundle \myHighlight{$B_R(a)$}\coordHE{}. We define a \myHighlight{$\h{\G}_{S'}$}\coordHE{}-action on \myHighlight{$\h{B}$}\coordHE{} via the isomorphism \myHighlight{$\h{\phi}_{\overline{f}} : \h{\G}_S \to \h{\G}_{S'}$}\coordHE{} induced from Proposition \ref{thm_axioms_WZ} (a). If we define a map \myHighlight{$\Psi_f : B_R(a) \to B_{R'}(f^*a)$}\coordHE{} by \myHighlight{$\Psi_f(a, s) := (f^*a, f^{-1} \circ s \circ \overline{f})$}\coordHE{}, then \myHighlight{$(\h{B}, \Psi_f \circ \hq)$}\coordHE{} is a lifting of the \myHighlight{$\G_{S'}$}\coordHE{}-bundle \myHighlight{$B_{R'}(f^*a)$}\coordHE{}. This assignment of liftings gives rise to the isomorphism (\ref{axiom_CS_a1}). If a bundle map \myHighlight{$F : Q' \to Q$}\coordHE{} is given, then the map \myHighlight{$\S_Q \times \h{\G}_{\Sigma} \to \S_{Q'} \times \h{\G}_{\Sigma'}$}\coordHE{} defined by \myHighlight{$(s, \h{\gamma}) \mapsto (F^{-1} \circ s \circ \overline{F}, \h{\phi}_{\overline{f}}(\h{\gamma}))$}\coordHE{} induces the map \myHighlight{$\h{B}_Q(A) \to \h{B}_{Q'}(F^*A)$}\coordHE{}. By the functoriality of the integration over manifolds the induced map gives the isomorphism of the liftings of \myHighlight{$B_{\partial Q'}(f^* a)$}\coordHE{}  $$\coord{}\boxMath{
+\h{\Psi}_f \left( (\h{B}_Q(A), \hq_Q) \right) = 
+(\h{B}_Q(A), \Psi_f \circ \hq_Q) \longrightarrow
+(\h{B}_{Q'}(F^*A), \hq_{Q'}) .
+}{dollar}{0pt}\coordE{}$$
+
+For (b), we have the isomorphism \myHighlight{$\h{\G}_{-S} \cong \h{\G}^*$}\coordHE{} of the central extensions of \myHighlight{$\G_{-S} = \G_{S}$}\coordHE{} from Proposition \ref{thm_axioms_WZ} (b). By the help of Theorem \ref{thm_gerbe_lifting} (c) we have the isomorphism of (\ref{axiom_CS_b1}). Since the integration over manifolds satisfies \myHighlight{$\int_{-X} = -\int_X$}\coordHE{}, we can easily construct the isomorphism (\ref{axiom_CS_b2}).
+
+For (c), we prove the case of \myHighlight{$n = 2$}\coordHE{}. It is clear that \myHighlight{$\G_{S_1 \sqcup S_2} = \G_{S_1} \times \G_{S_2}$}\coordHE{}. By using Proposition \ref{thm_axioms_WZ} (c) we get the isomorphism \myHighlight{$\h{\G}_{S_1 \sqcup S_2} \cong \h{\G}_{S_1} \boxtimes \h{\G}_{S_2}$}\coordHE{}. We can easily see that \myHighlight{$B_R(a) = B_{R_1}(a_1) \times B_{R_2}(a_2)$}\coordHE{}. Applying Corollary \ref{cor_external_gerbe} we have the isomorphism (\ref{axiom_CS_c1}). We also have the isomorphism (\ref{axiom_CS_c2}) using the additivity of the integration over manifolds.
+
+For (d), we describe the image under the isomorphism \myHighlight{$\Tr_a$}\coordHE{} first. Let \myHighlight{$\h{B}$}\coordHE{} be a lifting of \myHighlight{$\G_{\Sigma_c}$}\coordHE{}-bundle \myHighlight{$B_{\partial Q_c}(\partial A_c)$}\coordHE{}. By choosing a trivialization of \myHighlight{$\h{B}$}\coordHE{} we write \myHighlight{$\h{B} \cong \h{B}_1 \boxtimes \h{B}_2 \boxtimes \h{B}_3$}\coordHE{}, where \myHighlight{$\h{B}_1, \h{B}_2$}\coordHE{} and \myHighlight{$\h{B}_3$}\coordHE{} are liftings of \myHighlight{$B_{\partial Q}(\partial A), B_{(R, -S)}(a)$}\coordHE{} and \myHighlight{$B_{(R, S)}(a)$}\coordHE{} respectively. Using (b) we identify \myHighlight{$\h{B}_2$}\coordHE{} with a lifting on \myHighlight{$B_{(R, S)}$}\coordHE{} for the central extension \myHighlight{$\G_S^*$}\coordHE{}. Under the isomorphism \myHighlight{$\B_R(a)^* \odot \B_R(a) \cong \sT$}\coordHE{} we obtain the corresponding \myHighlight{$\T$}\coordHE{}-torsor \myHighlight{$T = \h{B}_2 \otimes \h{B}_3 / \G_S$}\coordHE{}. Therefore we have \myHighlight{$\Tr_a(\h{B}) = \h{B}_1 \otimes T$}\coordHE{}. This construction seems to depend on the choice of the trivialization. Recall the proof of Theorem \ref{thm_gerbe_lifting} (a). If we take the other trivialization, then we have the unique isomorphism \myHighlight{$f : \h{B}_1 \boxtimes \h{B}_2 \boxtimes \h{B}_3 \to \h{B}'_1 \boxtimes \h{B}'_2 \boxtimes \h{B}'_3$}\coordHE{}. This induces the unique isomorphism \myHighlight{$\Tr_a(f) : \h{B}_1 \to \h{B}'_1$}\coordHE{}. Hence the image of \myHighlight{$\Tr_a$}\coordHE{} is uniquely determined up to the unique isomorphism.
+
+Now we put \myHighlight{$\h{B} = \h{B}_{Q_c}(A_c)$}\coordHE{}. The trivialization is induced by choosing a section \myHighlight{$s_{Q_c} \in \S_{Q_c}$}\coordHE{}. We put \myHighlight{$\partial s_{Q_c} := (s_{\partial Q}, s_R, s_R') \in \S_{\partial Q_c} = \S_{\partial Q} \times \S_R \times \S_R$}\coordHE{}.  Though \myHighlight{$s_R \neq s_R'$}\coordHE{} in general, we can choose a section such that \myHighlight{$s_R = s_R'$}\coordHE{} by using the action of \myHighlight{$\G_{\Sigma_c}$}\coordHE{}. We fix such a section \myHighlight{$\sigma_{Q_c}$}\coordHE{} and put \myHighlight{$\partial \sigma_{Q_c} := (\sigma_{\partial Q}, \sigma_R, \sigma_R)$}\coordHE{}. Under this choice we can put \myHighlight{$\h{B}_1 := \G_{\partial \Sigma}, \h{B}_2 := \G_{-S}$}\coordHE{} and \myHighlight{$\h{B}_3 := \G_S$}\coordHE{}, where the equivariant maps are defined by
+$$\coord{}\boxMath{
+\begin{array}{ccc}
+\h{B}_1 \rightarrow B_{\partial Q}(\partial A) , &
+\h{B}_2 \rightarrow B_{(R, -S)}(a),  &
+\h{B}_3 \rightarrow B_{(R,  S)}(a), \\
+(\h{\gamma}_{\partial \Sigma} \mapsto 
+\sigma_{\partial Q} \cdot 
+q_{\partial \Sigma}(\h{\gamma}_{\partial \Sigma})) &
+(\h{\gamma}_{-S} \mapsto \sigma_R \cdot q_{-S}(\h{\gamma}_{-S})) &
+(\h{\gamma}_{ S} \mapsto \sigma_R \cdot q_{ S}(\h{\gamma}_{ S})) 
+\end{array}
+}{dollar}{0pt}\coordE{}$$
+respectively. We can easily see that the inverse lifting \myHighlight{$\h{B}_2^*$}\coordHE{} is naturally isomorphic to \myHighlight{$\h{B}_3$}\coordHE{}. Hence we have natural isomorphisms \myHighlight{$T \cong \T$}\coordHE{} and \myHighlight{$\h{B}_1 \otimes T \cong \h{B}_1$}\coordHE{}. If we take the other section \myHighlight{$\sigma_{Q_c}'$}\coordHE{}, then there exists a unique element \myHighlight{$g_c \in \G_{\Sigma_c}$}\coordHE{} such that \myHighlight{$\sigma_{Q_c}' = \sigma_{Q_c} \cdot g_c$}\coordHE{}. The isomorphism \myHighlight{$f : \h{B}_1 \boxtimes \h{B}_2 \boxtimes \h{B}_3 \to \h{B}_1' \boxtimes \h{B}_2' \boxtimes \h{B}_3'$}\coordHE{} is defined by \myHighlight{$\h{\gamma}_{\partial \Sigma} \boxtimes \h{\gamma}_{-S} \boxtimes \h{\gamma}_S \mapsto c_{\Sigma_c}(A_c, \sigma_{Q_c}, g_c) \cdot \h{\gamma}_{\partial \Sigma} \boxtimes \h{\gamma}_{-S} \boxtimes \h{\gamma}_S$}\coordHE{}. Note that \myHighlight{$\sigma_{Q_c}$}\coordHE{} and \myHighlight{$g_c$}\coordHE{} give the corresponding elements \myHighlight{$\sigma_Q \in \S_Q$}\coordHE{} and \myHighlight{$g \in \G_\Sigma$}\coordHE{}. Using Proposition \ref{thm_axioms_WZ} (d) and the property of the integration, we have \myHighlight{$\Tr( c_{\Sigma_c}(A_c, \sigma_{Q_c}, g_c)) = c_\Sigma(A, \sigma_Q, g)$}\coordHE{}. Hence the unique isomorphism \myHighlight{$\Tr_a(f)$}\coordHE{} is defined by \myHighlight{$\h{\gamma}_\Sigma \mapsto c_\Sigma(A, \sigma_Q, g) \cdot \h{\gamma}_\Sigma$}\coordHE{}. Therefore the isomorphism of liftings \myHighlight{$\h{B}_1 \to \h{B}_Q(A)$}\coordHE{} defined by \myHighlight{$\h{\gamma}_\Sigma \mapsto [A, \sigma_Q, \h{\gamma}_\Sigma]$}\coordHE{} gives rise to the isomorphism (\ref{axiom_CS_d1}). 
+\end{proof}
+
+\begin{cor}
+If \myHighlight{$\partial \Sigma = \emptyset$}\coordHE{} in Theorem \ref{thm_axiom_CSgerbe} (d), we have a natural isomorphism of \myHighlight{$\T$}\coordHE{}-torsors
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\Tr_a \left( (\h{B}_{Q_c}(A_c), \hq_{Q_c}) \right) \cong T_Q(A),
+\rightCoord{}}{0mm}{1}{2}{
+\Tr_a \left( (\h{B}_{Q_c}(A_c), \hq_{Q_c}) \right) \cong T_Q(A),
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$\Tr_a$}\coordHE{} is the isomorphism of \myHighlight{$\T$}\coordHE{}-gerbes
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\Tr_a : \B_{\partial Q_c}(\partial A_c) \cong \B_R(a)^* \odot \B_R(a) 
+\rightarrow \sT . \rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+\Tr_a : \B_{\partial Q_c}(\partial A_c) \cong \B_R(a)^* \odot \B_R(a) 
+\rightarrow \sT . 
+}{1}\coordE{}\end{eqnarray}
+\end{cor}
+
+\bigskip
+
+As the \myHighlight{$\T$}\coordHE{}-torsor \myHighlight{$T_Q(a)$}\coordHE{} is related to the Hermitian line bundle on the space of connections \myHighlight{$\A_Q$}\coordHE{}, the \myHighlight{$\T$}\coordHE{}-gerbe \myHighlight{$\B_R(a)$}\coordHE{} is related to a certain geometric object on \myHighlight{$\A_R$}\coordHE{}. That is a \textit{Dixmier-Douady sheaf of groupoids} or a \textit{DD gerbe} \cite{Br1, Br2}. We can define a natural DD gerbe on \myHighlight{$\A_R$}\coordHE{} by extending the construction of \myHighlight{$\B_R(a)$}\coordHE{}. The precise definition and the differential geometry of the DD gerbes are the subjects of the forthcoming paper \cite{Go}.
+
+\bigskip
+
+\textit{Acknowledgments}. I warmly thank T. Kohno for many useful suggestions and discussions.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{thebibliography}{999}
+
+\bibitem{A}M. F. Atiyah, 
+\textit{Topological quantum field theory}, 
+Publ. Math. Inst. Hautes Etudes Sci. (Paris) 68 (1989), 175-186.
+
+\bibitem{Br1}J-L. Brylinski,
+\textit{Loop spaces, Characteristic Classes and Geometric Quantization},
+Birkh\myHighlight{$\ddot{\textrm{a}}$}\coordHE{}user Boston, Inc., Boston, MA, 1993.
+
+\bibitem{Br2}J-L.Brylinski,
+\textit{Gerbes on complex reductive Lie groups},
+math.DG/0002158.
+
+\bibitem{F1}D. S. Freed,
+\textit{Classical Chern-Simons Theory. I},
+Adv. Math. 113(1995), no.2, 237-303,
+hep-th/9206021.
+
+\bibitem{F2}D. S. Freed,
+\textit{Higher algebraic structures and quantization},
+Comm. Math. Phys. 159(1994), no.2, 343-398,
+hep-th/9212115.
+
+\bibitem{F3}D. S. Freed,
+\textit{Locality and integration in topological field theory},
+hep-th/9209048.
+
+\bibitem{F4}D. S. Freed,
+\textit{Dirac charge quantization and generalized differential cohomology},
+hep-th/0011220.
+
+\bibitem{Gi}J. Giraud,
+\textit{Cohomologie  non-ab\'elienne},
+Grundl. 179, Springer Verlag (1971).
+
+\bibitem{Go}K. Gomi,
+\textit{The geometry of gerbes in Chern-Simons theory},
+in preparation.
+
+\bibitem{Mi}J. Mickelsson,
+\textit{Kac-Moody groups and the Dirac determinant line bundle},
+Topological and geometrical methods in field theory (Espoo, 1986), 117-131, World Sci. Publishing, Teaneck, NJ, 1986.
+
+\bibitem{P-S}A. Pressley and G. Segal,
+\textit{Loop groups},
+Oxford Univ. Press, New York, 1986.
+
+\bibitem{R-S-W}T. R. Ramadas, I. M. Singer and J. Weitsman,
+\textit{Some comments on Chern-Simons gauge theory},
+Comm. Math. Phys. 126(1989), no.2, 409-420.
+
+\bibitem{W}E. Witten,
+\textit{Quantum field theory and the Jones polynomial},
+Comm. Math. Phys. 121(1989), 351-399.
+
+\end{thebibliography}
+
+Graduate school of Mathematical Sciences, 
+University of Tokyo, Komaba 3-8-1, Meguro-Ku, Tokyo, 153-8914 Japan.
+
+e-mail: kgomi@ms.u-tokyo.ac.jp
+
+\end{document}
+\bye

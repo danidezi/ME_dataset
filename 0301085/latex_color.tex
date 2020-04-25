@@ -1,0 +1,1213 @@
+
+\documentclass[a4paper,12pt]{amsart}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[normalem]{ulem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hoffset=-2.2cm
+\textwidth=16.5cm
+
+\voffset=-1.5cm
+\textheight=23cm
+
+
+\addtolength{\parskip}{1pt}
+
+\sloppy
+%%%%%%%%%%%%%%%%%% definitions %%%%%%%%%%%%%%%%%%%
+
+
+
+\providecommand{\lra}{\leftrightarrow}
+\providecommand{\LRA}{\Leftrightarrow}
+\providecommand{\then}{\Rightarrow}
+\providecommand{\umat}{\mbox{{\bf 1}}}
+
+
+\providecommand{\sfrac}[2]{\mbox{\myHighlight{$\frac{{#1}}{{#2}}$}\coordHE{}}}
+\providecommand{\f}[3]{{f_{#1#2}}^{#3}}
+\providecommand{\Ii}{{\mathrm{i}}}
+\providecommand{\ep}{\varepsilon}
+
+
+\providecommand{\cF}{{\mathcal F}}
+\providecommand{\cC}{{\mathcal C}}
+\providecommand{\cP}{{\mathcal P}}
+\providecommand{\bP}{\bar{\mathcal P}}
+\providecommand{\bC}{{\bar{\mathcal C}}}
+\providecommand{\myth}{\mathbf{\Theta}}
+\providecommand{\myths}{\mathbf{\theta}}
+
+\providecommand{\eff}{{\rm eff}}
+\providecommand{\red}{{\rm red}}
+
+\numberwithin{equation}{section}
+%%this makes the same like mysection %%%%%%%%%%%%
+
+\providecommand{\bref}[1]{\textbf{\ref{#1}}}
+
+\providecommand{\lieg}{\mathfrak{g}}
+\providecommand{\lieh}{\mathfrak{h}}
+
+\def\tensor{\otimes}
+\def\d{\partial}
+\def\defpar{\vartheta}
+\def\GF{{\bf F}}
+\def\T{{\bf T}}
+\def\U{\mathcal U}
+\def\H{\mathcal H}
+\def\g{h}
+\def\id{\mathcal I}
+\def\A{\mathfrak{A}}
+
+
+\providecommand{\dr}[1]{\frac{\d}{\d #1}}
+\providecommand{\dl}[1]{\displaystyle\frac{{\d}}{\d #1}}
+
+\providecommand{\dd}[2]{\frac{\d #1}{\d #2}}
+\providecommand{\ddr}[2]{\frac{\d^R #1}{\d #2}}
+\providecommand{\ddl}[2]{\frac{\d^L #2}{\d #1}}
+
+\providecommand{\vdr}[1]{\frac{{\stackrel{\leftarrow}{\delta}}}{ \delta #1}}
+\providecommand{\vdl}[1]{\displaystyle\frac{{\delta}}{\delta #1}}
+
+\providecommand{\vddr}[2]{\frac{\delta^R #1}{\delta #2}}
+\providecommand{\vddl}[2]{{\frac{\delta #1}{\delta #2}}}
+
+\def\const{\mathop{\rm const}\nolimits}
+\def\rank{\mathop{\rm rank}\nolimits}
+\def\ih{i\hbar\,}
+\def\ioh{\frac{i}{\hbar}}
+\providecommand{\pb}[2]{\displaystyle{\left\{{}#1{},{}#2{}\right\}}}
+\providecommand{\ab}[2]{\big(#1,\,#2\big)}
+
+\providecommand{\qcommut}[2]{{[#1\stackrel{\star}{,}#2]}}
+\providecommand{\commut}[2]{[#1,#2]}
+\providecommand{\scommut}[2]{\{#1\stackrel{\star}{,}#2\}}
+\providecommand{\cscommut}[2]{\{#1,#2\}}
+
+
+\providecommand{\tr}{{\rm \,Tr}\,}
+\def\half{{\frac{1}{2}}}
+\providecommand{\gh}[1]{{\rm gh}(#1)}
+\providecommand{\p}[1]{\varepsilon{(#1)}}
+\providecommand{\ip}[1]{\varepsilon_{#1}}
+
+\providecommand{\maxim}[1]{\textsc{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{useful_macros}
+\begin{document}
+\addtolength{\baselineskip}{2.2pt}
+
+{\hfill{\lowercase{\tt hep-th/0301085}}\\[12pt]}
+
+\title{BRST-anti-BRST Symmetric Conversion of Second-Class Constraints}
+
+\author{I.A.~Batalin and M.A.~Grigoriev} \address{Lebedev Physics
+  Institute, RAS, Leninskiy 53, Moscow 117924, Russia}
+
+
+\begin{abstract}
+  A general method of the BRST--anti-BRST symmetric conversion of
+  second-class constraints is presented.  It yields a pair of
+  commuting and nilpotent BRST-type charges that can be naturally
+  regarded as BRST and anti-BRST ones.  Interchanging the BRST and
+  anti-BRST generators corresponds to a symmetry between the original
+  second-class constraints and the conversion variables, which
+  enter the formalism on equal footing.
+\end{abstract}
+\maketitle
+
+
+
+
+
+
+
+\vspace{0.7cm}
+
+\thispagestyle{empty}
+
+\section{Introduction}
+For first-class constraints, the well-known BFV--BRST quantization
+method provides an adequate description of general constrained systems
+at the classical and quantum levels~\cite{BFV}.  But for second-class
+systems, a proper counterpart of the BFV--BRST method is not yet
+known.  Most of the well-established approaches to second-class
+systems are based on the construction of an effective first-class
+system that is equivalent to the original second-class
+system~\cite{FSh,BF,BF87, Split,BMgauge}.  Among these methods, the
+most developed one is the so-called \textit{conversion
+  method}~\cite{FSh,BF,BF87,BT,BGL}.  In this approach, one introduces
+additional variables \myHighlight{$\phi$}\coordHE{}, called \textit{conversion variables}, and
+extends second-class constraints by \myHighlight{$\phi$}\coordHE{}-dependent terms such that
+the extended constraints become first-class.
+
+The conversion method has proved a powerful tool for description and
+quantization of second-class systems.  But the general conversion is
+too ambiguous, and it seems natural to reduce this ambiguity by
+imposing additional conditions on the conversion procedure.  A
+well-known restriction consists in requiring the effective gauge
+algebra to be of a fixed rank; a common choice is to take a \myHighlight{$0$}\coordHE{}-rank
+(Abelian) effective gauge algebra.  This \textit{Abelian} conversion
+is well studied; in particular, the existence theorem and a
+constructive procedure are known for the effective
+constraints~\cite{BT}.
+
+In this paper, we take another route and reduce the ambiguity by
+requiring the conversion procedure to respect extra symmetries.
+Namely, we treat the original second-class constraints and conversion
+variables on equal footing.  Technically, this implies that the
+conversion variables appear as constraints \myHighlight{$\bar\theta^\alpha$}\coordHE{} dual to
+the original second-class constraints \myHighlight{$\theta_\alpha$}\coordHE{}.  We then
+proceed with the conversion keeping the symmetry between
+\myHighlight{$\theta_\alpha$}\coordHE{} and \myHighlight{$\bar\theta^\alpha$}\coordHE{} explicit.
+
+
+The conversion is carried out in the framework of the BFV--BRST
+approach.  At the level of the effective gauge system (converted
+system), the symmetry between \myHighlight{$\theta^\alpha$}\coordHE{} and \myHighlight{$\bar\theta^\alpha$}\coordHE{}
+results in the BRST--anti-BRST invariance.  The BRST and anti-BRST charges
+are associated to the appropriately
+extended original constraints \myHighlight{$\theta_\alpha$}\coordHE{} and the extended dual
+constraints \myHighlight{$\bar\theta^\alpha$}\coordHE{} respectively.
+
+
+The paper is organized as follows: in Sec.~\bref{sec:basics}, we
+develop basics of our approach to conversion and show that the
+resulting gauge system is naturally described by a pair of nilpotent
+and commuting generators identified as the BRST and anti-BRST
+generators.  In Sec.~\bref{sec:QA}, generating equations of the
+BRST--anti-BRST symmetric conversion are reformulated as a certain
+type of master equations with respect to the~\textit{quantum
+  antibracket}~\cite{BMQA}.  A more restricted version of the
+formalism is considered in Sec.~\bref{sec:special}.  In this more
+special approach, generating operators satisfy stronger conditions.
+These conditions are also shown to allow the existence of a conversion
+procedure for arbitrary original constraints \myHighlight{$\theta_\alpha$}\coordHE{}.  In
+Sec.~\bref{sec:Hamiltonian}, we consider construction of a unitarizing
+Hamiltonian in the BRST--anti-BRST symmetric formulation.
+
+
+
+\section{Basics}\label{sec:basics}
+Let a second-class constrained system be determined by constraints
+\myHighlight{$\theta^\alpha\,,\alpha=1,\ldots\,,2N$}\coordHE{}.  Their Dirac matrix is given
+by
+\begin{equation}\coord{}\boxEquation{
+\ih  \Delta^0_{\alpha\beta}=\commut{\theta_\alpha}{\theta_\beta}\,,
+}{
+\ih  \Delta^0_{\alpha\beta}=\commut{\theta_\alpha}{\theta_\beta}\,,
+}{ecuacion}\coordE{}\end{equation}
+and is assumed to be invertible. To each constraint \myHighlight{$\theta^\alpha$}\coordHE{} we
+associate its dual \myHighlight{$\bar\theta^\alpha$}\coordHE{}. We choose
+\myHighlight{$\p{\bar\theta^\alpha}=\p{\theta_\alpha}$}\coordHE{} where \myHighlight{$\p{f}$}\coordHE{} denotes
+Grassmann parity of \myHighlight{$f$}\coordHE{}. Dual constraints plays a role of extra
+degrees of freedom and therefore are defined on the appropriate
+extension of the original phase space.  A basic example is provided by
+taking \myHighlight{$\bar\theta^\alpha=e_\beta^\alpha \phi^\beta$}\coordHE{} where
+\myHighlight{$\phi^\alpha$}\coordHE{} are conversion variables and \myHighlight{$e^\alpha_\beta$}\coordHE{} depend on
+phase space variables only.
+
+In what follows we prefer to work in terms of generating functions (operators)
+and not in terms of constraints. To this end let us introduce ghost variables
+\myHighlight{$\cC^\alpha$}\coordHE{} and \myHighlight{$\bP_\alpha$}\coordHE{} associated either to
+constraints \myHighlight{$\theta_\alpha$}\coordHE{} or \myHighlight{$\bar \theta^\alpha$}\coordHE{}. One assignees the 
+following
+Grassmann parities to the
+ghost variables:
+$$\coord{}\boxMath{
+\p{\cC^\alpha}=\p{\bP_\alpha}=\p{\theta_\alpha}+1=\p{\bar\theta^\alpha}+1\,, 
+\qquad
+\alpha=1,\ldots,2N\,.
+}{dollar}{0pt}\coordE{}$$
+We also choose standard commutation relations and ghost number gradings
+for variables \myHighlight{$\cC^\alpha$}\coordHE{} and \myHighlight{$\bP_\alpha$}\coordHE{}  $$\coord{}\boxMath{
+\commut{\cC^\alpha}{\bP_\beta}=\ih \delta^\alpha_\beta\,,\qquad
+\gh{\cC^\alpha}=1\,, \quad \gh{\bP_\alpha}= -1\,.
+}{dollar}{0pt}\coordE{}$$
+The ghost number operator is then assumed to have the following
+form:
+$$\coord{}\boxMath{
+G=\half(\cC^\alpha\bP_\alpha(-1)^{\ip{\alpha}}-\bP_\alpha\cC^\alpha)\,.
+}{dollar}{0pt}\coordE{}$$
+Generating operators encoding constraints \myHighlight{$\theta_\alpha$}\coordHE{}
+and \myHighlight{$\bar\theta^\alpha$}\coordHE{} are denoted by \myHighlight{$\myth$}\coordHE{} and \myHighlight{$\bar\myth$}\coordHE{}
+respectively; their expansions with respect to ghost variables start as
+$$\coord{}\boxMath{
+\myth=\cC^\alpha \theta_\alpha+\ldots\,,\qquad
+\bar\myth=\bar\theta^\alpha \bP_\alpha (-1)^{\ip{\alpha}}+\ldots\,,
+}{dollar}{0pt}\coordE{}$$
+and are subjected to the following ghost number prescriptions:
+\begin{equation}\coord{}\boxEquation{
+  \commut{G}{\myth}=\ih \myth\,,\qquad
+  \commut{G}{\bar\myth}=-\ih\bar\myth\,.
+}{
+  \commut{G}{\myth}=\ih \myth\,,\qquad
+  \commut{G}{\bar\myth}=-\ih\bar\myth\,.
+}{ecuacion}\coordE{}\end{equation}
+
+
+We are interested in constructing first-class constrained (gauge) system
+equivalent to the original second-class one and entering constraints \myHighlight{$\theta$}\coordHE{}
+and \myHighlight{$\bar\theta$}\coordHE{} in a symmetric way. To this end we are looking for a pair
+of generators \myHighlight{$\Omega$}\coordHE{} and \myHighlight{$\bar\Omega$}\coordHE{} satisfying
+\begin{equation}\coord{}\boxEquation{
+  \begin{gathered}
+\label{eq:nilpotency}
+\commut{\Omega}{\Omega}=0\,,\qquad
+\commut{\bar\Omega}{\bar\Omega}=0\,,\\
+\commut{\Omega}{\bar\Omega}=0\,.
+  \end{gathered}
+}{
+  \begin{gathered}
+\commut{\Omega}{\Omega}=0\,,\qquad
+\commut{\bar\Omega}{\bar\Omega}=0\,,\\
+\commut{\Omega}{\bar\Omega}=0\,.
+  \end{gathered}
+}{ecuacion}\coordE{}\end{equation}
+\myHighlight{$\Omega$}\coordHE{} and \myHighlight{$\bar\Omega$}\coordHE{} are to be understood as appropriate
+extensions of the original generating operators \myHighlight{$\myth$}\coordHE{} and
+\myHighlight{$\bar\myth$}\coordHE{} respectively.
+
+It is useful to introduce the following condensed notations:
+\begin{equation}\coord{}\boxEquation{
+  \begin{aligned}
+ \myth^{a}&\,,\quad a=1,2\, \qquad
+ \myth^1=\myth\,,\quad
+\myth^2=\bar\myth\,,\\
+ {\Omega^{a}}&\,,\quad a=1,2\, \qquad
+ {\Omega^1}={\Omega}\,,\quad 
+{\Omega^2}={\bar\Omega}\,.
+\end{aligned}
+}{
+  \begin{aligned}
+ \myth^{a}&\,,\quad a=1,2\, \qquad
+ \myth^1=\myth\,,\quad
+\myth^2=\bar\myth\,,\\
+ {\Omega^{a}}&\,,\quad a=1,2\, \qquad
+ {\Omega^1}={\Omega}\,,\quad 
+{\Omega^2}={\bar\Omega}\,.
+\end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+The ghost number assignments then take the form
+\begin{equation}\coord{}\boxEquation{
+\commut{G}{\myth^a}=\ih g^a_b \myth^b \,,
+\qquad
+\commut{G}{{\Omega^a}}=
+\ih g^a_b {\Omega^b}\,,\label{eq:ghost}
+}{
+\commut{G}{\myth^a}=\ih g^a_b \myth^b \,,
+\qquad
+\commut{G}{{\Omega^a}}=
+\ih g^a_b {\Omega^b}\,,}{ecuacion}\coordE{}\end{equation}
+where the only nonvanishing components of \myHighlight{$g^a_b$}\coordHE{} are
+\myHighlight{$g^1_1=1$}\coordHE{} and \myHighlight{$g^2_2=-1$}\coordHE{}. We also introduce operator \myHighlight{$\Delta^{ab}$}\coordHE{}
+defined by
+$$\coord{}\boxMath{
+2\ih\Delta^{ab}=\commut{\myth^a}{\myth^b}\,.
+}{dollar}{0pt}\coordE{}$$
+In terms of new notations conditions \eqref{eq:nilpotency}
+read as
+\begin{equation}\coord{}\boxEquation{
+\label{eq:nilpotency-short}
+  \commut{{\Omega^a}}{{\Omega^b}}=0\,.
+}{
+\commut{{\Omega^a}}{{\Omega^b}}=0\,.
+}{ecuacion}\coordE{}\end{equation}
+
+
+In order to find \myHighlight{$\Omega^a$}\coordHE{} satisfying~\eqref{eq:nilpotency-short}
+consider the following anzatz for \myHighlight{${\Omega^a}$}\coordHE{}  $$\coord{}\boxMath{
+{\Omega^a}=\myth^a+ (\ih)^{-1}\commut{Z}{\myth^a}\,,
+}{dollar}{0pt}\coordE{}$$
+where an operator \myHighlight{$Z$}\coordHE{} has been introduced.
+Equations~\eqref{eq:nilpotency-short} take then the form:
+\begin{multline}\coord{}\boxAlignEqnarray{
+\label{eq:explicit}
+\leftCoord{}2\commut{{\Omega^a}}{{\Omega^b}}
+\leftCoord{}=
+\leftCoord{}\commut{{\Omega^{\{a}}}{{\Omega^{b\}}}}
+\leftCoord{}\,=
+\leftCoord{}\rightCoord{}\\
+\leftCoord{}=\,
+\leftCoord{}\commut{\myth^{\{a}}{\myth^{b\}}-(\ih)^{-2}\commut{Z}{\commut{Z}{\myth^{b\}}}}}
+\leftCoord{}+
+\leftCoord{}\rightCoord{}\\
+\leftCoord{}+
+\leftCoord{}4(\ih)^{-1}
+\leftCoord{}\commut{Z}{\Delta^{ab}}
+\leftCoord{}+2(\ih)^{-2}
+\leftCoord{}\commut{Z}{\commut{Z}{\Delta^{ab}}}=0\,.
+}{0mm}{14}{3}{
+2\commut{{\Omega^a}}{{\Omega^b}}
+=
+\commut{{\Omega^{\{a}}}{{\Omega^{b\}}}}
+\,=
+\\
+=\,
+\commut{\myth^{\{a}}{\myth^{b\}}-(\ih)^{-2}\commut{Z}{\commut{Z}{\myth^{b\}}}}}
++
+\\
++
+4(\ih)^{-1}
+\commut{Z}{\Delta^{ab}}
++2(\ih)^{-2}
+\commut{Z}{\commut{Z}{\Delta^{ab}}}=0\,.
+}{0}\coordE{}\end{multline}
+It is natural to make this conditions satisfied by imposing the following
+stronger conditions
+\begin{equation}\coord{}\boxEquation{
+\label{eq:cond1}
+\begin{split}
+\commut{Z}{\commut{Z}{\myth^a}}&=(\ih)^2\myth^a\,,\\
+\half\commut{Z}{\commut{Z}{\Delta^{ab}}}&=-\ih\commut{Z}{\Delta^{ab}}\,,
+\end{split}
+}{
+\begin{split}
+\commut{Z}{\commut{Z}{\myth^a}}&=(\ih)^2\myth^a\,,\\
+\half\commut{Z}{\commut{Z}{\Delta^{ab}}}&=-\ih\commut{Z}{\Delta^{ab}}\,,
+\end{split}
+}{split}\coordE{}\end{equation}
+so that second and third lines in~\eqref{eq:explicit} vanish separately.
+It follows from~\eqref{eq:cond1} that \myHighlight{$Z$}\coordHE{} acts on
+\myHighlight{${\Omega^a}=\myth^a+ (\ih)^{-1}\commut{Z}{\myth^a}$}\coordHE{} as projector:
+\begin{equation}\coord{}\boxEquation{
+  \commut{Z}{{\Omega^c}}=i\hbar {\Omega^c}\,.
+}{
+  \commut{Z}{{\Omega^c}}=i\hbar {\Omega^c}\,.
+}{ecuacion}\coordE{}\end{equation}
+
+
+Given \myHighlight{$\myth^a$}\coordHE{} and \myHighlight{$Z$}\coordHE{} such that \eqref{eq:cond1} holds one arrives at a pair
+of commuting and nilpotent BRST-like charges \myHighlight{${\Omega}^a$}\coordHE{}. They can be
+understood as BRST and anti-BRST generators. To explain this in more details
+let us consider explicitly lowest order equations coming
+from~\eqref{eq:nilpotency}.
+Introducing the lowest
+order structure functions according to
+\begin{equation}\coord{}\boxEquation{
+\begin{aligned}
+\label{eq:Omega-exp}
+\Omega&={\Omega}^1=\cC^\alpha {T}_\alpha
++
+\half \cC^\beta \cC^\alpha {U}^\gamma_{\alpha\beta}\bP_\gamma
+(-1)^{\ip{\beta}+\ip{\gamma}}
+\,+\,\ldots\,,
+\\
+\bar\Omega&=
+{\Omega}^2
+=
+{\bar{T}}^\alpha \bP_\alpha(-1)^{\ip{\alpha}}
++
+\half \cC^\gamma {\bar{U}}^{\alpha\beta}_\gamma
+\bP_\beta \bP_\alpha(-1)^{\ip{\beta}}
+\,+\,\ldots\,,
+\end{aligned}
+}{
+\begin{aligned}
+\Omega&={\Omega}^1=\cC^\alpha {T}_\alpha
++
+\half \cC^\beta \cC^\alpha {U}^\gamma_{\alpha\beta}\bP_\gamma
+(-1)^{\ip{\beta}+\ip{\gamma}}
+\,+\,\ldots\,,
+\\
+\bar\Omega&=
+{\Omega}^2
+=
+{\bar{T}}^\alpha \bP_\alpha(-1)^{\ip{\alpha}}
++
+\half \cC^\gamma {\bar{U}}^{\alpha\beta}_\gamma
+\bP_\beta \bP_\alpha(-1)^{\ip{\beta}}
+\,+\,\ldots\,,
+\end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+one arrives at the following explicit form
+of the lowest order equations:
+\begin{gather}\coord{}\boxAlignEqnarray{
+\label{eq:1st-cond}
+\leftCoord{}{\bar{T}}^\alpha T_\alpha =0\,,\rightCoord{}\\
+\leftCoord{}\commut{T_\alpha}{T_\beta}=
+\leftCoord{}i\hbar\, {U}^\gamma_{\rightCoord{}\alpha\beta}T_\gamma\,,
+\leftCoord{}\qquad
+\leftCoord{}\commut{{\bar{T}}^\alpha}{{\bar{T}}^\beta}=
+\leftCoord{}i\hbar\,{\bar{T}}^\gamma {\bar{U}}_\gamma^{\alpha\beta}\,,\rightCoord{}\\
+\leftCoord{}\commut{T_\alpha}{{\bar{T}}^\beta}
+\leftCoord{}=
+\leftCoord{}i\hbar\,({\bar{U}}^{\beta\gamma}_\alpha T_\gamma
+\leftCoord{}+
+{\rightCoord{}\leftCoord{}\bar{T}}^\gamma {U}^\beta_{\rightCoord{}\gamma\alpha})+O(\hbar^2)\,.
+}{0mm}{11}{6}{
+{\bar{T}}^\alpha T_\alpha =0\,,\\
+\commut{T_\alpha}{T_\beta}=
+i\hbar\, {U}^\gamma_{\alpha\beta}T_\gamma\,,
+\qquad
+\commut{{\bar{T}}^\alpha}{{\bar{T}}^\beta}=
+i\hbar\,{\bar{T}}^\gamma {\bar{U}}_\gamma^{\alpha\beta}\,,\\
+\commut{T_\alpha}{{\bar{T}}^\beta}
+=
+i\hbar\,({\bar{U}}^{\beta\gamma}_\alpha T_\gamma
++
+{\bar{T}}^\gamma {U}^\beta_{\gamma\alpha})+O(\hbar^2)\,.
+}{0}\coordE{}\end{gather}
+These relations coincide with those familiar from the standard BRST-anti-BRST
+symmetric formulation.
+
+Let us also note that the algebra formed by \myHighlight{$\Omega^a$}\coordHE{} and \myHighlight{$Z$}\coordHE{}
+coincide with that in the \myHighlight{$sp(2)$}\coordHE{} symmetric formalism with
+\myHighlight{$Z$}\coordHE{} being a counterpart of the ``new ghost number''
+operator~\cite{BLT}
+
+
+\section{Formulation in terms of the quantum antibracket}\label{sec:QA}
+Generating equations~\eqref{eq:cond1} can be interpreted as
+a type of master equations formulated in terms of the so-called
+\textit{quantum antibracket}. To show that consider the
+following bracket operation:
+\begin{equation}\coord{}\boxEquation{
+\ab{f}{g}_Q=\half
+\left(
+\commut{f}{\commut{Q}{g}}+(-1)^{(\p{f}+\p{Q})(\p{g}+\p{Q})+\p{Q}}
+\commut{g}{\commut{Q}{f}}
+\right)\,.
+}{
+\ab{f}{g}_Q=\half
+\left(
+\commut{f}{\commut{Q}{g}}+(-1)^{(\p{f}+\p{Q})(\p{g}+\p{Q})+\p{Q}}
+\commut{g}{\commut{Q}{f}}
+\right)\,.
+}{ecuacion}\coordE{}\end{equation}
+In the case where \myHighlight{$\p{Q}=1$}\coordHE{} this structure is know as the
+quantum antibracket~\cite{BMQA}. In terms of this structure
+equations~\eqref{eq:cond1} take the following form:
+\begin{equation}\coord{}\boxEquation{
+  \begin{split}
+\label{eq:masterZ}
+\ab{Z}{Z}_{\myth^a}&=-(\ih)^2\myth^a\,,\\
+\half\ab{Z}{Z}_{\Delta^{ab}}&=-\ih\commut{\Delta^{ab}}{Z}\,,
+\end{split}
+}{
+  \begin{split}
+\ab{Z}{Z}_{\myth^a}&=-(\ih)^2\myth^a\,,\\
+\half\ab{Z}{Z}_{\Delta^{ab}}&=-\ih\commut{\Delta^{ab}}{Z}\,,
+\end{split}
+}{split}\coordE{}\end{equation}
+
+One can also reformulate these equations in terms of
+a projection operator 
+$$\coord{}\boxMath{
+S^a_b=g^a_b G+ \delta^a_b Z
+}{dollar}{0pt}\coordE{}$$
+so that one can express \myHighlight{$\Omega^a$}\coordHE{} as follows
+$$\coord{}\boxMath{
+\Omega^a=\commut{S^a_b}{\myth^b}\,.
+}{dollar}{0pt}\coordE{}$$
+Indeed, it follows from~\eqref{eq:masterZ} that \myHighlight{$S^a_b$}\coordHE{}
+satisfies
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\ab{S^{\{a}_{\rightCoord{}\{c}}{S^{b\}}_{\rightCoord{}d\}}}_{\rightCoord{}\myth^{\leftCoord{}d}}
+&\leftCoord{}=i\hbar 
+\leftCoord{}\left(
+\leftCoord{}g^{\{a}_{\rightCoord{}\{c}g^{b\}}_{\rightCoord{}d\}}+ \delta^{\{a}_{\rightCoord{}\{c}\delta^{b\}}_{\rightCoord{}d\}}
+\leftCoord{}\right)
+\leftCoord{}\commut{\myth^{\leftCoord{}e}}{S^{\leftCoord{}d}_e}
+\leftCoord{}\rightCoord{}\\
+\leftCoord{}\half\ab{S^{\{a}_{\rightCoord{}\{c}}{S^{b\}}_{\rightCoord{}d\}}}_{\rightCoord{}\Delta^{\leftCoord{}cd}}
+&\leftCoord{}= i\hbar \,
+\leftCoord{}g^{\{a}_{\rightCoord{}\{c}g^{b\}}_{\rightCoord{}d\}}
+\leftCoord{}\commut{\Delta^{\leftCoord{}ed}}{S^{\leftCoord{}c}_e}\,.
+}{0mm}{17}{14}{
+\ab{S^{\{a}_{\{c}}{S^{b\}}_{d\}}}_{\myth^{d}}
+&=i\hbar 
+\left(
+g^{\{a}_{\{c}g^{b\}}_{d\}}+ \delta^{\{a}_{\{c}\delta^{b\}}_{d\}}
+\right)
+\commut{\myth^{e}}{S^{d}_e}
+\\
+\half\ab{S^{\{a}_{\{c}}{S^{b\}}_{d\}}}_{\Delta^{cd}}
+&= i\hbar \,
+g^{\{a}_{\{c}g^{b\}}_{d\}}
+\commut{\Delta^{ed}}{S^{c}_e}\,.
+}{0}\coordE{}\end{align}
+
+
+\section{More special formulation} \label{sec:special}
+
+As we have seen conditions~\eqref{eq:cond1} ensure nilpotency
+and mutual commutativity of \myHighlight{${\Omega^a}$}\coordHE{}. One can either
+consider \myHighlight{$\myth^a$}\coordHE{} and \myHighlight{$Z$}\coordHE{} as independent quantities to be
+defined by~\eqref{eq:cond1} or try to reduce the number
+of unknowns. The later option leads a priory to a more
+restricted class of solutions to~\eqref{eq:cond1}.
+We choose this option and express  \myHighlight{$Z$}\coordHE{} through \myHighlight{$\myth^a$}\coordHE{}
+by the following anzatz
+\begin{equation}\coord{}\boxEquation{
+\ih Z =\commut{\myth}{\bar\myth} = g_{ab}\Delta^{ab}\,.\label{eq:Z}
+}{
+\ih Z =\commut{\myth}{\bar\myth} = g_{ab}\Delta^{ab}\,.}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$g_{ab}=\epsilon_{ac} g^c_b$}\coordHE{} with \myHighlight{$\epsilon_{ab}$}\coordHE{} being antisymmetric 
+and
+\myHighlight{$\epsilon_{12}=-1$}\coordHE{}. As a consequence operators \myHighlight{$\myth,\bar\myth$}\coordHE{},\myHighlight{$\Delta^{ab}$}\coordHE{}
+and \myHighlight{$Z$}\coordHE{} satisfy the following relations:
+\begin{equation}\coord{}\boxEquation{
+\commut{\Delta}{\bar\myth}=\commut{\myth}{Z}\,,\qquad
+\commut{\bar\Delta}{\myth}=\commut{\bar\myth}{Z}\,,
+}{
+\commut{\Delta}{\bar\myth}=\commut{\myth}{Z}\,,\qquad
+\commut{\bar\Delta}{\myth}=\commut{\bar\myth}{Z}\,,
+}{ecuacion}\coordE{}\end{equation}
+where notations
+$$\coord{}\boxMath{
+2 i\hbar\, \Delta=2 i\hbar\, \Delta^{11}=\commut{\myth}{\myth}\,, \qquad
+2 i\hbar\, \bar\Delta=2 i\hbar\, \Delta^{22}=\commut{\bar\myth}{\bar\myth}\,,
+}{dollar}{0pt}\coordE{}$$
+are introduced.
+
+
+In the case where \myHighlight{$Z$}\coordHE{} is given by~\eqref{eq:Z} conditions~\eqref{eq:cond1}
+can be satisfied by imposing the following stronger ones:
+\begin{equation}\coord{}\boxEquation{
+  \begin{gathered}
+\label{eq:basic}
+    \commut{Z}{\Delta}=0\,,\qquad \commut{Z}{\bar\Delta}=0\,,\\
+\commut{\Delta}{\bar\Delta}=\ih G\,.
+  \end{gathered}
+}{
+  \begin{gathered}
+\commut{Z}{\Delta}=0\,,\qquad \commut{Z}{\bar\Delta}=0\,,\\
+\commut{\Delta}{\bar\Delta}=\ih G\,.
+  \end{gathered}
+}{ecuacion}\coordE{}\end{equation}
+These are to be understood as equations on \myHighlight{$\myth^a$}\coordHE{}
+ensuring nilpotency and mutual commutativity of
+\myHighlight{${\Omega^a}=\myth^a+(i\hbar)^{-1}\commut{Z}{\myth^a}$}\coordHE{}.
+It also follows from Eq.~\eqref{eq:basic} that
+$$\coord{}\boxMath{
+\commut{\myth^{\{a}}{\commut{\myth^{b\}}}{Z}}=0\,.
+}{dollar}{0pt}\coordE{}$$
+This in turn implies that one can consider the following a little
+bit more general expression for \myHighlight{$\Omega^a$}\coordHE{}:
+$$\coord{}\boxMath{
+\Omega=\myth+\alpha(i\hbar)^{-1}\commut{Z}{\myth}\,, \qquad
+\bar\Omega=\bar\myth+\bar\alpha(i\hbar)^{-1}\commut{Z}{\bar\myth}\,,
+}{dollar}{0pt}\coordE{}$$
+which are nilpotent provided \myHighlight{$\alpha=\bar\alpha=1$}\coordHE{} or
+\myHighlight{$\alpha=\bar\alpha=-1$}\coordHE{}.
+
+
+
+It is instructive to rewrite equations~\eqref{eq:basic}
+in a condensed form directly in terms
+of \myHighlight{$\Delta^{ab}$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+\label{eq:Delta-comm}
+  4\commut{\Delta^{ab}}{\Delta^{cd}}
+=
+i\hbar g^{\{a\{c } \epsilon^{b\}d\}} G\,, 
+}{
+4\commut{\Delta^{ab}}{\Delta^{cd}}
+=
+i\hbar g^{\{a\{c } \epsilon^{b\}d\}} G\,, 
+}{ecuacion}\coordE{}\end{equation}
+where
+$$\coord{}\boxMath{
+g^{\{a\{c } \epsilon^{b\}d\}}=
+g^{ac}\epsilon^{bd}+g^{bc}\epsilon^{ad}+
+g^{ad}\epsilon^{bc}+g^{bd}\epsilon^{ac}\,,
+}{dollar}{0pt}\coordE{}$$
+and \myHighlight{$g^{ab}=g^a_c \epsilon^{cb}$}\coordHE{} with \myHighlight{$\epsilon^{12}=1$}\coordHE{}. One can
+then check that this equations does contain all relations~\eqref{eq:basic}.
+
+Contracting equation~\eqref{eq:Delta-comm} with \myHighlight{$g_{ab}=\epsilon_{ac}g^c_b$}\coordHE{}
+and \myHighlight{$\epsilon_{ab}$}\coordHE{} one arrives at
+\begin{equation}\coord{}\boxEquation{
+  \epsilon_{bc}\commut{\Delta^{ab}}{\Delta^{cd}}=- i\hbar g^{ad} G\,
+}{
+  \epsilon_{bc}\commut{\Delta^{ab}}{\Delta^{cd}}=- i\hbar g^{ad} G\,
+}{ecuacion}\coordE{}\end{equation}
+and
+\begin{equation}\coord{}\boxEquation{
+  g_{bc}\commut{\Delta^{ab}}{\Delta^{cd}}= i\hbar \epsilon^{ad} G
+}{
+  g_{bc}\commut{\Delta^{ab}}{\Delta^{cd}}= i\hbar \epsilon^{ad} G
+}{ecuacion}\coordE{}\end{equation}
+respectively. The later equation is not equivalent to~\eqref{eq:Delta-comm}
+while the former is in fact equivalent. It can also be rewritten
+in terms of \myHighlight{$\Delta_a^b=\epsilon_{ac}\Delta^{cb}$}\coordHE{} as
+\begin{equation}\coord{}\boxEquation{
+\commut{\Delta_a^b}{\Delta^d_b}= i\hbar g_a^d G\,.
+}{
+\commut{\Delta_a^b}{\Delta^d_b}= i\hbar g_a^d G\,.
+}{ecuacion}\coordE{}\end{equation}
+
+
+\bigskip
+
+It follows from nilpotency~\eqref{eq:nilpotency-short} and ghost number
+grading~\eqref{eq:ghost} of
+\myHighlight{$\Omega$}\coordHE{} that it can be considered as a BRST charge
+of a gauge system equivalent to the original second
+class one.  At the same time \myHighlight{$\bar\Omega$}\coordHE{} can be understood
+as respective anti-BRST charge. To illustrate the idea consider
+the simplest case where original second-class constraints
+are ``Abelian'' i.e. their commutators form a constant
+operator-valued matrix \myHighlight{$\commut{\theta_\alpha}{\theta_\beta}
+=\omega_{\alpha\beta}=\mathrm{const}_{\alpha\beta}$}\coordHE{}. In this
+case one can identify constraints \myHighlight{${\bar\theta}^\alpha$}\coordHE{}
+with conversion variables \myHighlight{$\phi^\alpha$}\coordHE{}. The simplest choice
+is to require the following commutation relations of variables
+\myHighlight{$\phi$}\coordHE{}:
+$$\coord{}\boxMath{
+\commut{\phi^\alpha}{\phi^\beta}=\omega^{\alpha\beta}(-1)^{\ip{\beta}}\,,\qquad 
+\omega_{\alpha\gamma}\omega^{\gamma\beta}=\delta_\alpha^\beta\,.
+}{dollar}{0pt}\coordE{}$$
+One can then check that \myHighlight{$\myth$}\coordHE{} and \myHighlight{$\bar\myth$}\coordHE{}
+given by
+\begin{equation}\coord{}\boxEquation{
+\myth=\cC^\alpha \theta_\alpha\,, \qquad
+\bar\myth= \phi^\alpha  \bP_\alpha
+}{
+\myth=\cC^\alpha \theta_\alpha\,, \qquad
+\bar\myth= \phi^\alpha  \bP_\alpha
+}{ecuacion}\coordE{}\end{equation}
+are such that equations \eqref{eq:basic} hold. Indeed, this fact can be 
+easily seen
+from the explicit expressions of \myHighlight{$\Delta,\bar\Delta$}\coordHE{} and \myHighlight{$Z$}\coordHE{}
+\begin{equation}\coord{}\boxEquation{
+\begin{gathered}
+\Delta=\half \cC^\alpha \omega_{\alpha\beta}\cC^\beta\,, \qquad 
+\bar\Delta=\half \bP_\alpha \omega^{\alpha\beta}\bP_\beta(-)^{\ip{\beta}}\,,\\
+Z=\theta_\alpha \phi^\alpha\,.
+\end{gathered}
+}{
+\begin{gathered}
+\Delta=\half \cC^\alpha \omega_{\alpha\beta}\cC^\beta\,, \qquad 
+\bar\Delta=\half \bP_\alpha \omega^{\alpha\beta}\bP_\beta(-)^{\ip{\beta}}\,,\\
+Z=\theta_\alpha \phi^\alpha\,.
+\end{gathered}
+}{ecuacion}\coordE{}\end{equation}
+The respective BRST and anti-BRST charges \myHighlight{$\Omega$}\coordHE{} and \myHighlight{$\bar\Omega$}\coordHE{} have the 
+form
+\begin{equation}\coord{}\boxEquation{
+\begin{gathered}
+\Omega=\myth+(i\hbar)^{-1}\commut{Z}{\myth}
+=
+\cC^\alpha(\theta_\alpha - \omega_{\alpha\beta}\phi^\beta)\,,
+\\
+\bar\Omega=\bar\myth+(i\hbar)^{-1}\commut{Z}{\bar\myth}
+=
+(\phi^\alpha + \theta_\beta \omega^{\beta\alpha} 
+(-1)^{\ip{\alpha}})\bP_\alpha\,.
+\end{gathered}\label{eq:solution-exp}
+}{
+\begin{gathered}
+\Omega=\myth+(i\hbar)^{-1}\commut{Z}{\myth}
+=
+\cC^\alpha(\theta_\alpha - \omega_{\alpha\beta}\phi^\beta)\,,
+\\
+\bar\Omega=\bar\myth+(i\hbar)^{-1}\commut{Z}{\bar\myth}
+=
+(\phi^\alpha + \theta_\beta \omega^{\beta\alpha} 
+(-1)^{\ip{\alpha}})\bP_\alpha\,.
+\end{gathered}}{ecuacion}\coordE{}\end{equation}
+\bigskip
+
+
+Let us also consider explicitly the lowest order equation
+on the constraints and structure functions encoded in Eqs.~\eqref{eq:basic}.
+For simplicity we consider the Poisson bracket version
+(classical limit) of equations~\eqref{eq:basic}. We also take all
+constraints \myHighlight{$\theta_\alpha$}\coordHE{} and \myHighlight{$\bar\theta_\alpha$}\coordHE{} to be bosonic.
+The most general form of \myHighlight{$\myth^a$}\coordHE{} allowed by the ghost number
+and Grassmann parity prescriptions reads as:
+\begin{gather}\coord{}\boxAlignEqnarray{
+\leftCoord{}\myth^1=\cC^\alpha \theta_\alpha
+\leftCoord{}+
+\leftCoord{}\half \cC^\beta \cC^\alpha \myths^\gamma_{\rightCoord{}\alpha\beta}
+\leftCoord{}\bP_\gamma\,+\,\ldots\,,\rightCoord{}\\
+\leftCoord{}\myth^2=\bar\theta^\alpha\bP_\alpha+
+\leftCoord{}\half \cC^\gamma {\bar \myths}^{\alpha\beta}_\gamma
+\leftCoord{}\bP_\beta \bP_\alpha\,+\,\ldots\,.
+}{0mm}{7}{3}{
+\myth^1=\cC^\alpha \theta_\alpha
++
+\half \cC^\beta \cC^\alpha \myths^\gamma_{\alpha\beta}
+\bP_\gamma\,+\,\ldots\,,\\
+\myth^2=\bar\theta^\alpha\bP_\alpha+
+\half \cC^\gamma {\bar \myths}^{\alpha\beta}_\gamma
+\bP_\beta \bP_\alpha\,+\,\ldots\,.
+}{0}\coordE{}\end{gather}
+The expansion for \myHighlight{$\Delta^{ab}$}\coordHE{} then has the form
+\begin{gather}\coord{}\boxAlignEqnarray{
+\leftCoord{}\Delta=- \half\cC^\beta\cC^\alpha\Delta_{\rightCoord{}\alpha\beta} +\ldots\,,
+\leftCoord{}\qquad 
+\leftCoord{}\Delta_{\rightCoord{}\alpha\beta}=\pb{\theta_\alpha}{\theta_\beta}-
+\leftCoord{}\myths^\gamma_{\rightCoord{}\alpha\beta}\theta_\gamma
+\leftCoord{}\rightCoord{}\\
+\leftCoord{}\bar\Delta=
+\leftCoord{}-\half \bar\Delta^{\alpha\beta}\bP_\beta \bP_\alpha  +\ldots \,,
+\leftCoord{}\qquad 
+\leftCoord{}\bar\Delta^{\alpha\beta}=\pb{\bar\theta^\alpha}{\bar\theta^\beta}-
+\leftCoord{}\bar\theta^\gamma{\bar \myths}_\gamma^{\alpha\beta}\,,
+}{0mm}{10}{5}{
+\Delta=- \half\cC^\beta\cC^\alpha\Delta_{\alpha\beta} +\ldots\,,
+\qquad 
+\Delta_{\alpha\beta}=\pb{\theta_\alpha}{\theta_\beta}-
+\myths^\gamma_{\alpha\beta}\theta_\gamma
+\\
+\bar\Delta=
+-\half \bar\Delta^{\alpha\beta}\bP_\beta \bP_\alpha  +\ldots \,,
+\qquad 
+\bar\Delta^{\alpha\beta}=\pb{\bar\theta^\alpha}{\bar\theta^\beta}-
+\bar\theta^\gamma{\bar \myths}_\gamma^{\alpha\beta}\,,
+}{0}\coordE{}\end{gather}
+and
+\begin{equation}\coord{}\boxEquation{
+  \begin{gathered}
+    Z=Z_0+\cC^\alpha Z_\alpha^\beta \bP_\beta+\ldots\,, \\
+    Z_0=\bar\theta^\alpha \theta_\alpha\,, \quad
+     Z_\alpha^\beta
+    =\pb{\theta_\alpha}{\bar\theta^\beta} 
+       -{\bar \myths}^{\beta \gamma}_\alpha  \theta_\gamma
+       -\bar\theta^\gamma \myths^\beta_{\gamma\alpha}\,.
+\end{gathered}
+}{
+  \begin{gathered}
+    Z=Z_0+\cC^\alpha Z_\alpha^\beta \bP_\beta+\ldots\,, \\
+    Z_0=\bar\theta^\alpha \theta_\alpha\,, \quad
+     Z_\alpha^\beta
+    =\pb{\theta_\alpha}{\bar\theta^\beta} 
+       -{\bar \myths}^{\beta \gamma}_\alpha  \theta_\gamma
+       -\bar\theta^\gamma \myths^\beta_{\gamma\alpha}\,.
+\end{gathered}
+}{ecuacion}\coordE{}\end{equation}
+In the lowest orders in ghost variables equations~\eqref{eq:basic}
+then imply
+\begin{gather}\coord{}\boxAlignEqnarray{
+\leftCoord{}\Delta_{\rightCoord{}\alpha\beta}\bar\Delta^{\beta\gamma}=\delta^\alpha_\gamma\,,\rightCoord{}\\
+\leftCoord{}\pb{Z_0}{\Delta_{\rightCoord{}\alpha\beta}}
+\leftCoord{}+Z^\gamma_{\rightCoord{}[\alpha}\Delta_{\rightCoord{}\gamma \beta]}=0\,,
+\leftCoord{}\quad
+\leftCoord{}\pb{{\bar\Delta}^{\alpha\beta}}{Z_0}
+\leftCoord{}+{\bar\Delta}^{[\alpha \gamma}  Z_\gamma^{\beta ]}=0\,.
+}{0mm}{6}{6}{
+\Delta_{\alpha\beta}\bar\Delta^{\beta\gamma}=\delta^\alpha_\gamma\,,\\
+\pb{Z_0}{\Delta_{\alpha\beta}}
++Z^\gamma_{[\alpha}\Delta_{\gamma \beta]}=0\,,
+\quad
+\pb{{\bar\Delta}^{\alpha\beta}}{Z_0}
++{\bar\Delta}^{[\alpha \gamma}  Z_\gamma^{\beta ]}=0\,.
+}{0}\coordE{}\end{gather}
+
+
+\bigskip
+
+
+To complete the section let we also present relations between
+\myHighlight{$\Omega^a=\myth^a+(i\hbar)^{-1}\commut{Z}{\myth^a}$}\coordHE{},
+\myHighlight{$\myth^a$}\coordHE{}, and \myHighlight{$\Delta^{ab}$}\coordHE{} which are simple consequences 
+of the basic equations~\eqref{eq:basic}. First, it is easy to see that
+\begin{gather}\coord{}\boxAlignEqnarray{
+\leftCoord{}\commut{\Omega}{\bar\myth}=i\hbar(Z-G) \,, \qquad 
+\leftCoord{}\commut{\bar\Omega}{\myth}=i\hbar(Z+G) \,,\rightCoord{}\\
+\leftCoord{}\commut{\Omega}{\myth}=2\, i\hbar \Delta \,, \qquad 
+\leftCoord{}\commut{\bar\Omega}{\bar\myth}=2\,i\hbar \bar\Delta\,,
+}{0mm}{4}{2}{
+\commut{\Omega}{\bar\myth}=i\hbar(Z-G) \,, \qquad 
+\commut{\bar\Omega}{\myth}=i\hbar(Z+G) \,,\\
+\commut{\Omega}{\myth}=2\, i\hbar \Delta \,, \qquad 
+\commut{\bar\Omega}{\bar\myth}=2\,i\hbar \bar\Delta\,,
+}{0}\coordE{}\end{gather}
+or in the short-hand notations
+$$\coord{}\boxMath{
+\commut{\Omega^a}{\myth^b}=i\hbar(2\Delta^{ab}-\epsilon^{ab}G)\,.
+}{dollar}{0pt}\coordE{}$$
+One further arrives at
+\begin{gather}\coord{}\boxAlignEqnarray{
+  \leftCoord{}\commut{Z}{\Omega^a}=i\hbar\Omega^a\rightCoord{}\\
+\leftCoord{}\commut{\Delta}{\Omega}=0\,, \qquad \commut{\bar\Delta}{\bar\Omega}=0\,.
+ }{0mm}{2}{2}{
+  \commut{Z}{\Omega^a}=i\hbar\Omega^a\\
+\commut{\Delta}{\Omega}=0\,, \qquad \commut{\bar\Delta}{\bar\Omega}=0\,.
+ }{0}\coordE{}\end{gather}
+and
+\begin{gather}\coord{}\boxAlignEqnarray{
+  \leftCoord{}\commut{\Omega}{\bar\Delta}=i \hbar \bar\Omega\,,\qquad 
+  \leftCoord{}\commut{\bar\Omega}{\Delta}=i \hbar \Omega\,.
+}{0mm}{2}{1}{
+  \commut{\Omega}{\bar\Delta}=i \hbar \bar\Omega\,,\qquad 
+  \commut{\bar\Omega}{\Delta}=i \hbar \Omega\,.
+}{0}\coordE{}\end{gather}
+
+An important consequence of the above relations is the fact that operator 
+algebra
+generated by \myHighlight{$\myth,\bar\myth$}\coordHE{} is a finite-dimensional Lie superalgebra
+that contains all the generating operators. As a basis in the algebra one
+can take the following operators:
+$$\coord{}\boxMath{
+\myth,\bar\myth,G,\Delta,\bar\Delta,Z,\Omega,\bar\Omega\,.
+}{dollar}{0pt}\coordE{}$$
+ 
+
+\section{Hamiltonian} \label{sec:Hamiltonian}
+Besides BRST generators \myHighlight{${\Omega}^a$}\coordHE{} formulation of 
+the quantum theory requires
+specification of a unitarizing Hamiltonian. The first step
+is to introduce pre-Hamiltonian \myHighlight{$\H$}\coordHE{} that satisfies
+\begin{equation}\coord{}\boxEquation{
+\commut{\Omega^a}{\H}=0\,, \qquad \p{H}=0\,,\quad \gh{\H}=0
+\label{eq:Hcond}
+}{
+\commut{\Omega^a}{\H}=0\,, \qquad \p{H}=0\,,\quad \gh{\H}=0
+}{ecuacion}\coordE{}\end{equation}
+and whose expansion with respect to ghost variables starts as
+$$\coord{}\boxMath{
+\H=H+\cC^\alpha V^\beta_\alpha \bP_\beta (-1)^{\ip{\beta}}\,+\,\ldots\,.
+}{dollar}{0pt}\coordE{}$$
+Here, the ghost-independent term \myHighlight{$H$}\coordHE{} is an ``original Hamiltonian''.
+In the lowest orders in ghost variables classical limit of
+Eq.~\eqref{eq:Hcond} implies
+$$\coord{}\boxMath{
+\pb{T_\alpha}{H}= V_\alpha^\beta T_\beta\,,
+\qquad
+\pb{{\bar{T}}^\alpha}{H}
+= - {\bar{T}}^\beta V_\beta^\alpha\,.
+}{dollar}{0pt}\coordE{}$$
+Here, we made use explicit expansions~\eqref{eq:Omega-exp}
+of \myHighlight{$\Omega^1$}\coordHE{} and \myHighlight{$\Omega^2$}\coordHE{} with respect to the ghost variables.
+
+
+A next step in gauge fixing is to introduce nonminimal variables
+\myHighlight{$\bC_\alpha,\cP^\alpha$}\coordHE{} and \myHighlight{$\lambda^\alpha,\pi_\alpha$}\coordHE{}. They are assumed to 
+have
+the standard Grassmann parities and ghost numbers
+\begin{equation}\coord{}\boxEquation{
+  \begin{split}
+    \p{\cP^\alpha}=\p{\bC_\alpha}=\ip{\alpha}+1\,, \qquad
+    &\p{\lambda^\alpha}=\p{\pi_\alpha}=\ip{\alpha}\\
+    \gh{\cP^\alpha}=1 \,, \quad \gh{\bC_\alpha}=-1\,, \qquad
+    &\gh{\lambda^\alpha}=0\,, \quad \gh{\pi_\alpha}=0\,,
+\end{split}
+}{
+  \begin{split}
+    \p{\cP^\alpha}=\p{\bC_\alpha}=\ip{\alpha}+1\,, \qquad
+    &\p{\lambda^\alpha}=\p{\pi_\alpha}=\ip{\alpha}\\
+    \gh{\cP^\alpha}=1 \,, \quad \gh{\bC_\alpha}=-1\,, \qquad
+    &\gh{\lambda^\alpha}=0\,, \quad \gh{\pi_\alpha}=0\,,
+\end{split}
+}{split}\coordE{}\end{equation}
+and are also subjected to the following commutation relations
+\begin{equation}\coord{}\boxEquation{
+  \commut{\cP^\alpha}{\bC_\beta}=i\hbar\, \delta^\alpha_\beta\,, \qquad
+  \commut{\lambda^\alpha}{\pi_\beta}=i\hbar\, \delta^\alpha_\beta\,.
+}{
+  \commut{\cP^\alpha}{\bC_\beta}=i\hbar\, \delta^\alpha_\beta\,, \qquad
+  \commut{\lambda^\alpha}{\pi_\beta}=i\hbar\, \delta^\alpha_\beta\,.
+}{ecuacion}\coordE{}\end{equation}
+
+Nonminimal BRST charges are introduced according to
+\begin{equation}\coord{}\boxEquation{
+Q=\Omega+\pi_\alpha \cP^\alpha\,, \qquad \bar Q = \bar{\Omega}
++\bC_\alpha \lambda^\alpha\,.
+}{
+Q=\Omega+\pi_\alpha \cP^\alpha\,, \qquad \bar Q = \bar{\Omega}
++\bC_\alpha \lambda^\alpha\,.
+}{ecuacion}\coordE{}\end{equation}
+We use unified notation \myHighlight{$Q^a$}\coordHE{} with \myHighlight{$Q^1=Q$}\coordHE{} and \myHighlight{$Q^2=\bar Q$}\coordHE{}. Unlike
+the \myHighlight{$sp(2)$}\coordHE{} symmetric formalism~\cite{BLT} these nilpotent charges
+do not commute:
+\begin{equation}\coord{}\boxEquation{
+\commut{Q}{\bar Q}=\half g_{ab}\commut{Q^a}{Q^b}=i\hbar\,
+(\pi_\alpha \lambda^\alpha+ \bC_\alpha \cP^\alpha)\,.
+}{
+\commut{Q}{\bar Q}=\half g_{ab}\commut{Q^a}{Q^b}=i\hbar\,
+(\pi_\alpha \lambda^\alpha+ \bC_\alpha \cP^\alpha)\,.
+}{ecuacion}\coordE{}\end{equation}
+
+The constrained system under consideration can be described just
+by nilpotent BRST charge \myHighlight{$\Omega$}\coordHE{} and BRST-anti-BRST-invariant Hamiltonian 
+\myHighlight{$\H$}\coordHE{}.
+(it can be also equivalently described by \myHighlight{$\bar\Omega$}\coordHE{}
+and \myHighlight{$\H$}\coordHE{}). Then there exists two natural proposals for unitarizing Hamiltonian
+$$\coord{}\boxMath{
+\H_{complete}=\H+(i\hbar)^{-1}\commut{Q}{\bar\Psi}\qquad \text{and} \qquad 
+\bar\H_{complete}=\H+(i\hbar)^{-1}\commut{\bar Q}{\Psi}\qquad \,,
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$\Psi$}\coordHE{} and \myHighlight{$\bar\Psi$}\coordHE{} are respective gauge fixing fermions.
+In order to remove gauge degeneracy it is sufficient to take
+\myHighlight{$\Psi$}\coordHE{} and \myHighlight{$\bar\Psi$}\coordHE{} in the ``minimal'' form:
+\begin{equation}\coord{}\boxEquation{
+  \bar\Psi=\bC_\alpha \chi^\alpha+\bP_\alpha \lambda^\alpha\,, \qquad
+  \Psi=\bar\chi_\alpha \bP^\alpha +\pi_\alpha \cC^\alpha\,,
+}{
+  \bar\Psi=\bC_\alpha \chi^\alpha+\bP_\alpha \lambda^\alpha\,, \qquad
+  \Psi=\bar\chi_\alpha \bP^\alpha +\pi_\alpha \cC^\alpha\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\chi$}\coordHE{} and \myHighlight{$\bar\chi$}\coordHE{} are gauge conditions which
+are supposed to be nondegenerate in the following sense:
+matrices 
+$$\coord{}\boxMath{
+\pb{\chi^\alpha}{T_\beta}\,, \qquad 
+\pb{\bar\chi_\alpha}{{\bar{T}}^\beta}
+}{dollar}{0pt}\coordE{}$$
+are nondegenerate. One can see that \myHighlight{$\chi$}\coordHE{} and \myHighlight{$\bar\chi$}\coordHE{} are to be understood
+as gauge fixing conditions associated to constraints \myHighlight{$T$}\coordHE{} and
+\myHighlight{$\bar{T}$}\coordHE{} respectively.
+
+In spite of the fact that each pair \myHighlight{$Q,\bar \Psi$}\coordHE{} or \myHighlight{$\bar Q, \Psi$}\coordHE{}
+can be used to describe correct physics we are interested in the
+class of unitarizing Hamiltonians (and gauge fixing conditions)
+respecting the symmetry between \myHighlight{$Q$}\coordHE{} and \myHighlight{$\bar Q$}\coordHE{}. To this end let
+us consider a class of \myHighlight{$\H_{complete}$}\coordHE{} corresponding to
+\myHighlight{$\bar\Psi$}\coordHE{} of the form \myHighlight{$\bar\Psi=(i\hbar)^{-1}\commut{Q}{F}$}\coordHE{}
+for some even operator \myHighlight{$F$}\coordHE{} of ghost number \myHighlight{$-2$}\coordHE{}. The expression
+for \myHighlight{$\H_{complete}$}\coordHE{} then takes the form
+\begin{equation}\coord{}\boxEquation{
+  \H_{complete}=\H+(i\hbar)^{-2}\commut{Q}{\commut{\bar Q}{F}}\,.
+}{
+  \H_{complete}=\H+(i\hbar)^{-2}\commut{Q}{\commut{\bar Q}{F}}\,.
+}{ecuacion}\coordE{}\end{equation}
+It can be represented as
+\begin{multline}\coord{}\boxAlignEqnarray{
+\leftCoord{}\H_{\rightCoord{}complete}=\H-\half (i\hbar)^{-2} \epsilon_{\rightCoord{}ab}\commut{Q^a}{\commut{\bar 
+\leftCoord{}Q^b}{F}}
+\leftCoord{}+\frac{\leftCoord{}1}{\rightCoord{}4}(i\hbar)^{-2} g_{\rightCoord{}ab}\commut{\commut{Q^a}{Q^b}}{\rightCoord{}F}
+\leftCoord{}=
+\leftCoord{}\rightCoord{}\\
+\leftCoord{}=
+\leftCoord{}\H-\half(i\hbar)^{-2} \epsilon_{\rightCoord{}ab}\commut{Q^a}{\commut{\bar Q^b}{F}}
+\leftCoord{}+\frac{\leftCoord{}1}{\rightCoord{}2}(i\hbar)^{-2}g_{\rightCoord{}ab}\commut{\pi_\alpha\lambda^\alpha+\bC_\alpha 
+\leftCoord{}\cP^\alpha}{F}
+\leftCoord{}\,.
+}{0mm}{12}{10}{
+\H_{complete}=\H-\half (i\hbar)^{-2} \epsilon_{ab}\commut{Q^a}{\commut{\bar 
+Q^b}{F}}
++\frac{1}{4}(i\hbar)^{-2} g_{ab}\commut{\commut{Q^a}{Q^b}}{F}
+=
+\\
+=
+\H-\half(i\hbar)^{-2} \epsilon_{ab}\commut{Q^a}{\commut{\bar Q^b}{F}}
++\frac{1}{2}(i\hbar)^{-2}g_{ab}\commut{\pi_\alpha\lambda^\alpha+\bC_\alpha 
+\cP^\alpha}{F}
+\,.
+}{0}\coordE{}\end{multline}
+We note that besides the third term the expression for \myHighlight{$\H_{complete}$}\coordHE{}
+coincides with that in the \myHighlight{$sp(2)$}\coordHE{}-symmetric formalism. However,
+presence of this (actually unavoidable) term reflects breaking down of
+the \myHighlight{$sp(2)$}\coordHE{} symmetry. The residual symmetry is that preserving both
+\myHighlight{$\epsilon_{ab}$}\coordHE{} and \myHighlight{$g_{ab}$}\coordHE{} and its algebra can be shown to be
+isomorphic to \myHighlight{$u(1)$}\coordHE{}.
+
+We also note that discussion of the unitarizing Hamiltonian also
+applies to any commuting and nilpotent BRST charges \myHighlight{${\Omega}^a$}\coordHE{} with
+appropriate ghost numbers and boundary conditions. In particular, the
+same expression works for a wider class of BRST charges considered in
+Sec.~\bref{sec:basics}.
+
+
+
+
+\section{Conclusion} 
+
+We have constructed a conversion scheme that results in the
+BRST--anti-BRST symmetric formulation of the effective first-class
+constrained (gauge) system.  This is achieved by requiring an explicit
+symmetry between the original second-class constraints \myHighlight{$\theta_\alpha$}\coordHE{}
+and the extra degrees of freedom (conversion variables).  These
+degrees of freedom enter the formalism as new constraints
+\myHighlight{$\bar\theta^\alpha$}\coordHE{} dual to the original constraints \myHighlight{$\theta_\alpha$}\coordHE{}.
+In the BFV--BRST framework, the two sets of constraints are encoded in
+a pair of generators \myHighlight{$\myth$}\coordHE{} and \myHighlight{$\bar\myth$}\coordHE{}.  At the level of the
+converted system, they are promoted to nilpotent and commuting
+generators \myHighlight{$\Omega$}\coordHE{} and \myHighlight{$\bar\Omega$}\coordHE{} that are identified as BRST and
+anti-BRST charges.  The symmetry between the constraints \myHighlight{$\theta$}\coordHE{} and
+\myHighlight{$\bar\theta$}\coordHE{} then appears as a BRST-anti-BRST invariance of the
+effective system.
+
+It seems natural that generating equations of the BRST-anti-BRST
+symmetric conversion can be recast to a master equation form if one
+makes use of the quantum antibracket structure~\cite{BMQA} (see
+also~\cite{BTQA}).  Indeed, a quantum antibracket master equation
+encodes projector properties of the ``master action'' (either \myHighlight{$Z$}\coordHE{} or
+\myHighlight{$S^a_b$}\coordHE{} in the paper), which allow constructing nilpotent generators
+\myHighlight{$\Omega$}\coordHE{} and \myHighlight{$\bar\Omega$}\coordHE{} from the original generators \myHighlight{$\myth$}\coordHE{} and
+\myHighlight{$\bar\myth$}\coordHE{}.  {}From this general standpoint, the conversion can be
+understood as a certain projection procedure.
+
+The existence of the BRST--anti-BRST symmetric conversion follows from
+the explicit solution~\eqref{eq:solution-exp} given in
+Sec.~\bref{sec:special} for the ``Abelian'' constraints (in the
+general situation, one can always bring constraints to an ``Abelian''
+basis and then apply the inverse transformation to the generating
+operators.  Therefore, there always exists a solution to the
+generating equations that correctly describes the physical sector).
+But there remains an open problem to describe the structure of a
+general solution to the generating equations.  The difficulties are
+here related to a rather nonstandard structure of the equations.
+
+As a final remark, it is worth mentioning another point of view on the
+method developed in the paper.  Instead of treating the dual
+constraints \myHighlight{$\bar\theta_\alpha$}\coordHE{} as extra variables, we can assume that
+the second-class system at hand is determined by a set of second-class
+constraints that splits into two halves \myHighlight{$\theta_\alpha$}\coordHE{} and
+\myHighlight{$\bar\theta_\alpha$}\coordHE{} such that each half is itself a set of
+second-class constraints.  In this case, our approach results in a
+BRST--anti-BRST symmetric effective gauge system that involves the
+constraints \myHighlight{$\theta$}\coordHE{} and \myHighlight{$\bar\theta$}\coordHE{} in a symmetric way.  In this
+approach, however, the constraints \myHighlight{$\theta$}\coordHE{} and \myHighlight{$\bar\theta$}\coordHE{} are
+required to satisfy some additional relations coming from generating
+equations.
+
+
+
+
+\subsection*{Acknowledgments} We are grateful to 
+A.M.~Semikhatov and I.V.~Tyutin for illuminating discussions.  The
+work of {I.A.\,Batalin} was supported by the President grant
+00-15-96566, RFBR grant 02-02-16944, and INTAS grant 00-00262.  The work
+of {M.A.\,Grigoriev} was supported by the RFBR grant 02-01-00930,
+INTAS grant 00-00262, and RFBR grant 02-01-06096 for support of young 
+scientists.
+
+\begin{thebibliography}{33}
+
+\bibitem{BFV}
+         Batalin I.A. and  Vilkovisky G.A.,
+         {\em Relativistic S-matrix of dynamical systems with boson
+         and fermion constraints,}
+         Phys. Lett. {\bf B 69} (1977) 309-312.          \\
+         Fradkin E.S. and Vilkovisky G.A. {\em Quantization
+         of relativistic systems with
+         constraints,}  Phys. Lett. {\bf B 55} (1975) 224-226.  \\
+         Batalin I.A. and Fradkin E.S.,
+         {\em  A generalized canonical formalism and quantization of
+         reducible gauge theories,}
+           Phys.Lett. {\bf B 122 }     (1983) 157-164.   \\
+         Batalin I.A. and Fradkin E.S.
+         {\em Operatorial quantization of relativistic dynamical systems
+         subject to first class constraints,}
+         Phys.Lett. {\bf B 128} 303-308 (1983).             \\
+         Batalin I.A., Fradkin E.S.
+         {\em Operatorial quantization of dynamical systems subject to
+         constraints. A further study of the construction,}
+         Ann Inst. Henri Poincar\'e  {\bf 49} (1988) 145-214.
+
+
+\bibitem{FSh} L.D. Faddeev, S.L. Shatashvili, {\em Realization of the
+Schwinger term in the Gauss law and the possibility of
+correct quantization of a theory with anomalies},
+ Phys. Lett. {\bf B 167}, 225 (1986)
+
+\bibitem{BF} I.A.~Batalin and E.S.~Fradkin,
+{\em Operator Quantization Of Dynamical Systems With Irreducible
+First And Second Class Constraints,} Phys.\ Lett.\ {\bf B180}, 157 (1986).
+
+\bibitem{BF87} I.A.~Batalin and E.S.~Fradkin, {\em
+Operatorial Quantization Of Dynamical Systems Subject To Second Class
+Constraints,} Nucl.\ Phys.\ {\bf B279}, 514 (1987).
+
+
+
+
+\bibitem{Split}
+I.~A.~Batalin, S.~L.~Lyakhovich and I.~V.~Tyutin,
+{\em ``Split Involution And Second Class Constraints,''}
+Mod.\ Phys.\ Lett.\ A {\bf 7}, 1931 (1992).
+%%CITATION = MPLAE,A7,1931;%%
+
+\bibitem{BMgauge}
+I.~Batalin and R.~Marnelius,
+{\em ``Gauge theory of second class constraints without extra variables,''}
+Mod.\ Phys.\ Lett.\ A {\bf 16}, 1505 (2001)
+[arXiv:hep-th/0106087].
+%%CITATION = HEP-TH 0106087;%%
+
+
+\bibitem{BT} I.A.~Batalin and I.V.~Tyutin, {\em
+Existence theorem for the effective gauge algebra in the generalized
+        canonical formalism with Abelian conversion of second class
+        constraints,} Int.\ J.\ Mod.\ Phys.\ {\bf A6}, 3255 (1991).
+
+
+\bibitem{BFF}
+I.A.~Batalin, E.S.~Fradkin and T.E.~Fradkina,
+{\em Generalized Canonical Quantization Of Dynamical Systems With
+  Constraints And Curved Phase Space,}
+Nucl.\ Phys.\ {\bf B332}, 723 (1990).
+
+\bibitem{BGL}
+I.~A.~Batalin, M.~A.~Grigoriev and S.~L.~Lyakhovich,
+{\em ``Star product for second class constraint systems
+from a BRST theory,''}
+Theor.\ Math.\ Phys.\  {\bf 128}, 1109 (2001)
+[Teor.\ Mat.\ Fiz.\  {\bf 128}, 324 (2001)]
+[arXiv:hep-th/0101089].
+%%CITATION = HEP-TH 0101089;%%
+
+
+
+
+
+
+
+\bibitem{Batalin:2001dk}
+I.~Batalin, S.~Lyakhovich and R.~Marnelius,
+Phys.\ Lett.\ B {\bf 534}, 201 (2002)
+[arXiv:hep-th/0112175].
+%%CITATION = HEP-TH 0112175;%%
+
+
+
+\bibitem{BMQA}
+I.~Batalin and R.~Marnelius,
+{\em ``General quantum antibrackets,''}
+Theor.\ Math.\ Phys.\  {\bf 120}, 1115 (1999)
+[Teor.\ Mat.\ Fiz.\  {\bf 120}, 358 (1999)]
+[arXiv:hep-th/9905083].
+%%CITATION = HEP-TH 9905083;%%\\
+{\em ``Quantum antibrackets,''}
+Phys.\ Lett.\ B {\bf 434}, 312 (1998)
+[arXiv:hep-th/9805084].
+%%CITATION = HEP-TH 9805084;%%
+
+\bibitem{Batalin:vu}
+I.~A.~Batalin and I.~V.~Tyutin,
+Phys.\ Lett.\ B {\bf 302}, 47 (1993).
+%%CITATION = PHLTA,B302,47;%%
+
+\bibitem{Batalin:1993mx}
+I.~A.~Batalin and I.~V.~Tyutin,
+Phys.\ Lett.\ B {\bf 317}, 354 (1993)
+[arXiv:hep-th/9305167].
+%%CITATION = HEP-TH 9305167;%%
+
+
+%%\cite{Batalin:jm}
+%%``Existence Theorem For The Effective Gauge Algebra In The Generalized 
+Canonical Formalism With Abelian Conversion Of Second Class
+%%%CITATION = IMPAE,A6,3255;%%
+
+
+
+\bibitem{BLT}
+I.~A.~Batalin, P.~M.~Lavrov and I.~V.~Tyutin,
+{\em ``Extended Brst Quantization Of Gauge Theories In The Generalized 
+Canonical Formalism,''}
+J.\ Math.\ Phys.\  {\bf 31}, 6 (1990).
+%%CITATION = JMAPA,31,6;%%
+
+\bibitem{BTQA}
+Igor Batalin and Igor Tyutin,
+{\em ``BRST-Invariant Constraint Algebra in Terms of Commutators and Quantum 
+Antibrackets''}, [arXiv:hep-th/0301043].
+
+
+\end{thebibliography}
+
+\end{document}
+
+\bye

@@ -1,0 +1,2268 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt,a4paper]{article}
+\usepackage{latexsym}
+\usepackage{epsf}
+\usepackage{amssymb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Macros for numbering equations by section %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\@addtoreset{equation}{section}
+\makeatother
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \def\unit{\hbox to 3.3pt{\hskip1.3pt \vrule height 7pt width .4pt \hskip.7pt
+\vrule height 7.85pt width .4pt \kern-2.4pt
+\hrulefill \kern-3pt
+\raise 4pt\hbox{\char'40}}}
+\def\II{{\unit}}
+\def\cM {{\cal{M}}}
+\def\half{{\textstyle {1 \over 2}}}
+\def\quart{{\textstyle {1 \over 4}}}
+\def\noverm#1#2{{\textstyle {#1 \over #2}}}
+\def\Dpartial{{\cal D}}
+\def\tr{\,{\rm tr}\,}
+\parskip 10pt
+
+%
+\def\makeatletter{\catcode`\@=11}% 11:letter
+\makeatletter
+\def\mathbox#1{\hbox{\myHighlight{$\m@th#1$}\coordHE{}}}%
+%
+%
+%
+\def\math@ccstyles#1#2#3#4#5#6#7{{\leavevmode
+      \setbox0\mathbox{#6#7}%
+      \setbox2\mathbox{#4#5}%
+      \dimen@ #3%
+      \baselineskip\z@\lineskiplimit#1\lineskip\z@
+      \vbox{\ialign{##\crcr
+             \hfil \kern #2\box2 \hfil\crcr
+             \noalign{\kern\dimen@}%
+             \hfil\box0\hfil\crcr}}}}
+%
+\def\mathaccstyles{\math@ccstyles\maxdimen}
+\def\maththroughstyles{\math@ccstyles{-\maxdimen}}
+%
+%
+\def\unitmatrixDT%
+ {\maththroughstyles{.45\ht0}\z@\displaystyle {\mathchar"006C}\displaystyle 1}
+%
+\usepackage{useful_macros}
+\begin{document}
+\pagestyle{empty}
+\begin{flushright}
+\small
+UG/00-16\\
+VUB/TENA/00/08\\
+{\bf hep-th/0011018}\\
+November 1, 2000
+\normalsize
+\end{flushright}
+
+\begin{center}
+
+
+\vspace{.7cm}
+
+{\Large {\bf Non-abelian Born-Infeld
+
+                and
+
+            kappa-symmetry}}
+
+\vspace{.7cm}
+
+ E.~A.~Bergshoeff\myHighlight{${}^1$}\coordHE{}, M.~de Roo\myHighlight{${}^1$}\coordHE{} and A.~Sevrin\myHighlight{${}^2$}\coordHE{}
+
+\vskip 0.4truecm
+
+ \myHighlight{${}^1$}\coordHE{}Institute for Theoretical Physics\\
+   Nijenborgh 4, 9747 AG Groningen\\
+     The Netherlands\\
+\vskip 0.4truecm
+ \myHighlight{${}^2$}\coordHE{}Theoretische Natuurkunde\\
+   Vrije Universiteit Brussel\\
+   Pleinlaan 2\\
+   B-1050 Brussels, Belgium\\
+
+\vskip 1.0cm
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{\bf Abstract}
+
+\end{center}
+
+\begin{quotation}
+
+\small
+
+We define an iterative procedure to obtain a
+non-abelian generalization of the Born-Infeld
+action. This construction is made possible by the
+use of the severe restrictions imposed by kappa-symmetry.
+In this paper
+we will present all bosonic terms in the action up to terms
+quartic in the Yang-Mills field strength and all fermion
+bilinear terms up to terms cubic in the field strength.
+Already at
+this order the fermionic terms do not satisfy the
+symmetric trace-prescription.
+
+
+\end{quotation}
+
+\newpage
+
+\pagestyle{plain}
+
+\setcounter{section}{0}
+\section{Introduction\label{Intro}}
+
+One of the most intriguing features of D-branes is
+their close connection with gauge theories.
+Indeed, the effective theory describing the worldvolume dynamics of a
+D\myHighlight{$p$}\coordHE{}-brane is a \myHighlight{$p+1$}\coordHE{}-dimensional field theory with, in the static gauge,
+as bosonic degrees of freedom the transversal coordinates of the brane,
+appearing as \myHighlight{$9-p$}\coordHE{} scalar fields, and the massless states of the open strings
+ending on the brane which appear as a \myHighlight{$U(1)$}\coordHE{} gauge field.
+When these fields vary slowly, the effective
+action governing their dynamics is known to all orders in \myHighlight{$\alpha '$}\coordHE{}.
+It is the ten-dimensional
+Born-Infeld action \cite{AT}, dimensionally reduced to \myHighlight{$p+1$}\coordHE{} dimensions.
+
+Once several D-branes are present, the situation changes. The mass of the
+strings stretching between two branes is proportional to the shortest
+distance between the  branes. Starting off with \myHighlight{$n$}\coordHE{} well separated
+D-branes we end up with a \myHighlight{$U(1)^n$}\coordHE{} theory, however, once the \myHighlight{$n$}\coordHE{} branes
+coincide additional massless states appear which complete the gauge
+multiplet to a non-abelian \myHighlight{$U(n)$}\coordHE{}-theory \cite{EW1}. Contrary to the abelian case,
+the effective action is not known to all orders in \myHighlight{$\alpha '$}\coordHE{}. The first
+term, quadratic in the field strength, is nothing but a dimensionally
+reduced \myHighlight{$U(n)$}\coordHE{} Yang-Mills theory. The next order, which is quartic in the
+field strength, was obtained from the four-gluon scattering amplitude
+in open superstring theory \cite{GW} and
+from a three-loop \myHighlight{$\beta$}\coordHE{}-function calculation \cite{BP}. Based upon these
+results and  other considerations, an all order proposal was
+formulated for the effective action \cite{AT2}: the non-abelian
+Born-Infeld action assumes essentially the same form as the abelian one,
+however, all Lie algebra valued objects have to be symmetrized first before
+taking the trace.  Other trace prescriptions, involving
+commutators, have been given as well
+\cite{AN}.
+More recently, it was found that the symmetric trace prescription could
+not be correct as it did not reproduce the mass spectrum of certain
+D-brane configurations \cite{HT}, \cite{DST}.
+It was shown in \cite{B}
+that by adding commutator terms to the action the problem
+might be cured. Indeed, as was pointed out in \cite{AT}, the notion of an
+effective action for slowly varying fields is subtle in the non-abelian
+case. In the effective action  higher derivative terms are dropped.
+However because of
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+D_i D_j F_{kl}=\frac 1 2 \{D_i , D_j\}F_{kl}-\frac i 2 {[}F_{ij}, F_{kl}
+{\rightCoord{}\leftCoord{}]}, \rightCoord{}
+\rightCoord{}}{0mm}{2}{4}{
+D_i D_j F_{kl}=\frac 1 2 \{D_i , D_j\}F_{kl}-\frac i 2 {[}F_{ij}, F_{kl}
+{]}, 
+}{1}\coordE{}\end{eqnarray}
+this is ambiguous. The analysis of the mass spectrum seems to indicate
+that the symmetrized product of
+derivatives acting on a field strength should be viewed as an acceleration
+term which can safely be neglected, while the anti-symmetrized products
+should be kept.
+A systematic study of the \myHighlight{$F^6$}\coordHE{} terms \cite{STT} showed that using the
+mass spectrum as a guideline, almost all terms at this order could be
+determined. However due to the specific choices of backgrounds made in
+\cite{STT}, certain terms do not contribute to the mass spectrum and as
+a result can not be fixed in this way. A direct calculation from a
+six-point open superstring amplitude or a five-loop \myHighlight{$\beta$}\coordHE{}-function seems
+unfeasible, so another approach is called for.
+
+Till now, we ignored the fermionic degrees of freedom in our discussion.
+The fully covariant worldvolume theory of a single D-brane in a type
+II theory can
+be formulated in terms of the following worldvolume fields\footnote{In
+this paper \myHighlight{$\mu,\nu=0,\ldots,9$}\coordHE{} are spacetime indices, indices
+\myHighlight{$i,j=0,\ldots,p$}\coordHE{} label the worldvolume coordinates \myHighlight{$\sigma^i$}\coordHE{}.}: the
+embedding coordinates \myHighlight{$X^\mu(\sigma)$}\coordHE{} (of which only the transverse
+coordinates represent physical degrees of freedom), the Born-Infeld vector
+field \myHighlight{$V_i(\sigma)$}\coordHE{}, and \myHighlight{$N=2$}\coordHE{} spacetime fermionic fields
+\myHighlight{$\theta(\sigma)$}\coordHE{}.
+In a curved background the D-brane can be coupled to the corresponding
+type II supergravity superfields, and \myHighlight{$N=2$}\coordHE{} supersymmetry is realised
+locally. In a flat background there is \myHighlight{$N=2$}\coordHE{} global supersymmetry.
+This worldvolume theory has a local \myHighlight{$\kappa$}\coordHE{}-symmetry,
+which acts on the fermions as
+\begin{equation}\coord{}\boxEquation{
+\label{dt}
+ \delta\bar\theta(\sigma) = \bar\kappa(\sigma)\,(1+\Gamma)\,,
+}{
+\delta\bar\theta(\sigma) = \bar\kappa(\sigma)\,(1+\Gamma)\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\Gamma$}\coordHE{}, which depends on worldvolume as well as background fields,
+satisfies
+\begin{equation}\coord{}\boxEquation{
+  \Gamma^2 = \unitmatrixDT\,.
+}{
+  \Gamma^2 = \unitmatrixDT\,.
+}{ecuacion}\coordE{}\end{equation}
+The projection (\ref{dt})
+makes it possible to gauge away half the fermionic
+degrees of freedom. The field content then corresponds in a static gauge
+to that of a supersymmetric Yang-Mills theory in \myHighlight{$p+1$}\coordHE{} dimensions.
+There is still \myHighlight{$N=2$}\coordHE{} supersymmetry, but half of this is realised
+nonlinearly.  These covariant D-brane actions have been constructed
+in flat  \cite{Aga}, as well as in curved backgrounds
+\cite{Ced,BT}. This paper examines the
+suggestion in \cite{DST} that \myHighlight{$\kappa$}\coordHE{}-symmetry might teach us
+something about the ordenings appearing in the non-abelian Born-Infeld
+action.
+
+D-brane actions consist of the sum of a Born-Infeld term, coupling the
+worldvolume fields to the NS-NS sector of the background,
+and a Wess-Zumino term in which
+the couplings to the R-R fields occur. Each part is separately
+supersymmetric, but the two are related, in the abelian case,
+by the \myHighlight{$\kappa$}\coordHE{}-transformations. The
+Wess-Zumino term is of a topological nature, and can therefore
+be formulated in a metric-independent way. Its structure is
+severely restricted, also in the non-abelian case. The Born-Infeld term
+is much more complicated, and consequently its generalization from
+the abelian to the non-abelian case is much more difficult. It is
+natural to assume that also in the non-abelian case the
+Born-Infeld and Wess-Zumino term are related by a
+\myHighlight{$\kappa$}\coordHE{}-symmetry. Our
+aim is to use the knowledge of the Wess-Zumino term and the
+properties of \myHighlight{$\kappa$}\coordHE{}-symmetry to obtain information about the
+non-abelian Born-Infeld term.
+
+To construct this non-abelian generalization we
+will use an iteration in the number of Yang-Mills field strengths
+\myHighlight{$F(V)$}\coordHE{}. In this paper
+we will obtain all terms in the action up to and including the order \myHighlight{$F^2$}\coordHE{}.
+As we discussed
+above, in the purely
+bosonic terms the conflict between string theoretic
+results and the symmetric trace prescription arises only at order
+\myHighlight{$F^6$}\coordHE{}, so it is clear that in this paper we will not
+contribute to the discussion of these bosonic terms.
+However, we find that in the fermionic sector already  at
+quadratic order some of the fermionic terms
+do not correspond to a symmetric trace.
+
+This paper is organized as follows. We will discuss our choice of variables
+in Section \ref{Fields}.
+In Section \ref{Abel} we will define the iterative procedure and
+illustrate it for the abelian case. In Sections \ref{YM}
+and \ref{Summ} we derive and present our results
+for the non-abelian case,
+and bring them to gauge fixed form in Section \ref{Fix}.
+In Section \ref{Concl}
+we give our conclusions, and
+point out a number of extensions and applications of this work.
+
+We will end the Introduction by recalling briefly some
+related work on supersymmetric D-brane actions. In four
+dimensions the supersymmetrisation of the abelian Born-Infeld
+action in \myHighlight{$N=1$}\coordHE{} supersymmetry has been known for a long time
+\cite{CF}. More recently, this work has been extended
+to the non-abelian Born-Infeld theory, and to \myHighlight{$N=2$}\coordHE{}
+supersymmetry \cite{K2,RTZ}. In particular, in \cite{K2} it
+is remarked that \myHighlight{$N=2$}\coordHE{} supersymmetry in four dimensions is
+not sufficient to resolve the ordering ambiguities, several
+ordering precriptions give rise to supersymmetric actions.
+So it seems that it is indeed necessary (and hopefully
+sufficient) to consider \myHighlight{$N=4$}\coordHE{} in \myHighlight{$D=4$}\coordHE{}, or, as in this
+paper, the ten-dimensional supersymmetric Born-Infeld action
+action. Several aspects of the ten-dimensional problem have
+been studied in \cite{TR, M}. In particular, these authors
+investigate the dependence of the action on transverse scalars,
+where these scalars are generated by T-duality starting from the
+D9-brane action. However, this is in the context of the symmetric
+trace prescription.
+
+\section{Worldvolume fields and transformations\label{Fields}}
+
+The aim of this work is to obtain the effective action for \myHighlight{$n$}\coordHE{}
+overlapping Dp-branes, with \myHighlight{$U(n)$}\coordHE{} covariance on the worldvolume.
+Before embarking on the construction, one has to carefully choose
+the starting
+point of the calculation. For  general Dp-branes  the situation is
+complicated by the presence of the transverse scalar degrees of freedom,
+which are in the adjoint representation of the Yang-Mills group. Not only
+does one have to take commutators of these scalars into account, but also
+the background fields will depend on these scalars \cite{D}. We avoid
+these complications by limiting ourselves to the case of \myHighlight{$n$}\coordHE{} overlapping
+D9-branes, and by choosing a  flat background. Through T-duality
+D-branes for other values of \myHighlight{$p$}\coordHE{} can be obtained,
+the extension to curved backgrounds
+will be discussed in Section \ref{Concl}.
+
+For \myHighlight{$n$}\coordHE{} overlapping D9-branes the completely gauge fixed result
+should be the supersymmetric version of the non-abelian Born-Infeld
+theory. Since the vector fields \myHighlight{$V_i^A(\sigma)$}\coordHE{}, \myHighlight{$A=1,\ldots,n^2$}\coordHE{},
+are in the adjoint representation of \myHighlight{$U(n)$}\coordHE{}, we have to
+make the same choice for the fermion fields \myHighlight{$\theta$}\coordHE{}.
+Therefore we start out with fields \myHighlight{$\theta^A(\sigma)$}\coordHE{},
+which form a doublet
+\myHighlight{$(N=2)$}\coordHE{} of Majorana-Weyl spinors for each \myHighlight{$A$}\coordHE{},
+satisfying \myHighlight{$\Gamma_{11}\theta^A=\theta^A$}\coordHE{}. After \myHighlight{$\kappa$}\coordHE{}-gauge fixing
+only half of each doublet will remain, and we have the
+correct number of degrees of freedom for the supersymmetric Yang-Mills
+theory.
+
+This requires, that there are as many \myHighlight{$\kappa$}\coordHE{}-symmetries as \myHighlight{$\theta$}\coordHE{}'s,
+so that the parameter of the \myHighlight{$\kappa$}\coordHE{} transformations will
+have to be in the adjoint of \myHighlight{$U(n)$}\coordHE{} as well. Thus the \myHighlight{$\theta^A$}\coordHE{}
+transform as follows under
+ordinary supersymmetry (\myHighlight{$\epsilon$}\coordHE{}), \myHighlight{$\kappa$}\coordHE{}-symmetry (\myHighlight{$\kappa$}\coordHE{}),
+Yang-Mills transformations \myHighlight{$(\Lambda^A)$}\coordHE{}, and worldvolume
+reparametrisations (\myHighlight{$\xi^i$}\coordHE{}):
+\begin{equation}\coord{}\boxEquation{
+\label{dtall}
+   \delta\bar\theta^A(\sigma) = -\bar\epsilon^A
+     + \bar\kappa^B(\sigma)(\unitmatrixDT\,\delta^{BA} +
+        \Gamma^{BA}(\sigma))
+     + f^A{}_{BC}\Lambda^B(\sigma)\bar\theta^C(\sigma)
+     + \xi^i(\sigma)\partial_i \bar\theta^A(\sigma)\,.
+}{
+\delta\bar\theta^A(\sigma) = -\bar\epsilon^A
+     + \bar\kappa^B(\sigma)(\unitmatrixDT\,\delta^{BA} +
+        \Gamma^{BA}(\sigma))
+     + f^A{}_{BC}\Lambda^B(\sigma)\bar\theta^C(\sigma)
+     + \xi^i(\sigma)\partial_i \bar\theta^A(\sigma)\,.
+}{ecuacion}\coordE{}\end{equation}
+Here \myHighlight{$\epsilon^A$}\coordHE{} are constant, \myHighlight{$\Gamma^{AB}$}\coordHE{} depends on the
+worldvolume fields, and therefore on \myHighlight{$\sigma$}\coordHE{}. It must satisfy
+\begin{equation}\coord{}\boxEquation{
+  \Gamma^{AB}\Gamma^{BC} = \delta^{AC}\unitmatrixDT\,.
+}{
+  \Gamma^{AB}\Gamma^{BC} = \delta^{AC}\unitmatrixDT\,.
+}{ecuacion}\coordE{}\end{equation}
+We will usually write these transformations in terms of
+\begin{equation}\coord{}\boxEquation{
+ \delta\bar\theta^A \equiv
+ \bar\eta^A \equiv  \bar\kappa^B(\sigma)(\unitmatrixDT\,\delta^{BA} +
+        \Gamma^{BA}(\sigma))\,.
+}{
+ \delta\bar\theta^A \equiv
+ \bar\eta^A \equiv  \bar\kappa^B(\sigma)(\unitmatrixDT\,\delta^{BA} +
+        \Gamma^{BA}(\sigma))\,.
+}{ecuacion}\coordE{}\end{equation}
+
+Useful information is obtained by considering commutators of
+these transformations.
+Because \myHighlight{$\epsilon^A$}\coordHE{} is constant we find from the commutator of
+Yang-Mills and supersymmetry transformations that
+\begin{equation}\coord{}\boxEquation{
+      f^{A}{}_{BC}\Lambda^B\epsilon^C=0\to f_{ABC}\epsilon^C=0\,.
+}{
+      f^{A}{}_{BC}\Lambda^B\epsilon^C=0\to f_{ABC}\epsilon^C=0\,.
+}{ecuacion}\coordE{}\end{equation}
+Therefore \myHighlight{$\epsilon = \epsilon^A T_A$}\coordHE{}, where \myHighlight{$T_A$}\coordHE{} are the
+\myHighlight{$U(n)$}\coordHE{} generators, must be proportional to the unit
+matrix, i.e., we can choose a basis in which there is only
+one nonvanishing \myHighlight{$\epsilon$}\coordHE{} parameter.
+So only a subset of the \myHighlight{$\theta^A$}\coordHE{} transform under supersymmetry,
+and there is only one independent supersymmetry parameter.
+The \myHighlight{$\theta$}\coordHE{}'s which are presently
+inert under supersymmetry will obtain their supersymmetry
+transformations through \myHighlight{$\kappa$}\coordHE{}-gauge fixing, as we shall see
+in Section \ref{Fix}. {From} the commutator of \myHighlight{$\kappa$}\coordHE{}-symmetry and
+supersymmetry we find \myHighlight{$\delta_\epsilon \eta^A = 0$}\coordHE{}. This implies that
+\begin{equation}\coord{}\boxEquation{
+  \delta_\epsilon \Gamma^{AB} = 0\,.
+}{
+  \delta_\epsilon \Gamma^{AB} = 0\,.
+}{ecuacion}\coordE{}\end{equation}
+
+The only scalars we have are  the embedding coordinates
+\myHighlight{$X^\mu(\sigma)$}\coordHE{} for worldvolume directions.
+There are several options that one could consider for the \myHighlight{$X^\mu$}\coordHE{}:
+\begin{enumerate}
+\item We could assume that we are in the static gauge, i.e.,
+\begin{equation}\coord{}\boxEquation{
+    X^\mu(\sigma) = \delta^\mu_i\,\sigma^i\,,
+}{
+    X^\mu(\sigma) = \delta^\mu_i\,\sigma^i\,,
+}{ecuacion}\coordE{}\end{equation}
+ from the
+ beginning, so that the \myHighlight{$X^\mu$}\coordHE{} are absent. In this case there are no
+ worldvolume reparametrisations, i.e., \myHighlight{$\xi^i=0$}\coordHE{} in (\ref{dtall}).
+\item We could decide that the \myHighlight{$X^\mu$}\coordHE{} are in the singlet representation
+ of the Yang-Mills group. The idea is that the \myHighlight{$n$}\coordHE{} branes overlap,
+ there is only one set of worldvolume coordinates, and the corresponding
+ reparametrization group would be sufficient to gauge fix a singlet
+ set of embedding coordinates.
+\item We could choose the \myHighlight{$X^\mu$}\coordHE{} in the adjoint representation of
+ Yang-Mills in analogy with transverse coordinates for \myHighlight{$p<9$}\coordHE{}.
+ Here one thinks of starting with \myHighlight{$n$}\coordHE{} separate branes where each has its
+ own worldvolume and embedding coordinates. When the branes overlap
+ the embedding coordinates "fill up" to form elements of the adjoint
+ representation.
+ Clearly
+ this requires a different approach toward the worldvolume
+ reparametrisation invariance, which must then correspond to a sufficiently
+ large symmetry group to gauge fix all these embedding functions.
+\end{enumerate}
+We have investigated the first two possibilities in the non-abelian case,
+and we have found that only the first approach is consistent with the
+iterative procedure that we employ. In Section \ref{YM} we will point out
+where the first two choices start to diverge, in Section \ref{Concl}
+we will briefly come back to the third possibility.
+
+The transformation rules of the bosonic fields \myHighlight{$V_i^A$}\coordHE{}, and, in case of
+the second choice above, of the \myHighlight{$X^\mu$}\coordHE{}, are determined iteratively
+by requiring invariance of the action.
+
+A special case of a \myHighlight{$U(n)$}\coordHE{} invariant non-abelian D-brane action is
+of course the truncation to \myHighlight{$U(1)^n$}\coordHE{}. In this case we know the answer:
+a \myHighlight{$\kappa$}\coordHE{}-invariant action is given by the sum of \myHighlight{$n$}\coordHE{} abelian
+\myHighlight{$D$}\coordHE{}-brane actions. This special case will be discussed again, since it
+plays a role in making a choice between the different
+possibilities for the variables \myHighlight{$X^\mu$}\coordHE{} discussed above.
+
+Throughout this paper we will limit ourselves to terms in the action
+and transformation rules which are
+at most quadratic in the fermion fields.
+
+\section{The iterative procedure and the abelian example\label{Abel}}
+
+In this Section we will set up our iterative procedure and illustrate
+it for the abelian case. To do this, we must first give some details
+of the effective D9-brane action in a flat background \cite{Aga}.
+In this case we can use a covariant formulation with embedding
+coordinates \myHighlight{$X^\mu$}\coordHE{}, spacetime fermions \myHighlight{$\theta$}\coordHE{}, and the
+Born-Infeld vector \myHighlight{$V_i$}\coordHE{}. They transform under
+supersymmetry \myHighlight{$(\epsilon)$}\coordHE{}, \myHighlight{$\kappa$}\coordHE{}-symmetry, worldvolume
+reparametrisations \myHighlight{$(\xi^i)$}\coordHE{} and Maxwell gauge transformations
+\myHighlight{$(\Lambda)$}\coordHE{} as:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{dXab}
+   \delta X^\mu  &=& \half\rightCoord{}\,\bar\epsilon\rightCoord{}\,\Gamma^\mu\theta
+       \leftCoord{}+ \half\rightCoord{}\,\bar\eta\rightCoord{}\,\Gamma^\mu\theta + \xi^i\partial X^\mu\rightCoord{}\,, \rightCoord{}
+    \nonumber\rightCoord{}\\\leftCoord{}
+\label{dth}
+    \delta\bar\theta &=& -\bar\epsilon + \bar\eta + \rightCoord{}
+            \xi^i\partial_i\bar\theta\rightCoord{}\,,
+     \nonumber\rightCoord{}\\\leftCoord{}
+\label{dV}
+    \delta V_i &=& -\half(\bar\epsilon +\bar\eta)\gamma_i\theta
+      \leftCoord{}+ \xi^j F_{ji} + \partial_i(\Lambda + \xi^j V_j) \rightCoord{}\,,
+\rightCoord{}}{0mm}{5}{13}{
+\delta X^\mu  &=& \half\,\bar\epsilon\,\Gamma^\mu\theta
+       + \half\,\bar\eta\,\Gamma^\mu\theta + \xi^i\partial X^\mu\,, 
+    \\
+\delta\bar\theta &=& -\bar\epsilon + \bar\eta + 
+            \xi^i\partial_i\bar\theta\,,
+     \\
+\delta V_i &=& -\half(\bar\epsilon +\bar\eta)\gamma_i\theta
+      + \xi^j F_{ji} + \partial_i(\Lambda + \xi^j V_j) \,,
+}{1}\coordE{}\end{eqnarray}
+with
+\begin{equation}\coord{}\boxEquation{
+\label{etakappa}
+  \bar\eta = \bar\kappa (1+\Gamma)\,,\qquad (\Gamma)^2=\unitmatrixDT\,,
+}{
+\bar\eta = \bar\kappa (1+\Gamma)\,,\qquad (\Gamma)^2=\unitmatrixDT\,,
+}{ecuacion}\coordE{}\end{equation}
+and
+\begin{equation}\coord{}\boxEquation{
+   \gamma_i \equiv \Gamma^\mu\partial_i X^\mu \,.
+}{
+   \gamma_i \equiv \Gamma^\mu\partial_i X^\mu \,.
+}{ecuacion}\coordE{}\end{equation}
+
+
+The Born-Infeld contribution reads
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+{\rightCoord{}\leftCoord{}\cal L}_{\rm BI} &=& - \sqrt{-\det \rightCoord{}\,(g + {\cal F})}  \nonumber\rightCoord{}\\\leftCoord{}
+     \label{LBI}
+&\leftCoord{}=& - \sqrt{-\det g}\rightCoord{}\,( 1+\noverm{1}{4} {\cal F}_{ij}{\cal F}^{ij}
+        \leftCoord{}+\cdots)\rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{5}{8}{
+{\cal L}_{\rm BI} &=& - \sqrt{-\det \,(g + {\cal F})}  \\
+     &=& - \sqrt{-\det g}\,( 1+\noverm{1}{4} {\cal F}_{ij}{\cal F}^{ij}
+        +\cdots)\,, 
+}{1}\coordE{}\end{eqnarray}
+where in the second line we expand to second order in \myHighlight{${\cal F}$}\coordHE{}, which is
+given by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  {\rightCoord{}\leftCoord{}\cal F}_{ij} = F_{ij}(V) - B_{ij} \rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{2}{5}{
+  {\cal F}_{ij} = F_{ij}(V) - B_{ij} \,.
+}{1}\coordE{}\end{eqnarray}
+In a flat background and in the quadratic fermion approximation,
+ \myHighlight{$B_{ij}$}\coordHE{} is
+\begin{equation}\coord{}\boxEquation{
+\label{Bab}
+  B_{ij} = - \bar\theta\sigma_3\gamma_{[i}\partial_{j]}\theta\,.
+}{
+B_{ij} = - \bar\theta\sigma_3\gamma_{[i}\partial_{j]}\theta\,.
+}{ecuacion}\coordE{}\end{equation}
+The worldvolume metric reads
+\begin{equation}\coord{}\boxEquation{
+  g_{ij} = \eta_{ij} + \bar\theta \gamma_{(i}\partial_{j)}\theta\,,\qquad
+  \eta_{ij} \equiv \partial_i X^\mu \partial_j X_\mu\,.
+\label{geta}
+}{
+  g_{ij} = \eta_{ij} + \bar\theta \gamma_{(i}\partial_{j)}\theta\,,\qquad
+  \eta_{ij} \equiv \partial_i X^\mu \partial_j X_\mu\,.
+}{ecuacion}\coordE{}\end{equation}
+The metric \myHighlight{$g$}\coordHE{} and \myHighlight{${\cal F}$}\coordHE{} are invariant under supersymmetry and transform
+covariantly under \myHighlight{$\kappa$}\coordHE{}-transformations.
+The most useful form for comparison with the
+non-abelian case is the expansion of (\ref{LBI})
+to second order in fermions:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{LBIquad}
+    {\rightCoord{}\leftCoord{}\cal L}_{{\rm BI}} &=& -\sqrt{-\det\eta}\rightCoord{}\,\bigg(
+    \leftCoord{}1 + \half\bar\theta\gamma^i\partial_i\theta +
+         \half \bar\theta\sigma_3\gamma_{[i}\partial_{j]}\theta\rightCoord{}\, F^{ij}
+  \nonumber\rightCoord{}\\
+&&\leftCoord{}\qquad  + \noverm{1}{4} F^{ij} F_{ij}
+                 \leftCoord{}+ \noverm{1}{2}\rightCoord{}\, \bar\theta\gamma_i\partial_j\theta\rightCoord{}\,T^{ij}
+                   \leftCoord{}+\cdots\bigg)\rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{6}{10}{
+{\cal L}_{{\rm BI}} &=& -\sqrt{-\det\eta}\,\bigg(
+    1 + \half\bar\theta\gamma^i\partial_i\theta +
+         \half \bar\theta\sigma_3\gamma_{[i}\partial_{j]}\theta\, F^{ij}
+  \\
+&&\qquad  + \noverm{1}{4} F^{ij} F_{ij}
+                 + \noverm{1}{2}\, \bar\theta\gamma_i\partial_j\theta\,T^{ij}
+                   +\cdots\bigg)\,, 
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$T^{ij}$}\coordHE{} is the energymomentum tensor of the vector field:
+\begin{equation}\coord{}\boxEquation{
+   T^{ij} = F^{ik}F_{k}{}^j +\quart \eta^{ij} F_{kl}F^{kl}\,.
+}{
+   T^{ij} = F^{ik}F_{k}{}^j +\quart \eta^{ij} F_{kl}F^{kl}\,.
+}{ecuacion}\coordE{}\end{equation}
+
+The Wess-Zumino term takes on the following form:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{LWZ}
+  {\rightCoord{}\leftCoord{}\cal L}_{{\rm WZ}} &=&
+   \epsilon^{i_1\ldots i_{10}} \times
+   \sum_{\rightCoord{}k=0}^{\leftCoord{}4}   {(-1)^k\leftCoord{}\over\rightCoord{} 2^{k+1}\rightCoord{}\,k! (9-2k)!}
+   \times
+\nonumber\rightCoord{}\\
+&&\leftCoord{} \times
+  \leftCoord{}\rightCoord{}\,\bar\theta   \rightCoord{}\, \rightCoord{}
+   {\rightCoord{}\leftCoord{}\cal P}_{(k)} \gamma_{i_1\ldots i_{9-2k}}\partial_{i_{10-2k}}\theta\rightCoord{}\,
+    \leftCoord{}({\cal F}^k)_{i_{11-2k}\ldots i_{10}}\rightCoord{}\,,
+\rightCoord{}}{0mm}{8}{13}{
+{\cal L}_{{\rm WZ}} &=&
+   \epsilon^{i_1\ldots i_{10}} \times
+   \sum_{k=0}^{4}   {(-1)^k\over 2^{k+1}\,k! (9-2k)!}
+   \times
+\\
+&& \times
+  \,\bar\theta   \, 
+   {\cal P}_{(k)} \gamma_{i_1\ldots i_{9-2k}}\partial_{i_{10-2k}}\theta\,
+    ({\cal F}^k)_{i_{11-2k}\ldots i_{10}}\,,
+}{1}\coordE{}\end{eqnarray}
+where
+\begin{equation}\coord{}\boxEquation{
+  {\cal P}_{(k)} =  \sigma_1\ ({\rm for}\ k=0,2,4)\,,
+  \quad{\cal P}_{(k)} = i\sigma_2\ ({\rm for}\ k=1,3)\,.
+}{
+  {\cal P}_{(k)} =  \sigma_1\ ({\rm for}\ k=0,2,4)\,,
+  \quad{\cal P}_{(k)} = i\sigma_2\ ({\rm for}\ k=1,3)\,.
+}{ecuacion}\coordE{}\end{equation}
+Note that the sum in (\ref{LWZ}) runs only to \myHighlight{$k=4$}\coordHE{}, since the
+RR-scalar field vanishes in the flat background.
+
+It will be useful, also for the non-abelian case, to discuss why we make
+this particular choice for the \myHighlight{${\cal P}_{(k)}$}\coordHE{}. The \myHighlight{${\cal P}_{(k)}$}\coordHE{} are
+chosen such that the contributions to the Wess-Zumino term are not total
+derivatives.
+For odd \myHighlight{$k$}\coordHE{} this fixes \myHighlight{${\cal P}_{(k)}$}\coordHE{} to be \myHighlight{$i\sigma_2$}\coordHE{}.
+For even \myHighlight{$k$}\coordHE{} we could also have chosen \myHighlight{$\unitmatrixDT$}\coordHE{} or \myHighlight{$\sigma_3$}\coordHE{}.
+When we start looking at the iterative procedure later in this Section,
+we will find that we need
+\begin{equation}\coord{}\boxEquation{
+  \{{\cal P}_{(0)}, {\cal P}_{(1)} \} = 0\,,
+}{
+  \{{\cal P}_{(0)}, {\cal P}_{(1)} \} = 0\,,
+}{ecuacion}\coordE{}\end{equation}
+which excludes \myHighlight{$\unitmatrixDT$}\coordHE{} for \myHighlight{$k=0$}\coordHE{}. We have in principle the possibility
+to have either \myHighlight{$\sigma_1$}\coordHE{} or \myHighlight{$\sigma_3$}\coordHE{} (or both) for \myHighlight{$k=0$}\coordHE{}, and taking
+\myHighlight{$\sigma_1$}\coordHE{} is a choice of basis for the \myHighlight{$N=2$}\coordHE{} fermions.  Note that
+\myHighlight{$\sigma_3$}\coordHE{} in (\ref{Bab}) is correlated with the choice for \myHighlight{$\sigma_1$}\coordHE{} in
+the Wess-Zumino term: had we chosen  \myHighlight{${\cal P}_{(0)}=\sigma_3$}\coordHE{} we
+would have found \myHighlight{$\sigma_1$}\coordHE{} in (\ref{Bab}).
+
+The structure of (\ref{LWZ}) guarantees that the WZ-action
+transforms into a total derivative under
+the global supersymmetry transformation \myHighlight{$\delta\bar\theta=-\bar\epsilon$}\coordHE{}.
+Since we do not go beyond bilinear fermions we can use \myHighlight{$F$}\coordHE{} instead of
+\myHighlight{${\cal F}$}\coordHE{} in the Wess-Zumino term.  The numerical coefficients in (\ref{LWZ})
+are determined by \myHighlight{$\kappa$}\coordHE{}-symmetry once the normalization of \myHighlight{$F$}\coordHE{} and \myHighlight{$\theta$}\coordHE{}
+are fixed in the Born-Infeld term.
+
+Let us now consider the iterative construction of \myHighlight{$\kappa$}\coordHE{}-symmetry.
+The variation of the D-brane action takes on the form
+\begin{equation}\coord{}\boxEquation{
+\label{varkappa}
+  \delta{\cal L} = - \bar\eta\, (1-\Gamma) {\cal T}\,.
+}{
+\delta{\cal L} = - \bar\eta\, (1-\Gamma) {\cal T}\,.
+}{ecuacion}\coordE{}\end{equation}
+It indeed vanishes if \myHighlight{$\eta$}\coordHE{} is given by (\ref{etakappa}).
+This variations have the following source:
+\begin{equation}\coord{}\boxEquation{
+   \delta{\cal L}_{{\rm BI}} =  - \bar\eta\, {\cal T} \,,
+   \quad
+    \delta{\cal L}_{{\rm WZ}} =   \bar\eta \,\Gamma\, {\cal T}\,.
+}{
+   \delta{\cal L}_{{\rm BI}} =  - \bar\eta\, {\cal T} \,,
+   \quad
+    \delta{\cal L}_{{\rm WZ}} =   \bar\eta \,\Gamma\, {\cal T}\,.
+}{ecuacion}\coordE{}\end{equation}
+The variation of the Wess-Zumino term, together with the information that
+\myHighlight{$\Gamma^2=\unitmatrixDT$}\coordHE{}, is sufficient to determine both \myHighlight{$\Gamma$}\coordHE{} and \myHighlight{${\cal T}$}\coordHE{}
+iteratively. Since \myHighlight{${\cal T}$}\coordHE{} determines the variation of the Born-Infeld
+term  this information is sufficient to obtain iteratively the
+Born-Infeld part of the action.
+
+The iteration is obtained by expanding \myHighlight{$\Gamma$}\coordHE{} and \myHighlight{${\cal T}$}\coordHE{} in \myHighlight{$F$}\coordHE{}:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \delta{\cal L} &=& -\bar\eta\rightCoord{}\,(1-(\Gamma_0+\Gamma_1+\cdots))
+       \leftCoord{}({\cal T}_0 + {\cal T}_1  +\cdots ) \nonumber\rightCoord{}\\
+&\leftCoord{}=& - \bar\eta\rightCoord{}\, ({\cal T}_0 - \Gamma_0{\cal T}_0
+         \leftCoord{}+ {\cal T}_1 - \Gamma_1{\cal T}_0 - \Gamma_0{\cal T}_1  +\cdots)\rightCoord{}\,,
+\rightCoord{}}{0mm}{4}{6}{
+  \delta{\cal L} &=& -\bar\eta\,(1-(\Gamma_0+\Gamma_1+\cdots))
+       ({\cal T}_0 + {\cal T}_1  +\cdots ) \\
+&=& - \bar\eta\, ({\cal T}_0 - \Gamma_0{\cal T}_0
+         + {\cal T}_1 - \Gamma_1{\cal T}_0 - \Gamma_0{\cal T}_1  +\cdots)\,,
+}{1}\coordE{}\end{eqnarray}
+where the indices indicate the order in \myHighlight{$F$}\coordHE{} and the \myHighlight{$\Gamma_i$}\coordHE{} satisfy
+various identities which follow from \myHighlight{$\Gamma^2=\unitmatrixDT$}\coordHE{}.
+Since it will be useful to have the abelian results at hand for comparison
+with the non-abelian calculation in Section \ref{YM}, we will work out the
+beginning of this iteration in some detail.
+
+Let us start with the order \myHighlight{$F^0$}\coordHE{}. The contribution from (\ref{LWZ}) is
+\begin{equation}\coord{}\boxEquation{
+\label{LWZ0a}
+  {\cal L}_{{\rm WZ}\,0} = {1\over 2\cdot 9!}\,
+   \epsilon^{i_1\ldots i_{10}}\,\bar\theta
+   \,\sigma_1
+   \gamma_{i_1\ldots i_9}\partial_{i_{10}}\theta \,.
+}{
+{\cal L}_{{\rm WZ}\,0} = {1\over 2\cdot 9!}\,
+   \epsilon^{i_1\ldots i_{10}}\,\bar\theta
+   \,\sigma_1
+   \gamma_{i_1\ldots i_9}\partial_{i_{10}}\theta \,.
+}{ecuacion}\coordE{}\end{equation}
+For the \myHighlight{$\kappa$}\coordHE{}-variation we only have to vary \myHighlight{$\theta$}\coordHE{} to obtain:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{dLWZ0ab}
+  \delta {\cal L}_{{\rm WZ}\rightCoord{}\,0} &=&
+      {\rightCoord{}\leftCoord{}1\leftCoord{}\over\rightCoord{} 9!}\rightCoord{}\,\epsilon^{i_1\ldots i_{10}}\rightCoord{}\,\bar\eta \rightCoord{}\,\sigma_1
+   \gamma_{i_1\ldots i_9}\partial_{i_{10}}\theta
+   \leftCoord{}= \rightCoord{}\,\sqrt{-\det\eta} \rightCoord{}\,\bar\eta\rightCoord{}\, \sigma_1
+     \Gamma^{(0)} \gamma^i\partial_i\theta \rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{4}{13}{
+\delta {\cal L}_{{\rm WZ}\,0} &=&
+      {1\over 9!}\,\epsilon^{i_1\ldots i_{10}}\,\bar\eta \,\sigma_1
+   \gamma_{i_1\ldots i_9}\partial_{i_{10}}\theta
+   = \,\sqrt{-\det\eta} \,\bar\eta\, \sigma_1
+     \Gamma^{(0)} \gamma^i\partial_i\theta \,.
+}{1}\coordE{}\end{eqnarray}
+Here \myHighlight{$\Gamma^{(0)}$}\coordHE{} is given by \footnote{We use both metrics \myHighlight{$g$}\coordHE{} and \myHighlight{$\eta$}\coordHE{}.
+They are defined in (\ref{geta}).}
+\begin{equation}\coord{}\boxEquation{
+\label{gamma0}
+  \Gamma^{(0)} = {1\over 10!\sqrt{-\det g}}
+   \epsilon^{i_1\ldots i_{10}}\gamma_{i_1\ldots i_{10}}\,,
+}{
+\Gamma^{(0)} = {1\over 10!\sqrt{-\det g}}
+   \epsilon^{i_1\ldots i_{10}}\gamma_{i_1\ldots i_{10}}\,,
+}{ecuacion}\coordE{}\end{equation}
+which satisfies
+\begin{equation}\coord{}\boxEquation{
+  \left(\Gamma^{(0)} \right)^2 = \unitmatrixDT\,.
+}{
+  \left(\Gamma^{(0)} \right)^2 = \unitmatrixDT\,.
+}{ecuacion}\coordE{}\end{equation}
+In (\ref{dLWZ0ab}) have used the property
+\begin{equation}\coord{}\boxEquation{
+\label{gamma0prop}
+ \Gamma^{(0)} \gamma^{l_1\ldots l_k} =
+   {(-)^{k(k-1)/2}\over (10-k)!\sqrt{-\det g}}
+   \epsilon^{i_1\ldots i_{10-k}l_1\ldots l_k}\gamma_{i_1\ldots i_{10-k}}
+}{
+\Gamma^{(0)} \gamma^{l_1\ldots l_k} =
+   {(-)^{k(k-1)/2}\over (10-k)!\sqrt{-\det g}}
+   \epsilon^{i_1\ldots i_{10-k}l_1\ldots l_k}\gamma_{i_1\ldots i_{10-k}}
+}{ecuacion}\coordE{}\end{equation}
+for \myHighlight{$k=1$}\coordHE{}. {From} (\ref{dLWZ0ab}) we read off that
+\begin{equation}\coord{}\boxEquation{
+   \Gamma_0 = \Gamma^{(0)} \sigma_1\,,\qquad
+   {\cal T}_0 =  \gamma^i\partial_i\theta\,.
+}{
+   \Gamma_0 = \Gamma^{(0)} \sigma_1\,,\qquad
+   {\cal T}_0 =  \gamma^i\partial_i\theta\,.
+}{ecuacion}\coordE{}\end{equation}
+Obviously \myHighlight{$\Gamma^2=\unitmatrixDT$}\coordHE{} to this order.
+
+So the Born-Infeld term should vary into \myHighlight{${\cal T}$}\coordHE{}, which is
+indeed achieved by setting
+\begin{equation}\coord{}\boxEquation{
+\label{LBIab0}
+  {\cal L}_{{\rm BI\,0}} = -\sqrt{-\det\eta} \bigg(
+    1 + \half\,\bar\theta\gamma^i\partial_i\theta \bigg)\, .
+}{
+{\cal L}_{{\rm BI\,0}} = -\sqrt{-\det\eta} \bigg(
+    1 + \half\,\bar\theta\gamma^i\partial_i\theta \bigg)\, .
+}{ecuacion}\coordE{}\end{equation}
+This gives
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \label{dLBIab0}
+  \delta{\cal L}_{{\rm BI}\rightCoord{}\,0}
+&\leftCoord{}=& -\sqrt{-\det\eta} \rightCoord{}\,\bar\eta\gamma^i\partial_i\theta\rightCoord{}\, ,
+\rightCoord{}}{0mm}{2}{5}{
+  \delta{\cal L}_{{\rm BI}\,0}
+&=& -\sqrt{-\det\eta} \,\bar\eta\gamma^i\partial_i\theta\, ,
+}{1}\coordE{}\end{eqnarray}
+where we have used the variation of \myHighlight{$X^\mu$}\coordHE{} as given in (\ref{dXab}).
+
+A similar analysis can be done for the terms of higher order in \myHighlight{$F$}\coordHE{}.
+At the linear level
+the variation of the Wess-Zumino term is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+   \label{dLWZab1}
+  \delta {\cal L}_{{\rm WZ\rightCoord{}\,1}} &=&
+ \half \rightCoord{}\,\sqrt{-\det\eta}\rightCoord{}\,\bar\eta\rightCoord{}\,(i\sigma_2)\rightCoord{}\,
+   \Gamma^{(0)} \rightCoord{}
+   \big(\gamma^{jk}F_{jk}\gamma^i\partial_i\theta
+        \leftCoord{}-2\gamma_i\partial_j\theta F^{ij}\big)\rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{2}{10}{
+   \delta {\cal L}_{{\rm WZ\,1}} &=&
+ \half \,\sqrt{-\det\eta}\,\bar\eta\,(i\sigma_2)\,
+   \Gamma^{(0)} 
+   \big(\gamma^{jk}F_{jk}\gamma^i\partial_i\theta
+        -2\gamma_i\partial_j\theta F^{ij}\big)\,.
+}{1}\coordE{}\end{eqnarray}
+The variation of the complete action should be
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+   \delta{\cal L}_1 &=& -\sqrt{-\det\eta}\rightCoord{}\,
+   \bar\eta\rightCoord{}\, \{ {\cal T}_1 - (\Gamma_0{\cal T}_1
+           \leftCoord{}+ \Gamma_1{\cal T}_0)\} \rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{2}{6}{
+   \delta{\cal L}_1 &=& -\sqrt{-\det\eta}\,
+   \bar\eta\, \{ {\cal T}_1 - (\Gamma_0{\cal T}_1
+           + \Gamma_1{\cal T}_0)\} \,.
+}{1}\coordE{}\end{eqnarray}
+So we read off that
+\begin{equation}\coord{}\boxEquation{
+   \Gamma_1 =  \Gamma_{(0)}\,(i\sigma_2)\half\gamma^{kl}F_{kl}\,,
+   \qquad
+    {\cal T}_1 = \sigma_3 \gamma_i\partial_j\theta F^{ij} \,.
+}{
+   \Gamma_1 =  \Gamma_{(0)}\,(i\sigma_2)\half\gamma^{kl}F_{kl}\,,
+   \qquad
+    {\cal T}_1 = \sigma_3 \gamma_i\partial_j\theta F^{ij} \,.
+}{ecuacion}\coordE{}\end{equation}
+Note that \myHighlight{$\Gamma^2=\unitmatrixDT$}\coordHE{} at this order in \myHighlight{$F$}\coordHE{} because
+\begin{equation}\coord{}\boxEquation{
+   \{\sigma_1 \,,\ \Gamma_1\} = 0\,.
+}{
+   \{\sigma_1 \,,\ \Gamma_1\} = 0\,.
+}{ecuacion}\coordE{}\end{equation}
+This is a general feature: the  condition that \myHighlight{$\Gamma^2=\unitmatrixDT$}\coordHE{}
+only contains useful information at even orders in the expansion in
+\myHighlight{$F$}\coordHE{}. At odd orders it is just a consequence of the
+properties of \myHighlight{${\cal P}_{(k)}$}\coordHE{}.
+
+The variation under supersymmetry and \myHighlight{$\kappa$}\coordHE{}-symmetry
+of the term linear in \myHighlight{$F$}\coordHE{} in the Born-Infeld action
+(\ref{LBIquad}) reads
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+ \delta{\cal L}_{{\rm BI}\rightCoord{}\,1} &=&
+  \leftCoord{}-\sqrt{-\det\eta}\rightCoord{}\,\bar\eta\rightCoord{}\, \rightCoord{}
+      \sigma_3\gamma_i\partial_j\theta F^{ij}
+   \nonumber\rightCoord{}\\
+&&\leftCoord{}\qquad \rightCoord{}\label{dLBIab11}
+    \leftCoord{}- \half\rightCoord{}\,(\bar\epsilon+\bar\eta)\gamma_i\theta\rightCoord{}\, \partial_j \{
+      \sqrt{-\det\eta}\rightCoord{}\, F^{ij}\} \rightCoord{}
+    \leftCoord{}\rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{5}{14}{
+ \delta{\cal L}_{{\rm BI}\,1} &=&
+  -\sqrt{-\det\eta}\,\bar\eta\, 
+      \sigma_3\gamma_i\partial_j\theta F^{ij}
+   \\
+&&\qquad - \half\,(\bar\epsilon+\bar\eta)\gamma_i\theta\, \partial_j \{
+      \sqrt{-\det\eta}\, F^{ij}\} 
+    \,. 
+}{1}\coordE{}\end{eqnarray}
+The first term is the required contribution of \myHighlight{${\cal T}_1$}\coordHE{}. The second
+term must be cancelled by the variation of \myHighlight{$V$}\coordHE{} in the \myHighlight{$F^2$}\coordHE{} term.
+The \myHighlight{$F^2$}\coordHE{} term gives
+\begin{equation}\coord{}\boxEquation{
+  -  \delta V_i \,\partial_j\{ \sqrt{-\det\eta}\, F^{ij}\}
+}{
+  -  \delta V_i \,\partial_j\{ \sqrt{-\det\eta}\, F^{ij}\}
+}{ecuacion}\coordE{}\end{equation}
+which implies the following variation of \myHighlight{$V_i$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+\label{dVab1}
+  \delta V_i = - \half\,(\bar\epsilon+\bar\eta)\sigma_3\gamma_i\theta \,.
+}{
+\delta V_i = - \half\,(\bar\epsilon+\bar\eta)\sigma_3\gamma_i\theta \,.
+}{ecuacion}\coordE{}\end{equation}
+Therefore the combination
+\begin{equation}\coord{}\boxEquation{
+  {\cal F}_{ij} = F_{ij} +
+               \bar\theta\sigma_3\gamma_{[i}\partial_{j]}\theta
+}{
+  {\cal F}_{ij} = F_{ij} +
+               \bar\theta\sigma_3\gamma_{[i}\partial_{j]}\theta
+}{ecuacion}\coordE{}\end{equation}
+is supersymmetric and transforms covariantly under \myHighlight{$\kappa$}\coordHE{}-symmetry.
+
+At the quadratic level we get
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{dLWZab2}
+&&\leftCoord{}\delta {\cal L}_{{\rm WZ\rightCoord{}\,2}} =
+       {\rightCoord{}\leftCoord{}1\leftCoord{}\over\rightCoord{} 8}\rightCoord{}\,\sqrt{-\det\eta} \rightCoord{}\,\bar\eta\rightCoord{}\,\sigma_1\rightCoord{}\,
+    \Gamma^{(0)} \rightCoord{}
+   \big(\gamma_{ijkl}\gamma^m\partial_m\theta
+        \leftCoord{}-4\gamma_{ijk}\partial_l\theta \big)
+        F^{[ij}F^{kl]} \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{5}{12}{
+&&\delta {\cal L}_{{\rm WZ\,2}} =
+       {1\over 8}\,\sqrt{-\det\eta} \,\bar\eta\,\sigma_1\,
+    \Gamma^{(0)} 
+   \big(\gamma_{ijkl}\gamma^m\partial_m\theta
+        -4\gamma_{ijk}\partial_l\theta \big)
+        F^{[ij}F^{kl]} \,. 
+}{1}\coordE{}\end{eqnarray}
+The order 2 terms in the variation of the total action are
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{termsab2}
+  \delta{\cal L}_2 &=& -\sqrt{-\det\eta}\rightCoord{}\,\bar\eta
+    \bigg( -\Gamma^{(0)}( \Gamma_2 \gamma^i\partial_i\theta
+      \leftCoord{}+\Gamma_1{\cal T}_1 + \sigma_1{\cal T}_2)
+      + \unitmatrixDT\rightCoord{}\,{\cal T}_2\bigg)\rightCoord{}\,,
+\rightCoord{}}{0mm}{2}{5}{
+\delta{\cal L}_2 &=& -\sqrt{-\det\eta}\,\bar\eta
+    \bigg( -\Gamma^{(0)}( \Gamma_2 \gamma^i\partial_i\theta
+      +\Gamma_1{\cal T}_1 + \sigma_1{\cal T}_2)
+      + \unitmatrixDT\,{\cal T}_2\bigg)\,,
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$\Gamma_1$}\coordHE{} and \myHighlight{${\cal T}_1$}\coordHE{} where determined at the linear level.
+On the other hand, from \myHighlight{$\Gamma^2=\unitmatrixDT$}\coordHE{} we have
+\begin{equation}\coord{}\boxEquation{
+   \sigma_1\Gamma_2+\Gamma_2\sigma_1 + \Gamma_1\Gamma_1 = 0\,,
+}{
+   \sigma_1\Gamma_2+\Gamma_2\sigma_1 + \Gamma_1\Gamma_1 = 0\,,
+}{ecuacion}\coordE{}\end{equation}
+from which we obtain (using \myHighlight{$\Gamma_2\sim \sigma_1$}\coordHE{})
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+   \Gamma_2 &=& -\half \sigma_1\Gamma_1\Gamma_1
+   \nonumber\rightCoord{}\\
+&\leftCoord{}=&  \sigma_1 \{\noverm{1}{8} \gamma_{ijkl}F^{ij}F^{kl}
+       \leftCoord{}-\quart F^{kl}F_{kl}\}\rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{3}{5}{
+   \Gamma_2 &=& -\half \sigma_1\Gamma_1\Gamma_1
+   \\
+&=&  \sigma_1 \{\noverm{1}{8} \gamma_{ijkl}F^{ij}F^{kl}
+       -\quart F^{kl}F_{kl}\}\,.
+}{1}\coordE{}\end{eqnarray}
+Substituting all this in (\ref{termsab2}), we find that
+\begin{equation}\coord{}\boxEquation{
+\label{T2ab}
+  {\cal T}_2 = \gamma_i\partial_j\theta (F^{ik}F_k{}^j + \quart\eta^{ij}
+          F^{kl}F_{kl})\,.
+}{
+{\cal T}_2 = \gamma_i\partial_j\theta (F^{ik}F_k{}^j + \quart\eta^{ij}
+          F^{kl}F_{kl})\,.
+}{ecuacion}\coordE{}\end{equation}
+This indeed agrees with the variation of the Born-Infeld action.
+
+There is a feature about the abelian case which
+just starts being visible in
+the  quadratic terms. It is obviously possible to write \myHighlight{$\Gamma$}\coordHE{} at
+this order in the form
+\begin{equation}\coord{}\boxEquation{
+  \Gamma = (1 - \quart F^{kl}F_{kl})
+     \Gamma^{(0)}((\sigma_1+\half(i\sigma_2)
+      \gamma^{kl}F_{kl}
+      +\noverm{1}{8}\sigma_1\gamma_{ijkl}F^{ij}F^{kl})
+}{
+  \Gamma = (1 - \quart F^{kl}F_{kl})
+     \Gamma^{(0)}((\sigma_1+\half(i\sigma_2)
+      \gamma^{kl}F_{kl}
+      +\noverm{1}{8}\sigma_1\gamma_{ijkl}F^{ij}F^{kl})
+}{ecuacion}\coordE{}\end{equation}
+up to terms of higher order in \myHighlight{$F$}\coordHE{}. In fact, this factorisation
+is a general feature
+of the abelian action which is also valid for the complete answer:
+\begin{equation}\coord{}\boxEquation{
+\label{fullgamma}
+  \Gamma = {\sqrt{-\det g}\over \sqrt{-\det(g+{\cal F})}}
+     \Gamma^{(0)}
+     \sum_{k=0}^5 {1\over 2^k k!} {\cal P}_{(k)} \gamma^{i_1\ldots i_{2k}}
+       {\cal F}^{k}_{i_1\ldots i_2k}\,.
+}{
+\Gamma = {\sqrt{-\det g}\over \sqrt{-\det(g+{\cal F})}}
+     \Gamma^{(0)}
+     \sum_{k=0}^5 {1\over 2^k k!} {\cal P}_{(k)} \gamma^{i_1\ldots i_{2k}}
+       {\cal F}^{k}_{i_1\ldots i_2k}\,.
+}{ecuacion}\coordE{}\end{equation}
+The iterative procedure will obviously confirm this factorisation, as
+is shown by continuing to higher orders in \myHighlight{$F$}\coordHE{}. However, in this
+construction it is not clear why the factorisation should occur.
+This is  an issue in the non-abelian situation where the
+complete answer is not known. Note that the factor
+\begin{equation}\coord{}\boxEquation{
+     {\sqrt{-\det g}\over \sqrt{-\det(g+{\cal F})}}
+}{
+     {\sqrt{-\det g}\over \sqrt{-\det(g+{\cal F})}}
+}{ecuacion}\coordE{}\end{equation}
+in (\ref{fullgamma}) contains the inverse of the Born-Infeld action.
+The idea that \myHighlight{$\Gamma$}\coordHE{} provides the explicit form of the
+Born-Infeld action was part of our motivation to use \myHighlight{$\kappa$}\coordHE{}-symmetry
+as a means of constructing the non-abelian Born-Infeld action.
+
+{From} (\ref{T2ab}) it is clear that \myHighlight{${\cal T}$}\coordHE{}, at least at the quadratic
+level, shows a similar factorisation property as \myHighlight{$\Gamma$}\coordHE{}. The full
+answer for \myHighlight{${\cal T}$}\coordHE{} is of the form:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+   {\rightCoord{}\leftCoord{}\cal T} &=& \sqrt{-\det(g+{\cal F})}\rightCoord{}\, \rightCoord{}
+   \sum_{\rightCoord{}k=0}^{\leftCoord{}{}\leftCoord{}\infty} (\sigma_3)^k \gamma_i\partial_j\theta
+      \leftCoord{}({\cal F}^k)^{ij}\rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{5}{8}{
+   {\cal T} &=& \sqrt{-\det(g+{\cal F})}\, 
+   \sum_{k=0}^{{}\infty} (\sigma_3)^k \gamma_i\partial_j\theta
+      ({\cal F}^k)^{ij}\,, 
+}{1}\coordE{}\end{eqnarray}
+where
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{ll}
+   ({\cal F}^k)^{ij} = {\cal F}^{il_1}
+      {\cal F}_{l_1l_2}\cdots {\cal F}^{l_{k-1}j} & k>0 \,, \\
+   ({\cal F}^k)^{ij}= g^{ij}                  & k=0\,.
+\end{array}
+}{
+\begin{array}{ll}
+   ({\cal F}^k)^{ij} = {\cal F}^{il_1}
+      {\cal F}_{l_1l_2}\cdots {\cal F}^{l_{k-1}j} & k>0 \,, \\
+   ({\cal F}^k)^{ij}= g^{ij}                  & k=0\,.
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+We will see a similar feature in the non-abelian case.
+
+The abelian case discussed above can easily be generalized to \myHighlight{$U(1)^n$}\coordHE{}.
+Then the \myHighlight{$\kappa$}\coordHE{}-symmetric action is just the sum of \myHighlight{$n$}\coordHE{} actions
+of the type discussed in this Section. For \myHighlight{$n$}\coordHE{} overlapping branes
+one would need only one set of embedding coordinates \myHighlight{$X^\mu$}\coordHE{} to
+describe this truncation of the non-abelian situation. This would be
+similar to treating \myHighlight{$X^\mu$}\coordHE{} as a singlet of \myHighlight{$U(n)$}\coordHE{} in the non-abelian
+case. Note however that this sum of actions is very different from
+a single Born-Infeld action with
+worldvolume metric
+\begin{equation}\coord{}\boxEquation{
+\label{metricUn}
+   g_{ij} = \eta_{ij} + \bar\theta^A\gamma_{(i}\partial_{j)}\theta^A\,,
+}{
+g_{ij} = \eta_{ij} + \bar\theta^A\gamma_{(i}\partial_{j)}\theta^A\,,
+}{ecuacion}\coordE{}\end{equation}
+summed over the \myHighlight{$n$}\coordHE{}  \myHighlight{$U(n)$}\coordHE{} branes. A metric (\ref{metricUn}) would be
+like taking the trace {\it inside} the root of the Born-Infeld term,
+while it
+is known from open
+string amplitude calculations
+that there should be a single trace (with some ordening
+prescription) which produces in the \myHighlight{$U(1)^n$}\coordHE{} case a sum of
+separate Born-Infeld terms.
+
+
+\section{The non-abelian Born-Infeld action\label{YM}}
+
+For the non-abelian case we start with the following Wess-Zumino term:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  {\rightCoord{}\leftCoord{}\cal L}_{{\rm WZ}} &=&
+   \epsilon^{i_1\ldots i_{10}} \times
+   \sum_{\rightCoord{}k=0}^{\leftCoord{}4}   {(-1)^k\leftCoord{}\over\rightCoord{} 2^{k+1}\rightCoord{}\,k! (9-2k)!}
+       \times
+\nonumber\rightCoord{}\\
+&&\leftCoord{}\rightCoord{}\label{LWZnab} \times
+  \leftCoord{}\rightCoord{}\,\bar\theta^A \rightCoord{}\, {\cal P}_{(k)}^{AB\rightCoord{}\,C_1\ldots C_k} \rightCoord{}\,
+  \gamma_{i_1\ldots i_{9-2k}}\Dpartial_{i_{10-2k}}\theta^B\rightCoord{}\,
+      F_{i_{11-2k}i_{12-2k}}^{C_1}\cdots F_{i_9i_{10}}^{C_k}\rightCoord{}\,.\rightCoord{}
+\label{WZterm}
+\rightCoord{}}{0mm}{6}{15}{
+  {\cal L}_{{\rm WZ}} &=&
+   \epsilon^{i_1\ldots i_{10}} \times
+   \sum_{k=0}^{4}   {(-1)^k\over 2^{k+1}\,k! (9-2k)!}
+       \times
+\\
+&&\times
+  \,\bar\theta^A \, {\cal P}_{(k)}^{AB\,C_1\ldots C_k} \,
+  \gamma_{i_1\ldots i_{9-2k}}\Dpartial_{i_{10-2k}}\theta^B\,
+      F_{i_{11-2k}i_{12-2k}}^{C_1}\cdots F_{i_9i_{10}}^{C_k}\,.
+}{1}\coordE{}\end{eqnarray}
+The tensors \myHighlight{${\cal P}$}\coordHE{} are symmetric in the indices \myHighlight{$C_i$}\coordHE{}
+contracted with  \myHighlight{$F$}\coordHE{}. \myHighlight{${\cal P}$}\coordHE{} also contains the Pauli matrices
+to specify the \myHighlight{$N=2$}\coordHE{} structure for the fermions. We have
+the following possibilites:
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{lll}
+    k\ {{\rm even:}} & \unitmatrixDT_2,\ \sigma_1,\ \sigma_3
+                     & {{\rm symmetry\ in}}\ AB\,, \\
+                     & i\sigma_2
+                     & {{\rm antisymmetry\ in}}\ AB\,, \\
+    k\ {{\rm odd:}}  & \unitmatrixDT_2,\ \sigma_1,\ \sigma_3
+                     & {{\rm antisymmetry\ in}}\ AB\,, \\
+                     & i\sigma_2
+                     & {{\rm symmetry\ in}}\ AB \,.
+\end{array}
+}{
+\begin{array}{lll}
+    k\ {{\rm even:}} & \unitmatrixDT_2,\ \sigma_1,\ \sigma_3
+                     & {{\rm symmetry\ in}}\ AB\,, \\
+                     & i\sigma_2
+                     & {{\rm antisymmetry\ in}}\ AB\,, \\
+    k\ {{\rm odd:}}  & \unitmatrixDT_2,\ \sigma_1,\ \sigma_3
+                     & {{\rm antisymmetry\ in}}\ AB\,, \\
+                     & i\sigma_2
+                     & {{\rm symmetry\ in}}\ AB \,.
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+This requirement follows from the fact that the bilinear fermions
+in the action (\ref{WZterm}) should not be a total derivative. The Yang-Mills
+structure of \myHighlight{${\cal P}$}\coordHE{} arises from the trace of \myHighlight{$k+2$}\coordHE{} generators
+in the fundamental representation\footnote{The reason
+that we may use this representation follows
+from open string theory, where the gauge theory factors arise
+from Chan-Paton factors in the fundamental representation.}
+of \myHighlight{$U(n)$}\coordHE{}, and
+will be built from the structure constant
+\myHighlight{$f_{ABC}$}\coordHE{} (completely antisymmetric) and from the completely
+symmetric tensors \myHighlight{$d_{ABC}$}\coordHE{}. In Appendix \ref{AppUn} we gather
+useful properties of these tensors.
+
+
+The general form of (\ref{LWZnab}) follows from the requirement that
+the Wess-Zumino term is of topological nature, i.e., independent
+of the metric. The coefficients have been chosen equal to those in the
+abelian case, which amounts to a particular normalization of the
+\myHighlight{${\cal P}_{(k)}$}\coordHE{}. Note that we do not assume a particular ordening in
+the trace, i.e., there is no a priori symmetry imposed between the indices
+\myHighlight{$C_i$}\coordHE{} on the one hand, and \myHighlight{$A,B$}\coordHE{} on the other hand.
+
+So at order 0 we start with\footnote{The choice for \myHighlight{$\sigma_1$}\coordHE{} is again
+a choice of the \myHighlight{$N=2$}\coordHE{} basis, which we take in agreement with the
+ abelian case.}
+\begin{equation}\coord{}\boxEquation{
+   {\cal P}_{(0)}^{AB} = \sigma_1 \tr T^AT^B = \sigma_1 \delta^{AB}\,,
+}{
+   {\cal P}_{(0)}^{AB} = \sigma_1 \tr T^AT^B = \sigma_1 \delta^{AB}\,,
+}{ecuacion}\coordE{}\end{equation}
+and the variation of the lowest order contribution in (\ref{LWZnab})
+is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{dLWZnab0}
+ \delta {\cal L}_{{\rm WZ}\rightCoord{}\,0} &=&
+      \sqrt{-\det \eta} \rightCoord{}\,\bar\eta^A \sigma_1
+     \Gamma^{(0)} \gamma^i\Dpartial_i\theta^A \rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{1}{6}{
+\delta {\cal L}_{{\rm WZ}\,0} &=&
+      \sqrt{-\det \eta} \,\bar\eta^A \sigma_1
+     \Gamma^{(0)} \gamma^i\Dpartial_i\theta^A \,.
+}{1}\coordE{}\end{eqnarray}
+We write the variation of the complete action at this order as
+\begin{equation}\coord{}\boxEquation{
+\label{dL0n}
+  \delta {\cal L}_0 =  -\sqrt{-\det \eta}\, \bar\eta^A
+    (\delta^{AB}
+     - \Gamma_0^{AB}){\cal T}_0^B\,.
+}{
+\delta {\cal L}_0 =  -\sqrt{-\det \eta}\, \bar\eta^A
+    (\delta^{AB}
+     - \Gamma_0^{AB}){\cal T}_0^B\,.
+}{ecuacion}\coordE{}\end{equation}
+so that
+\begin{equation}\coord{}\boxEquation{
+  \Gamma_0^{AB} = \Gamma^{(0)}\delta^{AB}\sigma_1\,,\qquad
+   {\cal T}^A_0 = \gamma^i\Dpartial_i\theta^A\,.
+}{
+  \Gamma_0^{AB} = \Gamma^{(0)}\delta^{AB}\sigma_1\,,\qquad
+   {\cal T}^A_0 = \gamma^i\Dpartial_i\theta^A\,.
+}{ecuacion}\coordE{}\end{equation}
+Cleary \myHighlight{$\Gamma^{AC}\Gamma^{CB} = \delta^{AB}$}\coordHE{}\,.
+In the above we considered \myHighlight{$X^\mu$}\coordHE{} to be a singlet under \myHighlight{$U(n)$}\coordHE{}
+transformations. To go to the static gauge we would have to set
+\myHighlight{$\det\eta\to -1$}\coordHE{}.
+
+The Born-Infeld term must reproduce the first term in (\ref{dL0n}).
+The only choice is to have
+\begin{equation}\coord{}\boxEquation{
+  \label{LBInab0}
+    {\cal L}_{{\rm BI}} = -\sqrt{-\det\eta}\,\bigg(
+    1 + \half\,\bar\theta^A\gamma^i\Dpartial_i\theta^A \bigg)\,.
+}{
+  {\cal L}_{{\rm BI}} = -\sqrt{-\det\eta}\,\bigg(
+    1 + \half\,\bar\theta^A\gamma^i\Dpartial_i\theta^A \bigg)\,.
+}{ecuacion}\coordE{}\end{equation}
+We indeed find the correct variation if we set
+\begin{equation}\coord{}\boxEquation{
+   \label{dXnab}
+   \delta X^\mu  = \half\,\bar\epsilon^A\,\Gamma^\mu\theta^A
+       + \half\,\bar\eta^A\,\Gamma^\mu\theta^A \,.
+}{
+   \delta X^\mu  = \half\,\bar\epsilon^A\,\Gamma^\mu\theta^A
+       + \half\,\bar\eta^A\,\Gamma^\mu\theta^A \,.
+}{ecuacion}\coordE{}\end{equation}
+With this choice of \myHighlight{$\delta X$}\coordHE{} the metric (\ref{metricUn})
+becomes supersymmetric and covariant under \myHighlight{$\kappa$}\coordHE{}-transformations.
+As we explained at the end of Section \ref{Abel} this is not
+the natural metric for the non-abelian (or for the \myHighlight{$U(1)^n$}\coordHE{})
+situation. So the different choices for \myHighlight{$X^\mu$}\coordHE{}
+start to diverge at this point. At the linear level there is still
+no crucial difference between the choice of a singlet \myHighlight{$X^\mu$}\coordHE{}
+and the static gauge. At the quadratic level, however, the
+singlet choice will fail.
+
+The variation of the linear contribution to the Wess-Zumino term gives:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{dLWZnab1}
+&&\leftCoord{}\delta {\cal L}_{{\rm WZ\rightCoord{}\,1}} =
+       \half\rightCoord{}\, \sqrt{-\det\eta}\rightCoord{}\,\bar\eta^A {\cal P}_{(1)}^{ABC}\rightCoord{}\,
+    \Gamma^{(0)} \rightCoord{}
+   \big(\gamma_{ij}\gamma^k\Dpartial_k\theta^B
+        \leftCoord{}-2\gamma_i\Dpartial_j\theta^B \big)
+        F^{C\rightCoord{}\,ij} \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{3}{10}{
+&&\delta {\cal L}_{{\rm WZ\,1}} =
+       \half\, \sqrt{-\det\eta}\,\bar\eta^A {\cal P}_{(1)}^{ABC}\,
+    \Gamma^{(0)} 
+   \big(\gamma_{ij}\gamma^k\Dpartial_k\theta^B
+        -2\gamma_i\Dpartial_j\theta^B \big)
+        F^{C\,ij} \,. 
+}{1}\coordE{}\end{eqnarray}
+The first term must correspond to \myHighlight{$\Gamma_1{\cal T}_0$}\coordHE{}, from
+which we read off that
+\begin{equation}\coord{}\boxEquation{
+   \Gamma_1^{AB} = \Gamma^{(0)} {\cal P}_{(1)}^{ABC}
+     \half\gamma_{ij}F^{ij\,C}\,.
+}{
+   \Gamma_1^{AB} = \Gamma^{(0)} {\cal P}_{(1)}^{ABC}
+     \half\gamma_{ij}F^{ij\,C}\,.
+}{ecuacion}\coordE{}\end{equation}
+{From} \myHighlight{$\Gamma^2=\unitmatrixDT$}\coordHE{} at linear order we find
+\begin{equation}\coord{}\boxEquation{
+    \{\sigma_1\,,\ \Gamma_1^{AB} \} = 0       \,,
+}{
+    \{\sigma_1\,,\ \Gamma_1^{AB} \} = 0       \,,
+}{ecuacion}\coordE{}\end{equation}
+so that \myHighlight{${\cal P}_{(1)}$}\coordHE{} must have the following form:
+\begin{equation}\coord{}\boxEquation{
+\label{P1def}
+   {\cal P}_{(1)}^{ABC} = (i\sigma_2) d^{ABC} + c_1\sigma_3 f^{ABC}\,.
+}{
+{\cal P}_{(1)}^{ABC} = (i\sigma_2) d^{ABC} + c_1\sigma_3 f^{ABC}\,.
+}{ecuacion}\coordE{}\end{equation}
+The coefficient of the \myHighlight{$d$}\coordHE{}-term is chosen to agree with the abelian case.
+The coefficient of the \myHighlight{$f$}\coordHE{}-term is arbitrary,
+and with a field redefinition
+\begin{equation}\coord{}\boxEquation{
+   \theta^A\to \theta^A -
+       \quart c_1 (i\sigma_2)f^{ABC}\,\gamma^{kl}\theta^BF_{kl}^C,
+}{
+   \theta^A\to \theta^A -
+       \quart c_1 (i\sigma_2)f^{ABC}\,\gamma^{kl}\theta^BF_{kl}^C,
+}{ecuacion}\coordE{}\end{equation}
+and a corresponding redefinition of the vector field,
+the \myHighlight{$f$}\coordHE{}-term can be eliminated. This is the choice we
+will make, because then we stay as close as possible
+to the abelian situation.
+
+In fact, the whole term linear in \myHighlight{$F$}\coordHE{} in the Wess-Zumino action
+can be transformed away by a field redefinition, also
+in the abelian case. It is not surprising that
+these linear terms can be eliminated, since they are
+part of the supersymmetrisation of the bosonic \myHighlight{$F^3$}\coordHE{} term,
+which we know to be absent. The reason we will keep
+the usual linear term is that in this form the answer
+in the abelian case
+takes on a relatively simple form \cite{Aga}.
+
+We also find
+\begin{equation}\coord{}\boxEquation{
+  {\cal T}_1^A = -\sigma_1{\cal P}_{(1)}^{ABC}
+   \gamma_i\Dpartial_j\theta^B F^{ij\,C}\,,
+}{
+  {\cal T}_1^A = -\sigma_1{\cal P}_{(1)}^{ABC}
+   \gamma_i\Dpartial_j\theta^B F^{ij\,C}\,,
+}{ecuacion}\coordE{}\end{equation}
+so that
+in analogy with the abelian case the Born-Infeld term must
+contain:
+\begin{equation}\coord{}\boxEquation{
+\label{LBI1nab}
+   {\cal L}_{{\rm BI\,1}} =   - \sqrt{-\det\eta}\,\bigg(
+   - \half\, \bar\theta^A \sigma_1 {\cal P}_{(1)}^{ABC}
+       \gamma_{[i}\Dpartial_{j]}\theta^B\, F^{ij\,C}
+      + \noverm{1}{4} F^{ij\,A} F_{ij}^A \bigg)\,.
+}{
+{\cal L}_{{\rm BI\,1}} =   - \sqrt{-\det\eta}\,\bigg(
+   - \half\, \bar\theta^A \sigma_1 {\cal P}_{(1)}^{ABC}
+       \gamma_{[i}\Dpartial_{j]}\theta^B\, F^{ij\,C}
+      + \noverm{1}{4} F^{ij\,A} F_{ij}^A \bigg)\,.
+}{ecuacion}\coordE{}\end{equation}
+The variation of this term reproduces correctly the \myHighlight{${\cal T}_1$}\coordHE{}
+contribution, and the remainder is cancelled by introducing
+a variation of \myHighlight{$V_i$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+   \delta V_i^C = + \half\,(\bar\epsilon^A+\bar\eta^A)\,
+           \sigma_1{\cal P}_{(1)}^{ABC}\gamma_i\theta^B \,.
+}{
+   \delta V_i^C = + \half\,(\bar\epsilon^A+\bar\eta^A)\,
+           \sigma_1{\cal P}_{(1)}^{ABC}\gamma_i\theta^B \,.
+}{ecuacion}\coordE{}\end{equation}
+We can then define a supersymmetric and \myHighlight{$\kappa$}\coordHE{}-covariant
+\myHighlight{${\cal F}^C$}\coordHE{} as
+\begin{equation}\coord{}\boxEquation{
+\label{calF}
+  {\cal F}_{ij}^C = F_{ij}^C - \bar\theta^A \sigma_1 {\cal P}_{(1)}^{ABC}
+                 \gamma_{[i}\Dpartial_{j]}\theta^B\,.
+}{
+{\cal F}_{ij}^C = F_{ij}^C - \bar\theta^A \sigma_1 {\cal P}_{(1)}^{ABC}
+                 \gamma_{[i}\Dpartial_{j]}\theta^B\,.
+}{ecuacion}\coordE{}\end{equation}
+This defines the non-abelian generalization of the NS-NS two-form field,
+to this order.
+
+At the quadratic level things become more complicated. The variation
+of the Wess-Zumino term gives:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \delta {\cal L}_{{\rm WZ\rightCoord{}\,2}} &=&
+        \sqrt{-\det\eta}\rightCoord{}\,\bar\eta^A {\cal P}_{(2)}^{ABCD}\rightCoord{}\,
+         \Gamma^{(0)}\times \nonumber\rightCoord{}\\\leftCoord{}
+    \label{dLWZnab2}
+&&\leftCoord{} \times \{\rightCoord{}\,\noverm{1}{8}\gamma_{ijkl}\gamma^m\Dpartial_m\theta^B
+        \leftCoord{}- \half\gamma_{ijk}\Dpartial_l\theta^B \}\rightCoord{}\,
+        F^{C\rightCoord{}\,ij}F^{D\rightCoord{}\,kl}\rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{4}{12}{
+  \delta {\cal L}_{{\rm WZ\,2}} &=&
+        \sqrt{-\det\eta}\,\bar\eta^A {\cal P}_{(2)}^{ABCD}\,
+         \Gamma^{(0)}\times \\
+    && \times \{\,\noverm{1}{8}\gamma_{ijkl}\gamma^m\Dpartial_m\theta^B
+        - \half\gamma_{ijk}\Dpartial_l\theta^B \}\,
+        F^{C\,ij}F^{D\,kl}\,. 
+}{1}\coordE{}\end{eqnarray}
+The variations quadratic in \myHighlight{$F$}\coordHE{} will have to generate the following
+contributions:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \delta{\cal L}_2 &=& - \sqrt{-\det\eta}\rightCoord{}\,\bar\eta^A
+    \bigg( -( \Gamma_2^{AB} \gamma^i\Dpartial_i\theta^B
+      \leftCoord{}+\Gamma_1^{AB}{\cal T}_1^B + \Gamma_0^{AB}{\cal T}_2^B)
+\nonumber\rightCoord{}\\
+&&\leftCoord{}\qquad
+   \label{terms2}
+      +\ \unitmatrixDT\rightCoord{}\,{\cal T}_2^A\bigg)
+\rightCoord{}}{0mm}{3}{5}{
+  \delta{\cal L}_2 &=& - \sqrt{-\det\eta}\,\bar\eta^A
+    \bigg( -( \Gamma_2^{AB} \gamma^i\Dpartial_i\theta^B
+      +\Gamma_1^{AB}{\cal T}_1^B + \Gamma_0^{AB}{\cal T}_2^B)
+\\
+&&\qquad
+   +\ \unitmatrixDT\,{\cal T}_2^A\bigg)
+}{1}\coordE{}\end{eqnarray}
+We can determine \myHighlight{$\Gamma_2$}\coordHE{} from the requirement that
+\myHighlight{$\Gamma^2=\unitmatrixDT$}\coordHE{} at order 2:
+\begin{equation}\coord{}\boxEquation{
+\label{gamma2}
+  \sigma_1\Gamma_2^{AB} + \Gamma_2^{AB}\sigma_1
+         + \Gamma_1^{AC}\Gamma_1^{CB} = 0\,.
+}{
+\sigma_1\Gamma_2^{AB} + \Gamma_2^{AB}\sigma_1
+         + \Gamma_1^{AC}\Gamma_1^{CB} = 0\,.
+}{ecuacion}\coordE{}\end{equation}
+This calculation assumes that \myHighlight{$[\Gamma_2\,,\ \sigma_1]=0$}\coordHE{}, and
+requires the product of the \myHighlight{${\cal P}_{(1)}$}\coordHE{}-tensors.
+The result is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+   \Gamma_2^{AB} &=& - \Gamma^{(0)} \sigma_1\rightCoord{}\,\bigg(
+    {\rightCoord{}\leftCoord{}\cal S}^{ABCD} \big( \noverm{1}{8} \gamma_{ijkl}
+          F^{ij\rightCoord{}\,C} F^{kl\rightCoord{}\,D} -\quart F_{kl}^C F^{kl\rightCoord{}\,D} \big)
+       \nonumber\rightCoord{}\\
+&&\leftCoord{}\quad  +  {\cal A}^{ABCD} \rightCoord{}
+           \half \gamma_{ij} F^{ik\rightCoord{}\,C} F_k{}^{j\rightCoord{}\,D} \bigg) \rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{3}{13}{
+   \Gamma_2^{AB} &=& - \Gamma^{(0)} \sigma_1\,\bigg(
+    {\cal S}^{ABCD} \big( \noverm{1}{8} \gamma_{ijkl}
+          F^{ij\,C} F^{kl\,D} -\quart F_{kl}^C F^{kl\,D} \big)
+       \\
+&&\quad  +  {\cal A}^{ABCD} 
+           \half \gamma_{ij} F^{ik\,C} F_k{}^{j\,D} \bigg) \,.
+}{1}\coordE{}\end{eqnarray}
+Here we have defined
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+   {\rightCoord{}\leftCoord{}\cal S}^{ABCD} &\equiv& {\cal P}^{AE(C}_{(1)} {\cal P}^{BD)E}_{(1)} =
+              \leftCoord{}- d^{AE(C}d^{BD)E}\rightCoord{}\,, \rightCoord{}
+   \rightCoord{}\\\leftCoord{}
+    {\rightCoord{}\leftCoord{}\cal A}^{ABCD} &\equiv& {\cal P}^{AE[C}_{(1)} {\cal P}^{BD]E}_{(1)} =
+              \leftCoord{}- d^{AE[C}d^{BD]E}\rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{6}{9}{
+   {\cal S}^{ABCD} &\equiv& {\cal P}^{AE(C}_{(1)} {\cal P}^{BD)E}_{(1)} =
+              - d^{AE(C}d^{BD)E}\,, 
+   \\
+    {\cal A}^{ABCD} &\equiv& {\cal P}^{AE[C}_{(1)} {\cal P}^{BD]E}_{(1)} =
+              - d^{AE[C}d^{BD]E}\,, 
+}{1}\coordE{}\end{eqnarray}
+where the (anti-)symmetrization is over the indices \myHighlight{$C$}\coordHE{} and \myHighlight{$D$}\coordHE{}
+only. Note that  tensors \myHighlight{${\cal S}^{ABCD}$}\coordHE{} and \myHighlight{${\cal A}^{ABCD}$}\coordHE{} are
+then symmetric and antisymmetric, resp., in the index pairs \myHighlight{$AB$}\coordHE{} and \myHighlight{$CD$}\coordHE{}.
+
+
+To solve the remainder of (\ref{terms2}) we have to make the choice
+\begin{equation}\coord{}\boxEquation{
+   {\cal P}_{(2)}^{ABCD} = -\sigma_1{\cal S}^{ABCD}\,.
+}{
+   {\cal P}_{(2)}^{ABCD} = -\sigma_1{\cal S}^{ABCD}\,.
+}{ecuacion}\coordE{}\end{equation}
+We then find the following result for \myHighlight{${\cal T}_2$}\coordHE{}:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+   {\rightCoord{}\leftCoord{}\cal T}_2^A &=& -{\cal S}^{ABCD}
+     \gamma_{(i}\Dpartial_{j)}\theta^B
+              \leftCoord{}(F^{ik\rightCoord{}\,C}F_{k}{}^{j\rightCoord{}\,D} + \quart \eta^{ij} F_{kl}^CF^{kl\rightCoord{}\,D})
+    \nonumber\rightCoord{}\\\leftCoord{}
+  \label{T2}
+&&\leftCoord{} \quad  +\half\rightCoord{}\, {\cal A}^{ABCD} \rightCoord{}
+            \gamma_{ijk}
+      \leftCoord{}\{\Dpartial^k\theta^B F^{il\rightCoord{}\,C} F_l{}^{j\rightCoord{}\,D}
+         \leftCoord{}- \Dpartial_l\theta^B F^{ij\rightCoord{}\,C}F^{kl\rightCoord{}\,D}\}\rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{7}{15}{
+   {\cal T}_2^A &=& -{\cal S}^{ABCD}
+     \gamma_{(i}\Dpartial_{j)}\theta^B
+              (F^{ik\,C}F_{k}{}^{j\,D} + \quart \eta^{ij} F_{kl}^CF^{kl\,D})
+    \\
+  && \quad  +\half\, {\cal A}^{ABCD} 
+            \gamma_{ijk}
+      \{\Dpartial^k\theta^B F^{il\,C} F_l{}^{j\,D}
+         - \Dpartial_l\theta^B F^{ij\,C}F^{kl\,D}\}\,.
+}{1}\coordE{}\end{eqnarray}
+The result (\ref{T2}) agrees with the
+abelian result (\ref{T2ab}) if we truncate from \myHighlight{$U(n)$}\coordHE{} to \myHighlight{$U(1)$}\coordHE{}.
+
+The Born-Infeld term now has to reproduce \myHighlight{${\cal T}_2$}\coordHE{}, while
+remaining contributions may be cancelled by
+introducing an additional variation of \myHighlight{$V_i^A$}\coordHE{}. It is at this stage that
+the choice of \myHighlight{$X^\mu$}\coordHE{} as a Yang-Mills singlet runs into trouble.
+Contributions to this variation of the Born-Infeld term
+come from the \myHighlight{$F^2$}\coordHE{} term in the
+action, when the metric \myHighlight{$\eta_{ij}$}\coordHE{}, depending on \myHighlight{$X^\mu$}\coordHE{}, is varied.
+Such variations contain a double sum over \myHighlight{$U(n)$}\coordHE{} indices, i.e.,
+they would be of the form (using (\ref{dXnab}))
+\begin{equation}\coord{}\boxEquation{
+   \partial_iX^\mu \partial_j(\eta^A\Gamma_\mu\theta^A)
+       F^{C\,ik} F^{C}{}_k{}^j\,.
+}{
+   \partial_iX^\mu \partial_j(\eta^A\Gamma_\mu\theta^A)
+       F^{C\,ik} F^{C}{}_k{}^j\,.
+}{ecuacion}\coordE{}\end{equation}
+Such terms would have the wrong \myHighlight{$U(1)^n$}\coordHE{} limit, and cannot be cancelled
+by other contributions. Partial integration does not help,
+since it produces symmetric second derivatives on \myHighlight{$X^\mu$}\coordHE{}, which
+do not occur elsewhere. It is at this stage that we should say
+farewell to the embedding coordinates \myHighlight{$X^\mu$}\coordHE{}, and proceed in the static
+gauge.
+
+Terms in the Born-Infeld action that might play a role in this analysis are:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  {\rightCoord{}\leftCoord{}\cal L}_{{\rm BI\rightCoord{}\,2}} &=& -
+     \bigg( \noverm{1}{4}F^{ij\rightCoord{}\,C}F_{ij}^C
+           \leftCoord{}+ \alpha F^{ik\rightCoord{}\, A}F_k{}^{j\rightCoord{}\,B}F_{ji}{}^C f^{ABC}
+     \nonumber\rightCoord{}\\\leftCoord{}
+  \label{LBInab2}
+&&\leftCoord{}\quad
+       \leftCoord{}- \noverm{1}{2} \bar\theta^A {\cal S}^{ABCD} \rightCoord{}
+        \gamma_{(i}\Dpartial_{j)}\theta^B
+           \leftCoord{}\{F^{ik\rightCoord{}\,C}F_{k}{}^{j\rightCoord{}\,D} + \quart \eta^{ij} F_{kl}^CF^{kl\rightCoord{}\,D}\}
+     \nonumber\rightCoord{}\\
+&&\leftCoord{}\quad
+      \leftCoord{}+ \quart\rightCoord{}\,\bar\theta^A  {\cal A}^{ABCD} \rightCoord{}
+            \gamma_{ijk}
+      \leftCoord{}\{\Dpartial^k\theta^B F^{il\rightCoord{}\,C} F_l{}^{j\rightCoord{}\,D}
+         \leftCoord{}- \Dpartial_l\theta^B F^{ij\rightCoord{}\,C}F^{kl\rightCoord{}\,D}\} \bigg)\rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{11}{21}{
+  {\cal L}_{{\rm BI\,2}} &=& -
+     \bigg( \noverm{1}{4}F^{ij\,C}F_{ij}^C
+           + \alpha F^{ik\, A}F_k{}^{j\,B}F_{ji}{}^C f^{ABC}
+     \\
+  &&\quad
+       - \noverm{1}{2} \bar\theta^A {\cal S}^{ABCD} 
+        \gamma_{(i}\Dpartial_{j)}\theta^B
+           \{F^{ik\,C}F_{k}{}^{j\,D} + \quart \eta^{ij} F_{kl}^CF^{kl\,D}\}
+     \\
+&&\quad
+      + \quart\,\bar\theta^A  {\cal A}^{ABCD} 
+            \gamma_{ijk}
+      \{\Dpartial^k\theta^B F^{il\,C} F_l{}^{j\,D}
+         - \Dpartial_l\theta^B F^{ij\,C}F^{kl\,D}\} \bigg)\,.
+}{1}\coordE{}\end{eqnarray}
+Note that an \myHighlight{$F^3$}\coordHE{} term is in principle not excluded in the non-abelian case.
+
+In the static gauge we know how to deal with these terms. Then
+we need not vary the \myHighlight{$F^2$}\coordHE{} term. In the \myHighlight{$F^3$}\coordHE{} term we have to vary \myHighlight{$F$}\coordHE{}, which
+gives an \myHighlight{$F^2$}\coordHE{} variation with a single \myHighlight{$\gamma$}\coordHE{}-matrix. Therefore it does not
+relate to the \myHighlight{${\cal A}$}\coordHE{}-terms, which have three
+\myHighlight{$\gamma$}\coordHE{}-matrices, and we must choose \myHighlight{$\alpha$}\coordHE{} equal
+to zero. In the \myHighlight{${\cal S}$}\coordHE{}- and \myHighlight{${\cal A}$}\coordHE{}-terms we can perform partial
+integrations to get rid of the \myHighlight{$\epsilon$}\coordHE{} and \myHighlight{$\partial\eta$}\coordHE{} terms in
+the variation. These give equations of motion of \myHighlight{$V$}\coordHE{}, and can be cancelled
+by new variations of \myHighlight{$V$}\coordHE{}. The required identities are:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} \Dpartial_j  (F^{ik\rightCoord{}\,(C}F_{k}{}^{j\rightCoord{}\,D)} +
+       \quart \eta^{ij} F_{kl}^{(C} F^{kl\rightCoord{}\,D)})
+      \leftCoord{}= F^{ik\rightCoord{}\,(C} \Dpartial_j F_k{}^{j\rightCoord{}\,D)}           \rightCoord{}\,,
+      \rightCoord{}\\
+&&\leftCoord{}    \Dpartial_{[k}( F_{i}{}^{l\rightCoord{}\,[C} F_{lj]}{}^{D]}) -
+     \Dpartial_l (F_{[ij}{}^{[C} F_{k]}{}^{l\rightCoord{}\,D]})
+        \leftCoord{}= - F_{[ij}{}^{[C} \Dpartial_l F_{k]}{}^{l\rightCoord{}\,D]}    \rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{4}{14}{
+&& \Dpartial_j  (F^{ik\,(C}F_{k}{}^{j\,D)} +
+       \quart \eta^{ij} F_{kl}^{(C} F^{kl\,D)})
+      = F^{ik\,(C} \Dpartial_j F_k{}^{j\,D)}           \,,
+      \\
+&&    \Dpartial_{[k}( F_{i}{}^{l\,[C} F_{lj]}{}^{D]}) -
+     \Dpartial_l (F_{[ij}{}^{[C} F_{k]}{}^{l\,D]})
+        = - F_{[ij}{}^{[C} \Dpartial_l F_{k]}{}^{l\,D]}    \,.
+}{1}\coordE{}\end{eqnarray}
+The remaining \myHighlight{$\eta$}\coordHE{} terms in the variation give us precisely \myHighlight{${\cal T}_2$}\coordHE{}.
+This leads to the following new variations of \myHighlight{$V_i^A$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+\label{delta2Vnab}
+  \delta V_i^A =
+      +\half\,(\bar\epsilon^B + \bar\eta^B)\,
+              {\cal S}^{BCDA} \gamma_k\theta^C F^{ki\,D}
+        + \quart\,(\bar\epsilon^B+\bar\eta^B)\,{\cal A}^{BCDA}\gamma_{ikl}\theta^C
+                F^{kl\,D}\,.
+}{
+\delta V_i^A =
+      +\half\,(\bar\epsilon^B + \bar\eta^B)\,
+              {\cal S}^{BCDA} \gamma_k\theta^C F^{ki\,D}
+        + \quart\,(\bar\epsilon^B+\bar\eta^B)\,{\cal A}^{BCDA}\gamma_{ikl}\theta^C
+                F^{kl\,D}\,.
+}{ecuacion}\coordE{}\end{equation}
+Note that the variation of \myHighlight{$V_i^A$}\coordHE{} no longer agrees with the
+result given in (\ref{dVab1}).
+However, now we should
+compare with the abelian result in static gauge. This gauge choice
+requires a compensating worldvolume coordinate transformation, which, when
+acting on \myHighlight{$V_i$}\coordHE{}, produces the abelian limit of the \myHighlight{${\cal S}$}\coordHE{}-contribution
+in (\ref{delta2Vnab}). The \myHighlight{${\cal A}$}\coordHE{}-term in (\ref{delta2Vnab}) vanishes
+in the abelian limit.
+
+\section{Summary\label{Summ}}
+
+In this Section we will summarize the results obtained in the
+non-abelian case.
+The action is the sum of the Born-Infeld and Wess-Zumino terms.
+The Wess-Zumino term looks as follows:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    {\rightCoord{}\leftCoord{}\cal L}_{{\rm WZ}} &=& \epsilon^{i_1\ldots i_{10}} \rightCoord{}\,
+     \bigg\{ \rightCoord{}\, {1\leftCoord{}\over\rightCoord{} 2\cdot 9!}\rightCoord{}\,\bar\theta^A\sigma_1
+   \gamma_{i_1\ldots i_9}\Dpartial_{i_{10}}\theta^A
+   \nonumber\rightCoord{}\\
+&&\leftCoord{}\quad - {1\leftCoord{}\over\rightCoord{} 4\cdot 7!}\rightCoord{}\,\bar\theta^A \rightCoord{}\, {\cal P}^{ABC}_{(1)}
+      \gamma_{i_1\ldots i_{7}}\Dpartial_{i_{8}}\theta^B
+       F^C_{i_9 i_{10}}
+   \nonumber\rightCoord{}\\\leftCoord{}
+\label{LWZall}
+&&\leftCoord{}\quad\quad + {1\leftCoord{}\over\rightCoord{} 16\cdot 5!}\rightCoord{}\, \rightCoord{}
+   \bar\theta^A \rightCoord{}\, \big( - \sigma_1 {\cal S}^{ABCD} \big)
+      \gamma_{i_1\ldots i_{5}}\Dpartial_{i_{6}}\theta^B
+       \leftCoord{}(F^C F^D)_{i_{7}\ldots i_{10}} \bigg\}\rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{9}{18}{
+    {\cal L}_{{\rm WZ}} &=& \epsilon^{i_1\ldots i_{10}} \,
+     \bigg\{ \, {1\over 2\cdot 9!}\,\bar\theta^A\sigma_1
+   \gamma_{i_1\ldots i_9}\Dpartial_{i_{10}}\theta^A
+   \\
+&&\quad - {1\over 4\cdot 7!}\,\bar\theta^A \, {\cal P}^{ABC}_{(1)}
+      \gamma_{i_1\ldots i_{7}}\Dpartial_{i_{8}}\theta^B
+       F^C_{i_9 i_{10}}
+   \\
+&&\quad\quad + {1\over 16\cdot 5!}\, 
+   \bar\theta^A \, \big( - \sigma_1 {\cal S}^{ABCD} \big)
+      \gamma_{i_1\ldots i_{5}}\Dpartial_{i_{6}}\theta^B
+       (F^C F^D)_{i_{7}\ldots i_{10}} \bigg\}\,.
+}{1}\coordE{}\end{eqnarray}
+The Born-Infeld action is:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    {\rightCoord{}\leftCoord{}\cal L}_{{\rm BI}} &=& -\rightCoord{}\,\bigg\{
+    \leftCoord{}1 + \half\rightCoord{}\,\bar\theta^A\gamma^i\Dpartial_i\theta^A
+       \leftCoord{}- \half\rightCoord{}\, \bar\theta^A \sigma_1 {\cal P}^{ABC}_{(1)}
+       \gamma_{[i}\Dpartial_{j]}\theta^B\rightCoord{}\, F^{ij\rightCoord{}\,C}
+     \nonumber\rightCoord{}\\
+&&\leftCoord{}\quad  + \noverm{1}{4} F^{ij\rightCoord{}\,A} F_{ij}^A
+       \leftCoord{}- \noverm{1}{2} \bar\theta^A \rightCoord{}
+       {\rightCoord{}\leftCoord{}\cal S}_{ABCD} \gamma_{(i}\Dpartial_{j)}\theta^B
+           \leftCoord{}\{F^{ik\rightCoord{}\,C}F_{k}{}^{j\rightCoord{}\,D} + \quart \eta^{ij} F_{kl}^CF^{kl\rightCoord{}\,D}\}
+     \nonumber\rightCoord{}\\\leftCoord{}
+\label{LBIall}
+&&\leftCoord{}\quad    + \quart\bar\theta^A  {\cal A}^{ABCD} \rightCoord{}
+                      \gamma_{ijk}
+      \leftCoord{}\{\Dpartial^k\theta^B F^{il\rightCoord{}\,C} F_l{}^{j\rightCoord{}\,D}
+         \leftCoord{}- \Dpartial_l\theta^B F^{ij\rightCoord{}\,C}F^{kl\rightCoord{}\,D}\} \rightCoord{}\,\bigg\} \rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{12}{24}{
+    {\cal L}_{{\rm BI}} &=& -\,\bigg\{
+    1 + \half\,\bar\theta^A\gamma^i\Dpartial_i\theta^A
+       - \half\, \bar\theta^A \sigma_1 {\cal P}^{ABC}_{(1)}
+       \gamma_{[i}\Dpartial_{j]}\theta^B\, F^{ij\,C}
+     \\
+&&\quad  + \noverm{1}{4} F^{ij\,A} F_{ij}^A
+       - \noverm{1}{2} \bar\theta^A 
+       {\cal S}_{ABCD} \gamma_{(i}\Dpartial_{j)}\theta^B
+           \{F^{ik\,C}F_{k}{}^{j\,D} + \quart \eta^{ij} F_{kl}^CF^{kl\,D}\}
+     \\
+&&\quad    + \quart\bar\theta^A  {\cal A}^{ABCD} 
+                      \gamma_{ijk}
+      \{\Dpartial^k\theta^B F^{il\,C} F_l{}^{j\,D}
+         - \Dpartial_l\theta^B F^{ij\,C}F^{kl\,D}\} \,\bigg\} \,.
+}{1}\coordE{}\end{eqnarray}
+In the action we use the following Yang-Mills structures:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{Pall}
+    {\rightCoord{}\leftCoord{}\cal P}^{ABC}_{(1)} &=& (i\sigma_2)d^{ABC} \rightCoord{}\,,
+    \rightCoord{}\\\leftCoord{}
+\label{Sall}
+    {\rightCoord{}\leftCoord{}\cal S}^{ABCD} &=& {\cal P}^{AE(C}_{(1)}{\cal P}^{BD)E}_{(1)}
+                     \leftCoord{}=  -  d^{AE(C}d^{BD)E}\rightCoord{}\,, \rightCoord{}
+    \rightCoord{}\\\leftCoord{}
+\label{Aall}
+    {\rightCoord{}\leftCoord{}\cal A}^{ABCD} &=&  {\cal P}^{AE[C}_{(1)}{\cal P}^{BD]E}_{(1)}
+                      \leftCoord{}=  -d^{AE[C}d^{BD]E}\rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{8}{12}{
+{\cal P}^{ABC}_{(1)} &=& (i\sigma_2)d^{ABC} \,,
+    \\
+{\cal S}^{ABCD} &=& {\cal P}^{AE(C}_{(1)}{\cal P}^{BD)E}_{(1)}
+                     =  -  d^{AE(C}d^{BD)E}\,, 
+    \\
+{\cal A}^{ABCD} &=&  {\cal P}^{AE[C}_{(1)}{\cal P}^{BD]E}_{(1)}
+                      =  -d^{AE[C}d^{BD]E}\,. 
+}{1}\coordE{}\end{eqnarray}
+The action is invariant under global supersymmetry transformations
+and local \myHighlight{$\kappa$}\coordHE{}-transformations:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{dthall}
+   \delta\bar\theta^A &=& - \bar\epsilon^A+\bar\eta^A\rightCoord{}\,, \rightCoord{}
+   \rightCoord{}\\\leftCoord{}
+\label{dVall}
+   \delta V_i^A &=& \half\rightCoord{}\,
+      \leftCoord{}(\bar\epsilon^B+\bar\eta^B)\rightCoord{}\,\sigma_1{\cal P}^{BCA}_{(1)}\gamma_i\theta^C
+      \leftCoord{}+\half\rightCoord{}\,(\bar\epsilon^B+\bar\eta^B)\rightCoord{}\, \rightCoord{}
+            {\rightCoord{}\leftCoord{}\cal S}^{BCDA} \gamma_k\theta^C F^{ki\rightCoord{}\,D}
+      \nonumber\rightCoord{}\\
+&&\leftCoord{}\quad
+     \leftCoord{}+\quart\rightCoord{}\,(\bar\epsilon^B+\bar\eta^B)\rightCoord{}\,{\cal A}^{BCDA}\gamma_{ikl}\theta^C
+                F^{kl\rightCoord{}\,D}\rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{7}{18}{
+\delta\bar\theta^A &=& - \bar\epsilon^A+\bar\eta^A\,, 
+   \\
+\delta V_i^A &=& \half\,
+      (\bar\epsilon^B+\bar\eta^B)\,\sigma_1{\cal P}^{BCA}_{(1)}\gamma_i\theta^C
+      +\half\,(\bar\epsilon^B+\bar\eta^B)\, 
+            {\cal S}^{BCDA} \gamma_k\theta^C F^{ki\,D}
+      \\
+&&\quad
+     +\quart\,(\bar\epsilon^B+\bar\eta^B)\,{\cal A}^{BCDA}\gamma_{ikl}\theta^C
+                F^{kl\,D}\,, 
+}{1}\coordE{}\end{eqnarray}
+where the parameters \myHighlight{$\epsilon^A$}\coordHE{} satisfy the condition
+\begin{equation}\coord{}\boxEquation{
+   f_{ABC}\,\epsilon^C = 0\,.
+}{
+   f_{ABC}\,\epsilon^C = 0\,.
+}{ecuacion}\coordE{}\end{equation}
+As explained in the previous sections,
+the variation of the action  under \myHighlight{$\kappa$}\coordHE{}-symmetry  can be expressed in
+terms of
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \Gamma^{AB} &=& \Gamma^{(0)}\rightCoord{}\,\bigg\{ \rightCoord{}
+     \sigma_1\delta^{AB}  + {\cal P}^{ABC}_{(1)} \half\gamma^{kl} {F}_{kl}^C
+   \nonumber\rightCoord{}\\
+&&\leftCoord{} \rightCoord{}
+   \leftCoord{}- \sigma_1 \rightCoord{}\,
+    {\rightCoord{}\leftCoord{}\cal S}^{ABCD} \big( \noverm{1}{8} \gamma_{ijkl}
+          F^{ij\rightCoord{}\,C} F^{kl\rightCoord{}\,D} -\quart F_{kl}^C F^{kl\rightCoord{}\,D}  \big)
+       \nonumber\rightCoord{}\\\leftCoord{}
+\label{Gamall}
+&&\leftCoord{}\quad  -\sigma_1\rightCoord{}\, {\cal A}^{ABCD}
+           \half \gamma_{ij} F^{ik\rightCoord{}\,C} F_k{}^{j\rightCoord{}\,D} \bigg\}\rightCoord{}\,,
+   \rightCoord{}\\\leftCoord{}
+  {\rightCoord{}\leftCoord{}\cal T}^A &=& \gamma^i\Dpartial_i\theta^A
+         \leftCoord{}- \sigma_1{\cal P}^{ABC}_{(1)} \gamma_i\Dpartial_j\theta^B F^{ij\rightCoord{}\,C}
+   \nonumber\rightCoord{}\\
+&&\leftCoord{}  -{\cal S}^{ABCD} \rightCoord{}
+     \gamma_{(i}\Dpartial_{j)}\theta^B
+              \leftCoord{}(F^{ik\rightCoord{}\,C}F_{k}{}^{j\rightCoord{}\,D} + \quart \eta^{ij} F_{kl}^CF^{kl\rightCoord{}\,D})
+    \nonumber\rightCoord{}\\\leftCoord{}
+\label{Tall}
+&&\leftCoord{} \quad  +\half\rightCoord{}\, {\cal A}^{ABCD} \rightCoord{}
+            \gamma_{ijk}
+      \leftCoord{}\{\Dpartial^k\theta^B F^{il\rightCoord{}\,C} F_l{}^{j\rightCoord{}\,D}
+         \leftCoord{}- \Dpartial_l\theta^B F^{ij\rightCoord{}\,C}F^{kl\rightCoord{}\,D}\}\rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{15}{33}{
+  \Gamma^{AB} &=& \Gamma^{(0)}\,\bigg\{ 
+     \sigma_1\delta^{AB}  + {\cal P}^{ABC}_{(1)} \half\gamma^{kl} {F}_{kl}^C
+   \\
+&& 
+   - \sigma_1 \,
+    {\cal S}^{ABCD} \big( \noverm{1}{8} \gamma_{ijkl}
+          F^{ij\,C} F^{kl\,D} -\quart F_{kl}^C F^{kl\,D}  \big)
+       \\
+&&\quad  -\sigma_1\, {\cal A}^{ABCD}
+           \half \gamma_{ij} F^{ik\,C} F_k{}^{j\,D} \bigg\}\,,
+   \\
+  {\cal T}^A &=& \gamma^i\Dpartial_i\theta^A
+         - \sigma_1{\cal P}^{ABC}_{(1)} \gamma_i\Dpartial_j\theta^B F^{ij\,C}
+   \\
+&&  -{\cal S}^{ABCD} 
+     \gamma_{(i}\Dpartial_{j)}\theta^B
+              (F^{ik\,C}F_{k}{}^{j\,D} + \quart \eta^{ij} F_{kl}^CF^{kl\,D})
+    \\
+&& \quad  +\half\, {\cal A}^{ABCD} 
+            \gamma_{ijk}
+      \{\Dpartial^k\theta^B F^{il\,C} F_l{}^{j\,D}
+         - \Dpartial_l\theta^B F^{ij\,C}F^{kl\,D}\}\,.
+}{1}\coordE{}\end{eqnarray}
+
+\section{Gauge fixing\label{Fix}}
+
+In the \myHighlight{$\kappa$}\coordHE{}-symmetric system which we obtained in this paper,
+the ordinary supersymmetry is hidden in the local \myHighlight{$\kappa$}\coordHE{}-symmetry, and to
+make it explicit, \myHighlight{$\kappa$}\coordHE{}-symmetry should be gauge fixed. This analysis
+is very similar to the one done in the abelian case in \cite{Aga}.
+
+To do this analysis it is convenient to write out the \myHighlight{$N=2$}\coordHE{} doublets
+explicitly. We write
+\begin{equation}\coord{}\boxEquation{
+\Gamma = \left(
+  \begin{array}{cc}
+     0 & \gamma \\
+     \tilde\gamma & 0
+  \end{array}   \right)\,,
+}{
+\Gamma = \left(
+  \begin{array}{cc}
+     0 & \gamma \\
+     \tilde\gamma & 0
+  \end{array}   \right)\,,
+}{ecuacion}\coordE{}\end{equation}
+with
+\begin{equation}\coord{}\boxEquation{
+  \Gamma^2 = \left(
+    \begin{array}{cc}
+       \gamma\tilde\gamma & 0 \\
+        0 &  \tilde\gamma\gamma
+    \end{array} \right) = \unitmatrixDT \,.
+}{
+  \Gamma^2 = \left(
+    \begin{array}{cc}
+       \gamma\tilde\gamma & 0 \\
+        0 &  \tilde\gamma\gamma
+    \end{array} \right) = \unitmatrixDT \,.
+}{ecuacion}\coordE{}\end{equation}
+Here \myHighlight{$\gamma$}\coordHE{}, \myHighlight{$\tilde\gamma$}\coordHE{} are \myHighlight{$32\times 32$}\coordHE{} matrices, with
+in addition indices \myHighlight{$AB$}\coordHE{}, where \myHighlight{$A,B$}\coordHE{}  run from \myHighlight{$1$}\coordHE{} to \myHighlight{$n^2$}\coordHE{}.
+Then, splitting also the fermions into separate
+\myHighlight{$N=1$}\coordHE{} fermions, we write variations as follows:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \delta\bar\theta_1^A &=& -\bar\epsilon_1^A + \bar\eta^A_1
+       \leftCoord{}\rightCoord{}\,,\qquad
+ \delta\bar\theta^A_2 = -\bar\epsilon_2^A + \bar\eta^A_2
+            \leftCoord{}\rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{3}{5}{
+  \delta\bar\theta_1^A &=& -\bar\epsilon_1^A + \bar\eta^A_1
+       \,,\qquad
+ \delta\bar\theta^A_2 = -\bar\epsilon_2^A + \bar\eta^A_2
+            \,. 
+}{1}\coordE{}\end{eqnarray}
+The parameters \myHighlight{$\eta$}\coordHE{} can be expressed in terms of parameters \myHighlight{$\kappa$}\coordHE{}:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \bar\eta &=& \left(\bar\eta_1\quad \bar\eta_2 \right) =
+       \left( \bar\kappa_1+\bar\kappa_2\tilde\gamma
+                 \quad
+                     \bar\kappa_2+\bar\kappa_1\gamma
+                     \right)\rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{1}{4}{
+  \bar\eta &=& \left(\bar\eta_1\quad \bar\eta_2 \right) =
+       \left( \bar\kappa_1+\bar\kappa_2\tilde\gamma
+                 \quad
+                     \bar\kappa_2+\bar\kappa_1\gamma
+                     \right)\,. 
+}{1}\coordE{}\end{eqnarray}
+Now we choose a \myHighlight{$\kappa$}\coordHE{}-gauge by setting \myHighlight{$\bar\theta_2=0$}\coordHE{}\,,
+which implies that the transformation parameters must satisfy
+\begin{equation}\coord{}\boxEquation{
+  \bar\kappa_2 = \bar\epsilon_2 - \bar\kappa_1\gamma \,.
+}{
+  \bar\kappa_2 = \bar\epsilon_2 - \bar\kappa_1\gamma \,.
+}{ecuacion}\coordE{}\end{equation}
+So after \myHighlight{$\kappa$}\coordHE{}-gauge fixing the remaining
+\myHighlight{$\eta$}\coordHE{} is
+\begin{equation}\coord{}\boxEquation{
+    \bar\eta_1 = \bar\epsilon_2\,\tilde\gamma\,,
+}{
+    \bar\eta_1 = \bar\epsilon_2\,\tilde\gamma\,,
+}{ecuacion}\coordE{}\end{equation}
+and  the remaining fermions \myHighlight{$\chi^A\equiv\theta_1^A$}\coordHE{} transform as:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+   \delta\bar\chi^A &=& \rightCoord{}
+     \leftCoord{}-\bar\epsilon_1^A +
+        \bar\epsilon_2^B \rightCoord{}\,\tilde\gamma^{BA}
+        \leftCoord{}\rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{3}{6}{
+   \delta\bar\chi^A &=& 
+     -\bar\epsilon_1^A +
+        \bar\epsilon_2^B \,\tilde\gamma^{BA}
+        \,. 
+}{1}\coordE{}\end{eqnarray}
+Let us now look at the gauge fixed action. The Wess-Zumino term vanishes
+after gauge fixing, since it was off-diagonal in the fermions \myHighlight{$\theta_1$}\coordHE{}
+and \myHighlight{$\theta_2$}\coordHE{}. The Born-Infeld term gives:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+    {\rightCoord{}\leftCoord{}\cal L}_{{\rm BI}} &=& - \bigg\{
+    \leftCoord{}1 + \half\rightCoord{}\,\bar\chi^A\gamma^i\Dpartial_i\chi^A
+       \leftCoord{}+ \half\rightCoord{}\, {d}_{ABC}  \bar\chi^A
+       \gamma_{[i}\Dpartial_{j]}\chi^B\rightCoord{}\, F^{ij\rightCoord{}\,C}
+       \leftCoord{}+ \noverm{1}{4} F^{ij\rightCoord{}\,A} F_{ij}^A
+\nonumber\rightCoord{}\\\leftCoord{}
+\label{LBIgf}
+&&\leftCoord{}\quad
+       \leftCoord{}+\ \noverm{1}{2} \rightCoord{}
+       d^{AEC}d^{BDE}\rightCoord{}\, \bar\chi^A \gamma_{(i}\Dpartial_{j)}\chi^B
+           \leftCoord{}\{F^{ik\rightCoord{}\,C}F_{k}{}^{j\rightCoord{}\,D} + \quart \eta^{ij} F_{kl}^CF^{kl\rightCoord{}\,D}\}
+     \rightCoord{}\\
+&&\leftCoord{}\quad    -\ \quart  d^{AE[C}d^{BD]E}\rightCoord{}\, \bar\chi^A \rightCoord{}
+                      \gamma_{ijk}
+      \leftCoord{}\{\Dpartial^k\chi^B F^{il\rightCoord{}\,C} F_l{}^{j\rightCoord{}\,D}
+         \leftCoord{}- \Dpartial_l\chi^B F^{ij\rightCoord{}\,C}F^{kl\rightCoord{}\,D}\} \rightCoord{}\,\bigg\} \rightCoord{}\,. \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{12}{24}{
+    {\cal L}_{{\rm BI}} &=& - \bigg\{
+    1 + \half\,\bar\chi^A\gamma^i\Dpartial_i\chi^A
+       + \half\, {d}_{ABC}  \bar\chi^A
+       \gamma_{[i}\Dpartial_{j]}\chi^B\, F^{ij\,C}
+       + \noverm{1}{4} F^{ij\,A} F_{ij}^A
+\\
+&&\quad
+       +\ \noverm{1}{2} 
+       d^{AEC}d^{BDE}\, \bar\chi^A \gamma_{(i}\Dpartial_{j)}\chi^B
+           \{F^{ik\,C}F_{k}{}^{j\,D} + \quart \eta^{ij} F_{kl}^CF^{kl\,D}\}
+     \\
+&&\quad    -\ \quart  d^{AE[C}d^{BD]E}\, \bar\chi^A 
+                      \gamma_{ijk}
+      \{\Dpartial^k\chi^B F^{il\,C} F_l{}^{j\,D}
+         - \Dpartial_l\chi^B F^{ij\,C}F^{kl\,D}\} \,\bigg\} \,. }{1}\coordE{}\end{eqnarray}
+Note that the
+terms of the form \myHighlight{$\bar\chi\partial\chi F^2$}\coordHE{} are
+not symmetric traces of \myHighlight{$U(n)$}\coordHE{} generators. The symmetric trace is of the form
+\begin{equation}\coord{}\boxEquation{
+  \tr T_{(A}T_BT_CT_{D)} =
+    \noverm{1}{3}\,( d_{ABE}d_{CDE} + d_{CAE}d_{BDE} + d_{BCE}d_{ADE})\,.
+}{
+  \tr T_{(A}T_BT_CT_{D)} =
+    \noverm{1}{3}\,( d_{ABE}d_{CDE} + d_{CAE}d_{BDE} + d_{BCE}d_{ADE})\,.
+}{ecuacion}\coordE{}\end{equation}
+The second line in (\ref{LBIgf}) contains only two of the three contributions
+needed for the symmetric trace, the last line contains explicit
+anti-symmetrizations
+and can be rewritten in terms of structure constants:
+\begin{equation}\coord{}\boxEquation{
+\label{id3}
+   d_{AEC}d_{BDE}-d_{AED}d_{BCE} = f_{ABE}f_{CDE}\,.
+}{
+d_{AEC}d_{BDE}-d_{AED}d_{BCE} = f_{ABE}f_{CDE}\,.
+}{ecuacion}\coordE{}\end{equation}
+Finally, the linear and nonlinear supersymmetry transformations which leave
+(\ref{LBIgf}) invariant are of the form
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+   \delta\chi^A &=& -\bar\epsilon_1^A - \bar\epsilon_2^A
+    \leftCoord{}+ \bar\epsilon_2^B\rightCoord{}\,
+    \leftCoord{}\{  d^{BAC}\rightCoord{}\,\half \gamma^{kl} F_{kl}^C
+    \nonumber\rightCoord{}\\
+&&\leftCoord{}\quad    +\ {\cal S}^{BACD}\rightCoord{}\, \rightCoord{}
+               \leftCoord{}( \noverm{1}{8} \gamma_{ijkl}
+          F^{ij\rightCoord{}\,C} F^{kl\rightCoord{}\,D} -\quart F_{kl}^C F^{kl\rightCoord{}\,D})
+          \leftCoord{}\rightCoord{}\,\}   \rightCoord{}\,, \rightCoord{}
+   \nonumber\rightCoord{}\\\leftCoord{}
+   \delta V_i^A &=&  -\half\rightCoord{}\, (\bar\epsilon_1^B - \bar\epsilon_2^B)
+            d^{BCA}\gamma_i\chi^C
+         \leftCoord{}-\quart \bar\epsilon_2^B
+         d^{BED}d^{ECA} \gamma_{kl}\gamma_i\chi^C F^{kl\rightCoord{}\,D}
+                 \nonumber\rightCoord{}\\
+&&\leftCoord{}\quad +\ \half (\bar\epsilon_1^B-\bar\epsilon^B_2)
+            S^{BCDA} \gamma_k \chi^C F^{ki\rightCoord{}\,D}
+        \leftCoord{}\rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{10}{20}{
+   \delta\chi^A &=& -\bar\epsilon_1^A - \bar\epsilon_2^A
+    + \bar\epsilon_2^B\,
+    \{  d^{BAC}\,\half \gamma^{kl} F_{kl}^C
+    \\
+&&\quad    +\ {\cal S}^{BACD}\, 
+               ( \noverm{1}{8} \gamma_{ijkl}
+          F^{ij\,C} F^{kl\,D} -\quart F_{kl}^C F^{kl\,D})
+          \,\}   \,, 
+   \\
+   \delta V_i^A &=&  -\half\, (\bar\epsilon_1^B - \bar\epsilon_2^B)
+            d^{BCA}\gamma_i\chi^C
+         -\quart \bar\epsilon_2^B
+         d^{BED}d^{ECA} \gamma_{kl}\gamma_i\chi^C F^{kl\,D}
+                 \\
+&&\quad +\ \half (\bar\epsilon_1^B-\bar\epsilon^B_2)
+            S^{BCDA} \gamma_k \chi^C F^{ki\,D}
+        \,. 
+}{1}\coordE{}\end{eqnarray}
+Note that contributions with \myHighlight{${\cal A}$}\coordHE{}, the anti-symmetrized product of two
+\myHighlight{$d$}\coordHE{}-tensors, do not appear because of (\ref{id3}) and the fact that \myHighlight{$\epsilon$}\coordHE{}
+must be in the \myHighlight{$U(1)$}\coordHE{} direction.
+
+
+\section{Conclusions\label{Concl}}
+
+In this paper we have obtained the non-abelian generalization of the
+Born-Infeld action
+up to terms
+quartic in the Yang-Mills field strength, and including all fermion
+bilinear terms up to terms cubic in the field strength.
+The terms of the form \myHighlight{$\bar\chi\partial\chi F^2$}\coordHE{}
+violate the symmetric trace conjecture.
+
+The \myHighlight{$\kappa$}\coordHE{}-symmetric construction of the Born-Infeld action involves
+the matrix \myHighlight{$\Gamma$}\coordHE{}, satisfying \myHighlight{$\Gamma^2=\unitmatrixDT$}\coordHE{}, which is used to
+project away one of the components of the fermion doublet. In the
+abelian case \myHighlight{$\Gamma$}\coordHE{} factorises in a part that is polynomial in \myHighlight{$F$}\coordHE{}, and
+the inverse of the Born-Infeld action, which expands to an infinite
+series in \myHighlight{$F$}\coordHE{}. In the non-abelian case we are not yet at a stage that
+such a factorisation could be recognized. We see however, that the result
+(\ref{Gamall}) is consistent with a factorisation of the form:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \Gamma^{AB} &=& \rightCoord{}
+  \Gamma^{(0)}\rightCoord{}\,\big\{ \rightCoord{}
+     \sigma_1\delta^{AC}  + {\cal P}^{ACF}_{(1)} \half\gamma^{kl} {F}_{kl}^F
+      \leftCoord{}- \sigma_1 \rightCoord{}\,
+    {\rightCoord{}\leftCoord{}\cal S}^{ACFG} \big( \noverm{1}{8} \gamma_{ijkl}
+          F^{ij\rightCoord{}\,F} F^{kl\rightCoord{}\,G}  \big) \rightCoord{}
+       \nonumber\rightCoord{}\\
+&&\leftCoord{}\quad
+      \leftCoord{}-\ \sigma_1\rightCoord{}\, {\cal A}^{ACFG}
+           \half \gamma_{ij} F^{ik\rightCoord{}\,F} F_k{}^{j\rightCoord{}\,G} \big\}
+            \leftCoord{}(\delta^{CB} + {\cal S}^{CBDE}\quart F_{mn}^DF^{mn\rightCoord{}\,E})\rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{6}{17}{
+  \Gamma^{AB} &=& 
+  \Gamma^{(0)}\,\big\{ 
+     \sigma_1\delta^{AC}  + {\cal P}^{ACF}_{(1)} \half\gamma^{kl} {F}_{kl}^F
+      - \sigma_1 \,
+    {\cal S}^{ACFG} \big( \noverm{1}{8} \gamma_{ijkl}
+          F^{ij\,F} F^{kl\,G}  \big) 
+       \\
+&&\quad
+      -\ \sigma_1\, {\cal A}^{ACFG}
+           \half \gamma_{ij} F^{ik\,F} F_k{}^{j\,G} \big\}
+            (\delta^{CB} + {\cal S}^{CBDE}\quart F_{mn}^DF^{mn\,E})\,.
+}{1}\coordE{}\end{eqnarray}
+Note that, as in the abelian case,  \myHighlight{${\cal T}$}\coordHE{} (\ref{Tall})
+contains the inverse of
+the factor that we find in \myHighlight{$\Gamma$}\coordHE{}. Clearly  the second factor in the above
+expression is not a \myHighlight{$U(n)$}\coordHE{} singlet, and therefore
+does not correspond to the inverse of the action. Further analysis, which
+we plan to do at the cubic and quartic level in \myHighlight{$F$}\coordHE{}, should elucidate in
+which sense these factors are related to the Born-Infeld action.
+
+It is intriguing that \myHighlight{$\kappa$}\coordHE{}-symmetry
+and worldvolume reparametrisation invariance
+appear to be incompatible. Although for
+applications such as the construction of
+non-abelian BPS states this is not a drawback,
+issues of superspace and curved background remain unclear in the static
+gauge. One way to try to resolve  the issue of embedding
+coordinates would be to look in more detail at the transformation rules
+of \myHighlight{$V_i^A$}\coordHE{}. If a formulation with worldvolume reparametrisation
+invariance exists, then our formulation should be its gauge fixed version,
+and we should recognize the corresponding compensating transformation
+in the transformation rule of \myHighlight{$V_i^A$}\coordHE{}. To give an example, let us consider
+the possibility that the embedding coordinates are in the adjoint of
+\myHighlight{$U(n)$}\coordHE{}, and transform as:
+\begin{equation}\coord{}\boxEquation{
+   \delta X^{\mu\,A} = d^{ABC}\xi^{i\,B}\partial_i X^{\mu\,C}
+            +\delta_\epsilon X^{\mu\,A} + \delta_\eta X^{\mu\,A}\,.
+}{
+   \delta X^{\mu\,A} = d^{ABC}\xi^{i\,B}\partial_i X^{\mu\,C}
+            +\delta_\epsilon X^{\mu\,A} + \delta_\eta X^{\mu\,A}\,.
+}{ecuacion}\coordE{}\end{equation}
+Let us now gauge fix this extended worldvolume symmetry, by setting
+\myHighlight{$X^A=0$}\coordHE{} for all \myHighlight{$A\in SU(n)$}\coordHE{}, and \myHighlight{$X^{\mu\,1}=\delta^\mu_i\sigma_i$}\coordHE{}
+for \myHighlight{$A=1\in U(1)$}\coordHE{}. Then the compensating transformation which
+preserves this gauge is of the form:
+\begin{equation}\coord{}\boxEquation{
+  \xi^A = -\delta_\epsilon X^{\mu\,A} - \delta_\eta X^{\mu\,A} \,.
+}{
+  \xi^A = -\delta_\epsilon X^{\mu\,A} - \delta_\eta X^{\mu\,A} \,.
+}{ecuacion}\coordE{}\end{equation}
+Here we have used that \myHighlight{$d^{AB1}\sim \delta^{AB}$}\coordHE{}, in a basis where the
+\myHighlight{$U(1)$}\coordHE{} component of \myHighlight{$U(n)$}\coordHE{} is labelled by \myHighlight{$A=1$}\coordHE{}.
+Then, if the variation of \myHighlight{$V_i^A$}\coordHE{} under worldvolume coordinate
+transformations is of the form
+\begin{equation}\coord{}\boxEquation{
+    \delta V_i^A = d^{ABC}\xi^{k\, B} F_{ki}^C\,,
+}{
+    \delta V_i^A = d^{ABC}\xi^{k\, B} F_{ki}^C\,,
+}{ecuacion}\coordE{}\end{equation}
+we see that the term
+proportional to \myHighlight{${\cal S}$}\coordHE{} in (\ref{dVall}) has almost the right form to be
+interpreted as a compensating transformation. However, the Yang-Mills
+structure in this expression is not quite correct, as the indices of \myHighlight{$V$}\coordHE{}
+and \myHighlight{$F$}\coordHE{} are not on the same \myHighlight{$d$}\coordHE{}-tensor. We have found that if one chooses
+in (\ref{P1def}) \myHighlight{$c_1=1$}\coordHE{}, that then the structure comes out all right, and
+gives
+\begin{equation}\coord{}\boxEquation{
+   \delta X^{\mu\,A} \sim d^{ABC}d^{BDE} (\bar\epsilon^D + \bar\eta^D)
+        \gamma^k\theta^E\partial_k X^{\mu C}\,.
+}{
+   \delta X^{\mu\,A} \sim d^{ABC}d^{BDE} (\bar\epsilon^D + \bar\eta^D)
+        \gamma^k\theta^E\partial_k X^{\mu C}\,.
+}{ecuacion}\coordE{}\end{equation}
+It would be interesting to see whether or not the construction of
+the generalized Born-Infeld action including the worldvolume
+structure indicated above is possible.
+
+As mentioned above, the generalisation to a curved background would be
+greatly facilitated by a better understanding of the superspace
+structure of the D-brane action. However, there is also another
+open issue to consider. Consider
+the expression (\ref{calF}), where we give the non-abelian
+generalisation of the relation \myHighlight{${\cal F}=F+B$}\coordHE{} in a flat
+background. In going to a curved background we have to decide
+how and where to introduce the NS-NS fields. Should there
+be a non-abelian generalisation of the NS-NS field \myHighlight{$B$}\coordHE{}, or
+do only the \myHighlight{$U(1)$}\coordHE{} fields on the worldvolume
+couple effectively to the background
+fields?\footnote{We thank A.~Tseytlin for a discussion on this issue.}
+ Similar questions can be raised about the RR-fields
+(see (\ref{LWZnab})),
+whose form in a flat background also suggests that a non-abelian
+generalisation should be required.
+
+In a future publication \cite{BRS2}, we hope to extend this work to
+higher order in \myHighlight{$F$}\coordHE{}, and to apply the results to the
+construction of non-abelian BPS states. The simplest
+situation to think of is the relation
+between  D-branes at angles \cite{BDL} and  overlapping
+branes through T-duality \cite{HT}. As was shown in
+\cite{DST} the BPS conditions between angles translate to
+conditions between magnetic fields \myHighlight{$F$}\coordHE{} which include
+contributions cubic in \myHighlight{$F$}\coordHE{}. Therefore we will have to go at least to
+order \myHighlight{$F^3$}\coordHE{} in the supersymmetry transformation rules to
+be able to compare our results with the predictions implied by
+\cite{BDL}. In the abelian case the relation between
+\myHighlight{$\kappa$}\coordHE{}-symmetric formulations and BPS states was
+formulated in \cite{BKOP}. In particular, there it was shown that
+the knowledge of \myHighlight{$\Gamma$}\coordHE{} is in fact sufficient to obtain
+BPS states. It would be interesting to generalize these results
+to the non-abelian situation.
+
+
+Finally, it would be instructive to apply other approaches than
+the one employed in this paper to find the complete answer. For
+instance, one could use the superembedding
+techniques developed in \cite{Bandos:1995zw,Howe:1997wf}.
+Yet another approach could be
+to extend to the non-abelian case the analysis of \cite{Bellucci:2000bd}
+where it was shown how the superworldvolume dynamics of 
+superbranes can be obtained from nonlinear realizations.
+
+
+
+\section*{Acknowledgements}
+\noindent
+We like to thank
+I.~Bandos,
+M.~Cederwall,
+S.~Ferrara,
+S.F.~Hassan,
+E.~Ivanov,
+R.~Kallosh,
+U.~Lindstr\"om,
+C.~Nappi,
+A.~Peet,
+V.~Periwal,
+D.~Sorokin,
+J.~Troost and
+A.~Tseytlin
+for useful discussions. Many of these took place at Strings 2000, and
+we would like to thank the organizers for providing such a stimulating
+environment.
+We are grateful to the Spinoza Institute, Utrecht, halfway
+between Brussels and Groningen, for the hospitality extended to us.
+This work is supported by the European Commission
+RTN programme HPRN-CT-2000-00131, in which E.B. and M.d.R. are associated
+to the university of Utrecht and A.S. is associated to the university of
+Leuven.
+
+\appendix
+
+\section{Properties of \myHighlight{$U(n)$}\coordHE{} generators, etc\label{AppUn}}
+
+In these notes indices \myHighlight{$A,B,\ldots$}\coordHE{} run from \myHighlight{$1,\ldots n^2$}\coordHE{}.
+We freely raise and lower these indices.
+
+We use the following conventions for Yang-Mills transformations of
+the nonabelian Yang-Mills multiplet:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+   \delta\theta^A &=& f^A{}_{BC} \Lambda^B\theta^C\rightCoord{}\,,
+   \rightCoord{}\\\leftCoord{}
+   \delta V_i^A &=& -\Dpartial_i\Lambda^A\rightCoord{}\,,
+   \rightCoord{}\\\leftCoord{}
+   \Dpartial_i\theta^A &=& \partial_i\theta^A + f^A{}_{BC}V_i^B\theta^C\rightCoord{}\,,
+   \rightCoord{}\\\leftCoord{}
+   F_{ij}^A &=& \partial_iV_j^A-\partial_jV_i^A
+     \leftCoord{}+f^A{}_{BC}V_i^BV_j^C\rightCoord{}\,,
+    \rightCoord{}\\\leftCoord{}
+   \Dpartial_{[i}\Dpartial_{j]}\theta^A
+&\leftCoord{}=& \half f^A{}_{BC} F_{ij}^B\theta^C\rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{7}{12}{
+   \delta\theta^A &=& f^A{}_{BC} \Lambda^B\theta^C\,,
+   \\
+   \delta V_i^A &=& -\Dpartial_i\Lambda^A\,,
+   \\
+   \Dpartial_i\theta^A &=& \partial_i\theta^A + f^A{}_{BC}V_i^B\theta^C\,,
+   \\
+   F_{ij}^A &=& \partial_iV_j^A-\partial_jV_i^A
+     +f^A{}_{BC}V_i^BV_j^C\,,
+    \\
+   \Dpartial_{[i}\Dpartial_{j]}\theta^A
+&=& \half f^A{}_{BC} F_{ij}^B\theta^C\,.
+}{1}\coordE{}\end{eqnarray}
+
+The \myHighlight{$U(n)$}\coordHE{} generators are Hermitian \myHighlight{$n\times n$}\coordHE{} matrices.
+Our normalisation for the trace of two \myHighlight{$U(n)$}\coordHE{}-generators is
+\begin{equation}\coord{}\boxEquation{
+  \tr T_AT_B = \delta_{AB}\,.
+}{
+  \tr T_AT_B = \delta_{AB}\,.
+}{ecuacion}\coordE{}\end{equation}
+In general, we write for the product of two \myHighlight{$U(n)$}\coordHE{} generators:
+\begin{equation}\coord{}\boxEquation{
+  T_AT_B =  + (d_{ABC} + if_{ABC})T_C\,.
+}{
+  T_AT_B =  + (d_{ABC} + if_{ABC})T_C\,.
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$d$}\coordHE{} and \myHighlight{$f$}\coordHE{} are symmetric and antisymmetric in \myHighlight{$AB$}\coordHE{}, respectively.
+We recognize that
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \leftCoord{}[T_A,T_B] &=& 2if_{ABC}T_C\rightCoord{}\,,\nonumber\rightCoord{}\\\leftCoord{}
+  \leftCoord{}\{T_A,T_B\} &=& 2d_{ABC}T_C\rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{4}{6}{
+  [T_A,T_B] &=& 2if_{ABC}T_C\,,\\
+  \{T_A,T_B\} &=& 2d_{ABC}T_C\,.
+}{1}\coordE{}\end{eqnarray}
+{From} this we conclude that
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+  \tr [T_A,T_B]T_C = 2if_{ABC}\rightCoord{}\,,\nonumber\rightCoord{}\\\leftCoord{}
+  \tr \{T_A,T_B\}T_C = 2d_{ABC}\rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{2}{6}{
+  \tr [T_A,T_B]T_C = 2if_{ABC}\,,\\
+  \tr \{T_A,T_B\}T_C = 2d_{ABC}\,.
+}{1}\coordE{}\end{eqnarray}
+This tells us that in fact \myHighlight{$f$}\coordHE{} is completely anti-symmetric, and \myHighlight{$d$}\coordHE{}
+completely symmetric in \myHighlight{$ABC$}\coordHE{}.
+
+Then we have the Jacobi identity and its generalisations.
+These follow from:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&&\leftCoord{}[[T_A,T_B],T_C] + [[T_B,T_C],T_A]  +[[T_C,T_A],T_B]=0\rightCoord{}\,,
+  \nonumber\rightCoord{}\\
+&&\leftCoord{}[\{T_A,T_B\},T_C] + [\{T_B,T_C\},T_A]  + [\{T_C,T_A\},T_B]=0\rightCoord{}\,,
+  \nonumber\rightCoord{}\\
+&&\leftCoord{}[T_C,[T_A,T_B]] = \{T_B,\{T_C,T_A\}\} - \{T_A,\{T_B,T_C\}\}\rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{3}{8}{
+&&[[T_A,T_B],T_C] + [[T_B,T_C],T_A]  +[[T_C,T_A],T_B]=0\,,
+  \\
+&&[\{T_A,T_B\},T_C] + [\{T_B,T_C\},T_A]  + [\{T_C,T_A\},T_B]=0\,,
+  \\
+&&[T_C,[T_A,T_B]] = \{T_B,\{T_C,T_A\}\} - \{T_A,\{T_B,T_C\}\}\,.
+}{1}\coordE{}\end{eqnarray}
+{From} these we derive the follwoing identities
+for the \myHighlight{$f$}\coordHE{} and \myHighlight{$d$}\coordHE{} tensors:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{ff}
+&&\leftCoord{}f_{ABE}f_{ECD} + f_{BCE}f_{EAD} + f_{CAE}f_{EBD} = 0\rightCoord{}\,,
+  \rightCoord{}\\\leftCoord{}
+\label{fd}
+&&\leftCoord{}d_{ABE}f_{ECD} + d_{BCE}f_{EAD} + d_{CAE}f_{EBD} = 0\rightCoord{}\,,
+  \rightCoord{}\\\leftCoord{}
+\label{ffdd}
+&&\leftCoord{} f_{ABE}f_{ECD} =  d_{CAE}d_{BED} - d_{CBE}d_{AED}\rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{6}{8}{
+&&f_{ABE}f_{ECD} + f_{BCE}f_{EAD} + f_{CAE}f_{EBD} = 0\,,
+  \\
+&&d_{ABE}f_{ECD} + d_{BCE}f_{EAD} + d_{CAE}f_{EBD} = 0\,,
+  \\
+&& f_{ABE}f_{ECD} =  d_{CAE}d_{BED} - d_{CBE}d_{AED}\,.
+}{1}\coordE{}\end{eqnarray}
+
+\begin{thebibliography}{99}
+\bibitem{AT}   A recent review of Born-infeld theory can be found in
+               A.~A.~Tseytlin,
+               {\it Born-Infeld Action,  Supersymmetry and String
+               Theory},
+               to appear in the Yuri Golfand memorial volume,
+               {\tt hep-th/9908105}
+\bibitem{EW1}  E.~Witten,
+               {\it Bound States of Strings and \myHighlight{$p$}\coordHE{}-Branes},
+               Nucl.~Phys.~{\bf B460} (1996) 35,
+               {\tt hep-th/9510135}
+\bibitem{GW}   D.~J.~Gross and E.~Witten,
+               {\it Superstring Modifications Of Einstein's Equations},
+               Nucl.~Phys.~{\bf B277} (1986) 1;
+               A.~A.~Tseytlin, 
+               {\it Vector field effective action in the open 
+               superstring theory},
+               Nucl.~Phys.~{\bf B276} (1986) 391; Erratum-ibid.~{\bf B291}
+               (1987) 876 
+\bibitem{BP}   D.~Brecher and M.~J.~Perry,
+               {\it Bound States of D-Branes and the Non-Abelian
+                 Born-Infeld Action},
+               Nucl.~Phys.~{\bf B527} (1998) 121,
+               {\tt hep-th/9801127};
+               K.~Behrndt,
+               {\it Open Superstring in Non-Abelian Gauge Field},
+               in the procs. of the XXIII Int. Symp. Ahrenshoop 1989,
+               174, Akademie der Wissenschaften der DDR;
+               {\it Untersuchung der
+               Weyl-Invarianz im Verallgemeinter \myHighlight{$\sigma$}\coordHE{}-Modell f\"ur Offene
+               Strings}, PhD thesis, Humboldt-Universit\"at zu Berlin, 1990
+\bibitem{AT2}  A.~A.~Tseytlin,
+               {\it On Non-Abelian Generalization of Born-Infeld
+                 Action in String Theory},
+               Nucl.~Phys.~{\bf B501} (1997) 41,
+               {\tt hep-th/9701125}
+\bibitem{AN}   P.~C.~Argyres and C.~R.~Nappi,
+               {\it Spin-1 effective actions from open strings},
+               Nucl.~Phys.~{\bf B330} (1990) 151
+\bibitem{HT}   A.~Hashimoto and W.~Taylor,
+               {\it Fluctuation Spectra of Tilted and Intersecting D-branes
+                  from the Born-Infeld Action},
+               Nucl.~Phys.~{\bf B503} (1997) 193,
+               {\tt hep-th/9703217}
+\bibitem{DST}  F.~Denef, A.~Sevrin and W.~Troost,
+               {\it Non-Abelian Born-Infeld versus String Theory},
+               Nucl. Phys. {\bf B581} (2000) 135,
+               {\tt hep-th/0002180}
+\bibitem{B}    P.~Bain,
+               {\it On the Non-Abelian Born-Infeld Action},
+               to
+               appear in the proceedings of the Carg\`ese '99 Summer School,
+               {\tt hep-th/9909154}
+\bibitem{STT}  A.~Sevrin, J.~Troost and W.~Troost,  in preparation
+\bibitem{Aga}  M.~Aganagic, C.~Popescu and J.~H.~Schwarz,
+               {\it Gauge-Invariant and Gauge-Fixed D-Brane Actions},
+               Nucl.~Phys.~{\bf B495} (1997) 99,
+               {\tt hep-th/9612080}
+\bibitem{Ced}  M.~Cederwall, A.~von Gussich, B.~E.~W.~Nilsson,
+                P.~Sundell and A.~Westerberg,
+               {\it The Dirichlet Super-p-Branes in Type IIA and IIB
+                   Supergravity},
+               Nucl.~Phys.~{\bf B490} (1997) 179,
+               {\tt hep-th/96100148}
+\bibitem{BT}   E.~Bergshoeff and P. K.~Townsend,
+               {\it Super-D-Branes},
+               Nucl.~Phys.~{\bf B490} (1997) 145,
+               {\tt hep-th/9611173}
+\bibitem{CF}   S.~Cecotti and S.~Ferrara,
+               {\it Supersymmetric Born-Infeld Lagrangians},
+               Phys.~Lett.~{\bf B187} (1987) 335
+\bibitem{K2}   S.~Ketov,
+               {\it \myHighlight{$N=1$}\coordHE{} and \myHighlight{$N=2$}\coordHE{} Supersymmetric Nonabelian
+                   Born-Infeld Actions from Superspace},
+               {\tt hep-th/0005265}
+\bibitem{RTZ}  A.~Refolli, N.~Terzi and D.~Zanon,
+               {\it Non abelian \myHighlight{$N=2$}\coordHE{} supersymmetric Born Infeld
+                   action},
+               Phys.~Lett.~{\bf B486} (2000) 337,
+               {\tt hep-th/0006067}
+\bibitem{TR}   W.~Taylor and M.~Van Raamsdonk,
+               {\it Multiple Dp-branes in Weak Background Fields},
+               Nucl.~Phys.~{\bf B573} (2000) 703,
+               {\tt hep-th/9910052}
+\bibitem{M}    R.~C.~Myers,
+               {\it Dielectric Branes},
+               JHEP {\bf 9912} (1999) 022,\hfill\break
+               {\tt hep-th/9910053}
+\bibitem{D}    M.~R.~Douglas,
+               {\it D-branes and Matrix Theory in curves space},
+               Nucl.~Phys.~Proc.~Suppl. 68 (1998) 381,
+               {hep-th/9707228}
+               see also
+               M.~R.~Garousi and R.~C.~Myers,
+               {\it World-Volume Interactions on D-Branes},
+               Nucl.~Phys.~{\bf B542} (1999) 73,
+               {\tt hep-th/9809100}
+\bibitem{BRS2} E.~A.~Bergshoeff, M.~de Roo and A.~Sevrin,
+               {\it in preparation}
+\bibitem{BDL}  M.~Berkooz, M.~R.~Douglas and R.~Leigh,
+               {\it Branes Intersecting at Angles},
+               Nucl.~Phys.~{\bf B480} (1996) 265,
+               {\tt hep-th/9606139}
+\bibitem{BKOP} E.~Bergshoeff, R.~Kallosh, T.~Ortin and G. Papadopoulos,
+               {\it \myHighlight{$\kappa$}\coordHE{}-Symmetry, Supersymmetry and Intersecting
+               Branes}
+               Nucl.~Phys.~{\bf B502} (1997) 149
+               {\tt hep-th/9701127}
+
+
+\bibitem{Bandos:1995zw}
+I.~A.~Bandos, D.~Sorokin, M.~Tonin, P.~Pasti and D.~V.~Volkov,
+{\it Superstrings and supermembranes in the doubly supersymmetric 
+geometrical approach},
+Nucl.\ Phys.\  {\bf B446} (1995) 79
+{\tt hep-th/9501113}
+%%CITATION = HEP-TH 9501113;%%
+
+\bibitem{Howe:1997wf}
+P.~S.~Howe, E.~Sezgin and P.~C.~West,
+{\it Aspects of superembeddings},
+proceedings of the Volkov memorial conference,
+{\tt hep-th/9705093}
+%%CITATION = HEP-TH 9705093;%%
+
+
+
+\bibitem{Bellucci:2000bd}
+S.~Bellucci, E.~Ivanov and S.~Krivonos,
+{\it Superworldvolume dynamics of superbranes from nonlinear realizations},
+Phys.\ Lett.\  {\bf B482} (2000) 233
+{\tt hep-th/0003273}
+%%CITATION = HEP-TH 0003273;%%
+
+
+\end{thebibliography}
+
+
+
+
+
+\end{document}
+
+
+
+
+
+\bye

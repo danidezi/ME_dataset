@@ -1,0 +1,1792 @@
+
+%% `Nysa.tex': Leipzig talk (JMGB)
+%%  (30 May 2002; revised 8 January 2003)
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,amssymb,amsbsy,amsthm,latexsym}
+
+%% `fullpage' settings, by H. Partl:
+\topmargin=0pt
+\advance\topmargin by -\headheight
+\advance\topmargin by -\headsep
+\textheight=8.9in
+\oddsidemargin=0pt
+\evensidemargin=\oddsidemargin
+\marginparwidth=0.5in
+\textwidth=6.5in
+
+\providecommand{\A}{\mathcal{A}}        %% an algebra
+\renewcommand{\a}{\alpha}           %% abbreviation for  \alpha
+\renewcommand{\AA}{\mathbb{A}}      %% a superconnection
+\providecommand{\Ahat}{\Hat{A}}
+\providecommand{\as}{\quad\text{as}\enspace} %% `as' with spacing
+\DeclareMathOperator{\Aut}{Aut}     %% group of automorphisms
+\renewcommand{\b}{\beta}            %% abbreviation for  \beta
+\renewcommand{\Bar}[1]{\overline{#1}} %% closure operator
+\providecommand{\bra}[1]{\langle{#1}\rvert} %% bra vector
+\providecommand{\C}{\mathbb{C}}         %% complex numbers
+\providecommand{\D}{\mathcal{D}}        %% de Rham currents
+\providecommand{\del}{\partial}         %% abbreviation for  \partial
+\providecommand{\delslash}{\partial\mkern-9mu/} %% standard Dirac operator
+\DeclareMathOperator{\diag}{diag}   %% diagonal matrix
+\DeclareMathOperator{\Diff}{Diff}   %% diffeomorphism group
+\providecommand{\Dl}{\Delta}            %% abbreviation for  \Delta
+\providecommand{\dl}{\delta}            %% abbreviation for  \delta
+\providecommand{\E}{\mathcal{E}}        %% a projective module
+\providecommand{\eps}{\varepsilon}      %% abbreviation for  \varepsilon
+\providecommand{\F}{\mathcal{F}}        %% Fourier transformation
+\providecommand{\Ga}{\Gamma}            %% abbreviation for  \Gamma
+\providecommand{\ga}{\gamma}            %% abbreviation for  \gamma
+\DeclareMathOperator{\GeV}{GeV}     %% particle mass unit
+\renewcommand{\H}{\mathcal{H}}      %% Hilbert space
+\renewcommand{\Hat}[1]{\widehat{#1}}  %% abbreviation for \widehat
+\providecommand{\HH}{\mathbb{H}}        %% quaternions
+\DeclareMathOperator{\Hom}{Hom}     %% space of homomorphisms
+\DeclareMathOperator{\id}{id}       %% identity operator
+\providecommand{\K}{\mathcal{K}}        %% compact operators, GLS symbols
+\providecommand{\ket}[1]{\lvert{#1}\rangle} %% ket vector
+\providecommand{\ketbra}[2]{\lvert#1\rangle\langle#2\rvert}
+                                    %% rank one operator
+\renewcommand{\L}{\mathcal{L}}      %% Lie derivative, operator ideal
+\providecommand{\La}{\Lambda}           %% abbreviation for  \Lambda
+\providecommand{\la}{\lambda}           %% abbreviation for  \lambda
+\providecommand{\lab}{\boldsymbol{\lambda}} %% Gell-Mann matrices
+\providecommand{\lahat}{\hat\la}        %% 
+\providecommand{\N}{\mathbb{N}}         %% nonnegative integers
+\providecommand{\Om}{\Omega}            %% abbreviation for  \Omega
+\providecommand{\om}{\omega}            %% abbreviation for  \omega
+\providecommand{\Onda}[1]{\widetilde{#1}} %% abbreviation for \widetilde
+\providecommand{\ox}{\otimes}           %% tensor product
+\providecommand{\pd}[2]{\frac{\partial#1}{\partial#2}} %% partial deriv
+\providecommand{\Q}{\mathbb{Q}}         %% rational numbers
+\providecommand{\R}{\mathbb{R}}         %% real numbers
+\providecommand{\Rbar}{\overline{R}}    %% Bogoliubov R-bar operator
+\providecommand{\row}[3]{{#1}_{#2},\dots,{#1}_{#3}}   %% list:  a_1,...,a_n
+\providecommand{\sepword}[1]{\quad\text{#1}\quad} %% well-spaced words
+\providecommand{\set}[1]{\{\,#1\,\}}     %% set notation
+\providecommand{\Sf}{\mathbb{S}}        %% sphere
+\renewcommand{\SS}{\mathcal{S}}     %% symmetric alg, Schwartz space
+\DeclareMathOperator{\Str}{Str}     %% supertrace
+\providecommand{\stroke}{\mathbin\vert} %% (for `\bbraket' and such)
+\providecommand{\sul}{\mathfrak{su}}    %% special unitary Lie algebra
+\providecommand{\T}{\mathbb{T}}         %% circle as a group
+\providecommand{\taub}{\boldsymbol{\tau}} %% Pauli matrices
+\providecommand{\teighth}{\tfrac{1}{8}} %% small fraction  1/8
+\DeclareMathOperator{\TeV}{TeV}     %% particle mass unit
+\providecommand{\thalf}{\tfrac{1}{2}}   %% small fraction  1/2
+\providecommand{\tihalf}{\tfrac{i}{2}}  %% small fraction  i/2
+\providecommand{\tiquarter}{\tfrac{i}{4}} %% small fraction  i/4
+\def\top{\mathrm{top}}              %% top mass
+\providecommand{\tquarter}{\tfrac{1}{4}}  %% small fraction  1/4
+\DeclareMathOperator{\Tr}{Tr}       %% trace of operator
+\DeclareMathOperator{\tr}{tr}       %% trace of matrix
+\DeclareMathOperator{\tsum}{{\textstyle\sum}} %% small sum in display
+\providecommand{\tthird}{\tfrac{1}{3}}  %% small fraction  1/3
+\providecommand{\ul}{\mathfrak{u}}      %% unitary Lie algebra
+\providecommand{\w}{\wedge}             %% exterior product
+\providecommand{\x}{\times}             %% cartesian product or cross
+\providecommand{\Z}{\mathbb{Z}}         %% integers
+\providecommand{\1}{\mathbf{1}}         %% unit
+\providecommand{\7}{\dagger}            %% abbreviation for + symbol
+\providecommand{\8}{\bullet}            %% anonymous degree
+\renewcommand{\.}{\cdot}            %% anonymous variable
+\renewcommand{\:}{\colon}           %% colon in  f: A -> B
+\def\<#1,#2>{\langle#1\stroke#2\rangle} %% inner product (Dirac not'n)
+\def\(#1,#2){(#1\stroke#2)}%% right-linear hermitian product
+
+
+\providecommand{\sunset}{%
+\parbox{15mm}{\begin{picture}(20,10)
+\put(0,5){\line(1,0){10}}
+\put(20,5){\circle{20}}
+\put(10,5){\line(1,0){30}}
+\end{picture}}
+}
+\providecommand{\iice}{%
+\parbox{21mm}{\begin{picture}(20,10)
+\put(0,5){\line(1,0){10}}
+\put(20,5){\circle{20}}
+\put(40.2,5){\circle{20}}
+\put(30.2,5){\oval(40.5,40)[bl]}
+\put(30.2,5){\oval(40,40)[br]}
+\put(50.2,5){\line(1,0){10}}
+\end{picture}}
+}
+\providecommand{\sweet}{%
+\parbox{10mm}{\begin{picture}(20,10)
+\put(0,5){\line(-1,2){5}}
+\put(0,5){\line(-1,-2){5}}
+\put(10,5){\circle{20}}
+\put(20,5){\line(1,2){5}}
+\put(20,5){\line(1,-2){5}}
+\end{picture}}
+}
+\providecommand{\dsweet}{%
+\parbox{15mm}{\begin{picture}(20,10)
+\put(0,5){\line(-1,2){5}}
+\put(0,5){\line(-1,-2){5}}
+\put(10,5){\circle{20}}
+\put(30.2,5){\circle{20}}
+\put(40.2,5){\line(1,2){5}}
+\put(40.2,5){\line(1,-2){5}}
+\end{picture}}
+}
+\providecommand{\tsweet}{%
+\parbox{23mm}{\begin{picture}(20,10)
+\put(0,5){\line(-1,2){5}}
+\put(0,5){\line(-1,-2){5}}
+\put(10,5){\circle{20}}
+\put(30.2,5){\circle{20}}
+\put(50.4,5){\circle{20}}
+\put(60.2,5){\line(1,2){5}}
+\put(60.2,5){\line(1,-2){5}}
+\end{picture}}
+}
+\providecommand{\kg}{%
+\parbox{19mm}{\begin{picture}(20,10)
+\put(0,5){\line(-1,2){5}}
+\put(0,5){\line(-1,-2){5}}
+\put(10,5){\circle{20}}
+\put(20,5){\line(2,1){30}}
+\put(20,5){\line(2,-1){30}}
+\qbezier(35,5)(35,10)(40,15)
+\qbezier(35,5)(35,0)(40,-5)
+\qbezier(45,5)(45,10)(40,15)
+\qbezier(45,5)(45,0)(40,-5)
+\end{picture}}
+}
+\providecommand{\pinterIV}{%
+\parbox{16mm}{\begin{picture}(20,10)
+\put(10,5){\line(-2,-1){10}}
+\put(10,5){\line(-2,1){10}}
+\put(10,5){\line(2,1){30}}
+\put(10,5){\line(2,-1){30}}
+\qbezier(25,5)(25,10)(30,15)
+\qbezier(25,5)(25,0)(30,-5)
+\qbezier(35,5)(35,10)(30,15)
+\qbezier(35,5)(35,0)(30,-5)
+\end{picture}}
+}
+
+
+
+
+\title{Noncommutative Geometry and Fundamental Interactions:
+The First Ten Years}
+
+\author{
+Jos\'e M. Gracia-Bond\'{\i}a\\[1pc]
+Departamento de F\'{\i}sica Te\'orica I, Universidad Complutense,\\
+28040 Madrid, Spain\thanks{
+Permanent address: 
+Departamento de F\'{\i}sica, Universidad de Costa Rica,
+2060 San Pedro de Montes de Oca, Costa Rica.}}
+
+\usepackage{useful_macros}
+\begin{document}
+
+\maketitle
+
+
+\begin{abstract}
+This is the full text of a survey talk for nonspecialists, delivered
+at the 66th Annual Meeting of the German Physical Society in Leipzig,
+March 2002. We have not taken pains to suppress the colloquial style.
+References are given only insofar as they help to underline the points
+made; this is not a full-blooded survey. The connection between
+noncommutative field theory and string theory is mentioned, but
+deemphasized. Contributions to noncommutative geometry made in Germany
+are emphasized.
+\end{abstract}
+
+
+\section{Mathematical prehistory}
+
+As a branch of mathematics, Noncommutative Geometry (NCG) is 20 years
+old. It was precisely in Germany, at the Oberwolfach meeting in
+September--October 1981, that Connes unveiled a ``homology of currents
+for operator algebras''~\cite{ConnesObW} amounting to
+\textit{differential analysis on noncommutative algebras}.
+
+Geometric properties of noncommutative algebras had already been
+worked out in detail for the noncommutative torus, then known as the
+``irrational rotation \myHighlight{$C^*$}\coordHE{}-algebra'', by Connes
+himself~\cite{ConnesTorus}; whereupon the canonical trace on the torus
+algebra gives a ``noncommutative integral''.
+
+The related calculus, reformulated in the new language of cyclic
+cohomology, was developed in detail in the foundational paper on
+``Noncommutative Differential Geometry''~\cite{ConnesNCDiffG}, which
+started to circulate in preprint form around Christmas, 1982. A high
+point of this article is the so-called
+Hochschild--Kostant--Rosenberg--Connes theorem~\cite{Polaris}. By
+1983, Connes' approach to cyclic cohomology was essentially
+complete~\cite{ConnesLambda}; his parallel work on foliations and
+noncommutative integration led him to emphasize the role of Fredholm
+modules in the NCG formalism. The Baum--Connes and Connes--Kasparov
+conjectures were formulated in their primitive form in the early
+eighties. Also pioneer work by Rieffel~\cite{RieffelRot} contributed
+to shape noncommutative geometry in its early stages.
+
+\smallskip
+
+Noncommutative geometry, in essence, is an operator algebraic,
+variational reformulation of the foundations of geometry, extending to
+noncommutative spaces. NCG allows consideration of ``singular
+spaces'', erasing the distinction between the continuous and the
+discrete. Its main specific tools are Dirac operators, Fredholm
+modules, the noncommutative integral, Hochschild and cyclic cohomology
+of algebras, \myHighlight{$C^*$}\coordHE{}-modules and Hopf algebras. NCG has many affinities 
+with quantum field theory, and it is not unusual for noncommutative 
+homological constructs to crop up in that context~\cite{Halley}.
+
+On the mathematical side, NCG has had a vigorous development. Current
+topics of interest include index theory and groupoids, mathematical
+quantization, the Novikov and Baum--Connes conjectures and the
+relation of the latter to the Langlands program, locally compact
+quantum groups, the dressing of fermion
+propagators in the framework of spectral triples, and the famous
+Riemann hypothesis. In the mainstream of mathematics, the
+noncommutative program needs no tribute. It is here to stay.
+
+
+
+\section{The Interface with Physics}
+
+We say interface because indeed, there is no question of
+``application'' of NCG to physics, but rather of mutual intercourse.
+In fact, the original use of noncommutative geometry in physics was a
+model of epistemological humility. Instead of trying to
+{\it derive\/} the laws of physics from some NCG construct, people
+were trying to {\it learn}, from the mainstream physical theories,
+what the noncommutative geometry of the world could be. By
+``mainstream physical theories'' we essentially understand the
+Standard Model (SM) of fundamental interactions.
+
+The Standard Model, which has been been termed ``ugly'' by so many
+physicists, including some of its fathers, is dramatically elegant and
+beautiful in modern mathematics, in that its crucial concepts are
+among the deepest and most powerful in noncommutative geometry. I am
+talking about the concepts of gauge field and of chiral fermion.
+
+Gauge fields are identical with connections, perhaps the most
+important objects in the modern formulation of geometry. The algebraic
+definition of linear connection is imported verbatim into NCG. Thinking
+seriously about the space of all connections has been a very fruitful
+idea that mathematicians have picked up from physicists~\cite{Woit}.
+
+Chiral fermions are acted on by Dirac and Dirac--Weyl operators.
+Perhaps it is not so well known that Dirac operators are a source of
+NCG, where they give rise to ``fundamental classes''. (Any complex
+spinor bundle on a smooth manifold gives rise to a generalized Dirac
+operator \myHighlight{$D$}\coordHE{}, whose sign operator \myHighlight{$F = D|D|^{-1}$}\coordHE{} determines a
+Fredholm module; the natural equivalence class of these depends only
+on the underlying spin\myHighlight{$^c$}\coordHE{}-structure~\cite{HigsonR}. Since the
+spin\myHighlight{$^c$}\coordHE{} structure determines, among other things, the orientation of
+the manifold, this class is a finer invariant than the usual
+fundamental class in homology.) It is precisely the role of the Dirac
+operator both in the Standard Model and in NCG that made the
+rapprochement between this branch of mathematics and fundamental
+physics natural and unavoidable.
+
+There have been two main lines for making sense of the SM in terms of
+NCG: the one developed by Connes himself (and followers), and the one
+related to the Lie superalgebra \myHighlight{$\sul(2|1)$}\coordHE{}, mainly exploited by the
+Mainz--Marseille group (Scheck, H\"au{\ss}ling, Paschke, Papadopoulos,
+Coquereaux, Esposito-Far\`ese, Vaillant), more or less at the
+same time.
+
+Let us collect the gauge potentials appearing in the SM into a single
+package of differential forms:
+$$\coord{}\boxMath{
+\AA' = i(B,W,A),
+}{dollar}{0pt}\coordE{}$$
+where
+$$\coord{}\boxMath{
+B = -\tihalf g_1 \mathbf{B}_\mu \,dx^\mu, \quad
+W = -\tihalf g_2\,\taub \cdot \mathbf{W}_\mu \,dx^\mu
+\quad{\rm and}
+\quad A = -\tihalf g_3\,\lab \cdot \mathbf{A}_\mu\,dx^\mu,
+}{dollar}{0pt}\coordE{}$$
+with \myHighlight{$\mathbf{B}$}\coordHE{}, \myHighlight{$\mathbf{W}$}\coordHE{} and \myHighlight{$\mathbf{A}$}\coordHE{} denoting respectively
+the hypercharge, weak isospin and colour gauge potentials. From the
+mathematical standpoint, \myHighlight{$W$}\coordHE{} is to be regarded as a 1-form with values
+in the real field \myHighlight{$\HH$}\coordHE{} of quaternions. In other words, \myHighlight{$\AA'$}\coordHE{} is an
+element of \myHighlight{$\La^1(M) \ox \A_F$}\coordHE{}, where the noncommutative algebra
+\myHighlight{$\A_F := \C \oplus \HH \oplus M_3(\C)$}\coordHE{}, that we baptized the 
+\textit{Eigenschaften\/} algebra~\cite{Cordelia}, plays the crucial
+r\^ole.
+
+Let us also collect all chiral fermion fields into a multiplet \myHighlight{$\Psi$}\coordHE{}
+and denote by \myHighlight{$J$}\coordHE{} the charge conjugation operation. Then the fermion 
+kinetic term is rewritten as follows:
+\begin{equation}\coord{}\boxEquation{
+I(\Psi,\AA',J) = \<\Psi, (i \delslash + \AA' + J\AA' J^\7) \Psi>.
+\label{eq:action1}
+}{
+I(\Psi,\AA',J) = \<\Psi, (i \delslash + \AA' + J\AA' J^\7) \Psi>.
+}{ecuacion}\coordE{}\end{equation}
+Next we look at the Yukawa part of the SM Lagrangian. Use the
+normalized Higgs doublet
+\myHighlight{$\Phi := \begin{pmatrix} \Phi_1\\ \Phi_2\end{pmatrix}
+:= \sqrt2\,\phi/v$}\coordHE{}, where \myHighlight{$\phi$}\coordHE{} is a Higgs doublet with vacuum
+expectation value~\myHighlight{$v/\sqrt2$}\coordHE{}. We also need
+$$\coord{}\boxMath{
+\Onda\Phi := \begin{pmatrix} -\bar\Phi_2 \\ \bar\Phi_1 \end{pmatrix}
+= \begin{pmatrix} 0 &-1\\ 1 & 0 \end{pmatrix}
+\begin{pmatrix} \bar\Phi_1 \\ \bar\Phi_2 \end{pmatrix}.
+}{dollar}{0pt}\coordE{}$$
+It has been remarked that the Higgs should also be properly regarded
+as a quaternion-valued field; this makes apparent the custodial
+symmetry of the scalar sector of the SM, which is related to the
+\myHighlight{$\rho = 1$}\coordHE{} tree level prediction for the low-energy neutral to charged
+current interactions ratio.
+
+Introduce then \myHighlight{$q_\Phi = \begin{pmatrix} \bar\Phi_1 & \bar\Phi_2 \\
+- \Phi_2 & \Phi_1 \end{pmatrix}$}\coordHE{} and
+\myHighlight{$r := q_\Phi - \langle q_\Phi \rangle = q_\Phi - 1$}\coordHE{} and write,
+schematically for a right-left splitting of the fermion multiplets:
+$$\coord{}\boxMath{
+\AA'' = \begin{pmatrix} & M^\7 r \\ r^\7 M & \end{pmatrix},
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$M$}\coordHE{} denotes the quark or lepton mass matrix (including the
+Kobayashi--Maskawa or Maki--Nakagawa--Sakata parameters), as the case
+might be. Just as the standard Dirac operator relates the left- and
+right-handed spinor representations, the Yukawa operator \myHighlight{$\D_F$}\coordHE{} in the
+space of internal degrees of freedom relates also the left- and
+right-handed chiral sectors. The Yukawa terms for both particles and
+antiparticles (for the first generation) are written
+\begin{align*}\coord{}\boxAlignEqnarray{
+\leftCoord{}I(\Psi,\AA'',J) &:= \<\Psi, (\D_F + \AA'' + J\AA''J^\7) \Psi>
+\leftCoord{}\rightCoord{}\\
+&\leftCoord{}= \bar q_L \Phi\,m_d\,d_R + \bar q_L \Onda\Phi\,m_u\,u_R
+\leftCoord{}+ q_R \bar \Phi\,\bar m_d\, \bar d_L
+\leftCoord{}+ q_R \Onda{\bar\Phi}\,\bar m_u\, \bar u_L
+\leftCoord{}\rightCoord{}\\
+&\leftCoord{}\qquad
+\leftCoord{}+ \bar\ell_L \Phi\,m_e\,e_R
+\leftCoord{}+ \bar\ell_L \Onda\Phi\,m_\nu\,\nu_R
+\leftCoord{}+ \ell_R \bar\Phi\, \bar m_e\, \bar e_L 
+\leftCoord{}+ \ell_R  \Onda{\bar\Phi}\,\bar m_\nu\, \bar \nu_L
+\leftCoord{}+ {\rm h.c.}
+}{0mm}{12}{3}{
+I(\Psi,\AA'',J) &:= \<\Psi, (\D_F + \AA'' + J\AA''J^\7) \Psi>
+\\
+&= \bar q_L \Phi\,m_d\,d_R + \bar q_L \Onda\Phi\,m_u\,u_R
++ q_R \bar \Phi\,\bar m_d\, \bar d_L
++ q_R \Onda{\bar\Phi}\,\bar m_u\, \bar u_L
+\\
+&\qquad
++ \bar\ell_L \Phi\,m_e\,e_R
++ \bar\ell_L \Onda\Phi\,m_\nu\,\nu_R
++ \ell_R \bar\Phi\, \bar m_e\, \bar e_L 
++ \ell_R  \Onda{\bar\Phi}\,\bar m_\nu\, \bar \nu_L
++ {\rm h.c.}
+}{0}\coordE{}\end{align*}
+Note that neutrinos are assumed to have only Dirac mass terms, and
+that the hypercharges of \myHighlight{$\Phi$}\coordHE{}, \myHighlight{$\Onda\Phi$}\coordHE{} are respectively \myHighlight{$+1$}\coordHE{}
+and~\myHighlight{$-1$}\coordHE{}.
+
+The combination of both constructions yields a Dirac--Yukawa operator
+\myHighlight{$\D = i\delslash \oplus \D_F$}\coordHE{}. With \myHighlight{$\AA := \AA'\,\oplus\,\AA''$}\coordHE{}, the
+\textit{whole} fermionic sector of the SM being recast in a form
+similar to~\eqref{eq:action1}:
+\begin{equation}\coord{}\boxEquation{
+I(\Psi,\AA,J) = \<\Psi, (\D + \AA + J\AA J^\7) \Psi>.
+\label{eq:action2}
+}{
+I(\Psi,\AA,J) = \<\Psi, (\D + \AA + J\AA J^\7) \Psi>.
+}{ecuacion}\coordE{}\end{equation}
+
+In keeping with the old Kaluza--Klein idea, we have combined the
+ordinary gauge fields and the Higgs as entries of a
+\textit{generalized gauge field}. The Yukawa terms come from the
+minimal coupling recipe applied to the gauge field in the internal
+space. Hence the ``two-leaves'' picture for the
+Glashow--Weinberg--Salam model~\cite{Sirius, KastlerS} that contributed to make
+intuitive the noncommutative vision of the SM. The Dirac--Yukawa
+operator is seen to contain in NCG all the relevant information
+pertaining to the~SM.
+
+The construction was made in the realm of Euclidean field theory. I
+believe Mario Paschke will explain to us in this Meeting the
+(difficulties and) hopes for introducing time in the picture.
+
+This Connes--Lott reconstruction of the SM gave rise to two
+``predictions''. It is important to recall that, at the time they were
+made, the top quark had not yet been seen, and the best estimates for
+its mass clustered around \myHighlight{$130 \GeV$}\coordHE{}! The NCG model sort of explains
+why the masses of the top quark, the \myHighlight{$W$}\coordHE{} and \myHighlight{$Z$}\coordHE{} particles and the
+Higgs particle should be of the same order, and gave right away
+$$\coord{}\boxMath{
+m_\top \geq \sqrt{3} m_W \approx 139 \GeV.
+}{dollar}{0pt}\coordE{}$$
+With a bit of renormalization group running~\cite{Orpheus}, it fell
+right on the mark.
+
+On the other hand, the ``prediction'' for the Higgs mass from Connes'
+NCG has remained stubbornly around \myHighlight{$200 \GeV$}\coordHE{}, which is too large for
+current phenomenological prejudice.
+
+\smallskip
+
+The Mainz \myHighlight{$\sul(2|1)$}\coordHE{} model was based on the following idea: put
+together the \myHighlight{$(W,B)$}\coordHE{} forms belonging to the \myHighlight{$\sul(2) \x \ul(1)$}\coordHE{} gauge
+group into a \myHighlight{$3 \x 3$}\coordHE{} antihermitian matrix and fill up the lateral
+columns with the Higgs field components:
+$$\coord{}\boxMath{
+M = \begin{pmatrix}
+W_{2\x2} & C_{2\x1} \\ D_{1\x2} & B_{1\x1}
+\end{pmatrix}_{3\x3},
+}{dollar}{0pt}\coordE{}$$
+with
+$$\coord{}\boxMath{
+\Str M = \tr W - B = 0.
+}{dollar}{0pt}\coordE{}$$
+This gives rise to the Lie superalgebra, and then we can look for its
+representations and relate them to the fermion fields. The idea goes
+back to~\cite{Neeman}, but its more modern proposers realized that the
+superalgebra should not be gauged.
+
+It turns out that the Mainz model gives as good a description as the
+Connes--Lott machine of spontaneous symmetry breaking, and that the
+known families of quarks and leptons fit very well with the (reducible
+but indecomposable) \myHighlight{$\sul(2|1)$}\coordHE{} representations~\cite{Scheck}.
+
+This model received less attention than Connes', perhaps because the
+Dirac operator does not play the main role. However, the big prize
+nowadays, the true pot of gold, lies in ``\textit{horizontal
+symmetry}''; all the more so since we have come to realize that the
+neutrino sector has a much richer structure which was found a few
+years ago. The attraction of the Mainz model, or variants thereof,
+over Connes', is that it gives some clues to the structure of the
+fermion mass matrix; and so, that model is alive and well.
+
+On this score, I offer a decidedly low-tech suggestion. Let us start
+from the same idea of completing the \myHighlight{$\sul(2) \x \ul(1)$}\coordHE{} into a
+\myHighlight{$3 \x 3$}\coordHE{} matrix. Go back to the ordinary Lie algebra context in mixing
+the four Higgs field components with a \myHighlight{$\ul(3)$}\coordHE{} symmetry (it has
+always been clear that \myHighlight{$\sul(3)$}\coordHE{} won't work). The extra scalar field
+comes in handy for astrophysical purposes.
+
+In other words, we recognize the basic fact from covariant wave
+equations theory, and from the very structure of the SM that spin~0
+and spin~1 fields always appear in tandem. The exercise gives the
+right quantum numbers. The Lagrangian for the Glashow--Weinberg--Salam
+model, except for the symmetry-breaking terms, is elegantly rewritten
+in terms of the Dirac operator only~\cite{ChavesM}. An interesting
+fact is that, with the appropriate variables, the Lagrangian for the
+gravity field can be written in similar form. Now, the ``dualized
+standard models'' try to explain the existence of three generations
+and the relations among them from a duality (effectively taking place
+at the 100--\myHighlight{$1000 \TeV$}\coordHE{} scales) between the \myHighlight{$\sul(3)$}\coordHE{} color sector of
+the SM and the fermion families space. This scheme is open to
+criticism in that it is unclear why the leptons, which do not see
+color, should see dualized color. But the NCG approach taught us that
+there is a third~3 in the Standard Model. So, just maybe, there is a
+\textit{triality} lurking behind it.
+
+Apart from the above (which is mostly old hat), we would say that the
+first stage of the process of linking NCG and fundamental physics
+finished around the winter of 1995--96. The humble approach paid
+handsomely up, when the very structure of the SM itself gave
+Connes the inspiration for the construction of noncommutative spin
+manifolds. That is, since that time we know how to put fermion fields
+on a noncommutative manifold, and this knowledge is backed by a
+fundamental mathematical result, whose proof you can find in
+{\it Elements of Noncommutative Geometry\/}~\cite{Polaris}. This needs
+in turn the proof of the ``character theorem'', stated but not proved
+in~\cite{Book}, which was provided to us by Connes.
+
+Afterwards, there has been little activity on this front. The vexing
+question of the unimodularity condition, which has to be imposed on
+the noncommutative gauge field~\eqref{eq:action2} in order to really
+reproduce the Standard Model with the correct hypercharges, was
+``explained'' by Alvarez, Mart\'{\i}n and myself in terms of anomaly
+cancellation~\cite{Chiron}; but not understood on a native NCG basis.
+This loose thread has been tied up recently by Serge Lazzarini and
+Thomas Sch\"ucker~\cite{LazzariniS}.
+
+
+
+\section{Arrival of the Top-down Approach}
+
+We have seen that the first cohabitation, in recent times, of
+noncommutative geometry and the physics of fundamental interactions
+actually followed a \textit{bottom-up} pattern. The \textit{top-down}
+approach goes back to the classic paper by Snyder in January 1947,
+``Quantized space-time''~\cite{Snyder}.
+
+In this charming paper, it was first suggested that coordinates are
+noncommuting operators; the six commutators of the coordinates are
+proportional to a basic unit of length and correspond to the
+infinitesimal generators of the Lorentz group; throughout, Lorentz
+covariance is maintained. Then as now, motivations for using
+noncommuting coordinates to describe spacetime were the hope of
+improving the renormalizability of QFT and of grappling with the
+attendant nonlocality of physics at the Planck scale (uncertainty
+relations for spacetime coming from gravity).
+
+The top-down approach has been resurrected recently by string
+theorists. In their most popular model, the commutation relations are
+simply of the form
+\begin{equation}\coord{}\boxEquation{
+[x^j, x^k] = i\, \theta^{jk},
+\label{eq:comm-reln}
+}{
+[x^j, x^k] = i\, \theta^{jk},
+}{ecuacion}\coordE{}\end{equation}
+breaking Lorentz invariance. As anticipated by
+Sheikh-Jabbari~\cite{Jabbari} and from a slightly different viewpoint
+by Schomerus~\cite{Schomerus}, and plausibly argued by Seiberg and
+Witten~\cite{SeibergW}, open strings with allowed endpoints on
+2Dirich\-let-branes in a \myHighlight{$B$}\coordHE{}-field background act as electric dipoles
+of the abelian gauge field of the brane; the endpoints live on the
+noncommutative space determined by~\eqref{eq:comm-reln}. Then
+Kar~\cite{Kar} argued that the holographic correspondence relates the
+noncommutative and commutative worlds.
+
+Slightly before, Douglas, Schwarz and Connes himself~\cite{ConnesDS}
+had arrived at the conclusion that compactification of \myHighlight{$M$}\coordHE{}-theory, in
+the context of dimensionally reduced gauge theory actions, leads
+ineluctably to noncommutative spaces. And Douglas and Hull~\cite{DouglasH}
+had inferred from this that gauge theories on NC tori make sense as a 
+limit in string theory. Other work relating noncommutative geometry and
+strings includes~\cite{LandiLS}, partly inspired by~\cite{FroehlichG}.
+
+It should also be noted that
+Doplicher, Fredenhagen and Roberts had earlier considered a model
+with commutation relations
+\begin{equation}\coord{}\boxEquation{
+[x^j, x^k] = i\, \sigma^{jk},
+\label{eq:DFRcomm-reln}
+}{
+[x^j, x^k] = i\, \sigma^{jk},
+}{ecuacion}\coordE{}\end{equation}
+where the \myHighlight{$\sigma^{jk}$}\coordHE{} are the components of a tensor, and beyond
+that are \myHighlight{$c$}\coordHE{}-numbers for all practical purposes. Thus in their
+formalism~\cite{DoplicherFR}, Lorentz invariance is also explicitly
+kept.
+
+A very important construction in the framework of~\cite{SeibergW} is
+the so-called Seiberg--Witten map in gauge theory. This map relates
+the gauge fields and the gauge variations in a noncommutative theory
+with commutative counterparts. Let \myHighlight{$\Ahat(A)$}\coordHE{} and \myHighlight{$\lahat(A,\la)$}\coordHE{},
+where
+$$\coord{}\boxMath{
+\hat\delta \Ahat_j
+= \del_j \lahat + i (\Ahat_j \star_\theta \lahat - \lahat
+\star_\theta \Ahat_j),
+}{dollar}{0pt}\coordE{}$$
+be, respectively, the NC gauge potentials and gauge variation in terms
+of the commutative ones; the \myHighlight{$\star_\theta$}\coordHE{} denotes the Moyal product,
+of which more below. Then necessarily, in order to have
+$$\coord{}\boxMath{
+\Ahat(A) + \hat\delta\,\Ahat(A) = \Ahat(A + \delta A)
+}{dollar}{0pt}\coordE{}$$
+for \myHighlight{$\theta$}\coordHE{} small,
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\Ahat_j(A) 
+&\leftCoord{}= A_j - \tquarter \theta^{\leftCoord{}kl} \{A_k, \del_l A_j + F_{\rightCoord{}lj} \}
+   \leftCoord{}+ O(\theta^{\leftCoord{}2}),
+\leftCoord{}\nonumber \rightCoord{}\\
+\leftCoord{}\lahat(A,\la)
+&\leftCoord{}= \la + \tquarter \theta^{\leftCoord{}kl} \{\del_k \la, A_l \} + O(\theta^{\leftCoord{}2}),
+\label{eq:sw-map}
+}{0mm}{10}{3}{
+\Ahat_j(A) 
+&= A_j - \tquarter \theta^{kl} \{A_k, \del_l A_j + F_{lj} \}
+   + O(\theta^{2}),
+\nonumber \\
+\lahat(A,\la)
+&= \la + \tquarter \theta^{kl} \{\del_k \la, A_l \} + O(\theta^{2}),
+}{0}\coordE{}\end{align}
+where \myHighlight{$F(A)$}\coordHE{} is the ordinary gauge field for~\myHighlight{$A$}\coordHE{}. These equations have
+been seen by Jur\v{c}o, Schupp and Wess~\cite{JurcoSW}, and also by
+Jackiw and Pi~\cite{JackiwP}, to correspond to an infinitesimal
+1-cocycle for a projective representation of the underlying gauge
+group in the Moyal algebra.
+
+The equations \eqref{eq:sw-map} are valid for arbitrary \myHighlight{$\theta$}\coordHE{}, and 
+so, when using the Seiberg--Witten map, the components of \myHighlight{$\theta$}\coordHE{} 
+should be regarded as variables. 
+
+\medskip
+
+Before continuing, we need an interlude on the Moyal product. It is
+correctly (nonperturbatively) defined, for nondegenerate \myHighlight{$\theta$}\coordHE{}, as
+\begin{equation}\coord{}\boxEquation{
+f \star_\theta g(u) := (\pi\theta)^{-4}
+\int_{\R^4}\int_{\R^4}\,f(u + s)g(u + t)\,e^{2is\theta^{-1}t}\,ds\,dt,
+\label{eq:Moyal-prodint}
+}{
+f \star_\theta g(u) := (\pi\theta)^{-4}
+\int_{\R^4}\int_{\R^4}\,f(u + s)g(u + t)\,e^{2is\theta^{-1}t}\,ds\,dt,
+}{ecuacion}\coordE{}\end{equation}
+and this gives rise to the commutation relations~\eqref{eq:comm-reln}.
+
+Mathematically, those are the commutation relations of Quantum
+Mechanics, when the reduced Planck constant replaces~\myHighlight{$\theta$}\coordHE{}! From
+now on, we neglect to indicate \myHighlight{$\theta$}\coordHE{} in the star product notation.
+The precise relation of~\eqref{eq:Moyal-prodint} to the asymptotic
+formula usually given as definition of the Moyal product was spelled
+out some time ago in~\cite{Nereid}. Indeed the formula
+\eqref{eq:Moyal-prodint} is the basis of the ``fourth'' formalism of
+Quantum Mechanics, in which observables, states and transitions are
+described by functions (or distributions) on phase space. This
+formalism, which goes back to Wigner, Weyl and Moyal, had already a
+long and proud history when (a version of) the Moyal product was
+rediscovered by string theorists. And so, as Fedele Lizzi has put it,
+``in the string community we can happily go on rediscovering quantum
+mechanics''~\cite{LizziViewpoint}.
+
+An even more fortunate fact was that the quantum field-theoretical
+framework for making sense of the noncommutative limit of string
+theory also preexisted the paper by Seiberg and Witten. This story
+deserves its own chapter.
+
+
+\section{Noncommutative Field Theory (NCFT)}
+
+NCFT can be and was developed independently of its string theory
+motivation and background. I go not into the theory of quantum fields
+on ad-hoc discrete spaces (in this Conference, Rainer H\"au{\ss}ling
+will touch on that). In turn the latter topic should not be confused
+with ``fuzzy physics'', which has led nowhere, and does deserve a
+sharp look ---but not here. A reasonably good review for NCFT
+is~\cite{DouglasN}.
+
+Let us explain why NC field theory preexisted the Seiberg--Witten
+paper. Connes' noncommutative spin manifold theorem and Fredholm
+module theory, referred to above, come in handy here. Quantum field
+theory has an algebraic core independent of the nature of space-time.
+From the representation theory of the infinite dimensional orthogonal
+group, or an appropriate sugbroup thereof, with the input of a
+single-particle space, it is possible to derive all Fock space
+quantities of interest. Nothing really changes if the ``matter field''
+evolves on a noncommutative space. In a nutshell: one can apply the
+canonical quantization machinery to a noncommutative kind of
+single-particle space~\cite{Atlas}.
+
+We already mentioned the long-standing hope that giving up
+\textit{locality} in the interaction of fields ---one of the basic
+tenets of quantum field theory and indeed one of the main selling
+points by the forefathers--- would be rewarded with a better
+ultraviolet behaviour. This hope was now amenable to rigorous
+scrutiny, and it is {\it not\/} borne out. QFT on noncommutative
+manifolds also \textit{requires renormalization}. This, in some sense
+the first result of NCFT, was proved in general by V\'arilly and
+myself in~\cite{Atlas}. A subsequent important paper by Chaichian,
+Demichev and Pre\v{s}najder, written in a different spirit, confirmed
+it~\cite{ChaichianDP}.
+
+Of course, one can prove the same in the context of a
+\textit{particular} NCG model, by writing down the integral
+corresponding to a Feynman diagram, and finding it to be divergent.
+That had been shown previously by Filk~\cite{Filk}, for the scalar
+Lagrangian theory associated the Moyal product algebra. (Filk had been
+active in ``Twisted Eguchi--Kawai'' models, and retrospectively it
+seems clear that he took his cue from~\cite{GonzalezAKA}, where these
+models were generalized to continuous momenta.)
+
+Two other pioneering papers which predated the one by Seiberg and
+Witten were \cite{MartinSRone} and \cite{KrajewskiW}. These are important
+because they show that, at the one-loop level, the radiative
+corrections respect the gauge (BRS) invariance of the theory. This is
+not trivial in noncommutative Yang--Mills theory: for instance, it
+involves curious cancellations for the 4-point function.
+
+Before enumerating the main issues in NCFT, let us issue a warning.
+There has been an enormous outpouring of literature concerning those
+issues. The quality of many of those papers is substandard; they
+should come with an attached notice of \textit{Warnung}. To begin
+with, the mathematics of the Moyal product, as already said, antedates
+its current use by string theorists. There has been no shortage of
+mathematical mistakes, attesting that many people did not bother to
+study the Weyl--Wigner--Moyal formalism in depth. For instance,
+in~\cite{Harvey} we find the following assertion (unchallenged till
+now, to our knowledge):
+\begin{quotation}
+Let \myHighlight{$\SS^m$}\coordHE{} be the set of functions on phase space defined by
+the condition \myHighlight{$\SS^m = \set{f(q,p) : |\del_q^\a \del_p^\b f|
+\leq C_{\a\b} (1 + q^2 + p^2)^{(m-\a-\b)/2}}$}\coordHE{}, for constants
+\myHighlight{$C_{\a\b}$}\coordHE{}. Then one can show that \myHighlight{$f$}\coordHE{} being in \myHighlight{$\SS^m$}\coordHE{} with
+\myHighlight{$m \leq 0$}\coordHE{} implies that \myHighlight{$\hat O_f \in \mathcal{B}(\H)$}\coordHE{} while \myHighlight{$m < 0$}\coordHE{}
+implies that \myHighlight{$\hat O_f \in \K(\H)$}\coordHE{}. Thus we see that the Weyl
+transforms of bounded operators are bounded functions [\dots]
+\end{quotation}
+The last phrase is a {\it non sequitur\/}. It is moreover incorrect.
+For instance, the (inverse) Weyl transform of the parity operator,
+which is obviously bounded, is a delta function~\cite{Iapetus}. In
+general, the Fourier transform of a function giving a bounded operator
+gives a bounded operator, too, although perhaps for a different value
+of \myHighlight{$\theta$}\coordHE{}. The correct approach has been in the literature at least
+since~\cite{Phobos,Deimos}. Also, some papers read as if they were
+conceived by randomly opening a book on QFT, and trying to make the
+noncommutative analog of the section which appeared. Particularly
+obnoxious is the pest of trivial observations, obvious to anyone
+steeped in noncommutative mathematics, being republished again and
+again. For example, the note~\cite{ChaichianPJTNogo} just rehashes a
+remark in the (substantial) paper~\cite{Terashima}. The whole field
+shows the traces of having grown too quickly, tending to obscure the
+lasting contributions.
+
+\smallskip
+What then are the main issues in NCFT?
+
+\begin{itemize}
+
+\item  The distinction between planar and nonplanar Feynman diagrams.
+
+Envisage, for instance, the theory given by the action functional
+$$\coord{}\boxMath{
+S = \int d^4x\, \biggl(\frac{1}{2} \pd{\phi}{x^\mu} \pd{\phi}{x_\mu} 
++ \frac{1}{2} m^2\phi^2 + \frac{g}{4!} \phi\star\phi\star\phi\star\phi 
+\biggr)
+}{dollar}{0pt}\coordE{}$$
+Generating the Feynman rules like in the commutative theory, the
+propagators do not change, but the vertices get in momentum space a
+factor proportional to
+$$\coord{}\boxMath{
+\exp\biggl(-i/2\sum_{1\leq k<l\leq 4}p_{k\a}\theta_{\a\b}p_{l\b}\biggr);
+}{dollar}{0pt}\coordE{}$$
+we suppose all the momenta are incoming on the vertex, in cyclic order.
+
+Consider then a simple diagram of the model like the tadpole diagram;
+let \myHighlight{$p$}\coordHE{} denote the incoming momentum and \myHighlight{$k$}\coordHE{} the loop variable.
+Depending on the order of the momenta, the previous factor is equal
+to~1 or to \myHighlight{$e^{-ip_\a\theta_{\a\b}k_\b}$}\coordHE{}.
+
+In general, planar diagrams are those that get overall phase factors
+depending only on the external legs; for nonplanar diagrams there are
+phase factors which depend on loop variables as well, and the
+corresponding integrals become convergent. For the tadpole diagram, we
+get amplitudes of the form
+$$\coord{}\boxMath{
+\Ga_{\rm pl}(p)\propto \int \frac{d^4k}{k^2 + m^2},  \qquad
+\Ga_{\rm npl}(p)\propto \int \frac{d^4k}{k^2 + m^2}\, e^{-ip\theta k}.
+}{dollar}{0pt}\coordE{}$$
+The second integral is finite. Actually, the combinatorics of the
+nonlocal vertex factors was worked out long ago by Gonz\'alez-Arroyo
+and Okawa in the context of the TEK models, and given in detail
+in~\cite{KorthalsAltes}.
+
+For noncommutative Yang--Mills theory at the one-loop level, have a
+look at~\cite{MartinSRtwo}.
+
+\item  The UV/IR mixing and supersymmetry.
+
+Nonplanar diagrams may become divergent again for particular values of
+the momenta. This would not seem to matter as long as
+\myHighlight{$\Ga_{\rm npl}(p)$}\coordHE{} remains a well defined distribution. But, for more
+complicated diagrams with subdivergences, the dependence on~\myHighlight{$p$}\coordHE{} of
+their amplitude behaviour spells trouble, because these diagrams may
+unexpectedly become divergent again. This is the notorious UV/IR
+mixing, which tends to spoil renormalizability. One can think it
+reflects the underlying ``stringy degrees of freedom''. For Moyal
+noncommutative Yang--Mills theory, this happens already at the 2-loop
+level. People have tried to get around the obstacle using resummation
+techniques, or nonlocal field redefinitions, but none of those are
+convincing to this reviewer so far.
+
+Supersymmetric theories have advantages in regard to renormalizability
+and the UV/IR trouble~\cite{GirottiGRS}. In this context, we remark it
+has been proved by Paban, Sethi and Stern~\cite{PabanSS} that the
+deformation leading to NC Yang--Mills theory in the sense of Seiberg
+and Witten is about the only one compatible with supersymmetry.
+
+
+\item  Renormalizability in the context of the Seiberg--Witten map.
+
+Another possibility in order to circumvent the UV/IR problem and
+obtain renormalizable theories is to use the Seiberg--Witten map. The
+trouble with this approach is that many new vertices appear, at
+different orders in \myHighlight{$\theta$}\coordHE{} and~\myHighlight{$\hbar$}\coordHE{}. Extensive
+calculations~\cite{WulkenhaarTheta} have shown that in
+\myHighlight{$\theta$}\coordHE{}-expanded QED, many miraculous cancellations occur. However,
+the fermion 4-point function becomes divergent, so, strictly speaking,
+that model is nonrenormalizable.
+
+Since in this Conference Raimar Wulkenhaar talks about the subject, I
+shall not spend more time on these matters.
+
+
+\item  The question of non/unitarity of theories on spaces with
+timelike noncommutativity.
+
+It has been asserted~\cite{GomisM} that theories with timelike
+noncommutativity suffer from violation of unitarity. The issue was
+lucidly discussed in~\cite{LAGBarbonZ}. However, Dorothea Bahns
+et~al~\cite{BahnsDFP} have cogently argued that, when using a
+Hamiltonian approach to NCFT, instead of the usual Lagrangian
+approach, this problem can be exorcised. The change in viewpoint
+concerns only the nonplanar diagrams. 
+
+(As we were preparing the manuscript for publication, the idea by
+Bahns et~al has been further elaborated by~\cite{RimY}
+and~\cite{LiaoS}. We look forward to hear more on this.)
+
+In this context, investigation of the old model by Snyder, unjustly
+neglected in our opinion, is probably worthwhile. The Hamiltonian
+approach, nevertheless, probably does not help with UV/IR
+trouble~\cite{BahnsPrivate}.
+
+
+\item  The construction of gauge-covariant/invariant observables.
+
+It will have been clear to the listener that the space coordinates 
+themselves are not gauge-covariant. On the other hand, 
+\myHighlight{$x^\mu + \theta^{\mu\nu} A_\nu$}\coordHE{} is a gauge-covariant quantity
+---as was well known to the
+practitioners of Weyl--Wigner--Moyal theory. This noncovariance of the
+space coordinates brings NC theories closer with gravity. The
+construction of gauge-invariant observables has been competently taken
+up by Harald Dorn and coworkers in a series of papers~\cite{Dorn}.
+
+
+\item  Anomalies in NCFT.
+
+The part of the nonabelian anomaly which is quadratic in the gauge
+potentials was found by Carmelo P. Mart\'{\i}n and
+myself~\cite{Camilla} to be
+\begin{align*}\coord{}\boxAlignEqnarray{
+&\leftCoord{}-\frac{\leftCoord{}1}{\rightCoord{}96\pi^{\leftCoord{}2}}\,\int d^{\leftCoord{}4} x\,
+\leftCoord{}\eps_{\rightCoord{}\mu_1\mu_2\mu_3\mu_4}\,\Tr\,T^{\leftCoord{}a}\,[T^{\leftCoord{}b},T^{\leftCoord{}c}]\,
+\leftCoord{}\del_{\rightCoord{}\mu_1} \theta^{\leftCoord{}a} \bigl[
+\leftCoord{}\Ahat^{\leftCoord{}b}_{\rightCoord{}\mu_2} \star \del_{\rightCoord{}\mu_3} \Ahat^{\leftCoord{}c}_{\rightCoord{}\mu_4} -
+\leftCoord{}\del_{\rightCoord{}\mu_3} \Ahat^{\leftCoord{}c}_{\rightCoord{}\mu_4} \star \Ahat^{\leftCoord{}b}_{\rightCoord{}\mu_2} \bigr]
+\leftCoord{}\rightCoord{}\\
+&\leftCoord{}-\frac{\leftCoord{}1}{\rightCoord{}96\pi^{\leftCoord{}2}}\,\int d^{\leftCoord{}4} x\,
+\leftCoord{}\eps_{\rightCoord{}\mu_1\mu_2\mu_3\mu_4}\,\Tr\,T^{\leftCoord{}a}\,\{T^{\leftCoord{}b},T^{\leftCoord{}c}\}\,
+\leftCoord{}\del_{\rightCoord{}\mu_1} \theta^{\leftCoord{}a} \bigl[
+\leftCoord{}\Ahat^{\leftCoord{}b}_{\rightCoord{}\mu_2} \star \del_{\rightCoord{}\mu_3} \Ahat^{\leftCoord{}c}_{\rightCoord{}\mu_4} +
+\leftCoord{}\del_{\rightCoord{}\mu_3} \Ahat^{\leftCoord{}c}_{\rightCoord{}\mu_4} \star \Ahat^{\leftCoord{}b}_{\rightCoord{}\mu_2} \bigr].
+}{0mm}{33}{20}{
+&-\frac{1}{96\pi^{2}}\,\int d^{4} x\,
+\eps_{\mu_1\mu_2\mu_3\mu_4}\,\Tr\,T^{a}\,[T^{b},T^{c}]\,
+\del_{\mu_1} \theta^{a} \bigl[
+\Ahat^{b}_{\mu_2} \star \del_{\mu_3} \Ahat^{c}_{\mu_4} -
+\del_{\mu_3} \Ahat^{c}_{\mu_4} \star \Ahat^{b}_{\mu_2} \bigr]
+\\
+&-\frac{1}{96\pi^{2}}\,\int d^{4} x\,
+\eps_{\mu_1\mu_2\mu_3\mu_4}\,\Tr\,T^{a}\,\{T^{b},T^{c}\}\,
+\del_{\mu_1} \theta^{a} \bigl[
+\Ahat^{b}_{\mu_2} \star \del_{\mu_3} \Ahat^{c}_{\mu_4} +
+\del_{\mu_3} \Ahat^{c}_{\mu_4} \star \Ahat^{b}_{\mu_2} \bigr].
+}{0}\coordE{}\end{align*}
+The first term of this innocent-looking formula is a new contribution
+that does not vanish in the noncommutative case. It makes it quite
+difficult, albeit not impossible~\cite{IntriligatorK}, to construct
+nonanomalous chiral theories in NCG.
+
+Further work by C.~P. Mart\'{\i}n~\cite{MartinOrigin} has established
+that the anomalies are related to the (divergent) planar diagrams:
+nonplanar diagrams would not break the Ward identities. This last
+contention, however, has been called in question by~\cite{ArmoniLT}.
+
+\end{itemize}
+
+In summary, NCFT offers a brand-new laboratory for QFT. However, when 
+eating this fish, one should beware of the fishbones.
+
+
+
+\section{Phenomenological Window}
+
+A game one can now play is to marry the Connes--Lott approach to the
+new commutation relations. That is to say, to work with the tensor
+product of (some variant of) the Eigenschaften algebra and a spacetime
+algebra which is no longer commutative. This has been done, for
+instance, in the following papers: \cite{Morita}, by K. Morita;
+\cite{ChaichianPJTModel}, by Chaichian et~al; and, perturbatively in
+\myHighlight{$\theta$}\coordHE{}, in~\cite{CalmetJSWW}, by the M\"unchen group. These models
+should be checked for anomalies.
+
+Noncommutative spacetime coordinates lead to signatures in several
+\myHighlight{$2 \to 2$}\coordHE{} QED tree--level processes in \myHighlight{$e^+e^-$}\coordHE{} collisions which are
+in principle observable. In particular, corrections to the amplitudes
+for pair annihilation, M{\o}ller and Bhabha scattering, as well as
+\myHighlight{$\ga\ga \to \ga\ga$}\coordHE{} scattering, for noncommutative scales
+\myHighlight{$\La_{\rm NC}$}\coordHE{} of order \myHighlight{$\geq 1 \TeV$}\coordHE{}, have been calculated this way
+and could in principle be probed at linear colliders~\cite{Hewett}.
+(Here, \myHighlight{$\La_{\rm NC}$}\coordHE{} is defined as \myHighlight{$1/\sqrt{\theta}$}\coordHE{}, where \myHighlight{$\theta$}\coordHE{}
+is a typical parameter in the Moyal product algebra.) Naturally, the
+wisdom of these calculations, in absence of a proper interpretation of
+the model at the 2-loop level, is somewhat questionable.
+
+There have also been discussions on the signature of noncommutativity
+in CP violation phenomena, and the muon magnetic moment ``anomaly''.
+
+The cosmological implications of a nonzero noncommutativity parameter
+are also open to discussion. Some people~\cite{ChuGS,LizziMMP} feel
+that it will modify the quantum perturbations of the inflaton field;
+it does not seem that noncommutativity can do away with inflation
+altogether.
+
+
+\section{Spectral Action and Related Developments}
+
+Meanwhile, Alain Connes has not remained idle. Dissatisfaction with
+the absence of gravity in the old Connes--Lott model led him to
+develop the spectral action principle. Together with
+Chamseddine~\cite{ChamseddineCSpec}, he proposed a universal formula
+for an action associated with a (compact) noncommutative spin geometry. The
+action is based on the spectrum of the Dirac operator and is a
+geometric invariant. Automorphisms of the manifold underlying the
+geometry combine both diffeomorphisms and internal symmetries.
+
+The Yang--Mills action functional is there replaced by a ``universal''
+bosonic functional of the form:
+$$\coord{}\boxMath{
+B_\phi[D] = \Tr \phi(D^2),
+}{dollar}{0pt}\coordE{}$$
+with \myHighlight{$\phi$}\coordHE{} being an ``arbitrary'' positive function of the Dirac
+operator~\myHighlight{$D$}\coordHE{}. Chamseddine and Connes argue that \myHighlight{$B_\phi$}\coordHE{} has the
+following asymptotic development:
+$$\coord{}\boxMath{
+B_\phi[D/\La] \sim \sum_{n=0}^\infty f_n\, \La^{4-2n}\, a_n(D^2)
+\as \La \to \infty,
+}{dollar}{0pt}\coordE{}$$
+where the \myHighlight{$a_n$}\coordHE{} are the coefficients of the heat kernel expansion for
+\myHighlight{$D^2$}\coordHE{} and \myHighlight{$f_0 = \int_0^\infty x \phi(x) \,dx$}\coordHE{},
+\myHighlight{$f_1 = \int_0^\infty \phi(x) \,dx$}\coordHE{}, \myHighlight{$f_2 = \phi(0)$}\coordHE{},
+\myHighlight{$f_3 = -\phi'(0)$}\coordHE{}, and so on. This was put on a sounder mathematical
+footing in~\cite{Odysseus}.
+
+They proceed to compute the development for the Dirac--Yukawa operator
+associated to the Standard Model, obtaining all terms in the bosonic
+part of the action for the Standard Model, plus unavoidable gravity
+couplings. That is to say, the spectral action for the Standard Model
+unifies with gravity at a very high energy scale. Later, a variant of
+the spectral action was suggested in~\cite{Zappafrank}.
+
+Wulkenhaar has conjectured that the spectral action for the
+Moyal algebra has the necessary additional symmetries for gauge
+theories on \myHighlight{$\theta$}\coordHE{}-deformed spacetime to become renormalizable. To
+check this, one needs to extend the spectral action to the noncompact
+NC manifold case; this is indeed one of the burning questions of
+the hour~\cite{Selene}.
+
+\medskip
+
+Somewhat related to the above, Connes~\cite{ConnesSurvey} and also
+Landi~\cite{ConnesLa}, V\'arilly~\cite{Larissa},
+Sitarz~\cite{SitarzSphere} and Dubois-Violette~\cite{ConnesDV}, have
+been working on systematically obtaining new noncommutative spaces.
+One motivation for that is to do quantum gravity in the noncommutative
+Euclidean context. For that, commutative and noncommutative manifolds
+alike should be ``counted'' somehow. The difficulties to count
+4-manifolds in the context for quantum gravity are well known ---see
+the magisterial account by E. Alvarez in~\cite{AlvarezQgrav}.
+Algebraic \myHighlight{$K$}\coordHE{}-theory maybe offers a tool to bypass the problem. Note
+that one should consider ``virtual'' NC manifolds; fulfilment of the
+Hochschild condition~\cite{ConnesGrav} might be the criterion to
+distinguish true classical NC manifolds from virtual
+ones~\cite{ConnesRemarkOW}.
+
+
+
+\section{On the Connes--Kreimer Hopf Algebra}
+
+Bogoliubov's combinatorial renormalization scheme in dimensional
+regularization can be summarized as follows. If \myHighlight{$\Ga$}\coordHE{} is 1PI and is
+\textit{primitive} (i.e., it has no subdivergences), set
+$$\coord{}\boxMath{
+C(\Ga) := - T(f(\Ga)),  \sepword{and then}  R(\Ga) := f(\Ga) + C(\Ga),
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$C(\Ga)$}\coordHE{} is the \textit{counterterm} and \myHighlight{$R(\Ga)$}\coordHE{} is the desired
+finite value: in other words, for primitive graphs one simply removes
+the pole part. Next, we may recursively define Bogoliubov's
+\myHighlight{$\Rbar$}\coordHE{}-operation by setting
+$$\coord{}\boxMath{
+\Rbar(\Ga) = f(\Ga)
+ + \sum_{\emptyset\subsetneq\ga\subsetneq\Ga} C(\ga)\,f(\Ga/\ga),
+}{dollar}{0pt}\coordE{}$$
+with the proviso that
+\begin{equation}\coord{}\boxEquation{
+C(\ga_1\dots\ga_r) := C(\ga_1) \dots C(\ga_r),
+\label{eq:mult-ctrtm}
+}{
+C(\ga_1\dots\ga_r) := C(\ga_1) \dots C(\ga_r),
+}{ecuacion}\coordE{}\end{equation}
+whenever \myHighlight{$\ga = \ga_1\dots\ga_r$}\coordHE{} is a disjoint union of several
+components. The final result is obtained by removing the pole part of
+the previous expression: \myHighlight{$C(\Ga) := - T(\Rbar(\Ga))$}\coordHE{} and
+\myHighlight{$R(\Ga) := \Rbar(\Ga) + C(\Ga)$}\coordHE{}. In summary,
+\begin{subequations}
+\label{eq:graph-renorm}
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}C(\Ga) &:= - T\biggl[ f(\Ga)
+\leftCoord{}+ \sum_{\rightCoord{}\emptyset\subsetneq\ga\subsetneq\Ga}C(\ga)\,f(\Ga/\ga)\biggr],
+\label{eq:graph-renorm-C}
+\leftCoord{}\rightCoord{}\\
+\leftCoord{}R(\Ga) &:= f(\Ga) + C(\Ga)
+ \leftCoord{}+ \sum_{\rightCoord{}\emptyset\subsetneq\ga\subsetneq\Ga} C(\ga)\,f(\Ga/\ga).
+\label{eq:graph-renorm-R}
+}{0mm}{5}{4}{
+C(\Ga) &:= - T\biggl[ f(\Ga)
++ \sum_{\emptyset\subsetneq\ga\subsetneq\Ga}C(\ga)\,f(\Ga/\ga)\biggr],
+\\
+R(\Ga) &:= f(\Ga) + C(\Ga)
+ + \sum_{\emptyset\subsetneq\ga\subsetneq\Ga} C(\ga)\,f(\Ga/\ga).
+}{0}\coordE{}\end{align}
+\end{subequations}
+
+Let now \myHighlight{$\Phi$}\coordHE{} stand for any particular QFT. The Hopf algebra \myHighlight{$H_\Phi$}\coordHE{}
+is a commutative algebra generated by one-particle irreducible graphs:
+that is, connected graphs with at least two vertices which cannot be
+disconnected by removing a single line. The product \myHighlight{$\Ga_1 \Ga_2$}\coordHE{}
+means the disjoint union of the graphs \myHighlight{$\Ga_1$}\coordHE{} and \myHighlight{$\Ga_2$}\coordHE{}. The counit
+is given by \myHighlight{$\eps(\Ga) := 0$}\coordHE{} on any generator, with
+\myHighlight{$\eps(\emptyset) := 1$}\coordHE{} (we assign the empty graph to the identity
+element). The \textit{coproduct} \myHighlight{$\Dl$}\coordHE{} is given, on any 1PI graph
+\myHighlight{$\Ga$}\coordHE{}, by
+$$\coord{}\boxMath{
+\Dl\Ga := \sum_{\emptyset\subseteq\ga\subseteq\Ga} \ga \ox \Ga/\ga,
+}{dollar}{0pt}\coordE{}$$
+where the sum ranges over all subgraphs which are divergent and proper
+(in the sense that removing one internal line cannot increase the
+number of its connected components); \myHighlight{$\ga$}\coordHE{} may be either connected or
+a disjoint union of several connected pieces. The terms for
+\myHighlight{$\ga = \emptyset$}\coordHE{} and \myHighlight{$\ga = \Ga$}\coordHE{} in the sum are
+\myHighlight{$\Ga \ox 1 + 1 \ox \Ga$}\coordHE{}. The notation \myHighlight{$\Ga/\ga$}\coordHE{} denotes the
+(connected, 1PI) graph obtained from~\myHighlight{$\Ga$}\coordHE{} by replacing each component
+of \myHighlight{$\ga$}\coordHE{} by a single vertex.
+
+To see that \myHighlight{$\Dl$}\coordHE{} is coassociative, we observe that if
+\myHighlight{$\ga \subseteq \ga' \subseteq \Ga$}\coordHE{}, then \myHighlight{$\ga'/\ga$}\coordHE{} can be regarded as
+a subgraph of \myHighlight{$\Ga/\ga$}\coordHE{}; moreover, it is obvious that
+\myHighlight{$(\Ga/\ga)/(\ga'/\ga) \simeq \Ga/\ga'$}\coordHE{}. The desired relation
+\myHighlight{$(\Dl \ox \id)(\Dl\Ga) = (\id \ox \Dl)(\Dl\Ga)$}\coordHE{} can now be expressed
+as
+$$\coord{}\boxMath{
+\sum_{\emptyset\subseteq\ga\subseteq\ga'\subseteq\Ga}
+ \ga \ox \ga'/\ga \ox \Ga/\ga'
+ = \sum_{\emptyset\subseteq\ga\subseteq\Ga,\;
+         \emptyset\subseteq\ga''\subseteq\Ga/\ga}
+    \ga \ox \ga'' \ox (\Ga/\ga)/\ga'',
+}{dollar}{0pt}\coordE{}$$
+which is easy to verify directly.
+
+
+Here (Figures~\ref{fig:sunset}--\ref{fig:ragdoll}) are some
+\textit{coproducts} for \myHighlight{$\varphi_4^4$}\coordHE{} diagrams:
+
+\begin{figure}[htb]
+\centering
+$$\coord{}\boxMath{
+\Dl \Bigl( \sunset \Bigr) = \1 \ox \sunset + \sunset \ox \1
+}{dollar}{0pt}\coordE{}$$
+\caption{The ``setting sun'': a primitive diagram}
+\label{fig:sunset}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+$$
+\Dl \Bigl( \iice \Bigr) = 
+\1 \ox \iice + 2\ \sweet \ox \sunset \put(-35,0){\myHighlight{$\bullet$}\coordHE{}}
++ \iice \ox \1
+$$
+\caption{The ``double ice cream in a cup''}
+\label{fig:icecream}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+$$
+\Dl \Bigl(\,\,\, \tsweet \Bigr) = \1 \ox \,\tsweet +
+2\ \sweet \ox \,\dsweet\put(-46.5,0){\myHighlight{$\bullet$}\coordHE{}} +
+\,\sweet \ox\ \dsweet\put(-26,0){\myHighlight{$\bullet$}\coordHE{}}
+$$\coord{}\boxMath{  }{dollar}{0pt}\coordE{}$$
++ 2\,\ \dsweet \ox \,\sweet\put(-32,0){\myHighlight{$\bullet$}\coordHE{}} + \,
+\sweet\ \sweet \ox \,\sweet\put(-32,0){\myHighlight{$\bullet$}\coordHE{}}
+\put(-12,0){\myHighlight{$\bullet$}\coordHE{}} + \ \tsweet\, \ox \1
+$$
+\caption{The ``triple sweet''}
+\label{fig:trisweet}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+$$
+\Dl \Bigl(\,\,\, \kg \Bigr) = \1 \ox \,\kg + \
+\sweet \ox \pinterIV\put(-39,0){\myHighlight{$\bullet$}\coordHE{}} + \
+\sweet \ox \,\dsweet\put(-6,0){\myHighlight{$\bullet$}\coordHE{}}
+$$\coord{}\boxMath{  }{dollar}{0pt}\coordE{}$$
++ \ \pinterIV \ox \,\sweet\put(-12,0){\myHighlight{$\bullet$}\coordHE{}} + \
+\sweet\ \sweet \ox \,\sweet\put(-32,0){\myHighlight{$\bullet$}\coordHE{}}
+\put(-12,0){\myHighlight{$\bullet$}\coordHE{}} + \ \kg \ox \1
+$$
+\caption{The ``rag-doll''}
+\label{fig:ragdoll}
+\end{figure}
+
+
+That defines \myHighlight{$H_\Phi$}\coordHE{} as a bialgebra. A {\it grading\/} is provided by
+\textit{depth}. A graph \myHighlight{$\Ga$}\coordHE{} in the space \myHighlight{$H_\Phi$}\coordHE{} has depth \myHighlight{$k$}\coordHE{} (or
+is \myHighlight{$k$}\coordHE{}-primitive) if
+$$\coord{}\boxMath{
+P^{\otimes k+1}(\Dl^k\Ga) = 0  \sepword{and}
+P^{\otimes k}(\Dl^{k-1})\Ga \neq 0.
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$P$}\coordHE{} is the projection \myHighlight{$u\circ\eps - \id$}\coordHE{}, whose importance was
+discovered ``experimentally'' by Figueroa and myself~\cite{Ananke} in
+the context of the Hopf algebra of rooted trees~\cite{ConnesKrHopf}.
+
+The depth of any graph is finite. In our context, depth measures the
+maximal length of the inclusion \textit{chains} of subgraphs appearing
+in the Bogoliubov recursion. If \myHighlight{$\ga\subsetneq\Ga$}\coordHE{} and \myHighlight{$\Ga$}\coordHE{} has
+depth~\myHighlight{$l$}\coordHE{}, then \myHighlight{$\ga$}\coordHE{} has depth \myHighlight{$l-1$}\coordHE{} at most. Elements of \myHighlight{$H_\Phi$}\coordHE{}
+without subdivergences have depth~1, obviously. This is the case of
+the ``fish'' graph in the \myHighlight{$\varphi^4_4$}\coordHE{} model. The ``ice-cream'' graph
+has depth~2. Of the eight four-vertex (three-loop) graphs relevant for
+the four-point structure of that model, five have depth~3, two have
+depth~2 and one (the tetrahedron graph) has depth~1. In dimensional
+regularization, a graph of depth \myHighlight{$l$}\coordHE{} is expected to display a pole of
+\myHighlight{$l$}\coordHE{}th order.
+
+Now \myHighlight{$S$}\coordHE{} can also be defined as the inverse of \myHighlight{$\id = u\circ\eps - P$}\coordHE{}
+for the convolution, and so (after some calculation)
+\begin{equation}\coord{}\boxEquation{
+S(\Ga_l) := \sum_{k=1}^l P^{*k}\,\Ga_l =
+-\Ga_l + \sum_{\emptyset\subsetneq\ga\subsetneq\Ga_l}S(\ga)\,\Ga_l/\ga,
+\label{eq:graph-antp}
+}{
+S(\Ga_l) := \sum_{k=1}^l P^{*k}\,\Ga_l =
+-\Ga_l + \sum_{\emptyset\subsetneq\ga\subsetneq\Ga_l}S(\ga)\,\Ga_l/\ga,
+}{ecuacion}\coordE{}\end{equation}
+for any graph \myHighlight{$\Ga_l$}\coordHE{} of depth \myHighlight{$l$}\coordHE{}.
+
+The foregoing is my own summary of the Hopf algebra of Feynman
+diagrams discovered by Connes and
+Kreimer~\cite{ConnesKrRHI,ConnesKrRHII}. As it stands, the Hopf
+algebra \myHighlight{$H_\Phi$}\coordHE{} corresponds to a formal manipulation of graphs. These
+formulas can then be matched to expressions for numerical values.
+Firstly, the Feynman rules for the unrenormalized theory prescribe a
+linear map
+$$\coord{}\boxMath{
+f : H_\Phi \to \A
+}{dollar}{0pt}\coordE{}$$
+into some commutative algebra \myHighlight{$\A$}\coordHE{}, which is multiplicative on
+disjoint unions: \myHighlight{$f(\Ga_1 \Ga_2) = f(\Ga_1)\,f(\Ga_2)$}\coordHE{}. In other
+words, \myHighlight{$f$}\coordHE{} is actually a homomorphism of algebras. In dimensional
+regularization, \myHighlight{$\A$}\coordHE{} is an algebra of Laurent series in a complex
+parameter~\myHighlight{$\eps$}\coordHE{}, and \myHighlight{$\A$}\coordHE{} is the direct sum of two
+\textit{subalgebras}:
+$$\coord{}\boxMath{
+\A = \A_+ \oplus \A_-.
+}{dollar}{0pt}\coordE{}$$
+Let \myHighlight{$T\: \A \to \A_-$}\coordHE{} be the projection on the second subalgebra, with
+\myHighlight{$\ker T = \A_+$}\coordHE{}. \myHighlight{$\A_+$}\coordHE{} is the holomorphic subalgebra of Taylor series
+and \myHighlight{$\A_-$}\coordHE{} is the subalgebra of polynomials in \myHighlight{$1/\eps$}\coordHE{} without
+constant term; the projection \myHighlight{$T$}\coordHE{} picks out the pole part, in a
+minimal subtraction scheme. Now \myHighlight{$T$}\coordHE{} is not a homomorphism, but the
+property that both its kernel and image are subalgebras is reflected
+in a ``multiplicativity constraint'':
+\myHighlight{$T(ab) + T(a)\,T(b) = T(T(a)\,b) + T(a\,T(b))$}\coordHE{}.
+
+The equation \eqref{eq:graph-renorm-C} means that ``the antipode
+delivers the counterterm'': one replaces \myHighlight{$S$}\coordHE{} in the calculation
+\eqref{eq:graph-antp} by~\myHighlight{$C$}\coordHE{} to obtain the right hand side, before
+projection with~\myHighlight{$T$}\coordHE{}. From the definition of the coproduct in \myHighlight{$H_\Phi$}\coordHE{},
+\eqref{eq:graph-renorm-R} is a \textit{convolution} in
+\myHighlight{$\Hom(H_\Phi,\A)$}\coordHE{}, namely, \myHighlight{$R = C * f$}\coordHE{}. To show that \myHighlight{$R$}\coordHE{} is
+multiplicative, it is enough to verify that the counterterm map \myHighlight{$C$}\coordHE{} is
+multiplicative, since the convolution of homomorphisms is a
+homomorphism because \myHighlight{$\A$}\coordHE{} is commutative. In other words, one must
+check that \eqref{eq:mult-ctrtm} and \eqref{eq:graph-renorm-C} are
+compatible; this was done by Connes and Kreimer in~\cite{ConnesKrRHI},
+and elaborated or exploited in subsequent papers; see~\cite{GirelliMK}
+in this connection.
+
+The previous discussion is \textit{logically independent} of NCG,
+although it is true that the Hopf algebra approach to renormalization
+theory has been developed in close contact with the Connes--Moscovici
+noncommutative theory of foliations. In that theory, a foliation is
+described by a noncommutative algebra of functions twisted by local
+diffeomorphisms, and horizontal and vertical vector fields are
+represented on that algebra by the action of a certain Hopf algebra
+\myHighlight{$H_{CM}$}\coordHE{} which provides a way to compute a local index
+formula~\cite{ConnesMHopf}.
+
+On extending the Hopf algebra \myHighlight{$H_\Phi$}\coordHE{} of
+graphs by incorporating operations of insertion of subgraphs, one
+obtains a noncommutative Hopf algebra of the \myHighlight{$H_{CM}$}\coordHE{} type, which
+gives a supplementary handle on the combinatorial structure of
+\myHighlight{$H_\Phi$}\coordHE{}~\cite{ConnesKrLie}.
+
+\smallskip
+When handled through the Hopf algebra of Feynman
+diagrams \myHighlight{$H_\Phi$}\coordHE{} of Connes and Kreimer, the Epstein--Glaser (EG)
+renormalization method provides an alternative route to the core
+results of renormalization theory~\cite{PinterSmat,PinterHopf}.
+
+In the last few years, EG renormalization has been revived by the
+Hamburg group around Fredenhagen. It has also been sharpened into a
+more versatile tool (``\myHighlight{$T$}\coordHE{}-renormali\-za\-tion'') in my~\cite{Carme}.
+The concept of \textit{optimal scaling} of the amplitudes is the soul
+of this improvement. A similar tack was recently taken by Hollands and
+Wald~\cite{HollandsW} for the precise definition of local, covariant
+quantum field. See also, in this
+respect~\cite{BrunettiFV,JunkerS,Grigore}. The basic idea (very much
+in the spirit of NCG) is that, if a quantum field is thought of as a
+distribution on a globally hyperbolic spacetime, with values in the
+algebra of the Wick products, then isometric embeddings from one
+spacetime into another are realized as suitable homomorphisms of the
+fields. Then, the key property in the existence proof of time-ordered
+products by Hollands and Wald is the postulated, and then recursively
+proved, optimal rescaling of functionals of the metric \myHighlight{$g$}\coordHE{}, up to the
+logarithmic terms:
+$$\coord{}\boxMath{
+\la^d f_n[\la^2 g] = f_n[g] + \log\la \,f_{n-1}[g].
+}{dollar}{0pt}\coordE{}$$
+
+The extension to curved backgrounds of the Connes--Kreimer Hopf
+algebra approach to renormalization seems to hinge on the EG method.
+
+
+
+\section{Outlook}
+
+Will NCG live up to its promise with regard to fundamental physics? 
+
+One should not confuse the learning of a new language with the
+expansion of physical knowledge. A word of caution about the changing
+relationships between physics and mathematics is always in order. For
+instance, Yang and Mills found a family of theories which seemed
+pertinent to describe the observed phenomena. Mathematicians have
+translated them into fibre bundle language, and now we teach
+Yang--Mills theories to our students with the rigidity of formalism,
+so they seem completely unavoidable. However, in their present form
+they are suspect (at least to Mills~\cite{Mills} and to this
+reviewer), for the good reason that quantizing them is a nightmare. It
+may come to pass that eventually they be seen as an incomplete
+preliminary stage of a more refined physical model.
+
+By the standards of fashion, the NCG conquest of physics is now ebbing
+somewhat. This ebb will surely prove temporary, since the concepts and
+tools of noncommutative geometry are indeed powerful and helpful in
+QFT. On the other hand, our ability to reformulate the SM as a
+noncommutative geometry is not, in itself, all that meaningful. A
+truer test for the NCG paradigm is the understanding of the fermion
+mass and mixing matrices.
+
+As for NC field theory, the models available so far, while they amount
+to a useful mathematical laboratory for the unification of gravity and the
+other fundamental interactions, are still too rough. In spite of the
+ideology of effective field theory, it remains true that the fantastic
+successes of the renormalizability program, now validated for
+geometric bakgrounds, and of renormalizability itself as a heuristic
+principle in selecting physical models, tell us that the violation of
+locality which we expect at some level is subtler than we have been
+able to dream of until now. Some crucial ingredient is missing.
+
+
+\subsection*{Acknowledgements}
+
+I am very grateful to the organizers of the 66.~Tagung der Deutsche
+Physikalische Gesellschaft for the invitation to survey the field.
+Financial support for my stay at the Departamento de F\'{\i}sica
+Te\'orica I of Universidad Complutense came from the Secretar\'{\i}a
+de Estado de Educaci\'on y Universidades of Spain. Carmelo P.
+Mart\'{\i}n and Joseph C. V\'arilly have been helpful, and influential
+in shaping the opinions outlined here. Serge Lazzarini taught me the
+EG scheme. Special thanks are due to Roger Plymen and Henri
+Moscovici for sharing with me recollections of the early days of
+noncommutative geometry.
+
+
+
+\begin{thebibliography}{92}
+
+\bibitem{ConnesObW}
+A. Connes,
+``Spectral sequence and homology of currents for operator algebras'',
+Tagungsbericht 42/81,
+Mathematisches Forschungszentrum Oberwolfach, 1981
+
+\bibitem{ConnesTorus}
+A. Connes,
+C. R. Acad. Sci. Paris {\bf 290} (1980) 599
+%%CITATION = COREA,290,599;%%
+
+\bibitem{ConnesNCDiffG}
+A. Connes,
+Publ. Math. IHES {\bf 39} (1985) 257
+%%CITATION = PMIHA,39,257;%%
+
+\bibitem{Polaris}
+J. M. Gracia-Bond\'{\i}a, J. C. V\'arilly and H. Figueroa,
+Elements of Noncommutative Geometry,
+Birkh\"auser, Boston, 2001
+
+\bibitem{ConnesLambda}
+A. Connes,
+C. R. Acad. Sci. Paris {\bf 296} (1983) 953
+%%CITATION = COREA,296,953;%%
+
+\bibitem{RieffelRot}
+M. A. Rieffel,
+Pac. J. Math. {\bf 93} (1981) 415
+%%CITATION = PJMAA,93,415;%%
+
+\bibitem{Halley}
+J. M. Gracia-Bond\'{\i}a,
+Phys. Lett. B {\bf 482} (2000) 315
+%%CITATION = PHLTA,B482,315;%%
+
+\bibitem{Woit}
+P. Woit,
+``String theory: an evaluation'',
+physics/0102051
+%%CITATION = PHYSICS 0102051;%%
+
+\bibitem{HigsonR}
+N. Higson and J. Roe,
+Analytic K-Homology,
+Oxford University Press, Oxford, 2000
+
+\bibitem{Cordelia}
+C. P. Mart\'{\i}n, J. M. Gracia-Bond\'{\i}a and J. C. V\'arilly,
+Phys. Reports {\bf 294} (1998) 363
+%%CITATION = HEP-TH 9605001;%%
+
+\bibitem{Sirius}
+J. C. V\'arilly and J. M. Gracia-Bond\'{\i}a,
+J. Geom. Phys. {\bf 12} (1993) 223
+%%CITATION = JGPHE,12,223;%%
+
+\bibitem{KastlerS}
+D. Kastler and T. Sch\"ucker,
+Rev. Math. Phys. {\bf 8} (1996) 205.
+%%CITATION = RMPHE,8,205;%%
+
+\bibitem{Orpheus}
+E. Alvarez, J. M. Gracia-Bond\'{\i}a and C. P. Mart\'{\i}n,
+Phys. Lett. B {\bf 306} (1993) 55
+%%CITATION = PHLTA,B306,55;%%
+
+\bibitem{Neeman}
+Y. Ne'eman,
+Phys. Lett. B {\bf 81} (1979) 190
+%%CITATION = PHLTA,B81,190;%%
+
+\bibitem{Scheck}
+F. Scheck,
+``The Standard Model within noncommutative geometry: A comparison of
+models'',
+hep-th/9701073
+%%CITATION = HEP-TH 9701073;%%
+
+\bibitem{ChavesM}
+M. Chaves and H. Morales,
+Mod. Phys. Lett. {\bf A13} (1998) 2021
+%%CITATION = HEP-TH 9801088;%%
+
+\bibitem{Book}
+A. Connes,
+Noncommutative Geometry,
+Academic Press, London and San Diego, 1994
+
+\bibitem{Chiron}
+E. Alvarez, J. M. Gracia-Bond\'{\i}a and C. P. Mart\'{\i}n,
+Phys. Lett. {\bf B364} (1995) 33
+%%CITATION = PHLTA,B364,33;%%
+
+\bibitem{LazzariniS}
+S. Lazzarini and T. Sch\"ucker,
+Phys. Lett. {\bf B510} (2001) 277
+%%CITATION = HEP-TH 0104038;%%
+
+\bibitem{Snyder}
+H. S. Snyder,
+Phys. Rev. {\bf 71} (1947) 38
+%%CITATION = PHRVA,71,38;%%
+
+\bibitem{Jabbari}
+M. M. Sheikh-Jabbari,
+Phys. Lett. {\bf B455} (1999) 129
+%%CITATION = HEP-TH 9901080;%%
+
+\bibitem{Schomerus}
+V. Schomerus,
+J. High Energy Phys. {\bf 9906} (1999) 030
+%%CITATION = HEP-TH 9903205;%%
+
+\bibitem{SeibergW}
+N. Seiberg and E. Witten,
+J. High Energy Phys. {\bf 9909} (1999) 032
+%%CITATION = HEP-TH 9908142;%%
+
+\bibitem{Kar}
+S. Kar,
+Nucl. Phys. {\bf B577} (2000) 171
+
+\bibitem{ConnesDS}
+A. Connes, M. R. Douglas and A. Schwartz,
+J. High Energy Phys. {\bf 9802} (1998) 003
+%%CITATION = HEP-TH 9711162;%%
+
+\bibitem{DouglasH}
+M. R. Douglas and C. M. Hull,
+J. High Energy Phys. {\bf 9802} (1998) 008
+
+\bibitem{LandiLS}
+G. Landi, F. Lizzi and R. J. Szabo,
+Commun. Math. Phys. {\bf 206} (1999) 603
+%%CITATION = HEP-TH 9806099;%%
+
+\bibitem{FroehlichG}
+J. Fr\"ohlich and K. Gaw\c{e}dzki,
+``Conformal field theory and geometry of strings'',
+in CRM Proceedings and Lecture Notes {\bf 7},
+CRM, Montr\'eal, 1994, p.~57
+
+\bibitem{DoplicherFR}
+S. Doplicher, K. Fredenhagen and J. E. Roberts,
+Commun. Math. Phys. {\bf 172} (1995) 187
+%%CITATION = CMPHA,172,187;%%
+
+\bibitem{JurcoSW}
+B. Jur\v{c}o, P. Schupp and J. Wess,
+``Noncommutative line bundle and Morita equivalence'',
+hep-th/0106110
+%%CITATION = HEP-TH 0106110;%%
+
+\bibitem{JackiwP}
+R. Jackiw and S.-Y. Pi,
+Phys. Lett. {\bf B534} (2002) 181
+%%CITATION = HEP-TH 0201251;%%
+
+\bibitem{Nereid}
+R. Estrada, J. M. Gracia-Bond\'{\i}a and J. C. V\'arilly,
+J. Math. Phys. {\bf 30} (1989) 2789
+%%CITATION = JMAPA,30,2789;%%
+
+\bibitem{LizziViewpoint}
+F. Lizzi,
+Nucl. Phys. B (Proc. Suppl.) {\bf 104} (2002) 143
+%%CITATION = NUPHZ,104,143;%%
+
+\bibitem{DouglasN}
+M. R. Douglas and N. A. Nekrasov,
+Rev. Mod. Phys. {\bf 73} (2002) 977
+%%CITATION = HEP-TH 0106048;%%
+
+\bibitem{Atlas}
+J. C. V\'arilly and J. M. Gracia-Bond\'{\i}a,
+Int. J. Mod. Phys. {\bf A14} (1999) 1305
+%%CITATION = HEP-TH 9804001;%%
+
+\bibitem{ChaichianDP}
+M. Chaichian, A. Demichev and P. Pre\v{s}najder,
+Nucl. Phys. {\bf B567} (2000) 360
+%%CITATION = HEP-TH 9812180;%%
+
+\bibitem{Filk}
+T. Filk,
+Phys. Lett. {\bf B376} (1996) 53
+%%CITATION = PHLTA,B376,53;%%
+
+\bibitem{GonzalezAKA}
+A. Gonz\'alez-Arroyo and C. P. Korthals-Altes,
+Phys. Lett. {\bf B131} (1983) 396
+%%CITATION = PHLTA,B131,396;%%
+
+\bibitem{MartinSRone}
+C. P. Mart\'{\i}n and D. S\'anchez-Ruiz,
+Phys. Rev. Lett. {\bf 83} (1999) 476
+%%CITATION = HEP-TH 9903077;%%
+
+\bibitem{KrajewskiW}
+T. Krajewski and R. Wulkenhaar,
+Int. J. Mod. Phys. {\bf A15} (2000) 1011
+%%CITATION = HEP-TH 9903187;%%
+
+\bibitem{Harvey}
+J. A. Harvey,
+``Komaba lectures on noncommutative solitons and D-branes'',
+hep-th/0102076
+%%CITATION = HEP-TH 0102076;%%
+
+\bibitem{Iapetus}
+J. M. Gracia-Bond\'{\i}a,
+Contemp. Math. {\bf 134} (1992) 93
+
+\bibitem{Phobos}
+J. M. Gracia-Bond{\'\i}a and J. C. V\'arilly,
+J. Math. Phys. {\bf 29} (1988) 869
+%% CITATION = JMAPA,29,869;%%
+
+\bibitem{Deimos}
+J. C. V\'arilly and J. M. Gracia-Bond{\'\i}a,
+J. Math. Phys. {\bf 29} (1988) 880
+%% CITATION = JMAPA,29,880;%%
+
+\bibitem{ChaichianPJTNogo}
+M. Chaichian, P. Pre\v{s}najder, M. M. Sheikh-Jabbari and A. Tureanu,
+Phys. Lett. {\bf B526} (2002) 132
+%%CITATION = HEP-TH 0107037;%%
+
+\bibitem{Terashima}
+S. Terashima,
+Phys. Lett. {\bf B482} (2000) 276
+%%CITATION = HEP-TH 0002119;%%
+
+\bibitem{KorthalsAltes}
+C. P. Korthals-Altes,
+in Progress in Gauge Field Theory (Carg\`ese lectures),
+G. 't~Hooft et al, eds., Plenum, 1985, p.~425
+
+\bibitem{MartinSRtwo}
+C. P. Mart\'{\i}n and D. S\'anchez-Ruiz,
+Nucl. Phys. {\bf B598} (2001) 348
+%%CITATION = HEP-TH 0012024;%%
+
+\bibitem{GirottiGRS}
+H. O. Girotti, M. Gomes, V. O. Rivelles and A. J. da~Silva,
+Nucl. Phys. {\bf B587} (2000) 299
+
+\bibitem{PabanSS}
+S. Paban, S. Sethi and M. Stern,
+J. High Energy Phys. {\bf 0203} (2002) 012
+%%CITATION = HEP-TH 0201259;%%
+
+\bibitem{WulkenhaarTheta}
+R. Wulkenhaar,
+J. High Energy Phys. {\bf 0203} (2002) 024
+%%CITATION = HEP-TH 0112248;%%
+
+\bibitem{GomisM}
+J. Gomis and T. Mehen,
+Nucl. Phys. {\bf B591} (2000) 265
+%%CITATION = HEP-TH 0005129;%%
+
+\bibitem{LAGBarbonZ}
+L. Alvarez-Gaum\'e, J. L. F. Barb\'on and R. Zwicky,
+J. High Energy Phys. {\bf 0105} (2001) 057
+%%CITATION = HEP-TH 0103069;%%
+
+\bibitem{BahnsDFP}
+D. Bahns, S. Doplicher, K. Fredenhagen and G. Piacitelli,
+Phys. Lett. {\bf B533} (2002) 178
+%%CITATION = HEP-TH 0201222;%%
+
+\bibitem{RimY}
+C. Rim and J. H. Yee, 
+``Unitarity in space-time noncommutative field theories'', 
+hep-th/0205193
+%%CITATION = HEP-TH 0205193;%%
+
+\bibitem{LiaoS}
+Y. Liao and K. Sibold,
+Eur. Phys. J. C {\bf 25} (2002) 469
+%%CITATION = HEP-TH 0205269;%%
+
+\bibitem{BahnsPrivate}
+D. Bahns, private communication
+
+\bibitem{Dorn}
+H. Dorn,
+Fortschr. Phys. {\bf 50} (2002) 884
+%%CITATION = HEP-TH 0201161;%%
+
+\bibitem{Camilla}
+J. M. Gracia-Bond\'{\i}a and C. P. Mart\'{\i}n,
+Phys. Lett. {\bf B479} (2000) 321
+%%CITATION = HEP-TH 0002171;%%
+
+\bibitem{IntriligatorK}
+K. Intriligator and J. Kumar,
+Nucl. Phys. {\bf B620} (2002) 315
+%%CITATION = HEP-TH 0107199;%%
+
+\bibitem{MartinOrigin}
+C. P. Mart\'{\i}n,
+J. Phys. {\bf A34} (2001) 9037
+%%CITATION = HEP-TH 0008126;%%
+
+\bibitem{ArmoniLT}
+A. Armoni, E. Lopez and S. Theisen,
+J. High Energy Phys. {\bf 0206} (2002) 050
+%%CITATION = HEP-TH 0203165;%%
+
+\bibitem{Morita}
+K. Morita,
+``Connes' gauge theory on noncommutative spacetimes'',
+hep-th/0011080
+%%CITATION = HEP-TH 0011080;%%
+
+\bibitem{ChaichianPJTModel}
+M. Chaichian, P. Pre\v{s}najder, M. M. Sheikh-Jabbari and A. Tureanu,
+``Noncommutative Standard Model: model building'',
+hep-th/0107055
+%%CITATION = HEP-TH 0107055;%%
+
+\bibitem{CalmetJSWW}
+X. Calmet, B. Jur\v{c}o, P. Schupp, J. Wess and M. Wohlgenannt,
+Eur. Phys. J. {\bf C23} (2002) 363
+%%CITATION = HEP-PH 0111115;%%
+
+\bibitem{Hewett}
+J. L. Hewett, F. J. Petriello and T. G. Rizzo,
+Phys. Rev. {\bf D64} (2001) 075012
+%%CITATION = HEP-TH 0010354;%%
+
+\bibitem{ChuGS}
+C.-S. Chu, B. R. Greene and G. Shiu,
+Mod. Phys. Lett. {\bf A16} (2001) 2231
+%%CITATION = HEP-TH 0011241;%%
+
+\bibitem{LizziMMP}
+F. Lizzi, G. Mangano, G. Miele and M. Peloso,
+J. High Energy Phys. {\bf 0206} (2002) 049
+%%CITATION = HEP-TH 0203099;%%
+
+\bibitem{ChamseddineCSpec}
+A. H. Chamseddine and A. Connes,
+Commun. Math. Phys. {\bf 186} (1997) 731
+%%CITATION = HEP-TH 9606001;%%
+
+\bibitem{Odysseus}
+R. Estrada, J. M. Gracia-Bond\'{\i}a and J. C. V\'arilly,
+Commun. Math. Phys. {\bf 191} (1998) 219
+%%CITATION = CMPHA,191,219;%%
+
+\bibitem{Zappafrank}
+H. Figueroa, J. M. Gracia-Bond\'{\i}a, F. Lizzi and J. C. V\'arilly,
+J. Geom. Phys. {\bf 26} (1998) 329
+%%CITATION = HEP-TH 9701179;%%
+
+\bibitem{Selene}
+J. M. Gracia-Bond\'{\i}a, F. Lizzi, G. Marmo and P. Vitale,
+J. High Energy Phys. {\bf 0204} (2002) 026
+%%CITATION = HEP-TH 0112092;%%
+
+\bibitem{ConnesSurvey}
+A. Connes,
+J. Math. Phys. {\bf 41} (2000) 3832
+%%CITATION = JMAPA,41,3832;%%
+
+\bibitem{ConnesLa}
+A. Connes and G. Landi,
+Commun. Math. Phys. {\bf 221} (2001) 141
+%%CITATION = MATH-QA 0011194;%%
+
+\bibitem{Larissa}
+J. C. V\'arilly,
+Commun. Math. Phys. {\bf 221} (2001) 511
+%%CITATION = MATH.QA 0102065;%%
+
+\bibitem{SitarzSphere}
+A. Sitarz,
+Lett. Math. Phys. {\bf 55} (2001) 127
+%%CITATION = MATH-PH 0101001;%%
+
+\bibitem{ConnesDV}
+A. Connes and M. Dubois-Violette,
+Commun. Math. Phys. {\bf 230} (2002) 539
+%%CITATION = MATH.QA 0107070;%%
+
+\bibitem{AlvarezQgrav}
+E. Alvarez,
+``Some general problems in quantum gravity'',
+in Quantum Gravity and Cosmology,
+World Scientific, Singapore, 1992
+
+\bibitem{ConnesGrav}
+A. Connes,
+Commun. Math. Phys. {\bf 182} (1996) 155
+%%CITATION = CMPHA,182,155;%%
+
+\bibitem{ConnesRemarkOW}
+A. Connes, private communication
+
+\bibitem{Ananke}
+H. Figueroa and J. M. Gracia-Bond\'{\i}a,
+Mod. Phys. Lett. {\bf A16} (2001) 1427
+%%CITATION = HEP-TH 9912170;%%
+
+\bibitem{ConnesKrHopf}
+A. Connes and D. Kreimer,
+Commun. Math. Phys. {\bf 199} (1998) 203
+%%CITATION = HEP-TH 9808042;%%
+
+\bibitem{ConnesKrRHI}
+A. Connes and D. Kreimer,
+Commun. Math. Phys. {\bf 210} (2000) 249
+%%CITATION = HEP-TH 9912092;%%
+
+\bibitem{ConnesKrRHII}
+A. Connes and D. Kreimer,
+Commun. Math. Phys. {\bf 216} (2001) 215
+%%CITATION = HEP-TH 0003188;%%
+
+\bibitem{GirelliMK}
+F. Girelli, P. Martinetti and T. Krajewski,
+Mod. Phys. Lett. {\bf A16} (2001) 299
+%%CITATION = MATH-PH 0103020;%%
+
+\bibitem{ConnesMHopf}
+A. Connes and H. Moscovici,
+Commun. Math. Phys. {\bf 198} (1998) 198
+%%CITATION = MATH.DG 9806109;%%
+
+\bibitem{ConnesKrLie}
+A. Connes and D. Kreimer,
+Ann. Henri Poincar\'e {\bf 3} (2002) 411
+%%CITATION = HEP-TH 0201157;%%
+
+\bibitem{PinterSmat}
+G. Pinter,
+Ann. Phys. (Leipzig) {\bf 10} (2001) 333
+%%CITATION = HEP-TH 9911063;%%
+
+\bibitem{PinterHopf}
+G. Pinter,
+Lett. Math. Phys. {\bf 54} (2000) 227
+%%CITATION = HEP-TH 0012057;%%
+
+\bibitem{Carme}
+J. M. Gracia-Bond\'{\i}a,
+``Improved Epstein--Glaser renormalization in coordinate space I.
+Euclidean framework'',
+hep-th/0202023
+%%CITATION = HEP-TH 0202023;%%
+
+\bibitem{HollandsW}
+S. Hollands and R. M. Wald,
+Commun. Math. Phys. {\bf 231} (2002) 309
+%%CITATION = GR-QC 0111108;%%
+
+\bibitem{BrunettiFV}
+R. Brunetti, K. Fredenhagen and R. Verch,
+``The generally covariant locality principle -- A new paradigm for
+local quantum field theory'',
+math-ph/0112041
+%%CITATION = MATH-PH 0112041;%%
+
+\bibitem{JunkerS}
+W. Junker and E. Schrohe,
+``Adiabatic vacuum states on general spacetime manifolds: definition,
+construction, and physical properties'',
+Potsdam, 2001
+
+\bibitem{Grigore}
+D. R. Grigore,
+Class. Quant. Grav. {\bf 17} (2000) 319
+%%CITATION = HEP-TH 9905190;%%
+
+\bibitem{Mills}
+R. Mills,
+``Beauty and truth'',
+in Chen Ning Yang: A Great Physicist of the Twentieth Century,
+C. S. Liu and S.-T. Yau, eds.,
+International Press, Cambridge, MA, 1995, p.~199
+
+\end{thebibliography}
+
+\end{document}
+
+\bye

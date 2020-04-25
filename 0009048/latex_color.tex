@@ -1,0 +1,1844 @@
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% PREAMBLE %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,12pt]{article}
+\usepackage{latexsym,amssymb}
+\textwidth 160 mm
+\oddsidemargin .5 mm
+\evensidemargin -.5 mm
+\topmargin -25 mm
+\textheight 240 mm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% MINIMAL SET OF STANDARD %%%%%%%%%%%%
+%%      DEFINITIONS    %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{definizione}{Definition}[section]
+\providecommand{\bdefi}{\begin{definizione}}
+\providecommand{\edefi}{\end{definizione}}
+\makeatletter
+\@addtoreset{equation}{section}
+\makeatother
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\providecommand{\eqn}[1]{(\ref{#1})}
+\providecommand{\ft}[2]{{\textstyle\frac{#1}{#2}}}
+\newsavebox{\uuunit}
+\sbox{\uuunit}
+    {\setlength{\unitlength}{0.825em}
+     \begin{picture}(0.6,0.7)
+        \thinlines
+        \put(0,0){\line(1,0){0.5}}
+        \put(0.15,0){\line(0,1){0.7}}
+        \put(0.35,0){\line(0,1){0.8}}
+       \multiput(0.3,0.8)(-0.04,-0.02){10}{\rule{0.5pt}{0.5pt}}
+     \def\bar{\overline}\end {picture}}
+\providecommand {\unity}{\mathord{\!\usebox{\uuunit}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{useful_macros}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%% title page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\begin{flushright}
+KUL-TF-2000/21\\
+ULB-TH-00/18\\
+hep-th/0009048 \\
+\end{flushright}
+\vskip 2cm
+\begin{center}
+{\Large \bf
+Non-semisimple gaugings \\ of \myHighlight{$D=5~~\mathcal{N}=8$}\coordHE{} Supergravity
+and FDA.s\myHighlight{$^\dagger$}\coordHE{}\\
+}
+\vfill
+
+{\large  Laura Andrianopoli\myHighlight{$^{1,2}$}\coordHE{}, Francesco Cordaro\myHighlight{$^1$}\coordHE{},}\\
+{\large Pietro Fr\'e\myHighlight{$^3$}\coordHE{} and Leonardo Gualtieri\myHighlight{$^4$}\coordHE{}} \\
+\vfill
+{ \sl
+\myHighlight{$^1$}\coordHE{}  Instituut voor Theoretische Fysica - Katholieke Universiteit Leuven
+\\Celestijnenlaan 200D B--3001 Leuven, Belgium\\
+\myHighlight{$^2$}\coordHE{} Dipartimento di Fisica, Politecnico di Torino, corso Duca
+degli Abruzzi 24, \\
+I-10129 Torino, Italy\\
+ \myHighlight{$^3$}\coordHE{} Dipartimento di Fisica Teorica, Universit\'a di Torino,
+via P. Giuria 1,
+I-10125 Torino, \\
+ Istituto Nazionale di Fisica Nucleare (INFN) - Sezione di Torino,
+Italy \\
+\myHighlight{$^4$}\coordHE{} Physique Th\'eorique et Math\'ematique, Universit\'e Libre de
+Bruxelles, C.P. 231, B--1050, Bruxelles, Belgium }
+\end{center}
+\vfill
+\begin{abstract}
+{We reformulate maximal \myHighlight{$D=5$}\coordHE{} supergravity in the consistent approach uniquely
+based on Free Differential Algebras and the solution of their
+Bianchi identities (= rheonomic method).
+In this approach the lagrangian is unnecessary since the field equations
+follow from closure of the supersymmetry algebra.
+This enables us to explicitly construct the non--compact gaugings
+corresponding to the non--semisimple algebras \myHighlight{$\mathrm{CSO(p,q,r)}$}\coordHE{},
+irrespectively from the existence of a lagrangian.
+The use of Free Differential Algebras
+is essential to clarify, within a cohomological set up,
+the dualization mechanism between one--forms and two--forms. Our theories
+contain \myHighlight{$12-r$}\coordHE{} self--dual two--forms and \myHighlight{$15+r$}\coordHE{} gauge vectors, \myHighlight{$r$}\coordHE{} of which
+are abelian and neutral.
+These theories, whose existence is proved and their supersymmetry algebra
+constructed hereby, have potentially interesting properties in relation with
+domain wall solutions and the trapping of gravity.
+}
+\end{abstract}
+\vspace{2mm} \vfill \hrule width 3.cm
+{\footnotesize
+ \myHighlight{$^ \dagger $}\coordHE{} \hskip 0.1cm Supported by   EEC  under TMR contract
+ ERBFMRX-CT96-0045 and RTN contract RTN1-1999-00116}
+\vspace{2mm} \vfill \hrule width 3.cm
+\end{titlepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+Gauged supergravity with a maximal compact group, \myHighlight{$\mathcal{G}=\mathrm{SO(6)}$}\coordHE{} in \myHighlight{$D=5$}\coordHE{}
+\cite{gunwar,PPV}, \myHighlight{$\mathcal{G}=\mathrm{SO(8)}$}\coordHE{} in
+\myHighlight{$D=4$}\coordHE{} \cite{dewitnicol} and \myHighlight{$\mathcal{G}=\mathrm{USp(4)}$}\coordHE{} in \myHighlight{$D=7$}\coordHE{} \cite{Pernici:1984xx}
+has attracted much renewed attention in the last two
+years because of the \myHighlight{$\mathrm{AdS_{p+2}/CFT_{p+1}}$}\coordHE{} correspondence (for a general review
+see \cite{Aharony:2000ti} and references therein; for the case \myHighlight{$D=p+2=4$}\coordHE{} see also
+\cite{Gualtieri:1999tu} and references therein). Indeed the
+maximally supersymmetric vacuum of these gauged supergravities is the \myHighlight{$AdS_D$}\coordHE{}
+space and the compact gauge group \myHighlight{$\mathcal{G}_{gauge}$}\coordHE{} is the
+\myHighlight{$\cal{R}$}\coordHE{}-symmetry of the corresponding maximally extended supersymmetry algebra.
+\par
+However the compact gaugings are not the only ones for extended
+supergravities. There exist also versions of these theories where the gauge
+group  \myHighlight{$\mathcal{G}_{gauge}$}\coordHE{} is non--compact. Unitarity is preserved because
+in all possible extrema of the corresponding  scalar potential the
+non--compact gauge symmetry is broken to some residual compact subgroup.
+Furthermore, there are models in which the gauge group is non--semisimple.
+For \myHighlight{${\cal N} =8$}\coordHE{} in \myHighlight{$D=4$}\coordHE{}, they were particularly studied by Hull \cite{hull,hull2}
+and an exhaustive classification of these  gaugings
+was more recently obtained  by some of us \cite{noi4D}.
+\par
+The non--semisimple gauged supergravities are  relevant for a close relative of the
+\myHighlight{$\mathrm{AdS/CFT}$}\coordHE{} correspondence namely the
+\begin{equation}\coord{}\boxEquation{
+  \mbox{Domain Wall}/QFT \,\,\, \mbox{correspondence}
+\label{domwalqft}
+}{
+  \mbox{Domain Wall}/QFT \,\,\, \mbox{correspondence}
+}{ecuacion}\coordE{}\end{equation}
+between gauged supergravities and quantum field theories realized on domain wall
+solutions of either string theory or M--theory. This generalization of the Maldacena
+conjecture was introduced by Boonstra, Skenderis and Townsend \cite{Boonstra:1999mp}
+and has been further developed in recent times \cite{Cvetic:2000pn,Cvetic:2000ah}.
+Indeed after the challenging proposal by Randall and Sundrum \cite{Randalsud}
+that {\it compactification of extra dimensions} can be traded for the {\it trapping of
+gravity} on \myHighlight{$4$}\coordHE{}--dimensional branes, much interest has gone into finding
+supergravity theories that can accomodate the Randall Sundrum scenario
+\cite{Ceresole:2000jd}, \cite{newduffo} . These
+have been related to domain--walls in \cite{Cvetic:2000pn},
+and hence to non--semisimple gauged supergravities \cite{Boonstra:1999mp}.
+\par
+For all these reasons it is interesting to study the
+non--semisimple gaugings of \myHighlight{$D=5$}\coordHE{} supergravity, both in the case
+of lower and maximal supersymmetry. For maximal \myHighlight{$ \mathcal{N}=8$}\coordHE{}
+supergravity in five--dimensions the analogue of the \myHighlight{$D=4$}\coordHE{}
+exhaustive classification derived in \cite{noi4D} has not been
+obtained so far.  G\"unaydin, Romans and Warner have constructed
+the \myHighlight{$\mathrm{SO(6-q,q)}$}\coordHE{} gaugings \cite{gunwar} that are the
+analogues of the \myHighlight{$\mathrm{SO(8-q,q)}$}\coordHE{} gaugings in four--dimensions
+but so far no gauging based on the so called \myHighlight{$\mathrm{CSO(p,q,r)}$}\coordHE{}
+contracted algebras (with \myHighlight{$p+q+r=6$}\coordHE{}) has been produced. These
+gaugings exist in \myHighlight{$4$}\coordHE{}--dimensions (with \myHighlight{$p+q+r=8$}\coordHE{}) and it would be
+natural to assume that they also exist in \myHighlight{$5$}\coordHE{}--dimensions. The
+difficulty met by the authors who have so far investigated this
+problem resides in the novel five--dimensional feature of
+one--form/two--form duality.  As long as all vector fields are
+abelian we can consider them as one--form or two--form gauge
+potentials at our own will. Yet when we introduce a certain degree
+of non--abelian gauge symmetry matters become more complicated,
+since only \myHighlight{$1$}\coordHE{}--forms can gauge non--abelian groups while
+\myHighlight{$2$}\coordHE{}--forms cannot. On the other hand \myHighlight{$1$}\coordHE{}--forms that transform in
+a non--trivial representation of a non abelian gauge group which
+is not the adjoint representation are equally inconsistent. They
+have to be replaced by \myHighlight{$2$}\coordHE{}--forms and some other mechanism,
+different from gauge symmetry has to be found to half their
+degrees of freedom. This is self--duality between the \myHighlight{$2$}\coordHE{}--form
+and its field strength. Hence gauged supergravity can only exist
+with an appropriate mixture of \myHighlight{$1$}\coordHE{}--forms and self--dual
+\myHighlight{$2$}\coordHE{}--forms. While this mixture was mastered in the case of compact
+and non--compact but semisimple gaugings, the case of
+\myHighlight{$\mathrm{CSO(p,q,r)}$}\coordHE{} algebras that are not semisimple seemed to
+be unreachable in the existing literature.
+\par
+In the present paper we show that the \myHighlight{$\mathrm{CSO(p,q,r)}$}\coordHE{} gaugings do exist and
+are fairly simple. The catch is the use of the geometric approach (based on Free
+Differential Algebras \footnote{for  comprehensive
+reviews of these topics see vol.2 of
+\cite{castdauriafre}}) where the mechanism of one--form/two--form dualization
+receives a natural algebraic formulation and explanation.
+\par
+The final result is that in the case of the \myHighlight{$\mathrm{CSO(p,q,r)}$}\coordHE{} gaugings there
+are \myHighlight{$15+r$}\coordHE{} gauge vectors and \myHighlight{$12-r$}\coordHE{} self--dual two--forms. \myHighlight{$15$}\coordHE{} of the
+vectors gauge the contracted algebra while \myHighlight{$r$}\coordHE{} of them have an abelian gauge symmetry with
+respect to which no field in the theory is charged. At the same time these vectors are
+neutral with respect to the transformations of the gauge algebra. Furthermore
+how many fields are true vectors and how many are replaced by self--dual
+two--forms is decided by a
+cohomological argument clearly formulated in the Free Differential Algebra set up.
+\par
+The price one might be forced to pay in the case of \myHighlight{$r>0$}\coordHE{} extra
+neutral vector fields is that, although field equations can be
+normally derived from closure of the supersymmetry algebra, yet a
+lagrangian of conventional type might not exist, just as it
+happens for type \myHighlight{$IIB$}\coordHE{} supergravity in \myHighlight{$D=10$}\coordHE{} (after all, this is
+not terribly surprising since \myHighlight{${\cal N}=8$}\coordHE{} supergravities in five
+dimensions should eventually be interpreted in terms of brane
+mechanisms and compactifications from type IIB superstring).
+This whould make impossible the construction of the theory
+by means of lagrangian--based techniques.
+However in our construction, based on the closure of the
+supersymmetry algebra, the existence of a Lagrangian is not
+fundamental, the existence of the theory following from the
+consistent closure of Bianchi-Identities.
+
+The scalar potential of these supergravities can be systematically
+derived, together with the complete field equations, from the closure of the
+supersymmetry algebra we have determined in the present paper.
+This is completely algorithmic and straightforward, but it involves lengthy
+calculations
+that are postponed to a forthcoming publication \cite{next},
+where a full--fledged investigation of the properties of the potential and of its
+implications for the correspondence (\ref{domwalqft}) will be given.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Paper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\myHighlight{$D=5~~\mathcal{N}=8$}\coordHE{} supergravity}
+In this section we recall the main features of
+\myHighlight{$D=5~~\mathcal{N}=8$}\coordHE{} supergravity theory \cite{gunwar},
+\cite{PPV}, fitting its formulation into the framework of the
+rheonomic constructions \cite{castdauriafre} and of the general
+discussion of duality symmetries \cite{mylecture} and central
+charges \cite{Andrianopoli:1997wf}. While adopting where possible
+the conventions of \cite{gunwar}, recasting  \myHighlight{$D=5~~\mathcal{N}=8$}\coordHE{}
+supergravity into the general framework of
+\cite{Andrianopoli:1997wf} is also a matter of notations since the
+names given to the various types of indices must reflect their
+interpretation within the framework. Specifically the notations
+are as follows. By \myHighlight{$A,B=1,\dots,8$}\coordHE{} we denote the indices labeling
+the supercharges and acted on by the {\it isotropy} subgroup \myHighlight{$H$}\coordHE{}
+of the scalar coset \myHighlight{$G/H$}\coordHE{}. In our case they are in the fundamental
+\myHighlight{${\bf 8}$}\coordHE{} of \myHighlight{$\mathrm{USp(8)}$}\coordHE{}. The indices
+\myHighlight{$\Lambda,\Sigma=1,\dots,27$}\coordHE{}  label instead the vector fields and
+correspond to the linear representation of the scalar {\it
+isometry} group \myHighlight{$G$}\coordHE{} to which the vectors are assigned. In our case
+they run in the \myHighlight{${\bf 27}$}\coordHE{} of \myHighlight{$\mathrm{E_{6(6)}}$}\coordHE{}. Next we need a
+notation for the electric subgroup \myHighlight{$\mathrm{SL}(6,\mathbb{R})
+\times \mathrm{SL}(2,\mathbb{R}) \subset \mathrm{E_{6(6)}}$}\coordHE{} within
+which the generators of the gauge group can be chosen. It is as
+follows. \myHighlight{$I,J=1,\dots,6$}\coordHE{} are indices in the fundamental  \myHighlight{${\bf 6}$}\coordHE{}
+both of \myHighlight{$\mathrm{SL}(6,\mathbb{R})\subset \mathrm{E_{6(6)}}$}\coordHE{} and
+of \myHighlight{$\mathrm{SO(6)}$}\coordHE{} (or of its non--compact/non--semisimple
+versions); the indices \myHighlight{$\alpha,\beta=1,2$}\coordHE{} run in the fundamental
+\myHighlight{$\bf 2$}\coordHE{} of \myHighlight{$\mathrm{SL}(2,\mathbb{R})\subset \mathrm{E_{6(6)}}$}\coordHE{}.
+Finally \myHighlight{$\mu,\nu=0,\dots,4$}\coordHE{} are the usual curved spacetime
+indices, while  we call \myHighlight{$a,b=0,\dots,4$}\coordHE{} the flat indices of the
+f\"unfbein. The conventions for the gamma matrices, the spinors
+and the symplectic metric as those used in \cite{gunwar} and
+\cite{cremmer}.
+\subsection{The ungauged theory}
+The supersymmetry algebra for the ungauged theory is the
+superPoincar\'e superalgebra, whose external automorphism
+symmetry (the \myHighlight{$\mathcal{R}$}\coordHE{}--symmetry) is \myHighlight{$\mathrm{USp(8)}$}\coordHE{}. The
+theory is invariant under local \myHighlight{$\mathrm{ISO(4,1)}\times \mathrm{USp(8)}$}\coordHE{} and
+global \myHighlight{$\mathrm{E_{6(6)}}$}\coordHE{} transformations,
+and under local supersymmetry transformations, generated by \myHighlight{$32$}\coordHE{} real
+supersymmetry charges, organized in the eight pseudo--Majorana spinors
+\begin{equation}\coord{}\boxEquation{
+\mathrm{Q}^A=\Omega^{AB} \, \mathcal{C} \, \left( \overline{\mathrm{Q}}_A\right) ^T \,
+ ~~~A=1,\dots,8\,.
+}{
+\mathrm{Q}^A=\Omega^{AB} \, \mathcal{C} \, \left( \overline{\mathrm{Q}}_A\right) ^T \,
+ ~~~A=1,\dots,8\,.
+}{ecuacion}\coordE{}\end{equation}
+Here \myHighlight{$\Omega^{AB}=-\Omega^{BA}$}\coordHE{} is the \myHighlight{$\mathrm{USp(8)}$}\coordHE{} invariant
+metric and \myHighlight{$ \mathcal{C}$}\coordHE{} is the \myHighlight{$5$}\coordHE{}--dimensional charge conjugation matrix.
+The theory contains: the graviton field, namely the f\"unfbein 1--form \myHighlight{$V^a$}\coordHE{},
+eight gravitinos \myHighlight{$\psi^A \equiv \psi^A_\mu \, dx^\mu$}\coordHE{} in the
+\myHighlight{$\bf 8$}\coordHE{} representation of \myHighlight{$\mathrm{USp(8)}$}\coordHE{}, \myHighlight{$27$}\coordHE{} vector fields
+ \myHighlight{$A^{\Lambda} \equiv A^{\Lambda} _\mu \, dx^\mu$}\coordHE{} in the \myHighlight{$\bf 27$}\coordHE{} of
+ \myHighlight{$\mathrm{E_{6(6)}}$}\coordHE{},
+\myHighlight{$48$}\coordHE{} dilatinos \myHighlight{$\chi^{ABC}$}\coordHE{} in the \myHighlight{$\bf 48$}\coordHE{} of \myHighlight{$\mathrm{USp(8)}$}\coordHE{}, and \myHighlight{$42$}\coordHE{} scalars
+\myHighlight{$\phi$}\coordHE{} that
+parametrize the coset manifold \myHighlight{$E_{\left(6\right)6}/\mathrm{USp(8)}$}\coordHE{}, and
+appear in the theory through the coset representative \myHighlight{$\mathbb{L}_{\Lambda}^{~AB}(\phi)$}\coordHE{}, in the
+\myHighlight{$\bf (27,\overline{{27}})$}\coordHE{} of \myHighlight{$\mathrm{USp(8)}\times \mathrm{E_{6(6)}}$}\coordHE{}.
+The local \myHighlight{$\mathrm{USp(8)}$}\coordHE{} symmetry is gauged by the composite connection
+built out of the scalar fields. The connection (in the \myHighlight{${\bf 36}$}\coordHE{} of \myHighlight{$\mathrm{USp(8)}$}\coordHE{})
+and the vielbein (in the \myHighlight{${\bf 42}$}\coordHE{} of \myHighlight{$\mathrm{USp(8)}$}\coordHE{}) of the
+scalar manifold are defined through the following relation:
+\begin{equation}\coord{}\boxEquation{
+\mathbb{L}^{-1~\Lambda}_{AB}d\mathbb{L}_{\Lambda}^{~CD}=
+\mathcal{Q}_{[A}^{~~~[C}\delta^{D]}_{B]}+\mathcal{P}_{AB}^{~~~CD}\,.
+\label{defungaugedconnection}
+}{
+\mathbb{L}^{-1~\Lambda}_{AB}d\mathbb{L}_{\Lambda}^{~CD}=
+\mathcal{Q}_{[A}^{~~~[C}\delta^{D]}_{B]}+\mathcal{P}_{AB}^{~~~CD}\,.
+}{ecuacion}\coordE{}\end{equation}
+The isometry of the scalar manifold, \myHighlight{$E_{\left(6\right)6}$}\coordHE{}, is a global symmetry of
+the theory.
+\subsection{The gauging}
+In maximal supergravities, where no matter multiplets can be added,
+{\it gauging} corresponds to the addition of suitable
+interaction terms that turn  a subgroup \myHighlight{$\mathcal{G}$}\coordHE{} of the global
+\myHighlight{$E_{\left(6\right)6}$}\coordHE{} duality group into a local symmetry.
+This is done by means of vectors chosen among the \myHighlight{$27$}\coordHE{}  \myHighlight{$A^{\Lambda}$}\coordHE{}.
+The \myHighlight{$E_{\left(6\right)6}$}\coordHE{} symmetry is broken to the normalizer of
+\myHighlight{$\mathcal{G}$}\coordHE{} in
+\myHighlight{$E_{\left(6\right)6}$}\coordHE{}, and after this operation
+ the new theory has a local symmetry \myHighlight{$\mathrm{USp(8)}\times\mathcal{G}$}\coordHE{}
+and a global symmetry \myHighlight{$N(\mathcal{G},E_{\left(6\right)6})$}\coordHE{}.
+The choice of \myHighlight{$\mathcal{G}$}\coordHE{} is strictly constrained by the request that the vectors which
+gauge this symmetry should transform in the coadjoint representation of \myHighlight{$\mathcal{G}$}\coordHE{},
+so that the following branching must be true:
+\begin{equation}\coord{}\boxEquation{
+\label{gaugprop}
+{\bf 27}\stackrel{\mathcal{G}\subset E_{\left(6\right)6}}{\longrightarrow}
+Coadj\left(\mathcal{G}\right)\oplus\hbox{~rep. of~}\mathcal{G}\,.
+}{
+{\bf 27}\stackrel{\mathcal{G}\subset E_{\left(6\right)6}}{\longrightarrow}
+Coadj\left(\mathcal{G}\right)\oplus\hbox{~rep. of~}\mathcal{G}\,.
+}{ecuacion}\coordE{}\end{equation}
+It turns out that this request is satisfied if and only if
+\myHighlight{$\mathcal{G}$}\coordHE{} is a fifteen--dimensional
+subgroup of \myHighlight{$\mathrm{SL}(6,\mathbb{R})\subset E_{\left(6\right)6}$}\coordHE{} whose adjoint
+is identified with the \myHighlight{$\bf 15$}\coordHE{} representation of
+\myHighlight{$\mathrm{SL}(6,\mathbb{R})$}\coordHE{}. Indeed the \myHighlight{$\bf 27$}\coordHE{} of \myHighlight{$E_{\left(6\right)6}$}\coordHE{} decomposes under
+\begin{equation}\coord{}\boxEquation{
+\mathrm{SL}(6,\mathbb{R})\times \mathrm{SL}(2,\mathbb{R})\subset E_{\left(6\right)6}
+}{
+\mathrm{SL}(6,\mathbb{R})\times \mathrm{SL}(2,\mathbb{R})\subset E_{\left(6\right)6}
+}{ecuacion}\coordE{}\end{equation}
+as
+\begin{equation}\coord{}\boxEquation{
+\bf 27 \longrightarrow ({\bar{15}},1)\oplus (6,2)\,
+}{
+\bf 27 \longrightarrow ({\bar{15}},1)\oplus (6,2)\,
+}{ecuacion}\coordE{}\end{equation}
+(for example, \myHighlight{$\mathbb{L}_{\Lambda}^{~AB}\longrightarrow
+ (\mathbb{L}^{IJAB},\mathbb{L}_{I\alpha}^{~AB})$}\coordHE{})
+so that the property (\ref{gaugprop}) is satisfied. The subgroups
+of \myHighlight{$\mathrm{SL}(6,\mathbb{R})$}\coordHE{} whose adjoint is the \myHighlight{$\bf 15$}\coordHE{} of
+\myHighlight{$\mathrm{SL}(6,\mathbb{R})$}\coordHE{} are the \myHighlight{$\mathrm{SO(p,q)}$}\coordHE{} groups with
+\myHighlight{$p+q=6$}\coordHE{} and their contractions \myHighlight{$\mathrm{CSO}\mathrm{(p,q,r)}$}\coordHE{},
+which will be discussed in section \myHighlight{$4$}\coordHE{} (see
+\cite{hull,hull2,noi4D} for definitions). The possible gaugings
+are then restricted to these groups. The normalizer in
+\myHighlight{$E_{\left(6\right)6}$}\coordHE{} of all these groups is the same as the
+normalizer of \myHighlight{$\mathrm{SL}(6,\mathbb{R}) $}\coordHE{}, namely
+ \myHighlight{$\mathrm{SL}(2,\mathbb{R})$}\coordHE{}. Therefore this latter is the
+residual global symmetry for all possible gaugings. The 27 vectors
+\myHighlight{$A^{\Lambda}$}\coordHE{} are then decomposed into the vectors \myHighlight{$A_{IJ}$}\coordHE{} in the
+\myHighlight{$\bf (\bar{15},1)$}\coordHE{}, that gauge \myHighlight{$\mathcal{G}$}\coordHE{}, and the vectors  in
+the \myHighlight{$\bf (6,2)$}\coordHE{}, which do not gauge anything and are then forced
+(as we will see later) to be dualized into two--forms
+\myHighlight{$B^{I\alpha}$}\coordHE{}. The fifteen generators \myHighlight{$G^{IJ}$}\coordHE{} of \myHighlight{$\mathcal{G}$}\coordHE{}
+can be expressed as linear combinations of the \myHighlight{$35$}\coordHE{} generators
+\myHighlight{$G_\ell$}\coordHE{} (\myHighlight{$\ell\!\!=\!\!1,\dots 35$}\coordHE{}) of
+\myHighlight{$\mathrm{SL}(6,\mathbb{R})$}\coordHE{}: \myHighlight{$G^{IJ}\!=\!G_\ell \,e^{\ell IJ}$}\coordHE{}
+where \myHighlight{$e^{\ell IJ}$}\coordHE{} is the {\it embedding matrix} \cite{noi4D}
+which describes the embedding of \myHighlight{$\mathcal{G}$}\coordHE{} into
+\myHighlight{$\mathrm{SL}(6,\mathbb{R})$}\coordHE{}. For all the admissible cases  in the
+fundamental \myHighlight{$\bf 6$}\coordHE{}--dimensional representation the generators of
+the gauge group \myHighlight{$\mathcal{G}$}\coordHE{} take the form \cite{gunwar}
+\begin{equation}\coord{}\boxEquation{
+(G^{IJ})^K_{~L}=\delta^{[I}_L\eta^{J]K}
+\label{genfund}
+}{
+(G^{IJ})^K_{~L}=\delta^{[I}_L\eta^{J]K}
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\eta^{JK}$}\coordHE{} is a diagonal matrix with \myHighlight{$p$}\coordHE{} eigenvalues equal to \myHighlight{$1$}\coordHE{},
+ \myHighlight{$q$}\coordHE{} eigenvalues equal to \myHighlight{$(-1)$}\coordHE{}   and, only in the case of contracted groups,
+  \myHighlight{$r$}\coordHE{}  null eigenvalues. This signature completely characterizes
+the gauge groups and correspondingly the
+gauged theory.
+From (\ref{genfund}) one can build the generators of
+\myHighlight{$\mathcal{G}\subset E_{\left(6\right)6}$}\coordHE{} in the
+\myHighlight{$\bf 27$}\coordHE{} representation of \myHighlight{$E_{\left(6\right)6}$}\coordHE{}, namely
+some suitable matrices \myHighlight{$\,(G^{IJ})_{\Lambda}^{~\Sigma}$}\coordHE{}.
+According to the general framework of
+\cite{mylecture,castdauriafre,noi4D}, in presence of gauging,
+the composite \myHighlight{$H$}\coordHE{}--connection of \myHighlight{$\mathrm{USp(8)}$}\coordHE{} and scalar vielbein,
+defined in (\ref{defungaugedconnection}) are replaced by their gauged analogues:
+\begin{equation}\coord{}\boxEquation{
+\mathbb{L}^{-1~\Lambda}_{AB}d\mathbb{L}_{\Lambda}^{~CD}+
+g(\mathbb{L}^{-1})_{AB}^{~\Lambda}(G^{IJ})_{\Lambda}^{~\Sigma}\mathbb{L}_{\Sigma}^{~CD}
+A_{IJ}=\hat{\mathcal{Q}}_{[A}^{~~~[C}\delta^{D]}_{B]}+\hat{\mathcal{P}}_{AB}^{~~~CD}\,,
+\label{defgaugedconnection}
+}{
+\mathbb{L}^{-1~\Lambda}_{AB}d\mathbb{L}_{\Lambda}^{~CD}+
+g(\mathbb{L}^{-1})_{AB}^{~\Lambda}(G^{IJ})_{\Lambda}^{~\Sigma}\mathbb{L}_{\Sigma}^{~CD}
+A_{IJ}=\hat{\mathcal{Q}}_{[A}^{~~~[C}\delta^{D]}_{B]}+\hat{\mathcal{P}}_{AB}^{~~~CD}\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$g$}\coordHE{} is the gauge coupling constant.
+The covariant \myHighlight{$\mathrm{USp(8)}$}\coordHE{} derivative of a field \myHighlight{$V_A$}\coordHE{}
+is defined as
+\begin{equation}\coord{}\boxEquation{
+\nabla V_A=\mathcal{D} V_A+\hat{\mathcal{Q}}_A^{~B}\wedge V_B
+\label{covQder}
+}{
+\nabla V_A=\mathcal{D} V_A+\hat{\mathcal{Q}}_A^{~B}\wedge V_B
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\mathcal{D}$}\coordHE{} is the Lorentz--covariant exterior derivative.
+The covariant derivative with respect to \myHighlight{$\mathcal{G}$}\coordHE{}
+of a field \myHighlight{$V^I$}\coordHE{} in the \myHighlight{$\bf 6$}\coordHE{} of \myHighlight{$ \mathrm{SL(6, \mathbb{R})}$}\coordHE{} is instead defined as
+follows:
+\begin{equation}\coord{}\boxEquation{
+DV^I\equiv \nabla V^I+g(G^{KL})^I_{~J}A_{KL}\wedge V^J\,.
+\label{covGder}
+}{
+DV^I\equiv \nabla V^I+g(G^{KL})^I_{~J}A_{KL}\wedge V^J\,.
+}{ecuacion}\coordE{}\end{equation}
+The field content of the gauged supergravity theory is the following
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{|c|c|c|c|c|}
+\hline
+\#& \hbox{Field} & \left(SU(2)\times SU(2)\right) \hbox{--spin~rep.} & \mathrm{USp(8)}
+\hbox{~rep.} & \mathcal{G}
+\hbox{~rep.} \\
+\hline
+1& V^a & (1,1) & {\bf 1} & {\bf 1} \\
+\hline
+8& \psi^A & (1,1/2)\oplus (1/2,1) & {\bf 8} & {\bf 1} \\
+\hline
+15& A_{IJ} & (1/2,1/2) & {\bf 1} & {\bf 15} \\
+\hline
+12& B^{I\alpha} & (1,0)\oplus (0,1) & {\bf 1} & {\bf 6\oplus \overline{{6}}} \\
+\hline
+48& \chi^{ABC} & (1/2,0)\oplus (0,1/2) & {\bf 48} & {\bf 1} \\
+\hline
+42& \mathbb{L}_{\Lambda}^{~AB}\left(\phi\right) & (0,0) & {\bf 27} & {\bf\overline{{27}}} \\
+\hline
+\end{array}
+\label{gaugedfieldcontent}
+}{
+\begin{array}{|c|c|c|c|c|}
+\hline
+\#& \hbox{Field} & \left(SU(2)\times SU(2)\right) \hbox{--spin~rep.} & \mathrm{USp(8)}
+\hbox{~rep.} & \mathcal{G}
+\hbox{~rep.} \\
+\hline
+1& V^a & (1,1) & {\bf 1} & {\bf 1} \\
+\hline
+8& \psi^A & (1,1/2)\oplus (1/2,1) & {\bf 8} & {\bf 1} \\
+\hline
+15& A_{IJ} & (1/2,1/2) & {\bf 1} & {\bf 15} \\
+\hline
+12& B^{I\alpha} & (1,0)\oplus (0,1) & {\bf 1} & {\bf 6\oplus \overline{{6}}} \\
+\hline
+48& \chi^{ABC} & (1/2,0)\oplus (0,1/2) & {\bf 48} & {\bf 1} \\
+\hline
+42& \mathbb{L}_{\Lambda}^{~AB}\left(\phi\right) & (0,0) & {\bf 27} & {\bf\overline{{27}}} \\
+\hline
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Gauged supergravities from
+Free Differential Algebras  and Rheonomy} Gauged maximal
+supergravities in \myHighlight{$D=5$}\coordHE{} were originally constructed within the
+framework of  No\"ether coupling and component formalism
+\cite{gunwar},\cite{PPV}. As we pointed out in the introduction
+the gaugings corresponding to the contracted groups
+\myHighlight{$\mathrm{CSO(p,q,r)}$}\coordHE{} were left open in that approach. We are able
+to construct explicitly all these theories by reverting to our
+preferred approach based on Free Differential Algebras (FDA.s) and
+the principle of rheonomy \cite{castdauriafre}. Indeed, within
+this approach the non-semisimple theories are shown to exist and
+explicitely constructed irrespectively on the existence or not of
+a lagrangian formulation. Moreover, all the subtle points
+concerning the role of two--form dualization are naturally
+resolved in the Free Differential Algebra rheonomic approach. As
+far as five dimensions are concerned this was already noted  in
+\cite{Ceresole:2000jd} where the hypermultiplets were coupled to
+\myHighlight{$\mathcal{N}=2$}\coordHE{} supergravity. Similarly the essential role of
+FDA.s in gauging theories with \myHighlight{$p$}\coordHE{}--form gauge fields was made
+evident in \cite{F4} where the unique six--dimensional
+\myHighlight{$F(4)$}\coordHE{}--supergravity was finally constructed.
+\subsection{The rheonomy principle}
+For completeness, let us briefly recall the main steps in the
+{\sl ''rheonomy approach''} to supergravity.
+The starting point is to consider as fundamental fields the set of \myHighlight{$1$}\coordHE{}--forms
+\myHighlight{$\mu^A\equiv\{\omega^{ab},\psi^{\alpha}, V^a\}$}\coordHE{}, that constitute
+a cotangent frame dual to the Poincar\'e super--Lie algebra generators
+\myHighlight{$\{J_{ab},Q_{\alpha},P_a\}$}\coordHE{}.
+The ordinary space--time parametrized by \myHighlight{$\{x^{\mu}\}$}\coordHE{} coordinates
+can be extended to a superspace
+parametrized also by the fermionic  \myHighlight{$\{\theta^{\alpha}\}$}\coordHE{} spinor coordinates.
+We can give to the space--time fields
+\myHighlight{$\mu^A(x)$}\coordHE{} a \myHighlight{$\theta$}\coordHE{}-dependence through an appropriate extension mapping:
+\begin{equation}\coord{}\boxEquation{
+\label{rheomap}
+\left\{
+\begin{array}{lcl}
+\omega^{ab}(x) &\rightarrow& \omega^{ab}(x,\theta) \\
+\psi^{\alpha}(x) &\rightarrow& \psi^{\alpha}(x,\theta) \\
+V^{a}(x) &\rightarrow& V^{ab}(x,\theta) \,.
+\end{array}
+\right.
+}{
+\left\{
+\begin{array}{lcl}
+\omega^{ab}(x) &\rightarrow& \omega^{ab}(x,\theta) \\
+\psi^{\alpha}(x) &\rightarrow& \psi^{\alpha}(x,\theta) \\
+V^{a}(x) &\rightarrow& V^{ab}(x,\theta) \,.
+\end{array}
+\right.
+}{ecuacion}\coordE{}\end{equation}
+In such a way the bosonic space-time fields \myHighlight{$\mu^A(x)$}\coordHE{} are the
+boundary values at \myHighlight{$\theta^{\alpha}=0$}\coordHE{} of these superspace fields
+\begin{equation}\coord{}\boxEquation{
+\mu^A(x)\equiv \mu^A(x,\theta)| _{\theta =d\theta =0}\,.
+}{
+\mu^A(x)\equiv \mu^A(x,\theta)| _{\theta =d\theta =0}\,.
+}{ecuacion}\coordE{}\end{equation}
+The same extension holds also  for the set of curvature \myHighlight{$2$}\coordHE{}--forms defined through the
+structural equations:
+\begin{equation}\coord{}\boxEquation{
+R^A(x,\theta)\equiv d\mu^A(x,\theta)+{\ft 1 2} C^A_{~BC}\mu^B(x,\theta)\wedge\mu^C(x,\theta)
+\equiv R^A_{LM}dZ^L\wedge dZ^M
+\label{maucartcurv}
+}{
+R^A(x,\theta)\equiv d\mu^A(x,\theta)+{\ft 1 2} C^A_{~BC}\mu^B(x,\theta)\wedge\mu^C(x,\theta)
+\equiv R^A_{LM}dZ^L\wedge dZ^M
+}{ecuacion}\coordE{}\end{equation}
+that generalize Maurer--Cartan equations obtained by setting \myHighlight{$R^A=0$}\coordHE{}.
+In eq. (\ref{maucartcurv})
+\myHighlight{$R^A$}\coordHE{} denotes the multiplet \myHighlight{$\{R^{ab},\rho,R^a\}$}\coordHE{} of super--Poincar\'e curvatures
+and \myHighlight{$dZ^L\equiv\{dx^{\mu},d\theta^{\alpha}\}$}\coordHE{} is the set of coordinates which
+span the cotangent space to superspace.
+\par
+In order to be completely determined as functions of
+\myHighlight{$x^{\mu},\theta^{\alpha}$}\coordHE{}, the fields \myHighlight{$\mu^A$}\coordHE{}  must be equipped
+with a complete set of Cauchy boundary conditions, namely we have to specify both
+the space--time configurations \myHighlight{$\mu^A_{\mu}(x,0)$}\coordHE{} on the boundary \myHighlight{$\theta =0$}\coordHE{}
+and  the first--order derivatives along the theta
+directions \myHighlight{$\partial_{\theta^{\alpha}}\mu^A_{\mu}(x,\theta)|_{\theta =0}$}\coordHE{}
+on the same boundary.
+These derivatives can be expressed in terms of  \myHighlight{$\theta$}\coordHE{} projections
+\myHighlight{$R^A_{\alpha,L}$}\coordHE{} of the \myHighlight{$R^A$}\coordHE{} curvatures.
+The {\it extension map} (\ref{rheomap}) can thus be determined by
+specifying the following two sets of boundary
+values:
+\begin{equation}\coord{}\boxEquation{
+\mu^A(x,0) \quad ; \quad R^A_{\alpha,L}(x,0)\,.
+}{
+\mu^A(x,0) \quad ; \quad R^A_{\alpha,L}(x,0)\,.
+}{ecuacion}\coordE{}\end{equation}
+The former are the space--time configurations for the fields
+\myHighlight{$\{\omega^{ab}(x)$}\coordHE{}, \myHighlight{$\psi^{\alpha}(x)$}\coordHE{}, \myHighlight{$V^a(x)\}$}\coordHE{}. In order to determine the latter,
+namely the so called {\sl outer} components of
+the curvatures,
+we make use of the {\sl rheonomy principle}, which states that the
+outer
+components of the curvatures are linear combinations of the {\sl inner} ones, i.e. of the
+space--time configurations \myHighlight{$\{R^{ab}(x),\rho(x),R^a(x)\}$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+\label{rheoconstraints}
+R^A_{\alpha,L} = \mathcal{C}^{A|\mu\nu}_{\alpha L|B}R^B_{\mu\nu}
+}{
+R^A_{\alpha,L} = \mathcal{C}^{A|\mu\nu}_{\alpha L|B}R^B_{\mu\nu}
+}{ecuacion}\coordE{}\end{equation}
+where the \myHighlight{$\mathcal{C}$}\coordHE{}'s are suitable constant tensors.
+This expansion is called the {\sl  rheonomic parametrization}
+of the curvatures.
+The values of the constants \myHighlight{$\mathcal{C}$}\coordHE{} can be determined by imposing the closure of
+Bianchi identities
+\begin{equation}\coord{}\boxEquation{
+dR^A+C^A_{BC}\mu^B\wedge R^C=0\,.
+}{
+dR^A+C^A_{BC}\mu^B\wedge R^C=0\,.
+}{ecuacion}\coordE{}\end{equation}
+Since by definition we have:
+\begin{equation}\coord{}\boxEquation{
+R^A_{\mu\nu}=\partial_{[\mu}\mu^A_{\nu]}+{\ft 1 2} C^A_{~BC}\mu^B_{[\mu}\wedge\mu^C_{\nu]}
+}{
+R^A_{\mu\nu}=\partial_{[\mu}\mu^A_{\nu]}+{\ft 1 2} C^A_{~BC}\mu^B_{[\mu}\wedge\mu^C_{\nu]}
+}{ecuacion}\coordE{}\end{equation}
+it turns out that the knowledge of the pure space-time configurations
+\myHighlight{$\{\!\mu_{\nu}^A(x,0),\!\partial_{\mu}\mu^A_{\nu}(x,0)\!\}$}\coordHE{}
+completely determines the superspace extensions defined in (\ref{rheomap}).
+It is worth noting that in this context  Bianchi
+identities are not identically satisfied. This
+is not surprising since supersymmetry is an on--shell symmetry,
+and therefore it closes only modulo the equations of motion.
+Bianchi identities are actually
+equations of the theory, determining its dynamics.  Not only they give the
+rheonomic parametrizations, but they also fix the geometry of the scalar manifold
+and give the equations of motion satisfied by the spacetime fields.
+In this framework, a supersymmetry transformation of the fields \myHighlight{$\mu^A$}\coordHE{} is
+given by a diffeomorphism along a fermionic direction in superspace
+\myHighlight{$\varepsilon=\varepsilon^{\alpha}\partial_{\alpha}$}\coordHE{} and is expressed
+by means of a Lie derivative along \myHighlight{$\varepsilon$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+\delta\mu^A(x,\theta)=l_{\varepsilon}\mu^A(x,\theta) = (\nabla\varepsilon)^A
++ 2 \varepsilon^{\alpha}\mathcal{C}^{A|\mu\nu}_{\alpha L|B}R^B_{\mu\nu}dZ^L
+\label{lie}
+}{
+\delta\mu^A(x,\theta)=l_{\varepsilon}\mu^A(x,\theta) = (\nabla\varepsilon)^A
++ 2 \varepsilon^{\alpha}\mathcal{C}^{A|\mu\nu}_{\alpha L|B}R^B_{\mu\nu}dZ^L
+}{ecuacion}\coordE{}\end{equation}
+from which one can retrieve the  supersymmetry transformation rules of the
+fields \myHighlight{$\delta\psi_{\mu},\dots$}\coordHE{} as given
+in the usual component formalism. Note that the Lie derivatives \myHighlight{$l_{\varepsilon}$}\coordHE{}
+close a super--Lie algebra, namely:
+\begin{equation}\coord{}\boxEquation{
+\left[l_{\varepsilon_1},l_{\varepsilon_2}\right] = l_{[\varepsilon_1,\varepsilon_2]}
+}{
+\left[l_{\varepsilon_1},l_{\varepsilon_2}\right] = l_{[\varepsilon_1,\varepsilon_2]}
+}{ecuacion}\coordE{}\end{equation}
+if the integrability condition \myHighlight{$d^2=0$}\coordHE{} is used. Of course this requirement is
+equivalent to enforcing the
+closure of  Bianchi identities for the curvatures \myHighlight{$R^A$}\coordHE{}.
+\par
+Summarizing, to construct a supergravity theory we use the rheonomic conditions
+(\ref{rheoconstraints}) for the curvatures and then we solve Bianchi
+Identities in two steps.
+In the {\em first step} we analyse the sectors that determine the unknown
+coefficients \myHighlight{$\mathcal{C}$}\coordHE{}'s.
+Once a set of \myHighlight{$\mathcal{C}$}\coordHE{}'s satisfying Bianchi Identities has
+been found, the corresponding supergravity theory has been {\em proven to
+  exist} and its on--shell closed supersymmetry algebra has been constructed.
+Indeed, we have an explicit and consistent form for all the susy transformation rules.
+\par
+Moreover, the classical dynamics of the theory is completely
+determined, since the classical equations of motion uniquely follow from closure of the susy
+algebra.
+To work them out explicitly corresponds to the {\em second step}.
+It suffices to complete the analysis of B-I in the remaining sectors
+by means of calculations that are completely straightforward and guaranteed, although somewhat lengthy.
+From this viewpoint, the explicit construction of the Lagrangian \myHighlight{$\cal L$}\coordHE{} is not really needed.
+Simply, when \myHighlight{$\cal L$}\coordHE{} exists, the determination of the field equations is more
+easily obtained by \myHighlight{$\delta\cal L$}\coordHE{} variations than through the analysis of
+the remaining sectors of Bianchi Identities
+\footnote{Conceptually, the lagrangian is essential only for quantization, which
+however, in a modern perspective, is not the issue for theories, like
+supergravity, that are regarded as effective low energy theories of more
+fundamental microscopic quantum theories, like string theory.}.
+When the Lagrangian exists, it can be obtained by means of a straightforward
+procedure starting from the rheonomic parametrizations \cite{castdauriafre}.
+\par
+What we sketched above describes minimal supergravity, containing only the
+graviton, the gravitino and the spin connection, but it is easily generalized to
+all supergravity theories \cite{castdauriafre}, where also other fields are present, such as dilatinos,
+scalars, vectors and higher order forms. In these cases, the whole
+construction can be repeated with the \myHighlight{$\mu^A$}\coordHE{} defined to include all the
+\myHighlight{$1$}\coordHE{}--forms of the theory. Scalars and spin--one half fields are introduced by
+including their covariant derivatives as additional curvatures of the
+theory. When higher order forms are present, the super-Lie algebra has to be
+enlarged to a Free Differential Algebra expressing the occurrence of a
+higher order cohomology.
+\subsection{Rheonomic parametrizations for gauged \myHighlight{$\mathcal{N}=8$}\coordHE{}  supergravity
+in five dimensions}
+In the theory we are considering, the relevant curvatures are defined below:
+\begin{equation}\coord{}\boxEquation{
+  \begin{array}{rl}
+    \left . \mbox{\vbox{\hbox{Poincar\'e}
+  \hbox{2-form}\hbox{curvatures}}} \quad \right \{ & \begin{array}{rcl}
+ R^a &\equiv& \mathcal{D} V^a +{{\rm i}\over 2} \bar{\psi}^A\wedge\gamma^a\psi_A \\
+R^{ab} &\equiv& d\omega ^{ab} - \omega ^a_{~c}\wedge\omega ^{cb}  \\
+\rho_A &\equiv& \nabla\psi_A  \
+\end{array}  \\
+\null & \null \\
+   \left . \mbox{\vbox{\hbox{vector}
+  \hbox{2-form}\hbox{curvature}}}  \quad\right \{ & \begin{array}{rcl}
+ F_{IJ} &\equiv& dA_{IJ}+\frac{1}{2} g f_{IJ}^{~~~KL,MN}A_{KL}\wedge A_{MN}\\
+  \null & \null & -
+{\rm i} \mathbb{L}^{-1}_{CDIJ}\bar{\psi}^C\wedge\psi^D \
+\end{array}  \\
+   \left . \mbox{\vbox{\hbox{dilatino}
+  \hbox{1-form}\hbox{curvature}}}  \quad\right \{ & \begin{array}{rcl}
+  X_{ABC} &\equiv& \nabla\chi_{ABC} \
+\end{array}  \\
+   \left . \mbox{\vbox{\hbox{composite}
+  \hbox{1-form}\hbox{$\mathrm{USp(8)}$}\hbox{curvature}}}  \quad\right \{  &
+  \begin{array}{rcl}
+  \hat{R}_A^{~B} &\equiv& d\hat{\mathcal{Q}}_A^{~B} +
+  \hat{\mathcal{Q}}_A^{~C}\wedge\hat{\mathcal{Q}}_C^{~B}\
+\end{array}  \\
+   \left . \mbox{\vbox{\hbox{3--form}
+  \hbox{curvatures}\hbox{of the}\hbox{2--forms}}}  \quad \right \{  & \begin{array}{rcl}
+  H^{I\alpha} &\equiv&
+D\left[B^{I\alpha}+{\rm
+i}\mathbb{L}^{-1~I\alpha}_{AB}\bar{\psi}^A\wedge\psi^B\right]\
+\end{array} \
+  \end{array}
+\label{defcurvatures}
+}{
+  \begin{array}{rl}
+    \left . \mbox{\vbox{\hbox{Poincar\'e}
+  \hbox{2-form}\hbox{curvatures}}} \quad \right \{ & \begin{array}{rcl}
+ R^a &\equiv& \mathcal{D} V^a +{{\rm i}\over 2} \bar{\psi}^A\wedge\gamma^a\psi_A \\
+R^{ab} &\equiv& d\omega ^{ab} - \omega ^a_{~c}\wedge\omega ^{cb}  \\
+\rho_A &\equiv& \nabla\psi_A  \
+\end{array}  \\
+\null & \null \\
+   \left . \mbox{\vbox{\hbox{vector}
+  \hbox{2-form}\hbox{curvature}}}  \quad\right \{ & \begin{array}{rcl}
+ F_{IJ} &\equiv& dA_{IJ}+\frac{1}{2} g f_{IJ}^{~~~KL,MN}A_{KL}\wedge A_{MN}\\
+  \null & \null & -
+{\rm i} \mathbb{L}^{-1}_{CDIJ}\bar{\psi}^C\wedge\psi^D \
+\end{array}  \\
+   \left . \mbox{\vbox{\hbox{dilatino}
+  \hbox{1-form}\hbox{curvature}}}  \quad\right \{ & \begin{array}{rcl}
+  X_{ABC} &\equiv& \nabla\chi_{ABC} \
+\end{array}  \\
+   \left . \mbox{\vbox{\hbox{composite}
+  \hbox{1-form}\hbox{$\mathrm{USp(8)}$}\hbox{curvature}}}  \quad\right \{  &
+  \begin{array}{rcl}
+  \hat{R}_A^{~B} &\equiv& d\hat{\mathcal{Q}}_A^{~B} +
+  \hat{\mathcal{Q}}_A^{~C}\wedge\hat{\mathcal{Q}}_C^{~B}\
+\end{array}  \\
+   \left . \mbox{\vbox{\hbox{3--form}
+  \hbox{curvatures}\hbox{of the}\hbox{2--forms}}}  \quad \right \{  & \begin{array}{rcl}
+  H^{I\alpha} &\equiv&
+D\left[B^{I\alpha}+{\rm
+i}\mathbb{L}^{-1~I\alpha}_{AB}\bar{\psi}^A\wedge\psi^B\right]\
+\end{array} \
+  \end{array}
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\nabla$}\coordHE{}, \myHighlight{$D$}\coordHE{} denote the complete covariant differentials
+according to eq.s (\ref{covQder}), (\ref{covGder}) and the
+Lorentz--covariant
+derivatives of the vielbein and the gravitino
+\myHighlight{$1$}\coordHE{}--forms are defined below:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\mathcal{D} V^a &\equiv& dV^a-\omega ^a_{~b}\wedge V^b \nonumber \rightCoord{}\\\leftCoord{}
+\mathcal{D}\psi_A &\equiv& d\psi_A - \frac{\leftCoord{}1}{\rightCoord{}4}\omega ^{ab}\gamma_{ab}\wedge\psi_A
+\rightCoord{}}{0mm}{3}{4}{
+\mathcal{D} V^a &\equiv& dV^a-\omega ^a_{~b}\wedge V^b \\
+\mathcal{D}\psi_A &\equiv& d\psi_A - \frac{1}{4}\omega ^{ab}\gamma_{ab}\wedge\psi_A
+}{1}\coordE{}\end{eqnarray}
+\myHighlight{$\omega ^{ab}$}\coordHE{} being the spin connection. With \myHighlight{$f_{IJ}^{KL,MN}$}\coordHE{} we have denoted
+the structure constants of the gauge group \myHighlight{$\mathcal{G}$}\coordHE{}.
+The curvatures (\ref{defcurvatures}) satisfy the following set of Bianchi identities:
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{l}
+\mathcal{D} R^a + R^a_{~b}\wedge V^b -{\rm i} \bar{\rho}^A\wedge\gamma^a\psi_A = 0 \nonumber\\
+\mathcal{D} R^{ab} = 0 \nonumber\\
+\nabla\rho _A + \frac{1}{4} R^{ab}\wedge\gamma_{ab}\psi_A - \hat{R}_{A}^{~~B}\wedge\psi_B =  0 \nonumber \\
+\nabla X_{ABC} + \frac{1}{4} R^{ab}\gamma_{ab}\chi_{ABC} - 3
+R_{[A}^{~~D}\wedge\chi_{BC]D} =  0 \nonumber \\
+DF_{IJ} - {\rm i}\mathbb{L}^{-1}_{CDIJ}\left(\hat{P}^{CDEF}\wedge\bar{\psi}_E\wedge\psi_F
+- 2 \bar{\rho}^C\wedge\psi^D\right) = 0 \nonumber\\
+DH^{I\alpha} - g (G^{KL})^I_{~J}\left[F_{KL}+{\rm i}\mathbb{L}^{-1}_{ABKL}\bar{\psi}^A\wedge\psi^B\right]\wedge
+\left[B^{J\alpha}+{\rm i}\mathbb{L}^{-1~J\alpha}_{CD}\bar{\psi}^C\wedge\psi^D\right] = 0\nonumber\\
+\hat{R}^A_{~B}=-{1\over 3}\hat{P}_{ACDE}\wedge\hat{P}^{BCDE}+{1\over 3}gT^B_{~~AEF}(\phi)
+(\mathbb{L}^{IJEF}F_{IJ}+{\rm i}{\bar \psi}^E\wedge\psi^F) \nonumber\\
+\nabla\hat{P}_{ABCD}=gY^+_{ABCDEF}(\phi)(\mathbb{L}^{IJEF}F_{IJ}+{\rm i}{\bar \psi}^E\wedge\psi^F)
+\nonumber\\
+\end{array}
+\label{bianchi}
+}{
+\begin{array}{l}
+\mathcal{D} R^a + R^a_{~b}\wedge V^b -{\rm i} \bar{\rho}^A\wedge\gamma^a\psi_A = 0 \nonumber\\
+\mathcal{D} R^{ab} = 0 \nonumber\\
+\nabla\rho _A + \frac{1}{4} R^{ab}\wedge\gamma_{ab}\psi_A - \hat{R}_{A}^{~~B}\wedge\psi_B =  0 \nonumber \\
+\nabla X_{ABC} + \frac{1}{4} R^{ab}\gamma_{ab}\chi_{ABC} - 3
+R_{[A}^{~~D}\wedge\chi_{BC]D} =  0 \nonumber \\
+DF_{IJ} - {\rm i}\mathbb{L}^{-1}_{CDIJ}\left(\hat{P}^{CDEF}\wedge\bar{\psi}_E\wedge\psi_F
+- 2 \bar{\rho}^C\wedge\psi^D\right) = 0 \nonumber\\
+DH^{I\alpha} - g (G^{KL})^I_{~J}\left[F_{KL}+{\rm i}\mathbb{L}^{-1}_{ABKL}\bar{\psi}^A\wedge\psi^B\right]\wedge
+\left[B^{J\alpha}+{\rm i}\mathbb{L}^{-1~J\alpha}_{CD}\bar{\psi}^C\wedge\psi^D\right] = 0\nonumber\\
+\hat{R}^A_{~B}=-{1\over 3}\hat{P}_{ACDE}\wedge\hat{P}^{BCDE}+{1\over 3}gT^B_{~~AEF}(\phi)
+(\mathbb{L}^{IJEF}F_{IJ}+{\rm i}{\bar \psi}^E\wedge\psi^F) \nonumber\\
+\nabla\hat{P}_{ABCD}=gY^+_{ABCDEF}(\phi)(\mathbb{L}^{IJEF}F_{IJ}+{\rm i}{\bar \psi}^E\wedge\psi^F)
+\nonumber\\
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+where the \myHighlight{$\mathrm{USp(8)}$}\coordHE{}--tensors \myHighlight{$T^B_{~~AEF}(\phi)$}\coordHE{}, \myHighlight{$Y^+_{ABCDEF}(\phi)$}\coordHE{} are defined as follows:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+Y^{AB}_{~~~CDEF}&\equiv&
+\mathbb{L}^{-1~~\Lambda}_{~CD}(G^{IJ})_{\Lambda}^{~\Sigma}\mathbb{L}_{\Sigma}^{~AB}
+\mathbb{L}^{-1}_{EFIJ}\\\leftCoord{}\nonumber\rightCoord{}\\\leftCoord{}
+Y^{\pm}_{ABCDEF}&\equiv&\frac{\leftCoord{}1}{\rightCoord{}2}(Y_{ABCDEF}\pm Y_{CDABEF})\\\leftCoord{}\nonumber\rightCoord{}\\\leftCoord{}
+T^A_{~~BCD}&\equiv&Y^{AF}_{~~~BFCD}\rightCoord{}\,.\rightCoord{}
+\label{YTtensors}
+\rightCoord{}}{0mm}{6}{7}{
+Y^{AB}_{~~~CDEF}&\equiv&
+\mathbb{L}^{-1~~\Lambda}_{~CD}(G^{IJ})_{\Lambda}^{~\Sigma}\mathbb{L}_{\Sigma}^{~AB}
+\mathbb{L}^{-1}_{EFIJ}\\\\
+Y^{\pm}_{ABCDEF}&\equiv&\frac{1}{2}(Y_{ABCDEF}\pm Y_{CDABEF})\\\\
+T^A_{~~BCD}&\equiv&Y^{AF}_{~~~BFCD}\,.
+}{1}\coordE{}\end{eqnarray}
+The solution to the Bianchi identities
+(that is, the rheonomic parametrization) is given,
+modulo bilinears in the dilatinos, by  the following expressions in terms
+of the inner components \myHighlight{$R^{ab}_{~~cd}, \rho^A_{ab}, \dots$}\coordHE{}:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+R^a &=& 0 \rightCoord{}\\\leftCoord{}
+R^{ab} &=& {1\leftCoord{}\over\rightCoord{} 2} \rightCoord{}
+     R^{ab}_{~~cd} V^c\wedge V^d + \nonumber\\\leftCoord{}\nonumber\rightCoord{}\\
+&&\leftCoord{} {2\leftCoord{}\over\rightCoord{} 3}{\rm i} \mathcal{H}_{AB}^{ab}\bar{\psi}^A\wedge\psi^B
+   \leftCoord{}+ {1\leftCoord{}\over\rightCoord{} 6}{\rm i} \mathcal{H}_{AB|cd}\bar{\psi}^A\wedge\gamma_e\psi^B\epsilon^{abcde} +
+     g {2\leftCoord{}\over\rightCoord{} 45}{\rm i}T_{AB}\bar{\psi}^A\wedge\gamma^{ab}\psi^B  \nonumber\\\leftCoord{}\nonumber\rightCoord{}\\
+&&\leftCoord{} - 2{\rm i} \bar{\rho}^{A~c[a}\gamma^{b]}\psi_A\wedge V_c +
+     {\rightCoord{}\leftCoord{}\rm i} \bar{\rho}^{A~ab}\gamma^c\psi_A \wedge V_c + \mathcal{O} (\chi^2)\rightCoord{}\\\leftCoord{}
+\rho _A  &=&
+      \rho _{A|ab} V^a\wedge V^b - g {2\leftCoord{}\over\rightCoord{} 45}T_{AB}\gamma_a\psi^B\wedge V^a  \nonumber\\\leftCoord{}\nonumber\rightCoord{}\\
+&&\leftCoord{} - {2\leftCoord{}\over\rightCoord{} 3} \mathcal{H}_{AB|ab}\gamma^a\psi^B\wedge V^b +
+     {\rightCoord{}\leftCoord{}1\leftCoord{}\over\rightCoord{} 12} \mathcal{H}_{AB|ab}\gamma_{cd}\psi^B\wedge V_e \epsilon^{abcde}  \nonumber\\\leftCoord{}\nonumber\rightCoord{}\\
+&&\leftCoord{} + {3{\rm i}\leftCoord{}\over\rightCoord{} 4\sqrt{2}} \chi_{ABC}\bar{\psi}^B\wedge \psi^C -
+{\rightCoord{}\leftCoord{}{\rm i}\leftCoord{}\over\rightCoord{} 4\sqrt{2}} \gamma_a\chi_{ABC} \bar{\psi}^B\gamma^a\wedge\psi^C + \mathcal{O} (\chi^2) \rightCoord{}\\\leftCoord{}
+\nabla\chi_{ABC} &=&
+      \leftCoord{}(\nabla_a\chi_{ABC})V^a + {1\leftCoord{}\over\rightCoord{}\sqrt{2}} gA^D_{ABC}\psi_D +
+\sqrt{2} \hat{P}_{ABCD|a}\gamma^a\psi^D \nonumber\\\leftCoord{}\nonumber\rightCoord{}\\
+&&\leftCoord{} - {3\leftCoord{}\over\rightCoord{} 2\sqrt{2}}\mathcal{H}_{[AB|ab}\gamma^{ab}\psi_{C]}
+\leftCoord{}-{1\leftCoord{}\over\rightCoord{} 2\sqrt{2}} \Omega_{[AB}\mathcal{H}_{C]D|ab}\gamma^{ab}\psi^D +
+\mathcal{O} (\chi^2) \rightCoord{}\\\leftCoord{}
+F_{IJ} &=& {1\leftCoord{}\over\rightCoord{} 2}F_{IJ|ab}V^a\wedge V^b + {{\rm i}\leftCoord{}\over\rightCoord{}\sqrt{2}}
+\mathbb{L}^{-1}_{ABIJ}\bar{\chi}^{ABC}\gamma_a\psi_C\wedge V^a \\\leftCoord{}\nonumber\rightCoord{}\\\leftCoord{}
+B^{I\alpha} &=& {1\leftCoord{}\over\rightCoord{} 2}B^{I\alpha}_{ab}V^a\wedge V^b +
+{\rightCoord{}\leftCoord{}{\rm  i}\leftCoord{}\over\rightCoord{}\sqrt{2}}\mathbb{L}^{-1~I\alpha}_{AB}\bar{\chi}^{ABC}\gamma_a\psi_C\wedge V^a
+\label{rheoB}\rightCoord{}\\\leftCoord{}
+H^{I\alpha} &=& H^{I\alpha}_{abc}V^a\wedge V^b\wedge V^c +
+g {{\rm i}\leftCoord{}\over\rightCoord{} 2}\mathbb{L}^{I\alpha}_{~~AB}\bar{\psi}^A\wedge\gamma_a\psi^B\wedge V^a
+\nonumber\\\leftCoord{}\nonumber\rightCoord{}\\
+&&\leftCoord{}-g {{\rm i}\leftCoord{}\over\rightCoord{} 4\sqrt{2}} \rightCoord{}
+\mathbb{L}^{I\alpha}_{~~AB}\bar{\chi}^{ABC}\wedge\gamma_{ab}\psi_C\wedge V^a\wedge V^b
+\label{rheoH}\rightCoord{}\\\leftCoord{}
+\hat{P}^{ABCD} &=& \hat{P}^{ABCD}_a V^a + 2{\rm i}\sqrt{2}\rightCoord{}\,
+\bar{\chi}^{[ABC}\psi^{D]}+\frac{\leftCoord{}3}{\rightCoord{}2}{\rightCoord{}\rm
+i}\sqrt{2}\rightCoord{}\,\Omega^{[CD}\chi^{AB]E}\psi_E
+\rightCoord{}}{0mm}{47}{43}{
+R^a &=& 0 \\
+R^{ab} &=& {1\over 2} 
+     R^{ab}_{~~cd} V^c\wedge V^d + \\\\
+&& {2\over 3}{\rm i} \mathcal{H}_{AB}^{ab}\bar{\psi}^A\wedge\psi^B
+   + {1\over 6}{\rm i} \mathcal{H}_{AB|cd}\bar{\psi}^A\wedge\gamma_e\psi^B\epsilon^{abcde} +
+     g {2\over 45}{\rm i}T_{AB}\bar{\psi}^A\wedge\gamma^{ab}\psi^B  \\\\
+&& - 2{\rm i} \bar{\rho}^{A~c[a}\gamma^{b]}\psi_A\wedge V_c +
+     {\rm i} \bar{\rho}^{A~ab}\gamma^c\psi_A \wedge V_c + \mathcal{O} (\chi^2)\\
+\rho _A  &=&
+      \rho _{A|ab} V^a\wedge V^b - g {2\over 45}T_{AB}\gamma_a\psi^B\wedge V^a  \\\\
+&& - {2\over 3} \mathcal{H}_{AB|ab}\gamma^a\psi^B\wedge V^b +
+     {1\over 12} \mathcal{H}_{AB|ab}\gamma_{cd}\psi^B\wedge V_e \epsilon^{abcde}  \\\\
+&& + {3{\rm i}\over 4\sqrt{2}} \chi_{ABC}\bar{\psi}^B\wedge \psi^C -
+{{\rm i}\over 4\sqrt{2}} \gamma_a\chi_{ABC} \bar{\psi}^B\gamma^a\wedge\psi^C + \mathcal{O} (\chi^2) \\
+\nabla\chi_{ABC} &=&
+      (\nabla_a\chi_{ABC})V^a + {1\over\sqrt{2}} gA^D_{ABC}\psi_D +
+\sqrt{2} \hat{P}_{ABCD|a}\gamma^a\psi^D \\\\
+&& - {3\over 2\sqrt{2}}\mathcal{H}_{[AB|ab}\gamma^{ab}\psi_{C]}
+-{1\over 2\sqrt{2}} \Omega_{[AB}\mathcal{H}_{C]D|ab}\gamma^{ab}\psi^D +
+\mathcal{O} (\chi^2) \\
+F_{IJ} &=& {1\over 2}F_{IJ|ab}V^a\wedge V^b + {{\rm i}\over\sqrt{2}}
+\mathbb{L}^{-1}_{ABIJ}\bar{\chi}^{ABC}\gamma_a\psi_C\wedge V^a \\\\
+B^{I\alpha} &=& {1\over 2}B^{I\alpha}_{ab}V^a\wedge V^b +
+{{\rm  i}\over\sqrt{2}}\mathbb{L}^{-1~I\alpha}_{AB}\bar{\chi}^{ABC}\gamma_a\psi_C\wedge V^a
+\\
+H^{I\alpha} &=& H^{I\alpha}_{abc}V^a\wedge V^b\wedge V^c +
+g {{\rm i}\over 2}\mathbb{L}^{I\alpha}_{~~AB}\bar{\psi}^A\wedge\gamma_a\psi^B\wedge V^a
+\\\\
+&&-g {{\rm i}\over 4\sqrt{2}} 
+\mathbb{L}^{I\alpha}_{~~AB}\bar{\chi}^{ABC}\wedge\gamma_{ab}\psi_C\wedge V^a\wedge V^b
+\\
+\hat{P}^{ABCD} &=& \hat{P}^{ABCD}_a V^a + 2{\rm i}\sqrt{2}\,
+\bar{\chi}^{[ABC}\psi^{D]}+\frac{3}{2}{\rm
+i}\sqrt{2}\,\Omega^{[CD}\chi^{AB]E}\psi_E
+}{1}\coordE{}\end{eqnarray}
+where the graviphoton field strength \myHighlight{$\mathcal{H}_{AB|ab}$}\coordHE{} is
+defined as
+\begin{equation}\coord{}\boxEquation{
+\mathcal{H}^{AB}_{ab}\equiv\mathbb{L}^{IJAB}F_{IJ\vert
+ab}+\mathbb{L}_{I\alpha}^{~~AB}B^{I\alpha}_{ab}
+}{
+\mathcal{H}^{AB}_{ab}\equiv\mathbb{L}^{IJAB}F_{IJ\vert
+ab}+\mathbb{L}_{I\alpha}^{~~AB}B^{I\alpha}_{ab}
+}{ecuacion}\coordE{}\end{equation}
+and the tensors \myHighlight{$T_{AB}(\phi),\,A^D_{ABC}(\phi)$}\coordHE{} are defined as
+\footnote{\myHighlight{$\left[\dots\right]\!\vert$}\coordHE{} denotes the symplectic
+traceless antisymmetrization.}
+\begin{equation}\coord{}\boxEquation{
+T_{AB}=T^C_{~ACB},~~A^D_{ABC}=T^D_{\left[ABC\right]\vert}\,.
+}{
+T_{AB}=T^C_{~ACB},~~A^D_{ABC}=T^D_{\left[ABC\right]\vert}\,.
+}{ecuacion}\coordE{}\end{equation}
+From the definitions (\ref{defcurvatures}) and the
+parametrizations (\ref{bianchi}), applying the general procedure
+described above (\ref{lie}) one immediately derives the
+supersymmetry transformation laws of the physical fields (modulo
+bilinears in the dilatinos):
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta V^a_{\mu} &=& - {\rm i} \bar{\varepsilon}^A \gamma^a\psi_{\mu A}  \rightCoord{}\\\leftCoord{}
+\delta \psi_{A \mu}  &=&{\mathcal{D}}_\mu \varepsilon_A - g
+{\rightCoord{}\leftCoord{}2\leftCoord{}\over\rightCoord{} 45}T_{AB}\gamma_\mu \varepsilon^{B} +  {2\leftCoord{}\over\rightCoord{} 3}
+\mathcal{H}_{AB|\nu\mu} \gamma^{\nu} \varepsilon^B -{1\over
+\leftCoord{}12}\mathcal{H}_{AB}^{\nu\rho} \gamma^{\lambda\sigma}
+\varepsilon^B \epsilon _{\mu\nu\rho\lambda\sigma} \nonumber\\\leftCoord{}\nonumber\rightCoord{}\\
+&&\leftCoord{} +{3{\rm i}\leftCoord{}\over\rightCoord{} 2\sqrt{2}} \rightCoord{}
+\chi_{ABC}\bar{\varepsilon}^{B}\psi_{\mu}^C - {{\rm i}\over
+\leftCoord{}2\sqrt{2}} \gamma_\nu\chi_{ABC} \bar\varepsilon^B\gamma^\nu
+\psi_\mu^C + \mathcal{O} (\chi^2)  \\\leftCoord{}\nonumber\rightCoord{}\\\leftCoord{}
+\delta \chi_{ABC} &=& {1\leftCoord{}\over\rightCoord{}\sqrt{2}} gA^D_{ABC}\varepsilon_D
+\leftCoord{}+\sqrt{2} \hat{P}_{ABCD|i}\partial_\nu\phi^i
+\gamma^\nu\varepsilon^D - {3\leftCoord{}\over\rightCoord{} 2\sqrt{2}} \rightCoord{}
+\mathcal{H}_{[AB|\mu\nu}\gamma^{\mu\nu}\varepsilon_{C]} \nonumber\\\leftCoord{}\nonumber\rightCoord{}\\
+&&\leftCoord{} - \frac{\leftCoord{}1}{\rightCoord{}2\sqrt{2}} \rightCoord{}
+\Omega_{[AB}\mathcal{H}_{C]D|\mu\nu}\gamma^{\mu\nu}\varepsilon^D +
+\mathcal{O} (\chi^2) \\\leftCoord{}\nonumber\rightCoord{}\\\leftCoord{}
+\delta A_{IJ|\mu} &=& \mathbb{L}^{-1}_{ABIJ}\left[ {{\rm
+i}\leftCoord{}\over\rightCoord{}\sqrt{2}} \bar{\chi}^{ABC}\gamma_\mu\varepsilon_C
+\leftCoord{}+2{\rm i}\bar\varepsilon^A\psi^B_\mu \right]\\\leftCoord{}\nonumber\rightCoord{}\\\leftCoord{}
+\delta B^{I\alpha}_{\mu\nu} &=& \mathbb{L}^{I\alpha}_{~~AB}\left[
+\leftCoord{}- 2{\rm i} g \bar{\varepsilon}^A\gamma_{[\mu}\psi^B_{\nu]}
+\leftCoord{}- {{\rm i}\leftCoord{}\over\rightCoord{} 2\sqrt{2}}g\bar{\chi}^{ABC}\gamma_{\mu\nu}\varepsilon_C\right]\nonumber\\\leftCoord{}\nonumber\rightCoord{}\\
+&&\leftCoord{}+2\mathcal{D}_{[\mu}\left[ \mathbb{L}^{-1~I\alpha}_{AB}\left(
+\leftCoord{}2{\rm i}\bar\varepsilon^A \psi^B_{\nu]} +{{\rm i}\leftCoord{}\over\rightCoord{}\sqrt{2}}
+\bar{\chi}^{ABC}\gamma_{\nu]}\varepsilon_C\right)\right]
+\label{beq}
+ \leftCoord{}\\\leftCoord{}\nonumber\rightCoord{}\\\leftCoord{}
+\hat{P}^{ABCD}_{,i}\delta \phi^i &=& 2{\rm i}\sqrt{2}\rightCoord{}\,
+\bar{\chi}^{[ABC}\varepsilon^{D]}+\frac{\leftCoord{}3{\rm
+i}}{\sqrt{2}}\rightCoord{}\,\Omega^{[CD}\chi^{AB]E}\varepsilon_E
+\rightCoord{}}{0mm}{35}{25}{
+\delta V^a_{\mu} &=& - {\rm i} \bar{\varepsilon}^A \gamma^a\psi_{\mu A}  \\
+\delta \psi_{A \mu}  &=&{\mathcal{D}}_\mu \varepsilon_A - g
+{2\over 45}T_{AB}\gamma_\mu \varepsilon^{B} +  {2\over 3}
+\mathcal{H}_{AB|\nu\mu} \gamma^{\nu} \varepsilon^B -{1\over
+12}\mathcal{H}_{AB}^{\nu\rho} \gamma^{\lambda\sigma}
+\varepsilon^B \epsilon _{\mu\nu\rho\lambda\sigma} \\\\
+&& +{3{\rm i}\over 2\sqrt{2}} 
+\chi_{ABC}\bar{\varepsilon}^{B}\psi_{\mu}^C - {{\rm i}\over
+2\sqrt{2}} \gamma_\nu\chi_{ABC} \bar\varepsilon^B\gamma^\nu
+\psi_\mu^C + \mathcal{O} (\chi^2)  \\\\
+\delta \chi_{ABC} &=& {1\over\sqrt{2}} gA^D_{ABC}\varepsilon_D
++\sqrt{2} \hat{P}_{ABCD|i}\partial_\nu\phi^i
+\gamma^\nu\varepsilon^D - {3\over 2\sqrt{2}} 
+\mathcal{H}_{[AB|\mu\nu}\gamma^{\mu\nu}\varepsilon_{C]} \\\\
+&& - \frac{1}{2\sqrt{2}} 
+\Omega_{[AB}\mathcal{H}_{C]D|\mu\nu}\gamma^{\mu\nu}\varepsilon^D +
+\mathcal{O} (\chi^2) \\\\
+\delta A_{IJ|\mu} &=& \mathbb{L}^{-1}_{ABIJ}\left[ {{\rm
+i}\over\sqrt{2}} \bar{\chi}^{ABC}\gamma_\mu\varepsilon_C
++2{\rm i}\bar\varepsilon^A\psi^B_\mu \right]\\\\
+\delta B^{I\alpha}_{\mu\nu} &=& \mathbb{L}^{I\alpha}_{~~AB}\left[
+- 2{\rm i} g \bar{\varepsilon}^A\gamma_{[\mu}\psi^B_{\nu]}
+- {{\rm i}\over 2\sqrt{2}}g\bar{\chi}^{ABC}\gamma_{\mu\nu}\varepsilon_C\right]\\\\
+&&+2\mathcal{D}_{[\mu}\left[ \mathbb{L}^{-1~I\alpha}_{AB}\left(
+2{\rm i}\bar\varepsilon^A \psi^B_{\nu]} +{{\rm i}\over\sqrt{2}}
+\bar{\chi}^{ABC}\gamma_{\nu]}\varepsilon_C\right)\right]
+\\\\
+\hat{P}^{ABCD}_{,i}\delta \phi^i &=& 2{\rm i}\sqrt{2}\,
+\bar{\chi}^{[ABC}\varepsilon^{D]}+\frac{3{\rm
+i}}{\sqrt{2}}\,\Omega^{[CD}\chi^{AB]E}\varepsilon_E
+}{1}\coordE{}\end{eqnarray}
+which do indeed coincide with the corresponding formulas in
+\cite{gunwar}.
+\par
+The B--I also give the equations of motion, which are the same as
+in \cite{gunwar}. At this point, we have in principle all the
+dynamical information about the theory without constructing the
+Lagrangian. However, as mentioned in the previous section, in
+order to get the equations of motion and the scalar potential, the
+easiest way is to derive them from the superspace Lagrangian,
+which, in the case of semisimple gaugings exist and we have
+determined to be (up to four--fermions terms):
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\mathcal{L} &=& \frac{\leftCoord{}1}{\rightCoord{}24} R^{ab}\wedge V^c \cdots\wedge V^e \rightCoord{}
+\epsilon_{abcde} -{{\rm i}\leftCoord{}\over\rightCoord{} 4} \bar\psi_A\gamma_{ab}
+\wedge\rho^A\wedge V^a \wedge V^b + \rightCoord{}
+ \nonumber\rightCoord{}\\
+&\leftCoord{}+&\frac{\leftCoord{}\rm i}{\rightCoord{}288}\bar\chi^{ABC}\gamma^a D \rightCoord{}
+\chi_{ABC}\wedge V^b\cdots\wedge V^e \epsilon_{abcde} +
+\nonumber\rightCoord{}\\
+&\leftCoord{}-&{1\leftCoord{}\over\rightCoord{} 24} \mathcal{H}^{ab}_{AB}\left[\mathcal{H}^{AB} -
+\frac{\leftCoord{}{\rm i}}{\rightCoord{}\sqrt{2}}\bar\chi^{ABC}\gamma_\ell\psi_C \wedge
+V^\ell \right]\wedge V^c\cdots \wedge V^e \epsilon_{abcde}+
+\nonumber\rightCoord{}\\
+&\leftCoord{}+& \frac{\leftCoord{}1}{\rightCoord{}288} \rightCoord{}
+P^{ABCD\vert a}\left[ \ P_{ABCD} - 2\sqrt{2}{\rm i}
+\bar\chi_{ABC}\psi_{D}\right] \wedge V^b\cdots \wedge V^e
+\epsilon_{abcde}+
+ \nonumber\rightCoord{}\\
+&\leftCoord{}+&\left[{1\leftCoord{}\over\rightCoord{} 960} \mathcal{H}_{\ell m }^{AB}\mathcal{H}^{\ell
+m}_{AB} -\frac{\leftCoord{}1}{\rightCoord{}2880} P^{ABCD}_{\ell}P_{ABCD}^\ell
+\right]V^a\wedge \cdots\wedge V^e \epsilon_{abcde}+
+\nonumber\rightCoord{}\\
+&\leftCoord{}+&\mathcal{H}_{AB}\wedge\Bigl[\frac{\leftCoord{}\rm i}{\rightCoord{}2}
+ \bar\psi^A\wedge\gamma_a\psi^B V^a + \frac{\leftCoord{}\rm i}{\rightCoord{}4\sqrt{2}}
+\bar\psi_C\wedge\gamma_{ab} \chi^{ABC} V^a \wedge V^b +
+\nonumber\rightCoord{}\\
+&\leftCoord{}+& \frac{\leftCoord{}\rm i}{\rightCoord{}48}\bar\chi^{ALM}\gamma^{ab}\chi^B_{~~LM} V^c
+\cdots \wedge V^e \epsilon_{abcde}
+\Bigr]\nonumber\rightCoord{}\\
+&\leftCoord{}+& \frac{\leftCoord{}\rm i\sqrt{2}}{\rightCoord{}72} \rightCoord{}
+P_{ABCD}\bar\chi^{ABC}\gamma^{ab}\psi^D\wedge V^c \cdots
+\wedge V^e \epsilon_{abcde} +\nonumber\rightCoord{}\\
+&\leftCoord{}-& \rightCoord{}
+\frac{\leftCoord{}{\rm i}}{\rightCoord{}180}g \left[ T_{AB}\bar\psi^A \gamma^{ab}\wedge
+\psi^B \rightCoord{}
+ \leftCoord{}+\frac{\leftCoord{}5}{\rightCoord{}8}A^A_{~BCD}\bar\psi_{A}
+ \gamma^a\chi^{BCD}\wedge V^b\right]\wedge V^c \cdots\wedge V^e \epsilon_{abcde}+
+ \nonumber\rightCoord{}\\
+&\leftCoord{}+& g^2\frac{\leftCoord{}1}{\rightCoord{}120}\left[{6\leftCoord{}\over\rightCoord{} (45)^2}T_{AB}T^{AB}-{1\over
+  \leftCoord{}96}A_{ABCD}A^{ABCD}\right]V^a\wedge \cdots\wedge V^e
+  \epsilon_{abcde}+
+\nonumber\rightCoord{}\\
+&\leftCoord{}-& \frac{\leftCoord{}1}{\rightCoord{}24}\epsilon^{IJKLMN} \Bigl[ {\cal F}_{IJ}\wedge {\cal
+F}_{KL} \wedge A_{MN}
+ \leftCoord{}+  g\eta^{PQ}{\cal F}_{IJ}\wedge A_{KL} \wedge A_{MP}\wedge A_{QN}
+ \leftCoord{}+\nonumber\rightCoord{}\\
+&\leftCoord{}+& \frac{\leftCoord{}2}{\rightCoord{}5} \rightCoord{}
+  g^2\eta^{PQ} \eta^{RS}A_{IJ}\wedge A_{KP} \wedge A_{QL}\wedge A_{MR}\wedge A_{SN}
+ \Bigr]+ \rightCoord{}
+ \frac{\leftCoord{}1}{\rightCoord{}2g}\eta_{IJ}\epsilon_{\alpha\beta} {\cal B}^{I\alpha}\wedge
+ H^{J\beta} \rightCoord{}
+  \leftCoord{}+ \mathcal{L}_{4-f}\nonumber\rightCoord{}\\\leftCoord{}
+  \label{lagrangian}
+\rightCoord{}}{0mm}{37}{43}{
+\mathcal{L} &=& \frac{1}{24} R^{ab}\wedge V^c \cdots\wedge V^e 
+\epsilon_{abcde} -{{\rm i}\over 4} \bar\psi_A\gamma_{ab}
+\wedge\rho^A\wedge V^a \wedge V^b + 
+ \\
+&+&\frac{\rm i}{288}\bar\chi^{ABC}\gamma^a D 
+\chi_{ABC}\wedge V^b\cdots\wedge V^e \epsilon_{abcde} +
+\\
+&-&{1\over 24} \mathcal{H}^{ab}_{AB}\left[\mathcal{H}^{AB} -
+\frac{{\rm i}}{\sqrt{2}}\bar\chi^{ABC}\gamma_\ell\psi_C \wedge
+V^\ell \right]\wedge V^c\cdots \wedge V^e \epsilon_{abcde}+
+\\
+&+& \frac{1}{288} 
+P^{ABCD\vert a}\left[ \ P_{ABCD} - 2\sqrt{2}{\rm i}
+\bar\chi_{ABC}\psi_{D}\right] \wedge V^b\cdots \wedge V^e
+\epsilon_{abcde}+
+ \\
+&+&\left[{1\over 960} \mathcal{H}_{\ell m }^{AB}\mathcal{H}^{\ell
+m}_{AB} -\frac{1}{2880} P^{ABCD}_{\ell}P_{ABCD}^\ell
+\right]V^a\wedge \cdots\wedge V^e \epsilon_{abcde}+
+\\
+&+&\mathcal{H}_{AB}\wedge\Bigl[\frac{\rm i}{2}
+ \bar\psi^A\wedge\gamma_a\psi^B V^a + \frac{\rm i}{4\sqrt{2}}
+\bar\psi_C\wedge\gamma_{ab} \chi^{ABC} V^a \wedge V^b +
+\\
+&+& \frac{\rm i}{48}\bar\chi^{ALM}\gamma^{ab}\chi^B_{~~LM} V^c
+\cdots \wedge V^e \epsilon_{abcde}
+\Bigr]\\
+&+& \frac{\rm i\sqrt{2}}{72} 
+P_{ABCD}\bar\chi^{ABC}\gamma^{ab}\psi^D\wedge V^c \cdots
+\wedge V^e \epsilon_{abcde} +\\
+&-& 
+\frac{{\rm i}}{180}g \left[ T_{AB}\bar\psi^A \gamma^{ab}\wedge
+\psi^B 
+ +\frac{5}{8}A^A_{~BCD}\bar\psi_{A}
+ \gamma^a\chi^{BCD}\wedge V^b\right]\wedge V^c \cdots\wedge V^e \epsilon_{abcde}+
+ \\
+&+& g^2\frac{1}{120}\left[{6\over (45)^2}T_{AB}T^{AB}-{1\over
+  96}A_{ABCD}A^{ABCD}\right]V^a\wedge \cdots\wedge V^e
+  \epsilon_{abcde}+
+\\
+&-& \frac{1}{24}\epsilon^{IJKLMN} \Bigl[ {\cal F}_{IJ}\wedge {\cal
+F}_{KL} \wedge A_{MN}
+ +  g\eta^{PQ}{\cal F}_{IJ}\wedge A_{KL} \wedge A_{MP}\wedge A_{QN}
+ +\\
+&+& \frac{2}{5} 
+  g^2\eta^{PQ} \eta^{RS}A_{IJ}\wedge A_{KP} \wedge A_{QL}\wedge A_{MR}\wedge A_{SN}
+ \Bigr]+ 
+ \frac{1}{2g}\eta_{IJ}\epsilon_{\alpha\beta} {\cal B}^{I\alpha}\wedge
+ H^{J\beta} 
+  + \mathcal{L}_{4-f}\\
+  }{1}\coordE{}\end{eqnarray}
+where the two--forms \myHighlight{${\cal H}_{AB}$}\coordHE{} are defined by
+\begin{equation}\coord{}\boxEquation{
+\mathcal{H}^{AB}\equiv\mathbb{L}^{IJAB}{F}_{IJ}+
+\mathbb{L}_{I\alpha}^{~~AB}{B}^{I\alpha}
+}{
+\mathcal{H}^{AB}\equiv\mathbb{L}^{IJAB}{F}_{IJ}+
+\mathbb{L}_{I\alpha}^{~~AB}{B}^{I\alpha}
+}{ecuacion}\coordE{}\end{equation}
+and we have introduced, in the Chern--Simons contributions,
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+{\rightCoord{}\leftCoord{}\cal F}_{IJ} &\equiv & F_{IJ} + {\rm
+i}\mathbb{L}^{-1}_{ABIJ}\bar\psi^A \wedge  \psi^B \rightCoord{}\\\leftCoord{}
+{\rightCoord{}\leftCoord{}\cal B}^{I\alpha} & \equiv & {B}^{I\alpha} + {\rm
+i}\mathbb{L}^{-1~~I\alpha}_{AB}\bar\psi^A \wedge\psi^B\rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{4}{7}{
+{\cal F}_{IJ} &\equiv & F_{IJ} + {\rm
+i}\mathbb{L}^{-1}_{ABIJ}\bar\psi^A \wedge  \psi^B \\
+{\cal B}^{I\alpha} & \equiv & {B}^{I\alpha} + {\rm
+i}\mathbb{L}^{-1~~I\alpha}_{AB}\bar\psi^A \wedge\psi^B\,.
+}{1}\coordE{}\end{eqnarray}
+\par
+The projection of (\ref{lagrangian}) onto space--time coincides
+with eq. (4.15) in \cite{gunwar}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The problem of the two--forms}
+It is a known fact \cite{PPV}, \cite{gunwar} that in order to
+consistently gauge the \myHighlight{$\mathcal{N}=8$}\coordHE{} theory, one has to dualize
+the vectors transforming in the \myHighlight{$(\bf{6},\bf{2})$}\coordHE{} of
+\myHighlight{$\mathrm{SO(p,q)}\times \mathrm{SL}(2)$}\coordHE{} to massive two-forms
+obeying the self-duality constraint:
+\begin{equation}\coord{}\boxEquation{
+B^{I\alpha |\mu\nu} = m
+\epsilon^{\mu\nu\rho\sigma\lambda}{\cal{D}}_\rho
+B^{I\alpha}_{\rho\sigma\lambda}\,. \label{self}
+}{
+B^{I\alpha |\mu\nu} = m
+\epsilon^{\mu\nu\rho\sigma\lambda}{\cal{D}}_\rho
+B^{I\alpha}_{\rho\sigma\lambda}\,. }{ecuacion}\coordE{}\end{equation}
+In the geometric formulation of the theory, this need for
+dualization emerges in a completely natural way. Indeed, let us
+start by considering the 12 vectors \myHighlight{$A^{I\alpha}$}\coordHE{}. There is no way
+known to reconcile their abelian gauge invariance with their
+non-trivial transformation under the gauge group \myHighlight{$\mathcal{G}$}\coordHE{}.
+Indeed, given the superspace curvatures
+\begin{equation}\coord{}\boxEquation{
+ DA^{I\alpha} \equiv dA^{I\alpha}+g(G^{KL})^I_{\,J}A_{KL}\wedge A^{J\alpha}
+}{
+ DA^{I\alpha} \equiv dA^{I\alpha}+g(G^{KL})^I_{\,J}A_{KL}\wedge A^{J\alpha}
+}{ecuacion}\coordE{}\end{equation}
+it follows that the corresponding Bianchi identity contains a
+term:
+\begin{equation}\coord{}\boxEquation{
+DDA^{I\alpha} = g(G^{KL})^I_{\,J}{\cal F}_{KL}\wedge
+A^{J\alpha}+\dots
+}{
+DDA^{I\alpha} = g(G^{KL})^I_{\,J}{\cal F}_{KL}\wedge
+A^{J\alpha}+\dots
+}{ecuacion}\coordE{}\end{equation}
+where the vectors \myHighlight{$A^{J\alpha}$}\coordHE{} appear naked. Under such
+conditions we cannot write a rheonomic parametrization of the
+curvatures solving the Bianchi identities and containing as only
+possible terms monomials in vielbein and gravitino with
+coefficients expressed in terms of gauge invariant space--time
+curvature components. Hence we have a clash between supersymmetry
+and the \myHighlight{$12$}\coordHE{} abelian gauge invariances needed to keep the vectors
+\myHighlight{$A^{J\alpha}$}\coordHE{} massless. On the other hand, making them massive
+would destroy the equality of the Bose and Fermi degrees of
+freedom. Hence, in the gauged case where the \myHighlight{$12$}\coordHE{} vectors
+\myHighlight{$A^{J\alpha}$}\coordHE{} acquire a non--trivial transformation under the
+non--abelian gauge symmetry there is no way of fitting these
+fields into a  consistent supersymmetric theory. The way out, as
+it was discussed in \cite{gunwar}, is to interpret them as the
+duals of massive two-forms \myHighlight{$B^{I\alpha}$}\coordHE{} \footnote{In five
+dimensions the Hodge dual of a two--form field strength is a
+three--form field strength:
+\myHighlight{$\epsilon^{\mu\nu\rho\lambda\sigma}D_\lambda A_{\sigma}= D^\mu
+B^{\nu\rho}$}\coordHE{}.}, obeying a self--duality constraint which halves
+their degrees of freedom. This construction emerges naturally in
+the rheonomic formulation based on Free Differential Algebras. In
+this context, one has to introduce superspace curvatures for the
+two--forms (see eq.s (\ref{defcurvatures})) generalizing the
+Maurer--Cartan equations to a Free Differential Algebra
+\cite{castdauriafre}, \cite{Fre:1984pc}. At first sight it seems
+that we cannot escape from the problem described above, that
+affects the vectors \myHighlight{$A^{I\alpha}$}\coordHE{}:  indeed Bianchi identities do
+contain the naked fields \myHighlight{$B^{I\alpha}$}\coordHE{}. Yet we can successfully
+handle this fact by considering the \myHighlight{$B^{I\alpha}$}\coordHE{} not as gauge
+potentials (that is, 2-forms defined modulo \myHighlight{$1$}\coordHE{}--form gauge
+transformations), but as physical fields, with their own explicit
+parametrization (see equation (\ref{rheoB})) \footnote{The same
+happens to matter two--form fields coupled with \myHighlight{$\mathcal{N}=2$}\coordHE{}
+supergravity \cite{Ceresole:2000jd}.}. In this way, the two--forms
+loose their gauge freedom and become massive, as it can be found
+by solving the Bianchi identities. In fact, the Bianchi identities
+imply also  the field equations of the two--forms. In the
+ \myHighlight{$\bar{\psi}^A\wedge\gamma^a\psi_A$}\coordHE{} sector of the \myHighlight{$H^{I\alpha}$}\coordHE{} sector we get the
+ following constraint (modulo bilinears in the dilatinos):
+\begin{equation}\coord{}\boxEquation{
+\label{eqmotB} D_{[a}B^{I\alpha}_{bc]}= -{1\over 12} g
+\mathbb{L}^{I\alpha}_{~~AB}\mathcal{H}^{AB~|de}\varepsilon_{abcde}
+-{\rm
+i}\sqrt{2}\mathbb{L}^{-1~I\alpha}_{AB}\bar{\chi}^{ABC}\gamma_{[a}\rho
+_{bc]C}\,.
+}{
+D_{[a}B^{I\alpha}_{bc]}= -{1\over 12} g
+\mathbb{L}^{I\alpha}_{~~AB}\mathcal{H}^{AB~|de}\varepsilon_{abcde}
+-{\rm
+i}\sqrt{2}\mathbb{L}^{-1~I\alpha}_{AB}\bar{\chi}^{ABC}\gamma_{[a}\rho
+_{bc]C}\,.
+}{ecuacion}\coordE{}\end{equation}
+This is the self-duality constraint on the two-forms, that halves
+the number of  their degrees of freedom, while gives them a mass
+\myHighlight{$g$}\coordHE{}. Note that the algebra underlying this theory is a free
+differential algebra \cite{sull,castdauriafre,Fre:1984pc}.
+However, since the \myHighlight{$B^{I\alpha}$}\coordHE{} transform in a non trivial
+representation of the gauge group, it can be shown (as it follows
+from a theorem by Chevalley--Eilenberg \cite{sull}) that the left
+hand side of their rheonomic parametrization at
+\myHighlight{$B^{I\alpha}_{ab}=0$}\coordHE{} is  a trivial cohomology class of the algebra
+spanned by the other one--forms. Said in simpler terms, in the
+vacuum (where the superspace curvatures are zero) the two--forms
+are not independent fields, rather they are names given to certain
+bilinears in the gravitino fields:
+\begin{equation}\coord{}\boxEquation{
+B^{I\alpha}=-{\rm
+i}\delta^{I\alpha}_{AB}\bar{\psi}^A\wedge\psi^B\,.
+}{
+B^{I\alpha}=-{\rm
+i}\delta^{I\alpha}_{AB}\bar{\psi}^A\wedge\psi^B\,.
+}{ecuacion}\coordE{}\end{equation}
+There is a drastic algebraic difference between these \myHighlight{$2$}\coordHE{}--forms
+and the \myHighlight{$p$}\coordHE{}--forms that appear in most higher dimensional
+supergravities. In the mathematical language of Sullivan
+\cite{sull} this  has to do with the distinction between {\it non
+trivial minimal free differential algebras} and {\it trivial
+contractible algebras}. In the first case the exterior derivative
+of a \myHighlight{$p$}\coordHE{}--form is equated to a non--trivial cohomology class of
+the superalgebra spanned by the other forms, namely to a
+polynomial in the remaining  \myHighlight{$1$}\coordHE{}--forms that cannot be written as
+the derivative of any other such polynomial. In the second case
+the derivative of the \myHighlight{$p$}\coordHE{}--form is equated to a trivial class.
+True \myHighlight{$p$}\coordHE{}--form gauge fields occur only when  the vacuum free
+differential algebra (that at zero curvature) is minimal. On the
+other hand, if the vacuum free differential algebra is
+contractible then there are no true \myHighlight{$p$}\coordHE{}--form gauge fields since
+they can be traded for an expression in terms of the other
+\myHighlight{$1$}\coordHE{}--forms. As it was shown in \cite{Fre:1984pc} the contractible
+generators of a free differential algebra are anyhow associated
+with the concept of curvatures. Indeed when a minimal algebra is
+deformed by the introduction of curvatures it becomes
+contractible. So the self--duality between the field--strengths
+(=curvatures) and the 2--form potentials acquires in this language
+a natural explanation. It is just the signal that the FDA is
+contractible. This, in line with Chevalley-Eilenberg theorem is
+due to the semisimple character of the super--Lie algebra of which
+the FDA is the extension.
+\par
+We  stress that in  supergravity theory one usually deals  with
+massless \myHighlight{$p$}\coordHE{}--forms. This reduces their degrees of freedom by
+means of gauge invariance. When we gauge the theory, it often
+occurs that the \myHighlight{$p$}\coordHE{}--forms become massive and some other mechanism
+has to intervene in order to reduce their number of degrees of
+freedom and keep the balance between fermions and bosons. This
+mechanism can be either self--duality, as it happens in our case
+and in seven dimensional supergravity, or the so--called
+anti--Higgs mechanism, as it happens in gauged \myHighlight{$F(4)$}\coordHE{} gauged
+supergravity in six dimensions \cite{F4} \footnote{The former can
+occur only in odd dimensional space--times \cite{townsend}.}. Let
+us note that the self--duality mechanism is a relation  between a
+form and its field strength, stating in this way the triviality of
+the cohomology related to that form. As it follows from the
+theorem  in \cite{sull}, this necessarily happens when the forms
+are in some non trivial representation of the gauge group. On the
+contrary, we expect the anti--Higgs mechanism, which implies a non
+trivial cohomology for the form, to be present only when the form
+is a gauge singlet.
+    %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Gauging the non--semisimple \myHighlight{$\mathrm{CSO}\mathrm{(p,q,r)}$}\coordHE{} groups}
+In the original papers \cite{gunwar,PPV} gauged versions of
+five--dimensional maximal supergravity were constructed where the
+gauge group is either \myHighlight{$\mathrm{SO(6)}$}\coordHE{} or one of its non compact
+forms \myHighlight{$\mathrm{SO(p,q)}$}\coordHE{} (with \myHighlight{$p+q=6$}\coordHE{}). This is similar to what
+happens in four--dimensions where the semisimple gaugings of
+\myHighlight{$\mathcal{N}=8 $}\coordHE{} supergravity are based on all the groups
+\myHighlight{$\mathrm{SO(p,q)}$}\coordHE{} with \myHighlight{$p+q=8$}\coordHE{}. In fact in that theory there is
+an additional series of interesting non--semisimple gaugings based
+on contracted algebras \myHighlight{$CSO(p,q,r)$}\coordHE{} (with \myHighlight{$p+q+r=8$}\coordHE{}) whose notion
+was introduced by Hull \cite{hull,hull2} and whose classification
+was shown to be exaustive in \cite{noi4D}. It is quite natural to
+expect that such non--semisimple gaugings exist also in
+five--dimensions with \myHighlight{$p+q+r=6$}\coordHE{}. However they were not constructed
+in \cite{gunwar,PPV} because of the subtle features related with
+the problem of two--form gauge fields. This problem being
+naturally solved in the Free Differential Algebra rheonomic
+approach we are tempted to argue that the
+\myHighlight{$\mathrm{CSO}\mathrm{(p,q,r)}$}\coordHE{} can be constructed in this
+framework. This is indeed true as we explicitly show below. Indeed
+the catch point is that the number of vectors dualized to
+two--forms is not fixed to \myHighlight{$12$}\coordHE{} as in the semisimple gaugings
+rather it is variable. In the non semisimple
+\myHighlight{$\mathrm{CSO}\mathrm{(p,q,r)}$}\coordHE{} case we have \myHighlight{$12-r$}\coordHE{} two--forms and
+\myHighlight{$15+r$}\coordHE{} 1--forms. However \myHighlight{$r$}\coordHE{} of these latter do not gauge any
+transformation with non trivial action on the other fields, in
+other words they are associated with {\it central charges}. The
+price to be paid for that seems to be that a lagrangian
+formulation is not available for these theories, all the dynamical
+information being however encoded in the solution of the Bianchi
+Identities.
+\subsection{The \myHighlight{$\mathrm{CSO}\mathrm{(p,q,r)}$}\coordHE{} algebras}
+We begin with a short description of the contracted algebras and
+in the next subsection we explain how they are gauged.
+\par
+The generators of \myHighlight{$\mathrm{SO(p,q)}$}\coordHE{} (with \myHighlight{$p+q=n$}\coordHE{}) in the vector
+representation are
+\begin{equation}\coord{}\boxEquation{
+(G^{IJ})^K_{~~L}=\delta^{[K}_J\eta^{L]I}~~~~I,J,K,L=1,\dots,n\,,
+}{
+(G^{IJ})^K_{~~L}=\delta^{[K}_J\eta^{L]I}~~~~I,J,K,L=1,\dots,n\,,
+}{ecuacion}\coordE{}\end{equation}
+where
+\begin{equation}\coord{}\boxEquation{
+\eta^{IJ}\equiv\,{\rm
+diag}(\overbrace{1,\dots,1}^p,\overbrace{-1,\dots,-1}^q)\,.
+}{
+\eta^{IJ}\equiv\,{\rm
+diag}(\overbrace{1,\dots,1}^p,\overbrace{-1,\dots,-1}^q)\,.
+}{ecuacion}\coordE{}\end{equation}
+They satisfy
+\begin{equation}\coord{}\boxEquation{
+[G^{IJ},G^{KL}]=f^{IJ,KL}_{MN}G^{MN}
+}{
+[G^{IJ},G^{KL}]=f^{IJ,KL}_{MN}G^{MN}
+}{ecuacion}\coordE{}\end{equation}
+where
+\begin{equation}\coord{}\boxEquation{
+\label{structconst}
+f^{IJ,KL}_{MN}=-2\delta^{[I}_{[M}\eta^{J][K}\delta^{L]}_{N]}\,.
+}{
+f^{IJ,KL}_{MN}=-2\delta^{[I}_{[M}\eta^{J][K}\delta^{L]}_{N]}\,.
+}{ecuacion}\coordE{}\end{equation}
+Their generalization, studied by Hull in the context of
+supergravity \cite{hull},\cite{hull2} are the algebras
+\myHighlight{$\mathrm{CSO}(p,q,\!r)$}\coordHE{} with \myHighlight{$p+q+r=n$}\coordHE{}, defined by the structure
+constants (\ref{structconst}) with
+\begin{equation}\coord{}\boxEquation{
+\eta^{IJ}\equiv\,{\rm
+diag}(\overbrace{1,\dots,1}^p,\overbrace{-1,\dots,-1}^q,
+\overbrace{0,\dots,0}^r)\,. \label{metriccpqr}
+}{
+\eta^{IJ}\equiv\,{\rm
+diag}(\overbrace{1,\dots,1}^p,\overbrace{-1,\dots,-1}^q,
+\overbrace{0,\dots,0}^r)\,. }{ecuacion}\coordE{}\end{equation}
+Decomposing the indices
+\begin{equation}\coord{}\boxEquation{
+I=(\bar{I},\hat{I})~~~~\bar{I}=1,\dots,p+q,~\hat{I}=p+q+1,\dots,n\,,
+}{
+I=(\bar{I},\hat{I})~~~~\bar{I}=1,\dots,p+q,~\hat{I}=p+q+1,\dots,n\,,
+}{ecuacion}\coordE{}\end{equation}
+we have that \myHighlight{$G^{\bar{I}\bar{J}}$}\coordHE{} are the generators of
+\myHighlight{$\mathrm{SO(p,q)}\subset \mathrm{CSO}\mathrm{(p,q,r)}$}\coordHE{} , while the
+\myHighlight{$r(r-1)/2$}\coordHE{} generators \myHighlight{$G^{\hat{I}\hat{J}}$}\coordHE{} are central charges
+\begin{equation}\coord{}\boxEquation{
+[G^{\bar{I}\hat{J}},G^{\bar{K}\hat{L}}]={1\over
+2}\eta^{\bar{I}\bar{K}} G^{\hat{J}\hat{L}}\,. \label{nonnull}
+}{
+[G^{\bar{I}\hat{J}},G^{\bar{K}\hat{L}}]={1\over
+2}\eta^{\bar{I}\bar{K}} G^{\hat{J}\hat{L}}\,. }{ecuacion}\coordE{}\end{equation}
+They form an abelian subalgebra, and
+\begin{equation}\coord{}\boxEquation{
+\mathrm{SO(p,q)}\times \mathrm{U(1)}^{r\left(r-1\right)\over
+2}\subset \mathrm{CSO(p,q,r)}\,.
+}{
+\mathrm{SO(p,q)}\times \mathrm{U(1)}^{r\left(r-1\right)\over
+2}\subset \mathrm{CSO(p,q,r)}\,.
+}{ecuacion}\coordE{}\end{equation}
+Notice that \myHighlight{$\mathrm{\mathrm{CSO}(p,q,1)}=\mathrm{ISO(p,q)}$}\coordHE{}. In
+the vector representation, the generators of the central charges
+are identically null
+\begin{equation}\coord{}\boxEquation{
+(G^{\hat{I}\hat{J}})^K_{~L}=0\,, \label{zerogen}
+}{
+(G^{\hat{I}\hat{J}})^K_{~L}=0\,, }{ecuacion}\coordE{}\end{equation}
+while
+\begin{equation}\coord{}\boxEquation{
+(G^{\hat{I}\bar{J}})^K_{~L}={1\over
+2}\delta^{\hat{I}}_L\eta^{\bar{J}K}\neq 0\,.
+}{
+(G^{\hat{I}\bar{J}})^K_{~L}={1\over
+2}\delta^{\hat{I}}_L\eta^{\bar{J}K}\neq 0\,.
+}{ecuacion}\coordE{}\end{equation}
+It is worth noting that the Killing metric of \myHighlight{$\mathrm{SO(p,q,r)}$}\coordHE{}
+is
+\begin{equation}\coord{}\boxEquation{
+K^{IJ,KL}=f^{IJ,MN}_{PQ}f^{KL,PQ}_{MN}=-6\eta^{K[I}\eta^{J]L}\,.
+}{
+K^{IJ,KL}=f^{IJ,MN}_{PQ}f^{KL,PQ}_{MN}=-6\eta^{K[I}\eta^{J]L}\,.
+}{ecuacion}\coordE{}\end{equation}
+This notation is redundant, because the adjoint representation is
+\myHighlight{$n(n-1)/2$}\coordHE{} dimensional. In the proper basis,
+\begin{equation}\coord{}\boxEquation{
+K^{IJ,KL}_{_{I<J,\,K<L}}=-3\eta^{IK}\eta^{JL}\,.
+}{
+K^{IJ,KL}_{_{I<J,\,K<L}}=-3\eta^{IK}\eta^{JL}\,.
+}{ecuacion}\coordE{}\end{equation}
+This is a diagonal matrix of dimension \myHighlight{$n(n-1)/2$}\coordHE{}, with components
+\myHighlight{$\eta^{II}\eta^{JJ}$}\coordHE{}. In general, the real sections of a given
+group (in this case, \myHighlight{$D_3$}\coordHE{}) are characterized by the signature of
+the Killing metric\footnote{for non semisimple groups, by
+signature we mean the number of positive, negative and null
+components of the matrix \myHighlight{$\eta$}\coordHE{} in its diagonal form}. We see
+that, for the \myHighlight{$\mathrm{CSO}\mathrm{(p,q,r)}$}\coordHE{} algebras, the
+signature of the Killing metric is equivalent to the signature of
+the matrix \myHighlight{$\eta^{IJ}$}\coordHE{}. This explains why this tensor can give an
+intrinsic characterization of such groups. Notice that a similar
+result was found, with a different procedure, while studying the
+gaugings of \myHighlight{$\mathcal{N}=8$}\coordHE{} supergravity in four space--time
+dimensions \cite{noi4D}.
+\subsection{The contracted gaugings}
+As announced above the gauged versions of \myHighlight{$\mathcal{N}=8$}\coordHE{}, \myHighlight{$D=5$}\coordHE{}
+supergravity constructed in \cite{gunwar}, \cite{PPV} and based on
+a semisimple choice of the gauge group
+\myHighlight{$\mathcal{G}=\mathrm{SO(p,q)}~(p\!+\!q\!=\!6)$}\coordHE{} can be further
+generalized to the non--semisimple gauge groups
+\myHighlight{$\mathcal{G}=\mathrm{CSO}\mathrm{(p,q,r)}~(p\!+\!q\!+\!r\!=\!6)$}\coordHE{}.
+\par
+The new gaugings can be obtained by taking for the matrix
+\myHighlight{$\eta^{IJ}$}\coordHE{} the definition (\ref{metriccpqr}), with some null
+entries on the diagonal. Let us discuss the consequences of  this
+in the theory, in order to see if any pathology occurs. One has
+\begin{equation}\coord{}\boxEquation{
+(G^{KL})^{\hat{I}}_{~J}=\delta^{[K}_J\eta^{L]\hat{I}}=0\,,
+}{
+(G^{KL})^{\hat{I}}_{~J}=\delta^{[K}_J\eta^{L]\hat{I}}=0\,,
+}{ecuacion}\coordE{}\end{equation}
+so the covariant derivative of a {\sl contravariant field}
+(\ref{covGder}), along the contracted directions, reduces to the
+ordinary  \myHighlight{$\mathrm{USp(8)}$}\coordHE{}--covariant derivative:
+\begin{equation}\coord{}\boxEquation{
+DV^{\hat{I}}= \nabla
+V^{\hat{I}}+g(G^{KL})^{\hat{I}}_{~J}A_{KL}\wedge V^J =\nabla
+V^{\hat{I}}\,.
+}{
+DV^{\hat{I}}= \nabla
+V^{\hat{I}}+g(G^{KL})^{\hat{I}}_{~J}A_{KL}\wedge V^J =\nabla
+V^{\hat{I}}\,.
+}{ecuacion}\coordE{}\end{equation}
+This, however, does not happen for the covariant derivative of a
+{\sl covariant field}:
+\begin{equation}\coord{}\boxEquation{
+DV_{\hat{I}} \equiv \nabla
+V_{\hat{I}}-g(G^{KL})^J_{~\hat{I}}A_{KL}\wedge V^J= \nabla
+V_{\hat{I}}-g\eta^{\bar{L}\bar{J}}A_{\hat{I}\bar{L}}\wedge
+V_{\bar{J}}\,.
+}{
+DV_{\hat{I}} \equiv \nabla
+V_{\hat{I}}-g(G^{KL})^J_{~\hat{I}}A_{KL}\wedge V^J= \nabla
+V_{\hat{I}}-g\eta^{\bar{L}\bar{J}}A_{\hat{I}\bar{L}}\wedge
+V_{\bar{J}}\,.
+}{ecuacion}\coordE{}\end{equation}
+The abelian vectors \myHighlight{$A_{\hat{I}\hat{J}}$}\coordHE{} do not appear in the
+covariant derivatives. Because of (\ref{nonnull}), in the field
+strengths
+\begin{equation}\coord{}\boxEquation{
+\mathcal{F}_{IJ}=dA_{IJ}+{1\over 2}f^{KL,MN}_{IJ}A_{KL}\wedge
+A_{MN}
+}{
+\mathcal{F}_{IJ}=dA_{IJ}+{1\over 2}f^{KL,MN}_{IJ}A_{KL}\wedge
+A_{MN}
+}{ecuacion}\coordE{}\end{equation}
+the last term is present even for the vectors of the abelian
+subgroup. Let us consider now the most subtle part of the theory:
+the two--forms. Along the contracted directions, one has
+\begin{equation}\coord{}\boxEquation{
+\mathbb{L}^{\hat{I}\alpha AB}\equiv
+\eta^{\hat{I}J}\varepsilon^{\alpha\beta}\mathbb{L}_{J\beta}^{~~AB}=0\,,
+}{
+\mathbb{L}^{\hat{I}\alpha AB}\equiv
+\eta^{\hat{I}J}\varepsilon^{\alpha\beta}\mathbb{L}_{J\beta}^{~~AB}=0\,,
+}{ecuacion}\coordE{}\end{equation}
+so that the rheonomic parametrization (\ref{rheoH}) of
+\myHighlight{$H^{\hat{I}\alpha}$}\coordHE{} becomes
+\begin{equation}\coord{}\boxEquation{
+H^{\hat{I}\alpha}=H^{\hat{I}\alpha}_{abc}V^a\wedge V^b\wedge
+V^c\,. \label{rheoHcontr}
+}{
+H^{\hat{I}\alpha}=H^{\hat{I}\alpha}_{abc}V^a\wedge V^b\wedge
+V^c\,. }{ecuacion}\coordE{}\end{equation}
+The corresponding Bianchi identity reads:
+\begin{equation}\coord{}\boxEquation{
+DH^{\hat{I}\alpha}=0\,,
+}{
+DH^{\hat{I}\alpha}=0\,,
+}{ecuacion}\coordE{}\end{equation}
+and, substituting  back the parametrization (\ref{rheoHcontr}),
+one finds
+ \myHighlight{$H^{\hat{I}\alpha}_{abc}=0$}\coordHE{}. Hence we have:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\leftCoord{}0&=&H^{I\alpha}=d\left[B^{\hat{I}\alpha}+{\rm i} \rightCoord{}
+\mathbb{L}^{-1~\hat{I}\alpha}_{AB}\bar{\psi}^A\wedge\psi^B\right]
+\leftCoord{}+ g(G^{KL})^{\hat{I}}_{~J}A_{KL}\wedge
+\left[B^{\hat{I}\alpha}+{\rm i} \rightCoord{}
+\mathbb{L}^{-1~\hat{I}\alpha}_{AB}\bar{\psi}^A\wedge\psi^B\right] =\nonumber\\\leftCoord{}\nonumber\rightCoord{}\\
+&\leftCoord{}=&d\left[B^{\hat{I}\alpha}+{\rm i} \rightCoord{}
+\mathbb{L}^{-1~\hat{I}\alpha}_{AB}\bar{\psi}^A\wedge\psi^B\right]
+\leftCoord{}\rightCoord{}\,. \rightCoord{}\label{bianchiAhatI}
+\rightCoord{}}{0mm}{6}{8}{
+0&=&H^{I\alpha}=d\left[B^{\hat{I}\alpha}+{\rm i} 
+\mathbb{L}^{-1~\hat{I}\alpha}_{AB}\bar{\psi}^A\wedge\psi^B\right]
++ g(G^{KL})^{\hat{I}}_{~J}A_{KL}\wedge
+\left[B^{\hat{I}\alpha}+{\rm i} 
+\mathbb{L}^{-1~\hat{I}\alpha}_{AB}\bar{\psi}^A\wedge\psi^B\right] =\\\\
+&=&d\left[B^{\hat{I}\alpha}+{\rm i} 
+\mathbb{L}^{-1~\hat{I}\alpha}_{AB}\bar{\psi}^A\wedge\psi^B\right]
+\,. }{1}\coordE{}\end{eqnarray}
+The solution of this equation is
+\begin{equation}\coord{}\boxEquation{
+B^{\hat{I}\alpha}=\mathcal{B}^{\hat{I}\alpha}-{\rm i}
+\mathbb{L}^{-1~\hat{I}\alpha}_{AB}\bar{\psi}^A\wedge\psi^B
+}{
+B^{\hat{I}\alpha}=\mathcal{B}^{\hat{I}\alpha}-{\rm i}
+\mathbb{L}^{-1~\hat{I}\alpha}_{AB}\bar{\psi}^A\wedge\psi^B
+}{ecuacion}\coordE{}\end{equation}
+with
+\begin{equation}\coord{}\boxEquation{
+\mathcal{B}^{\hat{I}\alpha}\equiv dA^{\hat{I}\alpha}\,.
+\label{abelianvectordef}
+}{
+\mathcal{B}^{\hat{I}\alpha}\equiv dA^{\hat{I}\alpha}\,.
+}{ecuacion}\coordE{}\end{equation}
+In other words, the Bianchi identities of the two--forms
+corresponding to the contracted direction (the
+\myHighlight{$B^{\hat{I}\alpha}$}\coordHE{}) are cohomologically trivial, so that these
+fields are actually field strengths of one--form fields
+(\ref{abelianvectordef}), having a \myHighlight{$\mathrm{U(1)}$}\coordHE{} gauge
+invariance, as argued in \cite{gunwar}. Let us stress that this
+explicit calculation performed in the rheonomy formalism shows
+that there are no consistency conflicts between the two types of
+gauge invariances, and therefore no need arises to introduce
+massive vectors as proposed in \cite{gunwar}. Indeed,  in the FDA
+rheonomic approach we  see in a transparent way where the
+consistency conflicts arise and how they are solved. Summarizing
+it goes as follows. When a vector field is charged with respect to
+the gauge group, but does not gauge any generator of the gauge
+algebra it appears naked in its own Bianchi Identity. This
+requires dualization to a two--form and the replacement of gauge
+invariance with self duality as a mean to reduce the number of
+degrees of freedom. On the other hand  when a contraction is
+performed on some direction \myHighlight{$\hat{I}$}\coordHE{}, in the Bianchi identity of
+the fields \myHighlight{$A^{\hat{I}\alpha}$}\coordHE{} (\ref{bianchiAhatI}) the naked
+gauge fields disappear. Therefore, the two gauge invariances are
+not inconsistent, and the corresponding vectors can stay massless.
+Note that in this case the Bianchi identities look very different
+from those along the non-contracted directions. Now the
+self--duality constraint disappears and the halving of degrees of
+freedom is due to the recovered \myHighlight{$\mathrm{U(1)}$}\coordHE{} gauge symmetry.
+\par
+In this way we have found new gauged \myHighlight{$D=5~\mathcal{N}=8$}\coordHE{}
+supergravities, with \myHighlight{$(12-r)$}\coordHE{} two--forms, \myHighlight{$(15+r)$}\coordHE{} one--forms, and
+gauge group \myHighlight{$\mathrm{CSO}\mathrm{(p,q,r)}$}\coordHE{}. It is worth noting
+that the \myHighlight{$r$}\coordHE{} vectors \myHighlight{$A^{\hat{I}\alpha}$}\coordHE{} are coupled with the
+other fields, even if they don't gauge anything, and so are the
+abelian  vectors \myHighlight{$A_{\hat{I}\hat{J}}$}\coordHE{}. Indeed,
+\begin{equation}\coord{}\boxEquation{
+\mathcal{H}^{AB}_{ab}=\mathbb{L}^{IJAB}F_{ab\vert IJ}+
+\mathbb{L}_{\bar{I}\alpha}^{~~AB}B^{\bar{I}\alpha}_{ab}+
+\mathbb{L}_{\hat{I}\alpha}^{~~AB}B^{\hat{I}\alpha}_{ab}
+}{
+\mathcal{H}^{AB}_{ab}=\mathbb{L}^{IJAB}F_{ab\vert IJ}+
+\mathbb{L}_{\bar{I}\alpha}^{~~AB}B^{\bar{I}\alpha}_{ab}+
+\mathbb{L}_{\hat{I}\alpha}^{~~AB}B^{\hat{I}\alpha}_{ab}
+}{ecuacion}\coordE{}\end{equation}
+and \myHighlight{$\mathcal{H}^{AB}_{ab}$}\coordHE{} does appear in the equation of motion
+of the two--form (\ref{eqmotB}) along the non--contracted
+direction, which we have derived from the B-I and doesn't change
+in the contracted gaugings.
+\par
+The susy transformatons rules for the new theories are obtained by
+substituting, for the contracted directions \myHighlight{$\hat I$}\coordHE{}, eq.
+(\ref{beq}) with:
+\begin{equation}\coord{}\boxEquation{
+\delta A^{\hat I\alpha|\mu} = \mathbb{L}^{-1~\hat
+I\alpha}_{AB}\left[ {{\rm i}\over\sqrt{2}}
+\bar{\chi}^{ABC}\gamma_\mu\varepsilon_C +2{\rm
+i}\bar\varepsilon^A\psi^B_\mu \right]
+}{
+\delta A^{\hat I\alpha|\mu} = \mathbb{L}^{-1~\hat
+I\alpha}_{AB}\left[ {{\rm i}\over\sqrt{2}}
+\bar{\chi}^{ABC}\gamma_\mu\varepsilon_C +2{\rm
+i}\bar\varepsilon^A\psi^B_\mu \right]
+}{ecuacion}\coordE{}\end{equation}
+ all other transformation laws remaining unchanged.
+ \par
+ The new theories are completely sensible and well
+ defined, however it seems that there is not a lagrangian formulation
+ of them.
+ Indeed, by looking at (\ref{lagrangian}) describing the semisimple
+ gaugings, one can see that it involves the inverse matrix
+ \myHighlight{$\eta_{IJ}$}\coordHE{} \footnote{We remind that the definition of the
+\myHighlight{$CSO(p,q,r)$}\coordHE{} generators in the vector representation involves the
+matrix \myHighlight{$\eta^{IJ}$}\coordHE{}.} in the Chern-Simons term for the two-forms.
+This matrix is not well defined for the contracted directions
+\myHighlight{$\hat I$}\coordHE{}. The corresponding terms cannot therefore be present in
+the lagrangian. As a consequence, it seems to us that there is no
+way to write down new terms in the lagrangian substituting the
+badly defined ones in a covariant and gauge-invariant way.
+Technically, the obstruction is related to the fact that that
+Chern-Simons contribution was necessary for the vanishing of the
+variation of the lagrangian with respect to the vectors \myHighlight{$A_{IJ}$}\coordHE{},
+by use of the cubic invariant of \myHighlight{$E_{6(6)}$}\coordHE{}. One could try to add
+by hand in the lagrangian the missing terms which complete the
+cubic invariant (even if their meaning would be quite obscure) but
+they would lead to not-gauge invariant field equations for the new
+vectors \myHighlight{$A^{\hat I \alpha}$}\coordHE{}. Otherwise, one could try to interpret
+the badly defined terms in the lagragian as the dominant ones
+(since they are now infinite) through some appropriate scaling
+limit. However, since the connection between the covariant and
+contravariant representions for the \myHighlight{$\hat I$}\coordHE{} directions is lost,
+we were not able to implement in a covariant way the field
+equations through appropriate terms to be added to the lagrangian.
+We postpone to the concluding section some comments about this
+fact.
+ \par
+\subsection{Conclusions}
+\par
+In this paper, we have proven the existence of \myHighlight{$D=5~{\cal N}=8$}\coordHE{}
+supergravities where the non--semisimple \myHighlight{$CSO(p,q,r)$}\coordHE{} algebras are
+gauged and this is a novelty since it was so far unclear in the
+literature whether this could be done or not. Of these theories,
+at the present stage, we possess the supersymmetry algebra whose
+closure implies the field equations. According to what we
+explained in section \myHighlight{$4.2$}\coordHE{}, the lagrangian formulation of these
+theories probably does not exist. A possible physical argument to
+motivate this situation that was technically illustrated above is
+the following. The existence of \myHighlight{$r$}\coordHE{} extra neutral vectors besides
+the \myHighlight{$15$}\coordHE{} charged ones implies a sort of Hodge dualization for the
+corresponding two--forms. Specifically, what happens here is that
+the field strength \myHighlight{$H^{[3]}$}\coordHE{} for \myHighlight{$r$}\coordHE{} of the \myHighlight{$B^{[2]}$}\coordHE{} fields is
+identically zero, so that we have to interpret the \myHighlight{$B^{[2]}$}\coordHE{}
+themselves as field strengths of new gauge vectors \myHighlight{$A^{[1]}$}\coordHE{}. In
+other words, we have traded \myHighlight{$r$}\coordHE{} ''electric'' two--form fields
+\myHighlight{$B^{[2]}$}\coordHE{} for just as many ''magnetic''  one--forms \myHighlight{$A^{[1]}$}\coordHE{}. In
+view of this, it is not too surprising if the \myHighlight{$15+r$}\coordHE{} vectors are
+not mutually local, which would be necessary to admit a common
+lagrangian description.
+\par
+However, all the information on the dynamics of these theories are
+encapsulated in the rheonomic solution of the B-I that we have
+presented. As explained in section \myHighlight{$3.1$}\coordHE{}, to extract the explicit
+form of the field equations and of the potential it suffices to
+analyze the remaining sectors of the B-I, through somewhat lengthy
+calculations, whose result, however, is a priori guaranteed.
+\par
+Although these calculations and a full--fledged analysis of the
+field equations and their solutions are postponed to a forthcoming
+publication \cite{next}, we can briefly anticipate some
+considerations on the scalar potential that, most presumably, has
+the same form, in terms of the fermionic shift and gravitino mass
+matrix, as in the compact case \cite{gunwar}:
+\begin{equation}\coord{}\boxEquation{
+P=-g^2\left[{2\over 675}T_{AB}T^{AB}-{1\over
+96}A_{ABCD}A^{ABCD}\right]\,. \label{potential}
+}{
+P=-g^2\left[{2\over 675}T_{AB}T^{AB}-{1\over
+96}A_{ABCD}A^{ABCD}\right]\,. }{ecuacion}\coordE{}\end{equation}
+Indeed, expression (\ref{potential}) follows from the general
+structure of supersymmetry Ward identities one finds in gauged
+supergravities.
+\par
+As it has been shown in \cite{gunwar}, the number of
+supersymmetries preserved by a constant scalar configuration
+\myHighlight{$\phi_0$}\coordHE{} is given by the number of eigenvalues \myHighlight{$\mu$}\coordHE{} of
+\begin{equation}\coord{}\boxEquation{
+W_{AB}(\phi_0)\equiv {4\over 15}T_{AB}(\phi_0)
+}{
+W_{AB}(\phi_0)\equiv {4\over 15}T_{AB}(\phi_0)
+}{ecuacion}\coordE{}\end{equation}
+such that
+\begin{equation}\coord{}\boxEquation{
+\left|\mu\right|=\sqrt{-{3\over g^2}P(\phi_0)}\,.
+}{
+\left|\mu\right|=\sqrt{-{3\over g^2}P(\phi_0)}\,.
+}{ecuacion}\coordE{}\end{equation}
+The scalars are in the \myHighlight{$\mathcal{G}$}\coordHE{} representations
+\begin{equation}\coord{}\boxEquation{
+\bf 20\oplus 10\oplus\bar{10}\oplus 1\oplus\bar{1}\,.
+}{
+\bf 20\oplus 10\oplus\bar{10}\oplus 1\oplus\bar{1}\,.
+}{ecuacion}\coordE{}\end{equation}
+The potential is invariant under all the local and global
+symmetries of the theory, which in this case are
+\myHighlight{$\mathcal{G}\times \mathrm{SL}(2,\mathbb{R})$}\coordHE{}. To look for minima
+of the potential (\ref{potential}) one can use Warner's
+observation \cite{schur} that, given a subgroup
+\myHighlight{$\mathcal{G}'\subset\mathcal{G}\times \mathrm{SL}(2,\mathbb{R})$}\coordHE{},
+and given the submanifold of the scalar manifold
+\myHighlight{$\Sigma'\subset\Sigma$}\coordHE{} invariant under the action of
+\myHighlight{$\mathcal{G}'$}\coordHE{}, then the minima of \myHighlight{$\Sigma'$}\coordHE{} are also minima of
+\myHighlight{$\Sigma$}\coordHE{}. We can therefore restrict the potential to subsets of
+the scalars, and search their minima. In particular, the scalars
+invariant under \myHighlight{$\mathcal{G}'=\mathrm{U(1)} \subset
+\mathrm{SL}(2,\mathbb{R})$}\coordHE{} are those in the \myHighlight{$\bf 20$}\coordHE{}, that
+parametrize the coset \myHighlight{$\mathrm{SL}(6,\mathbb{R})/\mathrm{SO(6)}
+\subset \mathrm{E_{6(6)}} /\mathrm{USp(8)}$}\coordHE{}. One can study the
+minima restricted to these scalars. In this case we can use a
+simple formula to find the potential, found in \cite{gunwar} for
+the \myHighlight{$\mathrm{SO(p,q)}$}\coordHE{} case
+\begin{equation}\coord{}\boxEquation{
+\label{potential20} P=-{g^2\over
+32}\left[\left(\eta^{IJ}M_{IJ}\right)^2-2\left(\eta^{IJ}M_{IJ}
+\eta^{KL}M_{KL}\right)\right]\,,
+}{
+P=-{g^2\over
+32}\left[\left(\eta^{IJ}M_{IJ}\right)^2-2\left(\eta^{IJ}M_{IJ}
+\eta^{KL}M_{KL}\right)\right]\,,
+}{ecuacion}\coordE{}\end{equation}
+where
+\begin{equation}\coord{}\boxEquation{
+M_{IJ}=S_I^{~K}S_J^{~K}
+}{
+M_{IJ}=S_I^{~K}S_J^{~K}
+}{ecuacion}\coordE{}\end{equation}
+and \myHighlight{$S_I^{~K}$}\coordHE{} are the \myHighlight{$\mathrm{SL}(6,\mathbb{R})$}\coordHE{} generator
+associated with the scalars we are considering. Furthermore,
+\begin{equation}\coord{}\boxEquation{
+W_{AB}=-{1\over 4}\Omega_{AB}\eta^{IJ}M_{IJ}\,. \label{W20}
+}{
+W_{AB}=-{1\over 4}\Omega_{AB}\eta^{IJ}M_{IJ}\,. }{ecuacion}\coordE{}\end{equation}
+The formulas (\ref{potential20}), (\ref{W20}) remain valid for the
+contracted theories, where the \myHighlight{$\eta^{IJ}$}\coordHE{} have zero eigenvalues.
+However this procedure is not very useful to find non--maximally
+supersymmetric minima of the potential. Indeed, since we have
+\myHighlight{$W_{AB}\propto\Omega_{AB}$}\coordHE{} all \myHighlight{$W_{AB}$}\coordHE{} eigenvalues \myHighlight{$\mu$}\coordHE{}  are
+equal in modulus and differ only for the phase. This implies that
+restricting our attention to the scalars in the \myHighlight{$\bf 20$}\coordHE{}
+representation of \myHighlight{$\mathrm{SL(6,\mathbb{R})}$}\coordHE{} either there is
+\myHighlight{$\mathcal{N}=8$}\coordHE{} supersymmetry, or there is no supersymmetry. Yet a
+minimum with \myHighlight{$\mathcal{N}=8$}\coordHE{} supersymmetry should be invariant
+under  \myHighlight{$SU(4)=\mathrm{SO(6)}$}\coordHE{} and this occurs only when all the
+scalars are set to zero and only for the \myHighlight{$\mathrm{SO(6)}$}\coordHE{} theory.
+Hence, in the quest for other supersymmetric minima,  one must
+necessarily consider the scalars in the \myHighlight{$\bf
+10\oplus\bar{10}\oplus 1\oplus\bar{1}$}\coordHE{}, as it was done for the
+only other known supersymmetric minimum, found \cite{N2minimum} in
+the \myHighlight{$\mathrm{SO(6)}$}\coordHE{} theory.
+\par
+Such an analysis is quite involved and it is beyond the scope of
+the present paper. However it is a very interesting and
+challenging problem that we postpone to the already mentioned
+future investigations. We just note that the contracted gaugings
+yield a non supersymmetric vacuum with zero cosmological constant
+\footnote{The same phenomenon occurs in the four dimensional case
+with the \myHighlight{$\mathrm{CSO}(2,0,6)$}\coordHE{} gauging \cite{hull2}.}. In the
+\myHighlight{$\mathrm{CSO}(2,0,4)$}\coordHE{} gauging, the potential, restricted to the
+scalars invariant under \myHighlight{$\mathrm{SO(2)}\times \mathrm{U(1)}^6$}\coordHE{},
+vanishes identically. Because of Warner's argument \cite{schur}
+this implies  that these scalars correspond to a minimum of the
+whole potential, which has zero cosmological constant.
+\par
+Summarizing, in this paper we have shown that there exist new
+non--semisimple gauged supergravities in five dimensions that are
+potentially very interesting in the quest for brane--worlds and
+the DW/QFT correspondence. In perspective, it is very interesting
+to find an interpretation of these theories as the supergravities
+describing the near--brane geometry for suitable stringy branes.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Acknowledgements}
+One of the authors (L.A.) warmly thanks the Physics Department of
+the K.U.Leuven where most of this work has been carried on. L.G.
+is supported in part by the ``Actions de Recherche Concert{\'e}es"
+of the ``Direction de la Recherche Scientifique - Communaut{\'e}
+Fran{\c c}aise de Belgique", by IISN - Belgium (convention
+4.4505.86). This work has been supported by the European
+Commission TMR programme ERBFMRX-CT96-0015 and by the European
+Commission RTN programme RTN1-1999-00116 in which L.A. and P.F.
+are associated to Torino and L.G. is associated to K.\ U.\ Leuven.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{50}
+\bibitem{gunwar}
+M. G\"unaydin, L.J. Romans and N.P. Warner, {\it Gauged \myHighlight{$N=8$}\coordHE{}
+Supergravity in Five Dimensions}, Phys. Lett. {\bf 154B}, n. 4
+(1985) 268; {\it Compact and Non--Compact Gauged Supergravity
+Theories in Five Dimensions}, Nucl. Phys. {\bf B272} (1986) 598.
+\bibitem{PPV}
+M. Pernici, K. Pilch and P. van Nieuwenhuizen, {\it Gauged
+\myHighlight{$N=8~D=5$}\coordHE{} Supergravity} Nucl. Phys. {\bf B259} (1985) 460.
+\bibitem{dewitnicol} B. de Wit and H. Nicolai,
+{\it \myHighlight{${\cal N}=8$}\coordHE{} supergravity} {\it Nucl. Phys.} {\bf B208},
+(1982) 323.
+\bibitem{Pernici:1984xx}
+M.~Pernici, K.~Pilch and P.~van Nieuwenhuizen, {\it Gauged
+Maximally Extended Supergravity In Seven-Dimensions}, Phys.\
+Lett.\  {\bf B143} (1984) 103.
+\bibitem{Aharony:2000ti}
+O.~Aharony, S.~S.~Gubser, J.~Maldacena, H.~Ooguri and Y.~Oz, {\it
+Large N field theories, string theory and gravity}, Phys.\ Rept.\
+{\bf 323} (2000) 183, hep-th/9905111.
+\bibitem{Gualtieri:1999tu}
+L.~Gualtieri, {\it Harmonic analysis and superconformal gauge
+theories in three dimensions from AdS/CFT correspondence},
+hep-th/0002116.
+\bibitem{hull}
+C.M. Hull, {\it Non--Compact Gaugings of \myHighlight{$N=8$}\coordHE{} Supergravity},
+Phys. Lett. {\bf 142B} n. 1,2 (1984) 39; {\it More Gaugings of
+\myHighlight{$N=8$}\coordHE{} Supergravity}, Phys. Lett. {\bf 148B} n. 4,5 (1984) 297;
+{\it The structure of the Gauged \myHighlight{$N=8$}\coordHE{} Supergravity Theories},
+Nucl. Phys. {\bf B253} (1985) 650.
+\bibitem{hull2}
+C.M. Hull, {\it The Minimal Couplings and Scalar Potentials of the
+Gauged \myHighlight{$N=8$}\coordHE{} Supergravities}, Class. Quant. Grav. {\bf 2} (1985)
+343.
+\bibitem{noi4D}
+F. Cordaro, P. Fr\'e, L. Gualtieri, P. Termonia and M. Trigiante,
+{\it \myHighlight{$N=8$}\coordHE{} gaugings revisited: an exhaustive classification},
+Nucl. Phys. {\bf B532} (1998) 245.
+\bibitem{Boonstra:1999mp}
+H.~J.~Boonstra, K.~Skenderis and P.~K.~Townsend, {\it The domain
+wall/QFT correspondence}, JHEP {\bf 9901} (1999) 003,
+hep-th/9807137.
+\bibitem{Cvetic:2000pn}
+M.~Cvetic, H.~Lu and C.~N.~Pope, {\it Domain walls with localised
+gravity and domain-wall/QFT correspondence}, hep-th/0007209.
+\bibitem{Cvetic:2000ah}
+M.~Cvetic, H.~Lu, C.~N.~Pope, A.~Sadrzadeh and T.~A.~Tran, {\it
+\myHighlight{$S^3$}\coordHE{} and \myHighlight{$S^4$}\coordHE{} reductions of type IIA supergravity},
+hep-th/0005137.
+\bibitem{Randalsud} L. Randall, R. Sundrum
+{\it A large mass hierarchy from a small extra dimension}, Phys.
+Rev. Letters {\bf 83} (1999) 3370, hep-th/990522; L. Randall, R
+Sundrum {\it An alternative to Compactification}, hep-th/9906064.
+\bibitem{Ceresole:2000jd}
+A.~Ceresole and G.~Dall'Agata, {\it General matter coupled N = 2,
+D = 5 gauged supergravity}, hep-th/0004111.
+\bibitem{newduffo} M.J. Duff, J.T. Liu and K.S. Stelle, {\it A supersymmetric,
+type IIB Randall Sundrum realisation}, hep-th/0007120.
+\bibitem{castdauriafre}
+L. Castellani,  R. D'Auria and P. Fr\'e, {\it Supergravity and
+Superstrings --- A Geometric Perspective}, World Scientific
+Publishing, 1991
+\bibitem{next}
+L. Andrianopoli, D. Fabbri, P. Fr\'e, L. Gualtieri, and S.
+Vaul\`a, in preparation.
+\bibitem{mylecture} P. Fr\'e {\it Lectures on Special K\"ahler
+Geometry and Electric Magnetic Duality} Nucl. Phys. {\bf B Proc.
+Suppl 45B,C} (1996) 59.
+\bibitem{Andrianopoli:1997wf}
+L.~Andrianopoli, R.~D'Auria and S.~Ferrara, {\it Central extension
+of extended supergravities in diverse dimensions,} Int.\ J.\ Mod.\
+Phys.\  {\bf A12} (1997) 3759, hep-th/9608015.
+\bibitem{cremmer} E.
+Cremmer, {\it Supergravities in Five Dimensions}, Invited paper at
+the Nuffield Gravity Workshop, Cambridge, 1980. Published in
+Cambridge Workshop 1980:267.
+\bibitem{sull}
+D. Sullivan, Bulletin de l'institut des Hautes Etudes
+Scientifiques, Publication Matematique n. 47.
+\bibitem{Fre:1984pc}
+P.~Fr\'e, {\it Comments On The Six Index Photon In D = 11
+Supergravity And The Gauging Of Free Differential Algebras,}
+Class.\ Quant.\ Grav.\  {\bf 1} (1984) L81.
+\bibitem{F4} R. D'Auria, S. Ferrara and S. Vaul\`a, {\it Matter Coupled \myHighlight{$F(4)$}\coordHE{}
+Supergravity and the \myHighlight{$AdS_6/CFT_5$}\coordHE{} Correspondence},
+hep-th/0006107.
+\bibitem{Romans:1986tw}
+L.~J.~Romans, {\it The F(4) Gauged Supergravity In
+Six-Dimensions}, Nucl.\ Phys.\  {\bf B269} (1986) 691.
+\bibitem{townsend}
+P.K. Townsend, K. Pilch, P. van Nieuwenhuizen, {\it Self--Duality
+in Odd Dimensions}, Phys. Lett. {\bf B136} (1984) 38.
+\bibitem{N2minimum}
+A. Khavaev, K. Pilch, N.P. Warner, {\it New Vacua of Gauged
+\myHighlight{$\mathcal{N}=8$}\coordHE{} Supergravity}, Phys. Lett. {\bf B487} (2000) 14,
+hep-th/9812035.
+\bibitem{schur}
+N.P. Warner, {\it Some New Extrema of the Scalar Potential in
+Gauged
+  Supergravity Theories}, Phys. Lett. {\bf B128} (1983) 169.
+\end{thebibliography}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+\bye

@@ -1,0 +1,623 @@
+
+\documentclass[a4paper,a4paper]{article}
+\usepackage{amsmath,amsfonts}
+%%%%%%%%%%%%
+\def\imath{i}
+\def\bra{\langle}
+\def\ket{\rangle}
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\Z}{\mathbb{Z}}
+\def\cA{{\mathcal A}}
+\def\cN{{\mathcal N}}
+\def\cH{{\mathcal H}}             % Hilbert space
+\def\cD{{\mathcal D}}             % Functional measure
+\def\ie{i.e.\,}
+\def\eg{e.g.\,}
+\def\d{\partial}
+\def\bra{\langle}
+\def\ket{\rangle}
+\def\PRL{{\em Phys. Rev. Lett.}}
+\def\PR{{\em Phys. Rev.}}
+\def\lr{{\rm L}^2({\rm R})}
+\def\Ex{{\rm M}}              % Expectation
+\def\Cov{{\rm R}}             % Covariance
+\def\I{\hat{\rm I}}           % Unity operator
+\def\bvec#1{\mathbf{#1}}
+\def\dk#1#2{\frac{ d^{#2}{#1} }{ (2\pi)^{#2} }} % invariant measure in FT
+\def\da#1#2{\frac{ d{#1}}{{#1}^{{#2}+1}}}
+\usepackage{useful_macros}
+\begin{document}
+\title{\myHighlight{$\phi^4$}\coordHE{}-Field theory on a Lie group}
+\author{M.V.Altaisky \\
+\myHighlight{$^1$}\coordHE{}{\em Joint Institute for Nuclear Research, Dubna, 141980, Russia} \\
+\myHighlight{$^2$}\coordHE{}{\em Space  Research Institute, Profsoyuznaya 84/32, Moscow, 117810, 
+Russia} \\ e-mail: altaisky@mx.iki.rssi.ru}
+\date{Revised: Sep 13, 2000}
+\maketitle
+\begin{abstract}
+The \myHighlight{$\phi^4$}\coordHE{} field model is generalized to the case when 
+the field \myHighlight{$\phi(x)$}\coordHE{} is defined on a Lie group: 
+\myHighlight{$S[\phi]=\int_{x\in G} L[\phi(x)] d\mu(x)$}\coordHE{},  
+\myHighlight{$d\mu(x)$}\coordHE{} is the left-invariant measure on a locally compact group \myHighlight{$G$}\coordHE{}. 
+For the particular case of the affine group \myHighlight{$G:x'=ax+b,a\in\R_+, x,b \in \R^n$}\coordHE{} the Feynman 
+perturbation expansion for the Green functions is shown to have no 
+ultra-violet divergences for certain 
+choice of \myHighlight{$\lambda(a) \sim a^\nu$}\coordHE{}. 
+\end{abstract}
+\section{Introduction}
+The ultra-violet (UV) divergences appearing in quantum field theory at small distances 
+(high momentum \myHighlight{$\Lambda\to\infty$}\coordHE{}) are well known to be 
+intimately related to the properties of the theory with respect to 
+the group of scale transformations. For a wide class of theories, 
+known as {\em multiplicatively renormalizable} theories, the problem 
+can be essentially simplified by the scale transformation of fields
+(\myHighlight{$\phi$}\coordHE{}) and coupling constants (\myHighlight{$g$}\coordHE{})  
+$$\coord{}\boxMath{\phi_R = Z^{-1}_\phi \phi,\quad g = g_0 Z^{-1}_g.}{dollar}{0pt}\coordE{}$$
+The renormalized Green functions 
+$$\coord{}\boxMath{
+G_n^R(x_1,\ldots,x_n;g,\Lambda) = Z_\phi^{-n}G_n(x_1,\ldots,x_n;g_0,\Lambda)
+}{dollar}{0pt}\coordE{}$$
+become finite in the limit \myHighlight{$\Lambda\to\infty$}\coordHE{}, with all divergences 
+hidden in infinite renormalization constants 
+\myHighlight{$Z_\phi(g,\Lambda),Z_g(g,\Lambda)$}\coordHE{}. 
+
+The independence of physical results on scale transformations 
+\begin{equation}\coord{}\boxEquation{ 
+\Lambda'=e^l \Lambda, \quad x' = e^{-l}x
+\label{sct}
+}{ 
+\Lambda'=e^l \Lambda, \quad x' = e^{-l}x
+}{ecuacion}\coordE{}\end{equation}
+is known as renormalization group (RNG) equation. 
+
+The modern quantum field theory has become inconceivable without 
+RNG methods. Most of the results obtained phase transitions, 
+quantum electrodynamics, quantum chromodynamics etc. are direct 
+consequences of RNG methods. Therefore, we may have a temptation 
+to base the theory on some kind of covariance with respect to 
+scale transformations \eqref{sct} from very beginning, not after 
+facing the UV divergences problem. 
+
+The best way to study any physical system is to choose a functional 
+basis with the symmetry properties as close to the symmetry of the 
+system as possible. For this reason we choose the spherical functions 
+to study the hydrogen atom, and for the same reason we use plane waves 
+to describe a particle moving in homogeneous space. Of course it is 
+also possible to apply plane waves to \myHighlight{$SO_3$}\coordHE{} symmetrical problem, but 
+one can hardly expect any use of it. 
+
+It is important what is implied by ``the symmetry of the problem''. 
+We assume that the system is described by a set of complex-valued 
+functions \myHighlight{$\phi^\alpha$}\coordHE{} defined on a manifold \myHighlight{$\mathcal{M}$}\coordHE{},  
+ \myHighlight{$\phi^\alpha := \phi^\alpha(x), x \in \mathcal{M}$}\coordHE{}.
+A system is said to have a symmetry group \myHighlight{$G$}\coordHE{} if the action of 
+the group \myHighlight{$G$}\coordHE{} on the independent variables ({\em coordinates}) 
+and dependent variables ({\em fields})
+$$\coord{}\boxMath{
+x \to x' = \hat T x, \quad 
+\phi^\alpha(x) \to {\phi'}^\alpha(x') = {\hat M}^\alpha_\beta \phi^\beta(x), 
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$\hat T$}\coordHE{} and \myHighlight{$\hat M$}\coordHE{} are operators, does not change the action 
+functional
+(or any other functional which is believed to determine the dynamics of 
+the system). 
+
+If the transformation group does not affect the fields themselves 
+(\myHighlight{${\hat M}^\alpha_\beta\equiv\hat 1$}\coordHE{}), but only coordinates
+$$\coord{}\boxMath{
+\phi^\alpha(x) \to {\phi'}^\alpha(x') = \phi^\alpha({\hat T}^{-1}x'),
+}{dollar}{0pt}\coordE{}$$
+the field \myHighlight{$\phi^\alpha$}\coordHE{} is called a scalar with respect to the 
+transformation group \myHighlight{$G$}\coordHE{}. 
+
+The most important group of transformations used in physics is the 
+Poincare group \myHighlight{${x_\mu}' = \Lambda_\mu^\nu x_\nu + b_\mu$}\coordHE{}. The wave 
+functions of elementary particles - electrons, photons, quarks etc. - 
+are not Poincare scalars. They have nontrivial transformation properties 
+under Lorenz rotations \myHighlight{$\Lambda_\mu^\nu$}\coordHE{} and are classified according 
+to their spin. However, it is possible to consider certain simplistic 
+models with scalar fields, which do have, or may have physical implications 
+for real systems. One of the most known models is the scalar theory of 
+critical behavior, where magnetization \myHighlight{$\phi(x)$}\coordHE{} is considered as a 
+function of the coordinate in Euclidean space. The scalar field theory 
+was application point of the Wilson renormalization group awarded by a 
+Nobel prize in 1982. The scalar field theory in Euclidean space 
+is an analytical continuation (\myHighlight{$\tau=it$}\coordHE{}) of a field theory in 
+Minkovski space, and is receiving a lot of attention.
+
+In this paper we restrict ourselves to the theory of complex-valued 
+scalar field. Usually, the scalar field theory is defined on the 
+\myHighlight{$n$}\coordHE{}-dimensional Euclidean space \myHighlight{$\R^n$}\coordHE{}, which is isomorphic to the group 
+of translations 
+\begin{equation}\coord{}\boxEquation{
+x' = x+b,\quad x,b \in \R^n
+\label{tg}
+}{
+x' = x+b,\quad x,b \in \R^n
+}{ecuacion}\coordE{}\end{equation}
+The representation of the translation group \eqref{tg} on the space 
+of square-integrable functions is given by 
+\myHighlight{$
+U(b)\phi(x) = \phi(x-b)
+$}\coordHE{}.
+The unitary representation of the translation group is defined 
+on the space of periodic functions 
+$$\coord{}\boxMath{U(b) e^{-imx} = e^{imb} e^{-imx},\quad  U(-b) = U^*(b).}{dollar}{0pt}\coordE{}$$
+Thus it is possible to decompose a function \myHighlight{$\phi(x)$}\coordHE{} with 
+respect to the representations of translation group \myHighlight{$G$}\coordHE{}
+\begin{equation}\coord{}\boxEquation{
+\phi(x) = \int_G e^{ixb} \hat \phi(b) db.
+\label{ft} 
+}{
+\phi(x) = \int_G e^{ixb} \hat \phi(b) db.
+}{ecuacion}\coordE{}\end{equation}
+This is Fourier decomposition.
+Similarly, a function may be decomposed with respect to \myHighlight{$SO_3$}\coordHE{} rotations, 
+Poincare group \cite{Klauder} and other groups. 
+
+Since the concept of the group is just more general than the concept 
+of the Euclidean or Minkovski space, a question naturally arises: {\em For 
+what groups it is physically meaningful to construct a decomposition 
+like \eqref{ft} and use may we have of it in field theoretic calculations}?
+
+From physical point of view, the coordinates (\myHighlight{$x$}\coordHE{}) can not be measured with 
+arbitrary high precession, and it seems more reasonable to speak about 
+the values of the fields  \myHighlight{$\phi^\alpha$}\coordHE{} measured at a position \myHighlight{$x$}\coordHE{} with 
+the finite resolution \myHighlight{$\Delta x$}\coordHE{}. {\em The claim of the present paper is 
+that an adequate description of this situation, which inherits the 
+RNG ideas, can be achieved if 
+we use an analog of \eqref{ft} decomposition on the base of the affine 
+group}
+\begin{equation}\coord{}\boxEquation{
+x' = a x + b
+\label{ag}, 
+}{
+x' = a x + b
+, 
+}{ecuacion}\coordE{}\end{equation} 
+where, as it will be seen later, \myHighlight{$a$}\coordHE{} can be understood as resolution and 
+\myHighlight{$b$}\coordHE{} as a coordinate. 
+
+The goal of the present paper is to construct a \myHighlight{$\phi^4$}\coordHE{} model where the 
+scalar field \myHighlight{$\phi(a,b)$}\coordHE{} is defined on the affine group (in the sense 
+that \myHighlight{$a,b$}\coordHE{} a coordinates on the affine group \eqref{ag}) and to link 
+the new model with renormalization properties of the known \myHighlight{$\phi^4$}\coordHE{} model 
+in \myHighlight{$\R^n$}\coordHE{}. 
+
+The paper is organized as follows. In {\em section 2} we review the basic 
+formalism of \myHighlight{$\phi^4$}\coordHE{} theory in \myHighlight{$\R^n$}\coordHE{}. In {\em section 3} we remind the 
+technique of wavelet transform with respect to a locally compact Lie groups. 
+In {\em section 4} the \myHighlight{$\phi^4$}\coordHE{} theory on the affine group is presented. 
+ 
+
+\section{\myHighlight{$\phi^4$}\coordHE{} Field theory} 
+The scalar field theory with the forth power interaction 
+\myHighlight{$\frac{\lambda}{4!}\phi^4(x)$}\coordHE{} defined on Euclidean space \myHighlight{$x\in\R^n$}\coordHE{} is 
+one of the most instructive models any textbook in field theory starts with, 
+see \eg \cite{Ramond1981}. Often called a Ginsburg-Landau model for its 
+ferromagnetic counterpart, the model describes a quantum field 
+with the (Euclidean) action 
+\begin{equation}\coord{}\boxEquation{
+S[\phi] =\int d^n x 
+\frac{1}{2}(\d_\mu\phi)^2+ \frac{m^2}{2}\phi^2 + \frac{\lambda}{4!}\phi^4(x).
+\label{f4l}
+}{
+S[\phi] =\int d^n x 
+\frac{1}{2}(\d_\mu\phi)^2+ \frac{m^2}{2}\phi^2 + \frac{\lambda}{4!}\phi^4(x).
+}{ecuacion}\coordE{}\end{equation}
+in \myHighlight{$n$}\coordHE{}-dimensional Euclidean space. Alternatively, the theory of quantum 
+field in Euclidean space is equivalent to the theory of classical fluctuating 
+field with the probability measure \myHighlight{$\cD P = e^{-S[\phi]}\cD\phi$}\coordHE{}. In this case 
+\myHighlight{$m^2$}\coordHE{} is the deviation from critical temperature \myHighlight{$m^2 = |T-T_c|$}\coordHE{}, and 
+\myHighlight{$\lambda$}\coordHE{} is the fluctuation interaction strength. To some extent, the 
+\myHighlight{$\phi^4$}\coordHE{} model considered in this way describes a second type phase 
+transition at zero external field in any system with one-component order 
+parameter \myHighlight{$\phi=\phi(x)$}\coordHE{} and symmetry \myHighlight{$\phi \to -\phi$}\coordHE{}.   
+
+ The Green functions (correlation functions) 
+\begin{equation}\coord{}\boxEquation{
+G_m(x_1,\ldots x_m) \equiv \bra \phi(x_1)\ldots\phi(x_m)\ket = \frac{1}{W_E[J]} 
+\left. \frac{\delta^n}{\delta J(x_1)\ldots\delta J(x_m)}\right|_{J=0} W_E[J]
+\label{gfm}
+}{
+G_m(x_1,\ldots x_m) \equiv \bra \phi(x_1)\ldots\phi(x_m)\ket = \frac{1}{W_E[J]} 
+\left. \frac{\delta^n}{\delta J(x_1)\ldots\delta J(x_m)}\right|_{J=0} W_E[J]
+}{ecuacion}\coordE{}\end{equation}
+are evaluated as functional derivatives 
+of the generating functional
+\begin{equation}\coord{}\boxEquation{
+W_E[J] = \cN \int \cD\phi \exp\left[-S[\phi(x)] + \int  d^nx J(x)\phi(x) \right] 
+\label{gf}.
+}{
+W_E[J] = \cN \int \cD\phi \exp\left[-S[\phi(x)] + \int  d^nx J(x)\phi(x) \right] 
+.
+}{ecuacion}\coordE{}\end{equation}
+(The formal constant \myHighlight{$\cN$}\coordHE{} associated with functional measure 
+\myHighlight{$\cD\phi$}\coordHE{} dropped hereafter.)
+ 
+ The straightforward way to calculate \myHighlight{$G_m$}\coordHE{} is to factorize the 
+interaction part \myHighlight{$V(\phi)$}\coordHE{} of 
+generation functional \eqref{gf} in the form
+\begin{equation}\coord{}\boxEquation{
+W_E[J] = \exp\left[-V\left(\frac{\delta}{\delta J}\right) \right] W_0[J],
+}{
+W_E[J] = \exp\left[-V\left(\frac{\delta}{\delta J}\right) \right] W_0[J],
+}{ecuacion}\coordE{}\end{equation} 
+where 
+\begin{equation}\coord{}\boxEquation{
+W_0[J] = \int \cD\phi \exp\left(J\phi - \frac{1}{2}\phi D\phi  \right) = 
+\exp\left(-\frac{1}{2}JD^{-1}J \right), \quad 
+D = -\d^2 +m^2\label{w0}
+}{
+W_0[J] = \int \cD\phi \exp\left(J\phi - \frac{1}{2}\phi D\phi  \right) = 
+\exp\left(-\frac{1}{2}JD^{-1}J \right), \quad 
+D = -\d^2 +m^2}{ecuacion}\coordE{}\end{equation}
+is the free part of the generating functional.  
+The perturbation expansion is then evaluated in \myHighlight{$k$}\coordHE{}-space, where 
+$$\coord{}\boxMath{
+{\widehat D}^{-1}(k) = \frac{1}{k^2+m^2}.
+}{dollar}{0pt}\coordE{}$$
+The perturbative calculation of the correlation functions in \myHighlight{$n>2$}\coordHE{} dimensions 
+suffers ultra-violet divergence starting from one-loop approximation
+\begin{equation}\coord{}\boxEquation{
+I_1(n) = -\frac{\lambda}{2} \int \dk{k}{n}\frac{1}{k^2+m^2}. 
+\label{l1i}
+}{
+I_1(n) = -\frac{\lambda}{2} \int \dk{k}{n}\frac{1}{k^2+m^2}. 
+}{ecuacion}\coordE{}\end{equation}
+The \myHighlight{$\phi^4$}\coordHE{} is renormalizable, i.e. the divergences can be eliminated by 
+renormalization of the fields and parameters 
+\begin{equation}\coord{}\boxEquation{
+\phi = Z_\phi \phi_R, \quad \lambda_0 = \lambda m^{2\epsilon}Z_\lambda,\quad 
+m_0^2 = m^2 Z_m,
+}{
+\phi = Z_\phi \phi_R, \quad \lambda_0 = \lambda m^{2\epsilon}Z_\lambda,\quad 
+m_0^2 = m^2 Z_m,
+}{ecuacion}\coordE{}\end{equation} 
+where all divergences are hidden in infinite renormalization 
+constants \myHighlight{$Z_\phi, Z_\lambda, Z_m$}\coordHE{}. 
+
+Technically, the elimination of divergences is related to the evaluation 
+of the loop integral \eqref{l1i} in the spherical domain in \myHighlight{$k$}\coordHE{}-space 
+limited from 
+above \myHighlight{$|k|<\Lambda$}\coordHE{}, with substitution of fixed coupling 
+constant \myHighlight{$\lambda_0$}\coordHE{} to running coupling constant \myHighlight{$\lambda=\lambda(\Lambda)$}\coordHE{}.
+In the case of \myHighlight{$\phi^4$}\coordHE{} theory in the dimension 
+\myHighlight{$n=4-\epsilon$}\coordHE{}, the renormalization, as it was 
+shown by K.Wilson \cite{Wilson1973}, leads to the exact scaling of the coupling constant 
+\begin{equation}\coord{}\boxEquation{
+\lambda(\Lambda) = \lambda_0 \Lambda^\epsilon
+\label{ws}
+}{
+\lambda(\Lambda) = \lambda_0 \Lambda^\epsilon
+}{ecuacion}\coordE{}\end{equation}
+at the limit of infinite cutoff momentum \myHighlight{$\Lambda\to\infty$}\coordHE{}. 
+Similar type scaling takes place for other types of 4-th power 
+interactions, say for Fermi interaction 
+\myHighlight{$G_0 (\bar\psi \psi)^2$}\coordHE{}. 
+
+If we believe, that the power-law dependence of coupling constant 
+on the cutoff 
+momentum, really means the dependence of interaction strength on the 
+scale \myHighlight{$a=\Lambda^{-1}$}\coordHE{}, rather than a pure mathematical trick, we should 
+find a way to incorporate this dependence at the level of the basic model, 
+rather than at technical level. Doing so, after reviewing some necessary 
+facts from group representation theory in next section, we will use 
+the decomposition (often referred to as {\em wavelet transform}) with 
+respect to the affine group  for this purpose.  
+
+\section{Partition of the unity} 
+From the group theory 
+point of view, 
+the reformulation of the theory from the coordinate representation 
+\myHighlight{$\phi(x)$}\coordHE{} to the momentum representation \myHighlight{$\hat\phi(k)$}\coordHE{} by means  of 
+Fourier transform \eqref{ft}, is only a particular case of decomposition 
+of a function with respect to representation of a Lie group \myHighlight{$G$}\coordHE{}. 
+\myHighlight{$G: x'=x+b$}\coordHE{} for the case of Fourier transform, but other groups 
+may be used as well, depending on the physics of a particular problem.
+
+Let us remind briefly how the decomposition with respect to the given  
+representation of a Lie group is performed \cite{Carey76,DM1976}. 
+Let \myHighlight{$\cH$}\coordHE{} be a Hilbert space. Let \myHighlight{$U(g)$}\coordHE{} be a square-integrable 
+representation of a locally-compact Lie group \myHighlight{$G$}\coordHE{} acting transitively 
+on \myHighlight{$\cH$}\coordHE{}, \myHighlight{$\forall \phi\in\cH,g\in G : U(g)\phi \in \cH$}\coordHE{}. Let there 
+exist such a vector  \myHighlight{$|\psi\ket \in \cH$}\coordHE{}, that satisfies  
+{\em the admissibility condition}: 
+\begin{equation}\coord{}\boxEquation{
+C_\psi = \|\psi \|^{-2} \int_{g\in G} |\bra\psi|U(g)\psi \ket|^2 d\mu(g) < \infty
+,
+\label{adc}
+}{
+C_\psi = \|\psi \|^{-2} \int_{g\in G} |\bra\psi|U(g)\psi \ket|^2 d\mu(g) < \infty
+,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$d\mu(g)$}\coordHE{} is the left-invariant Haar measure on \myHighlight{$G$}\coordHE{}.
+
+Then, any vector \myHighlight{$|\phi\ket$}\coordHE{} of a Hilbert space \myHighlight{$\cH$}\coordHE{} can be 
+represented in the form:
+\begin{equation}\coord{}\boxEquation{
+|\phi\ket = C_\psi^{-1} \int_G |U(g)\psi\ket d\mu(g)\bra\psi U^*(g)|\phi\ket,
+\label{pu}
+}{
+|\phi\ket = C_\psi^{-1} \int_G |U(g)\psi\ket d\mu(g)\bra\psi U^*(g)|\phi\ket,
+}{ecuacion}\coordE{}\end{equation}
+The equation \eqref{pu} is also known as {\em the partition of the unity} 
+with respect to a Lie group \myHighlight{$G$}\coordHE{} and is often written in the form 
+$$\coord{}\boxMath{ \hat 1 = C_\psi^{-1} \int_G |U(g)\psi\ket d\mu(g)\bra\psi U^*(g)|.}{dollar}{0pt}\coordE{}$$
+The basic vector \myHighlight{$\psi$}\coordHE{} used to construct decomposition \eqref{pu} is 
+often called {\em fiducial vector}, or {\em basic wavelet}. 
+
+\subsection{Translation group: Fourier transform}
+The most familiar case of the unity partition is the decomposition with 
+respect to the momentum eigenstates 
+\begin{equation}\coord{}\boxEquation{
+|\phi\ket = \int |k\ket dk \bra k |\phi\ket.
+\label{puk}
+}{
+|\phi\ket = \int |k\ket dk \bra k |\phi\ket.
+}{ecuacion}\coordE{}\end{equation} 
+In the later case \myHighlight{$G$}\coordHE{} is the group of translations and 
+the Haar measure is simply \myHighlight{$dk$}\coordHE{}. There is no need in explicit notation 
+of any fiducial vector \myHighlight{$\psi$}\coordHE{} there, because the group of translations 
+is Abelian and the representation \myHighlight{$U(k)$}\coordHE{} is just a mapping between the 
+vectors \myHighlight{$k\in\R^n$}\coordHE{} and the eigenvectors of the momentum operator. However, 
+for the case of other Lie groups we have to put \myHighlight{$\psi$}\coordHE{} explicitly. 
+Of course, the final physical results of the theory should be independent 
+on fiducial vector \myHighlight{$\psi$}\coordHE{}.
+\subsection{Affine group: Wavelet transform}
+For the case of affine group \eqref{ag}, \myHighlight{$x,b\in\R^n$}\coordHE{}, with the \myHighlight{$SO_n$}\coordHE{} 
+rotations dropped for simplicity, the left-invariant 
+Haar measure is \myHighlight{$d\mu(a,b) = a^{-n-1}da db$}\coordHE{}, the representation induced 
+by a basic wavelet (\myHighlight{$\psi(x)\in L^2(\R^n)$}\coordHE{} for definiteness) is 
+\myHighlight{$U(g)=a^{-n/2}\psi((x-b)/a))$}\coordHE{}. So,
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{lcl}
+\phi_a(b) &=& \int  a^{-n/2}\bar\psi\left(\frac{x-b}{a}\right)\phi(x)d^nx, \\
+\phi(x)&=& C_\psi^{-1}\int a^{-n/2}\psi\left(\frac{x-b}{a}\right)\phi_a(b)
+\frac{dadb}{a^{n+1}},
+\end{array} 
+\label{wtl2}
+}{
+\begin{array}{lcl}
+\phi_a(b) &=& \int  a^{-n/2}\bar\psi\left(\frac{x-b}{a}\right)\phi(x)d^nx, \\
+\phi(x)&=& C_\psi^{-1}\int a^{-n/2}\psi\left(\frac{x-b}{a}\right)\phi_a(b)
+\frac{dadb}{a^{n+1}},
+\end{array} 
+}{ecuacion}\coordE{}\end{equation} 
+where 
+\begin{equation}\coord{}\boxEquation{
+C_\psi = \int \frac{|\hat\psi(k)|^2}{|k|}d^nk.
+\label{adcf}
+}{
+C_\psi = \int \frac{|\hat\psi(k)|^2}{|k|}d^nk.
+}{ecuacion}\coordE{}\end{equation}
+See e.g. \cite{Chui} for detailed explanation. 
+
+\section{\myHighlight{$\phi^4$}\coordHE{} model on the affine group} 
+Let us turn to the fourth power interaction model with the (Euclidean) 
+action functional 
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{lcl}
+S[\phi] &=& \frac{1}{2}\int \phi(x_1)D(x_1,x_2)\phi(x_2)dx_1dx_2  \\
+        &+& \frac{1}{4!}\int V(x_1,x_2,x_3,x_4)\phi(x_1)\phi(x_2)\phi(x_3)
+          \phi(x_4)dx_1dx_2 dx_3dx_4
+\label{Sphi}
+\end{array}
+}{
+\begin{array}{lcl}
+S[\phi] &=& \frac{1}{2}\int \phi(x_1)D(x_1,x_2)\phi(x_2)dx_1dx_2  \\
+        &+& \frac{1}{4!}\int V(x_1,x_2,x_3,x_4)\phi(x_1)\phi(x_2)\phi(x_3)
+          \phi(x_4)dx_1dx_2 dx_3dx_4
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+Using the notation 
+$$\coord{}\boxMath{U(g)|\psi\ket \equiv |g,\psi\ket, \quad \bra\phi|g,\psi\ket \equiv \phi(g),
+\quad \bra g_1,\psi|D|g_2,\psi\ket \equiv D(g_1,g_2)
+}{dollar}{0pt}\coordE{}$$
+we can rewrite the generating functional \eqref{gf} for the field theory 
+with action \eqref{Sphi} in the form 
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{lcl}
+Z_G[J] &=& \int \cD\phi(g) \exp\Bigl(
+-\frac{1}{2}\int_G \phi(g_1)D(g_1,g_2)\phi(g_2)d\mu(g_1) d\mu(g_2) \\
+&-&\frac{\lambda_0}{4!}\int_G \tilde V(g_1,g_2,g_3,g_4)
+\phi(g_1)\phi(g_2)\phi(g_3)\phi(g_4)
+d\mu(g_1) d\mu(g_2)d\mu(g_3) d\mu(g_4)  \\
+&+& \int_G J(g)\phi(g)d\mu(g)
+\Bigr),
+\end{array}
+\label{gfi4}
+}{
+\begin{array}{lcl}
+Z_G[J] &=& \int \cD\phi(g) \exp\Bigl(
+-\frac{1}{2}\int_G \phi(g_1)D(g_1,g_2)\phi(g_2)d\mu(g_1) d\mu(g_2) \\
+&-&\frac{\lambda_0}{4!}\int_G \tilde V(g_1,g_2,g_3,g_4)
+\phi(g_1)\phi(g_2)\phi(g_3)\phi(g_4)
+d\mu(g_1) d\mu(g_2)d\mu(g_3) d\mu(g_4)  \\
+&+& \int_G J(g)\phi(g)d\mu(g)
+\Bigr),
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\tilde V(g_1,g_2,g_3,g_4)$}\coordHE{} is the result of the application of 
+the transform $$\coord{}\boxMath{\tilde\phi(g) := \int\overline{U(g)\psi(x)} \phi(x)dx}{dollar}{0pt}\coordE{}$$ 
+to \myHighlight{$V(x_1,x_2,x_3,x_4)$}\coordHE{} in all arguments \myHighlight{$x_1,x_2,x_3,x_4$}\coordHE{}.
+
+Let us turn to the particular case of the affine group \eqref{ag}. 
+The restriction imposed by the admissibility condition \eqref{adc} on 
+the fiducial vector \myHighlight{$\psi$}\coordHE{} (the basic wavelet) is rather loose: 
+Only the finiteness of the integral \myHighlight{$C_\psi$}\coordHE{} given by \eqref{adcf} is 
+required.  
+This practically implies only that \myHighlight{$\int \psi(x)dx =0$}\coordHE{} and that 
+\myHighlight{$\psi(x)$}\coordHE{} has compact support. For this reason the wavelet transform 
+\eqref{wtl2}
+can be considered as a microscopic slice of the function \myHighlight{$\phi(x)$}\coordHE{} taken 
+at a position \myHighlight{$b$}\coordHE{} and resolution \myHighlight{$a$}\coordHE{} with ``aperture'' \myHighlight{$\psi$}\coordHE{}. Each 
+particular aperture \myHighlight{$\psi(x)$}\coordHE{} of course has its own view, but the physical 
+observable should be independent on it. In practical applications of 
+WT very often either of the derivatives of the Gaussian 
+\myHighlight{$\psi_n(x) = (-1)^n d^n/dx^n e^{-x^2/2}$}\coordHE{} is used, but for the purpose of 
+the present paper only the admissibility condition is important but not 
+the shape of \myHighlight{$\psi(x)$}\coordHE{}. 
+
+So, for the case of decomposition of scalar free field in \myHighlight{$\R^n$}\coordHE{} 
+with respect to affine group, the inverse free field propagator matrix 
+element is 
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+\bra a_1,b_1;\psi | D | a_2, b_2; \psi\ket = \int d^nx (a_1a_2)^{-\frac{\leftCoord{}n}{\rightCoord{}2}}
+\bar\psi \left( \frac{\leftCoord{}x-b_1}{\rightCoord{}a_1} \right)  D \psi\left(\frac{\leftCoord{}x-b_2}{\rightCoord{}a_2}\right) \rightCoord{}\\\leftCoord{}
+\leftCoord{}= \int \dk{k}{n} e^{ik(b_1-b_2)} (a_1a_2)^{\frac{\leftCoord{}n}{\rightCoord{}2}} \overline{\hat \psi(a_1 k)}
+\leftCoord{}(k^2+m^2) \hat \psi(a_2 k) \rightCoord{}\\\leftCoord{}
+\equiv \int \dk{k}{n} e^{ik(b_1-b_2)} D(a_1,a_2,k).\rightCoord{}
+\rightCoord{}}{0mm}{9}{9}{
+\bra a_1,b_1;\psi | D | a_2, b_2; \psi\ket = \int d^nx (a_1a_2)^{-\frac{n}{2}}
+\bar\psi \left( \frac{x-b_1}{a_1} \right)  D \psi\left(\frac{x-b_2}{a_2}\right) \\
+= \int \dk{k}{n} e^{ik(b_1-b_2)} (a_1a_2)^{\frac{n}{2}} \overline{\hat \psi(a_1 k)}
+(k^2+m^2) \hat \psi(a_2 k) \\
+\equiv \int \dk{k}{n} e^{ik(b_1-b_2)} D(a_1,a_2,k).
+}{1}\coordE{}\end{eqnarray*} 
+Assuming the homogeneity of the free field in space coordinate, i.e. that 
+matrix elements depend only on the differences \myHighlight{$(b_1-b_2)$}\coordHE{} of the positions, 
+but not the positions themselves, we can use  \myHighlight{$(a,k)$}\coordHE{} representation:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\nonumber\rightCoord{} D(a_1,a_2,k) &=& a_1^{n/2} \overline {\hat \psi(a_1 k)} (k^2+m^2)
+                 a_2^{n/2}\hat \psi(a_2 k) \rightCoord{}\\\leftCoord{}
+D^{-1}(a_1,a_2,k) &=& a_1^{n/2} \overline {\hat \psi(a_1 k)} 
+                  \left( \frac{\leftCoord{}1}{\rightCoord{}k^2+m^2} \right) \rightCoord{}
+                 a_2^{n/2}\hat \psi(a_2 k)\rightCoord{}\\\leftCoord{}
+\nonumber\rightCoord{} d\mu(a,k)       &=& \dk{k}{n}\da{a}{n}. \rightCoord{}
+\rightCoord{}}{0mm}{4}{9}{
+D(a_1,a_2,k) &=& a_1^{n/2} \overline {\hat \psi(a_1 k)} (k^2+m^2)
+                 a_2^{n/2}\hat \psi(a_2 k) \\
+D^{-1}(a_1,a_2,k) &=& a_1^{n/2} \overline {\hat \psi(a_1 k)} 
+                  \left( \frac{1}{k^2+m^2} \right) 
+                 a_2^{n/2}\hat \psi(a_2 k)\\
+d\mu(a,k)       &=& \dk{k}{n}\da{a}{n}. 
+}{1}\coordE{}\end{eqnarray}
+So, we have the same diagram technique as usual, but with extra 
+``wavelet'' term \myHighlight{$a^{n/2}\hat \psi(a k)$}\coordHE{} term on each line and the integration 
+over \myHighlight{$d\mu(a,k)$}\coordHE{} instead of \myHighlight{$dk$}\coordHE{}. 
+
+Concerning the Lorenz covariance of the resulting theory (i.e. invariance 
+under rotations, since Euclidean version of the theory is considered), the  
+introduction of the new scale variable \myHighlight{$a$}\coordHE{}, practically means that instead 
+one scalar field \myHighlight{$\phi(x)$}\coordHE{}, we have to deal with a collection of fields 
+labeled by the resolution parameter \myHighlight{$\{ \phi_a(x) \}_a$}\coordHE{}. For each of them 
+the invariance under rotations and translations holds of course. The things 
+are so simple only if we assume quantization = functional integration 
+in the space of numeric-valued functions only, without paying any special 
+attention to possible commutation relations \myHighlight{$[\phi_{a_1}(x),\phi_{a_2}(y)]$}\coordHE{}.
+What happens for the case of operator-valued functions is not clear enough 
+\cite{Federbush}.   
+
+Now, turning back to the coordinate representation \eqref{wtl2}, where 
+\myHighlight{$a$}\coordHE{} is the resolution (``window width'') and recalling the power law 
+dependence \eqref{ws} obtained by Wilson expansion, we can define the 
+\myHighlight{$\phi^4$}\coordHE{} model on affine group, with the coupling constant 
+dependent on scale. The simplest case of fourth power interaction 
+of this type is
+\begin{equation}\coord{}\boxEquation{ 
+V_{int} =\int \frac{\lambda(a)}{4!} \phi^4_a(b) d\mu(a,b),
+\quad  \lambda(a)\sim a^\nu.
+\label{vint}
+}{ 
+V_{int} =\int \frac{\lambda(a)}{4!} \phi^4_a(b) d\mu(a,b),
+\quad  \lambda(a)\sim a^\nu.
+}{ecuacion}\coordE{}\end{equation}
+
+The one-loop order contribution to the Green function \myHighlight{$G_2$}\coordHE{} 
+in the theory with interacion \eqref{vint}
+can be easily evaluated 
+(for isotropic wavelet \myHighlight{$\hat\psi(\mathbf{k})=\hat\psi(k)$}\coordHE{}, otherwise 
+the constants will be different) by integration over a scalar variable 
+\myHighlight{$z = ak$}\coordHE{}: 
+\begin{equation}\coord{}\boxEquation{
+\int \frac{a^\nu a^n |\hat\psi(ak)|^2 }{k^2+m^2}\dk{k}{n}\da{a}{n}  
+= C_\psi^{(\nu)}  \int \dk{k}{n} \frac{k^{-\nu}}{k^2+m^2}, 
+}{
+\int \frac{a^\nu a^n |\hat\psi(ak)|^2 }{k^2+m^2}\dk{k}{n}\da{a}{n}  
+= C_\psi^{(\nu)}  \int \dk{k}{n} \frac{k^{-\nu}}{k^2+m^2}, 
+}{ecuacion}\coordE{}\end{equation} 
+where $$\coord{}\boxMath{C_\psi^{(\nu)}=\int |\hat\psi(\bvec{k})|^2 k^{\nu-1}dk.}{dollar}{0pt}\coordE{}$$ 
+Therefore, there are no ultra-violet divergences for \myHighlight{$\nu>n-2$}\coordHE{}. 
+
+In the next orders of perturbation expansion each vertex will contribute 
+\myHighlight{$k^{-\nu}$}\coordHE{} to the formal divergence degree of each diagram. This is quite 
+natural from dimensional consideration, for \myHighlight{$a$}\coordHE{} - is a ``scale'' (window 
+width), and \myHighlight{$k$}\coordHE{} is ``inverse scale''.  
+So far, for the \myHighlight{$\phi^N$}\coordHE{} theory 
+in \myHighlight{$n$}\coordHE{} dimensions a diagram with \myHighlight{$E$}\coordHE{} external lines and \myHighlight{$V$}\coordHE{} vertexes 
+has a formal divergence degree 
+\begin{equation}\coord{}\boxEquation{
+D = n + E\left({1-\frac{n}{2}}\right) 
++ V\left({\frac{n}{2}(N-2)-N-\nu}\right). 
+\label{dd}
+}{
+D = n + E\left({1-\frac{n}{2}}\right) 
++ V\left({\frac{n}{2}(N-2)-N-\nu}\right). 
+}{ecuacion}\coordE{}\end{equation} 
+\section{Conclusion} 
+Of course, the power law behavior of the coupling constant 
+\myHighlight{$\lambda(a)=a^\nu$}\coordHE{} is not quite realistic. It seems more 
+natural if \myHighlight{$\lambda$}\coordHE{} vanish outside a limited domain of scales. 
+The physical meaning of considering a 
+field theory on the affine group seems more important. Doing 
+so we acquire two parameters: the {\em coordinate} \myHighlight{$b$}\coordHE{} and the 
+{\em resolution} 
+\myHighlight{$a$}\coordHE{}. The former is present in any field theory, but the later is 
+not. Such model can be considered as a continuous counterpart of 
+lattice theory, but now we consider the grid size, or scale, as a physical 
+parameter of interaction and there is no need to get rid of it 
+at the end of calculations.  
+\vskip\baselineskip
+\centerline{***}
+The author is grateful to the Department of Mathematics, University 
+of Alberta, where this research was partially done, for financial 
+support and stimulating interest and also to Dr. T.Gannon 
+and Prof. V.B.Priezzhev for useful discussions. 
+\begin{thebibliography}{9}
+\bibitem{Klauder}
+J.R.Klauder and R.F.Streater. 
+\newblock A wavelet transform for the Poincare group.
+\newblock {\em J.Math.Phys.}, 32:1609--1611, 1991.
+
+\bibitem{Ramond1981}
+P.~Ramond.
+\newblock {\em Field Theory: A modern Primer}.
+\newblock Benjamin/Cummings Publishing Company,Inc., Massachussets, 1981.
+
+\bibitem{Bsh1980}
+N.N. Bogoliubov and D.V. Shirkov.
+\newblock {\em Introduction to the theory of quantized fields}.
+\newblock John Wiley, New York, 1980.
+
+\bibitem{Wilson1973}
+K.G. Wilson.
+\newblock Quantum field-theory models in less than 4 dimensions.
+\newblock {\em Physical Review D}, 7(10):2911--2927, 1973.
+
+\bibitem{Carey76}
+A.L. Carey.
+\newblock Square-integrable representations of non-unimodular groups.
+\newblock {\em Bull. Austr. Math. Soc.}, 15:1--12, 1976.
+
+\bibitem{DM1976}
+M.~Duflo and C.C. Moore.
+\newblock On regular representations of nonunimodular locally compact group.
+\newblock {\em J. Func. Anal.}, 21:209--243, 1976.
+
+\bibitem{Chui} 
+C.K.Chui. 
+\newblock {\em An introduction to wavelets}.
+\newblock Academic Press, Inc., San Diego, 1992. 
+
+\bibitem{Federbush} 
+P.~Federbush.
+\newblock A new formulation and regularization of Gauge theories using a 
+non-linear wavelet expansion. 
+\newblock {\em Progr. Theor. Phys.}, 94:1135--1146,1995.
+\end{thebibliography}
+
+\end{document}
+
+
+\bye

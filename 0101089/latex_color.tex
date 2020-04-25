@@ -1,0 +1,3438 @@
+
+\documentclass[a4paper,11pt]{amsart}
+\usepackage{amssymb}
+
+\hoffset=-2.4cm
+\voffset=-2.2cm
+\textwidth=17.4cm
+\textheight=24cm
+
+%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}[thm]{Definition}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{rem}[thm]{Remark}
+
+\numberwithin{thm}{section} %% Comment out for sequentially-numbered
+\numberwithin{equation}{section} %% Comment out for sequentially-numbered
+\numberwithin{figure}{section} %% Comment out for sequentially-numbered
+
+\makeatletter 
+\makeatother
+
+%%%%%%%%%%%%% additional definitions %%%%%%%%%%%
+\hyphenation{Ba-ta-lin--Vil-ko-visky}
+\hyphenation{star--mul-ti-pli-ca-tion}
+
+
+\providecommand{\mylabel}[1]{{\label{#1}{#1}}}
+
+
+\def\PRD{Phys.\ Rev.\ D}
+\def\NPB{Nucl.\ Phys.\ B}
+\def\PLB{Phys.\ Lett.\ B}
+\def\MPLA{Mod.\ Phys.\ Lett.\ A}
+\def\CMP{Commun.\ Math.\ Phys.}
+\def\IJMPA{Int.\ J.\ Mod.\ Phys.\ A}
+\def\JMP{J.\ Math.\ Phys.\,}
+
+
+
+\providecommand{\bref}[1]{{\bf \ref{#1}}}
+
+\def\const{\mathop{\rm const}\nolimits}
+\def\rank{\mathop{\rm rank}\nolimits}
+\def\ih{-i\hbar}
+\providecommand{\qcommut}[2]{[#1,#2]_\star}
+\providecommand{\pb}[2]{\left\{{}#1{},{}#2{}\right\}}
+\providecommand{\commut}[2]{[#1,#2]}
+\providecommand{\gh}[1]{{\rm gh}(#1)}
+\providecommand{\p}[1]{{\rm p}(#1)}
+\renewcommand{\deg}[1]{{\rm deg}(#1)}
+\renewcommand{\dim}[1]{{\rm dim}(#1)}
+
+
+\renewcommand{\:}{{\rm\, :\,}}
+\def\bar{\overline}
+\providecommand{\func}[1]{{{\mathcal C}^\infty}{(#1)}}             %
+\def\tensor{\otimes}
+\def\d{\partial}
+
+\def\dpl{\stackrel{\rightarrow}{\d}}
+\def\dpr{\stackrel{\leftarrow}{\d}}
+
+\providecommand{\bl}{{\cdot}}
+
+
+\providecommand{\tf}[1]{\stackrel{#1}{\phi}}
+\providecommand{\dc}[2]{\stackrel{#2}{#1}}
+
+\providecommand{\dr}[1]{\frac{{\stackrel{\leftarrow}{\d}}}{ \d #1}}
+\providecommand{\dl}[1]{\displaystyle\frac{{\d}}{\d #1}}
+\providecommand{\sdl}[1]{\frac{{\d}}{\d #1}}
+\providecommand{\ddl}[2]{\displaystyle\frac{{\d #1}}{\d #2}}
+\providecommand{\ddd}[3]{\displaystyle\frac{{{\d}^2 #1}}{\d #2 \d #3}}
+
+\def\half{{\frac{1}{2}}}
+
+\def\cP{{\mathcal P}}
+\def\cc{{\mathcal C}}
+\def\cF{{\mathcal F}}
+\def\cB{{\mathcal B}}
+\def\cT{{\rm T}}
+\providecommand{\formal}[1]{{{\mathcal F}}{(#1)}}             %
+\def\mod{{\mathcal T}^*_\omega}
+\def\modbar{{\mathcal T}^*_{\bar\rho}}
+
+
+\def\manK{{\mathcal K}}
+\def\manL{{\mathcal L}}
+\def\manM{{\mathcal M}}
+\def\manN{{\mathcal N}}
+\def\manX{{\mathcal X}}
+
+\def\aA{{ \mathfrak A}}
+\def\qA{{\hat{\mathfrak A}}}
+\def\E{{ \mathcal E}}
+\def\F{{ \mathcal F}}
+\def\P{{ \bf P}}
+\def\G{{ \bf G}}
+\def\der{{\mathcal D}}
+\def\V{{\bf V}}
+\def\W{{\bf W}}
+
+
+\def\con{{\bar\Gamma}}
+\def\diff-con{{\bar\nabla}}
+
+
+\def\mcon{{\boldsymbol\Gamma}}
+\def\mR{\mathcal{\boldsymbol R}}
+\def\mD{\mathcal{D}}
+\def\mE{{\boldsymbol{\E}}}
+
+\def\aD{{\bar D}}
+\def\mnabla{\mathfrak{\nabla}}
+
+\def\conn{{\tilde\con}}
+\def\D-con{\con^0}
+\def\Dcon-d{{\bar\nabla}^0}
+\def\2-form{{ \bar\omega}}
+
+
+
+\usepackage{useful_macros}
+\begin{document}
+
+
+\thispagestyle{empty}
+\vfuzz1.6pt
+\addtolength{\baselineskip}{4pt}
+\addtolength{\parskip}{2pt}
+\raggedbottom
+
+{\hfill{\lowercase{\tt hep-th/0101089}}\\[12pt]}
+\title{Star Product for Second Class
+Constraint Systems from a BRST Theory}
+\author{I.A.~Batalin}
+\address{I.~A.~B. \quad Lebedev Physics Institute, Russian Academy of Sciences}
+\author{M.A.~Grigoriev}
+\address{M.~A.~G. \quad Lebedev Physics Institute, Russian Academy of Sciences}
+\author{S.L.~Lyakhovich}
+\address{S.~L.~L.  \quad Department of Physics, Tomsk State University}
+
+
+\begin{abstract}
+  We explicitly quantize the general second-class constrained system
+  at the level of deformation quantization such that the quantization
+  is covariant with respect to local coordinates on the phase space.
+  The approach is based on constructing the effective first-class
+  constraint (gauge) system equivalent to the original second-class
+  one and can also be understood as a far-going generalization of the
+  Fedosov quantization.  The effective gauge system is quantized by
+  the BFV--BRST procedure.  The star product for the Dirac bracket is
+  explicitly constructed as the quantum multiplication of BRST
+  observables.  We introduce and explicitly construct a Dirac bracket
+  counterpart of the symplectic connection, called the \textit{Dirac
+    connection}.  We identify a particular star product associated
+  with the Dirac connection for which the constraints are in the
+  center of the respective star-commutator algebra; when reduced to
+  the constraint surface, this star product can be recognized as a
+  Fedosov one.
+\end{abstract}
+
+\maketitle
+\thispagestyle{empty}
+
+
+\section{Introduction}
+In the previous paper~\cite{[GL]} by two of the present authors it was
+shown that the Fedosov deformation quantization~\cite{[Fedosov-JDG]}
+can be understood as a BFV-BRST quantization~\cite{[BFV]}
+(see~\cite{[HT]} for a review) of the appropriately constructed
+effective gauge system.  It was demonstrated that an arbitrary
+symplectic manifold can be embedded as a second-class constraint
+surface into the appropriately extended phase space.  By converting
+these second class constraints into the first-class ones by
+introducing additional degrees of freedom one arrives at the effective
+first-class constraint (gauge) theory that is equivalent to the
+original symplectic manifold.  The BRST quantization of the system
+reproduces the Fedosov star product as a quantum multiplication of
+BRST observables.
+
+
+An advantage of this approach is that it can be naturally generalized
+to the case of constraint systems on arbitrary symplectic manifolds.
+The point is that one can treat the constraints responsible for the
+embedding of the phase space as a second-class surface and the
+original constraints present in the model on equal
+footing~\cite{[BFF]}.  {}From the BRST theory standpoint, this implies
+that the respective BRST charge is (roughly speaking) a sum of two
+parts, each part corresponding to the respective subset of the
+constraints.  In this paper, we present a quantization scheme for a
+general second-class constraint system on an arbitrary symplectic
+manifold.
+
+
+The main ingredient of the second-class system quantization (at the
+level of deformation quantization) is that of finding a star-product
+that in the first order in \myHighlight{$\hbar$}\coordHE{} coincides with the respective
+\textit{Dirac bracket}.  {}From the mathematical standpoint this
+implies quantization of Poisson manifolds, with the Poisson structure
+being a Dirac bracket associated to the second-class constraints.
+
+The existence of deformation quantization for an arbitrary Poisson
+manifold has been established in a remarkable
+paper~\cite{[Kontsevich]} by Kontsevich. The quantization formula
+in~\cite{[Kontsevich]} has also been given an interesting physical
+explanation in~\cite{[CF]}.  However, this formula is not explicitly
+covariant\footnote{After this paper was finished we became aware of
+  recent paper~\cite{[CFT]} where a globally defined version of the
+  Kontsevich quantization had been proposed.} w.r.t. the phase space
+coordinates, and seems too involved to apply to the case of regular
+Poisson structures (the Dirac bracket for a second-class system is a
+regular Poisson bracket).  In the case of regular Poisson manifolds,
+one can also use an appropriate generalization of the Fedosov
+quantization method~\cite{[Fedosov-book]}.  However, this scheme
+requires an explicit separation of symplectic leaves of the Poisson
+bracket, which in the constraint theory case implies solving the
+constraints.
+
+Unlike the system with degenerate bracket, observables
+of the second-class system are functions on the constraint
+surface.  Quantization of the system implies thus not only constructing
+a star product for the Dirac bracket but also an appropriate
+specification of the space of quantum observables.
+
+
+It turns out that within the BRST theory approach
+developed in this paper one can find an explicitly covariant
+quantization of a second-class system with the phase space being
+an arbitrary symplectic manifold.  The correct space of observables is
+described as a ghost number zero cohomology of the appropriately
+constructed BRST charge.  This approach produces, in particular, a
+covariant star-product for the respective Dirac bracket.
+
+
+Constructing the phase space covariant quantization requires
+introducing an appropriate connection on the phase space, which is
+compatible with the Poisson structure to be quantized.  In the
+case of an unconstraint system on a symplectic manifold
+an appropriate connection, called the \textit{symplectic connection},
+is a symmetric connection compatible with the symplectic form.
+Together with the symplectic form on the phase space, the symplectic
+connection determines a \textit{Fedosov structure}~\cite{[GRS]},
+which is a basic starting point of the Fedosov quantization.
+
+
+We show in this paper that by developing the BRST description of the
+second-class system quantization one naturally finds a proper
+Dirac counterpart of the Fedosov structure.  Namely, the symplectic
+structure of the extended phase space of the effective gauge system
+naturally involves a symmetric connection compatible with the Dirac
+bracket.  This connection, called the \textit{Dirac connection},
+is explicitly constructed in terms of the constraint functions
+and an arbitrary symplectic connection on the phase space.
+
+
+An essential feature of the Dirac connection is that
+it determines a symplectic connection on the constraint
+surface considered as a symplectic manifold.
+Using the Dirac connection allows us to identify a star product
+compatible with the constraints in the sense that the constraints are
+the central functions of the respective star commutator.
+We also develop a reduction procedure which shows
+that when reduced to the constraint surface this star product
+can be identified as the Fedosov one, constructed by the restriction
+of the Dirac connection to the surface.
+
+
+
+This paper is organized as follows: In Section~\bref{sec:preliminaries}
+we recall the basics of the second-class system theory and introduce
+the notion of the Dirac connection. We also collect there some general
+geometrical facts that we need in what follows. In
+Section~\bref{sec:cl} we construct at the
+classical level the effective gauge system
+equivalent to the original second-class system.
+Quantization of the effective system is obtained
+in Section~\bref{sec:q}. A quantum deformation of
+the Dirac bracket is also constructed and analyzed there.
+In Section~\bref{sec:reduction} we develop
+the reduction of the extended phase space of the effective gauge
+system to that constructed for the original constraint surface.
+Finally, in Section~\bref{sec:alternative} we propose an alternative
+approach to the second-class system (quantization), which can be
+thought of as an alternative form of the conversion of the second-class
+constraints into the first-class ones.
+
+
+
+\section{Preliminaries}\label{sec:preliminaries}
+We begin with recalling basic facts concerning the second 
+class constraint systems on general symplectic manifolds. 
+In addition to the standard facts, we propose a Dirac bracket
+counterpart of the Fedosov geometry.  This includes constructing
+a symmetric connection compatible with the Dirac bracket that can be
+reduced to the constraint surface, thereby giving a symmetric
+symplectic connection on the surface. These geometrical structures are
+essential for constructing covariant star product for the Dirac
+bracket.
+
+\subsection{General phase space}
+We start with the properties of the phase space of a general
+second-class system.  The phase space is a
+symplectic manifold \myHighlight{$\manM$}\coordHE{} with the symplectic form \myHighlight{$\omega$}\coordHE{}
+(closed and nondegenerate 2-form).  In local coordinates
+\myHighlight{$x^i\,,i=1,\ldots,2N$}\coordHE{}
+on \myHighlight{$\manM$}\coordHE{} the coefficients of \myHighlight{$\omega$}\coordHE{} are
+\begin{equation}\coord{}\boxEquation{
+\label{aaa}
+  \omega_{ij}=\omega({\frac{\d}{\d x^i},\frac{\d}{\d x^j}})\,.
+}{
+\omega_{ij}=\omega({\frac{\d}{\d x^i},\frac{\d}{\d x^j}})\,.
+}{ecuacion}\coordE{}\end{equation}
+The Poisson bracket induced by the symplectic form reads as
+\begin{equation}\coord{}\boxEquation{
+  \pb{f}{g}_\manM=\ddl{f}{x^i}\omega^{ij}\ddl{g}{x^j}\,, \qquad
+  \omega^{il}\omega_{lj}=\delta^{i}_{j}\,.
+}{
+  \pb{f}{g}_\manM=\ddl{f}{x^i}\omega^{ij}\ddl{g}{x^j}\,, \qquad
+  \omega^{il}\omega_{lj}=\delta^{i}_{j}\,.
+}{ecuacion}\coordE{}\end{equation}
+Because we are interested in quantizing of \myHighlight{$\manM$}\coordHE{} we specify a
+symmetric symplectic connection \myHighlight{$\Gamma$}\coordHE{} on \myHighlight{$\manM$}\coordHE{}. The
+compatibility condition reads as
+\begin{equation}\coord{}\boxEquation{
+  \nabla \omega =0 \,, \qquad \d_j\omega_{ik}-\Gamma_{ijk}+\Gamma_{kji}=0\,,
+}{
+  \nabla \omega =0 \,, \qquad \d_j\omega_{ik}-\Gamma_{ijk}+\Gamma_{kji}=0\,,
+}{ecuacion}\coordE{}\end{equation}
+where the coefficients \myHighlight{$\Gamma_{jik}$}\coordHE{} are introduced as
+\begin{equation}\coord{}\boxEquation{
+  \Gamma_{jik}=\omega_{jl} \Gamma^l_{ik}\,, \qquad
+  \Gamma^j_{ik}\dl{x^j}=\nabla_{i}\dl{x^k}\,.
+}{
+  \Gamma_{jik}=\omega_{jl} \Gamma^l_{ik}\,, \qquad
+  \Gamma^j_{ik}\dl{x^j}=\nabla_{i}\dl{x^k}\,.
+}{ecuacion}\coordE{}\end{equation}
+Given a symplectic form and a compatible symmetric connection on
+\myHighlight{$\manM$}\coordHE{} one says that \myHighlight{$\manM$}\coordHE{} is a \textit{Fedosov
+  manifold}~\cite{[GRS]}.  It is well known that a symmetric symplectic
+connection exists on every symplectic manifold, each
+symplectic manifold is therefore a Fedosov one. However,
+unlike the Riemannian connection, a symmetric symplectic connection is
+not unique; the arbitrariness is that of adding a completely symmetric
+tensor field to the coefficients \myHighlight{$\Gamma_{jik}$}\coordHE{}; the Fedosov structure
+is not completely determined by the symplectic one.
+
+
+\subsection{Second-class constraint system}
+Let now \myHighlight{$\manM$}\coordHE{} be a phase space of a
+second-class constraint system.  The system is specified by the set of
+second-class constraints
+\begin{equation}\coord{}\boxEquation{
+\theta_\alpha=0\,,\qquad \alpha=1,\ldots\,,2M\,.
+\label{eq:constraints}
+}{
+\theta_\alpha=0\,,\qquad \alpha=1,\ldots\,,2M\,.
+}{ecuacion}\coordE{}\end{equation}
+We assume \myHighlight{$\theta_\alpha$}\coordHE{} to be globally defined functions on \myHighlight{$\manM$}\coordHE{}.
+Let \myHighlight{$\Sigma \subset \manM$}\coordHE{} be the respective constraint
+surface.  The Dirac matrix reads as
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:dirac-matrix}
+\Delta_{\alpha \beta}=\pb{\theta_\alpha}{\theta_\beta}
+}{
+  \Delta_{\alpha \beta}=\pb{\theta_\alpha}{\theta_\beta}
+}{ecuacion}\coordE{}\end{equation}
+and is assumed to be invertible. Its inverse is denoted by
+$$\coord{}\boxMath{
+\Delta^{\alpha \beta}\,,\qquad
+ \Delta_{\alpha \gamma}\Delta^{\gamma \beta}=\delta^\beta_\alpha\,.
+}{dollar}{0pt}\coordE{}$$
+Invertibility of the Dirac matrix implies that
+\myHighlight{$\Sigma$}\coordHE{} is a smooth submanifold in \myHighlight{$\manM$}\coordHE{}.
+
+
+Observables of the second-class system are functions on the
+constraint surface \myHighlight{$\Sigma$}\coordHE{}.  The algebra of inequivalent observables
+of the second-class system on \myHighlight{$\manM$}\coordHE{} is a Poisson algebra of
+functions on the constraint surface, with the Poisson structure
+corresponding to the symplectic form
+\myHighlight{$\omega^\Sigma\equiv\omega{\big|}_{\Sigma}$}\coordHE{}
+(the 2-form \myHighlight{$\omega{\big|}_{\Sigma}$}\coordHE{} denotes the restriction of
+to \myHighlight{$\Sigma\subset\manM$}\coordHE{}).  At the classical level, two constraint
+systems are said equivalent iff their algebras of inequivalent
+observables are isomorphic as Poisson algebras.
+
+
+
+
+\subsection{Dirac bracket}
+
+The goal of the Dirac bracket approach to the second-class system
+is to represent the algebra of inequivalent observables as a quotient
+of the algebra of functions on \myHighlight{$\manM$}\coordHE{} modulo the ideal generated by
+the constraints. The point is that \myHighlight{$\manM$}\coordHE{} can be equipped with a
+Poisson bracket called the \textit{Dirac bracket} which is well defined on
+this quotient.  Given second-class constraints \myHighlight{$\theta_\alpha$}\coordHE{} the
+respective Dirac bracket is given explicitly by
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:Dirac}
+\pb{f}{g}^D_\manM=\pb{f}{g}_\manM-
+\pb{f}{\theta_\alpha}_\manM \Delta^{\alpha \beta} \pb{\theta_\beta}{g}_\manM\,.
+}{
+  \pb{f}{g}^D_\manM=\pb{f}{g}_\manM-
+\pb{f}{\theta_\alpha}_\manM \Delta^{\alpha \beta} \pb{\theta_\beta}{g}_\manM\,.
+}{ecuacion}\coordE{}\end{equation}
+We recall the basic properties of a Dirac bracket
+\begin{equation}\coord{}\boxEquation{
+\label{eq:DB-properties}
+  \begin{split}
+\pb{f}{g}^D_\manM+\pb{g}{f}^D_\manM&=0\\
+\pb{f}{gh}^D_\manM-\pb{f}{g}^D_\manM h- g \pb{f}{h}^D_\manM& =0\\
+\pb{f}{\pb{g}{h}^D_\manM}^D_\manM+{\rm cycle}(f,g,h)&=0\\
+\pb{f}{\theta_\alpha}^D_\manM&=0\,.
+\end{split}
+}{
+\begin{split}
+\pb{f}{g}^D_\manM+\pb{g}{f}^D_\manM&=0\\
+\pb{f}{gh}^D_\manM-\pb{f}{g}^D_\manM h- g \pb{f}{h}^D_\manM& =0\\
+\pb{f}{\pb{g}{h}^D_\manM}^D_\manM+{\rm cycle}(f,g,h)&=0\\
+\pb{f}{\theta_\alpha}^D_\manM&=0\,.
+\end{split}
+}{split}\coordE{}\end{equation}
+The first three lines say that \myHighlight{$\pb{}{}^D_\manM$}\coordHE{} is a Poisson
+bracket.  In what follows we use the notation
+\myHighlight{$D^{ij}$}\coordHE{} for the components of the Poisson bivector of the Dirac bracket:
+\begin{equation}\coord{}\boxEquation{
+D^{ij}=\pb{x^i}{x^j}^D_\manM\,.
+}{
+D^{ij}=\pb{x^i}{x^j}^D_\manM\,.
+}{ecuacion}\coordE{}\end{equation}
+The last line in \eqref{eq:DB-properties} implies that \myHighlight{$\theta_\alpha$}\coordHE{}
+are characteristic  (Casimir) functions of the bracket
+\myHighlight{$\pb{}{}^D_\manM$}\coordHE{}. This, in turn, implies that
+\myHighlight{$\pb{}{}^D_\manM$}\coordHE{} is well-defined on the quotient
+algebra of \myHighlight{$\func{\manM}$}\coordHE{} modulo functions of the form
+\myHighlight{$F^\alpha\theta_{\alpha}$}\coordHE{} (i.e. modulo the ideal
+of functions vanishing on \myHighlight{$\Sigma$}\coordHE{}). This quotient can be naturally
+identified with the algebra \myHighlight{$\func\Sigma$}\coordHE{} of functions on \myHighlight{$\Sigma$}\coordHE{}.
+Thus \myHighlight{$\func\Sigma$}\coordHE{} is a Poisson algebra.  We refer to the Poisson
+bracket in \myHighlight{$\func\Sigma$}\coordHE{} as to the restriction of a Dirac bracket
+to \myHighlight{$\Sigma$}\coordHE{}.
+
+
+The constraint surface \myHighlight{$\Sigma$}\coordHE{} is in fact a symplectic manifold,
+with the symplectic form \myHighlight{$\omega^\Sigma\equiv \omega\big|_{\Sigma}$}\coordHE{}.
+The Poisson bracket on \myHighlight{$\Sigma$}\coordHE{} corresponding to the symplectic form
+\myHighlight{$\omega^\Sigma$}\coordHE{} coincides with the restriction
+\myHighlight{$\pb{}{}^D_\manM{\bigr|}_\Sigma$}\coordHE{} of a Dirac bracket to \myHighlight{$\Sigma$}\coordHE{}.
+Thus description of a second-class system in terms
+of a Dirac bracket is equivalent to that based on the
+reduction to the constraint surface.
+
+From the geometrical viewpoint, \myHighlight{$\theta_\alpha$}\coordHE{} give a
+maximal set of independent characteristic functions of the Dirac
+bracket.  This implies that \myHighlight{$\manM$}\coordHE{} is a regular Poisson manifold.
+Each surface of the constant values of the functions
+\myHighlight{$\theta_\alpha$}\coordHE{} is therefore a symplectic leaf of the Dirac bracket
+and is a symplectic manifold. In particular, constraint surface
+\myHighlight{$\Sigma$}\coordHE{} is a symplectic leaf.  As we have seen the symplectic form on
+\myHighlight{$\Sigma$}\coordHE{} (on each symplectic leaf) is the restriction
+\myHighlight{$\omega|_{\Sigma}$}\coordHE{} of the symplectic form \myHighlight{$\omega$}\coordHE{} on \myHighlight{$\manM$}\coordHE{} to
+\myHighlight{$\Sigma \subset \manM$}\coordHE{} (respectively the symplectic leaf).
+
+\subsection{Dirac connection}\label{subsec:D-connection}
+At the level of quantum description we also need the
+\textit{Dirac connection} that is a symmetric
+connection compatible with the Dirac bracket.  Given a symmetric
+symplectic connection \myHighlight{$\Gamma$}\coordHE{} on \myHighlight{$\manM$}\coordHE{} there exists a Dirac
+connection \myHighlight{$\con^0$}\coordHE{} whose coefficients are
+\begin{equation}\coord{}\boxEquation{
+\label{eq:Dirac-con}
+{(\con^0)}^k_{ij}=\omega^{kl}
+(\Gamma_{lij}+ \d_l \theta_\beta \Delta^{\beta \alpha} \nabla_i \nabla_j \theta_\alpha
+)\,,\qquad \qquad \nabla_i \nabla_j \theta_\alpha= \d_i\d_j
+\theta_\alpha-\Gamma^m_{ij}\d_m \theta_\alpha\,,
+}{
+{(\con^0)}^k_{ij}=\omega^{kl}
+(\Gamma_{lij}+ \d_l \theta_\beta \Delta^{\beta \alpha} \nabla_i \nabla_j \theta_\alpha
+)\,,\qquad \qquad \nabla_i \nabla_j \theta_\alpha= \d_i\d_j
+\theta_\alpha-\Gamma^m_{ij}\d_m \theta_\alpha\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\nabla_i$}\coordHE{} is the covariant derivative w.r.t. \myHighlight{$\Gamma$}\coordHE{}.  It is
+a matter of direct observation that \myHighlight{$\con^0$}\coordHE{} preserves the Dirac
+bivector. Moreover, one can check that
+\begin{equation}\coord{}\boxEquation{
+\Dcon-d_i \d_j \theta_\alpha=0\,,
+}{
+\Dcon-d_i \d_j \theta_\alpha=0\,,
+}{ecuacion}\coordE{}\end{equation}
+where the notation \myHighlight{$\Dcon-d$}\coordHE{} is introduced for the covariant
+differentiation determined by the connection \myHighlight{$\con^0$}\coordHE{}. The curvature
+of the Dirac connection is given explicitly by
+\begin{multline}\coord{}\boxAlignEqnarray{
+    \leftCoord{}({\bar R}^0)^m_{\rightCoord{}ij;\,l}~=~D^{mk}{\bar R}^0_{\rightCoord{}ij;\,kl}~=\rightCoord{}\\
+\leftCoord{}=~D^{mk}\left(R_{\rightCoord{}ij\,;kl}+
+\leftCoord{}(\nabla_{\rightCoord{}i}\nabla_{\rightCoord{}k}\theta_\alpha)
+\leftCoord{}\Delta^{\alpha\beta}
+\leftCoord{}(\nabla_{\rightCoord{}j}\nabla_{\rightCoord{}l}\theta_\beta)-
+\leftCoord{}(\nabla_{\rightCoord{}j}\nabla_{\rightCoord{}k}\theta_\alpha)
+\leftCoord{}\Delta^{\alpha\beta}
+\leftCoord{}(\nabla_{\rightCoord{}i}\nabla_{\rightCoord{}l}\theta_\beta)\right)\,,
+}{0mm}{8}{13}{
+    ({\bar R}^0)^m_{ij;\,l}~=~D^{mk}{\bar R}^0_{ij;\,kl}~=\\
+=~D^{mk}\left(R_{ij\,;kl}+
+(\nabla_{i}\nabla_{k}\theta_\alpha)
+\Delta^{\alpha\beta}
+(\nabla_{j}\nabla_{l}\theta_\beta)-
+(\nabla_{j}\nabla_{k}\theta_\alpha)
+\Delta^{\alpha\beta}
+(\nabla_{i}\nabla_{l}\theta_\beta)\right)\,,
+}{0}\coordE{}\end{multline}
+where \myHighlight{$R_{ij\,;kl}=\omega_{km}R^m_{ij;\,l}$}\coordHE{} is the curvature of
+\myHighlight{$\Gamma$}\coordHE{}.
+
+
+An important point is that the Dirac connection \myHighlight{$\con^0$}\coordHE{} on \myHighlight{$\manM$}\coordHE{}
+determines a connection on the constraint surface \myHighlight{$\Sigma$}\coordHE{}.
+This implies that the parallel transport along \myHighlight{$\Sigma$}\coordHE{} carries
+vectors tangent to \myHighlight{$\Sigma$}\coordHE{} to tangent ones and thus determines a
+connection on
+\myHighlight{$\Sigma$}\coordHE{}. 
+To show that \myHighlight{$\con^0$}\coordHE{} does restrict to \myHighlight{$\Sigma$}\coordHE{} let \myHighlight{$Y,Z$}\coordHE{} be vector
+fields on \myHighlight{$\manM$}\coordHE{} tangent to \myHighlight{$\Sigma$}\coordHE{}.  This implies that
+there exist functions \myHighlight{$Y^\alpha_\beta,Z^\alpha_\beta$}\coordHE{} such that
+\begin{equation}\coord{}\boxEquation{
+  Y\theta_\alpha=Y^\beta_\alpha\theta_\beta\,, \qquad
+  Z\theta_\alpha=Z^\beta_\alpha\theta_\beta\,.
+}{
+  Y\theta_\alpha=Y^\beta_\alpha\theta_\beta\,, \qquad
+  Z\theta_\alpha=Z^\beta_\alpha\theta_\beta\,.
+}{ecuacion}\coordE{}\end{equation}
+Let us show that \myHighlight{$\Dcon-d_Y Z$}\coordHE{} is also
+tangent to \myHighlight{$\Sigma$}\coordHE{}. Indeed,
+\begin{multline}\coord{}\boxAlignEqnarray{
+    \leftCoord{}(\Dcon-d_Y Z)\theta_\alpha=
+    \leftCoord{}(Y^i\d_iZ^j)\d_j \theta_\alpha+Y^i(\con^0)^j_{\rightCoord{}ik}Z^k\d_j\theta_\alpha=\rightCoord{}\\
+\leftCoord{}=    YZ\theta_\alpha-Y^iZ^j\d_i\d_j \theta_\alpha
+\leftCoord{}+Y^iZ^k \Gamma^j_{\rightCoord{}ik} \d_j \theta_\alpha
+\leftCoord{}+Y^iZ^k  \omega^{jn} \d_n \theta_\gamma \Delta^{\gamma\beta}
+\leftCoord{}\nabla_i\nabla_k\theta_\beta \d_j \theta_\alpha=\rightCoord{}\\
+\leftCoord{}=YZ\theta_\alpha=(YZ^\beta_\alpha)\theta_\beta+Z^\beta_\alpha
+\leftCoord{}Y^\gamma_\beta \theta_\gamma\,.
+}{0mm}{8}{5}{
+    (\Dcon-d_Y Z)\theta_\alpha=
+    (Y^i\d_iZ^j)\d_j \theta_\alpha+Y^i(\con^0)^j_{ik}Z^k\d_j\theta_\alpha=\\
+=    YZ\theta_\alpha-Y^iZ^j\d_i\d_j \theta_\alpha
++Y^iZ^k \Gamma^j_{ik} \d_j \theta_\alpha
++Y^iZ^k  \omega^{jn} \d_n \theta_\gamma \Delta^{\gamma\beta}
+\nabla_i\nabla_k\theta_\beta \d_j \theta_\alpha=\\
+=YZ\theta_\alpha=(YZ^\beta_\alpha)\theta_\beta+Z^\beta_\alpha
+Y^\gamma_\beta \theta_\gamma\,.
+}{0}\coordE{}\end{multline}
+The last expression obviously vanishes on \myHighlight{$\Sigma$}\coordHE{}. The vector field
+\myHighlight{$\Dcon-d_Y Z$}\coordHE{} is therefore tangent to \myHighlight{$\Sigma$}\coordHE{}.  This implies that
+connection \myHighlight{$\con^0$}\coordHE{} determines a connection \myHighlight{$(\con^0)^\Sigma$}\coordHE{} on
+\myHighlight{$\Sigma$}\coordHE{}.  Since \myHighlight{$\con^0$}\coordHE{} preserves Dirac bivector \myHighlight{$D^{ij}\sdl{x^i}
+\wedge \sdl{x^j}$}\coordHE{}, reduced connection \myHighlight{$(\con^0)^\Sigma$}\coordHE{} preserves its
+restriction to \myHighlight{$\Sigma$}\coordHE{}.  Because the Poisson bracket corresponding to the
+symplectic form \myHighlight{$\omega^\Sigma=\omega\bigr|_{\Sigma}$}\coordHE{} is the restriction
+of the Dirac bracket to \myHighlight{$\Sigma$}\coordHE{} , \myHighlight{$(\con^0)^\Sigma$}\coordHE{} is a symmetric
+symplectic connection on \myHighlight{$\Sigma$}\coordHE{}.  Thus any second-class constraint
+surface in the Fedosov manifold is also a Fedosov manifold, with the
+symplectic structure and a compatible symmetric connection being
+the restrictions to \myHighlight{$\Sigma$}\coordHE{} of the symplectic structure and
+the Dirac connection on \myHighlight{$\manM$}\coordHE{} respectively.
+
+Let us also find a coordinate description for the reduction
+of a Dirac connection to the constraint surface.
+To this end, we note that expression ~\eqref{eq:Dirac-con} for the
+Dirac connection can be equivalently rewritten as:
+\begin{equation}\coord{}\boxEquation{
+{(\con^0)}^k_{ij}=D^{kl}\Gamma_{lij}+
+\omega^{kl}\d_l \theta_\beta \Delta^{\beta\alpha} \d_i \d_j \theta_\alpha \,.
+}{
+{(\con^0)}^k_{ij}=D^{kl}\Gamma_{lij}+
+\omega^{kl}\d_l \theta_\beta \Delta^{\beta\alpha} \d_i \d_j \theta_\alpha \,.
+}{ecuacion}\coordE{}\end{equation}
+
+Further, let us pick functions
+\myHighlight{${\bar x}^a\,,~~a=1,\ldots, 2N-2M$}\coordHE{}
+such that \myHighlight{${\bar x}^a$}\coordHE{} and
+\myHighlight{${\bar x}^\alpha=\theta_\alpha\,,~~\alpha=1,\ldots, 2M$}\coordHE{} form a local
+coordinate system on \myHighlight{$\manM$}\coordHE{}.  This coordinate system
+is adopted to the embedded submanifold \myHighlight{$\Sigma \subset \manM$}\coordHE{}
+in the sense that locally \myHighlight{$\Sigma$}\coordHE{} is singled out by equations
+\myHighlight{${\bar x}^\alpha=0$}\coordHE{}.  It follows that the functions
+\myHighlight{${\bar x}^a|_{\Sigma}\,,~~a=1,\ldots, 2N-2M$}\coordHE{} form
+a local coordinate system on \myHighlight{$\Sigma$}\coordHE{}.  In the coordinate system
+\myHighlight{${\bar x}^a\,,{\bar x}^\alpha$}\coordHE{} the expression \myHighlight{$\d_i\d_j \theta_\alpha$}\coordHE{}
+obviously vanishes and the Dirac connection becomes
+\begin{equation}\coord{}\boxEquation{
+{(\con^0)}^k_{ij}=D^{kl}\Gamma_{lij}\,,
+}{
+{(\con^0)}^k_{ij}=D^{kl}\Gamma_{lij}\,,
+}{ecuacion}\coordE{}\end{equation}
+where we use \myHighlight{$i$}\coordHE{} (or \myHighlight{$j,k,l)$}\coordHE{} as a collective notations for either \myHighlight{$a$}\coordHE{}
+or \myHighlight{$\alpha$}\coordHE{}.  Because
+\myHighlight{$D^{i\alpha}=\pb{{\bar x}^i}{{\bar x}^\alpha}^D_{\manM}=0$}\coordHE{},
+the respective components of the Dirac connection
+vanishes:
+\begin{equation}\coord{}\boxEquation{
+\label{eq:DGamma-vanish}
+  (\con^0)^\alpha_{ij}=0\,.
+}{
+(\con^0)^\alpha_{ij}=0\,.
+}{ecuacion}\coordE{}\end{equation}
+Then, for a vector field tangent to \myHighlight{$\Sigma$}\coordHE{} one has
+\begin{equation}\coord{}\boxEquation{
+\nabla_{\frac{\d}{\d {\bar x}^a}}\dl{{\bar x}^b}=
+(\con^0)^l_{ab}\dl{{\bar x}^l}=
+(\con^0)^c_{ab}\dl{{\bar x}^c}\,,
+}{
+\nabla_{\frac{\d}{\d {\bar x}^a}}\dl{{\bar x}^b}=
+(\con^0)^l_{ab}\dl{{\bar x}^l}=
+(\con^0)^c_{ab}\dl{{\bar x}^c}\,,
+}{ecuacion}\coordE{}\end{equation}
+in view of~\eqref{eq:DGamma-vanish}.  When restricted to \myHighlight{$\Sigma$}\coordHE{}
+the equation implies that the functions \myHighlight{$(\con^0)^a_{bc}{\big|}_{\Sigma}$}\coordHE{}
+are the coefficients of a symmetric symplectic connection
+\myHighlight{$(\con^0)^\Sigma$}\coordHE{} on \myHighlight{$\Sigma$}\coordHE{} w.r.t. the coordinate system
+\myHighlight{${\bar x}^a{\bigr|}_\Sigma$}\coordHE{} on \myHighlight{$\Sigma$}\coordHE{}.
+
+
+
+\subsection{Modified Poisson bracket on the cotangent bundle over
+a symplectic manifold}\label{subsec:mod}
+The phase space of the system under consideration is a general symplectic
+manifold.  Even without constraints on \myHighlight{$\manM$}\coordHE{} the quantization problem
+for \myHighlight{$\manM$}\coordHE{} can not be solved directly and requires using specific
+quantization methods.  Since we are interested in quantizing
+a constraint system the most suitable method is that based on the
+representation of \myHighlight{$\manM$}\coordHE{} itself as a second-class constraint
+system; the method was proposed in \cite{[BF89]} and generalized
+to the case of arbitrary symplectic manifolds in \cite{[GL]}.  It
+was also shown~\cite{[GL]} to provide the (BRST form of the)
+constraint theory description of the Fedosov quantization.
+
+To represent \myHighlight{$\manM$}\coordHE{} as a second-class constraint surface let us
+consider first an appropriate generalization of the canonical
+Poisson bracket on a cotangent bundle.  Let \myHighlight{$T^*\manM$}\coordHE{} be a
+cotangent bundle over \myHighlight{$\manM$}\coordHE{}.  Let \myHighlight{$x^i,p_j$}\coordHE{} be natural local
+coordinates on the base and
+the fibres respectively. Let also \myHighlight{$\pi\: T^*\manM \to \manM$}\coordHE{} be a
+bundle projection which sends a 1-form at point \myHighlight{$m$}\coordHE{} to \myHighlight{$m$}\coordHE{} (points of
+\myHighlight{$T^*\manM$}\coordHE{} are pairs \myHighlight{$(m,a)\: m \in \manM,\, a \in T^*_m \manM$}\coordHE{})
+and \myHighlight{$\pi^* \: \Lambda(\manM) \to \Lambda(T^*\manM)$}\coordHE{}
+is the pullback map associated with \myHighlight{$\pi$}\coordHE{}.
+Here we use notation
+\myHighlight{$\Lambda(\manM)=\oplus_{k=0}^{\dim{\manM}}\Lambda^k(\manM)$}\coordHE{}
+for the space of differential forms on \myHighlight{$\manM$}\coordHE{}).
+
+
+Cotangent bundle \myHighlight{$T^*\manM$}\coordHE{} is equipped with the canonical symplectic
+structure:
+$$\coord{}\boxMath{
+\omega^{T^*\manM}=2\,dp_i \wedge dx^i
+}{dollar}{0pt}\coordE{}$$
+The corresponding Poisson bracket also has standard
+form:
+$$\coord{}\boxMath{
+  \pb{x^i}{p_j}_{T^*\manM}=\delta^i_j\,.
+}{dollar}{0pt}\coordE{}$$
+Let \myHighlight{$\omega=\omega_{ij} dx^i \wedge dx^j$}\coordHE{} be a closed 2-form on
+\myHighlight{$\manM$}\coordHE{}.  Let us introduce a modified symplectic structure on
+\myHighlight{$T^*\manM$}\coordHE{} by:
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:mod-symplectic}
+\omega^{mod}=
+\omega^{T^*\manM}+\pi^* \omega=2\,dp_i \wedge dx^j + \omega_{ij} dx^i
+\wedge dx^j\,.
+}{
+  \omega^{mod}=
+\omega^{T^*\manM}+\pi^* \omega=2\,dp_i \wedge dx^j + \omega_{ij} dx^i
+\wedge dx^j\,.
+}{ecuacion}\coordE{}\end{equation}
+This 2-form is obviously nondegenerate and closed.
+Hereafter we denote \myHighlight{$T^*\manM$}\coordHE{} by \myHighlight{$\mod\manM$}\coordHE{} indicating the fact that
+it is equipped with the modified symplectic structure.
+Symplectic structure \myHighlight{$\omega^{mod}$}\coordHE{} determines a Poisson bracket
+on \myHighlight{$\mod\manM$}\coordHE{}, with the basic Poisson bracket relations given by:
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:mod-PB}
+\pb{x^i}{p_j}_{\mod\manM}=\delta^i_j\,, \qquad
+\pb{p_i}{p_j}_{\mod\manM}=\omega_{ij}\,.
+}{
+  \pb{x^i}{p_j}_{\mod\manM}=\delta^i_j\,, \qquad
+\pb{p_i}{p_j}_{\mod\manM}=\omega_{ij}\,.
+}{ecuacion}\coordE{}\end{equation}
+The Jacobi identity for this bracket holds provided 2-form
+\myHighlight{$\omega$}\coordHE{} is closed.
+
+One can easily check that at least locally one can bring the bracket
+to the standard (canonical) form by means of the following transformation
+\myHighlight{$p_i \to p_i-\rho_i(x)$}\coordHE{}, with \myHighlight{$\rho_i(x)$}\coordHE{} being a symplectic
+potential for the symplectic structure \myHighlight{$\omega$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+  \omega=2\, d\rho\,, \qquad \omega_{ij}=\d_i \rho_j -\d_j\rho_i\,.
+}{
+  \omega=2\, d\rho\,, \qquad \omega_{ij}=\d_i \rho_j -\d_j\rho_i\,.
+}{ecuacion}\coordE{}\end{equation}
+
+
+As the Poisson brackets of the coordinate functions \myHighlight{$p_i$}\coordHE{}
+form an invertible matrix, constraints
+\begin{equation}\coord{}\boxEquation{
+\theta_i=0\,,\qquad \theta_i\equiv -p_i
+}{
+\theta_i=0\,,\qquad \theta_i\equiv -p_i
+}{ecuacion}\coordE{}\end{equation}
+(we choose minus sign for convenience) are second-class ones, with the
+respective constraint surface being \myHighlight{$\manM$}\coordHE{}.  In general, these
+constraints are not the globally defined functions on \myHighlight{$\mod\manM$}\coordHE{}.
+This, in particular, implies that the Dirac bracket associates with
+the constraints \myHighlight{$\theta_i$}\coordHE{} is not a globally defined Poisson bracket
+on \myHighlight{$\mod\manM$}\coordHE{}.  However, this Dirac bracket is well defined on the
+constraint surface.  The constraint surface is \myHighlight{$\manM$}\coordHE{} (considered as
+zero section of \myHighlight{$\mod\manM$}\coordHE{}) and the restriction of the Dirac
+bracket to \myHighlight{$\manM \subset \mod\manM$}\coordHE{} coincides with the Poisson
+bracket \myHighlight{$\pb{}{}_\manM$}\coordHE{} on \myHighlight{$\manM$}\coordHE{}.  In this way one can represent an
+arbitrary Hamiltonian system on the symplectic manifold as the second
+class constraint system.
+
+
+
+\subsection{Symplectic structure}\label{subsec:symplectic}
+In what follows we also need a specific Poisson bracket
+on the appropriately extended cotangent bundle over a symplectic
+manifold.   Given an arbitrary symplectic vector
+bundle \myHighlight{$\W(\manN) \to \manN$}\coordHE{} over a manifold \myHighlight{$\manN$}\coordHE{} let \myHighlight{$e_A$}\coordHE{} be
+a local frame (locally defined basic sections of \myHighlight{$\W(\manM)$}\coordHE{}).  Let
+also \myHighlight{$\mD$}\coordHE{} be the symplectic form on the fibres of \myHighlight{$\W(\manM)$}\coordHE{}.  The
+components of \myHighlight{$\mD$}\coordHE{} w.r.t. \myHighlight{$e_A$}\coordHE{} are determined by
+\myHighlight{$\mD_{AB}=\mD(e_A,e_B)$}\coordHE{}.
+
+It is well known (see e.g.~\cite{[Fedosov-book]}) that any symplectic
+vector bundle admits a symplectic connection.  Let \myHighlight{$\mcon$}\coordHE{} and
+\myHighlight{$\mnabla$}\coordHE{} denotes a symplectic connection and the corresponding covariant
+differential in \myHighlight{$\W(\manN)$}\coordHE{}. The compatibility condition reads as
+\begin{equation}\coord{}\boxEquation{
+\label{eq:compatible}
+  \mnabla \mD=0\,,  \qquad \d_i \mD_{AB} - \mcon^C_{iA}\mD_{CB}-\mcon^C_{iB}\mD_{AC}=0\,,
+}{
+\mnabla \mD=0\,,  \qquad \d_i \mD_{AB} - \mcon^C_{iA}\mD_{CB}-\mcon^C_{iB}\mD_{AC}=0\,,
+}{ecuacion}\coordE{}\end{equation}
+where the coefficients \myHighlight{$\mcon^C_{iA}$}\coordHE{} of \myHighlight{$\mcon$}\coordHE{} are determined
+as:
+\begin{equation}\coord{}\boxEquation{
+  \mnabla e_A=dx^i \mcon^C_{iA}e_C\,.
+}{
+  \mnabla e_A=dx^i \mcon^C_{iA}e_C\,.
+}{ecuacion}\coordE{}\end{equation}
+It is useful to introduce the following connection 1-form:
+\begin{equation}\coord{}\boxEquation{
+\mcon_{AB}=dx^i \mcon_{AiB}\,, \qquad  \mcon_{AiB}=\mD_{AC}\mcon^C_{iB}\,.
+}{
+\mcon_{AB}=dx^i \mcon_{AiB}\,, \qquad  \mcon_{AiB}=\mD_{AC}\mcon^C_{iB}\,.
+}{ecuacion}\coordE{}\end{equation}
+Then compatibility condition \eqref{eq:compatible} rewrites as
+\begin{equation}\coord{}\boxEquation{
+\label{eq:compatible-l}
+d\mD_{AB}=\mcon_{AB}-\mcon_{BA}\,, \qquad  \d_i \mD_{AB} - \mcon_{AiB}+\mcon_{BiA}=0\,.
+}{
+d\mD_{AB}=\mcon_{AB}-\mcon_{BA}\,, \qquad  \d_i \mD_{AB} - \mcon_{AiB}+\mcon_{BiA}=0\,.
+}{ecuacion}\coordE{}\end{equation}
+As a consequence of the condition one arrives at the following
+property of the connection 1-form \myHighlight{$\mcon_{AB}$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+\label{eq:dC-symm}
+  d\mcon_{AB}=d\mcon_{BA}\,.
+}{
+d\mcon_{AB}=d\mcon_{BA}\,.
+}{ecuacion}\coordE{}\end{equation}
+
+
+Consider the following direct sum of vector bundles:
+\begin{equation}\coord{}\boxEquation{
+  \mE=\W(\manN) \oplus \mod\manN\,,
+}{
+  \mE=\W(\manN) \oplus \mod\manN\,,
+}{ecuacion}\coordE{}\end{equation}
+where for generality we assume that \myHighlight{$\manN$}\coordHE{} is equipped with a closed
+2-form \myHighlight{$\omega$}\coordHE{} and \myHighlight{$\mod\manN$}\coordHE{} is a modified cotangent bundle
+over \myHighlight{$\manN$}\coordHE{}.  Let \myHighlight{$x^i,p_j$}\coordHE{} and \myHighlight{$Y^A$}\coordHE{} are standard local coordinates
+on \myHighlight{$\mE$}\coordHE{} (\myHighlight{$x^i$}\coordHE{} are local coordinates on \myHighlight{$\manN$}\coordHE{}, \myHighlight{$p_j$}\coordHE{} are standard
+coordinates on the fibres of \myHighlight{$\mod\manN$}\coordHE{}, and \myHighlight{$Y^A$}\coordHE{} are coordinates on
+the fibres of \myHighlight{$\W(\manN)$}\coordHE{} corresponding to the local frame \myHighlight{$e_A$}\coordHE{}).
+
+We claim that considered as a manifold \myHighlight{$\mE$}\coordHE{} is equipped with the following
+symplectic structure
+\begin{equation}\coord{}\boxEquation{
+  \begin{split}
+  \label{eq:symplectic}
+  \omega^{\,_{\mE}}~~=~~&\pi^*\omega+2dp_i\wedge dx^i+\\
++~&\mD_{AB}dY^A\wedge
+  dY^B+ Y^AY^B d\mcon_{AB} -2Y^A\mcon_{AB}\wedge dY^B\,,
+\end{split}
+}{
+  \begin{split}
+  \omega^{\,_{\mE}}~~=~~&\pi^*\omega+2dp_i\wedge dx^i+\\
++~&\mD_{AB}dY^A\wedge
+  dY^B+ Y^AY^B d\mcon_{AB} -2Y^A\mcon_{AB}\wedge dY^B\,,
+\end{split}
+}{split}\coordE{}\end{equation}
+where \myHighlight{$\pi^* \omega$}\coordHE{} is the 2-form \myHighlight{$\omega$}\coordHE{}
+on \myHighlight{$\manN$}\coordHE{} pulled back by bundle projection \myHighlight{$\pi\:\mE \to \manN$}\coordHE{}.  One
+can directly check that 2-form \eqref{eq:symplectic} is well defined.
+That it is closed follows from \myHighlight{$d \omega=0$}\coordHE{},
+condition~\eqref{eq:compatible-l}, and Eq.~\eqref{eq:dC-symm}.
+
+
+The Poisson bracket on \myHighlight{$\mE$}\coordHE{} corresponding to the symplectic
+form~\eqref{eq:symplectic} is determined by the following relations:
+\begin{equation}\coord{}\boxEquation{
+  \begin{aligned}
+    \pb{x^i}{p_j}_{\mE}&=\delta^i_j\,,\\
+    \pb{Y^A}{Y^B}_{\mE}&=\mD^{AB}\,,\\
+    \pb{Y^A}{p_i}_{\mE}&= - \mcon^A_{iB}Y^B\,,\\
+    \pb{p_i}{p_j}_{\mE}&=\omega_{ij}+\half \mR_{ij;AB}Y^A\,Y^B\,,
+  \end{aligned}
+  \label{eq:extended-PB}
+}{
+  \begin{aligned}
+    \pb{x^i}{p_j}_{\mE}&=\delta^i_j\,,\\
+    \pb{Y^A}{Y^B}_{\mE}&=\mD^{AB}\,,\\
+    \pb{Y^A}{p_i}_{\mE}&= - \mcon^A_{iB}Y^B\,,\\
+    \pb{p_i}{p_j}_{\mE}&=\omega_{ij}+\half \mR_{ij;AB}Y^A\,Y^B\,,
+  \end{aligned}
+  }{ecuacion}\coordE{}\end{equation}
+with all the others vanishing. Here,
+\myHighlight{$\mR_{ij;\,AB}$}\coordHE{} denotes the curvature of \myHighlight{$\mcon$}\coordHE{}:
+\begin{multline}\coord{}\boxAlignEqnarray{
+  \leftCoord{}\mR_{\rightCoord{}ij;\,AB}=\mD_{\rightCoord{}AC}\mR^C_{\rightCoord{}ij\,B}~=\rightCoord{}\\
+\leftCoord{}=~\mD_{\rightCoord{}AC}\left(\d_i \mcon^C_{\rightCoord{}jB}-\d_j \mcon^C_{\rightCoord{}iB}+\mcon^C_{\rightCoord{}iD}\mcon^D_{\rightCoord{}jB}
+\leftCoord{}-\mcon^C_{\rightCoord{}jD}\mcon^D_{\rightCoord{}iB}\right)~=\rightCoord{}\\
+  \leftCoord{}=~\d_i \mcon_{\rightCoord{}AjB}-\d_j
+  \leftCoord{}\mcon_{\rightCoord{}AiB}+\mcon_{\rightCoord{}CiA}\mD^{CD}\mcon_{\rightCoord{}DjB}-\mcon_{\rightCoord{}CjA}\mD^{CD}\mcon_{\rightCoord{}DiB}\,.
+}{0mm}{5}{19}{
+  \mR_{ij;\,AB}=\mD_{AC}\mR^C_{ij\,B}~=\\
+=~\mD_{AC}\left(\d_i \mcon^C_{jB}-\d_j \mcon^C_{iB}+\mcon^C_{iD}\mcon^D_{jB}
+-\mcon^C_{jD}\mcon^D_{iB}\right)~=\\
+  =~\d_i \mcon_{AjB}-\d_j
+  \mcon_{AiB}+\mcon_{CiA}\mD^{CD}\mcon_{DjB}-\mcon_{CjA}\mD^{CD}\mcon_{DiB}\,.
+}{0}\coordE{}\end{multline}
+The last equality follows from nondegeneracy of \myHighlight{$\mD_{AB}$}\coordHE{}
+and compatibility condition~\eqref{eq:compatible-l}.
+
+
+
+
+\section{Conversion -- classical description}\label{sec:cl}
+In this section we construct the BFV-BRST description of the
+second-class constraint system on \myHighlight{$\manM$}\coordHE{} in terms
+of an equivalent effective first-class constraint (gauge) system.
+This includes explicit construction of the gauge system,
+its BRST charge, and observables.
+
+
+\subsection{Unification of constraints \myHighlight{$\theta_\alpha$}\coordHE{} and \myHighlight{$\theta_i$}\coordHE{}}
+Given a second-class constraint system on \myHighlight{$\manM$}\coordHE{} we first embed
+\myHighlight{$\manM$}\coordHE{} as a zero section in \myHighlight{$\mod\manM$}\coordHE{}.  According to
+Section~\bref{subsec:mod} the constraints
+\myHighlight{$\theta_i\equiv -p_i=0$}\coordHE{} represent \myHighlight{$\manM$}\coordHE{} as a second-class constraint
+surface in \myHighlight{$\mod\manM$}\coordHE{} and thus determine on \myHighlight{$\mod\manM$}\coordHE{} the
+constraint system which is equivalent to the original symplectic
+manifold \myHighlight{$\manM$}\coordHE{} (i.e. an unconstraint system on \myHighlight{$\manM$}\coordHE{}).
+
+In order to describe the constraint system on \myHighlight{$\manM$}\coordHE{} specified by
+the second-class constraints \myHighlight{$\theta_\alpha$}\coordHE{} one considers
+a constraint system on \myHighlight{$\mod\manM$}\coordHE{}, with the constraints being
+\myHighlight{$\theta_i$}\coordHE{} and \myHighlight{$\theta_\alpha$}\coordHE{}.  We treat these constraints on
+equal footing and introduce a unified notation:
+\begin{equation}\coord{}\boxEquation{
+\Theta_A=(\theta_i\,,\theta_\alpha)\,,
+ \qquad A=1,\ldots ,2N+2M\,.
+}{
+\Theta_A=(\theta_i\,,\theta_\alpha)\,,
+ \qquad A=1,\ldots ,2N+2M\,.
+}{ecuacion}\coordE{}\end{equation}
+Their Dirac matrix is
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:Dirac-Theta}
+D_{AB}=\pb{\Theta_A}{\Theta_B}_{\mod\manM}\,.
+}{
+  D_{AB}=\pb{\Theta_A}{\Theta_B}_{\mod\manM}\,.
+}{ecuacion}\coordE{}\end{equation}
+Explicitly, \myHighlight{$D_{AB}$}\coordHE{} is given by
+\begin{equation}\coord{}\boxEquation{
+D=
+\left(\begin{array}{cc}
+D_{ij} & D_{i\beta}\\[7pt]
+D_{\alpha j}& D_{\alpha\beta}
+ \end{array}\right)=
+\left(\begin{array}{cc}
+\omega_{ij} & \d_i \theta_\beta\\[7pt]
+- \d_j\theta_\alpha & 0
+ \end{array}\right)
+}{
+D=
+\left(\begin{array}{cc}
+D_{ij} & D_{i\beta}\\[7pt]
+D_{\alpha j}& D_{\alpha\beta}
+ \end{array}\right)=
+\left(\begin{array}{cc}
+\omega_{ij} & \d_i \theta_\beta\\[7pt]
+- \d_j\theta_\alpha & 0
+ \end{array}\right)
+}{ecuacion}\coordE{}\end{equation}
+
+\medskip
+
+\noindent
+One can check that
+\myHighlight{$det(D)=det(\omega_{ij})det(\Delta_{\alpha \beta})$}\coordHE{}.
+The matrix \myHighlight{$D^{AB}\equiv(D^{-1})^{AB}$}\coordHE{} that is inverse to \myHighlight{$D_{AB}$}\coordHE{} reads as
+\vspace{0.3cm}
+\begin{equation}\coord{}\boxEquation{
+D^{\,-1}= 
+\left(\begin{array}{cc}
+D^{ij} & D^{i\beta}\\[7pt]
+D^{\alpha j}& D^{\alpha\beta}
+ \end{array}\right)=
+\left(
+\begin{array}{cc}
+\omega^{ij}-\omega^{ik}\omega^{jl} \d_k \theta_\alpha \d_l
+\theta_\beta \Delta^{\alpha\beta} &\quad  - \omega^{il}\d_l \theta_\gamma
+\Delta^{\gamma \beta }\\[11pt]
+\omega^{jk} \d_k \theta_\gamma \Delta^{\gamma \alpha }& \quad
+\Delta^{\alpha \beta}
+\end{array}\right)
+}{
+D^{\,-1}= 
+\left(\begin{array}{cc}
+D^{ij} & D^{i\beta}\\[7pt]
+D^{\alpha j}& D^{\alpha\beta}
+ \end{array}\right)=
+\left(
+\begin{array}{cc}
+\omega^{ij}-\omega^{ik}\omega^{jl} \d_k \theta_\alpha \d_l
+\theta_\beta \Delta^{\alpha\beta} &\quad  - \omega^{il}\d_l \theta_\gamma
+\Delta^{\gamma \beta }\\[11pt]
+\omega^{jk} \d_k \theta_\gamma \Delta^{\gamma \alpha }& \quad
+\Delta^{\alpha \beta}
+\end{array}\right)
+}{ecuacion}\coordE{}\end{equation}
+
+\vspace{0.3cm}
+
+\noindent
+Note that the left upper block of the matrix is nothing but the
+Poisson bivector of the Dirac bracket on \myHighlight{$\manM$}\coordHE{} associated with
+the second-class constraints \myHighlight{$\theta_\alpha$}\coordHE{}.
+
+
+Among the constraints \myHighlight{$\Theta_A$}\coordHE{} there are constraints
+\myHighlight{$\theta_i$}\coordHE{} which are not the globally defined functions on \myHighlight{$\mod\manM$}\coordHE{};
+they transform as the components of a \myHighlight{$1$}\coordHE{}-form on \myHighlight{$\manM$}\coordHE{}.
+Consequently the Dirac bracket associated with \myHighlight{$\Theta_A$}\coordHE{}
+is not a globally defined Poisson bracket on \myHighlight{$\mod\manM$}\coordHE{}.
+However, it is well defined for \myHighlight{$p_i$}\coordHE{}-independent functions.
+\begin{prop} Let \myHighlight{$f$}\coordHE{} and \myHighlight{$g$}\coordHE{} be arbitrary functions on \myHighlight{$\manM$}\coordHE{}.
+Let \myHighlight{$\pi^*$}\coordHE{} is the  pullback associated with the bundle projection
+\myHighlight{$\pi \: \mod\manM\to  \manM$}\coordHE{}. Then
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:coincidence}
+\pb{\pi^* f}{\pi^* g}_{\mod\manM}^{D}=
+\pi^*(\pb{f}{g}_{\manM}^D\,,
+}{
+  \pb{\pi^* f}{\pi^* g}_{\mod\manM}^{D}=
+\pi^*(\pb{f}{g}_{\manM}^D\,,
+}{ecuacion}\coordE{}\end{equation}
+where the Dirac bracket in the L.H.S. is taken w.r.t. the
+constraints \myHighlight{$\Theta_A$}\coordHE{} and in the R.H.S. w.r.t. \myHighlight{$\theta_\alpha$}\coordHE{}
+only. In particular, these Dirac brackets are identical on \myHighlight{$\Sigma \subset 
+\manM$}\coordHE{}.
+\end{prop}
+Because each physical observable of the constraint system on
+\myHighlight{$\mod\manM$}\coordHE{} can be taken as a \myHighlight{$p_i$}\coordHE{}-independent function, the Proposition
+implies that the original constraint system on \myHighlight{$\manM$}\coordHE{} (determined by
+the constraints \myHighlight{$\theta_\alpha$}\coordHE{}) is equivalent with the constraint
+system on \myHighlight{$\mod\manM$}\coordHE{} (determined by the constraints \myHighlight{$\Theta_A$}\coordHE{}).
+A direct way to check the equivalence of these constraint systems is to
+observe that the constraints \myHighlight{$\Theta_A$}\coordHE{} on \myHighlight{$\mod\manM$}\coordHE{}  and \myHighlight{$\theta_\alpha$}\coordHE{}
+on \myHighlight{$\manM$}\coordHE{} determine the same constraint surface \myHighlight{$\Sigma$}\coordHE{} and
+the respective Dirac brackets \myHighlight{$\pb{}{}_{\mod\manM}^{D}$}\coordHE{} and
+\myHighlight{$\pb{}{}_{\manM}^D$}\coordHE{} coincide on \myHighlight{$\Sigma$}\coordHE{}.
+
+
+\subsection{Symplectic connection}\label{subsec:connection}
+In order to convert the second-class constraints \myHighlight{$\theta_A$}\coordHE{} into
+the first-class ones we introduce the conversion variables \myHighlight{$Y^A$}\coordHE{}
+associated to the second-class constraints.  We treat
+the variables \myHighlight{$Y^A$}\coordHE{} as coordinates on the fibres of the
+vector bundle \myHighlight{$\W(\manM)$}\coordHE{} associated to the constraints
+\myHighlight{$\Theta_A$}\coordHE{}.  This means that variables \myHighlight{$Y^A$}\coordHE{} have the transformation
+properties dual to those of \myHighlight{$\Theta_A$}\coordHE{}.  Because constraints \myHighlight{$\Theta_A$}\coordHE{}
+are split into \myHighlight{$\theta_i$}\coordHE{} and \myHighlight{$\theta_\alpha$}\coordHE{}, the vector bundle
+\myHighlight{$\W(\manM)$}\coordHE{} is a direct sum
+\begin{equation}\coord{}\boxEquation{
+\W(\manM)=T\manM\oplus \V(\manM)=T\manM \times V\,,
+}{
+\W(\manM)=T\manM\oplus \V(\manM)=T\manM \times V\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\V(\manM)$}\coordHE{} is the vector bundle associated with the constraints
+\myHighlight{$\theta_\alpha$}\coordHE{}.  Since the constraints
+\myHighlight{$\theta_\alpha\,,~~\alpha=1,\ldots,2M\,$}\coordHE{}
+are globally defined functions on \myHighlight{$\manM$}\coordHE{}, the vector bundle
+\myHighlight{$\V(\manM)$}\coordHE{} is a direct product of \myHighlight{$\manM$}\coordHE{} and \myHighlight{$2M$}\coordHE{}-dimensional
+vector space \myHighlight{$V$}\coordHE{}.
+
+The Dirac matrix \myHighlight{$D_{AB}$}\coordHE{} obviously determines a symplectic form on
+each fiber of \myHighlight{$\W(\manM)$}\coordHE{}, making \myHighlight{$\W(\manM)$}\coordHE{} into the symplectic
+vector bundle.  To convert the second-class constraints \myHighlight{$\Theta_A$}\coordHE{}
+into the first-class ones one has to extend the Poisson bracket on
+\myHighlight{$\mod\manM$}\coordHE{} to the phase space \myHighlight{$\E_0$}\coordHE{} of the extended system.  This
+in turn requires to introduce a symplectic connection in \myHighlight{$\W(\manM)$}\coordHE{}.
+
+Each symplectic vector bundle admits a symplectic connection. However,
+it is instructive to find the explicit form of the symplectic
+connection in \myHighlight{$\W(\manM)=T\manM\oplus \V(\manM)$}\coordHE{} compatible with
+the symplectic form \myHighlight{$D$}\coordHE{}.  Moreover, in what follows we need
+the specific symplectic connection \myHighlight{$\con^0$}\coordHE{} in \myHighlight{$\W(\manM)$}\coordHE{}
+which is constructed below.
+
+Introducing coefficients of \myHighlight{$\con$}\coordHE{} with lowered
+indices as
+\begin{equation}\coord{}\boxEquation{
+  \con_{AiB}=D_{AC}\con^C_{iB}\,,
+}{
+  \con_{AiB}=D_{AC}\con^C_{iB}\,,
+}{ecuacion}\coordE{}\end{equation}
+we write equation \eqref{eq:compatible-l} in components:
+\begin{equation}\coord{}\boxEquation{
+\begin{split}
+\dl{x^i} \omega_{jk}+\con_{kij}-\con_{jik}&=0\,,\\
+\ddd{}{x^i}{x^j}{\theta_\alpha}
++\con_{\alpha ij}-\con_{ji\alpha}&=0\,,\\
+\con_{\alpha i \beta}-\con_{\beta i \alpha}&=0\,,
+\end{split}
+  \label{eq:con-components}
+}{
+\begin{split}
+\dl{x^i} \omega_{jk}+\con_{kij}-\con_{jik}&=0\,,\\
+\ddd{}{x^i}{x^j}{\theta_\alpha}
++\con_{\alpha ij}-\con_{ji\alpha}&=0\,,\\
+\con_{\alpha i \beta}-\con_{\beta i \alpha}&=0\,,
+\end{split}
+  }{split}\coordE{}\end{equation}
+The first equation is that for a symplectic connection
+on \myHighlight{$\manM$}\coordHE{}. Thus it is natural to chose a particular solution
+to the first equation as
+\begin{equation}\coord{}\boxEquation{
+\con^0_{kij}=\omega_{kl}\Gamma^l_{ij}\,,
+  \label{eq:first}
+}{
+\con^0_{kij}=\omega_{kl}\Gamma^l_{ij}\,,
+  }{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\Gamma^l_{ij}$}\coordHE{} are coefficients of the fixed symmetric
+symplectic connection on \myHighlight{$\manM$}\coordHE{}.  Further, under the change of
+coordinates on \myHighlight{$\manM$}\coordHE{} the coefficients
+\myHighlight{$\con_{i j \alpha}$}\coordHE{} transform as the the components of a tensor field.
+Thus the condition \myHighlight{$\con_{ij \alpha}=0$}\coordHE{} is the invariant one and one
+can choose a particular solution of the second equation as:
+\begin{equation}\coord{}\boxEquation{
+\con^0_{ij \alpha}=0\,, \qquad
+\con^0_{\alpha i j}=-\d_i\d_j \theta_\alpha\,.
+}{
+\con^0_{ij \alpha}=0\,, \qquad
+\con^0_{\alpha i j}=-\d_i\d_j \theta_\alpha\,.
+}{ecuacion}\coordE{}\end{equation}
+Finally, we choose \myHighlight{$\con^0_{\alpha i \beta}=0$}\coordHE{}.  Thus
+we obtain the particular solution \myHighlight{$\con^0_{AiB}$}\coordHE{} for
+equations~\eqref{eq:con-components}. A general solution
+is obviously given by
+\begin{equation}\coord{}\boxEquation{
+  \con_{AiB}=\con^0_{AiB}+T_{AiB}\,, \qquad T_{AiB}-T_{BiA}=0
+  \label{eq:con-general}
+}{
+  \con_{AiB}=\con^0_{AiB}+T_{AiB}\,, \qquad T_{AiB}-T_{BiA}=0
+  }{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$T_{AiB}$}\coordHE{} is an arbitrary 1-form taking values in rank-\myHighlight{$2$}\coordHE{}
+symmetric tensors in \myHighlight{$\W(\manM)$}\coordHE{}.
+
+An explicit expression for the non-vanishing coefficients
+of \myHighlight{$\con^0$}\coordHE{} read as:
+\begin{equation}\coord{}\boxEquation{
+\label{eq:con0-explicit}
+\begin{split}
+(\con^0)^i_{jk}&=
+D^{iA}{\con^0_{Ajk}}=
+D^{il}{\con^0_{ljk}}+D^{i\alpha} {\con^0_{\alpha jk}}=
+\omega^{il}(\Gamma_{ljk}+\d_l\theta_\beta \Delta^{\beta \alpha}
+\nabla_j \nabla_k \theta_\alpha)\,,\\
+(\con^0)^\alpha_{jk}&=D^{\alpha A} \con^0_{A jk}=
+D^{\alpha l} \con^0_{ljk}
++D^{\alpha \beta} \con^0_{\beta jk}=
+-\Delta^{\alpha \beta}\nabla_j\nabla_k \theta_\beta
+\end{split}
+}{
+\begin{split}
+(\con^0)^i_{jk}&=
+D^{iA}{\con^0_{Ajk}}=
+D^{il}{\con^0_{ljk}}+D^{i\alpha} {\con^0_{\alpha jk}}=
+\omega^{il}(\Gamma_{ljk}+\d_l\theta_\beta \Delta^{\beta \alpha}
+\nabla_j \nabla_k \theta_\alpha)\,,\\
+(\con^0)^\alpha_{jk}&=D^{\alpha A} \con^0_{A jk}=
+D^{\alpha l} \con^0_{ljk}
++D^{\alpha \beta} \con^0_{\beta jk}=
+-\Delta^{\alpha \beta}\nabla_j\nabla_k \theta_\beta
+\end{split}
+}{split}\coordE{}\end{equation}
+One can see that the coefficients \myHighlight{$(\con^0)^i_{jk}$}\coordHE{} coincide with those of
+the Dirac connection on \myHighlight{$\manM$}\coordHE{} given by~\eqref{eq:Dirac-con}. Indeed,
+\myHighlight{$D^{ij}$}\coordHE{} is nothing but the Poisson bivector of the Dirac bracket on
+\myHighlight{$\manM$}\coordHE{}; compatibility condition~\eqref{eq:compatible} then implies:
+\begin{equation}\coord{}\boxEquation{
+\Dcon-d_i D^{jk}=\d_i D^{jk}+(\con^0)^j_{im}D^{mk}+(\con^0)^k_{im}D^{jm}=0\,,
+}{
+\Dcon-d_i D^{jk}=\d_i D^{jk}+(\con^0)^j_{im}D^{mk}+(\con^0)^k_{im}D^{jm}=0\,,
+}{ecuacion}\coordE{}\end{equation}
+since the coefficients \myHighlight{$(\con^0)^j_{i\alpha}$}\coordHE{} vanish. This allows one
+to consider the Dirac connection on \myHighlight{$\manM$}\coordHE{} as the restriction
+of \myHighlight{$\con^0$}\coordHE{} in \myHighlight{$\W(\manM)$}\coordHE{} to \myHighlight{$T\manM\subset \W(\manM)$}\coordHE{}.
+
+Let us also write in components the Riemann curvature
+of \myHighlight{$\con^0$}\coordHE{}. The Riemann tensor with lowered indices is determined by
+\begin{equation}\coord{}\boxEquation{
+  \begin{split}
+    {\bar R}^0_{ij;AB}&~=~D_{AC}(R^0)^C_{ij\,B}~=\\
+=~&\d_i \con^0_{AjB}-\d_j \con^0_{AiB}+\con^0_{CiA}D^{CD}\con^0_{DjB}
+-\con^0_{CjA}D^{CD}\con^0_{DiB}\,.
+  \end{split}
+}{
+  \begin{split}
+    {\bar R}^0_{ij;AB}&~=~D_{AC}(R^0)^C_{ij\,B}~=\\
+=~&\d_i \con^0_{AjB}-\d_j \con^0_{AiB}+\con^0_{CiA}D^{CD}\con^0_{DjB}
+-\con^0_{CjA}D^{CD}\con^0_{DiB}\,.
+  \end{split}
+}{split}\coordE{}\end{equation}
+The only non-vanishing components of \myHighlight{$R^0_{ij;AB}$}\coordHE{} are
+given by:
+\begin{multline}\coord{}\boxAlignEqnarray{
+    {\rightCoord{}\leftCoord{}\bar R}^0_{\rightCoord{}ij;kl}~~=~~\d_i \con^0_{\rightCoord{}kjl}-
+\leftCoord{}\d_j \con^0_{\rightCoord{}kil}+
+\leftCoord{}\con^0_{\rightCoord{}Aik}D^{AB}\con^0_{\rightCoord{}Bjl}-
+\leftCoord{}\con^0_{\rightCoord{}Ajk}D^{AB}\con^0_{\rightCoord{}Bil}~~=\rightCoord{}\\
+\leftCoord{}=~~R_{\rightCoord{}ij;\,kl}+
+\leftCoord{}(\nabla_{\rightCoord{}i}\nabla_{\rightCoord{}k}\theta_\alpha)
+\leftCoord{}\Delta^{\alpha\beta}
+\leftCoord{}(\nabla_{\rightCoord{}j}\nabla_{\rightCoord{}l}\theta_\beta)-
+\leftCoord{}(\nabla_{\rightCoord{}j}\nabla_{\rightCoord{}k}\theta_\alpha)
+\leftCoord{}\Delta^{\alpha\beta}
+\leftCoord{}(\nabla_{\rightCoord{}i}\nabla_{\rightCoord{}l}\theta_\beta)\,,
+}{0mm}{11}{19}{
+    {\bar R}^0_{ij;kl}~~=~~\d_i \con^0_{kjl}-
+\d_j \con^0_{kil}+
+\con^0_{Aik}D^{AB}\con^0_{Bjl}-
+\con^0_{Ajk}D^{AB}\con^0_{Bil}~~=\\
+=~~R_{ij;\,kl}+
+(\nabla_{i}\nabla_{k}\theta_\alpha)
+\Delta^{\alpha\beta}
+(\nabla_{j}\nabla_{l}\theta_\beta)-
+(\nabla_{j}\nabla_{k}\theta_\alpha)
+\Delta^{\alpha\beta}
+(\nabla_{i}\nabla_{l}\theta_\beta)\,,
+}{0}\coordE{}\end{multline}
+where \myHighlight{$R_{ij;\,kl}$}\coordHE{} is the Riemannian curvature of the symplectic
+connection \myHighlight{$\Gamma$}\coordHE{} from~\eqref{eq:first}. 
+
+In what follows it goes without saying that the vector bundle
+associated with constraints \myHighlight{$\Theta_A$}\coordHE{} is a direct sum
+\myHighlight{$T\manM \oplus \V(\manM)=T\manM \times V$}\coordHE{} and is equipped with
+the symplectic connection \myHighlight{$\con$}\coordHE{}.  We also reserve
+notations \myHighlight{$\con^0$}\coordHE{} and \myHighlight{${\bar R}^0$}\coordHE{} for the specific symplectic
+connection given by \eqref{eq:con0-explicit} and its curvature.
+
+\subsection{Extended phase space}\label{subsec:extended-phase-space}
+
+Recall (see subsection~\bref{subsec:symplectic}) that given
+a symplectic vector bundle \myHighlight{$\W(\manN)$}\coordHE{} endowed with a symplectic
+connection \myHighlight{$\mcon$}\coordHE{} and a symplectic form \myHighlight{$\mD$}\coordHE{} one can equip
+\myHighlight{$\W(\manN)\oplus \mod\manN$}\coordHE{} with the symplectic structure.
+Specifying this general construction to the vector bundle
+\myHighlight{$\W(\manM)=T\manM \times V$}\coordHE{} equipped with the symplectic form \myHighlight{$D$}\coordHE{} and
+the connection \myHighlight{$\con$}\coordHE{} one arrives at the following symplectic structure on
+the phase space \myHighlight{$\E_0=\mod\manM\oplus\W(\manM)$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+\label{eq:symplectic-E0}
+\begin{split}
+  \omega^{{\,\E_0}}~~=~~\pi^*\omega~+~&  2dp_i \wedge dx^i ~~+\\
+ & +~~ D_{AB}dY^A\wedge dY^B~+~Y^A Y^B d \con_{AB}~-~2Y^A\con_{AB}
+  \wedge dY^B\,.
+\end{split}
+}{
+\begin{split}
+  \omega^{{\,\E_0}}~~=~~\pi^*\omega~+~&  2dp_i \wedge dx^i ~~+\\
+ & +~~ D_{AB}dY^A\wedge dY^B~+~Y^A Y^B d \con_{AB}~-~2Y^A\con_{AB}
+  \wedge dY^B\,.
+\end{split}
+}{split}\coordE{}\end{equation}
+
+
+Our aim is to construct an effective first-class constraint theory
+on \myHighlight{$\E_0$}\coordHE{} by converting the second-class constraints \myHighlight{$\Theta_A$}\coordHE{}
+into the first-class ones.  At the classical level, the conversion is
+achieved by continuation of the constraints \myHighlight{$\Theta_A$}\coordHE{} into the new
+constraints \myHighlight{$T_A$}\coordHE{} defined on \myHighlight{$\E_0$}\coordHE{} such that
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:determin}
+\pb{T_A}{T_B}_{\E_0}=0\,, \qquad T_A|_{Y^A=0}=\Theta_A\,.
+}{
+  \pb{T_A}{T_B}_{\E_0}=0\,, \qquad T_A|_{Y^A=0}=\Theta_A\,.
+}{ecuacion}\coordE{}\end{equation}
+The constraints \myHighlight{$T_A$}\coordHE{} are understood as formal power series in \myHighlight{$Y^A$}\coordHE{}
+\begin{equation}\coord{}\boxEquation{
+  T_A=\sum_{s=0}^{\infty}T^s_{A}\,,\qquad T^0_A=\Theta_A\,,\quad
+  T^s_A=T^s_{A\, B_1,\ldots , B_s}(x)Y^{B_1},\ldots , Y^{B_s}\,,
+  \label{eq:T-exp}
+}{
+  T_A=\sum_{s=0}^{\infty}T^s_{A}\,,\qquad T^0_A=\Theta_A\,,\quad
+  T^s_A=T^s_{A\, B_1,\ldots , B_s}(x)Y^{B_1},\ldots , Y^{B_s}\,,
+  }{ecuacion}\coordE{}\end{equation}
+where the coefficients \myHighlight{$T^s_{A B_1,\ldots , B_s}$}\coordHE{}
+are assumed to be \myHighlight{$p_i$}\coordHE{}-independent functions.
+
+
+In spite of the fact that the constraints \myHighlight{$T_A$}\coordHE{} are Abelian,
+it is useful to proceed within the BFV-BRST approach.
+Accordingly, we introduce the  ghost variables \myHighlight{$\cc^A$}\coordHE{} and
+\myHighlight{$\cP_A\,, A=1\,,\ldots\,,2M+2N$}\coordHE{} associated to the constraints \myHighlight{$T_A$}\coordHE{}.
+The variables \myHighlight{$\cc^A$}\coordHE{} and \myHighlight{$\cP_A$}\coordHE{} are Grassmann odd ones.
+The ghost number grading is introduced by
+\begin{equation}\coord{}\boxEquation{
+\gh{\cc^A}=1\,,\qquad \gh{\cP_A}=-1\,,
+  \label{eq:ghost}
+}{
+\gh{\cc^A}=1\,,\qquad \gh{\cP_A}=-1\,,
+  }{ecuacion}\coordE{}\end{equation}
+with all the others variables carrying vanishing ghost
+number.
+
+
+
+It is natural to consider the ghost variables \myHighlight{$\cc$}\coordHE{} and \myHighlight{$\cP$}\coordHE{}
+as coordinates on the fibres of the respective vector bundle \myHighlight{$\Pi\W(\manM)$}\coordHE{}
+and \myHighlight{$\Pi\W^*(\manM)$}\coordHE{}.  Here, \myHighlight{$\Pi$}\coordHE{} denotes parity
+reversing operation; when applied to a vector bundle it transform the
+bundle into the super vector bundle with the same base manifold and
+the transition functions and the fibres being the Grassmann odd
+vector superspaces.
+
+
+In the BFV-BRST quantization one needs to extend the Poisson structure
+on the phase space to the ghost variables, with the variables
+\myHighlight{$\cc^A$}\coordHE{} and \myHighlight{$\cP_A$}\coordHE{} being canonically conjugated w.r.t.
+the bracket.  To this end we consider the following extension of the phase
+space \myHighlight{$\E_0$}\coordHE{}
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:extended-E}
+\E=\mod(\Pi\W(\manM))\oplus \W(\Pi\W(\manM))\,,
+}{
+  \E=\mod(\Pi\W(\manM))\oplus \W(\Pi\W(\manM))\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\W(\Pi\W(\manM))$}\coordHE{} is the vector bundle \myHighlight{$\W(\manM)$}\coordHE{} pulled back by
+the projection \myHighlight{$\rho\: \Pi\W(\manM) \to \manM$}\coordHE{} and 
+\myHighlight{$\oplus$}\coordHE{} denotes the direct sum of vector bundles over
+\myHighlight{$\Pi\W(\manM)$}\coordHE{}.  Note also that construction of modified cotangent
+bundle over \myHighlight{$\Pi\W(\manM)$}\coordHE{} involves the closed 2-form \myHighlight{$\rho^*\omega$}\coordHE{}
+defined on \myHighlight{$\Pi\W(\manM)$}\coordHE{}, which is the symplectic form on \myHighlight{$\manM$}\coordHE{}
+pulled back by the bundle projection \myHighlight{$\rho$}\coordHE{}.
+Identifying \myHighlight{$\cc^A$}\coordHE{} with the coordinates on the fibres of
+\myHighlight{$\Pi\W(\manM)$}\coordHE{} and \myHighlight{$\cP_A$}\coordHE{} with their conjugate momenta one can indeed
+see that when \myHighlight{$\cc^A=\cP_A=0$}\coordHE{} extended phase space \myHighlight{$\E$}\coordHE{} reduces to
+\myHighlight{$\E_0=\mod\manM\oplus \W(\manM)$}\coordHE{}. Symplectic
+structure~\eqref{eq:symplectic-E0} can be easily extended to \myHighlight{$\E$}\coordHE{} by
+\begin{equation}\coord{}\boxEquation{
+\label{eq:symplectic-E}
+\begin{aligned}
+\omega^{\,_{\E}}~~=~~~&\pi^*\omega+2dp_i \wedge dx^i+2d\cP_A \wedge d\cc^A+\\
+&+~~D_{AB}dY^A\wedge dY^B +
+Y^A Y^B d \con_{AB}
+-2Y^A\con_{AB} \wedge dY^B\,.
+\end{aligned}
+}{
+\begin{aligned}
+\omega^{\,_{\E}}~~=~~~&\pi^*\omega+2dp_i \wedge dx^i+2d\cP_A \wedge d\cc^A+\\
+&+~~D_{AB}dY^A\wedge dY^B +
+Y^A Y^B d \con_{AB}
+-2Y^A\con_{AB} \wedge dY^B\,.
+\end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\pi^*$}\coordHE{} is the pullback associated with \myHighlight{$\pi\: \E \to \manM$}\coordHE{}.
+The respective Poisson bracket relations are as follows
+\begin{equation}\coord{}\boxEquation{
+  \begin{split}
+    \pb{x^i}{p_j}_{\E}&=\delta^i_j\,, \\
+    \pb{Y^A}{Y^B}_{\E}&=D^{AB}\,,\\
+    \pb{Y^A}{p_i}_{\E}&=-\con^A_{iB}Y^B\,,\\
+    \pb{\cc^A}{\cP_B}_{\E}&=\delta^A_B\,, \\
+    \pb{p_i}{p_j}_{\E}&=\omega_{ij}+{\half}R_{ij;\,AB\,}Y^AY^B\,,
+  \end{split}
+  \label{eq:PB-E}
+}{
+  \begin{split}
+    \pb{x^i}{p_j}_{\E}&=\delta^i_j\,, \\
+    \pb{Y^A}{Y^B}_{\E}&=D^{AB}\,,\\
+    \pb{Y^A}{p_i}_{\E}&=-\con^A_{iB}Y^B\,,\\
+    \pb{\cc^A}{\cP_B}_{\E}&=\delta^A_B\,, \\
+    \pb{p_i}{p_j}_{\E}&=\omega_{ij}+{\half}R_{ij;\,AB\,}Y^AY^B\,,
+  \end{split}
+  }{split}\coordE{}\end{equation}
+with all the others vanishing.  This Poisson bracket can be thought
+of as that given by \eqref{eq:extended-PB}, with \myHighlight{$\manN=\Pi\W(\manM)$}\coordHE{}.
+This shows that~\eqref{eq:PB-E} determines a globally defined Poisson
+bracket on \myHighlight{$\E$}\coordHE{}.
+
+
+To complete the description of the extended phase space
+we specify a class of functions on this space.
+Instead of smooth (\myHighlight{$\func{\E}$}\coordHE{}) functions we consider
+those wich are formal power series in \myHighlight{$Y,\cc,\cP$}\coordHE{} and
+polynomial in \myHighlight{$p$}\coordHE{} with coefficients in smooth functions
+on \myHighlight{$\manM$}\coordHE{}.  The reason is that variables \myHighlight{$Y$}\coordHE{} serve as the \textit{conversion
+variables} and one should allow formal power series in \myHighlight{$Y$}\coordHE{}.  As for
+the ghost variables \myHighlight{$\cc$}\coordHE{} and \myHighlight{$\cP$}\coordHE{}, each function is always a
+polynomial in \myHighlight{$\cc$}\coordHE{} and \myHighlight{$\cP$}\coordHE{} since they are Grassmann odd. Let us
+note, however, that in the case where \myHighlight{$\manM$}\coordHE{} is a supermanifold one
+should allow formal power series in respective ghost variables.  In
+what follows it goes without saying that under the algebra \myHighlight{$\cF(\E)$}\coordHE{}
+of ``functions'' on \myHighlight{$\E$}\coordHE{} we mean the algebra of the power series described
+above. \myHighlight{$\cF(\E)$}\coordHE{} is thus the algebra of sections of an appropriate
+bundle over \myHighlight{$\manM$}\coordHE{}.  One can check that Poisson
+bracket~\eqref{eq:PB-E} is well defined in \myHighlight{$\cF(\E)$}\coordHE{}.
+
+\subsection{Conversion -- classical description}
+
+Now we are in position to proceed with the conversion
+of the second-class constraints \myHighlight{$\Theta_A$}\coordHE{} within the BRST
+formalism.  A conversion is to be understood as
+the solution of the master equation
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:master-cl}
+  \pb{\Omega}{\Omega}=0\,, \qquad \p{\Omega}=1\,, \quad \gh{\Omega}=1\,,
+}{
+  \pb{\Omega}{\Omega}=0\,, \qquad \p{\Omega}=1\,, \quad \gh{\Omega}=1\,,
+}{ecuacion}\coordE{}\end{equation}
+(with \myHighlight{$\p{\Omega}$}\coordHE{} denoting Grassmann parity of \myHighlight{$\Omega$}\coordHE{})
+subjected to the boundary condition
+\begin{equation}\coord{}\boxEquation{
+\label{eq:boundary-cl}
+\Omega|_{Y=0}=\Omega^0=\cc^A\Theta_A=-\cc^ip_i+\cc^\alpha\theta_\alpha\,.
+}{
+\Omega|_{Y=0}=\Omega^0=\cc^A\Theta_A=-\cc^ip_i+\cc^\alpha\theta_\alpha\,.
+}{ecuacion}\coordE{}\end{equation}
+Let us expand \myHighlight{$\Omega$}\coordHE{} into the sum of homogeneous
+components w.r.t. \myHighlight{$Y^A$}\coordHE{}
+\begin{equation}\coord{}\boxEquation{
+  \Omega=\sum_{s=0}^\infty \Omega^s\,,
+}{
+  \Omega=\sum_{s=0}^\infty \Omega^s\,,
+}{ecuacion}\coordE{}\end{equation}
+and assume
+that \myHighlight{$\Omega^r$}\coordHE{} do to depend on momenta \myHighlight{$p_i$}\coordHE{} and ghost
+momenta \myHighlight{$\cP^A$}\coordHE{} for \myHighlight{$r \geq 1$}\coordHE{}.  To construct solution iteratively it is useful to
+fix also the first-order term by
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:1-2-terms}
+\Omega^1 = -\,C^A D_{AB}Y^B\,,
+}{
+  \Omega^1 = -\,C^A D_{AB}Y^B\,,
+}{ecuacion}\coordE{}\end{equation}
+and to introduce a nilpotent operator \myHighlight{$\delta$}\coordHE{}
+~\cite{[BT],[Fedosov-JDG],[GL]}:
+\begin{equation}\coord{}\boxEquation{
+  \delta f = \cc^A\dl{Y^A} f\,,\qquad  \delta^2=\delta\delta=0\,.
+}{
+  \delta f = \cc^A\dl{Y^A} f\,,\qquad  \delta^2=\delta\delta=0\,.
+}{ecuacion}\coordE{}\end{equation}
+If \myHighlight{$f$}\coordHE{} doesn't depend on the momenta \myHighlight{$p_i$}\coordHE{} and \myHighlight{$\cP_A$}\coordHE{} then
+\begin{equation}\coord{}\boxEquation{
+  \delta f = -\,\pb{\Omega^1}{f}_\E\,,  \qquad f=f(x,Y,\cc)\,.
+}{
+  \delta f = -\,\pb{\Omega^1}{f}_\E\,,  \qquad f=f(x,Y,\cc)\,.
+}{ecuacion}\coordE{}\end{equation}
+
+
+An operator \myHighlight{$\delta^*$}\coordHE{} is introduced by its action on the
+homogeneous functions of the form
+\begin{equation}\coord{}\boxEquation{
+  f_{pq}=f_{A_1,\ldots,A_p\,;\,B_1,\ldots,B_q}(x)\,Y^{A_1}\ldots Y^{A_p}
+\cc^{B_1}\ldots \cc^{B_q}
+}{
+  f_{pq}=f_{A_1,\ldots,A_p\,;\,B_1,\ldots,B_q}(x)\,Y^{A_1}\ldots Y^{A_p}
+\cc^{B_1}\ldots \cc^{B_q}
+}{ecuacion}\coordE{}\end{equation}
+by means of
+\begin{equation}\coord{}\boxEquation{
+\begin{split}
+  \delta^* f_{pq}&=\frac{1}{p+q}Y^A \dl{\cc^A}f_{pq}\,,  \qquad p+q \neq 0 \\
+ \qquad \delta^* f_{00}&=0\,.
+\end{split}
+}{
+\begin{split}
+  \delta^* f_{pq}&=\frac{1}{p+q}Y^A \dl{\cc^A}f_{pq}\,,  \qquad p+q \neq 0 \\
+ \qquad \delta^* f_{00}&=0\,.
+\end{split}
+}{split}\coordE{}\end{equation}
+The operator \myHighlight{$\delta$}\coordHE{} is in some sense inverse to \myHighlight{$\delta$}\coordHE{}
+and serve as a contracting homotopy for \myHighlight{$\delta$}\coordHE{}. Indeed,
+\begin{equation}\coord{}\boxEquation{
+f|_{Y=\cc=0}+\delta\delta^* f + \delta^*\delta  f = f\,.
+}{
+f|_{Y=\cc=0}+\delta\delta^* f + \delta^*\delta  f = f\,.
+}{ecuacion}\coordE{}\end{equation}
+
+\begin{thm}\label{thm:existence-cl}
+Given the second-class constraints \myHighlight{$\theta_\alpha$}\coordHE{} on \myHighlight{$\manM$}\coordHE{} and
+symplectic connection \myHighlight{$\con$}\coordHE{} in \myHighlight{$\W(\manM)$}\coordHE{} there exists solution to
+the Eq. \eqref{eq:master-cl} satisfying boundary conditions
+\eqref{eq:boundary-cl} and \eqref{eq:1-2-terms}.  If in addition one
+requires \myHighlight{$\delta^*\Omega^r=0$}\coordHE{} and \myHighlight{$\Omega^r=\Omega^r(x,Y,\cc)$}\coordHE{} for \myHighlight{$r
+\geq 2$}\coordHE{} the solution is unique.
+\end{thm}
+\begin{proof}
+In the zeroth order in \myHighlight{$Y$}\coordHE{} equation~\eqref{eq:master-cl}
+implies
+\begin{equation}\coord{}\boxEquation{
+\begin{split}
+\pb{\Omega^0}{\Omega^0}_\E |_{Y=0} +\pb{\Omega^1}{\Omega^1}_\E=0\,.
+\end{split}
+}{
+\begin{split}
+\pb{\Omega^0}{\Omega^0}_\E |_{Y=0} +\pb{\Omega^1}{\Omega^1}_\E=0\,.
+\end{split}
+}{split}\coordE{}\end{equation}
+This holds provided the boundary conditions~\eqref{eq:boundary-cl} and
+\eqref{eq:1-2-terms} are compatible.  In the \myHighlight{$r$}\coordHE{}-th (\myHighlight{$r \geq 1$}\coordHE{}) order
+in \myHighlight{$Y$}\coordHE{}
+\eqref{eq:master-cl} implies:
+\begin{equation}\coord{}\boxEquation{
+\label{eq:determin-cl}
+\delta\Omega^{r+1}=B^r\,,
+}{
+\delta\Omega^{r+1}=B^r\,,
+}{ecuacion}\coordE{}\end{equation}
+where the quantity \myHighlight{$B^r$}\coordHE{} is given by
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:B-explicit}
+  \begin{split}
+B^1&=\pb{\Omega^0}{\Omega^1}_\E\,,\\[3pt]
+B^2&=\pb{\Omega^0}{\Omega^2}_\E
++\half \pb{\Omega^2}{\Omega^2}_\E+
+\frac{1}{4}\cc^i \cc^j  {\bar R}_{ij;\, A B} Y^A Y^B\,,\\
+B^r&=\pb{\Omega^0}{\Omega^r}_\E+\half\sum_{s=0}^{r-2}
+\pb{\Omega^{s+2}}{\Omega^{r-s}}_\E\,,\quad r\geq 3\,,
+\end{split}
+}{
+  \begin{split}
+B^1&=\pb{\Omega^0}{\Omega^1}_\E\,,\\[3pt]
+B^2&=\pb{\Omega^0}{\Omega^2}_\E
++\half \pb{\Omega^2}{\Omega^2}_\E+
+\frac{1}{4}\cc^i \cc^j  {\bar R}_{ij;\, A B} Y^A Y^B\,,\\
+B^r&=\pb{\Omega^0}{\Omega^r}_\E+\half\sum_{s=0}^{r-2}
+\pb{\Omega^{s+2}}{\Omega^{r-s}}_\E\,,\quad r\geq 3\,,
+\end{split}
+}{split}\coordE{}\end{equation}
+and we have assumed that \myHighlight{$\Omega^r=\Omega^r(x,Y,\cc)$}\coordHE{} for \myHighlight{$r\geq 2$}\coordHE{}.
+The necessary and sufficient condition for Eq. \eqref{eq:determin-cl}
+to have a solution is \myHighlight{$\delta B^r=0$}\coordHE{}. Let us first show explicitly that
+\myHighlight{$\delta B^1=0$}\coordHE{}. Indeed, in view of the zeroth order equation
+\begin{equation}\coord{}\boxEquation{
+  \begin{split}
+\delta B^1=\delta\pb{\Omega^0}{\Omega^1}=-\pb{\Omega^1}{\pb{\Omega^1}{\Omega^0}}=
+{-\, \frac{1}{2}}\pb{\pb{\Omega^1}{\Omega^1}_\E}{\Omega^0}_\E=\\
+=\half\pb{\pb{\Omega^0}{\Omega^0}_\E{\bigr|}_{Y=0}}{\Omega^0}_\E=0\,.
+\end{split}
+}{
+  \begin{split}
+\delta B^1=\delta\pb{\Omega^0}{\Omega^1}=-\pb{\Omega^1}{\pb{\Omega^1}{\Omega^0}}=
+{-\, \frac{1}{2}}\pb{\pb{\Omega^1}{\Omega^1}_\E}{\Omega^0}_\E=\\
+=\half\pb{\pb{\Omega^0}{\Omega^0}_\E{\bigr|}_{Y=0}}{\Omega^0}_\E=0\,.
+\end{split}
+}{split}\coordE{}\end{equation}
+Then a particular solution for \myHighlight{$\Omega^2$}\coordHE{} is
+\begin{equation}\coord{}\boxEquation{
+  \Omega^2=\delta^*\pb{\Omega^0}{\Omega^1}\,.
+}{
+  \Omega^2=\delta^*\pb{\Omega^0}{\Omega^1}\,.
+}{ecuacion}\coordE{}\end{equation}
+
+The proof of the statement goes further along the standard
+induction procedure~\cite{[BT],[GL]}: one can first check that
+\myHighlight{$\delta B^s=0$}\coordHE{} provided \myHighlight{$\Omega^r$}\coordHE{} satisfy \eqref{eq:determin-cl}
+for \myHighlight{$r\leq s-1$}\coordHE{}; one then finds:
+\begin{equation}\coord{}\boxEquation{
+\Omega^{s+1}=\delta^*B^s\,.
+}{
+\Omega^{s+1}=\delta^*B^s\,.
+}{ecuacion}\coordE{}\end{equation}
+Finally, one can check that \myHighlight{$\Omega^{s+1}=\delta^*B^s$}\coordHE{} is a unique
+solution of Eq.~\eqref{eq:determin-cl} for \myHighlight{$r=s$}\coordHE{} provided the
+additional condition \myHighlight{$\delta^* \Omega^{s+1}=0$}\coordHE{} is imposed
+and \myHighlight{$\gh{{\Omega^{s+1}}}=1$}\coordHE{}.
+\end{proof}
+The statement implies that we have arrived at the first-class
+constraint theory whose extended phase space is \myHighlight{$\E$}\coordHE{}.
+Since under the additional condition
+\myHighlight{$\delta^*\Omega^r=0\,,\, r \geq 2$}\coordHE{} classical BRST charge
+is unique and is obviously linear in \myHighlight{$\cc$}\coordHE{}, this first
+class constraint system is an Abelian one.
+
+
+\subsection{BRST cohomology}
+By definition, an observable of the
+BFV-BRST system determined by the BRST charge
+\myHighlight{$\Omega$}\coordHE{} is a function \myHighlight{$f$}\coordHE{} on the extended phase
+space satisfying
+\begin{equation}\coord{}\boxEquation{
+\pb{\Omega}{f}_\E=0\,, \qquad \gh{f}=0\,.
+}{
+\pb{\Omega}{f}_\E=0\,, \qquad \gh{f}=0\,.
+}{ecuacion}\coordE{}\end{equation}
+Two observables \myHighlight{$f$}\coordHE{} and \myHighlight{$g$}\coordHE{} are said equivalent iff their difference
+is BRST exact, i.e. \myHighlight{$f-g=\pb{\Omega}{h}_\E=0$}\coordHE{} for some function
+\myHighlight{$h\in\cF(\E)$}\coordHE{}. The space of inequivalent observables of the system is
+thus the BRST cohomology with ghost number zero (i.e. quotient of the
+BRST closed functions with zero ghost number modulo exact ones).  Let
+us now investigate the structure of the BRST cohomology of the BFV
+system on \myHighlight{$\E$}\coordHE{} determined by the BRST charge \myHighlight{$\Omega$}\coordHE{} constructed in
+\bref{thm:existence-cl}.
+\begin{prop}\label{prop:extension-cl}
+\begin{enumerate}
+\item 
+Let \myHighlight{$f_0$}\coordHE{} be an arbitrary \myHighlight{$Y$}\coordHE{}-independent function (i.e. a function of
+\myHighlight{$x,p,\cc,\cP$}\coordHE{} only) of a nonnegative ghost number. Then there exist
+function \myHighlight{$f$}\coordHE{} on \myHighlight{$\E$}\coordHE{} such that
+\begin{equation}\coord{}\boxEquation{
+\label{eq:c-extension}
+\pb{\Omega}{f}_{\E}=0\,, \quad f{\bigr|}_{Y=0}=f_0\,,\qquad \gh{f}=\gh{f_0}\,.
+}{
+\pb{\Omega}{f}_{\E}=0\,, \quad f{\bigr|}_{Y=0}=f_0\,,\qquad \gh{f}=\gh{f_0}\,.
+}{ecuacion}\coordE{}\end{equation}
+Moreover, if \myHighlight{$\tilde f$}\coordHE{} also satisfies \eqref{eq:c-extension} then
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:c-arbitrarines}
+{\tilde f} -f =\pb{\Omega}{g}
+}{
+  {\tilde f} -f =\pb{\Omega}{g}
+}{ecuacion}\coordE{}\end{equation}
+for some function \myHighlight{$g$}\coordHE{} on \myHighlight{$\E$}\coordHE{}.
+\item If in addition one requires \myHighlight{$f$}\coordHE{} to satisfy \myHighlight{$\delta^* (f-f_0)=0$}\coordHE{}
+then \myHighlight{$f$}\coordHE{} is the unique solution to~\eqref{eq:c-extension}.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Let us expand the adjoint action \myHighlight{$\pb{\Omega}{\cdot}_\E$}\coordHE{} of the BRST
+charge and the function \myHighlight{$f$}\coordHE{} into the sum of homogeneous components
+w.r.t. \myHighlight{$Y$}\coordHE{}
+\begin{equation}\coord{}\boxEquation{
+\pb{\Omega}{\cdot}_\E=-\,\delta+\sum_{s=0}^\infty \delta_s\,, \qquad
+f=\sum_{s=0}^\infty f_s\,,
+}{
+\pb{\Omega}{\cdot}_\E=-\,\delta+\sum_{s=0}^\infty \delta_s\,, \qquad
+f=\sum_{s=0}^\infty f_s\,,
+}{ecuacion}\coordE{}\end{equation}
+with \myHighlight{$\delta=\cc^A\dl{Y^A}$}\coordHE{}.  In the \myHighlight{$r$}\coordHE{}-th order in \myHighlight{$Y$}\coordHE{}
+equation \eqref{eq:c-extension} then becomes
+\begin{equation}\coord{}\boxEquation{
+\label{eq:determin-cl2}
+\delta f_{r+1}=B_r\,,
+}{
+\delta f_{r+1}=B_r\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$B_r$}\coordHE{} is given by
+\begin{equation}\coord{}\boxEquation{
+  B_r=\sum_{s=0}^r \delta_s f_{r-s}\,.
+}{
+  B_r=\sum_{s=0}^r \delta_s f_{r-s}\,.
+}{ecuacion}\coordE{}\end{equation}
+The consistency condition for equation~\eqref{eq:determin-cl2} is
+\myHighlight{$\delta B_r=0$}\coordHE{}.  Let us show that \myHighlight{$\delta B_p=0$}\coordHE{} provided
+\eqref{eq:determin-cl2} is fulfilled for any \myHighlight{$r\leq p$}\coordHE{} and \myHighlight{$f_0$}\coordHE{}
+carries nonnegative ghost number.  Indeed, in the zeroth order in \myHighlight{$Y$}\coordHE{}
+\eqref{eq:determin-cl2} rewrites as
+\begin{equation}\coord{}\boxEquation{
+  \delta f_1=\delta_0 f_0\,.
+}{
+  \delta f_1=\delta_0 f_0\,.
+}{ecuacion}\coordE{}\end{equation}
+The consistency condition is obviously fulfilled since
+\begin{equation}\coord{}\boxEquation{
+  \delta B_0=\delta \delta_0 f_0=-\delta_0 \delta f_0=0\,.
+}{
+  \delta B_0=\delta \delta_0 f_0=-\delta_0 \delta f_0=0\,.
+}{ecuacion}\coordE{}\end{equation}
+The later equality follows because \myHighlight{$f_0$}\coordHE{} is independent of \myHighlight{$Y$}\coordHE{}.
+Assume that \myHighlight{$f_r$}\coordHE{} are given for \myHighlight{$r \leq p$}\coordHE{} and
+equation \eqref{eq:determin-cl2} is fulfiled for \myHighlight{$r \leq p-1$}\coordHE{}.
+Consider then the identity:
+\begin{equation}\coord{}\boxEquation{
+\label{eq:identity}
+\pb{\Omega}{\pb{\Omega}{\sum_{s=0}^p f_s}_\E}_\E =
+(-\,\delta+\sum_{q=0}^\infty \delta_q)
+(-\,\delta+\sum_{t=0}^\infty \delta_t)\sum_{s=0}^p f_s=0\,.
+}{
+\pb{\Omega}{\pb{\Omega}{\sum_{s=0}^p f_s}_\E}_\E =
+(-\,\delta+\sum_{q=0}^\infty \delta_q)
+(-\,\delta+\sum_{t=0}^\infty \delta_t)\sum_{s=0}^p f_s=0\,.
+}{ecuacion}\coordE{}\end{equation}
+One can see that
+\begin{equation}\coord{}\boxEquation{
+(-\,\delta+\sum_{t=0}^\infty \delta_t)\sum_{s=0}^p f_s=B_p+\ldots
+}{
+(-\,\delta+\sum_{t=0}^\infty \delta_t)\sum_{s=0}^p f_s=B_p+\ldots
+}{ecuacion}\coordE{}\end{equation}
+were \myHighlight{$\ldots$}\coordHE{} denote terms of order higher than \myHighlight{$p$}\coordHE{}.
+In the \myHighlight{$p-1$}\coordHE{}-th order in \myHighlight{$Y$}\coordHE{} Eq. \eqref{eq:identity}
+then implies: \myHighlight{$\delta B_p=0$}\coordHE{}.
+
+
+That \myHighlight{$\delta B_p=0$}\coordHE{} allows one to construct
+solution iteratively:
+\begin{equation}\coord{}\boxEquation{
+f_{p+1}=\delta^*B_p\,.
+}{
+f_{p+1}=\delta^*B_p\,.
+}{ecuacion}\coordE{}\end{equation}
+One can indeed check that
+\begin{equation}\coord{}\boxEquation{
+\delta f_{p+1}=\delta \delta^* B_p=
+\delta \delta^* B_p+\delta^* \delta B_p +B_p{\bigr|}_{\cc=Y=0}=B_p\,,
+}{
+\delta f_{p+1}=\delta \delta^* B_p=
+\delta \delta^* B_p+\delta^* \delta B_p +B_p{\bigr|}_{\cc=Y=0}=B_p\,,
+}{ecuacion}\coordE{}\end{equation}
+since \myHighlight{$\delta B_p=0$}\coordHE{} and \myHighlight{$B_p{\bigr|}_{\cc=Y=0}=0$}\coordHE{}.  The later
+equality is obvious for \myHighlight{$p \geq 1$}\coordHE{}; the fact that
+\myHighlight{$B_0{\bigr|}_{\cc=Y=0}=(\delta_0 f_0){\bigr|}_{\cc=Y=0}=0$}\coordHE{}
+follows because \myHighlight{$f_0$}\coordHE{} has a nonnegative ghost number.
+Thus the first part of the statement is proved.
+
+
+Further, let \myHighlight{$f$}\coordHE{} and \myHighlight{$\tilde f$}\coordHE{} satisfy~\eqref{eq:c-extension}.
+Assume that \myHighlight{$f_s={\tilde  f}_s$}\coordHE{} for any \myHighlight{$s \leq r$}\coordHE{}.  In the
+\myHighlight{$r$}\coordHE{}-th order in \myHighlight{$Y$}\coordHE{} Eq.~\eqref{eq:c-extension} then implies:
+\begin{equation}\coord{}\boxEquation{
+\delta f_{r+1}=B_r\,, \qquad \delta {{\tilde f}_{r+1}}=B_r\,.
+}{
+\delta f_{r+1}=B_r\,, \qquad \delta {{\tilde f}_{r+1}}=B_r\,.
+}{ecuacion}\coordE{}\end{equation}
+It follows that \myHighlight{$\delta({\tilde f}_r-f_r)=0$}\coordHE{}. Introducing
+\myHighlight{$g_r=\delta^*({\tilde f}_r-f_r)$}\coordHE{} one can see that
+\begin{equation}\coord{}\boxEquation{
+  {\tilde f}_r-f_r=\delta g_r\,,
+}{
+  {\tilde f}_r-f_r=\delta g_r\,,
+}{ecuacion}\coordE{}\end{equation}
+since \myHighlight{$g_r$}\coordHE{} is homogeneous in \myHighlight{$Y$}\coordHE{} of order \myHighlight{$r+1$}\coordHE{} and
+\myHighlight{$\gh{g_r}=\gh{f}-1$}\coordHE{}. Thus
+\begin{equation}\coord{}\boxEquation{
+{\bar f}=f+\pb{\Omega}{g_r}_\E
+}{
+{\bar f}=f+\pb{\Omega}{g_r}_\E
+}{ecuacion}\coordE{}\end{equation}
+satisfies \eqref{eq:c-extension} and coincides with \myHighlight{$\tilde f$}\coordHE{} up to
+to the terms of order higher than \myHighlight{$r+1$}\coordHE{}. Iteratively applying
+this procedure one can construct function \myHighlight{$g$}\coordHE{}
+such that
+\begin{equation}\coord{}\boxEquation{
+  {\tilde f}=f+\pb{\Omega}{g}_\E\,.
+}{
+  {\tilde f}=f+\pb{\Omega}{g}_\E\,.
+}{ecuacion}\coordE{}\end{equation}
+
+
+Finally, let \myHighlight{$f$}\coordHE{} and \myHighlight{$\tilde f$}\coordHE{} satisfy~\eqref{eq:c-extension}
+and additional condition
+\myHighlight{$\delta^* (f-f_0)=\delta^* ({\tilde f}-f_0)=0$}\coordHE{}. For
+\myHighlight{$d_{r+1}=f_{r+1}-{\tilde f}_{r+1}$}\coordHE{} one then has:
+$$\coord{}\boxMath{
+\delta d_{r+1}=\delta^* d_{r+1}=0\,.
+}{dollar}{0pt}\coordE{}$$
+This implies that \myHighlight{$d_{r+1}=0$}\coordHE{} because \myHighlight{$d_{r+1}$}\coordHE{} is at least linear in
+\myHighlight{$Y$}\coordHE{}.  This proves second item.
+\end{proof}
+\begin{lemma}\label{lemma:koszul-cl}
+Let \myHighlight{$f_0$}\coordHE{} be an arbitrary \myHighlight{$Y$}\coordHE{}-independent function of
+a nonnegative  ghost number.  Let also \myHighlight{$f$}\coordHE{} be a BRST invariant
+extension of \myHighlight{$f_0$}\coordHE{} obtained by Proposition~\bref{prop:extension-cl}.  Then
+\begin{equation}\coord{}\boxEquation{
+  f=\pb{\Omega}{h}_\E\,,
+}{
+  f=\pb{\Omega}{h}_\E\,,
+}{ecuacion}\coordE{}\end{equation}
+for some function \myHighlight{$h$}\coordHE{} on \myHighlight{$\E$}\coordHE{} if and only if
+\begin{equation}\coord{}\boxEquation{
+  f_0{\bigr|}_{\cc^A=\theta_\alpha=p_i=0}=0\,.
+}{
+  f_0{\bigr|}_{\cc^A=\theta_\alpha=p_i=0}=0\,.
+}{ecuacion}\coordE{}\end{equation}
+\end{lemma}
+\begin{proof}
+It is useful to introduce new coordinate functions
+\begin{equation}\coord{}\boxEquation{
+ {\bar p}_i=p_i-\cP_k\Gamma^k_{ij}\cc^j\,,
+}{
+ {\bar p}_i=p_i-\cP_k\Gamma^k_{ij}\cc^j\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\Gamma^k_{ij}$}\coordHE{} are the coefficients of an arbitrary symmetric
+connection on \myHighlight{$\manM$}\coordHE{}.  The reason is that unlike \myHighlight{$p_i$}\coordHE{} that have
+inhomogeneous transformation properties, the coordinate functions
+\myHighlight{${\bar p_i}$}\coordHE{} transform as the coefficients of a 1-form on \myHighlight{$\manM$}\coordHE{}.
+The functions \myHighlight{${\bar p},x,Y,\cc$}\coordHE{} and \myHighlight{$\cP$}\coordHE{} also form a local coordinate
+system on \myHighlight{$\E$}\coordHE{}; the conditions \myHighlight{$\cc^A=\theta_\alpha=p_i=0$}\coordHE{} and
+\myHighlight{$\cc^A=\theta_\alpha={\bar p}_i=0$}\coordHE{} are obviously equivalent.
+
+Any BRST exact function \myHighlight{$f$}\coordHE{} (i.e. a function that can be represented
+as \myHighlight{$f=\pb{\Omega}{h}$}\coordHE{}) evidently vanishes when
+\myHighlight{$Y^A=\cc^A=\theta_\alpha={\bar p}_i=0$}\coordHE{}. Conversely, assume that \myHighlight{$f_0$}\coordHE{}
+vanishes when \myHighlight{$\cc^A=\theta_\alpha={\bar p}_i=0$}\coordHE{} and carries
+nonnegative ghost number. Then it can be represented as
+\begin{equation}\coord{}\boxEquation{
+f_0=\cc^A f_A+\theta_\alpha f^\alpha + {\bar p}_i f^i \,,
+}{
+f_0=\cc^A f_A+\theta_\alpha f^\alpha + {\bar p}_i f^i \,,
+}{ecuacion}\coordE{}\end{equation}
+where functions \myHighlight{$f^i$}\coordHE{} can be taken in the form: \myHighlight{$f^i=f^i(x,p)$}\coordHE{}.
+One can also choose \myHighlight{$f_A$}\coordHE{} and \myHighlight{$f^i$}\coordHE{} such that they transform
+as the components of a section of \myHighlight{$\W^*(\manM)$}\coordHE{} and
+components of a vector field on \myHighlight{$\manM$}\coordHE{} respectively.
+We introduce
+\begin{equation}\coord{}\boxEquation{
+\begin{split}
+{\bar f}^\alpha&=f^\alpha+Y^l \d_l f^\alpha\,,\\
+{\bar f}^i&= f^i +
+Y^l\, (\d_l f^i + \Gamma^i_{lk} f^k - {\bar p}_j \Gamma^j_{lk} \dl{{\bar p}_k}
+f^i + \half \cc^j R^m_{ljk}\cP_m \dl{{\bar p}_k}f^i)\,,
+\end{split}
+}{
+\begin{split}
+{\bar f}^\alpha&=f^\alpha+Y^l \d_l f^\alpha\,,\\
+{\bar f}^i&= f^i +
+Y^l\, (\d_l f^i + \Gamma^i_{lk} f^k - {\bar p}_j \Gamma^j_{lk} \dl{{\bar p}_k}
+f^i + \half \cc^j R^m_{ljk}\cP_m \dl{{\bar p}_k}f^i)\,,
+\end{split}
+}{split}\coordE{}\end{equation}
+where \myHighlight{$R$}\coordHE{} is the curvature of \myHighlight{$\Gamma$}\coordHE{}.  Note
+that \myHighlight{${\bar  f}^i$}\coordHE{} transform as components of a vector field on
+\myHighlight{$\manM$}\coordHE{}; in particular, \myHighlight{${\bar f}^i\cP_i$}\coordHE{} is the globally defined
+function on \myHighlight{$\E$}\coordHE{}.  Picking \myHighlight{$h_0$}\coordHE{} as
+\begin{equation}\coord{}\boxEquation{
+{h_0}=
+-Y^A f_A
++\cP_\alpha {\bar f}^\alpha
+-\cP_i {\bar f}^i
+ \,,
+}{
+{h_0}=
+-Y^A f_A
++\cP_\alpha {\bar f}^\alpha
+-\cP_i {\bar f}^i
+ \,,
+}{ecuacion}\coordE{}\end{equation}
+one can indeed check that
+\begin{equation}\coord{}\boxEquation{
+f_0=\left( \pb{\Omega}{{h_0}}_\E \right)|_{Y=0}\,.
+}{
+f_0=\left( \pb{\Omega}{{h_0}}_\E \right)|_{Y=0}\,.
+}{ecuacion}\coordE{}\end{equation}
+Finally, it follows from Proposition~\bref{prop:extension-cl} that there
+exists function \myHighlight{$h_1$}\coordHE{} such that \myHighlight{$f=\pb{\Omega}{h_0+h_1}_\E$}\coordHE{}.
+\end{proof}
+
+Putting together Proposition~\bref{prop:extension-cl} and
+Lemma~\bref{lemma:koszul-cl} we arrive at
+\begin{thm}\label{thm:H-cl}
+In nonnegative ghost number the BRST cohomology of the BRST charge
+\myHighlight{$\Omega$}\coordHE{} constructed in Theorem \bref{thm:existence-cl} is:
+\begin{equation}\coord{}\boxEquation{
+\begin{split}
+H^n=0\,,&\quad n\geq 1\\
+H^n=\func{\Sigma}\,, & \quad n=0\,.
+\end{split}
+}{
+\begin{split}
+H^n=0\,,&\quad n\geq 1\\
+H^n=\func{\Sigma}\,, & \quad n=0\,.
+\end{split}
+}{split}\coordE{}\end{equation}
+where \myHighlight{$H^n$}\coordHE{} denotes cohomology with ghost number \myHighlight{$n$}\coordHE{} and
+\myHighlight{$\func\Sigma$}\coordHE{} is an algebra of smooth functions on the
+constraint surface \myHighlight{$\Sigma \subset \manM$}\coordHE{}.
+\end{thm}
+It follows from the theorem that at least at the classical level,
+the original second-class constraint system on \myHighlight{$\manM$}\coordHE{} is equivalent
+to the constructed BFV-BRST system on \myHighlight{$\E$}\coordHE{}.
+
+\section{Quantum description and star-product}\label{sec:q}
+In this section we quantize the constructed BFV-BRST system.
+This includes constructing quantum BRST charge, quantum BRST
+observables and evaluating quantum BRST cohomology. The star product
+for the Dirac bracket on \myHighlight{$\manM$}\coordHE{} is constructed as the quantum
+multiplication of BRST observables.
+
+\subsection{Quantization of the extended phase space}\label{subsec:quantization}
+The extended phase space \myHighlight{$\E$}\coordHE{} of the BFV-BRST system is in general
+a non-flat manifold and thus can not be quantized directly.
+Fortunately, all physical observables
+as well as the generators of the BRST algebra
+(the BRST charge \myHighlight{$\Omega$}\coordHE{} and the ghost charge \myHighlight{$G=\cc^A\cP_A$}\coordHE{})
+can be chosen as elements of a certain subalgebra
+\myHighlight{$\aA\subset\cF(\E)$}\coordHE{}.  In its turn \myHighlight{$\aA$}\coordHE{} is closed
+w.r.t. Poisson bracket and can be explicitly quantized.  This implies
+that one can equip \myHighlight{$\aA$}\coordHE{} with the quantum multiplication satisfying
+the standard correspondence principle.
+
+
+The construction of \myHighlight{$\aA$}\coordHE{} is a direct generalization
+of that from~\cite{[GL]} and we present it very brief here.
+Let \myHighlight{$\aA_0$}\coordHE{} be a subalgebra of functions on \myHighlight{$\E$}\coordHE{},
+which do not depend on the momenta \myHighlight{$p_i$}\coordHE{} and the ghost momenta
+\myHighlight{$\cP_i$}\coordHE{}.  A general element of this algebra is then given
+by
+\begin{equation}\coord{}\boxEquation{
+  a=a(x^i,Y^A,\cc^A,\cP_\alpha)\,.
+}{
+  a=a(x^i,Y^A,\cc^A,\cP_\alpha)\,.
+}{ecuacion}\coordE{}\end{equation}
+In invariant terms \myHighlight{$\aA_0$}\coordHE{} is a tensor product
+of algebra generated by \myHighlight{$\cP_\alpha$}\coordHE{} and algebra of functions
+on \myHighlight{$\Pi W(\manM)\oplus W(\manM)$}\coordHE{} pulled back
+by the projection \myHighlight{$\E \to \Pi W(\manM)\oplus W(\manM)$}\coordHE{}. \myHighlight{$\aA_0$}\coordHE{} is a Poisson algebra,
+i.e. it is closed w.r.t. the ordinary multiplication and the Poisson
+bracket.
+
+At the quantum level it is useful to consider the algebra
+\begin{equation}\coord{}\boxEquation{
+ \qA_0\equiv\aA_0\tensor [[\hbar]]\,,
+}{
+ \qA_0\equiv\aA_0\tensor [[\hbar]]\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$[[\hbar]]$}\coordHE{} denotes formal power series in \myHighlight{$\hbar$}\coordHE{}.
+\myHighlight{$\qA_0$}\coordHE{} is also a Poisson algebra.  It is easy to obtain
+a deformation quantization of \myHighlight{$\qA_0$}\coordHE{} considered as the Poisson
+algebra.  Indeed the Weyl star multiplication works well.  Namely, for
+any \myHighlight{$a,b\in \qA_0$}\coordHE{} one postulates
+\begin{multline}\coord{}\boxAlignEqnarray{
+\label{eq:Weyl-star-product}
+\leftCoord{}(a \star b)(x,Y,\cc,\cP,\hbar)~~=\rightCoord{}\\
+\leftCoord{}=~~\{(a(x,Y_1,\cc_1,\cP_2,\hbar) exp ( -\frac{\leftCoord{}i\hbar}{\rightCoord{}2} (D^{AB}
+\leftCoord{}\dr{Y_1^A} \dl{Y_2^B}+\dr{\cc_1^\alpha}\dl{\cP^2_\alpha}+
+\leftCoord{}\dr{\cP^1_\alpha}\dl{\cc_2^\alpha}))\rightCoord{}\\
+\leftCoord{}b(x,Y_2,\cc_2,\cP_2,\hbar)\}
+{\rightCoord{}\leftCoord{}\bigr|}_{\rightCoord{}Y_1=Y_2=Y,\,\cc_1=\cc_2=\cc,\,\cP_1=\cP_2=\cP} \,,
+}{0mm}{7}{6}{
+(a \star b)(x,Y,\cc,\cP,\hbar)~~=\\
+=~~\{(a(x,Y_1,\cc_1,\cP_2,\hbar) exp ( -\frac{i\hbar}{2} (D^{AB}
+\dr{Y_1^A} \dl{Y_2^B}+\dr{\cc_1^\alpha}\dl{\cP^2_\alpha}+
+\dr{\cP^1_\alpha}\dl{\cc_2^\alpha}))\\
+b(x,Y_2,\cc_2,\cP_2,\hbar)\}
+{\bigr|}_{Y_1=Y_2=Y,\,\cc_1=\cc_2=\cc,\,\cP_1=\cP_2=\cP} \,,
+}{0}\coordE{}\end{multline}
+where \myHighlight{$\cP$}\coordHE{} stands for the dependence on \myHighlight{$\cP_\alpha$}\coordHE{} only.
+
+Subalgebra \myHighlight{$\qA$}\coordHE{} (\myHighlight{$\aA$}\coordHE{}) is an extension of
+\myHighlight{$\qA_0$}\coordHE{} (respectively \myHighlight{$\aA_0$}\coordHE{}) by
+elements \myHighlight{$\P=-\cc^i p_i,\,\G=\cc^i \cP_i$}\coordHE{}.  A general homogeneous
+element \myHighlight{$A \in \aA$}\coordHE{} is then given by
+\begin{equation}\coord{}\boxEquation{
+a=\P^r \G^s a_0\,, \quad r=0,1\,,
+\quad s=0,1,\ldots, 2N\,,
+\quad a_0\in \qA_0\,.
+}{
+a=\P^r \G^s a_0\,, \quad r=0,1\,,
+\quad s=0,1,\ldots, 2N\,,
+\quad a_0\in \qA_0\,.
+}{ecuacion}\coordE{}\end{equation}
+Weyl star product~\eqref{eq:Weyl-star-product} can be easily
+extended from \myHighlight{$\qA_0$}\coordHE{} to \myHighlight{$\qA$}\coordHE{}.  Explicit construction of the
+star-product in \myHighlight{$\qA$}\coordHE{} is an obvious generalization of that presented
+in~\cite{[GL]}.  Here we write explicitly only the multiplication
+table for \myHighlight{$\G$}\coordHE{}-independent elements; it turns out that this is sufficient 
+for present considerations:
+\begin{equation}\coord{}\boxEquation{
+\label{eq:P-star}
+\P\star a=\P a\,,\qquad
+a\star \P=a\P + (-1)^{\p{a}}\frac{i\hbar}{2}\,\diff-con a \,, \qquad
+ \P\star\P=\ih( {\bar R}+\omega)\,,
+}{
+\P\star a=\P a\,,\qquad
+a\star \P=a\P + (-1)^{\p{a}}\frac{i\hbar}{2}\,\diff-con a \,, \qquad
+ \P\star\P=\ih( {\bar R}+\omega)\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$a$}\coordHE{} is an arbitrary element of \myHighlight{$\qA_0$}\coordHE{},
+\myHighlight{$\diff-con=\cc^i\d_i-\cc^i\con^A_{iB}Y^B\dl{Y^A}\,,$}\coordHE{} and
+functions \myHighlight{$\bar R$}\coordHE{} and \myHighlight{$\omega$}\coordHE{} are the ``generating functions'' for the
+curvature and symplectic form:
+\begin{equation}\coord{}\boxEquation{
+\label{eq:R-D-omega}
+{\bar R}=\frac{1}{4} \cc^i \cc^j  {\bar R}_{ij;\, A B} Y^A Y^B \,,
+\qquad
+\omega=\half \cc^i \omega_{ij}\cc^j\,.\qquad {\bar R}\,,\omega\in\aA\subset\qA\,.
+}{
+{\bar R}=\frac{1}{4} \cc^i \cc^j  {\bar R}_{ij;\, A B} Y^A Y^B \,,
+\qquad
+\omega=\half \cc^i \omega_{ij}\cc^j\,.\qquad {\bar R}\,,\omega\in\aA\subset\qA\,.
+}{ecuacion}\coordE{}\end{equation}
+
+In what follows we treat \myHighlight{$\qA$}\coordHE{} as an associative algebra with the 
+product determined by~\eqref{eq:Weyl-star-product} and \eqref{eq:P-star}
+and extended to \myHighlight{$\G$}\coordHE{}-dependent elements as in~\cite{[GL]}.  Let us
+introduce a useful grading in \myHighlight{$\qA$}\coordHE{}.  Namely,
+we prescribe the following degrees to the variables
+\begin{equation}\coord{}\boxEquation{
+\begin{split}
+  \label{eq:degrees}
+  \deg{x^i}=\deg{\cc^A}=0\,,&\qquad \deg{p_i}=\deg{\cP_A}=2 \,,\\
+  \deg{Y^A}=1\,,& \qquad  \deg{\hbar}=2\,.
+\end{split}
+}{
+\begin{split}
+  \deg{x^i}=\deg{\cc^A}=0\,,&\qquad \deg{p_i}=\deg{\cP_A}=2 \,,\\
+  \deg{Y^A}=1\,,& \qquad  \deg{\hbar}=2\,.
+\end{split}
+}{split}\coordE{}\end{equation}
+The star-commutator in \myHighlight{$\qA$}\coordHE{} obviously preserves the degree.
+
+\subsection{Quantum BRST charge}
+Since the classical BRST charge from Theorem~\bref{thm:existence-cl}
+belongs to \myHighlight{$\qA$}\coordHE{} it is natural to a define quantum BRST
+charge \myHighlight{$\hat\Omega$}\coordHE{} as a solution to the quantum master equation
+\begin{equation}\coord{}\boxEquation{ \label{eq:master-q}
+\qcommut{{\hat\Omega}}{{\hat\Omega}} \equiv
+2\,{\hat\Omega}\star {\hat\Omega}=0\,, 
+\qquad {\hat\Omega} \in \qA\,,\qquad \p{\hat\Omega}=1\,,\,\, \gh{\hat\Omega}=1\,.
+}{ \qcommut{{\hat\Omega}}{{\hat\Omega}} \equiv
+2\,{\hat\Omega}\star {\hat\Omega}=0\,, 
+\qquad {\hat\Omega} \in \qA\,,\qquad \p{\hat\Omega}=1\,,\,\, \gh{\hat\Omega}=1\,.
+}{ecuacion}\coordE{}\end{equation}
+In analysis of the master equation it is useful to expand \myHighlight{$\hat\Omega$}\coordHE{}
+w.r.t. degree introduced in~\eqref{eq:degrees}
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:Omega-expansion}
+  {\hat\Omega}=\sum^\infty_{r=0} {\hat\Omega}^r\,,\qquad \deg{{\hat\Omega^r}}=r\,.
+}{
+  {\hat\Omega}=\sum^\infty_{r=0} {\hat\Omega}^r\,,\qquad \deg{{\hat\Omega^r}}=r\,.
+}{ecuacion}\coordE{}\end{equation}
+A proper quantum counterpart of the classical boundary
+condition chosen in~\bref{thm:existence-cl} reads as:
+\begin{equation}\coord{}\boxEquation{
+\label{eq:boundary}
+  \Omega^0=\cc^\alpha \theta_\alpha\,,\qquad
+  \Omega^1=-\cc^A D_{AB}Y^B\,,\qquad
+  \Omega^2=-\cc^i p_i+\frac{i}{\hbar}\delta^*(\qcommut{\hat\Omega^0}{\hat\Omega^1})\,.
+}{
+\Omega^0=\cc^\alpha \theta_\alpha\,,\qquad
+  \Omega^1=-\cc^A D_{AB}Y^B\,,\qquad
+  \Omega^2=-\cc^i p_i+\frac{i}{\hbar}\delta^*(\qcommut{\hat\Omega^0}{\hat\Omega^1})\,.
+}{ecuacion}\coordE{}\end{equation}
+\begin{thm}\label{thm:existence-q}
+Equations \eqref{eq:master-q} has a solution \myHighlight{$\hat\Omega$}\coordHE{} satisfying
+boundary condition~\eqref{eq:boundary}. If in addition
+one requires \myHighlight{$\hat\Omega$}\coordHE{} to satisfy \myHighlight{$\delta^*{\hat\Omega}^r=0$}\coordHE{}
+and \myHighlight{${\hat\Omega}^r={\hat\Omega}^r(x,Y,\cc,\hbar)$}\coordHE{} for \myHighlight{$r\geq 3$}\coordHE{} the solution is
+unique.
+\end{thm}
+\begin{proof}
+The proof is a direct generalization of that of the analogous
+statement from~\cite{[GL]}. Assume that \myHighlight{${\hat\Omega}^r\in \qA_0$}\coordHE{} for \myHighlight{$r\geq 3$}\coordHE{}
+and \myHighlight{${\hat\Omega}$}\coordHE{} doesn't depend on \myHighlight{$\cP$}\coordHE{}. Then the solution can be
+constructed iteratively in the form
+$$\coord{}\boxMath{
+{\hat\Omega}^{r+1}=\delta^*{\hat B}^r\,,\qquad r\geq 2\,,
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$\deg{{\hat\Omega}^{a}}=a$}\coordHE{} and \myHighlight{${\hat B}^r$}\coordHE{} is given by
+\begin{equation}\coord{}\boxEquation{
+\label{eq:B-explicit-q}
+{\hat B}^r=\frac{i}{2\hbar}\sum_{s=0}^{r-2}
+\qcommut{{\hat\Omega}^{s+2}}{{\hat\Omega}^{r-s}}\,,\qquad r\geq 2\,.
+}{
+{\hat B}^r=\frac{i}{2\hbar}\sum_{s=0}^{r-2}
+\qcommut{{\hat\Omega}^{s+2}}{{\hat\Omega}^{r-s}}\,,\qquad r\geq 2\,.
+}{ecuacion}\coordE{}\end{equation}
+\end{proof}
+
+\subsection{Quantum BRST observables and star-product}
+At the classical level each physical observable (element of zero ghost
+number BRST cohomology) can be considered as an element of \myHighlight{$\qA$}\coordHE{}.
+It is then natural to define a quantum BRST observable
+as a function \myHighlight{$f$}\coordHE{} satisfying:
+\begin{equation}\coord{}\boxEquation{
+\label{eq:extension-q}
+  \qcommut{\hat\Omega}{f}=0\,, \qquad f\in \qA\,.
+}{
+\qcommut{\hat\Omega}{f}=0\,, \qquad f\in \qA\,.
+}{ecuacion}\coordE{}\end{equation}
+Two observables are said equivalent iff their difference
+can be represented as \myHighlight{$\frac{i}{\hbar}\qcommut{\hat\Omega}{g}$}\coordHE{}
+for some \myHighlight{$g\in \qA$}\coordHE{}. Inequivalent observables is thus
+a zero ghost number cohomology of
+\myHighlight{$\frac{i}{\hbar}\qcommut{\hat\Omega}{\cdot}$}\coordHE{}.
+
+
+Let us consider first observables in \myHighlight{$\qA_0$}\coordHE{}.  It turns out that any
+function \myHighlight{$f_0(x,\cc)$}\coordHE{} admits a BRST invariant extension \myHighlight{$f$}\coordHE{}
+satisfying \eqref{eq:extension-q} and
+the boundary condition
+\begin{equation}\coord{}\boxEquation{
+\label{eq:boundary-q-ext}
+  f{\bigr|}_{Y=0}=f_0\,.
+}{
+f{\bigr|}_{Y=0}=f_0\,.
+}{ecuacion}\coordE{}\end{equation}
+If \myHighlight{$f_0$}\coordHE{} has a definite ghost number we also
+require: \myHighlight{$\gh{f}=\gh{f_0}$}\coordHE{}.
+\begin{prop}\label{prop:extension-q}
+Given a function \myHighlight{$f_0(x,\cc)$}\coordHE{} there exists solution
+\myHighlight{$f\in \qA_0$}\coordHE{} to the equation \eqref{eq:extension-q} satisfying
+boundary condition~\eqref{eq:boundary-q-ext}.  If in
+addition one requires \myHighlight{$f$}\coordHE{} to satisfy \myHighlight{$\delta^*(f-f_0)=0$}\coordHE{}
+and \myHighlight{$f=f(x,Y,\cc,\hbar)$}\coordHE{} then the solution is unique.
+\end{prop}
+\begin{proof}
+The proof is a direct generalization of that of the analogous
+statement from~\cite{[GL]}. Let us expand \myHighlight{$f$}\coordHE{} as
+\begin{equation}\coord{}\boxEquation{
+f=f_0+\sum_{s=1}^\infty f_s\,,\qquad \deg{f_s}=s\,.
+}{
+f=f_0+\sum_{s=1}^\infty f_s\,,\qquad \deg{f_s}=s\,.
+}{ecuacion}\coordE{}\end{equation}
+The solution is constructed
+iteratively in the form
+$$\coord{}\boxMath{
+{f}_{r+1}=\delta^*{B}_r\,,
+}{dollar}{0pt}\coordE{}$$
+with \myHighlight{$B^r$}\coordHE{} being
+$$\coord{}\boxMath{
+B_r=\frac{i}{2\hbar}\sum_{s=0}^{r-2}
+\qcommut{{\hat\Omega}^{s+2}}{f_{r-s}}\,.
+}{dollar}{0pt}\coordE{}$$
+In particular, for the function \myHighlight{$f_0=f_0(x)$}\coordHE{} we
+have explicitly
+\begin{equation}\coord{}\boxEquation{
+  f=f_0+Y^i \d_i f_0 +\ldots\,,
+}{
+  f=f_0+Y^i \d_i f_0 +\ldots\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\ldots$}\coordHE{} denotes terms of higher order in \myHighlight{$Y$}\coordHE{} and \myHighlight{$\hbar$}\coordHE{}.
+\end{proof}
+Because the BRST invariant extension determined by the statement is
+obviously a linear map it can be extended to functions
+depending formally on \myHighlight{$\hbar$}\coordHE{}.
+
+
+By means of the statement we obtain a one-to-one correspondence
+between \myHighlight{$\func{\manM}\tensor[[\hbar]]$}\coordHE{} and the BRST invariant
+functions depending on \myHighlight{$x,Y$}\coordHE{} and \myHighlight{$\hbar$}\coordHE{} only. The space
+of these functions is obviously closed w.r.t. the quantum
+multiplication~\eqref{eq:Weyl-star-product} in \myHighlight{$\qA_0$}\coordHE{}. This
+multiplication determines thus a star product on \myHighlight{$\manM$}\coordHE{}, giving a
+deformation quantization of the Dirac bracket on \myHighlight{$\manM$}\coordHE{}.  Namely, given
+functions \myHighlight{$f_0$}\coordHE{} and \myHighlight{$g_0$}\coordHE{} on \myHighlight{$\manM$}\coordHE{} one has
+\begin{equation}\coord{}\boxEquation{
+  f_0\star_{\manM} g_0=(f \star g){\bigr|}_{Y=0}=
+f_0 g_0-\frac{i\hbar}{2}\pb{f_0}{g_0}^D_{\manM}+\ldots\,,
+}{
+  f_0\star_{\manM} g_0=(f \star g){\bigr|}_{Y=0}=
+f_0 g_0-\frac{i\hbar}{2}\pb{f_0}{g_0}^D_{\manM}+\ldots\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$f=f(x,Y,\hbar)$}\coordHE{} and \myHighlight{$g=g(x,Y,\hbar)$}\coordHE{} are the unique quantum
+BRST invariant extensions of \myHighlight{$f_0$}\coordHE{} and \myHighlight{$g_0$}\coordHE{} obtained by
+Proposition~\bref{prop:extension-q}, \myHighlight{$\star$}\coordHE{} is a Weyl product given
+by~\eqref{eq:Weyl-star-product}, and \myHighlight{$\ldots$}\coordHE{} denote terms of higher
+order in \myHighlight{$\hbar$}\coordHE{}.
+
+
+\subsection{BRST cohomology at the quantum level}\label{subsec:BRST-q}
+To complete description of the constructed quantum gauge system
+let us calculate cohomology of the quantum BRST charge obtained in
+Theorem~\bref{thm:existence-q}.  Since we do not have
+a star product in the algebra \myHighlight{$\cF(\E)$}\coordHE{} of functions on
+the entire \myHighlight{$\E$}\coordHE{} but only in the subalgebra \myHighlight{$\qA$}\coordHE{} we are interested
+in the cohomology of \myHighlight{$\hat\Omega$}\coordHE{} evaluated in \myHighlight{$\qA$}\coordHE{}.
+
+Let us first note that cohomology of the classical BRST charge
+\myHighlight{$\Omega$}\coordHE{} evaluated in \myHighlight{$\qA$}\coordHE{} (considered as a Poisson algebra)
+coincides with that calculated in \myHighlight{$\cF(\E)\tensor[[\hbar]]$}\coordHE{}. Indeed,
+appropriate modifications of Proposition~\bref{prop:extension-cl} and
+Lemma~\bref{lemma:koszul-cl} show this.
+
+Instead of formulating quantum counterparts of
+\bref{prop:extension-cl} and \bref{lemma:koszul-cl}
+we construct the quantum BRST invariant elements as the quantum
+deformations of classical ones.
+\begin{prop}\label{prop:hbar-extension}
+\begin{enumerate}
+\item
+Let \myHighlight{$f\in\aA$}\coordHE{} has a nonnegative ghost number
+and satisfies
+\begin{equation}\coord{}\boxEquation{
+  \pb{{\hat\Omega}\bigr|_{\hbar=0}}{f}_\E=0\,,
+}{
+  \pb{{\hat\Omega}\bigr|_{\hbar=0}}{f}_\E=0\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\hat\Omega$}\coordHE{} is the quantum BRST charge obtained in
+Theorem~\bref{thm:existence-q}.  Then there exist the quantum
+corrections \myHighlight{$f_s\,,s\geq 1$}\coordHE{} such that \myHighlight{$f_s\in \qA,\, \gh{f_s}=\gh{f},$}\coordHE{}
+and \myHighlight{${\hat f}=f\ih f_1+(\ih)^2 f_2+\ldots$}\coordHE{} satisfies
+\begin{equation}\coord{}\boxEquation{
+\label{eq:deform}
+  \qcommut{\hat\Omega}{\hat f}=0\,.
+}{
+\qcommut{\hat\Omega}{\hat f}=0\,.
+}{ecuacion}\coordE{}\end{equation}
+\item
+Let \myHighlight{$\hat f\in \qA$}\coordHE{} carries a nonnegative ghost number
+and satisfies~\eqref{eq:deform}. Then there exists \myHighlight{$\hat g \in \qA$}\coordHE{}
+such that \myHighlight{${\hat f}+\frac{i}{\hbar}\qcommut{\hat\Omega}{\hat g}$}\coordHE{} is
+the function of \myHighlight{$x,Y,\cc$}\coordHE{} and \myHighlight{$\hbar$}\coordHE{} only.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Function \myHighlight{$f_0$}\coordHE{} is a classical BRST observable, because of
+\myHighlight{$\Omega\equiv{\hat\Omega}\bigr|_{\hbar=0}$}\coordHE{} is obviously a classical
+BRST charge from~\bref{thm:existence-cl}.  In the \myHighlight{$r+2$}\coordHE{}-th order in
+\myHighlight{$\hbar$}\coordHE{} Eq.~\eqref{eq:deform} implies
+\begin{equation}\coord{}\boxEquation{
+\label{eq:hbar-determin}
+  \pb{\Omega}{f_{r+1}}_\E+\cB_r=0\,,
+}{
+\pb{\Omega}{f_{r+1}}_\E+\cB_r=0\,,
+}{ecuacion}\coordE{}\end{equation}
+with \myHighlight{$\cB_r$}\coordHE{} given by
+\begin{equation}\coord{}\boxEquation{
+\cB_r=\sum_{s+t+u=r+2} \qcommut{{\hat\Omega}^s}{f_t}^u\,, \quad s,u\geq
+1\,, \quad t\geq 0\,,
+}{
+\cB_r=\sum_{s+t+u=r+2} \qcommut{{\hat\Omega}^s}{f_t}^u\,, \quad s,u\geq
+1\,, \quad t\geq 0\,,
+}{ecuacion}\coordE{}\end{equation}
+where we have expanded \myHighlight{${\hat\Omega}$}\coordHE{} and \myHighlight{$\qcommut{\,}{}$}\coordHE{} in \myHighlight{$\hbar$}\coordHE{}
+according to
+\begin{equation}\coord{}\boxEquation{
+{\hat\Omega}=\Omega+\sum^\infty_{s=1}(\ih)^s {\hat\Omega}^s\,,\qquad
+\qcommut{\cdot\,}{\cdot}=\sum^\infty_{s=1}(\ih)^s \,
+\qcommut{\cdot\,}{\cdot}^s\,.
+}{
+{\hat\Omega}=\Omega+\sum^\infty_{s=1}(\ih)^s {\hat\Omega}^s\,,\qquad
+\qcommut{\cdot\,}{\cdot}=\sum^\infty_{s=1}(\ih)^s \,
+\qcommut{\cdot\,}{\cdot}^s\,.
+}{ecuacion}\coordE{}\end{equation}
+Arguments similar to those of the proof for
+Proposition~\bref{prop:extension-cl} show that
+\myHighlight{$\pb{\Omega}{\cB^p}_\E=0$}\coordHE{} provided Eq.~\eqref{eq:hbar-determin} holds
+for all \myHighlight{$r\leq p-1$}\coordHE{}. Since cohomology of a classical BRST charge
+vanish in strictly positive ghost number and \myHighlight{$\gh{\cB_{r+1}}\geq 1$}\coordHE{} we
+see that Eq.~\eqref{eq:hbar-determin} has a solution for \myHighlight{$r=p$}\coordHE{}.
+Moreover, \myHighlight{$f_{r+1}$}\coordHE{} can be taken to belong to \myHighlight{$\qA$}\coordHE{}.
+
+
+The second part of the statement is trivial
+when \myHighlight{$\hat f$}\coordHE{} carries strictly positive ghost number,
+since classical BRST cohomology vanish in this case.
+Let \myHighlight{${\hat f}\in\qA$}\coordHE{} satisfies~\eqref{eq:deform}
+and  \myHighlight{$\gh{\hat f}=0$}\coordHE{}. Let us show that there exists \myHighlight{$\hat g$}\coordHE{}
+such that \myHighlight{${\hat f}+\frac{i}{\hbar}\qcommut{\hat\Omega}{\hat g}$}\coordHE{}
+depends on \myHighlight{$x,Y$}\coordHE{} and \myHighlight{$\hbar$}\coordHE{} only. This is obvious for the zero order
+term \myHighlight{$f$}\coordHE{} in the expansion \myHighlight{${\hat f}=f\ih f_1+(\ih)^2 f_2+\ldots$}\coordHE{}
+of \myHighlight{$\hat f$}\coordHE{} in powers of \myHighlight{$\hbar$}\coordHE{}.  Assume that this is the case
+for all \myHighlight{$f_s,\,s\leq r$}\coordHE{}. In the \myHighlight{$r+2$}\coordHE{}-th order in \myHighlight{$\hbar$}\coordHE{}
+Eq.~\eqref{eq:deform}
+then takes the form \eqref{eq:hbar-determin}. Because \myHighlight{$f_s$}\coordHE{} is a function
+of only \myHighlight{$x,Y$}\coordHE{} for \myHighlight{$s\leq r$}\coordHE{} then \myHighlight{$\cB_r$}\coordHE{} in \eqref{eq:hbar-determin}
+has the form \myHighlight{$\cc^A b_A(x,Y)$}\coordHE{}; one can then find
+\myHighlight{${\tilde  f}_{r+1}(x,Y)$}\coordHE{} such that
+\begin{equation}\coord{}\boxEquation{
+  \pb{\Omega}{{\tilde f}_{r+1}}_\E+\cB_r=0\,.
+}{
+  \pb{\Omega}{{\tilde f}_{r+1}}_\E+\cB_r=0\,.
+}{ecuacion}\coordE{}\end{equation}
+Since \myHighlight{$\pb{\Omega}{f_{r+1}-{\tilde f}_{r+1}}_\E=0$}\coordHE{}
+there exist functions \myHighlight{${\bar f}_{r+1}(x,Y)$}\coordHE{} and \myHighlight{$g_{r+1}\in\qA$}\coordHE{} such that
+\begin{equation}\coord{}\boxEquation{
+  f_{r+1}={\bar f}_{r+1}-\pb{\Omega}{g_{r+1}}_\E\,.
+}{
+  f_{r+1}={\bar f}_{r+1}-\pb{\Omega}{g_{r+1}}_\E\,.
+}{ecuacion}\coordE{}\end{equation}
+It follows that \myHighlight{${\bar f}_{r+1}(x,Y)$}\coordHE{}
+is a \myHighlight{$r+1$}\coordHE{}-th order term in the expansion of
+\myHighlight{${\hat f}+\frac{i}{\hbar}\qcommut{\hat\Omega}{(\ih)^{r+1}g_{r+1}}$}\coordHE{}
+in powers of \myHighlight{$\hbar$}\coordHE{}. Proceeding further
+by induction one can find \myHighlight{$\hat g$}\coordHE{} required in item 2.
+\end{proof}
+Proposition~\bref{prop:extension-q}
+establishes a one-to-one correspondence between \myHighlight{$\func{\manM}\tensor
+[[\hbar]]$}\coordHE{} and the quantum BRST invariant functions depending
+on \myHighlight{$x,Y$}\coordHE{} and \myHighlight{$\hbar$}\coordHE{} only. Among these functions those vanishing
+when \myHighlight{$Y=\theta=0$}\coordHE{} are BRST trivial (this can be checked directly
+or by means of the arguments similar to those in the proof of
+item 2 of Proposition above) while those which do not
+vanish when \myHighlight{$Y=\theta=0$}\coordHE{} are obviously nontrivial. In this way we
+arrive at the quantum counterpart of Theorem~\bref{thm:H-cl}:
+\begin{thm}\label{thm:H-q}
+In nonnegative ghost number the quantum BRST cohomology
+of \myHighlight{$\hat\Omega$}\coordHE{} evaluated in \myHighlight{$\qA$}\coordHE{} is given by
+\begin{equation}\coord{}\boxEquation{
+\begin{split}
+{\hat H}^n=0\,,&\quad n\geq 1\\
+{\hat H}^n=\func{\Sigma}\tensor[[\hbar]]\,, & \quad n=0\,.
+\end{split}
+}{
+\begin{split}
+{\hat H}^n=0\,,&\quad n\geq 1\\
+{\hat H}^n=\func{\Sigma}\tensor[[\hbar]]\,, & \quad n=0\,.
+\end{split}
+}{split}\coordE{}\end{equation}
+\end{thm}
+It follows from the theorem that the constructed gauge
+system is equivalent to the original second-class system
+on \myHighlight{$\manM$}\coordHE{} at the quantum level as well. This, in particular,
+implies that the quantum multiplication of inequivalent quantum BRST
+observables determines a star-product on \myHighlight{$\Sigma$}\coordHE{}.
+
+Indeed, the quantum multiplication in \myHighlight{$\aA_0$}\coordHE{} determines a
+quantum multiplication in \myHighlight{${\hat H}^{0}$}\coordHE{};
+the isomorphism \myHighlight{$\func{\Sigma}\tensor[[\hbar]] \to {\hat H}^0$}\coordHE{}
+as well as the inverse map is given explicitly by
+the Proposition~\bref{prop:extension-q}.  Namely, each function
+\myHighlight{$f_0\in \func{\Sigma}\tensor[[\hbar]]$}\coordHE{} can be represented as
+\myHighlight{$f|_{\Sigma}$}\coordHE{} for some function
+\myHighlight{$f\in\func{\manM}\tensor[[\hbar]]$}\coordHE{}. Thus the isomorphism map
+\myHighlight{$\func{\Sigma}\tensor[[\hbar]]\to {\hat H}^0$}\coordHE{}
+is given explicitly by the quantum BRST invariant
+extension of \myHighlight{$f$}\coordHE{} determined by Proposition~\bref{prop:extension-q}.
+The inverse map is obviously given by the restriction to \myHighlight{$\Sigma$}\coordHE{}.
+The star product on \myHighlight{$\Sigma$}\coordHE{} is then given by
+\begin{equation}\coord{}\boxEquation{
+\label{eq:star-Sigma}
+f_0 \star_\Sigma g_0 = (f \star_\manM g){\bigr|}_\Sigma=
+({\hat f}\star{\hat g}){\bigr|}_{\Sigma} =
+f_0 g_0-\frac{i}{2\hbar}\pb{f_0}{g_0}_{\Sigma}+\ldots\,,\qquad
+f|_{\Sigma}=f_0,\,\,  g|_{\Sigma}=g_0\,,
+}{
+f_0 \star_\Sigma g_0 = (f \star_\manM g){\bigr|}_\Sigma=
+({\hat f}\star{\hat g}){\bigr|}_{\Sigma} =
+f_0 g_0-\frac{i}{2\hbar}\pb{f_0}{g_0}_{\Sigma}+\ldots\,,\qquad
+f|_{\Sigma}=f_0,\,\,  g|_{\Sigma}=g_0\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\hat f$}\coordHE{} and \myHighlight{$\hat g$}\coordHE{} are the quantum BRST invariant
+extensions of functions \myHighlight{$f$}\coordHE{} and \myHighlight{$g$}\coordHE{} respectively,
+\myHighlight{$\pb{}{}_\Sigma$}\coordHE{} denotes the Poisson bracket on \myHighlight{$\Sigma$}\coordHE{}
+(restriction of the Dirac bracket \myHighlight{$\pb{}{}^D_\manM$}\coordHE{} to \myHighlight{$\Sigma$}\coordHE{}),
+and \myHighlight{$\ldots$}\coordHE{} denote higher order terms in \myHighlight{$\hbar$}\coordHE{}.
+It follows that the star product~\eqref{eq:star-Sigma} is well defined
+in the sense that it doesn't depend on the choice of
+representatives \myHighlight{$f,g\:f|_{\Sigma}=f_0\,,\,g|_{\Sigma}=g_0$}\coordHE{} of functions
+\myHighlight{$f_0,g_0$}\coordHE{} on \myHighlight{$\Sigma$}\coordHE{}. In fact, it also doesn't depend on the choice of
+a BRST invariant extensions for \myHighlight{$f$}\coordHE{} and \myHighlight{$g$}\coordHE{}.
+
+\subsection{Quantization with the Dirac connection and the center of
+  the star-commutator algebra}\label{subsec:special}
+Let us make some general observation on the structure of the BRST
+charge and the BRST invariant observables in the case where the
+symplectic connection \myHighlight{$\con$}\coordHE{} entering the symplectic structure
+of \myHighlight{$\E$}\coordHE{} is the specific connection \myHighlight{$\con^0$}\coordHE{} given by~\eqref{eq:con0-explicit}.
+Although the proposed quantization scheme works well with an
+arbitrary symplectic connection in \myHighlight{$\W(\manM)$}\coordHE{}, it
+turns out that when one uses the specific connection \myHighlight{$\con^0$}\coordHE{}
+the star product on \myHighlight{$\manM$}\coordHE{} respects the center of the
+Dirac bracket algebra. Let us
+consider first the structure of the quantum BRST charge
+\myHighlight{$\hat\Omega$}\coordHE{}.
+
+
+\begin{prop}\label{prop:Omega-special}
+Let the symplectic connection entering the symplectic structure
+be the specific connection \myHighlight{$\con^0$}\coordHE{} given by~\eqref{eq:con0-explicit}.
+Let also \myHighlight{${\hat\Omega}_0$}\coordHE{} be the unique solution to the master
+equation~\eqref{eq:master-q} obtained by
+Theorem~\bref{thm:existence-q} with the boundary
+conditions~\eqref{eq:boundary} and the additional conditions
+\myHighlight{$\delta^*{\hat\Omega}_0^r=0$}\coordHE{} and
+\myHighlight{${\hat\Omega}_0^r={\hat\Omega}_0^r(x,Y,\cc,\hbar)$}\coordHE{} for \myHighlight{$r \geq 3$}\coordHE{}.
+Then \myHighlight{${\hat\Omega}_0$}\coordHE{} satisfies
+\begin{equation}\coord{}\boxEquation{
+\label{eq:property}
+  \dl{\cc^\alpha}{\hat\Omega}_0^r=\dl{Y^\alpha}{\hat\Omega}_0^r=0\,,
+\qquad r \geq 3\,, \qquad \deg{{\hat\Omega}^r_0}=r\,.
+}{
+\dl{\cc^\alpha}{\hat\Omega}_0^r=\dl{Y^\alpha}{\hat\Omega}_0^r=0\,,
+\qquad r \geq 3\,, \qquad \deg{{\hat\Omega}^r_0}=r\,.
+}{ecuacion}\coordE{}\end{equation}
+The classical BRST charge \myHighlight{$\Omega_0$}\coordHE{} can be obtained as
+\myHighlight{$\Omega_0=({\hat\Omega}_0){\bigr|}_{\hbar=0}$}\coordHE{} and is then also
+\myHighlight{$Y^\alpha$}\coordHE{} and \myHighlight{$\cc^\alpha$}\coordHE{} independent (except the terms of zero and
+first order in \myHighlight{$Y$}\coordHE{}).
+\end{prop}
+\begin{proof}
+For the degree \myHighlight{$2$}\coordHE{} term one has \myHighlight{${\hat\Omega_0}^2=-\cc^i p_i$}\coordHE{},
+since \myHighlight{$\qcommut{{\hat\Omega}_0^0}{{\hat\Omega}_0^1}$}\coordHE{} vanishes.
+Assume that~\eqref{eq:property} holds for \myHighlight{$r\leq s$}\coordHE{}.  Then
+\myHighlight{${\hat\Omega}_0^{s+1}$}\coordHE{} is also \myHighlight{$\cc^\alpha$}\coordHE{} and
+\myHighlight{$Y^\alpha$}\coordHE{} independent.  Indeed, for \myHighlight{${\hat\Omega}_0^{s+1}$}\coordHE{} one has
+\begin{equation}\coord{}\boxEquation{
+{\hat\Omega}_0^{s+1}=\delta^*{\hat B}^s\,, 
+}{
+{\hat\Omega}_0^{s+1}=\delta^*{\hat B}^s\,, 
+}{ecuacion}\coordE{}\end{equation}
+with \myHighlight{${\hat B}^s$}\coordHE{} given by~\eqref{eq:B-explicit-q}. 
+The space of \myHighlight{$\cc^\alpha$}\coordHE{} and \myHighlight{$Y^\alpha$}\coordHE{} independent functions is
+closed w.r.t. the star commutator in \myHighlight{$\qA$}\coordHE{}, since the respective
+components of the connection \myHighlight{$\con^0$}\coordHE{} and its curvature vanish and
+\myHighlight{$\delta^*$}\coordHE{} also preserves this space. Thus \myHighlight{${\hat\Omega}_0^{s+1}$}\coordHE{}
+satisfies~\eqref{eq:property} and the statement follows by
+induction.  Up to the terms of degree higher than three
+\myHighlight{$\hat\Omega_0$}\coordHE{} reads as
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:3}
+{\hat\Omega}_0=\cc^\alpha \theta_\alpha - \cc^i p_i-\cc^A D_{AB}Y^B
+-\frac{1}{8} \cc^i {\bar R}^0_{ij;\,kl}Y^jY^kY^l+\ldots\,.
+}{
+  {\hat\Omega}_0=\cc^\alpha \theta_\alpha - \cc^i p_i-\cc^A D_{AB}Y^B
+-\frac{1}{8} \cc^i {\bar R}^0_{ij;\,kl}Y^jY^kY^l+\ldots\,.
+}{ecuacion}\coordE{}\end{equation}
+\end{proof}
+
+The same concerns the BRST invariant extension of functions from
+\myHighlight{$\manM$}\coordHE{} both quantum and classical, which is obtained w.r.t. quantum
+BRST charge \myHighlight{${\hat\Omega}_0$}\coordHE{} and classical BRST charge \myHighlight{$\Omega_0$}\coordHE{}
+respectively.
+\begin{prop}
+\label{prop:extension-special}
+Let \myHighlight{$f_0(x)$}\coordHE{} be a function on \myHighlight{$\manM$}\coordHE{} and \myHighlight{${\hat\Omega}_0$}\coordHE{}
+be the BRST charge from Proposition \bref{prop:Omega-special}.
+Let also \myHighlight{$f(x,Y,\hbar)\in \qA_0$}\coordHE{} be the unique solution to the
+equation
+\begin{equation}\coord{}\boxEquation{
+  \qcommut{{\hat\Omega}_0}{f}=0\,,
+}{
+  \qcommut{{\hat\Omega}_0}{f}=0\,,
+}{ecuacion}\coordE{}\end{equation}
+obtained by Proposition~\bref{prop:extension-q},
+with the boundary condition \myHighlight{$f{\bigr|}_{Y=0}=f_0\,$}\coordHE{} and the additional
+conditions \myHighlight{$\delta^*f=0\,$}\coordHE{} and \myHighlight{$f=f(x,Y,\cc,\hbar)$}\coordHE{}.  Then \myHighlight{$f$}\coordHE{} doesn't depend
+on \myHighlight{$Y^\alpha$}\coordHE{}. The unique classical BRST invariant extension of \myHighlight{$f_0$}\coordHE{}
+can be obtained as \myHighlight{$f|_{\hbar=0}$}\coordHE{} and thus is also
+\myHighlight{$Y^\alpha$}\coordHE{} independent.
+\end{prop}
+\begin{proof}
+The proof goes in the same way as that of Proposition
+\bref{prop:Omega-special} with taking \bref{prop:Omega-special}
+into account.
+\end{proof}
+
+Let us write down explicitly a few first terms of the BRST invariant
+extension of \myHighlight{$f_0(x)$}\coordHE{} obtained by
+Proposition~\bref{prop:extension-special}:
+\begin{multline}\coord{}\boxAlignEqnarray{
+  \leftCoord{}f=f_0+Y^i\d_if_0+\half Y^iY^j\diff-con^0_i \diff-con^0_j f_0
+\leftCoord{}+\frac{\leftCoord{}1}{\rightCoord{}6}Y^i Y^j Y^k\diff-con^0_i \diff-con^0_j \diff-con^0_k f_0
+\leftCoord{}-\frac{\leftCoord{}1}{\rightCoord{}24}\cc^i {\bar R}^0_{\rightCoord{}ij;\,kl}Y^kY^lD^{jm}\d_m f_0+
+\leftCoord{}\ldots\,,
+}{0mm}{6}{4}{
+  f=f_0+Y^i\d_if_0+\half Y^iY^j\diff-con^0_i \diff-con^0_j f_0
++\frac{1}{6}Y^i Y^j Y^k\diff-con^0_i \diff-con^0_j \diff-con^0_k f_0
+-\frac{1}{24}\cc^i {\bar R}^0_{ij;\,kl}Y^kY^lD^{jm}\d_m f_0+
+\ldots\,,
+}{0}\coordE{}\end{multline}
+The expression coincides with that in the Fedosov quantization with
+the Poisson bivector \myHighlight{$\omega^{ij}$}\coordHE{} substituted by the Dirac bivector
+\myHighlight{$D^{ij}$}\coordHE{} and the symplectic connection replaced by the Dirac connection
+\myHighlight{$\con^0$}\coordHE{}.
+
+Taking as \myHighlight{$f_0$}\coordHE{} a constraint function \myHighlight{$\theta_\alpha$}\coordHE{} one arrives at
+the following expression for the unique BRST invariant extension
+\myHighlight{${\bar\theta}_\alpha$}\coordHE{} of \myHighlight{$\theta_\alpha$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+  {\bar\theta}_{\alpha}=\theta_\alpha+Y^i\d_i\theta_\alpha\,.
+}{
+  {\bar\theta}_{\alpha}=\theta_\alpha+Y^i\d_i\theta_\alpha\,.
+}{ecuacion}\coordE{}\end{equation}
+All the higher order terms in the expansion vanish
+since \myHighlight{$D^{ij}\d_j\theta_\alpha=0$}\coordHE{} and
+\myHighlight{$\d_j\d_i\theta_\alpha-(\con^0)^k_{ij}\d_k\theta_\alpha=0$}\coordHE{}. 
+Consequently one arrives at:
+\begin{thm}
+Let the star product \myHighlight{$\star_\manM$}\coordHE{} on \myHighlight{$\manM$}\coordHE{} is constructed by means of
+\myHighlight{${\hat\Omega}_0$}\coordHE{} from Proposition~\bref{prop:Omega-special}. Then
+for any function \myHighlight{$f_0$}\coordHE{} on \myHighlight{$\manM$}\coordHE{} one has:
+\begin{equation}\coord{}\boxEquation{
+f_0\star_\manM \theta_\alpha=
+ \theta_\alpha \star_\manM f_0=
+f_0\theta_\alpha\,.
+}{
+f_0\star_\manM \theta_\alpha=
+ \theta_\alpha \star_\manM f_0=
+f_0\theta_\alpha\,.
+}{ecuacion}\coordE{}\end{equation}
+\end{thm}
+The statement implies that for the star product
+constructed by means of \myHighlight{${\hat\Omega}_0$}\coordHE{}, the central subalgebra
+of the Dirac bracket algebra is also a central subalgebra
+of the respective star commutator algebra.
+
+Thus we obtain the explicit construction of the deformation quantization
+of an arbitrary Dirac bracket on a general symplectic manifold,
+thereby giving a deformation quantization of respective second-class
+constraint system.
+
+
+\section{Reduction to the constraint surface}\label{sec:reduction}
+The purpose of this section is to establish an explicit relation
+between the quantization scheme developed in this paper and
+the approach based on directly quantizing the respective
+second-class constraint surface.  The goal of the previous sections is
+to quantize general second-class system on \myHighlight{$\manM$}\coordHE{} in terms of
+the original constraints \myHighlight{$\theta_\alpha$}\coordHE{} and general coordinates on
+\myHighlight{$\manM$}\coordHE{}.  In this way we have arrived at the star product for the
+Dirac bracket on \myHighlight{$\manM$}\coordHE{}, which in turn determines a star product on
+the constraint surface \myHighlight{$\Sigma$}\coordHE{}.
+
+On the other hand, one can find quantization of \myHighlight{$\Sigma$}\coordHE{} as a
+symplectic manifold (e.g. by means of the Fedosov approach).  Although
+explicit reduction to the constraint surface \myHighlight{$\Sigma$}\coordHE{} is a huge task
+in the realistic physical models it is instructive to trace
+the correspondence between the reduced phase space quantization and the
+approach developed above.  Fortunately, it turns out that this approach
+reproduces not only the Fedosov star-product on \myHighlight{$\Sigma$}\coordHE{} but also
+all the ingredients (including the extended phase space, the BRST charge,
+and the BRST invariant extensions of functions on \myHighlight{$\Sigma$}\coordHE{})
+of the BRST description for the Fedosov
+quantization of \myHighlight{$\Sigma$}\coordHE{}.  This, in particular, proves equivalence of
+the respective approaches to the constraint system quantization.
+
+
+\subsection{The extended phase space for \myHighlight{$\Sigma$}\coordHE{}.}
+Let us consider the constraint surface \myHighlight{$\Sigma$}\coordHE{} as
+a symplectic manifold, with the symplectic form \myHighlight{$\omega^\Sigma
+\equiv \omega\bigr|_\Sigma$}\coordHE{}. Equivalently, the respective Poisson bracket
+on \myHighlight{$\Sigma$}\coordHE{} is the restriction of the Dirac bracket \myHighlight{$\pb{\,}{}^D_\manM$}\coordHE{} to
+\myHighlight{$\Sigma$}\coordHE{}.  We equip \myHighlight{$\Sigma$}\coordHE{} with the symmetric symplectic connection
+\myHighlight{$(\con^0)^\Sigma$}\coordHE{}, which is the restriction of the Dirac connection
+\myHighlight{$\con^0$}\coordHE{} on \myHighlight{$\manM$}\coordHE{} to \myHighlight{$\Sigma$}\coordHE{} (see
+Section~\bref{subsec:D-connection}).  Then one can apply
+to \myHighlight{$\Sigma$}\coordHE{} the quantization method of Sections~\bref{sec:cl} and
+\bref{sec:q}, with \myHighlight{$\Sigma$}\coordHE{} considered as a phase space of the
+unconstraint system (in this case this method reduces
+to that of~\cite{[GL]} which in turn provides
+a BRST formulation of the Fedosov quantization).
+Accordingly, the extended phase space
+for \myHighlight{$\Sigma$}\coordHE{} is given by:
+\begin{equation}\coord{}\boxEquation{
+\E_\Sigma=\mod(\Pi T\Sigma)\oplus T(\Pi T\Sigma)\,.
+}{
+\E_\Sigma=\mod(\Pi T\Sigma)\oplus T(\Pi T\Sigma)\,.
+}{ecuacion}\coordE{}\end{equation}
+\myHighlight{$\E_\Sigma$}\coordHE{} is equipped with the symplectic form
+\begin{equation}\coord{}\boxEquation{
+\begin{split}
+  \label{eq:symplectic-Sigma}
+\omega^{\E_\Sigma}~~=~~\pi^*(\omega{\bigr|}_\Sigma)~+&~2dp_a\wedge dx^a~+~
+2d\cc^a\wedge d\cP_a~+\\
+&+~~(\omega{\bigr|}_\Sigma)_{ab}\,dY^a \wedge dY^B
+~+~Y^aY^b d\con^0_{ab}
+~-~2Y^a \con^0_{ab}\wedge dY^b\,,
+\end{split}
+}{
+\begin{split}
+  \omega^{\E_\Sigma}~~=~~\pi^*(\omega{\bigr|}_\Sigma)~+&~2dp_a\wedge dx^a~+~
+2d\cc^a\wedge d\cP_a~+\\
+&+~~(\omega{\bigr|}_\Sigma)_{ab}\,dY^a \wedge dY^B
+~+~Y^aY^b d\con^0_{ab}
+~-~2Y^a \con^0_{ab}\wedge dY^b\,,
+\end{split}
+}{split}\coordE{}\end{equation}
+where we have introduced local coordinates
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:coord-sigma}
+  x^a,Y^a,p_a,\cc^a,\cP_a\,,
+}{
+  x^a,Y^a,p_a,\cc^a,\cP_a\,,
+}{ecuacion}\coordE{}\end{equation}
+with \myHighlight{$x^a$}\coordHE{} being a local coordinates on \myHighlight{$\Sigma$}\coordHE{},
+considered as function on \myHighlight{$\E_\Sigma$}\coordHE{}, and \myHighlight{$Y^a,p_a,\cc^a,\cP_a$}\coordHE{}
+introduced according to Section~\bref{subsec:extended-phase-space}.
+Along the line of Sections~\bref{sec:cl} and \bref{sec:q} one can also
+identify subalgebras \myHighlight{$\qA^\Sigma$}\coordHE{} and \myHighlight{$\qA^\Sigma_0$}\coordHE{},
+construct the quantum BRST charge, the quantum BRST observables and find
+a covariant star product on \myHighlight{$\Sigma$}\coordHE{}.  We will see that
+all this structures can be obtained by the reduction of the respective
+structures from \myHighlight{$\E$}\coordHE{}.
+
+
+
+\subsection{Constraints on the extended phase space and reduction to
+\myHighlight{$\E_\Sigma$}\coordHE{} at the classical level.}
+A crucial point is that \myHighlight{$\E_\Sigma$}\coordHE{} can be embedded into the extended phase
+space \myHighlight{$\E$}\coordHE{} of Sections~\bref{sec:cl} and \bref{sec:q}. Indeed,
+assume that a connection \myHighlight{$\con$}\coordHE{} entering the symplectic structure
+on \myHighlight{$\E$}\coordHE{} is the specific connection \myHighlight{$\con^0$}\coordHE{} given
+by~\eqref{eq:con0-explicit} and consider a submanifold of the entire
+extended phase space \myHighlight{$\E$}\coordHE{} determined by the following constraints:
+\begin{equation}\coord{}\boxEquation{
+\begin{array}{rclrcl}
+&&&&&\\[-3pt]
+\theta_\alpha&=&0\,, & Y_\alpha&\equiv&Y^i \d_i \theta_\alpha=0\,, \\[4pt]
+Y^\alpha&=&0\,,     & p_\alpha&\equiv&p_i\omega^{ij}\d_i\theta_\alpha=0\,, \\[4pt]
+\cc^\alpha&=&0\,,   & \cP_\alpha&=&0\,, \\[4pt]
+\cc_\alpha&\equiv&\cc^i \d_i \theta_\alpha=0\,, & \qquad
+\cP^2_\alpha&\equiv&\cP_i \omega^{ij}\d_j \theta_\beta=0\,.\\[-4pt]
+&&&&&
+\end{array}
+\label{eq:constraints-E}
+}{
+\begin{array}{rclrcl}
+&&&&&\\[-3pt]
+\theta_\alpha&=&0\,, & Y_\alpha&\equiv&Y^i \d_i \theta_\alpha=0\,, \\[4pt]
+Y^\alpha&=&0\,,     & p_\alpha&\equiv&p_i\omega^{ij}\d_i\theta_\alpha=0\,, \\[4pt]
+\cc^\alpha&=&0\,,   & \cP_\alpha&=&0\,, \\[4pt]
+\cc_\alpha&\equiv&\cc^i \d_i \theta_\alpha=0\,, & \qquad
+\cP^2_\alpha&\equiv&\cP_i \omega^{ij}\d_j \theta_\beta=0\,.\\[-4pt]
+&&&&&
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+This submanifold can be naturally identified with \myHighlight{$\E_\Sigma$}\coordHE{}.
+Moreover, the symplectic form~\eqref{eq:symplectic-Sigma} on
+\myHighlight{$\E_\Sigma$}\coordHE{} coincides with the restriction of the
+symplectic form \myHighlight{$\omega^\E$}\coordHE{} defined on \myHighlight{$\E$}\coordHE{} to \myHighlight{$\E_\Sigma$}\coordHE{} 
+
+
+A useful way to work with \myHighlight{$\E_\Sigma$}\coordHE{} is to consider \myHighlight{$\E_\Sigma$}\coordHE{}
+as a second-class constraint surface in \myHighlight{$\E$}\coordHE{}.
+Indeed, a Poisson bracket matrix  of these constraints
+reads as:
+\vspace{0.5cm}
+\begin{equation}\coord{}\boxEquation{
+\label{eq:matrix}
+  \begin{array}{l|cccccccc}
+&\theta_\beta & \cc_\beta&\cc^\beta&Y_\beta&Y^\beta &\cP_\beta &\cP^2_\beta& p_\beta\\
+\hline
+\theta_\alpha &0&0&0&0&0&0&0&\Delta_{\alpha \beta}\\
+\cc_\alpha    &0&0&0&0&0&0&\Delta_{\alpha \beta}              &\bl\\
+\cc^\alpha    &0&0&0&0&0&\delta^\alpha_\beta              &\bl&\bl\\
+Y_\alpha      &0&0&0&0&-\delta_\alpha^\beta            &\bl&\bl&\bl\\
+Y^\alpha      &0&0&0&\delta^\alpha_\beta         &\bl&\bl&\bl&\bl\\
+\cP_\alpha    &0&0&\delta^\alpha_\beta        &\bl&\bl&\bl&\bl&\bl\\
+\cP^2_\alpha  &0&\Delta_{\alpha\beta}    &\bl&\bl&\bl&\bl&\bl&\bl\\
+p_\alpha      &-\Delta_{\alpha\beta}  &\bl&\bl&\bl&\bl&\bl&\bl&\bl
+\end{array}
+}{
+\begin{array}{l|cccccccc}
+&\theta_\beta & \cc_\beta&\cc^\beta&Y_\beta&Y^\beta &\cP_\beta &\cP^2_\beta& p_\beta\\
+\hline
+\theta_\alpha &0&0&0&0&0&0&0&\Delta_{\alpha \beta}\\
+\cc_\alpha    &0&0&0&0&0&0&\Delta_{\alpha \beta}              &\bl\\
+\cc^\alpha    &0&0&0&0&0&\delta^\alpha_\beta              &\bl&\bl\\
+Y_\alpha      &0&0&0&0&-\delta_\alpha^\beta            &\bl&\bl&\bl\\
+Y^\alpha      &0&0&0&\delta^\alpha_\beta         &\bl&\bl&\bl&\bl\\
+\cP_\alpha    &0&0&\delta^\alpha_\beta        &\bl&\bl&\bl&\bl&\bl\\
+\cP^2_\alpha  &0&\Delta_{\alpha\beta}    &\bl&\bl&\bl&\bl&\bl&\bl\\
+p_\alpha      &-\Delta_{\alpha\beta}  &\bl&\bl&\bl&\bl&\bl&\bl&\bl
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+\vspace{0.5cm}
+
+\noindent
+where ``dots'' denote the possibly non-vanishing blocks
+whose explicit structure, however, is not needed below.
+This matrix is obviously invertible.
+In what follows we also need an explicit form of the matrix
+inverse to~\eqref{eq:matrix}. It is given by:
+\vspace{0.5cm}
+\begin{equation}\coord{}\boxEquation{
+\label{eq:DM-invers-E}
+  \begin{array}{l|cccccccc}
+&\theta_\beta & \cc_\beta&\cc^\beta&Y_\beta&Y^\beta &\cP_\beta &\cP^2_\beta& p_\beta\\
+\hline
+\theta_\alpha &\bl&\bl&\bl&\bl&\bl&\bl  &\bl &-\Delta^{\alpha\beta}\\
+\cc_\alpha    &\bl&\bl&\bl&\bl&\bl&\bl&\Delta^{\alpha\beta} &0\\
+\cc^\alpha    &\bl&\bl&\bl&\bl&\bl&\delta_\alpha^\beta&0&0\\
+Y_\alpha      &\bl&\bl&\bl&\bl &\delta^\alpha_\beta  &0&0&0\\
+Y^\alpha      &\bl&\bl&\bl&-\delta_\alpha^\beta &0&0&0&0\\
+\cP_\alpha    &\bl &\bl  &\delta_\alpha^\beta  & 0 &0&0&0&0\\
+\cP^2_\alpha  &\bl &\Delta^{\alpha\beta}&0&0&0&0&0&0\\
+p_\alpha      &\Delta^{\alpha\beta} &0&0& 0&0&0&0&0
+\end{array}
+}{
+\begin{array}{l|cccccccc}
+&\theta_\beta & \cc_\beta&\cc^\beta&Y_\beta&Y^\beta &\cP_\beta &\cP^2_\beta& p_\beta\\
+\hline
+\theta_\alpha &\bl&\bl&\bl&\bl&\bl&\bl  &\bl &-\Delta^{\alpha\beta}\\
+\cc_\alpha    &\bl&\bl&\bl&\bl&\bl&\bl&\Delta^{\alpha\beta} &0\\
+\cc^\alpha    &\bl&\bl&\bl&\bl&\bl&\delta_\alpha^\beta&0&0\\
+Y_\alpha      &\bl&\bl&\bl&\bl &\delta^\alpha_\beta  &0&0&0\\
+Y^\alpha      &\bl&\bl&\bl&-\delta_\alpha^\beta &0&0&0&0\\
+\cP_\alpha    &\bl &\bl  &\delta_\alpha^\beta  & 0 &0&0&0&0\\
+\cP^2_\alpha  &\bl &\Delta^{\alpha\beta}&0&0&0&0&0&0\\
+p_\alpha      &\Delta^{\alpha\beta} &0&0& 0&0&0&0&0
+\end{array}
+}{ecuacion}\coordE{}\end{equation}
+
+
+\begin{prop}\label{prop:Omega-red}
+Let \myHighlight{$\pb{}{}^D_\E$}\coordHE{} be a Dirac bracket associated to
+the constraints~\eqref{eq:constraints-E}. Then the BRST charge \myHighlight{$\Omega_0$}\coordHE{}
+from Proposition~\bref{prop:Omega-special} satisfies a ``weak'' master
+equation:
+\begin{equation}\coord{}\boxEquation{
+\left(  \pb{\Omega_0}{\Omega_0}^D_\E \right){\bigr|}_{\E_\Sigma}=0\,.
+}{
+\left(  \pb{\Omega_0}{\Omega_0}^D_\E \right){\bigr|}_{\E_\Sigma}=0\,.
+}{ecuacion}\coordE{}\end{equation}
+\end{prop}
+\begin{proof}
+Let us write down explicitly the following terms:
+\begin{equation}\coord{}\boxEquation{
+\label{eq:terms}
+  \begin{split}
+&    \pb{\Omega_0}{\theta_\alpha}_\E=\cc^i\d_i\theta_\alpha=\cc_\alpha\\
+&    \pb{\Omega_0}{\cc_\alpha}_\E=0\\
+&    \pb{\Omega_0}{\cc^\alpha}_\E=0\\
+&    \pb{\Omega_0}{Y_\alpha}_\E=-\cc_\alpha\,.
+\end{split}
+}{
+\begin{split}
+&    \pb{\Omega_0}{\theta_\alpha}_\E=\cc^i\d_i\theta_\alpha=\cc_\alpha\\
+&    \pb{\Omega_0}{\cc_\alpha}_\E=0\\
+&    \pb{\Omega_0}{\cc^\alpha}_\E=0\\
+&    \pb{\Omega_0}{Y_\alpha}_\E=-\cc_\alpha\,.
+\end{split}
+}{split}\coordE{}\end{equation}
+The first three equalities are trivial. The last one follows from
+Proposition~\bref{prop:Omega-special}.
+
+
+Further, it follows from the explicit form of the matrix
+\eqref{eq:DM-invers-E} entering the Dirac bracket
+\myHighlight{$\pb{}{}^D_\E$}\coordHE{} that each non-vanishing term in \myHighlight{$\pb{\Omega_0}{\Omega_0}^D_\E$}\coordHE{} is
+proportional to \eqref{eq:terms} and thereby vanishes on \myHighlight{$\E_\Sigma$}\coordHE{}.
+\end{proof}
+Similar arguments lead to the following statement:
+\begin{prop}\label{prop:observables-red}
+Let function \myHighlight{$f$}\coordHE{} on \myHighlight{$\E$}\coordHE{} be such that
+\begin{equation}\coord{}\boxEquation{
+  \pb{\Omega_0}{f}_\E=0\,.
+}{
+  \pb{\Omega_0}{f}_\E=0\,.
+}{ecuacion}\coordE{}\end{equation}
+Let also \myHighlight{$f$}\coordHE{} satisfies
+\begin{equation}\coord{}\boxEquation{
+\begin{aligned}
+  (\pb{f}{\theta_\alpha}_\E){\bigr|}_{\E_\Sigma}&~=~&0\,,\qquad
+  (\pb{f}{Y_\alpha}_\E){\bigr|}_{\E_\Sigma}&~=~&0\,,\\
+  (\pb{f}{\cc_\alpha}_\E){\bigr|}_{\E_\Sigma}&~=~&0\,,\qquad
+  (\pb{f}{\cc^\alpha}_\E){\bigr|}_{\E_\Sigma}&~=~&0\,.
+\end{aligned}
+}{
+\begin{aligned}
+  (\pb{f}{\theta_\alpha}_\E){\bigr|}_{\E_\Sigma}&~=~&0\,,\qquad
+  (\pb{f}{Y_\alpha}_\E){\bigr|}_{\E_\Sigma}&~=~&0\,,\\
+  (\pb{f}{\cc_\alpha}_\E){\bigr|}_{\E_\Sigma}&~=~&0\,,\qquad
+  (\pb{f}{\cc^\alpha}_\E){\bigr|}_{\E_\Sigma}&~=~&0\,.
+\end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+Then,
+\begin{equation}\coord{}\boxEquation{
+\label{eq:D-BRST}
+  (\pb{\Omega_0}{f}^D_\E){\bigr|}_{\E_\Sigma}=0\,.
+}{
+(\pb{\Omega_0}{f}^D_\E){\bigr|}_{\E_\Sigma}=0\,.
+}{ecuacion}\coordE{}\end{equation}
+In particular, if \myHighlight{$f(x,Y)$}\coordHE{} is the unique BRST invariant extension
+of the function \myHighlight{$f_0(x)$}\coordHE{}, obtained by
+Proposition~\bref{prop:extension-special},
+then \myHighlight{$f$}\coordHE{} satisfies~\eqref{eq:D-BRST}.
+\end{prop}
+
+
+As a simple consequence of Propositions~\bref{prop:Omega-red}
+and \bref{prop:observables-red} we see that
+\begin{equation}\coord{}\boxEquation{
+\pb{\Omega_\Sigma}{\Omega_\Sigma}_{\E_\Sigma}=0\,, \qquad 
+\pb{\Omega_\Sigma}{f_\Sigma}_{\E_\Sigma}=0\,,
+}{
+\pb{\Omega_\Sigma}{\Omega_\Sigma}_{\E_\Sigma}=0\,, \qquad 
+\pb{\Omega_\Sigma}{f_\Sigma}_{\E_\Sigma}=0\,,
+}{ecuacion}\coordE{}\end{equation}
+where we have introduced separate notations \myHighlight{$\Omega_\Sigma$}\coordHE{} and
+\myHighlight{$f_\Sigma$}\coordHE{} for the restrictions of the BRST charge \myHighlight{$\Omega_0$}\coordHE{} and BRST
+invariant function \myHighlight{$f$}\coordHE{} to \myHighlight{$\E_\Sigma$}\coordHE{}.  One can also see
+that if \myHighlight{$f=f(x,Y)$}\coordHE{} is a BRST invariant extension of function \myHighlight{$f_0(x)$}\coordHE{},
+then \myHighlight{$f_\Sigma=f{\bigr|}_{\E_\Sigma}$}\coordHE{} is a BRST invariant (w.r.t. \myHighlight{$\Omega_\Sigma$}\coordHE{})
+extension of \myHighlight{$f_0{\bigr|}_{\Sigma}$}\coordHE{}.
+
+Thus, at the classical level, our scheme reproduces all the
+basic structures of the BRST formulation of the Fedosov quantization
+for the constraint surface \myHighlight{$\Sigma$}\coordHE{}.  In particular, the extended phase space for
+\myHighlight{$\Sigma$}\coordHE{} is \myHighlight{$\E_\Sigma$}\coordHE{}, the Poisson bracket therein is the
+restriction of the Dirac bracket \myHighlight{$\pb{}{}^D_\E$}\coordHE{} to \myHighlight{$\E_\Sigma$}\coordHE{}, the
+BRST charge is \myHighlight{$\Omega_\Sigma=\Omega_0{\bigr|}_{\E_\Sigma}$}\coordHE{}, and the BRST
+invariant extension of a function \myHighlight{$f_0{\bigr|}_\Sigma\in \func\Sigma$}\coordHE{} is the
+restriction \myHighlight{$f_\Sigma=f{\bigr|}_{\E_\Sigma}$}\coordHE{} of the BRST extension \myHighlight{$f$}\coordHE{}
+of \myHighlight{$f_0\in\func\manM$}\coordHE{}.
+
+
+
+\subsection{Quantum reduction and relation with the Fedosov
+quantization of \myHighlight{$\Sigma$}\coordHE{}.}  Now we are going to show that
+the results of the previous subsection can be restated at the quantum
+level.  Let \myHighlight{$\qA^\Sigma$}\coordHE{} and \myHighlight{$\qA^\Sigma_0$}\coordHE{} are
+the subalgebras of the algebra of functions on \myHighlight{$\E_\Sigma$}\coordHE{}
+constructed as in Section~\bref{subsec:quantization} for the unconstraint system
+on \myHighlight{$\Sigma$}\coordHE{}.  Let also \myHighlight{$\star_\Sigma$}\coordHE{} denotes the
+quantum multiplication (see Sec.~\bref{subsec:quantization}) in
+\myHighlight{$\qA^\Sigma$}\coordHE{} and \myHighlight{$\qA^\Sigma_0$}\coordHE{}.
+\begin{thm}
+Let \myHighlight{${\hat\Omega}_\Sigma$}\coordHE{} be the restriction of the
+quantum BRST charge \myHighlight{${\hat\Omega}_0$}\coordHE{} from
+Proposition~\bref{prop:Omega-special} to \myHighlight{$\E_\Sigma$}\coordHE{}. Let also \myHighlight{$f_\Sigma$}\coordHE{} be
+a restriction to \myHighlight{$\E_\Sigma$}\coordHE{} of the quantum BRST invariant
+extension \myHighlight{$f(x,Y,\hbar)$}\coordHE{} obtained by Proposition~\bref{prop:extension-special}
+for a function \myHighlight{$f_0$}\coordHE{} on \myHighlight{$\manM$}\coordHE{}. Then \myHighlight{${\hat\Omega}_\Sigma$}\coordHE{} and
+\myHighlight{$f_\Sigma$}\coordHE{} belong to \myHighlight{$\qA^\Sigma$}\coordHE{} and \myHighlight{$\qA^\Sigma_0$}\coordHE{} respectively
+and satisfy:
+\begin{equation}\coord{}\boxEquation{
+  \commut{{\hat\Omega}_\Sigma}{{\hat\Omega}_\Sigma}_{\star_\Sigma}=0\,,
+\qquad  
+  \commut{{\hat\Omega}_\Sigma}{f_\Sigma}_{\star_\Sigma}=0\,.
+}{
+  \commut{{\hat\Omega}_\Sigma}{{\hat\Omega}_\Sigma}_{\star_\Sigma}=0\,,
+\qquad  
+  \commut{{\hat\Omega}_\Sigma}{f_\Sigma}_{\star_\Sigma}=0\,.
+}{ecuacion}\coordE{}\end{equation}
+\end{thm}
+\begin{proof}
+Consider the following subset of the constraints
+\eqref{eq:constraints-E}:
+\begin{equation}\coord{}\boxEquation{
+Y_\alpha\equiv Y^i \d_i \theta_\alpha=0\,, \qquad Y^\alpha=0\,,\qquad
+\cc^\alpha=0\,,\qquad \cP_\alpha=0\,.
+\label{eq:constraints-E-2}
+}{
+Y_\alpha\equiv Y^i \d_i \theta_\alpha=0\,, \qquad Y^\alpha=0\,,\qquad
+\cc^\alpha=0\,,\qquad \cP_\alpha=0\,.
+}{ecuacion}\coordE{}\end{equation}
+These constraints are also second-class ones. It is easy to write down
+respective Dirac bracket; the non-vanishing basic Dirac bracket
+relations are given by:
+\begin{equation}\coord{}\boxEquation{
+\begin{gathered}
+  \label{eq:DB-E}
+  \begin{array}{rclrcl}
+    \pb{x^i}{p_j}_{\E}&=&\delta^i_j\,, \qquad &
+    \pb{Y^i}{Y^j}_{\E}&=&D^{ij}\,,\\[5pt]
+    \pb{Y^j}{p_i}_{\E}&=&-(\con^0)^j_{ik}Y^k\,,\qquad &
+    \pb{\cc^i}{\cP_j}_{\E}&=&\delta^i_j\,,
+  \end{array}\\[4pt]
+\pb{p_i}{p_j}_{\E}~~=~~\omega_{ij}+
+{\half}{\bar R}^0_{ij;\,kl\,}Y^kY^l\,.
+\end{gathered}
+}{
+\begin{gathered}
+  \begin{array}{rclrcl}
+    \pb{x^i}{p_j}_{\E}&=&\delta^i_j\,, \qquad &
+    \pb{Y^i}{Y^j}_{\E}&=&D^{ij}\,,\\[5pt]
+    \pb{Y^j}{p_i}_{\E}&=&-(\con^0)^j_{ik}Y^k\,,\qquad &
+    \pb{\cc^i}{\cP_j}_{\E}&=&\delta^i_j\,,
+  \end{array}\\[4pt]
+\pb{p_i}{p_j}_{\E}~~=~~\omega_{ij}+
+{\half}{\bar R}^0_{ij;\,kl\,}Y^kY^l\,.
+\end{gathered}
+}{ecuacion}\coordE{}\end{equation}
+It follows from~\eqref{eq:DB-E} that algebras \myHighlight{$\qA_0$}\coordHE{}
+and \myHighlight{$\qA$}\coordHE{} are closed w.r.t. the Dirac bracket \eqref{eq:DB-E}.
+Let us introduce the Weyl star product \myHighlight{$\star_D$}\coordHE{} in \myHighlight{$\qA_0$}\coordHE{}
+build by the restriction of the Dirac bracket~\eqref{eq:DB-E}
+to \myHighlight{$\qA_0$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+\label{eq:Weyl-star-product-D}
+(a \star_D b)(x,Y,\cc,\cP,\hbar)= exp ( -\frac{i\hbar}{2}
+D^{ij} \dl{Y_1^i} \dl{Y_2^j})
+a(x,Y_1,\cc,\cP,\hbar)b(x,Y_2,\cc,\cP,\hbar){\bigr|}_{Y_1=Y_2=Y} \,,
+}{
+(a \star_D b)(x,Y,\cc,\cP,\hbar)= exp ( -\frac{i\hbar}{2}
+D^{ij} \dl{Y_1^i} \dl{Y_2^j})
+a(x,Y_1,\cc,\cP,\hbar)b(x,Y_2,\cc,\cP,\hbar){\bigr|}_{Y_1=Y_2=Y} \,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\cP$}\coordHE{} stands for dependence on \myHighlight{$\cP_\alpha$}\coordHE{} only.
+\begin{lemma}\label{lemma:2}
+\begin{enumerate}
+\item
+Let \myHighlight{$f,g\in \qA_0$}\coordHE{} do not depend on \myHighlight{$Y^\alpha$}\coordHE{} and \myHighlight{$\cP_\alpha$}\coordHE{}. Then,
+\begin{equation}\coord{}\boxEquation{
+  f\star_D g=f \star g\,,
+}{
+  f\star_D g=f \star g\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\star$}\coordHE{} in the R.H.S. denotes Weyl
+star product~\eqref{eq:Weyl-star-product}.
+\item For any \myHighlight{$a\in \qA_0$}\coordHE{} its restriction \myHighlight{$a{\bigr|}_{\E_\Sigma}$}\coordHE{}
+belongs to \myHighlight{$\qA^\Sigma_0$}\coordHE{}. The star multiplications \myHighlight{$\star_D$}\coordHE{}
+determines a star multiplication in \myHighlight{$\qA^\Sigma_0$}\coordHE{}
+that is identical with with \myHighlight{$\star_\Sigma$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+  (a{\bigr|}_{\E_\Sigma})\star_\Sigma (b{\bigr|}_{\E_\Sigma})=
+  ( a \star_D b){\bigr|}_{\E_\Sigma}\,.
+}{
+  (a{\bigr|}_{\E_\Sigma})\star_\Sigma (b{\bigr|}_{\E_\Sigma})=
+  ( a \star_D b){\bigr|}_{\E_\Sigma}\,.
+}{ecuacion}\coordE{}\end{equation}
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+The only nontrivial is the second statement. It is easy to see that
+restriction \myHighlight{$f{\bigr|}_{\E_\Sigma}$}\coordHE{} of an arbitrary element \myHighlight{$f\in \qA_0$}\coordHE{}
+belongs to \myHighlight{$\qA^0_\Sigma$}\coordHE{}. That \myHighlight{$\star_D$}\coordHE{}
+restricts to \myHighlight{$\qA^\Sigma_0$}\coordHE{} follows from the following properties
+of \myHighlight{$\star_D$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+\label{eq:rest-prop}
+\begin{split}
+  \begin{array}{rccclrcccl}
+  f \star_D Y^\alpha&=&Y^\alpha \star_D f&=&f\,Y^\alpha \,,\qquad&
+  f \star_D  Y_\alpha& =& Y_\alpha \star_D f&=&f\,Y_\alpha\,,\\[3pt]
+  f \star_D C^\alpha&=&\pm C^\alpha  \star_D f& =&f\,C^\alpha \,,\qquad&
+  f \star_D  C_\alpha&=&\pm C_\alpha\star_D f & =&f\,C_\alpha\,,\\[3pt]
+\end{array}\\
+\begin{array}{c}
+f\star_D \cP_\alpha= \pm \cP_\alpha\star_D f =
+f\,\cP_\alpha\,,\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}
+\end{array}\\
+\end{split}
+}{
+\begin{split}
+  \begin{array}{rccclrcccl}
+  f \star_D Y^\alpha&=&Y^\alpha \star_D f&=&f\,Y^\alpha \,,\qquad&
+  f \star_D  Y_\alpha& =& Y_\alpha \star_D f&=&f\,Y_\alpha\,,\\[3pt]
+  f \star_D C^\alpha&=&\pm C^\alpha  \star_D f& =&f\,C^\alpha \,,\qquad&
+  f \star_D  C_\alpha&=&\pm C_\alpha\star_D f & =&f\,C_\alpha\,,\\[3pt]
+\end{array}\\
+\begin{array}{c}
+f\star_D \cP_\alpha= \pm \cP_\alpha\star_D f =
+f\,\cP_\alpha\,,\qquad{}\qquad{}\qquad{}\qquad{}\qquad{}
+\end{array}\\
+\end{split}
+}{split}\coordE{}\end{equation}
+for any \myHighlight{$f\in \qA_0$}\coordHE{}. Indeed, \myHighlight{$\qA_0^\Sigma$}\coordHE{}
+(as an algebra w.r.t. ordinary commutative product) can be identified with the quotient of
+\myHighlight{$\qA_0$}\coordHE{} modulo ideal generated (by ordinary commutative product)
+by elements
+\myHighlight{$Y^\alpha,Y_\alpha,\cc^\alpha,\cc_\alpha,\cP_\alpha\in \qA_0$}\coordHE{}.  Then,
+\eqref{eq:rest-prop} implies that this
+ideal is also an ideal in \myHighlight{$\qA_0$}\coordHE{} w.r.t. the \myHighlight{$\star_D$}\coordHE{}-product.
+Thus \myHighlight{$\star_D$}\coordHE{} determines a star product in \myHighlight{$\qA^\Sigma_0$}\coordHE{}.  One can
+easily check that in \myHighlight{$\qA_0^\Sigma$}\coordHE{} the product coincides with
+\myHighlight{$\star_\Sigma$}\coordHE{}.
+\end{proof}
+Let us now rewrite the master equation~\eqref{eq:master-q}
+for \myHighlight{${\hat\Omega}_0$}\coordHE{} in the
+``Fedosov'' form:
+\begin{equation}\coord{}\boxEquation{
+-\delta r + \Dcon-d r+\frac{i}{2\hbar}\commut{r}{r}_\star={\bar R}^0\,,
+}{
+-\delta r + \Dcon-d r+\frac{i}{2\hbar}\commut{r}{r}_\star={\bar R}^0\,,
+}{ecuacion}\coordE{}\end{equation}
+where
+\begin{equation}\coord{}\boxEquation{
+r=\sum_{s=3}^\infty {\hat\Omega}^s_0\,, \qquad 
+\Dcon-d =\cc^i\d_i-\cc^i (\con^0)^A_{iB}Y^B\dl{Y^A}\,, \qquad
+\delta=\cc^A\dl{Y^A}\,,
+}{
+r=\sum_{s=3}^\infty {\hat\Omega}^s_0\,, \qquad 
+\Dcon-d =\cc^i\d_i-\cc^i (\con^0)^A_{iB}Y^B\dl{Y^A}\,, \qquad
+\delta=\cc^A\dl{Y^A}\,,
+}{ecuacion}\coordE{}\end{equation}
+and
+\begin{equation}\coord{}\boxEquation{
+  {\bar R}^0=
+\frac{1}{4} \cc^i \cc^j  {\bar R}^0_{ij;\, A B} Y^A Y^B=
+\frac{1}{4} \cc^i \cc^j  {\bar R}^0_{ij;\, kl} Y^k Y^l \,.
+}{
+  {\bar R}^0=
+\frac{1}{4} \cc^i \cc^j  {\bar R}^0_{ij;\, A B} Y^A Y^B=
+\frac{1}{4} \cc^i \cc^j  {\bar R}^0_{ij;\, kl} Y^k Y^l \,.
+}{ecuacion}\coordE{}\end{equation}
+Since \myHighlight{$r$}\coordHE{} doesn't depend on \myHighlight{$Y^\alpha$}\coordHE{} the master equation can be
+equivalently rewritten as that w.r.t. the star product \myHighlight{$\star_D$}\coordHE{}
+and the Dirac connection on \myHighlight{$\manM$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+-\delta r+(\cc^i\d_i-
+\cc^i (\con^0)^k_{ij}Y^j\dl{Y^j})r+
+\frac{i}{2\hbar}\commut{r}{r}_{\star_D}={\bar R}^0\,.
+}{
+-\delta r+(\cc^i\d_i-
+\cc^i (\con^0)^k_{ij}Y^j\dl{Y^j})r+
+\frac{i}{2\hbar}\commut{r}{r}_{\star_D}={\bar R}^0\,.
+}{ecuacion}\coordE{}\end{equation}
+Taking into account the second item of lemma~\bref{lemma:2}
+one arrives at
+\begin{equation}\coord{}\boxEquation{
+\label{eq:F-master-sigma}
+-\delta_{\Sigma}(r{\bigr|}_{\E_\Sigma})
++{\Dcon-d}_{\Sigma}(r{\bigr|}_{\E_\Sigma})
++\frac{i}{2\hbar}\commut{r{\bigr|}_{\E_\Sigma}}{r{\bigr|}_{\E_\Sigma}}_{\star_{\Sigma}}
+={\bar R}^0{\bigr|}_{\E_\Sigma}\,.
+}{
+-\delta_{\Sigma}(r{\bigr|}_{\E_\Sigma})
++{\Dcon-d}_{\Sigma}(r{\bigr|}_{\E_\Sigma})
++\frac{i}{2\hbar}\commut{r{\bigr|}_{\E_\Sigma}}{r{\bigr|}_{\E_\Sigma}}_{\star_{\Sigma}}
+={\bar R}^0{\bigr|}_{\E_\Sigma}\,.
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\Dcon-d_{\Sigma}$}\coordHE{} and \myHighlight{$\delta_{\Sigma}$}\coordHE{} are restrictions
+of \myHighlight{$\Dcon-d$}\coordHE{} and \myHighlight{$\delta$}\coordHE{} defined on \myHighlight{$\E$}\coordHE{} to \myHighlight{${\E_\Sigma}$}\coordHE{}. In the
+coordinates \myHighlight{$x^a,p_a,Y^a,\cc^a,\cP_a$}\coordHE{} on \myHighlight{$\E_{\Sigma}$}\coordHE{} one has
+\begin{equation}\coord{}\boxEquation{
+{\Dcon-d}_{\Sigma}=\cc^a\d_a-\cc^a (\con^0)^c_{ab}Y^b\dl{Y^c}\,,
+\qquad \delta_{\Sigma}=\cc^a \dl{Y^a}\,,
+}{
+{\Dcon-d}_{\Sigma}=\cc^a\d_a-\cc^a (\con^0)^c_{ab}Y^b\dl{Y^c}\,,
+\qquad \delta_{\Sigma}=\cc^a \dl{Y^a}\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$(\con^0)^c_{ab}$}\coordHE{} are coefficients of a connection \myHighlight{$(\con^0)^\Sigma$}\coordHE{} on
+\myHighlight{$\Sigma$}\coordHE{}  w.r.t. the coordinates \myHighlight{$x^a$}\coordHE{} (recall that Dirac connection
+\myHighlight{$(\con^0)$}\coordHE{} on \myHighlight{$\manM$}\coordHE{} restricts to \myHighlight{$\Sigma$}\coordHE{}).
+
+Finally, one can observe that
+for
+\begin{equation}\coord{}\boxEquation{
+{\hat\Omega}_\Sigma\equiv{\hat\Omega_0}{\bigr|}_{\E_\Sigma}=
+-\cc^ap_a-\cc^a \omega^\Sigma_{ab}y^b+r{\bigr|}_{\E_\Sigma}
+  }{
+{\hat\Omega}_\Sigma\equiv{\hat\Omega_0}{\bigr|}_{\E_\Sigma}=
+-\cc^ap_a-\cc^a \omega^\Sigma_{ab}y^b+r{\bigr|}_{\E_\Sigma}
+  }{ecuacion}\coordE{}\end{equation}
+Eq.~\eqref{eq:F-master-sigma} implies:
+\begin{equation}\coord{}\boxEquation{
+  \commut{{\hat\Omega}_\Sigma}{{\hat\Omega}_\Sigma}_{\star_\Sigma}=0\,.
+}{
+  \commut{{\hat\Omega}_\Sigma}{{\hat\Omega}_\Sigma}_{\star_\Sigma}=0\,.
+}{ecuacion}\coordE{}\end{equation}
+Similar arguments show the rest of the statement.
+\end{proof}
+It follows from the theorem that the star product on \myHighlight{$\Sigma$}\coordHE{} obtained
+in Section~\bref{subsec:BRST-q} as a quantum multiplication
+of the nonequivalent quantum observables can be identified with
+the Fedosov star product on \myHighlight{$\Sigma$}\coordHE{}, provided
+the symplectic connection entering the Poisson bracket on \myHighlight{$\E$}\coordHE{}
+is the specific symplectic connection \myHighlight{$\con^0$}\coordHE{}; the Fedosov star
+product on \myHighlight{$\Sigma$}\coordHE{} corresponds then to the connection
+\myHighlight{$(\con^0)^\Sigma$}\coordHE{} on \myHighlight{$\Sigma$}\coordHE{}
+obtained by the restriction of the Dirac connection \myHighlight{$\con^0$}\coordHE{}
+defined on \myHighlight{$\manM$}\coordHE{} to \myHighlight{$\Sigma$}\coordHE{}.
+
+
+\section{An alternative formulation}\label{sec:alternative}
+An interesting understanding of the quantization scheme proposed in
+this paper is provided by the identification of the symplectic form
+\myHighlight{$D$}\coordHE{} in the vector bundle \myHighlight{$\W(\manM)$}\coordHE{} as the symplectic form on
+the appropriate symplectic manifold.  Namely, let us consider the vector
+bundle \myHighlight{$\V(\manM)=\manM \times V$}\coordHE{} associated with the constraints
+\myHighlight{$\theta_\alpha$}\coordHE{} (see the beginning of
+Section~\bref{subsec:connection}.  Let \myHighlight{$\eta^\alpha$}\coordHE{} be coordinates on
+\myHighlight{$V$}\coordHE{}.  Considered as a manifold \myHighlight{$\V(\manM)$}\coordHE{} is equipped with the
+following 2-form:
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:D-form}
+  \aD=\pi^*\omega-d \theta_\alpha \wedge d \eta^\alpha\,.
+}{
+  \aD=\pi^*\omega-d \theta_\alpha \wedge d \eta^\alpha\,.
+}{ecuacion}\coordE{}\end{equation}
+It is useful to write respective matrix:
+\begin{equation}\coord{}\boxEquation{
+\aD=
+\left(\begin{array}{cc}
+\aD_{ij} & \aD_{i\beta}\\[7pt]
+\aD_{\alpha j}& \aD_{\alpha\beta}
+ \end{array}\right)=
+\left(\begin{array}{cc}
+\omega_{ij} & \d_i \theta_\beta\\[7pt]
+- \d_j\theta_\alpha & 0
+ \end{array}\right)
+}{
+\aD=
+\left(\begin{array}{cc}
+\aD_{ij} & \aD_{i\beta}\\[7pt]
+\aD_{\alpha j}& \aD_{\alpha\beta}
+ \end{array}\right)=
+\left(\begin{array}{cc}
+\omega_{ij} & \d_i \theta_\beta\\[7pt]
+- \d_j\theta_\alpha & 0
+ \end{array}\right)
+}{ecuacion}\coordE{}\end{equation}
+The 2-form \myHighlight{$\aD$}\coordHE{} is obviously closed and is nondegenerate
+provided the respective Dirac matrix
+\myHighlight{$\Delta_{\alpha\beta}=\pb{\theta_\alpha}{\theta_\beta}_\manM$}\coordHE{}
+is invertible.  Introducing a unified notation \myHighlight{$x^A$}\coordHE{} for the
+coordinates \myHighlight{$x^i$}\coordHE{} and \myHighlight{$\eta^\alpha$}\coordHE{} it is easy to see that
+coefficients \myHighlight{$\aD_{AB}$}\coordHE{} of the symplectic form \myHighlight{$\aD$}\coordHE{} coincides with the
+coefficients of the symplectic form \myHighlight{$D$}\coordHE{} on the fibres of \myHighlight{$\W(\manM)$}\coordHE{} from
+Section~\bref{sec:cl} (it is assumed that the coefficients corresponds
+to the same coordinate system on \myHighlight{$\manM$}\coordHE{} and the same basis of
+constraints).  Speaking geometrically, the fibres of
+the symplectic vector bundle \myHighlight{$\W(\manM)$}\coordHE{} is identified with the
+fibres of the tangent bundle over \myHighlight{$\V(\manM)$}\coordHE{}.
+
+
+The Poisson bracket corresponding to the symplectic form
+\eqref{eq:D-form} reads as
+\begin{equation}\coord{}\boxEquation{
+  \label{eq:D-PB}
+\begin{split}
+\pb{x^i}{x^j}_{\V(\manM)}&=\omega^{ij}-\omega^{il}(\d_l \theta_\alpha)
+\Delta^{\alpha \beta} (\d_k \theta_\beta) \omega^{kj}\,, \\
+\pb{x^i}{\eta^\alpha}_{\V(\manM)}&=-\omega^{il}(\d_l \theta_\beta)
+\Delta^{\beta \alpha}\,,\\
+\pb{\eta^\alpha}{\eta^\beta}_{\V(\manM)}&=\Delta^{\alpha\beta}\,.
+\end{split}  
+}{
+  \begin{split}
+\pb{x^i}{x^j}_{\V(\manM)}&=\omega^{ij}-\omega^{il}(\d_l \theta_\alpha)
+\Delta^{\alpha \beta} (\d_k \theta_\beta) \omega^{kj}\,, \\
+\pb{x^i}{\eta^\alpha}_{\V(\manM)}&=-\omega^{il}(\d_l \theta_\beta)
+\Delta^{\beta \alpha}\,,\\
+\pb{\eta^\alpha}{\eta^\beta}_{\V(\manM)}&=\Delta^{\alpha\beta}\,.
+\end{split}  
+}{split}\coordE{}\end{equation}
+Note that this Poisson bracket coincides with the Dirac
+bracket on \myHighlight{$\manM$}\coordHE{} when evaluated on \myHighlight{$\eta$}\coordHE{}-independent functions.
+
+
+\subsection{First class constraint system on \myHighlight{$\V(\manM)$}\coordHE{}}
+Let us consider functions \myHighlight{$\theta_\alpha$}\coordHE{} as the constraints on
+\myHighlight{$\V(\manM)$}\coordHE{}.  It is easy to see that these constraints are the first
+class ones.  Moreover, the first-class system determined by
+\myHighlight{$\theta_\alpha$}\coordHE{} is Abelian. Indeed,
+\begin{equation}\coord{}\boxEquation{
+  \pb{\theta_\alpha}{\theta_\beta}_{\V(\manM)}=
+  \pb{\theta_\alpha}{\theta_\beta}^D_{\manM}=0\,,
+}{
+  \pb{\theta_\alpha}{\theta_\beta}_{\V(\manM)}=
+  \pb{\theta_\alpha}{\theta_\beta}^D_{\manM}=0\,,
+}{ecuacion}\coordE{}\end{equation}
+where  \myHighlight{$\pb{}{}^D_{\manM}$}\coordHE{} is a Dirac bracket on \myHighlight{$\manM$}\coordHE{}
+associated with the second-class constraints \myHighlight{$\theta_\alpha$}\coordHE{}.  As a
+matter of simple analysis this first-class system is
+equivalent to the original second-class system on \myHighlight{$\manM$}\coordHE{}.
+
+This representation of the second-class system on \myHighlight{$\manM$}\coordHE{}
+allows one to develop an alternative quantization procedure
+based on quantizing the first-class system on \myHighlight{$\V(\manM)$}\coordHE{}. However,
+to quantize this first-class system one should first find quantization
+of \myHighlight{$\V(\manM)$}\coordHE{} considered as a symplectic manifold.
+
+\subsection{BRST quantization of \myHighlight{$\V(\manM)$}\coordHE{}}\label{subsec:V-quant}
+The quantization of \myHighlight{$\V(\manM)$}\coordHE{} is rather standard and can be obtained
+within the quantization scheme of Section~\bref{sec:q} applied to the
+unconstraint system on \myHighlight{$\V(\manM)$}\coordHE{} (in this case the approach
+reduces to that proposed in~\cite{[GL]} and results in the Fedosov
+star-product on \myHighlight{$\V(\manM)$}\coordHE{}).
+
+According to the scheme one should fix a symmetric symplectic
+connection in the tangent bundle \myHighlight{$T\V(\manM)$}\coordHE{}.  In fact we already
+have this connection. Indeed, because \myHighlight{$T\V(\manM)$}\coordHE{} can be identified
+with the vector bundle \myHighlight{$\W(\manM)$}\coordHE{} from Section~\bref{sec:cl}, pulled back by
+the projection \myHighlight{$\V(\manM) \to \manM$}\coordHE{}, the connection in \myHighlight{$T\V(\manM)$}\coordHE{} can be
+obtained from that in \myHighlight{$\W(\manM)$}\coordHE{}. Namely, let us consider a
+connection on \myHighlight{$\V(\manM)$}\coordHE{} determined by
+\begin{equation}\coord{}\boxEquation{
+\label{eq:conn-explicit}
+\conn^A_{iB}={\D-con}^A_{iB}\,, \qquad \conn^A_{\alpha B}=0\,,
+}{
+\conn^A_{iB}={\D-con}^A_{iB}\,, \qquad \conn^A_{\alpha B}=0\,,
+}{ecuacion}\coordE{}\end{equation}
+where coefficients \myHighlight{${\D-con}^A_{iB}$}\coordHE{} are given
+by~\eqref{eq:con0-explicit}.
+One can easily check that \myHighlight{$\conn$}\coordHE{} is indeed a
+symmetric symplectic connection on \myHighlight{$\V(\manM)$}\coordHE{}.  Note that
+coefficients of \myHighlight{$\conn$}\coordHE{} in the coordinate system \myHighlight{$x^i,\eta^\alpha$}\coordHE{} on
+\myHighlight{$\V(\manM)$}\coordHE{} do not depend on \myHighlight{$\eta^\alpha$}\coordHE{}.
+
+Let \myHighlight{$\bar\E$}\coordHE{} be the extended phase space of the unconstraint system
+on \myHighlight{$\V(\manM)$}\coordHE{}, which is  constructed according to
+Section~\bref{subsec:extended-phase-space}. Let also 
+\myHighlight{$p_A,\,Y^A,\,\cc^A$}\coordHE{} and \myHighlight{$\cP^A$}\coordHE{} denote momenta, conversion variables, ghost
+variables, and ghost momenta respectively.
+In this setting Poisson bracket~\eqref{eq:PB-E} reads as
+\begin{equation}\coord{}\boxEquation{
+\begin{gathered}
+  \label{eq:PB-E-2}
+ \begin{array}{rclrcl}
+    \pb{x^A}{p_B}_{\bar\E}&=&\delta^A_B\,, \qquad&
+    \pb{Y^A}{Y^B}_{\bar\E}&=&\aD^{AB}\,,\\[5pt]
+    \pb{Y^A}{p_B}_{\bar\E}&=&-\conn^A_{BC}Y^B\,,\qquad&
+    \pb{\cc^A}{\cP_B}_{\bar\E}&=&\delta^A_B\,, 
+  \end{array}\\[5pt]
+  \pb{p_A}{p_B}_{\bar\E}=
+\aD_{AB}+{\half}{\tilde {\bar R}}_{AB;\,CD\,}Y^C Y^D\,,
+\end{gathered}
+}{
+\begin{gathered}
+  \begin{array}{rclrcl}
+    \pb{x^A}{p_B}_{\bar\E}&=&\delta^A_B\,, \qquad&
+    \pb{Y^A}{Y^B}_{\bar\E}&=&\aD^{AB}\,,\\[5pt]
+    \pb{Y^A}{p_B}_{\bar\E}&=&-\conn^A_{BC}Y^B\,,\qquad&
+    \pb{\cc^A}{\cP_B}_{\bar\E}&=&\delta^A_B\,, 
+  \end{array}\\[5pt]
+  \pb{p_A}{p_B}_{\bar\E}=
+\aD_{AB}+{\half}{\tilde {\bar R}}_{AB;\,CD\,}Y^C Y^D\,,
+\end{gathered}
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\tilde {\bar R}$}\coordHE{} denotes a curvature of the connection \myHighlight{$\conn$}\coordHE{}
+on \myHighlight{$\V(\manM)$}\coordHE{}.
+
+Specifying the constructions of Section~\bref{sec:q}
+to the extended phase space \myHighlight{$\bar \E$}\coordHE{} one obtains
+a unique quantum BRST charge \myHighlight{$\hat{\bar\Omega}\in\qA^{\bar\E}$}\coordHE{}
+satisfying
+\begin{equation}\coord{}\boxEquation{
+  \qcommut{\hat{\bar\Omega}}{\hat{\bar\Omega}}=0\,, \qquad
+\p{\hat{\bar\Omega}}=1\,,\quad \gh{\hat{\bar\Omega}}=1\,,
+}{
+  \qcommut{\hat{\bar\Omega}}{\hat{\bar\Omega}}=0\,, \qquad
+\p{\hat{\bar\Omega}}=1\,,\quad \gh{\hat{\bar\Omega}}=1\,,
+}{ecuacion}\coordE{}\end{equation}
+the boundary condition
+\begin{equation}\coord{}\boxEquation{
+\hat{\bar\Omega}^0=0\,,\qquad
+\hat{\bar\Omega}^1=-\cc^A D_{AB} Y^B\,,\qquad
+\hat{\bar\Omega}^2=-\cc^A p_A\,,
+}{
+\hat{\bar\Omega}^0=0\,,\qquad
+\hat{\bar\Omega}^1=-\cc^A D_{AB} Y^B\,,\qquad
+\hat{\bar\Omega}^2=-\cc^A p_A\,,
+}{ecuacion}\coordE{}\end{equation}
+and the additional conditions conditions
+\myHighlight{${\hat{\bar\Omega}}^r \in \qA^{\bar\E}_0$}\coordHE{}
+and \myHighlight{$\delta^* \hat{\bar\Omega}^r=0$}\coordHE{} for \myHighlight{$r\geq 3$}\coordHE{}.
+
+A unique quantum BRST extension of a function \myHighlight{$f_0(x^A)$}\coordHE{} is the
+solution to the equation
+\begin{equation}\coord{}\boxEquation{
+  \qcommut{{\hat{\bar\Omega}}}{f}=0\,, \qquad f|_{Y=0}=f_0\,,
+ \quad f\in\qA^{\bar\E}_0\,,\quad \gh{f}=\gh{f_0}\,,
+}{
+  \qcommut{{\hat{\bar\Omega}}}{f}=0\,, \qquad f|_{Y=0}=f_0\,,
+ \quad f\in\qA^{\bar\E}_0\,,\quad \gh{f}=\gh{f_0}\,,
+}{ecuacion}\coordE{}\end{equation}
+subjected to the additional condition \myHighlight{$\delta^* f=0$}\coordHE{}.
+
+In this way one can find the star product \myHighlight{$\star_{\V(\manM)}$}\coordHE{} on
+\myHighlight{$\V(\manM)$}\coordHE{}, giving a deformation quantization of the Poisson bracket
+\eqref{eq:D-PB} on \myHighlight{$\V(\manM)$}\coordHE{}.  An important point is that
+\myHighlight{${\hat{\bar\Omega}}^r$}\coordHE{} doesn't depend on the variables \myHighlight{$\eta^\alpha$}\coordHE{} and
+\myHighlight{$p_\alpha$}\coordHE{} for \myHighlight{$r\geq 3$}\coordHE{}.  The same holds for the unique BRST
+invariant extension of a function \myHighlight{$f_0(x^i)$}\coordHE{}.  Since the quantum
+multiplication in \myHighlight{$\qA^{\bar\E}$}\coordHE{} obviously preserve the space of
+\myHighlight{$\eta^\alpha$}\coordHE{} and \myHighlight{$p_\alpha$}\coordHE{} independent elements, the star product
+\myHighlight{$\star_{\V(\manM)}$}\coordHE{} preserves the space of \myHighlight{$\eta$}\coordHE{}-independent
+functions, giving thus a deformation quantization of the Dirac bracket on
+\myHighlight{$\manM$}\coordHE{}. Given \myHighlight{$\eta$}\coordHE{}-independent functions \myHighlight{$f_0(x)$}\coordHE{} and \myHighlight{$g_0(x)$}\coordHE{} one
+has
+\begin{equation}\coord{}\boxEquation{
+\label{eq:star-a}
+  f_0\star_\manM g_0=f \star g |_{Y=0}=f_0
+  g_0-\frac{i\hbar}{2}\pb{f_0}{g_0}^D_{\manM}+\ldots\,,
+}{
+f_0\star_\manM g_0=f \star g |_{Y=0}=f_0
+  g_0-\frac{i\hbar}{2}\pb{f_0}{g_0}^D_{\manM}+\ldots\,,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$f$}\coordHE{} and \myHighlight{$g$}\coordHE{} are the unique quantum BRST extensions of \myHighlight{$f_0$}\coordHE{} and
+\myHighlight{$g_0$}\coordHE{}, \myHighlight{$\star$}\coordHE{} is the Weyl product in \myHighlight{$\qA^{\bar\E}_0$}\coordHE{}, and \myHighlight{$\ldots$}\coordHE{}
+denote higher order terms in \myHighlight{$\hbar$}\coordHE{}.
+
+
+\subsection{The total BRST charge}
+In spite of the fact that the BRST charge \myHighlight{$\hat{\bar\Omega}$}\coordHE{}
+constructed above allows one to find a quantum deformation of the Dirac
+bracket on \myHighlight{$\manM$}\coordHE{}, the BFV-BRST theory determined by \myHighlight{$\hat{\bar\Omega}$}\coordHE{} is
+not equivalent to the original second-class system on \myHighlight{$\manM$}\coordHE{}.
+The matter is that the original first-class constraints \myHighlight{$\theta_\alpha$}\coordHE{} on
+\myHighlight{$\V(\manM)$}\coordHE{} have not been taken into account.
+
+
+A way to incorporate the original first-class constraints is well
+known~\cite{[BFF],[BT]}. To this end one should find
+BRST invariant extensions of the original first-class
+constraints and then incorporate them into the appropriately
+extended BRST charge with their own ghost variables.
+
+Specifying the construction to the case at hand let \myHighlight{${\bar\cc}^\alpha$}\coordHE{}
+and \myHighlight{${\bar\cP}_\alpha$}\coordHE{} be the ghosts and their conjugate momenta
+associated to the first-class constraints.
+A total BRST charge \myHighlight{${\hat{\bar\Omega}}_{total}$}\coordHE{}
+is then given by
+\begin{equation}\coord{}\boxEquation{
+  {\hat{\bar\Omega}}_{total}={\hat{\bar\Omega}}+{\bar\cc}^\alpha{\bar\theta}_\alpha=
+{\hat{\bar\Omega}}+{\bar\cc}^\alpha{\theta}_\alpha
++{\bar\cc}^\alpha Y^i\d_i\theta_\alpha\,.
+}{
+  {\hat{\bar\Omega}}_{total}={\hat{\bar\Omega}}+{\bar\cc}^\alpha{\bar\theta}_\alpha=
+{\hat{\bar\Omega}}+{\bar\cc}^\alpha{\theta}_\alpha
++{\bar\cc}^\alpha Y^i\d_i\theta_\alpha\,.
+}{ecuacion}\coordE{}\end{equation}
+Because \myHighlight{$\bar\theta_\alpha$}\coordHE{} is the BRST invariant extension of
+\myHighlight{$\theta_\alpha$}\coordHE{}, \myHighlight{${\hat{\bar\Omega}}_{total}$}\coordHE{} is obviously nilpotent.
+Finally, one can check that \myHighlight{${\hat{\bar\Omega}}_{total}$}\coordHE{} determines
+the correct spectrum of observables.
+
+\subsection{Equivalence to the standard approach}
+To complete the description of the alternative formulation we show
+that the star product~\eqref{eq:star-a} coincides with that
+obtained in Section~\bref{subsec:special}.
+
+Note, that the extended phase space \myHighlight{$\E$}\coordHE{}
+constructed in Section~\bref{subsec:extended-phase-space}
+can be identified with the submanifold in \myHighlight{$\bar\E$}\coordHE{} determined by
+\myHighlight{$\eta^\alpha=p_\beta=0$}\coordHE{}.  Since \myHighlight{${\hat{\bar\Omega}}^r$}\coordHE{}
+do not depend on the variables \myHighlight{$\eta^\alpha$}\coordHE{} and \myHighlight{$p_\beta$}\coordHE{}
+for \myHighlight{$r \geq 3$}\coordHE{}, they can can be considered as functions on \myHighlight{$\E$}\coordHE{}.
+\begin{prop}
+Let \myHighlight{$\hat{\bar\Omega}$}\coordHE{} be the unique quantum BRST charge
+of the unconstraint system on \myHighlight{$\V(\manM)$}\coordHE{}
+obtained in Section~\bref{subsec:V-quant}
+and \myHighlight{${\hat\Omega}_0$}\coordHE{} be the unique quantum BRST charge of the second
+class system on \myHighlight{$\manM$}\coordHE{} obtained in
+Proposition~\bref{prop:Omega-special}. Then
+\begin{equation}\coord{}\boxEquation{
+\label{eq:add}
+  {\hat{\bar\Omega}}^r={\hat\Omega}_0^r\,, \qquad r \geq 3\,.
+}{
+{\hat{\bar\Omega}}^r={\hat\Omega}_0^r\,, \qquad r \geq 3\,.
+}{ecuacion}\coordE{}\end{equation}
+where  \myHighlight{${{\hat{\bar\Omega}}}^r$}\coordHE{} and \myHighlight{${{\hat\Omega}_0}^r$}\coordHE{}
+are the respective terms in the expansions of \myHighlight{${{\hat{\bar\Omega}}}$}\coordHE{} and
+\myHighlight{${{\hat\Omega}}$}\coordHE{} w.r.t. degree:
+\myHighlight{$\deg{{\hat\Omega}^r_0}=\deg{{\hat{\bar\Omega}}^r}=r$}\coordHE{}.
+\end{prop}
+\begin{proof}
+The statement of the theorem can be explicitly checked for \myHighlight{$r=3$}\coordHE{}.
+Further, assuming that~\eqref{eq:add} holds for all \myHighlight{$r \leq p$}\coordHE{}
+one can see that the respective quantities \myHighlight{${\hat B}^p$}\coordHE{}
+and \myHighlight{${\hat{\bar B}}^p$}\coordHE{} (see the proof of
+Theorem~\bref{thm:existence-q}) do coincide.
+Since the operators \myHighlight{$\delta$}\coordHE{} and \myHighlight{$\delta^{*}$}\coordHE{} are precisely the same
+in both cases one observes that
+\myHighlight{${\hat{\bar\Omega}}^{p+1}={\hat\Omega}^{p+1}$}\coordHE{}. The
+statement then follows by induction.
+\end{proof}
+It follows from the theorem that for
+an arbitrary function \myHighlight{$f$}\coordHE{} depending on \myHighlight{$x^i,Y^i$}\coordHE{} and \myHighlight{$\hbar)$}\coordHE{} only
+one has \myHighlight{$\qcommut{\hat{\bar\Omega}}{f}=\qcommut{{\hat{\Omega}}_0}{f}$}\coordHE{}.
+This implies that the unique BRST invariant extensions
+of functions from \myHighlight{$\manM$}\coordHE{}, determined by
+\myHighlight{${{\hat{\bar\Omega}}}$}\coordHE{} and
+\myHighlight{${{\hat\Omega}_0}$}\coordHE{} do coincide. This, in turn, implies that
+the star product on \myHighlight{$\manM$}\coordHE{} given by~\eqref{eq:star-a} coincides
+with that obtained in Section~\bref{subsec:special} using
+the BRST charge \myHighlight{$\hat\Omega_0$}\coordHE{}.
+
+As a final remark we note that the equivalence statement can also be
+generalized to the case where connection \myHighlight{$\con$}\coordHE{} entering the
+symplectic structure on \myHighlight{$\E$}\coordHE{} is an arbitrary symplectic connection in
+\myHighlight{$\W(\manM)$}\coordHE{}. In this setting, however, one should equip \myHighlight{$T\V(\manM)$}\coordHE{}
+with the symplectic connection appropriately build by~\myHighlight{$\con$}\coordHE{}.
+
+
+\section{Conclusion}
+We summarize the results of this paper.  For a second-class constraint
+system on an arbitrary symplectic manifold \myHighlight{$\manM$}\coordHE{}, we have
+constructed an effective first-class constraint (gauge) system
+equivalent to the original second-class one. The construction is based
+on representing the symplectic manifold as a second-class surface in
+the cotangent bundle \myHighlight{$\mod\manM$}\coordHE{} equipped with a modified symplectic
+structure.  The second-class system on \myHighlight{$\mod\manM$}\coordHE{} determined by the
+constraints reponsible for the embedding of \myHighlight{$\manM$}\coordHE{} and the original
+second-class constraints are converted into an effective first-class
+system by applying a globally defined version of the standard
+conversion procedure.  Namely, the conversion variables are introduced
+as coordinates on the fibres of the vector bundle
+\myHighlight{$\W(\manM)=T\manM\oplus \V(\manM)$}\coordHE{} associated with the complete set
+of constraints, with the symplectic form given by the respective Dirac
+matrix.  The phase space of the effective system is equipped with the
+specific symplectic structure build with the help of a symplectic
+connection in \myHighlight{$\W(\manM)$}\coordHE{}.  We present an explicit form of the
+particular symplectic connection in \myHighlight{$\W(\manM)$}\coordHE{}, which is in some
+sense a minimal one.  Remarkably, this connection reduces to the Dirac
+connection on~\myHighlight{$\manM$}\coordHE{}, i.e., to a symmetric connection compatible with
+the Dirac bracket on~\myHighlight{$\manM$}\coordHE{}.
+
+The effective gauge system thus constructed is quantized by the
+BFV--BRST procedure and the algebra of quantum observables is
+explicitly constructed.  The star product for the Dirac bracket
+on~\myHighlight{$\manM$}\coordHE{} is obtained as the quantum multiplication of  BRST
+observables.
+
+In the case where the effective gauge system is constructed by the
+particular (Dirac) connection, the original second-class constraints
+are shown to be in the center of the respective star-commutator
+algebra.  When restricted to the constraint surface, this star product
+is also shown to coincide with the Fedodov product constructed by
+restricting the Dirac connection to the surface.
+
+The proposed quantization method is explicitly phase space covariant
+(i.e., covariant with respect to the change of local coordinates on
+the phase space).  An interesting problem is to construct its
+generalization that is also covariant under changing the basis of
+constraints.
+
+
+
+\subsection*{Acknowledgments}
+We wish to thank V.A.~Dolgushev, A.V.~Karabegov, A.M.~Semikhatov,
+A.A.~Sha\-ra\-pov, I.Yu.~Tipunin and I.V.~Tyutin.  The work of IAB is
+supported by the RFBR grant 99-01-00980. The work of MAG is partially
+supported by the RFBR grant 98-01-01155, Russian Federation President
+Grant~99-15-96037 and Landau Scholarship Foundation, Forschungszentrum
+J\"ulich.  The work of SLL is supported by the RFBR grant 00-02-17956.
+
+
+\begin{thebibliography}{33}
+
+\bibitem{[BFV]}
+         Batalin I.A. and  Vilkovisky G.A.,
+         {\em Relativistic S-matrix of dynamical systems with boson
+         and fermion constraints,}
+         Phys. Lett. {\bf B 69} (1977) 309-312.          \\
+         Fradkin E.S. and Vilkovisky G.A. {\em Quantization
+         of relativistic systems with
+         constraints,}  Phys. Lett. {\bf B 55} (1975) 224-226.  \\
+         Batalin I.A. and Fradkin E.S.,
+         {\em  A generalized canonical formalism and quantization of
+         reducible gauge theories,}
+           Phys.Lett. {\bf B 122 }     (1983) 157-164.   \\
+         Batalin I.A. and Fradkin E.S.
+         {\em Operatorial quantization of relativistic dynamical systems
+         subject to first class constraints,}
+         Phys.Lett. {\bf B 128} 303-308 (1983).             \\
+         Batalin I.A., Fradkin E.S.
+         {\em Operatorial quantization of dynamical systems subject to
+         constraints. A further study of the construction,}
+         Ann Inst. Henri Poincar\'e  {\bf 49} (1988) 145-214.
+
+\bibitem{[BF89]} I.A.~Batalin and E.S.~Fradkin,
+{\em Operator Quantization Of Dynamical Systems
+With Curved Phase Space,} Nucl.\ Phys.\ {\bf B326},
+701 (1989).
+
+\bibitem{[BFF]}
+I.A.~Batalin, E.S.~Fradkin and T.E.~Fradkina,
+{\em Generalized Canonical Quantization Of Dynamical Systems With
+  Constraints And Curved Phase Space,}
+Nucl.\ Phys.\ {\bf B332}, 723 (1990).
+
+\bibitem{[BF]} I.A.~Batalin and E.S.~Fradkin,
+{\em Operator Quantization Of Dynamical Systems With Irreducible
+First And Second Class Constraints,} Phys.\ Lett.\ {\bf B180}, 157 (1986).
+
+\bibitem{[BF87]} I.A.~Batalin and E.S.~Fradkin, {\em
+Operatorial Quantization Of Dynamical Systems Subject To Second Class
+Constraints,} Nucl.\ Phys.\ {\bf B279}, 514 (1987).
+
+\bibitem{[BT]} I.A.~Batalin and I.V.~Tyutin, {\em
+Existence theorem for the effective gauge algebra in the generalized
+        canonical formalism with Abelian conversion of second class
+        constraints,} Int.\ J.\ Mod.\ Phys.\ {\bf A6}, 3255 (1991).
+
+\bibitem{[BFFLS]}
+F.~Bayen, M.~Flato, C.~Fronsdal, A.~Lichnerowicz and D.~Sternheimer,
+{\em Deformation Theory And Quantization. 1. Deformations Of Symplectic
+Structures,}
+Ann.\ Phys.\ {\bf 111}, 61 (1978).
+
+\bibitem{[CF]} A.~S.~Cattaneo and G.~Felder,
+{\em A path integral approach to the Kontsevich quantization
+formula\,,} q-alg/9902090.\\
+A.~S.~Cattaneo and G.~Felder,
+{\em Poisson Sigma Models and Symplectic Grouppoids\,,} q-alg/9902090.
+
+
+\bibitem{[CFT]} A.~S.~Cattaneo, G.~Felder, and L.~Tomassini,
+{\em From local to global deformation quantization of Poisson
+ manifolds\,,} q-alg/0012228.
+
+
+\bibitem{[DWL]}
+M.~De~Wilde and P.~B.~A.~Lecomte,
+{\em Existence of star-products
+and of formal deformations of the Poisson Lie algebra of arbitrary
+symplectic manifolds,}
+ Lett. Math. Phys. 7 (1983) 487-496.
+
+
+\bibitem {[Fedosov-JDG]}
+Fedosov, B.~V. \newblock {\em A Simple Geometrical Construction of
+Deformation Quantization}.
+\newblock J. Diff. Geom.  {\bf 40} (1994), 213--238.
+
+\bibitem{[Fedosov-book]} B.~Fedosov,
+{\em Deformation quantization and index theory,}
+{\it  Berlin, Germany: Akademie-Verl. (1996) 325 p. (Mathematical
+  topics: 9)}.
+
+
+\bibitem{[FL]}
+E.S.~Fradkin and V.Y.~Linetsky,
+{\em BFV approach to geometric quantization\,,}
+Nucl.\ Phys.\ {\bf B431}, (1994) 569.\\
+{\em BFV Quantization on Hermitian Symmetric Spaces},
+Nucl.\ Phys.\ {\bf B444} (1995) 577-601.
+
+\bibitem{[GRS]} I.~Gelfand, V.~Retakh and M.~Shubin
+{\em Fedosov Manifolds,} dg-ga/9707024.
+
+
+\bibitem{[GL]} M.A.~Grigoriev and S.L.~Lyakhovich,
+{\em Fedosov Deformation Quantization as a BRST Theory,}
+to appear in \CMP{,} {\bf hep-th/0003114}.
+
+
+\bibitem{[HT]} M.~Henneaux and C.~Teitelboim,
+{\em Quantization of gauge systems,}
+{\it  Princeton, USA: Univ. Pr. (1992) 520 p}.
+
+\bibitem{[Kontsevich]}
+M.~Kontsevich,
+{\em Deformation quantization of Poisson manifolds, I,}\,,
+q-alg/9709040.
+%%%CITATION = Q-ALG 9709040;%%
+
+\end{thebibliography}
+\end{document}
+
+
+
+\bye

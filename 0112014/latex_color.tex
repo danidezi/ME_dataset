@@ -1,0 +1,587 @@
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{epsfig} 
+\setlength{\topmargin}{-1cm} 
+\setlength{\evensidemargin}{0cm}  
+\setlength{\oddsidemargin}{0cm} 
+\setlength{\textwidth}{16cm} 
+\setlength{\textheight}{24cm} 
+\setlength{\parskip}{0.2cm} 
+
+\renewcommand{\refname}{References.}  
+\def\thefootnote{\fnsymbol{footnote}} 
+\providecommand{\sect}[1]{ \section{#1} \setcounter{equation}{0} } 
+
+\providecommand{\Aslash}{A \! \! \! /} 
+\providecommand{\kslash}{k \! \! \! /} 
+\providecommand{\pslash}{p \! \! \! /} 
+\providecommand{\xslash}{x \! \! \! /} 
+\providecommand{\partialslash}{\partial \! \! \! /} 
+\providecommand{\half}{\mbox{\small{\myHighlight{$\frac{1}{2}$}\coordHE{}}}} 
+\providecommand{\Nc}{N_{\!c}} 
+\providecommand{\Nf}{N_{\!f}} 
+\providecommand{\MSbar}{\overline{\mbox{MS}}} 
+
+\usepackage{useful_macros}
+\begin{document}
+\title{Two loop \myHighlight{$\MSbar$}\coordHE{} renormalization of the Curci-Ferrari model} 
+\author{J.A. Gracey, \\ Theoretical Physics Division, \\ Department 
+of Mathematical Sciences, \\ University of Liverpool, \\ Peach Street, \\ 
+Liverpool, \\ L69 7ZF, \\ United Kingdom.} 
+\date{November, 2001.} 
+\maketitle 
+\vspace{5cm} 
+\noindent 
+{\bf Abstract.} We renormalize the Curci-Ferrari model at two loops in the 
+\myHighlight{$\MSbar$}\coordHE{} scheme in an arbitrary covariant gauge. 
+
+\vspace{-16cm} 
+\hspace{13.5cm} 
+{\bf LTH 530} 
+
+\newpage 
+The Curci-Ferrari model is an extension of Yang-Mills theory where the gluon
+field, \myHighlight{$A^a_\mu$}\coordHE{}, is massive, \cite{1,2}. However, as is well known in such a
+massive non-abelian gauge theory, where there is no spontaneous symmetry 
+breaking, the theory is not fully consistent. For instance, it does not obey
+unitarity, \cite{2,3,4}, though it has been shown to be multiplicatively
+renormalizable to all orders in perturbation theory, \cite{1,4,5,6}. Further, 
+as the mass for the gluon is included in the Lagrangian in the simplest 
+possible manner, there is the possibility that gauge invariance is also broken.
+However, as was shown in the original work of Curci and Ferrari, \cite{1,2}, if
+one also includes a particular form of mass term for the ghost fields when the 
+gauge is fixed covariantly in a non-linear way, the mass term in the Lagrangian
+in fact preserves BRST symmetry, though without restoring unitarity which 
+remains broken. Despite the lack of unitarity the Curci-Ferrari model has been 
+of interest recently for a variety of reasons. First, there have been several
+investigations into how a mass gap for the gluon can arise, \cite{7,8,9}. For 
+example, in \cite{8,9} a gluon and ghost mass term akin to that which occurs in
+the Curci-Ferrari model has been argued to be important in generating a mass 
+gap in ordinary Yang-Mills theories. For instance, a non-zero vacuum 
+expectation value for \myHighlight{$\langle \half (A_\mu^a)^2 ~+~ \alpha \bar{c}^a c^a
+\rangle$}\coordHE{} emerges under certain assumptions where \myHighlight{$\alpha$}\coordHE{} is the covariant
+gauge parameter and \myHighlight{$c^a$}\coordHE{} and \myHighlight{$\bar{c}^a$}\coordHE{} are the respective ghost and 
+anti-ghost fields. Such an operator represents the simplest {\em local}
+dimension two operator which can be constructed in non-abelian gauge field 
+theories. Also, a similar approach has been considered in \cite{7} where the 
+effective potential of the Landau gauge condensate is constructed. There it was 
+shown that at two loops the non-perturbative vacuum favoured a non-zero value 
+for the vacuum expectation value. Other studies include \cite{10}. Second, the 
+model itself has provided a useful laboratory for studying gauge theories with 
+a non-linear gauge fixing, \cite{5,11}. Third, massive Yang-Mills models have 
+been used to model the phenomenology of the strong interactions. For example, 
+such a model was used in \cite{12} to try and understand diffractive 
+scattering. Finally, the main motivation for our interest in the Curci-Ferrari 
+model stems from the role of the gluon mass as a {\em natural} infrared 
+regulator for Feynman integrals which arise in loop calculations, 
+\cite{13,6,14}. 
+
+In the renormalization of QCD at high loop orders the standard method of
+extracting the ultraviolet divergence structure of a Feynman integral with
+respect to the regularization, such as dimensional regularization, is to 
+perform the calculation with massless propagators. However, for two and higher 
+loop integrals one has to be careful that spurious infrared infinities are not
+generated. These can occur when one reduces the class of Feynman integrals to 
+vacuum integrals by expanding in powers of the external momenta after one or
+more external momenta have been set to zero first. To circumvent this potential 
+problem the technique of infrared rearrangement, \cite{15,16}, is applied where
+a temporary mass is added to the appropriate propagators in an infrared 
+divergent integral. Whilst this has been a hugely successful technique it 
+suffers from the drawback that it is performed by hand and hence limited when 
+considering the large number of diagrams which will arise when the loop order 
+increases. Moreover, it was not clear until recently how one could develop the 
+method for application in an automatic multiloop computer algebra programme. 
+One recent approach to address this problem is that of \cite{17,18}. There each
+propagator is systematically given an infrared cutoff mass so that the 
+resulting vacuum integrals are automatically infrared finite. Provided all the 
+vacuum diagrams are computable at that loop order then one can automatize the 
+process. Indeed \cite{17,18} provides a full two loop calculation of various 
+anomalous dimensions. Given that the Curci-Ferrari model {\em naturally} 
+incorporates a mass akin to that introduced for infrared rearrangement and 
+{\em remains} renormalizable it seems appropriate to consider and develop that 
+model as a useful and alternative tool to compute the ultraviolet structure of 
+Yang-Mills theories. This is important since the efficient programmes such as 
+{\sc Mincer}, \cite{19}, compute the ultraviolet structure of only massless 
+two-point functions at three loops, but for \myHighlight{$n$}\coordHE{}-point functions with 
+\myHighlight{$n$}\coordHE{}~\myHighlight{$>$}\coordHE{}~\myHighlight{$2$}\coordHE{} one cannot naively nullify all bar two of the external momenta, 
+similar to infrared rearrangement, and apply {\sc Mincer}. This is because this
+procedure will inevitably give rise to spurious infrared infinities which, in 
+dimensional regularization, cannot be distinguished from the desired 
+ultraviolet divergences. Hence, it would seem more appropriate to us to apply 
+the Curci-Ferrari model in these circumstances. However, it turns out that 
+currently the model has only been renormalized to one loop in \cite{4}. 
+Moreover, an earlier calculation, \cite{14}, appears to incorrectly determine 
+the renormalization constants which must satisfy the appropriate Slavnov-Taylor
+identities. Therefore, the purpose of this letter is to renormalize the 
+Curci-Ferrari model at two loops in the \myHighlight{$\MSbar$}\coordHE{} scheme using an arbitrary 
+(non-linear) covariant gauge fixing term and dimensional regularization. This 
+is necessary given that the renormalization constants of the fields, coupling, 
+gauge parameter and masses are required for the subsequent renormalization of 
+any Green's function. As a consequence of our calculations we will verify the 
+result of \cite{4} that five renormalization constants are necessary to render 
+the model finite as opposed to the three suggested in \cite{3}. 
+
+The Lagrangian of the Curci-Ferrari model is, \cite{1},  
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{} 
+L &=& -~ \frac{\leftCoord{}1}{\rightCoord{}4} G_{\mu\nu}^a G^{a \rightCoord{}\, \mu\nu} ~-~ \frac{\leftCoord{}1}{\rightCoord{}2\alpha} 
+\leftCoord{}(\partial^\mu A^a_\mu)^2 ~-~ \frac{\leftCoord{}m^2}{\rightCoord{}2} A_\mu^a A^{a \rightCoord{}\, \mu} ~+~ 
+\partial_\mu \bar{c}^a \partial^\mu c^a \nonumber \rightCoord{}\\ 
+&&\leftCoord{} -~ \alpha m^2 \bar{c}^a c^a ~-~ \frac{\leftCoord{}g}{\rightCoord{}2} f^{abc} A^a_\mu \rightCoord{}\, \bar{c}^b \rightCoord{}\, 
+{\rightCoord{}\leftCoord{}\stackrel \leftrightarrow {\partial^\mu} } \rightCoord{}\, c^c ~+~ \frac{\leftCoord{}\alpha g^2}{\rightCoord{}8} \rightCoord{} 
+f^{eab} f^{ecd} \bar{c}^a c^b \bar{c}^c c^d \rightCoord{} 
+\label{lag}
+\rightCoord{}}{0mm}{9}{16}{ 
+L &=& -~ \frac{1}{4} G_{\mu\nu}^a G^{a \, \mu\nu} ~-~ \frac{1}{2\alpha} 
+(\partial^\mu A^a_\mu)^2 ~-~ \frac{m^2}{2} A_\mu^a A^{a \, \mu} ~+~ 
+\partial_\mu \bar{c}^a \partial^\mu c^a \\ 
+&& -~ \alpha m^2 \bar{c}^a c^a ~-~ \frac{g}{2} f^{abc} A^a_\mu \, \bar{c}^b \, 
+{\stackrel \leftrightarrow {\partial^\mu} } \, c^c ~+~ \frac{\alpha g^2}{8}  
+f^{eab} f^{ecd} \bar{c}^a c^b \bar{c}^c c^d  
+}{1}\coordE{}\end{eqnarray}  
+where \myHighlight{$1$}\coordHE{}  \myHighlight{$\leq$}\coordHE{}  \myHighlight{$a$}\coordHE{}  \myHighlight{$\leq$}\coordHE{}  \myHighlight{$N_{\! A}$}\coordHE{} with \myHighlight{$N_{\! A}$}\coordHE{} the dimension of the
+adjoint representation, \myHighlight{$D_\mu$}\coordHE{}  \myHighlight{$=$}\coordHE{}  \myHighlight{$\partial_\mu$}\coordHE{}  \myHighlight{$+$}\coordHE{}  \myHighlight{$ig T^a A^a_\mu$}\coordHE{}, 
+\myHighlight{$G^a_{\mu\nu}$}\coordHE{}~\myHighlight{$=$}\coordHE{}~\myHighlight{$\partial_\mu A^a_\nu$}\coordHE{}~\myHighlight{$-$}\coordHE{}~\myHighlight{$\partial_\nu A^a_\mu$}\coordHE{}~\myHighlight{$-$}\coordHE{}~\myHighlight{$g 
+f^{abc} A^b_\mu A^c_\nu$}\coordHE{}, \myHighlight{$g$}\coordHE{} is the coupling constant and \myHighlight{$m$}\coordHE{} is the gluon 
+mass. The ghost mass is related to the gluon mass by the covariant gauge fixing
+parameter \myHighlight{$\alpha$}\coordHE{}. The structure constants of the Lie group are \myHighlight{$f^{abc}$}\coordHE{} and 
+\myHighlight{$\bar{c}^a \, {\stackrel \leftrightarrow {\partial_\mu} } \, c^b$}\coordHE{}  \myHighlight{$=$}\coordHE{} 
+\myHighlight{$\bar{c}^a \partial_\mu c^b$}\coordHE{}  \myHighlight{$-$}\coordHE{}  \myHighlight{$(\partial_\mu \bar{c}^a) c^b$}\coordHE{}. Following the 
+usual procedures the gluon and ghost propagators are respectively  
+\begin{equation}\coord{}\boxEquation{
+-~ \delta^{ab} \left[ \frac{\eta^{\mu\nu}}{(k^2+m^2)} ~-~ \frac{(1-\alpha)k^\mu
+k^\nu}{(k^2+m^2)(k^2+\alpha m^2)} \right] ~~~~ \mbox{and} ~~~~ 
+\frac{\delta^{ab}}{(k^2+\alpha m^2)} ~.  
+\label{propdefn} 
+}{
+-~ \delta^{ab} \left[ \frac{\eta^{\mu\nu}}{(k^2+m^2)} ~-~ \frac{(1-\alpha)k^\mu
+k^\nu}{(k^2+m^2)(k^2+\alpha m^2)} \right] ~~~~ \mbox{and} ~~~~ 
+\frac{\delta^{ab}}{(k^2+\alpha m^2)} ~.  
+}{ecuacion}\coordE{}\end{equation} 
+The unphysical pole at \myHighlight{$\alpha m^2$}\coordHE{} in the ghost propagator had led to the hope
+that it would counteract the same pole in the gluon propagator to establish a 
+unitary theory. However, it has been shown, \cite{1,2,3,4}, that this is not
+the case. To renormalize (\ref{lag}) the quantities of the bare Lagrangian,
+denoted by the subscript \myHighlight{$\mbox{o}$}\coordHE{}, are replaced by the renormalized ones, 
+through,  
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{} 
+A^{a \rightCoord{}\, \mu}_{\mbox{\footnotesize{o}}} &=& \sqrt{Z_A} \rightCoord{}\, A^{a \rightCoord{}\, \mu} ~~,~~ 
+c^a_{\mbox{\footnotesize{o}}} ~=~ \sqrt{Z_c} \rightCoord{}\, c^a ~~,~~ 
+\bar{c}^a_{\mbox{\footnotesize{o}}} ~=~ \sqrt{Z_c} \rightCoord{}\, \bar{c}^a \nonumber \rightCoord{}\\\leftCoord{} 
+g_{\mbox{\footnotesize{o}}} &=& Z_g \rightCoord{}\, g ~~,~~ m_{\mbox{\footnotesize{o}}} ~=~ 
+Z_m \rightCoord{}\, m ~~,~~ \alpha_{\mbox{\footnotesize{o}}} ~=~ Z^{-1}_\alpha Z_A \rightCoord{}\, 
+\alpha ~. \rightCoord{} 
+\label{Zdefns}
+\rightCoord{}}{0mm}{2}{12}{ 
+A^{a \, \mu}_{\mbox{\footnotesize{o}}} &=& \sqrt{Z_A} \, A^{a \, \mu} ~~,~~ 
+c^a_{\mbox{\footnotesize{o}}} ~=~ \sqrt{Z_c} \, c^a ~~,~~ 
+\bar{c}^a_{\mbox{\footnotesize{o}}} ~=~ \sqrt{Z_c} \, \bar{c}^a \\ 
+g_{\mbox{\footnotesize{o}}} &=& Z_g \, g ~~,~~ m_{\mbox{\footnotesize{o}}} ~=~ 
+Z_m \, m ~~,~~ \alpha_{\mbox{\footnotesize{o}}} ~=~ Z^{-1}_\alpha Z_A \, 
+\alpha ~.  
+}{1}\coordE{}\end{eqnarray} 
+We have assumed initially that there are five independent renormalization
+constants. In ordinary Yang-Mills one has three renormalization constants since
+clearly there is no need for \myHighlight{$Z_m$}\coordHE{} and the Slavnov-Taylor identities ensure 
+that \myHighlight{$Z_\alpha$}\coordHE{}  \myHighlight{$=$}\coordHE{}  \myHighlight{$1$}\coordHE{} in our notation to all orders to preserve gauge 
+symmetry. Here we will allow for an independent \myHighlight{$Z_\alpha$}\coordHE{} as in \cite{4}. To 
+find each of the renormalization constants to two loops the gluon and ghost 
+two-point functions are computed first which determine \myHighlight{$Z_A$}\coordHE{}, \myHighlight{$Z_\alpha$}\coordHE{}, \myHighlight{$Z_c$}\coordHE{}
+and \myHighlight{$Z_m$}\coordHE{}. It is worth pointing out that since the gluon two-point function 
+gives \myHighlight{$Z_A$}\coordHE{}, \myHighlight{$Z_\alpha$}\coordHE{} and \myHighlight{$Z_m$}\coordHE{} the structure of the ghost mass 
+renormalization is determined prior to calculating it. This in fact provides a 
+strong check on our results. In addition we have computed the ghost-gluon and 
+triple gluon vertex renormalizations to verify that the correct scheme 
+independent two loop \myHighlight{$\beta$}\coordHE{}-function emerges in both the gluon and ghost 
+sectors. The renormalization group functions are defined by, (see, for example,
+\cite{20}), 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{} 
+\gamma_A(a) &=& \mu \frac{\leftCoord{}\partial \ln Z_A}{\rightCoord{}\partial \mu} ~~,~~  
+\gamma_c(a) ~=~ \mu \frac{\leftCoord{}\partial \ln Z_c}{\rightCoord{}\partial \mu} ~~,~~  
+\beta(a) ~=~ \mu \frac{\leftCoord{}\partial a}{\rightCoord{}\partial \mu} \nonumber \rightCoord{}\\\leftCoord{}  
+\gamma_m(a) &=& \frac{\leftCoord{}\partial \ln m}{\rightCoord{}\partial \ln \mu} ~~,~~ 
+\gamma_\alpha(a) ~=~ \frac{\leftCoord{}\partial \ln \alpha}{\rightCoord{}\partial \ln \mu} 
+\rightCoord{}}{0mm}{7}{8}{ 
+\gamma_A(a) &=& \mu \frac{\partial \ln Z_A}{\partial \mu} ~~,~~  
+\gamma_c(a) ~=~ \mu \frac{\partial \ln Z_c}{\partial \mu} ~~,~~  
+\beta(a) ~=~ \mu \frac{\partial a}{\partial \mu} \\  
+\gamma_m(a) &=& \frac{\partial \ln m}{\partial \ln \mu} ~~,~~ 
+\gamma_\alpha(a) ~=~ \frac{\partial \ln \alpha}{\partial \ln \mu} 
+}{1}\coordE{}\end{eqnarray} 
+where \myHighlight{$a$}\coordHE{}  \myHighlight{$=$}\coordHE{}  \myHighlight{$g^2/(16\pi^2)$}\coordHE{}. From (\ref{Zdefns}) these imply 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{} 
+\gamma_A(a) &=& \beta(a) \frac{\leftCoord{}\partial \ln Z_A}{\rightCoord{}\partial a} ~+~
+\alpha \gamma_\alpha(a) \frac{\leftCoord{}\partial \ln Z_A}{\rightCoord{}\partial \alpha} \nonumber \rightCoord{}\\\leftCoord{}
+\gamma_\alpha(a) &=& \left[ \beta(a) \frac{\leftCoord{}\partial \ln Z_\alpha}{\rightCoord{}\partial a} 
+{\rightCoord{}\leftCoord{}}~-~ \gamma_A(a) \right] \left[ 1 ~-~ \alpha \frac{\leftCoord{}\partial 
+\ln Z_\alpha}{\partial \alpha} \right]^{-1} \nonumber \rightCoord{}\\\leftCoord{} 
+\gamma_m(a) &=& -~ \mu \frac{\leftCoord{}\partial \ln Z_m}{\rightCoord{}\partial \mu} ~. \rightCoord{}
+\label{rgedefn} 
+\rightCoord{}}{0mm}{9}{10}{ 
+\gamma_A(a) &=& \beta(a) \frac{\partial \ln Z_A}{\partial a} ~+~
+\alpha \gamma_\alpha(a) \frac{\partial \ln Z_A}{\partial \alpha} \\
+\gamma_\alpha(a) &=& \left[ \beta(a) \frac{\partial \ln Z_\alpha}{\partial a} 
+{}~-~ \gamma_A(a) \right] \left[ 1 ~-~ \alpha \frac{\partial 
+\ln Z_\alpha}{\partial \alpha} \right]^{-1} \\ 
+\gamma_m(a) &=& -~ \mu \frac{\partial \ln Z_m}{\partial \mu} ~. 
+}{1}\coordE{}\end{eqnarray} 
+Ordinarily in massless Yang-Mills theory one has the simple relation 
+\myHighlight{$\gamma_\alpha(a)$}\coordHE{}  \myHighlight{$=$}\coordHE{}  \myHighlight{$-$}\coordHE{}  \myHighlight{$\gamma_A(a)$}\coordHE{}. When the condition \myHighlight{$Z_\alpha$}\coordHE{}  \myHighlight{$=$}\coordHE{}  \myHighlight{$1$}\coordHE{}
+is not satisfied the more general relation, (\ref{rgedefn}), emerges.
+
+To compute the ultraviolet structure of the two and three point functions we
+have followed the strategy of \cite{17,18} of expanding out the Feynman 
+integrals to the terms involving two or three external momenta respectively. 
+Given that the Curci-Ferrari model is renormalizable, \cite{1,4,5,6}, it 
+follows that terms involving more external momenta will not contribute to the 
+ultraviolet divergences. Hence one is left with massive vacuum two loop 
+Feynman integrals to compute where, unlike the calculation of \cite{17,18}, the
+masses in the propagators are not all the same. Such integrals have been widely
+studied before and we quote the result of \cite{21}, for instance, for the 
+basic two loop topology. In general we have 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{} 
+\int_{\leftCoord{}kl} \frac{\leftCoord{}1}{\rightCoord{}(k^2+m_1^2)(l^2+m_2^2)[(k-l)^2+m_3^2]} &=& -~ 
+\leftCoord{}(m_1^2+m_2^2+m_3^2) \left( \frac{\leftCoord{}1}{\rightCoord{}2\epsilon^2} ~+~ \frac{\leftCoord{}3}{\rightCoord{}2\epsilon} ~+~  
+\frac{\leftCoord{}1}{\rightCoord{}\epsilon} \ln(4\pi e^{-\gamma}) \right) \nonumber \rightCoord{}\\
+&&\leftCoord{} +~ \left( m_1^2 \ln m_1^2 ~+~ m_2^2 \ln m_2^2 ~+~ m_3^2 \ln m_3^2 \right) 
+\frac{\leftCoord{}1}{\rightCoord{}\epsilon} ~+~ O(1) \nonumber \rightCoord{}\\\leftCoord{}  
+\rightCoord{}}{0mm}{10}{9}{ 
+\int_{kl} \frac{1}{(k^2+m_1^2)(l^2+m_2^2)[(k-l)^2+m_3^2]} &=& -~ 
+(m_1^2+m_2^2+m_3^2) \left( \frac{1}{2\epsilon^2} ~+~ \frac{3}{2\epsilon} ~+~  
+\frac{1}{\epsilon} \ln(4\pi e^{-\gamma}) \right) \\
+&& +~ \left( m_1^2 \ln m_1^2 ~+~ m_2^2 \ln m_2^2 ~+~ m_3^2 \ln m_3^2 \right) 
+\frac{1}{\epsilon} ~+~ O(1) \\  
+}{1}\coordE{}\end{eqnarray}
+for arbitrary masses \myHighlight{$m_i$}\coordHE{} where \myHighlight{$\int_k$}\coordHE{}  \myHighlight{$=$}\coordHE{}  \myHighlight{$\int d^d k/(2\pi)^d$}\coordHE{}, \myHighlight{$d$}\coordHE{}  \myHighlight{$=$}\coordHE{} 
+\myHighlight{$4$}\coordHE{}  \myHighlight{$-$}\coordHE{}  \myHighlight{$2\epsilon$}\coordHE{} with \myHighlight{$\epsilon$}\coordHE{} the regularizing parameter and \myHighlight{$\gamma$}\coordHE{} is
+the Euler-Mascheroni constant. The integrals involving different powers of a 
+propagator are given by differentiating with respect to the appropriate masses.
+It is important to realise the role of the logarithmic terms. For instance, 
+specifying various values for \myHighlight{$m^2_i$}\coordHE{} we have  
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{} 
+\int_{\leftCoord{}kl} \frac{\leftCoord{}1}{\rightCoord{}(k^2+m^2)(l^2+m^2)[(k-l)^2+\alpha m^2]} &=& -~ (\alpha+2) 
+m^2 \left( \frac{\leftCoord{}1}{\rightCoord{}2\epsilon^2} ~+~ \frac{\leftCoord{}3}{\rightCoord{}2\epsilon} ~+~ \frac{\leftCoord{}1}{\rightCoord{}\epsilon} \rightCoord{}
+\ln(4\pi e^{-\gamma})\right) \nonumber \rightCoord{}\\
+&&\leftCoord{} +~ \left( (\alpha+2) \ln m^2 ~+~ \alpha \ln \alpha \right) \rightCoord{} 
+\frac{\leftCoord{}m^2}{\rightCoord{}\epsilon} ~+~ O(1) \rightCoord{} 
+\rightCoord{}}{0mm}{8}{11}{ 
+\int_{kl} \frac{1}{(k^2+m^2)(l^2+m^2)[(k-l)^2+\alpha m^2]} &=& -~ (\alpha+2) 
+m^2 \left( \frac{1}{2\epsilon^2} ~+~ \frac{3}{2\epsilon} ~+~ \frac{1}{\epsilon} 
+\ln(4\pi e^{-\gamma})\right) \\
+&& +~ \left( (\alpha+2) \ln m^2 ~+~ \alpha \ln \alpha \right)  
+\frac{m^2}{\epsilon} ~+~ O(1)  
+}{1}\coordE{}\end{eqnarray}
+and
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{} 
+\int_{\leftCoord{}kl} \frac{\leftCoord{}1}{\rightCoord{}(k^2+m^2)(l^2+ \alpha m^2)[(k-l)^2+\alpha m^2]} &=& -~ 
+\leftCoord{}(2\alpha+1) m^2 \left( \frac{\leftCoord{}1}{\rightCoord{}2\epsilon^2} ~+~ \frac{\leftCoord{}3}{\rightCoord{}2\epsilon} ~+~ \rightCoord{} 
+\frac{\leftCoord{}1}{\rightCoord{}\epsilon} \ln(4\pi e^{-\gamma}) \right) \rightCoord{} 
+\nonumber \rightCoord{}\\
+&&\leftCoord{} +~ \left( (2\alpha+1) \ln m^2 ~+~ 2 \alpha \ln \alpha \right) \rightCoord{} 
+\frac{\leftCoord{}m^2}{\rightCoord{}\epsilon} ~+~ O(1) ~. \nonumber \rightCoord{}\\\leftCoord{} 
+\label{basint} 
+\rightCoord{}}{0mm}{10}{12}{ 
+\int_{kl} \frac{1}{(k^2+m^2)(l^2+ \alpha m^2)[(k-l)^2+\alpha m^2]} &=& -~ 
+(2\alpha+1) m^2 \left( \frac{1}{2\epsilon^2} ~+~ \frac{3}{2\epsilon} ~+~  
+\frac{1}{\epsilon} \ln(4\pi e^{-\gamma}) \right)  
+\\
+&& +~ \left( (2\alpha+1) \ln m^2 ~+~ 2 \alpha \ln \alpha \right)  
+\frac{m^2}{\epsilon} ~+~ O(1) ~. \\ 
+}{1}\coordE{}\end{eqnarray}
+Therefore, the final renormalization constants could potentially contain 
+\myHighlight{$\ln \alpha$}\coordHE{} terms. Moreover, in writing two and three point functions in the 
+basic form (\ref{basint}), one uses partial fractions so that  
+\begin{equation}\coord{}\boxEquation{ 
+\frac{1}{(k^2+m^2)(k^2+\alpha m^2)} ~=~ \frac{1}{(1-\alpha)m^2} 
+\left[ \frac{1}{(k^2+\alpha m^2)} ~-~ \frac{1}{(k^2+m^2)} \right] 
+}{ 
+\frac{1}{(k^2+m^2)(k^2+\alpha m^2)} ~=~ \frac{1}{(1-\alpha)m^2} 
+\left[ \frac{1}{(k^2+\alpha m^2)} ~-~ \frac{1}{(k^2+m^2)} \right] 
+}{ecuacion}\coordE{}\end{equation} 
+which introduces, in addition, powers of \myHighlight{$1/(1-\alpha)$}\coordHE{} which also could appear
+in the renormalization constants. Given that \myHighlight{$\ln\alpha$}\coordHE{} and \myHighlight{$1/(1-\alpha)^n$}\coordHE{}
+for \myHighlight{$n$}\coordHE{}  \myHighlight{$\geq$}\coordHE{}  \myHighlight{$1$}\coordHE{} are singular at \myHighlight{$\alpha$}\coordHE{}  \myHighlight{$=$}\coordHE{}  \myHighlight{$0$}\coordHE{} and \myHighlight{$\alpha$}\coordHE{}  \myHighlight{$=$}\coordHE{}  \myHighlight{$1$}\coordHE{}
+respectively, it might be expected that at two loops there will be a problem in
+the Landau and Feynman gauges respectively. However, since the original gluon
+propagator, (\ref{propdefn}), can be rewritten as  
+\begin{equation}\coord{}\boxEquation{
+-~ \delta^{ab} \left[ \frac{\eta^{\mu\nu}}{(k^2+m^2)} ~-~ 
+\frac{k^\mu k^\nu}{m^2} \left( \frac{1}{(k^2+\alpha m^2)} ~-~ 
+\frac{1}{(k^2+m^2)} \right) \right] 
+}{
+-~ \delta^{ab} \left[ \frac{\eta^{\mu\nu}}{(k^2+m^2)} ~-~ 
+\frac{k^\mu k^\nu}{m^2} \left( \frac{1}{(k^2+\alpha m^2)} ~-~ 
+\frac{1}{(k^2+m^2)} \right) \right] 
+}{ecuacion}\coordE{}\end{equation} 
+there ought to be no problems at \myHighlight{$\alpha$}\coordHE{}  \myHighlight{$=$}\coordHE{}  \myHighlight{$1$}\coordHE{} which provides an internal
+consistency check on the computation. Moreover, the potential \myHighlight{$\alpha$}\coordHE{}  \myHighlight{$=$}\coordHE{}  \myHighlight{$0$}\coordHE{}
+singularity is avoided by the fact that the basic one loop integral has the 
+following \myHighlight{$\epsilon$}\coordHE{}-expansion 
+\begin{equation}\coord{}\boxEquation{ 
+\int_k \frac{1}{(k^2+\alpha m^2)} ~=~ -~ \frac{\alpha m^2}{\epsilon} \left[
+1 ~+~ [1 - \gamma - \ln (\alpha m^2) ] \epsilon ~+~ O(\epsilon^2) \right] ~.  
+}{ 
+\int_k \frac{1}{(k^2+\alpha m^2)} ~=~ -~ \frac{\alpha m^2}{\epsilon} \left[
+1 ~+~ [1 - \gamma - \ln (\alpha m^2) ] \epsilon ~+~ O(\epsilon^2) \right] ~.  
+}{ecuacion}\coordE{}\end{equation} 
+Hence, the counterterms which arise from the one loop diagrams ought to cancel 
+out the \myHighlight{$\ln(\alpha)/\epsilon$}\coordHE{} poles arising in integrals of the type we have 
+discussed. Indeed in this context we avoid the usual approach of subtractions 
+by using the method of \cite{22}. There one computes the Green's functions in 
+terms of the bare parameters and then rescales them at the end of the 
+calculation in terms of the coupling constant expansion of the renormalization 
+constants, (\ref{Zdefns}), where each term of the expansion has already been 
+determined. This strategy is appropriate given that we have carried out the 
+calculation automatically using a symbolic manipulation programme written in 
+{\sc Form}, \cite{23}, in order to handle the tedious amount of algebra. The 
+Feynman diagrams for such an approach were generated using {\sc Qgraf}, 
+\cite{24}. 
+
+Consequently, we find the following \myHighlight{$\MSbar$}\coordHE{} renormalization constants for the 
+Curci-Ferrari model, (\ref{lag}),  
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{} 
+Z_A &=& 1 ~+~ C_A \left( \frac{\leftCoord{}13}{\rightCoord{}6} - \frac{\leftCoord{}\alpha}{\rightCoord{}2} \right) 
+\frac{\leftCoord{}a}{\rightCoord{}\epsilon} \nonumber \rightCoord{}\\
+&&\leftCoord{} +~ C_A^2 \left[ \left( \frac{\leftCoord{}3\alpha^2}{\rightCoord{}16} - \frac{\leftCoord{}17\alpha}{\rightCoord{}24} 
+\leftCoord{}- \frac{\leftCoord{}13}{\rightCoord{}8} \right) \frac{\leftCoord{}1}{\rightCoord{}\epsilon^2} ~-~ \left( \frac{\leftCoord{}\alpha^2}{\rightCoord{}16} \rightCoord{} 
+\leftCoord{}+ \frac{\leftCoord{}11\alpha}{\rightCoord{}16} - \frac{\leftCoord{}59}{\rightCoord{}16} \right) \frac{\leftCoord{}1}{\rightCoord{}\epsilon} \rightCoord{} 
+\right] a^2 ~+~ O(a^3) \nonumber \rightCoord{}\\\leftCoord{} 
+Z_\alpha &=& 1 ~-~ C_A \left( \frac{\leftCoord{}\alpha}{\rightCoord{}4} \right) 
+\frac{\leftCoord{}a}{\rightCoord{}\epsilon} \nonumber \rightCoord{}\\
+&&\leftCoord{} +~ C_A^2 \left[ \left( \frac{\leftCoord{}\alpha^2}{\rightCoord{}16} + \frac{\leftCoord{}3\alpha}{\rightCoord{}16} 
+\right) \frac{\leftCoord{}1}{\rightCoord{}\epsilon^2} ~-~ \left( \frac{\leftCoord{}\alpha^2}{\rightCoord{}32} \rightCoord{} 
+\leftCoord{}+ \frac{\leftCoord{}5\alpha}{\rightCoord{}32} \right) \frac{\leftCoord{}1}{\rightCoord{}\epsilon} \right] a^2 ~+~ O(a^3) \rightCoord{} 
+\nonumber \rightCoord{}\\\leftCoord{} 
+Z_c &=& 1 ~+~ C_A \left( \frac{\leftCoord{}3}{\rightCoord{}4} - \frac{\leftCoord{}\alpha}{\rightCoord{}4} \right) 
+\frac{\leftCoord{}a}{\rightCoord{}\epsilon} \nonumber \rightCoord{}\\
+&&\leftCoord{} +~ C_A^2 \left[ \left( \frac{\leftCoord{}\alpha^2}{\rightCoord{}16} - \frac{\leftCoord{}35}{\rightCoord{}32} \right) 
+\frac{\leftCoord{}1}{\rightCoord{}\epsilon^2} ~-~ \left( \frac{\leftCoord{}\alpha^2}{\rightCoord{}32} - \frac{\leftCoord{}\alpha}{\rightCoord{}32} \rightCoord{} 
+\leftCoord{}- \frac{\leftCoord{}95}{\rightCoord{}96} \right) \frac{\leftCoord{}1}{\rightCoord{}\epsilon} \right] a^2 ~+~ O(a^3) \nonumber \rightCoord{}\\\leftCoord{} 
+Z_m &=& 1 ~+~ C_A \left( \frac{\leftCoord{}\alpha}{\rightCoord{}8} - \frac{\leftCoord{}35}{\rightCoord{}24} \right) 
+\frac{\leftCoord{}a}{\rightCoord{}\epsilon} \nonumber \rightCoord{}\\
+&&\leftCoord{} +~ C_A^2 \left[ \left( - \frac{\leftCoord{}\alpha^2}{\rightCoord{}128} - \frac{\leftCoord{}53\alpha}{\rightCoord{}192} 
+\leftCoord{}+ \frac{\leftCoord{}1435}{\rightCoord{}384} \right) \frac{\leftCoord{}1}{\rightCoord{}\epsilon^2} ~+~ \rightCoord{} 
+\left( \frac{\leftCoord{}\alpha^2}{\rightCoord{}64} + \frac{\leftCoord{}11\alpha}{\rightCoord{}64} - \frac{\leftCoord{}449}{\rightCoord{}192} \right) \rightCoord{} 
+\frac{\leftCoord{}1}{\rightCoord{}\epsilon} \right] a^2 ~+~ O(a^3) \nonumber \rightCoord{}\\\leftCoord{} 
+Z_g &=& 1 ~-~ \frac{\leftCoord{}11}{\rightCoord{}6} C_A \frac{\leftCoord{}a}{\rightCoord{}\epsilon} ~+~ C_A^2 \left[ 
+\frac{\leftCoord{}121}{\rightCoord{}24} \frac{\leftCoord{}1}{\rightCoord{}\epsilon^2} ~-~ \frac{\leftCoord{}17}{\rightCoord{}6} \frac{\leftCoord{}1}{\rightCoord{}\epsilon} \right] \rightCoord{}
+a^2 ~+~ O(a^3) \rightCoord{} 
+\rightCoord{}}{0mm}{60}{65}{ 
+Z_A &=& 1 ~+~ C_A \left( \frac{13}{6} - \frac{\alpha}{2} \right) 
+\frac{a}{\epsilon} \\
+&& +~ C_A^2 \left[ \left( \frac{3\alpha^2}{16} - \frac{17\alpha}{24} 
+- \frac{13}{8} \right) \frac{1}{\epsilon^2} ~-~ \left( \frac{\alpha^2}{16}  
++ \frac{11\alpha}{16} - \frac{59}{16} \right) \frac{1}{\epsilon}  
+\right] a^2 ~+~ O(a^3) \\ 
+Z_\alpha &=& 1 ~-~ C_A \left( \frac{\alpha}{4} \right) 
+\frac{a}{\epsilon} \\
+&& +~ C_A^2 \left[ \left( \frac{\alpha^2}{16} + \frac{3\alpha}{16} 
+\right) \frac{1}{\epsilon^2} ~-~ \left( \frac{\alpha^2}{32}  
++ \frac{5\alpha}{32} \right) \frac{1}{\epsilon} \right] a^2 ~+~ O(a^3)  
+\\ 
+Z_c &=& 1 ~+~ C_A \left( \frac{3}{4} - \frac{\alpha}{4} \right) 
+\frac{a}{\epsilon} \\
+&& +~ C_A^2 \left[ \left( \frac{\alpha^2}{16} - \frac{35}{32} \right) 
+\frac{1}{\epsilon^2} ~-~ \left( \frac{\alpha^2}{32} - \frac{\alpha}{32}  
+- \frac{95}{96} \right) \frac{1}{\epsilon} \right] a^2 ~+~ O(a^3) \\ 
+Z_m &=& 1 ~+~ C_A \left( \frac{\alpha}{8} - \frac{35}{24} \right) 
+\frac{a}{\epsilon} \\
+&& +~ C_A^2 \left[ \left( - \frac{\alpha^2}{128} - \frac{53\alpha}{192} 
++ \frac{1435}{384} \right) \frac{1}{\epsilon^2} ~+~  
+\left( \frac{\alpha^2}{64} + \frac{11\alpha}{64} - \frac{449}{192} \right)  
+\frac{1}{\epsilon} \right] a^2 ~+~ O(a^3) \\ 
+Z_g &=& 1 ~-~ \frac{11}{6} C_A \frac{a}{\epsilon} ~+~ C_A^2 \left[ 
+\frac{121}{24} \frac{1}{\epsilon^2} ~-~ \frac{17}{6} \frac{1}{\epsilon} \right] 
+a^2 ~+~ O(a^3)  
+}{1}\coordE{}\end{eqnarray}  
+where \myHighlight{$f^{acd} f^{bcd}$}\coordHE{}  \myHighlight{$=$}\coordHE{}  \myHighlight{$C_A \delta^{ab}$}\coordHE{}. As an additional check on our 
+two loop results we note that the \myHighlight{$O(1/\epsilon^2)$}\coordHE{} pole terms of each 
+renormalization constant agrees with the value predicted through the 
+renormalization group from the one loop pole. Using (\ref{rgedefn}), these 
+values for the renormalization constants lead to the renormalization group 
+functions 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{} 
+\gamma_A(a) &=& C_A ( 3\alpha - 13 ) \frac{\leftCoord{}a}{\rightCoord{}6} ~+~ C_A^2 \left(
+\alpha^2 + 11\alpha - 59 \right) \frac{\leftCoord{}a^2}{\rightCoord{}8} ~+~ O(a^3) \nonumber \rightCoord{}\\\leftCoord{}  
+\gamma_\alpha(a) &=& -~ C_A ( 3\alpha - 26 ) \frac{\leftCoord{}a}{\rightCoord{}12} ~-~ 
+C_A^2 \left( \alpha^2 + 17\alpha - 118 \right) \frac{\leftCoord{}a^2}{\rightCoord{}16} ~+~ O(a^3) 
+\nonumber \rightCoord{}\\\leftCoord{} 
+\gamma_c(a) &=& C_A ( \alpha - 3 ) \frac{\leftCoord{}a}{\rightCoord{}4} ~+~ C_A^2 \left(
+\leftCoord{}3\alpha^2 - 3\alpha - 95 \right) \frac{\leftCoord{}a^2}{\rightCoord{}48} ~+~ O(a^3) \nonumber \rightCoord{}\\\leftCoord{}  
+\gamma_m(a) &=& C_A ( 3\alpha - 35 ) \frac{\leftCoord{}a}{\rightCoord{}24} ~+~ C_A^2 \left(
+\leftCoord{}3\alpha^2 + 33\alpha - 449 \right) \frac{\leftCoord{}a^2}{\rightCoord{}96} ~+~ O(a^3) \nonumber \rightCoord{}\\\leftCoord{}
+\beta(a) &=& -~ \frac{\leftCoord{}11}{\rightCoord{}3} C_A a^2 ~-~ \frac{\leftCoord{}34}{\rightCoord{}3} C_A^2 a^3 ~+~ O(a^4) ~.  \rightCoord{}
+\rightCoord{}}{0mm}{17}{17}{ 
+\gamma_A(a) &=& C_A ( 3\alpha - 13 ) \frac{a}{6} ~+~ C_A^2 \left(
+\alpha^2 + 11\alpha - 59 \right) \frac{a^2}{8} ~+~ O(a^3) \\  
+\gamma_\alpha(a) &=& -~ C_A ( 3\alpha - 26 ) \frac{a}{12} ~-~ 
+C_A^2 \left( \alpha^2 + 17\alpha - 118 \right) \frac{a^2}{16} ~+~ O(a^3) 
+\\ 
+\gamma_c(a) &=& C_A ( \alpha - 3 ) \frac{a}{4} ~+~ C_A^2 \left(
+3\alpha^2 - 3\alpha - 95 \right) \frac{a^2}{48} ~+~ O(a^3) \\  
+\gamma_m(a) &=& C_A ( 3\alpha - 35 ) \frac{a}{24} ~+~ C_A^2 \left(
+3\alpha^2 + 33\alpha - 449 \right) \frac{a^2}{96} ~+~ O(a^3) \\
+\beta(a) &=& -~ \frac{11}{3} C_A a^2 ~-~ \frac{34}{3} C_A^2 a^3 ~+~ O(a^4) ~.  
+}{1}\coordE{}\end{eqnarray} 
+The result for the \myHighlight{$\beta$}\coordHE{}-function agrees with the original two loop scheme
+independent result of \cite{25,26}. As the gluon mass in (\ref{lag}) 
+corresponds to the coupling of a gauge variant, and therefore unphysical, 
+operator its mass anomalous dimension is gauge dependent. Further, the result 
+for \myHighlight{$\gamma_m(a)$}\coordHE{} in the Landau gauge agrees with the calculation of \cite{7}
+as an additional check on our computation. It is also worth noting that the 
+explicit sum of the gluon wave function and gauge fixing parameter anomalous
+dimensions gives  
+\begin{equation}\coord{}\boxEquation{ 
+\gamma_A(a) ~+~ \gamma_\alpha(a) ~=~ \alpha \left[ C_A \frac{a}{4} ~+~ C_A^2 
+\left( \alpha + 5 \right) \frac{a^2}{16} \right] ~+~ O(a^3) ~.  
+}{ 
+\gamma_A(a) ~+~ \gamma_\alpha(a) ~=~ \alpha \left[ C_A \frac{a}{4} ~+~ C_A^2 
+\left( \alpha + 5 \right) \frac{a^2}{16} \right] ~+~ O(a^3) ~.  
+}{ecuacion}\coordE{}\end{equation} 
+As a final check on our results we note that in the Landau gauge 
+\myHighlight{$\gamma_\alpha(a)$}\coordHE{}  \myHighlight{$=$}\coordHE{}  \myHighlight{$-$}\coordHE{}  \myHighlight{$\gamma_A(a)$}\coordHE{} as in the massless Yang-Mills theory
+and it is trivial to verify that the Landau gauge renormalization group 
+functions coincide precisely with the two loop results of \cite{25,26,27,22}. 
+In this instance the gluon propagator, 
+(\ref{propdefn}), takes the simple transverse form  
+\begin{equation}\coord{}\boxEquation{ 
+-~ \frac{\delta^{ab}}{(k^2+m^2)} \left[ \eta^{\mu\nu} ~-~ \frac{k^\mu k^\nu}
+{k^2} \right] ~.  
+}{ 
+-~ \frac{\delta^{ab}}{(k^2+m^2)} \left[ \eta^{\mu\nu} ~-~ \frac{k^\mu k^\nu}
+{k^2} \right] ~.  
+}{ecuacion}\coordE{}\end{equation} 
+Further, if we define the ghost mass as   
+\begin{equation}\coord{}\boxEquation{ 
+m^2_c ~=~ \alpha m^2 
+}{ 
+m^2_c ~=~ \alpha m^2 
+}{ecuacion}\coordE{}\end{equation} 
+then in general, using \myHighlight{$Z_{m_c}$}\coordHE{}  \myHighlight{$=$}\coordHE{}  \myHighlight{$Z_m Z^{\half}_A Z_\alpha^{-\half}$}\coordHE{},  
+\begin{equation}\coord{}\boxEquation{ 
+\gamma_{m_c}(a) ~=~ \gamma_m(a) ~-~ \frac{1}{2} \gamma_A(a) ~+~ 
+\frac{1}{2} \left[ \beta(a) \frac{\partial \ln Z_\alpha}{\partial a} ~+~
+\alpha \gamma_\alpha(a) \frac{\partial \ln Z_\alpha}{\partial \alpha} \right] 
+}{ 
+\gamma_{m_c}(a) ~=~ \gamma_m(a) ~-~ \frac{1}{2} \gamma_A(a) ~+~ 
+\frac{1}{2} \left[ \beta(a) \frac{\partial \ln Z_\alpha}{\partial a} ~+~
+\alpha \gamma_\alpha(a) \frac{\partial \ln Z_\alpha}{\partial \alpha} \right] 
+}{ecuacion}\coordE{}\end{equation}  
+giving to two loops 
+\begin{equation}\coord{}\boxEquation{ 
+\gamma_{m_c}(a) ~=~ -~ \frac{3}{8} C_A a ~-~ C_A^2 \left( 18 \alpha + 95 
+\right) \frac{a^2}{96} ~+~ O(a^3) ~.  
+}{ 
+\gamma_{m_c}(a) ~=~ -~ \frac{3}{8} C_A a ~-~ C_A^2 \left( 18 \alpha + 95 
+\right) \frac{a^2}{96} ~+~ O(a^3) ~.  
+}{ecuacion}\coordE{}\end{equation} 
+
+To conclude we have explicitly constructed all the basic renormalization group
+functions for the Curci-Ferrari model, (\ref{lag}), at two loops in \myHighlight{$\MSbar$}\coordHE{}. 
+These will be important for using this theory to renormalize Green's functions 
+in Yang-Mills theories where one cannot readily apply current automatic 
+multiloop programmes to determine the ultraviolet structure of \myHighlight{$n$}\coordHE{}-point 
+functions with \myHighlight{$n$}\coordHE{}  \myHighlight{$>$}\coordHE{}  \myHighlight{$3$}\coordHE{} and where an infrared regularization is also 
+necessary. Further, given that QCD is more appropriate for practical 
+phenomenology it would be interesting to extend our computations to include 
+massive quarks in addition to the massive gluons and ghosts. Although that 
+theory would remain non-unitary, multiplicative renormalizability ought still 
+to be preserved and hence the quark extended Curci-Ferrari model would provide 
+a useful tool for renormalizing full QCD.  
+
+\vspace{0.3cm} 
+\noindent 
+{\bf Acknowledgements.} The author thanks Dr D.B. Ali for useful discussions. 
+
+\newpage 
+
+\begin{thebibliography}{99} 
+\bibitem{1} G. Curci \& R. Ferrari, Nuovo Cim. {\bf A32} (1976), 151. 
+%%CITATION = NUCIA,A32,151;%% 
+\bibitem{2} G. Curci \& R. Ferrari, Nuovo Cim. {\bf A35} (1976), 1; 
+%%CITATION = NUCIA,A35,1;%% 
+G. Curci \& R. Ferrari, Nuovo Cim. {\bf A35} (1976), 273; 
+%%CITATION = NUCIA,A35,273;%% 
+Nuovo Cim. {\bf A47} (1978), 555. 
+%%CITATION = NUCIA,A47,555;%% 
+\bibitem{3} I. Ojima, Z. Phys. {\bf C13} (1982), 173; 
+%%CITATION = ZEPYA,C13,173;%% 
+L. Baulieu, Phys. Rep. {\bf 13} (1985), 1; 
+%%CITATION = PRPLC,129,1;%%  
+R. Delbourgo, S. Twisk \& G. Thompson, Int. J. Mod. Phys. {\bf A3} (1988), 435;
+%%CITATION = IMPAE,A3,435;%% 
+T. Hurth, Helv. Phys. Acta {\bf 70} (1997), 406. 
+%%CITATION = HEP-TH 9511176;%% 
+\bibitem{4} J. de Boer, K. Skenderis, P. van Nieuwenhuizen \& A. Waldron, Phys.
+Lett. {\bf B367} (1996), 175. 
+%%CITATION = HEP-PH 9510167;%% 
+\bibitem{5} F. Delduc \& S.P. Sorella, Phys. Lett. {\bf B231} (1989), 408. 
+%%CITATION = PHLTA,B231,408;%% 
+\bibitem{6} A. Blasi \& N. Maggiore, Mod. Phys. Lett. {\bf A11} (1996), 1665. 
+%%CITATION = HEP-PH 9511068;%% 
+\bibitem{7} H. Verschelde, K. Knecht, K. van Acoleyen \& M. Vanderkelen, 
+Phys. Lett. {\bf B516} (2001), 307. 
+%%CITATION = HEP-PH 0105018;%% 
+\bibitem{8} K.-I. Kondo, Phys. Lett. {\bf B514} (2001), 335.  
+%%CITATION = HEP-TH 0105299;%% 
+\bibitem{9} K.-I. Kondo, hep-ph/0110013. 
+%%CITATION = HEP-PH 0110013;%% 
+\bibitem{10} Ph. Boucaud, A. Le Yaounac, J.P. Leroy, J. Micheli, O. Pene \&
+J. Rodriguez-Quintero, Phys. Rev. {\bf D63} (2001), 114003. 
+%%CITATION = HEP-PH 0101302. 
+\bibitem{11} R. Delbourgo \& P.D. Jarvis, J. Phys. {\bf A15} (1982), 611.
+%%CITATION = JPAGB,A15,611;%%  
+\bibitem{12} J.R. Forshaw, J. Papavassiliou \& C. Parrinello, Phys. Rev. {\bf
+D59} (1999), 074008. 
+%%CITATION = HEP-PH 9808392;%% 
+\bibitem{13} G. Curci \& E. d'Emilio, Phys. Lett. {\bf B83} (1979), 199. 
+%%CITATION = PHLTA,B83,199;%% 
+\bibitem{14} V. Periwal, hep-th/9509084. 
+%%CITATION = HEP-PH 9509084;%% 
+\bibitem{15} A.A. Vladimirov, Theor. Math. Phys. {\bf 43} (1980), 417.
+%%CITATION = TMPHA,43,417;%% 
+\bibitem{16} K.G. Chetyrkin, A.L. Kataev \& F.V. Tkachov, Nucl. Phys. {\bf 
+B174} (1980), 345.
+%%CITATION = NUPHA,B174,345;%%  
+\bibitem{17} M. Misiak \& M. M\"{u}nz, Phys. Lett. {\bf B344} (1995), 308.
+%%CITATION = HEP-PH 9409454;%%
+\bibitem{18} K.G. Chetyrkin, M. Misiak \& M. M\"{u}nz, Nucl. Phys. {\bf B518} 
+(1998), 473.
+%%CITATION = HEP-PH 9711266;%%
+\bibitem{19} S.G. Gorishny, S.A. Larin, L.R. Surguladze \& F.K. Tkachov, 
+Comput. Phys. Commun. {\bf 55} (1989), 381;  
+%%CITATION = CPHCB,55,381;%% 
+S.A. Larin, F.V. Tkachov \& J.A.M. Vermaseren, ``The Form version of Mincer'', 
+NIKHEF-H-91-18.
+\bibitem{20} P. Pascual \& R. Tarrach, ``QCD: Renormalization for the 
+Practitioner'' Lecture Notes in Physics {\bf 194}, (Springer-Verlag, Berlin, 
+1984). 
+\bibitem{21} C. Ford, I. Jack \& D.R.T. Jones, Nucl. Phys. {\bf B387} (1992),
+373. 
+%%CITATION = HEP-PH 0111190;%% 
+\bibitem{22} S.A. Larin \& J.A.M. Vermaseren, Phys. Lett. {\bf B303} (1993), 
+334. 
+%%CITATION = PHLTA,B303,334;%% 
+\bibitem{23} J.A.M. Vermaseren, ``{\sc Form}'' version \myHighlight{$2.3$}\coordHE{}, (CAN
+Amsterdam, 1992).  
+\bibitem{24} P. Nogueira, J. Comput. Phys. {\bf 105} (1993), 279. 
+%%CITATION = JCTPA,105,279;%% 
+\bibitem{25} D.J. Gross \& F.J. Wilczek, Phys. Rev. Lett. {\bf 30}
+(1973), 1343; 
+%%CITATION = PRLTA,30,1343;%% 
+H.D. Politzer, Phys. Rev. Lett. {\bf 30} (1973), 1346.
+%%CITATION = PRLTA,30,1346;%% 
+\bibitem{26} D.R.T. Jones, Nucl. Phys. {\bf B75} (1974), 531; 
+%%CITATION = NUPHA,B75,531;%% 
+W.E. Caswell, Phys. Rev. Lett. {\bf 33} (1974), 244. 
+%%CITATION = PRLTA,33,244;%% 
+\bibitem{27} O.V. Tarasov \& A.A. Vladimirov, Sov. J. Nucl. Phys. {\bf 25} 
+(1977), 585;  
+%%CITATION = SJNCA,25,585;%% 
+E. Egorian \& O.V. Tarasov, Theor. Math. Phys. {\bf 41} (1979),
+863. 
+%%CITATION = TMPHA,41,863;%%  
+\end{thebibliography}
+
+\end{document} 
+
+\bye

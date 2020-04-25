@@ -1,0 +1,1263 @@
+
+\documentclass[a4paper,12pt, amsfonts, amssymb]{article}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{latexsym}
+
+\providecommand{\CC}{{\mathbb C}}
+\providecommand{\RR}{{\mathbb R}}
+\providecommand{\ZZ}{{\mathbb Z}}
+\providecommand{\PP}{{\mathbb P}}
+\providecommand{\TT}{{\mathbb T}}
+\renewcommand{\SS}{{\mathbb S}}
+\providecommand{\End}{{\rm End}}
+\providecommand{\Ker}{{\rm Ker}}
+\providecommand{\Tr}{{\rm Tr}}
+\providecommand{\T}{{\bf T}}
+\providecommand{\diag}{{\rm diag}}
+\providecommand{\ra}{\rightarrow}
+\providecommand{\At}{{\tilde{A}}}
+\providecommand{\eps}{\epsilon}
+
+\providecommand{\bpsi}{{\bar\psi}}
+\providecommand{\cD}{{\mathcal D}}
+\providecommand{\cL}{{\mathcal L}}
+
+\title{\bf \large Topological Disorder Operators in Three-Dimensional
+Conformal Field Theory}
+\author{Vadim Borokhov\thanks{borokhov@theory.caltech.edu}, Anton Kapustin\thanks{kapustin@theory.caltech.edu}, Xinkai Wu\thanks{xinkaiwu@theory.caltech.edu}\\
+\it California Institute of Technology, Pasadena, CA 91125, USA
+}
+
+\usepackage{useful_macros}
+\begin{document}
+\begin{titlepage}
+
+\renewcommand{\thepage}{ }
+
+\maketitle
+
+\begin{abstract}
+
+Many abelian gauge theories in three dimensions flow to interacting
+conformal field theories in the infrared. We define a new class
+of local operators in these conformal field theories which are not
+polynomial in the fundamental fields and create
+topological disorder. They can be regarded as higher-dimensional
+analogues of twist and winding-state operators in free 2d CFTs. 
+We call them monopole 
+operators for reasons explained in the
+text. The importance of monopole operators is that in the Higgs phase, 
+they create Abrikosov-Nielsen-Olesen vortices. 
+We study properties of these operators in three-dimensional QED using 
+large \myHighlight{$N_f$}\coordHE{} expansion. In particular, we show that monopole operators
+belong to representations of the conformal group whose primaries have
+dimension of order \myHighlight{$N_f$}\coordHE{}. We also show that monopole operators transform
+non-trivially under the flavor symmetry group, with the precise representation
+depending on the value of the Chern-Simons coupling.
+
+\end{abstract}
+
+\vspace{-6.5in}
+
+\parbox{\linewidth}
+{\small\hfill CALT-68-2391}
+
+\end{titlepage}
+
+
+\section{Introduction}
+
+One of the most fascinating problems in quantum field theory is understanding
+non-perturbative equivalences (``dualities'') between superficially
+very different theories. A classic example is the quantum equivalence of the massive Thirring and sine-Gordon models~\cite{Coleman,Mandelstam}.
+More recently, a number of dualities has been conjectured for supersymmetric
+gauge theories in three and four dimensions. The earliest proposal of
+this sort is the S-duality of \myHighlight{$N=4$}\coordHE{}  \myHighlight{$d=4$}\coordHE{} super-Yang-Mills 
+theory~\cite{MO,WO,Osborn}.
+A decade and a half later, N.~Seiberg proposed a dual description for the 
+4d CFT which arises as the infrared limit of \myHighlight{$N=1$}\coordHE{}  \myHighlight{$d=4$}\coordHE{}
+super-QCD~\cite{Seiberg}. The dual theory is again the infrared limit of 
+an \myHighlight{$N=1$}\coordHE{}  \myHighlight{$d=4$}\coordHE{} gauge theory. 
+This proposal generated tremendous excitement, and soon many other candidate dualities have been found (see Refs.~\cite{Peskin,CCM} for a review). 
+Later it was realized that 
+many field-theoretic dualities follow from string theory dualities.
+
+Until now, all dualities in dimensions
+higher than two remain conjectural, and the physical reason for their existence is not completely understood. On the other hand, 2d dualities have a rather
+transparent physical meaning. For example, the sine-Gordon model has
+topological solitons (kinks), and it can be shown that a certain local
+operator which creates a kink satisfies the equations of motion of the
+massive Thirring model~\cite{Mandelstam}. 
+It is believed that many higher-dimensional
+dualities arise in a similar manner, by ``rewriting'' the theory in terms
+of operators which create topological disorder. But it proved very hard
+to make this idea precise. 
+
+There are several related difficulties that one encounters in dimension
+higher than two. First of all, interesting higher-dimensional
+dualities involve gauge theories. This implies that in order to write
+down an operator describing the dual degrees of freedom,
+one has to work in an enlarged state space which includes the
+unphysical degrees of freedom of both the original and the dual gauge fields. It is not known how to construct such an enlarged space.
+Fortunately,
+there are non-trivial examples of dualities in three dimensions 
+(so called 3d mirror pairs~\cite{IS}) for some of which the dual theory has a 
+trivial gauge group. In this case one can hope to construct the
+operators describing the dual degrees of freedom directly in the 
+state space of the original gauge theory. 
+
+The second difficulty is that it is hard to construct
+topological disorder operators in interacting fields theories. For
+example, it is believed that 3d mirror symmetry arises when one
+rewrites three-dimensional supersymmetric QED in terms of local operators 
+which create Abrikosov-Nielsen-Olesen vortices~\cite{five}. 
+This means that such operators are monopoles.
+However, it was never clear how to define monopole operators in
+SUSY QED. A proposal in this direction was made by M.~J.~Strassler and 
+one of the authors~\cite{KS}, but it was only partially
+successful.
+
+
+In this paper we will address the second issue in a simple toy 
+model: three-dimensional QED with \myHighlight{$N_f$}\coordHE{} flavors of fermions. 
+This theory is believed to flow to an interacting conformal
+fixed point for large enough \myHighlight{$N_f$}\coordHE{} (this is discussed in more detail in the
+next section). The theory is not supersymmetric and is not expected to
+possess a simple dual. Nevertheless, we believe it is a useful
+exercise to define monopole operators in this simple model
+and learn to work with them. Besides, monopole operators
+are rather interesting beasts even in the non-supersymmetric
+case. First of all, these are the first examples of local operators
+in a three-dimensional CFT which are not polynomial in the fundamental
+fields. Thus our construction can be regarded as a generalization of the
+vertex operator construction from free 2d CFT to an interacting
+3d CFT. Second, we show that because of fermionic zero modes
+monopole operators transform in a non-trivial
+representation of the flavor group whose size depends on the Chern-Simons
+coupling. Monopole operators in supersymmetric QED and their role
+in mirror symmetry will be discussed in a forthcoming publication.
+
+\section{Review of three-dimensional QED}
+
+The action of three-dimensional QED in the Euclidean space is given by
+$$\coord{}\boxMath{
+L_{QED}=\int d^3 x \left(\frac{1}{4e^2} F_{\mu\nu} F^{\mu\nu} +
+\psi^\dagger_j \left(\sigma \cdot iD_A\right) \psi^j\right).
+}{dollar}{0pt}\coordE{}$$
+Here \myHighlight{$A$}\coordHE{} is the \myHighlight{$U(1)$}\coordHE{} gauge field, \myHighlight{$F=dA$}\coordHE{} is the field-strength 2-form,
+\myHighlight{$D_A$}\coordHE{} is the corresponding covariant derivative,
+and \myHighlight{$\psi^j$}\coordHE{} is a complex two-component spinor. The index \myHighlight{$j$}\coordHE{} runs from 
+\myHighlight{$1$}\coordHE{} to \myHighlight{$N_f$}\coordHE{}. 
+
+In three dimensions one can add to the action a Chern-Simons term
+$$\coord{}\boxMath{
+L_{CS}=\frac{ik}{4\pi} \int d^3 x\ \eps^{\mu\nu\rho} A_\mu 
+\partial_\nu A_\rho.
+}{dollar}{0pt}\coordE{}$$
+Such a term breaks parity invariance of the theory.
+We will assume that the gauge group is compact (i.e.
+\myHighlight{$U(1)$}\coordHE{} rather than \myHighlight{$\RR$}\coordHE{}). Naively, this requires the Chern-Simons
+coupling \myHighlight{$k$}\coordHE{} to be an integer, to avoid global anomalies. The real
+story is slightly more complicated. When \myHighlight{$N_f$}\coordHE{} is odd, the fermionic path
+integral is anomalous. The anomaly is the same as the anomaly due
+to a Chern-Simons term with \myHighlight{$k=1/2$}\coordHE{}. Thus cancellation of global
+anomalies requires
+$$\coord{}\boxMath{
+k-\frac{N_f}{2}\in \ZZ.
+}{dollar}{0pt}\coordE{}$$
+In particular, for odd \myHighlight{$N_f$}\coordHE{} the Chern-Simons coupling must be non-zero,
+and parity is broken. This is known as parity anomaly~\cite{Redlich}.
+
+The gauge coupling \myHighlight{$e$}\coordHE{} has dimension \myHighlight{$m^{1/2}$}\coordHE{}. Thus the theory is
+super-renormalizable and free in the ultraviolet. In fact, its UV
+behavior is so good that no renormalization of the Lagrangian is required.
+Contrariwise, 3d QED is strongly coupled in the infrared (perturbative
+expansion is really an expansion in powers of \myHighlight{$e^2/p$}\coordHE{}, where \myHighlight{$p$}\coordHE{} is
+the momentum scale).
+It is natural to assume that the
+low-energy limit of this theory is a non-trivial CFT, but this has not
+been conclusively demonstrated. However, the statement holds
+to all orders in \myHighlight{$1/N_f$}\coordHE{} expansion~\cite{AP,JT,Templeton,AH}. 
+In fact, in the limit 
+\myHighlight{$N_f\ra\infty$}\coordHE{} the infrared theory becomes weakly coupled, and
+conformal dimensions of all fields can be computed order by order 
+in \myHighlight{$1/N_f$}\coordHE{}. For example, the IR dimension of \myHighlight{$\psi^j$}\coordHE{} is 
+canonical (i.e. the same as the UV dimension) up to corrections of 
+order \myHighlight{$1/N_f$}\coordHE{}. 
+
+More interestingly,
+the IR dimension of \myHighlight{$F_{\mu\nu}$}\coordHE{} is \myHighlight{$2$}\coordHE{} to all orders in \myHighlight{$1/N_f$}\coordHE{}.
+To understand why this is the case, consider a current
+$$\coord{}\boxMath{
+J^\mu=\eps^{\mu\nu\rho} F_{\nu\rho}.
+}{dollar}{0pt}\coordE{}$$
+It is identically conserved by virtue of the Bianchi identity.
+A priori, this current could either be a primary field, or a descendant
+of the primary field. In the UV, the latter possibility is realized,
+since we can write 
+\begin{equation}\coord{}\boxEquation{\label{dualph}
+J^\mu=\partial^\mu \sigma,
+}{J^\mu=\partial^\mu \sigma,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\sigma$}\coordHE{} is a free scalar field. The scalar \myHighlight{$\sigma$}\coordHE{} is usually
+referred to as the dual photon. It has dimension \myHighlight{$1/2$}\coordHE{} (as befits a free scalar in three dimensions), while \myHighlight{$J^\mu$}\coordHE{} and \myHighlight{$F_{\mu\nu}$}\coordHE{} have dimension \myHighlight{$3/2$}\coordHE{}. 
+On the
+other hand, in the IR an equation like Eq.~(\ref{dualph}) cannot hold.
+Indeed, Eq.~(\ref{dualph}) implies that \myHighlight{$F_{\mu\nu}$}\coordHE{} obeys the free Maxwell equation, which clashes with the assumption that there are massless charged particles in the infrared. (We assume here that the fermions do not get a mass due to some non-perturbative effect, see a discussion below.) 
+This strongly suggests that in the IR limit \myHighlight{$J^\mu$}\coordHE{} is a primary field. 
+It is well known that 
+in a unitary 3d CFT a conserved primary current has dimension \myHighlight{$2$}\coordHE{}. 
+Hence the IR dimension of \myHighlight{$J^\mu$}\coordHE{} and \myHighlight{$F_{\mu\nu}$}\coordHE{} is \myHighlight{$2.$}\coordHE{} 
+This conclusion can also
+be reached by directly studying the perturbative expansion in powers 
+of \myHighlight{$1/N_f$}\coordHE{}~\cite{AH}. 
+
+
+Note that the difference between the UV and IR dimensions of \myHighlight{$F$}\coordHE{}
+is of order \myHighlight{$1$}\coordHE{}, and therefore the IR fixed point is far from the UV
+fixed point, even in the limit \myHighlight{$N_f\ra\infty$}\coordHE{}. In this respect,
+the situation is very different from the Banks-Zaks-type theories
+in four-dimensions~\cite{BZ}, where the IR dimensions of {\it all} operators are very close to their UV dimensions.
+
+The physics of 3d QED at finite \myHighlight{$N_f$}\coordHE{} remains controversial. The conventional
+approach is to study the system of Schwinger-Dyson equations truncated 
+in some way and look for symmetry-breaking solutions. For simplicity,
+let us focus on the case of zero Chern-Simons coupling and even \myHighlight{$N_f$}\coordHE{}.
+It has been claimed that at finite \myHighlight{$N_f$}\coordHE{} flavor symmetry and parity are spontaneously broken by a dynamical mass for the fermions, and the infrared limit is a free theory of photons~\cite{Pisarski}. The majority of such studies indicate that this happens for \myHighlight{$N_f$}\coordHE{} smaller than a certain critical value of order \myHighlight{$6$}\coordHE{} or \myHighlight{$7$}\coordHE{}~(see e.g.~\cite{ANW,Nash,Maris}).
+There are also claims that dynamical mass 
+generation takes place for all \myHighlight{$N_f$}\coordHE{} but is exponentially small for large
+\myHighlight{$N_f$}\coordHE{} and therefore invisible in \myHighlight{$1/N_f$}\coordHE{} expansion~\cite{Pisarski,PW,CPW}.
+It must be stressed that the results of such studies depend on the way one truncates an infinite system of Schwinger-Dyson equations, a procedure which 
+cannot be fully justified. Lattice simulations of 3d QED have been
+inconclusive so far. 
+
+In this paper we will be
+interested in the large \myHighlight{$N_f$}\coordHE{} limit, and therefore the behavior at
+finite \myHighlight{$N_f$}\coordHE{} will be unimportant. Note also that in the \myHighlight{$N=2$}\coordHE{} and \myHighlight{$N=4$}\coordHE{}
+supersymmetric cases the situation is better, in the sense that one can argue
+the existence of a non-trivial CFT at the origin of the quantum moduli
+space for all \myHighlight{$N_f$}\coordHE{}. 
+
+\section{Defining monopole operators}
+
+\subsection{A preliminary definition}
+
+As mentioned above, three-dimensional QED possesses an interesting conserved current, the dual of the field strength:
+$$\coord{}\boxMath{
+J^\mu=\frac{1}{4\pi}\eps^{\mu\nu\rho} F_{\nu\rho}.
+}{dollar}{0pt}\coordE{}$$
+Its conservation is equivalent to the Bianchi identity \myHighlight{$dF=0.$}\coordHE{}
+The corresponding charge is called the vortex charge, because in the
+Higgs phase it is carried by the Abrikosov-Nielsen-Olesen (ANO)
+vortices. The vortex charge is integral if the gauge field \myHighlight{$A$}\coordHE{} is
+a well-defined connection on a \myHighlight{$U(1)$}\coordHE{} principal bundle. Loosely speaking,
+we would like to construct a vortex-creating operator. 
+But in an interacting conformal field theory, 
+it does not make sense to say that an 
+operator is creating a particle. A vortex-creating operator will 
+be defined as an operator with a unit vortex charge. This means that the
+OPE of such an operator with \myHighlight{$J^\mu$}\coordHE{} has the form
+$$\coord{}\boxMath{
+J^\mu(x) O(0)\sim \frac{1}{4\pi}\frac{x^\mu}{|x|^3} O(0)+
+{\rm less\ singular\ terms}.
+}{dollar}{0pt}\coordE{}$$
+Such operators can be organized in the representations of the conformal
+group. In a unitary theory local operators must transform
+according to lowest-weight representations, i.e.
+those representations in which the dimension of operators is bounded
+from below. The operator with the lowest dimension is called a conformal
+primary. It is standard to label a representation by the spin and dimension 
+of its primary. Our problem can be formulated
+as follows: determine the spin, dimension, and other quantum numbers
+of primaries with a given vortex charge.
+
+In the path integral language, an insertion of an operator with vortex
+charge \myHighlight{$n$}\coordHE{} at a point \myHighlight{$p$}\coordHE{} is equivalent to integrating
+over gauge fields which have a singularity at \myHighlight{$x=p$}\coordHE{} such that
+the magnetic flux through a 2-sphere surrounding \myHighlight{$x=p$}\coordHE{} is \myHighlight{$n$}\coordHE{}.
+To be consistent, one must regard charged matter fields as sections
+of a non-trivial line bundle on the punctured \myHighlight{$\RR^3.$}\coordHE{} Thus
+an insertion of a vortex-creating operator causes a change in the topology
+of fields near the insertion point. In what follows we will use the
+terms ``vortex-creating operator'' and ``monopole operator'' 
+interchangeably.
+
+This way of defining topological
+disorder operators is familiar from 2d CFT. For example, a twist
+operator for a free fermion in 2d is defined by the condition that the
+fermion field changes sign as one goes around the insertion 
+point~\cite{Ginsparg}.
+Another example is afforded by the theory of a periodic free boson in 2d.
+This theory has winding states, and the corresponding operators
+create a logarithmic singularity for the boson field.  
+Thus our monopole operators can be regarded as three-dimensional analogues
+of twist operators or winding-state operators.
+
+In the two-dimensional case one can loosely say that a winding-state
+operator creates a kink. The precise meaning of this statement is the
+following. Consider a perturbation of the free boson theory by
+a periodic potential, say, a sine-Gordon potential. The resulting
+massive theory has multiple vacua and topological excitations (kinks) interpolating between neighboring vacua. The operator which carries
+winding number one has non-zero matrix elements between the vacuum
+and the one-kink state.
+
+Similarly, one can loosely say that a monopole operator creates
+an ANO vortex. To make this statement precise, one
+has to go to the Higgs phase (for example, by adding charged scalars
+with an appropriate potential). In the Higgs phase, the magnetic
+flux emanating from the insertion point of the monopole operator
+is squeezed into a thin tube. This tube is the world-line of a vortex.
+
+\subsection{A more precise definition}
+
+The definition of monopole operators given above is not yet complete.
+In effect, we have defined an insertion of a monopole operator by 
+requiring that the gauge field strength have a particular singularity
+at the insertion point. However, we did not specify the behavior
+of the matter fields near the insertion point. In fact, we expect
+that there are many operators which carry the same vortex charge, and
+they differ precisely by the behavior of fields at the insertion point. 
+Another difficulty is that the IR theory is strongly coupled, and it seems
+hard to compute correlators involving monopole operators.
+
+The first difficulty can be circumvented using radial quantization. 
+It is a general feature of CFT in any dimension that local operators
+are in one-to-one correspondence with states in the Hilbert space of
+the radially quantized theory. This follows from the fact that one
+can use a conformal transformation to map an insertion point of an
+operator to infinity. In this way one trades a local operator for
+an incoming or out-going state. In the case of monopole operators,
+such a mapping takes an operator with vortex charge \myHighlight{$n$}\coordHE{} to a state on 
+\myHighlight{${\bf S}^2\times \RR$}\coordHE{} with a magnetic flux \myHighlight{$n$}\coordHE{} through \myHighlight{${\bf S}^2$}\coordHE{}.
+Here \myHighlight{$\RR$}\coordHE{} is regarded as the time direction.
+Classifying states of a CFT on \myHighlight{${\bf S}^2\times \RR$}\coordHE{} with a given
+vortex charge is certainly a well-defined problem. Furthermore,
+the radially quantized picture is the most convenient one for
+computing correlators which involve two monopole operators with
+opposite vortex charges and an arbitrary number of ordinary operators. 
+By mapping the insertion of
+a monopole operator to an in-going state and the insertion of an anti-monopole
+operator to an out-going state, one reduces the problem
+to computing a particular matrix element of a product of several ordinary
+operators. A particularly important
+special case is the three-point function which
+involves a monopole operator, an anti-monopole operator, and a 
+conserved current. Knowledge of such correlators allows one
+to read off the quantum numbers of a monopole operator. For example,
+in order to determine the dimension of an operator, one has to
+compute the expectation value of the stress-energy tensor in the
+corresponding state. This approach is familiar from 2d CFT,
+where it is used to compute the quantum numbers of twist 
+operators (see e.g. Ref.~\cite{Ginsparg}). 
+
+Of course, if one desires to compute four-point functions of monopole
+operators, mapping two of the insertion points to infinity does not help 
+very much. In the case of 2d CFT, one has to use tricks special to the theory in question in order to compute four-point functions of topological 
+disorder operators. In this paper, we will be content with studying the OPE of monopole operators with conserved currents, and leave the study of four-point 
+functions to future work.
+
+The second difficulty can be avoided by working in the large \myHighlight{$N_f$}\coordHE{} limit.
+It is a general feature of this limit that the gauge field does not
+fluctuate, and can be treated classically~\cite{AP,JT,AH}. 
+This can be seen as follows.
+The infrared limit in 3d QED is simply the limit \myHighlight{$e\ra\infty$}\coordHE{}. This
+is literally true, because no renormalization of the Lagrangian is
+required. Thus one can simply drop the kinetic term for the gauge field.
+Integrating out the fermions then gives an effective action for the
+gauge field of order \myHighlight{$N_f$}\coordHE{}. For example, when expanded around a trivial
+background, this action looks like
+$$\coord{}\boxMath{
+N_f \int \left(F_{\mu\nu}\,\Box^{-1/2} F^{\mu\nu} + 
+{\rm higher\!-\! order\ terms}\right) d^3 x.
+}{dollar}{0pt}\coordE{}$$
+Thus the effective Planck constant is of order \myHighlight{$1/N_f$}\coordHE{}, and in the
+large \myHighlight{$N_f$}\coordHE{} limit the size of gauge-field fluctuations is order \myHighlight{$1/N_f$}\coordHE{}.
+Moreover, if we absorb a factor of \myHighlight{$N_f^{1/2}$}\coordHE{} into \myHighlight{$F,$}\coordHE{} we see
+that self-interactions of \myHighlight{$F$}\coordHE{} are suppressed in the large \myHighlight{$N_f$}\coordHE{} limit. 
+In other words, \myHighlight{$N_f^{1/2} F$}\coordHE{} is a Gaussian field in the large \myHighlight{$N_f$}\coordHE{} limit.
+It is this
+line of reasoning that allows one to show that the infrared CFT is weakly
+coupled in the large \myHighlight{$N_f$}\coordHE{} limit. The argument also applies
+to CFT on \myHighlight{${\bf S}^2\times \RR$}\coordHE{} with a flux. Thus we can regard the
+gauge field as a classical background. 
+
+It is very plausible that the
+saddle point of the effective action for \myHighlight{$F$}\coordHE{} on \myHighlight{${\bf S}^2\times \RR$}\coordHE{}
+is rotationally symmetric. Therefore we can assume that the classical
+background is simply a constant magnetic flux on \myHighlight{${\bf S}^2$}\coordHE{}.
+
+The above discussion reduced our problem to studying free fermions
+on \myHighlight{${\bf S}^2\times \RR$}\coordHE{} in the presence of a constant magnetic flux.
+This is almost a textbook problem, and everything of interest can be
+computed. For example, finding the dimension of a monopole operator 
+is equivalent to computing the Casimir energy of free fermions on \myHighlight{${\bf S}^2$}\coordHE{}
+with a flux. It is a priori clear that this energy scales like \myHighlight{$N_f.$}\coordHE{}
+There are corrections to this result, which can be computed
+by taking into account the fluctuations of the gauge field. However, such
+effects are suppressed by powers of \myHighlight{$1/N_f.$}\coordHE{}
+
+The above discussion contains a gap as regards gauge invariance of
+monopole operators. Gauge-invariance of a local operator is equivalent
+to gauge-invariance of the corresponding state in the
+radially quantized picture.
+In other words, the state must satisfy the Gauss' law. Gauss' law
+in QED on \myHighlight{${\bf S}^2\times \RR$}\coordHE{} comes from varying the action with
+respect to the ``time-like'' component of the gauge field \myHighlight{$A$}\coordHE{}. In the
+limit \myHighlight{$e\ra\infty$}\coordHE{} it simply reads
+$$\coord{}\boxMath{
+\rho(x) \vert \Phi\rangle =0,
+}{dollar}{0pt}\coordE{}$$
+where 
+$$\coord{}\boxMath{\rho(x)=\sum_j\psi_j^\dag(x)\psi^j(x)
+}{dollar}{0pt}\coordE{}$$ 
+is the electric charge density operator.
+In particular, the total electric charge of a gauge-invariant state must
+be zero. The latter is a standard fact about gauge theory on a compact space,
+valid irrespective of the value of \myHighlight{$e$}\coordHE{}. The definition of the
+electric charge operator involves normal-ordering ambiguities,
+which will be dealt with below. Note also that the inclusion of the
+Chern-Simons term in the action modifies the Gauss' law constraint into
+$$\coord{}\boxMath{
+\left(\rho + \frac{k}{4\pi}\eps^{ij} F_{ij}\right)\vert\Phi\rangle =0.
+}{dollar}{0pt}\coordE{}$$
+In particular, the total electric charge of the matter modes must be
+equal to \myHighlight{$-k$}\coordHE{} times the vortex charge. In this way (and only in this way)
+the Chern-Simons term will affect the physics at large \myHighlight{$N_f$}\coordHE{}.
+ 
+\section{Properties of monopole operators}
+ 
+\subsection{Radial quantization in the presence of a flux}
+
+As explained in the previous section, at large \myHighlight{$N_f$}\coordHE{} all properties of
+monopole operators can be deduced from the properties of free fermions on
+\myHighlight{${\bf S}^2\times \RR$}\coordHE{} in a constant background magnetic flux. In this 
+subsection we summarize the physics of this system, with detailed
+derivations relegated to the Appendix.
+
+The spectrum of the Dirac Hamiltonian on \myHighlight{${\bf S}^2\times \RR$}\coordHE{} with
+\myHighlight{$n$}\coordHE{} units of magnetic flux is given by
+$$\coord{}\boxMath{
+E_p=\pm {\sqrt{p^2+p|n|}},\qquad p=0,1,2,\ldots .
+}{dollar}{0pt}\coordE{}$$
+The degeneracy of the \myHighlight{$p$}\coordHE{}-th eigenvalue is \myHighlight{$2j_p+1$}\coordHE{}, where
+$$\coord{}\boxMath{
+j_p=\frac{1}{2}(|n|-1)+p.
+}{dollar}{0pt}\coordE{}$$
+These \myHighlight{$2j_p+1$}\coordHE{} states transform as an irreducible representation of
+the rotation group \myHighlight{$SU(2)_{rot}$}\coordHE{}.
+
+The presence of \myHighlight{$n$}\coordHE{} states with zero energy is particularly important. 
+The existence of at least \myHighlight{$n$}\coordHE{} zero modes is dictated by the Atiyah-Singer 
+index theorem applied to the Dirac operator on \myHighlight{${\bf S}^2$}\coordHE{} coupled to the
+magnetic field. 
+
+In the case of a unit magnetic flux (\myHighlight{$|n|=1$}\coordHE{}), we have a single fermionic
+zero mode with zero spin. Thus a spinor is converted into a scalar
+due to the non-trivial topology of the magnetic monopole. This 
+scalar-spinor transmutation is well known in other contexts;
+in particular it plays an important role in the conjectured S-duality
+of \myHighlight{$N=4$}\coordHE{}  \myHighlight{$d=4$}\coordHE{} super-Yang-Mills. For general \myHighlight{$n$}\coordHE{}, the fermionic zero
+modes transform in an irreducible representation of \myHighlight{$SU(2)_{rot}$}\coordHE{} with spin
+\myHighlight{$j=(|n|-1)/2.$}\coordHE{} We will discuss in detail the case when \myHighlight{$n=\pm 1$}\coordHE{}, 
+and then comment on the higher-\myHighlight{$n$}\coordHE{} case.
+
+Let us denote the fermionic
+annihilation operators by \myHighlight{$c^i_{pm}$}\coordHE{}, where \myHighlight{$i=1,\ldots,N_f$}\coordHE{} is the
+flavor index, \myHighlight{$p=1,2,\ldots,$}\coordHE{} labels the energy eigenspaces as above,
+and \myHighlight{$m=-j_p,-j_p+1,\ldots,j_p,$}\coordHE{} labels the states within the \myHighlight{$p$}\coordHE{}-th
+energy eigenspace. The fermion annihilation operators corresponding to
+\myHighlight{$p=0$}\coordHE{} will be denoted simply by \myHighlight{$c^i_0.$}\coordHE{}
+The Hilbert space of the theory is the tensor product of the Hilbert
+space of zero modes and the Hilbert space of all other modes.
+The latter is simply a fermionic Fock space with a unique vacuum
+\myHighlight{$|vac\rangle_+$}\coordHE{} which satisfies
+$$\coord{}\boxMath{
+c^i_{pm}|vac\rangle_+=0,\quad p>0,\forall i,m.
+}{dollar}{0pt}\coordE{}$$
+This vacuum state is rotationally invariant.
+
+The Hilbert space of zero modes is also a Fock space of dimension
+\myHighlight{$2^{N_f}$}\coordHE{}, with the vacuum vector which we denote \myHighlight{$|vac\rangle_0$}\coordHE{}.
+It is spanned by the vectors
+$$\coord{}\boxMath{
+|vac\rangle_0,\ c^{i\dagger}_{0}|vac\rangle_0,\ 
+c^{i_1\dagger}_0 c^{i_2\dagger}_0|vac\rangle_0,\ 
+\ldots,\ 
+c^{i_1\dagger}_0 c^{i_2\dagger}_0\ldots c^{i_{N_f}\dagger}_0
+|vac\rangle_0.
+}{dollar}{0pt}\coordE{}$$
+All these states are degenerate in energy, and none is 
+a preferred vacuum. Since the zero modes have spin zero, all the
+ground states are rotationally invariant. 
+We conclude that the radially-quantized theory of free fermions 
+has a \myHighlight{$2^{N_f}$}\coordHE{}-fold degenerate ground state.
+
+However, we still need to impose the Gauss' law. The charge density
+operator receives contributions from both zero and non-zero modes.
+The part due to non-zero modes can be defined using the obvious
+normal-ordering prescription.
+If we put all non-zero modes in the vacuum state, then the
+charge density due to non-zero modes vanishes. It remains to analyze the
+contribution from zero modes. Naively, it seems that the Fock
+vacuum must be assigned zero electric charge. If this were the case,
+then the states obtained by acting on the vacuum with zero mode creation operators would have positive charge, and therefore would not be
+gauge-invariant. But because of normal-ordering ambiguities, 
+the situation is more interesting.
+
+As stressed above, the Fock vacuum for the zero
+modes is not that special. The completely filled state appears to be
+an equally good candidate for a state with vanishing electric charge. The
+two just differ by a change in the normal ordering prescription.
+A statement which is independent of the normal-ordering prescription
+is that the electric charge of the filled state exceeds the charge of the
+vacuum by \myHighlight{$N_f$}\coordHE{}. If one wants to be ``democratic'', one has 
+to assign charge \myHighlight{$-\frac{1}{2}N_f$}\coordHE{} to the vacuum and charge \myHighlight{$\frac{1}{2}N_f$}\coordHE{}
+to the filled state. A similar symmetric charge assignment has been
+advocated by Jackiw and Rebbi in their pioneering study of fermions bound 
+to solitons, on the grounds on charge-conjugation symmetry~\cite{JR}.
+
+The precise argument for the symmetric charge assignment goes as follows.
+Charge conjugation maps a monopole to an anti-monopole and by itself does
+not tell us anything. But CP transformation maps a monopole to itself.
+If we want to quantize in a CP-invariant
+manner, we must assign opposite electric charges to states related by CP.
+Since CP takes annihilation operators into creation operators,
+the filled state and the vacuum are related by CP, and their electric
+charges must be opposite.
+
+The invocation of CP invariance assumes that the theory
+we started with is CP-invariant. This means that the symmetric
+charge assignment is valid for a vanishing Chern-Simons coupling. But we
+know that turning on the Chern-Simons coupling \myHighlight{$k$}\coordHE{} is equivalent
+to shifting the electric charge by \myHighlight{$k$}\coordHE{} times the
+vortex charge. Therefore we conclude that in the
+presence of the Chern-Simons coupling the Fock vacuum has electric charge
+$$\coord{}\boxMath{
+-\frac{N_f}{2}+k,
+}{dollar}{0pt}\coordE{}$$
+while the filled state has charge
+$$\coord{}\boxMath{
+\frac{N_f}{2}+k.
+}{dollar}{0pt}\coordE{}$$
+
+Note that because of the parity anomaly, the electric charge is all always integer-valued, whether \myHighlight{$N_f$}\coordHE{} is even or odd. This a manifestation of
+the close relationship between the existence of parity anomaly
+and the induced vacuum charge~\cite{NS}.
+
+Now we can analyze the consequences of the Gauss' law constraint.
+If all non-zero modes are in their ground state, the constraint
+simply says that the total electric charge of the state must be
+zero. 
+For \myHighlight{$k=0$}\coordHE{} this implies that a physical state is obtained
+by acting with \myHighlight{$N_f/2$}\coordHE{} zero modes on the vacuum. The number of
+such states is
+$$\coord{}\boxMath{
+\left(\begin{array}{r} N_f \\ \frac{1}{2} N_f \end{array}\right),
+}{dollar}{0pt}\coordE{}$$
+and they transform as an anti-symmetric tensor of \myHighlight{$SU(N_f)$}\coordHE{}
+with \myHighlight{$N_f/2$}\coordHE{} indices. Note that cancellation of global anomalies
+requires \myHighlight{$N_f$}\coordHE{} to be even when \myHighlight{$k=0$}\coordHE{}, so this result makes sense.
+For \myHighlight{$k$}\coordHE{} between
+\myHighlight{$-N_f/2$}\coordHE{} and \myHighlight{$N_f/2$}\coordHE{} the physical states are obtained by acting
+with \myHighlight{$N_f/2-k$}\coordHE{} zero modes on the vacuum. The corresponding states
+transform as an anti-symmetric tensor of \myHighlight{$SU(N_f)$}\coordHE{} with
+\myHighlight{$N_f/2-k$}\coordHE{} indices. Again global anomaly cancellation ensures
+that \myHighlight{$N_f/2-k$}\coordHE{} is an integer. For \myHighlight{$|k|>\frac{N_f}{2}$}\coordHE{} there 
+are no gauge-invariant states with unit vortex charge and all
+non-zero modes in their ground state.
+ 
+
+If one does not assume that positive-energy modes are in their
+ground state, then one can construct many other states which
+satisfy the Gauss' law and have unit vortex charge. However,
+such states will have higher energy than the ones discussed
+above. 
+
+Now let us consider the more complicated case of \myHighlight{$n=2$}\coordHE{}. For 
+simplicity we will set the Chern-Simons coupling to zero and take \myHighlight{$N_f$}\coordHE{} to
+be even.
+In the case \myHighlight{$n=2$}\coordHE{} each fermion has two zero modes which transform as 
+a spin-\myHighlight{$\frac{1}{2}$}\coordHE{} representation of \myHighlight{$SU(2)_{rot}$}\coordHE{}. 
+Reasoning based on CP-invariance
+tell us that the Fock vacuum has
+electric charge \myHighlight{$-N_f$}\coordHE{}. Physical states must
+have zero electric charge and are obtained by acting with \myHighlight{$N_f$}\coordHE{}
+zero modes (out of a total number of \myHighlight{$2N_f$}\coordHE{}) on the vacuum.
+But physical states must also be annihilated by the electric charge density
+operator. This is not automatic anymore, because the fermionic zero modes 
+are not rotationally invariant. A short computation shows that the
+electric charge density operator for the zero modes \myHighlight{$\rho_0(x)$}\coordHE{} has a piece which transforms as a singlet of \myHighlight{$SU(2)_{rot}$}\coordHE{} and a piece which transforms 
+as a triplet of \myHighlight{$SU(2)_{rot}$}\coordHE{}. The former is simply the average of 
+\myHighlight{$\rho_0(x)$}\coordHE{} over the sphere and is proportional to the total electric charge.
+The spin-triplet piece of \myHighlight{$\rho_0(x)$}\coordHE{} is proportional to the total spin, simply because this is the only spin-triplet one can make out of two 
+spin-\myHighlight{$1/2$}\coordHE{} fermions. Thus the Gauss' law constraint is equivalent to the requirement that the total electric charge as well as the total spin be zero.
+
+For example, for
+\myHighlight{$N_f=2$}\coordHE{}, there are six states with zero total electric charge, which
+are obtained by acting on the Fock vacuum with two zero modes out of the
+available four. Three of these states transform as a vector of \myHighlight{$SU(2)_{rot}$}\coordHE{}
+and as singlets of the flavor group \myHighlight{$SU(2)_f$}\coordHE{} and do not
+satisfy the Gauss' law constraint. The remaining three transform
+as singlets of \myHighlight{$SU(2)_{rot}$}\coordHE{} and as a triplet of \myHighlight{$SU(2)_f$}\coordHE{}.
+These three states are gauge-invariant. Note that in this case gauge-invariant states transform as an irreducible representation of the flavor group.
+For \myHighlight{$N_f>2$}\coordHE{} this is no longer true, as one can easily check.
+
+\subsection{Quantum numbers of the monopole operators}
+
+In this section we determine the quantum numbers of the simplest
+monopole operators, the ones with the lowest conformal dimension for a
+given vortex charge.
+On general grounds, such an operator lives in a lowest-weight representation
+of the conformal group, and its conformal dimension is defined as the
+conformal dimension of the lowest-weight vector, or, if we pass to the
+radially quantized picture, as the energy of the corresponding state.
+
+Let us begin with the case \myHighlight{$n=1$}\coordHE{}.
+As explained above, gauge-invariant states with lowest energy are obtained 
+by putting all non-zero modes in their ground states and acting by \myHighlight{$N_f/2-k$}\coordHE{} 
+zero mode creation operators on the vacuum. Obviously such states
+transform as an anti-symmetric representation of \myHighlight{$SU(N_f)$}\coordHE{} with
+\myHighlight{$N_f/2-k$}\coordHE{} indices. It is interesting to note that the usual 
+gauge-invariant operators which are polynomials in the fundamental
+fields transform trivially under the center of \myHighlight{$SU(N_f)$}\coordHE{}. Indeed,
+free fermions have flavor symmetry group \myHighlight{$U(N_f)$}\coordHE{}, and since
+we are gauging its \myHighlight{$U(1)$}\coordHE{} subgroup, the flavor symmetry of QED appears to be
+\myHighlight{$U(N_f)/U(1)=PU(N_f)=SU(N_f)/\ZZ_{N_f}$}\coordHE{}. But monopole operators
+transform non-trivially under \myHighlight{$\ZZ_{N_f}$}\coordHE{} (except for \myHighlight{$k=\pm N_f/2$}\coordHE{}).
+A very similar effect occurs in \myHighlight{$N=2$}\coordHE{}  \myHighlight{$d=4$}\coordHE{} super-QCD, where all perturbative
+states transform as tensor representations of the flavor group \myHighlight{$SO(2N_f)$}\coordHE{},
+while magnetically charge states transform as spinors~\cite{SW2}.
+
+Other quantum numbers of interest are spin and conformal dimension.
+Since the Fock vacuum and the zero modes are rotationally invariant,
+the spin of our monopole operator is zero. The dimension is proportional
+to the energy of the state. As usual, the definition of the energy
+is plagued by ordering ambiguities. However, we have a simple cure:
+we can normalize the energy by requiring that the unit operator
+have zero dimension. This means that the energy of the ground state
+on \myHighlight{${\bf S}^2$}\coordHE{} with zero magnetic flux is defined to be zero. 
+The energy of any other state can be defined by introducing a UV
+regulator, subtracting the regularized energy of the state corresponding
+to the unit operator, and then removing the regulator. This procedure gives
+a finite answer, which is not sensitive to the precise choice of the
+regulator, provided the regulator preserves the symmetries of the
+problem. 
+
+In order to make precise the relation between the Casimir energy and
+the dimension, recall that the OPE of a spin-zero primary field and
+the stress-energy tensor reads:
+$$\coord{}\boxMath{
+T_{\mu\nu}(x) O(y) \sim \frac{h}{8\pi} \left(
+\frac{\partial}{\partial x^\mu}\frac{\partial}{\partial x^\nu}
+\frac{1}{|x-y|}\right) O(y) + \ldots,
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$h$}\coordHE{} is the conformal dimension. 
+If the stress-energy tensor of free fermions is defined by
+$$\coord{}\boxMath{
+T_{\mu\nu}=-\frac{i}{4}\bpsi\left(\gamma_\mu\cD_\nu+
+\gamma_\nu\cD_\mu\right)\psi+\frac{i}{4}\left(\cD_\nu\bpsi\gamma_\mu+
+\cD_\mu \bpsi\gamma_\nu\right)\psi-g_{\mu\nu}\cL,
+}{dollar}{0pt}\coordE{}$$
+then \myHighlight{$h_\psi=h_{\bpsi}=1$}\coordHE{}, the standard normalization.
+This implies that in the radially-quantized picture the expectation
+value of the stress-energy tensor in the state \myHighlight{$\vert O\rangle$}\coordHE{}
+is given by
+$$\coord{}\boxMath{
+\langle T_{\mu\nu} dx^\mu\otimes dx^\nu\rangle_O=\frac{h}{4\pi}\left(d\tau^2-
+\frac{1}{2}(d\theta^2+\sin\theta^2 d\phi^2)\right).
+}{dollar}{0pt}\coordE{}$$
+Thus \myHighlight{$h$}\coordHE{} is simply the energy of \myHighlight{$\vert O\rangle$}\coordHE{} with respect to the
+Killing vector \myHighlight{$\frac{\partial}{\partial \tau}.$}\coordHE{} In our case, this means
+that the conformal dimension of the monopole operator is the Casimir
+energy of \myHighlight{$N_f$}\coordHE{} free fermions on \myHighlight{${\bf S}^2$}\coordHE{} with a magnetic flux.
+This Casimir energy for any \myHighlight{$n$}\coordHE{} is computed in the Appendix. 
+For \myHighlight{$n=1$}\coordHE{} the result is
+$$\coord{}\boxMath{
+h_1=N_f \cdot 0.265\ldots.
+}{dollar}{0pt}\coordE{}$$ 
+By charge-conjugation symmetry, monopole operator with \myHighlight{$n=-1$}\coordHE{} has the
+same conformal dimension and spin and transforms in the conjugate
+representation of the flavor group \myHighlight{$SU(N_f).$}\coordHE{} 
+
+It is easy to extend the discussion to \myHighlight{$n=\pm 2$}\coordHE{}. As explained in the
+previous section, Gauss' law constraint is equivalent to the requirement
+of zero spin and zero electric charge. The states with zero
+electric charge are obtained by acting with \myHighlight{$N_f$}\coordHE{} zero modes (out of total
+number of \myHighlight{$2N_f$}\coordHE{} zero modes) on the Fock vacuum. These states transform
+as an anti-symmetric tensor of \myHighlight{$SU(2N_f)$}\coordHE{} with \myHighlight{$N_f$}\coordHE{} indices.
+Gauge-invariant states are obtained by decomposing this representation
+with respect to the \myHighlight{$SU(2)_{rot}\times SU(N_f)$}\coordHE{} subgroup and separating
+out \myHighlight{$SU(2)_{rot}$}\coordHE{}-singlets. In general, gauge-invariant states transform
+as a reducible representation of \myHighlight{$SU(N_f)$}\coordHE{}. One can easily show that
+the dimension of this reducible representation is 
+$$\coord{}\boxMath{
+\left(\begin{array}{c} \frac{1}{2}N_f^2+N_f-1 \\ \frac{1}{2} N_f \end{array}\right)
+}{dollar}{0pt}\coordE{}$$
+The conformal dimension
+of the corresponding monopole operators is the Casimir energy of
+free fermions in a background magnetic field. Numerically, it is
+given by
+$$\coord{}\boxMath{
+h_2=N_f\cdot 0.673\ldots.
+}{dollar}{0pt}\coordE{}$$
+It is interesting to note that \myHighlight{$2h_1<h_2$}\coordHE{} (at least for large \myHighlight{$N_f$}\coordHE{}).
+Therefore the
+OPE of two monopole operators with \myHighlight{$n=1$}\coordHE{} and the lowest conformal dimension contains only terms with positive powers of \myHighlight{$|x_1-x_2|$}\coordHE{}. 
+
+
+\section{Discussion}
+
+In this paper we have constructed local operators in an interacting
+3d CFT which carry vortex charge and therefore create 
+Abrikosov-Nielsen-Olesen vortices in the Higgs phase. We have shown that 
+for large \myHighlight{$N_f$}\coordHE{} such operators have conformal dimensions of order \myHighlight{$N_f$}\coordHE{}. For the case of unit vortex charge, we showed that the operator with the
+lowest possible dimension has zero spin and transforms in a non-trivial
+representation of the flavor group. An important tool in this analysis
+is \myHighlight{$1/N_f$}\coordHE{} expansion. 
+
+The idea that vortex-creation operators can be studied in the large \myHighlight{$N_f$}\coordHE{}
+limit has been previously proposed in Ref.~\cite{KS}. The approach taken there
+was to integrate out the matter fields, and then perform a duality
+transformation on the effective action for the gauge field. Then the vortex-creation operator is defined as the exponential of the dual photon. 
+One drawback of this approach is that it is easy to miss fermionic
+zero modes, and consequently to misidentify the quantum numbers of the
+vortex-creating operator. It is preferable to keep the matter fields,
+and to identify a vortex-creating operator by the property that its insertion
+causes a change in the topology of the gauge field. As we have seen above,
+this definition can be made concrete by using radial quantization and
+large \myHighlight{$N_f$}\coordHE{} expansion.
+
+Our main motivation for studying vortex-creation operators was the hope
+that this would enable us to give a constructive proof of 3d mirror
+symmetry. It is straightforward to apply the methods of this paper
+to 3d gauge theories with \myHighlight{$N=2$}\coordHE{} and \myHighlight{$N=4$}\coordHE{} supersymmetry.
+The results and their implications for mirror symmetry will be reported
+in a forthcoming publication.
+
+It is natural to wonder if our approach to the construction of 
+topological disorder operators has an analogue in four dimensions. In three
+dimensions, we defined the vortex charge of a local operator as the first
+Chern class of the gauge bundle evaluated on an \myHighlight{${\bf S}^2$}\coordHE{} surrounding the
+insertion point. In four dimensions, we have \myHighlight{${\bf S}^3$}\coordHE{} instead of 
+\myHighlight{${\bf S}^2$}\coordHE{}, and since characteristic classes of vector bundles are even-dimensional, it appears impossible to define a similar topological charge for local operators. On the other hand, a B-field on an \myHighlight{${\bf S}^3$}\coordHE{}
+can have non-trivial topology, since its field-strength is a 3-form.
+Thus, if there were an interacting 4d CFT involving a B-field, one could
+define local operators which create topological disorder. In order for this to work, the field-strength 3-form must have dimension \myHighlight{$3$}\coordHE{}, so that its
+dual is a conserved primary current. Note that in the theory of a free
+B-field, the field-strength has dimension \myHighlight{$2$}\coordHE{}. In this case the dual current, although conserved, is not a primary, but a gradient of a free scalar. 
+Thus in order to define a conformally-invariant
+topological charge, the 4d CFT {\it must} be interacting. Unfortunately,
+no such theory is known at present. Perhaps there exists a duality-symmetric 
+reformulation of \myHighlight{$N=4$}\coordHE{}  \myHighlight{$d=4$}\coordHE{} super-Yang-Mills which involves B-fields,
+and in which both W-bosons and dual W-bosons are described by 
+topological disorder operators.
+
+After the first version of this paper was posted on the arXive, we learned that topological disorder operators in 3d have
+been previously considered by G.~Murthy and S.~Sachdev~\cite{MurthySachdev}. The model considered there was the \myHighlight{$\CC\PP^N$}\coordHE{} model
+in three dimensions. This theory is not renormalizable and requires an ultraviolet cut-off. It has a critical point 
+separating the ordered phase, where the sigma-model field has an expectation value, and the disordered phase, where
+the correlators decay exponentially. Unlike in 3d QED, there are dynamical topological defects in the \myHighlight{$\CC\PP^N$}\coordHE{} model
+(so-called hedgehogs). But at the critical point and in the limit of large \myHighlight{$N$}\coordHE{} their density vanishes, and the situation
+becomes very similar to that in 3d QED. In particular, the critical exponents computed in Ref.~\cite{MurthySachdev}
+can be interpreted as scaling dimensions of hedgehog operators. It is interesting to note that the approach
+to computing these scaling dimensions taken by Murthy and Sachdev is rather different from ours. Instead of evaluating
+the expectation value of the stress-energy tensor in the presence of topological disorder operators, they in essence
+compute the 2-point function of these operators. This is somewhat obscured by the fact that Murthy and Sachdev
+map both operator insertions to infinity. As a result, the distance dependence of the 2-point function is traded for
+an anomalous dependence of the partition function on the ratio of the ultraviolet cut-off \myHighlight{$\Lambda$}\coordHE{} and the infrared cut-off
+\myHighlight{$\Delta$}\coordHE{}. This method could be used in 3d QED as well. In fact, M.~J.~Strassler and one of the authors of the present
+paper (A.K.) have contemplated such a route to computing scaling dimensions of monopole operators in 3d QED and SQED, 
+but were discouraged by apparent technical difficulties. It would be interesting to rederive the results of the
+present paper using the approach of Ref.~\cite{MurthySachdev}.
+
+
+\section*{Appendix}
+
+
+\subsection*{Monopole harmonics}
+
+To solve for the energy spectrum of free fermions on \myHighlight{${\bf S}^2$}\coordHE{} with
+a magnetic flux, we will use the fact that this system is related by a conformal transformation to the Dirac equation on \myHighlight{$\RR^3$}\coordHE{} in the monopole background. This allows us to use the machinery of ``monopole harmonics'' developed by Wu and Yang~\cite{WY}. 
+
+The three-dimensional Dirac operator on flat \myHighlight{$\RR^3$}\coordHE{} is 
+given by
+\begin{equation*}\coord{}\boxEquation{
+iD=-{\vec{\sigma}}\cdot{\vec{\pi}},
+}{
+iD=-{\vec{\sigma}}\cdot{\vec{\pi}},
+}{ecuacion}\coordE{}\end{equation*}
+where \myHighlight{$\sigma_x$}\coordHE{}, \myHighlight{$\sigma_y$}\coordHE{}, and \myHighlight{$\sigma_z$}\coordHE{} are the Pauli matrices, and 
+\myHighlight{${\vec{\pi}}=\vec{p}+\vec{A}$}\coordHE{}, with \myHighlight{$\vec{p}$}\coordHE{} being the momentum 
+operator. Following Ref.~\cite{WY}, let us define the generalized orbital angular momentum operator as
+\begin{equation*}\coord{}\boxEquation{
+\vec{L}=\vec{r}\times\vec{\pi}-\frac{q\vec{r}}{r}
+}{
+\vec{L}=\vec{r}\times\vec{\pi}-\frac{q\vec{r}}{r}
+}{ecuacion}\coordE{}\end{equation*}
+with \myHighlight{$q=-eg=n/2$}\coordHE{}.
+It is straightforward to check that \myHighlight{$\vec{L}$}\coordHE{} defined this way satisfies 
+the angular momentum algebra:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\left[ L_j, x_k \right]=i\epsilon_{jkm}x_m,\nonumber\rightCoord{}\\\leftCoord{}
+\left[ L_j, \pi_k \right]=i\epsilon_{jkm}\pi_m,\nonumber\rightCoord{}\\\leftCoord{}
+\left[ L_j, L_k \right]=i\epsilon_{jkm}L_m.\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{3}{5}{
+\left[ L_j, x_k \right]=i\epsilon_{jkm}x_m,\\
+\left[ L_j, \pi_k \right]=i\epsilon_{jkm}\pi_m,\\
+\left[ L_j, L_k \right]=i\epsilon_{jkm}L_m.}{1}\coordE{}\end{eqnarray}
+We define the total angular momentum as
+\begin{equation*}\coord{}\boxEquation{
+\vec{J}=\vec{L}+\frac{\vec{\sigma}}{2}.
+}{
+\vec{J}=\vec{L}+\frac{\vec{\sigma}}{2}.
+}{ecuacion}\coordE{}\end{equation*}
+
+We can take \myHighlight{$r, {\vec{L}}^2, {\vec{J}}^2,$}\coordHE{} and \myHighlight{$J_z$}\coordHE{} as 
+a complete set of observables (it is easy to check that they commute and 
+are all self-adjoint with respect to the usual inner product). It can be checked that \myHighlight{$\left[ \vec{J}, iD \right]=0$}\coordHE{}, but \myHighlight{$\left[\vec{L}^2, iD\right]\neq0$}\coordHE{}. 
+However, this is good enough, because as we will see later, to find the 
+eigenvalues of \myHighlight{$iD$}\coordHE{} we only need to diagonalize an operator in
+a two-dimensional space.
+
+The monopole harmonics \myHighlight{$Y_{q,l,m}(\theta, \phi)$}\coordHE{} constructed in 
+Ref.~\cite{WY} satisfy
+\begin{align*}\coord{}\boxAlignEqnarray{
+\leftCoord{}{\vec{L}}^{\leftCoord{}2Y}_{\rightCoord{}q,l,m}=l(l+1)Y_{\rightCoord{}q,l,m},\quad L_zY_{\rightCoord{}q,l,m}=mY_{\rightCoord{}q,l,m},\rightCoord{}\\
+\leftCoord{}l=|q|,|q|+1,|q|+2,\ldots,\quad m=-l,\ldots,l.
+}{0mm}{3}{6}{
+{\vec{L}}^{2Y}_{q,l,m}=l(l+1)Y_{q,l,m},\quad L_zY_{q,l,m}=mY_{q,l,m},\\
+l=|q|,|q|+1,|q|+2,\ldots,\quad m=-l,\ldots,l.
+}{0}\coordE{}\end{align*}
+The simultaneous eigenfunctions of \myHighlight{$\left\{ 
+{\vec{L}}^2, {\vec{J}}^2, J_z\right\}$}\coordHE{} will be denoted by \myHighlight{$\phi_{ljm_j}$}\coordHE{}
+and are given by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\phi_{ljm_j}=\begin{pmatrix}
+\sqrt{\frac{\leftCoord{}l+m+1}{\rightCoord{}2l+1}} Y_{q,l,m} \rightCoord{}\\\leftCoord{}
+\sqrt{\frac{\leftCoord{}l-m}{\rightCoord{}2l+1}} Y_{q,l,m+1}\rightCoord{}
+             \end{pmatrix} \rightCoord{}
+\leftCoord{}\ {\rm for}\ j=l+\frac{\leftCoord{}1}{\rightCoord{}2}\ (m_j=m+\frac{\leftCoord{}1}{\rightCoord{}2}),\nonumber\rightCoord{}\\\leftCoord{}
+\phi_{ljm_j}=\begin{pmatrix}
+\leftCoord{}-\sqrt{\frac{\leftCoord{}l-m}{\rightCoord{}2l+1}} Y_{q,l,m}\rightCoord{}\\\leftCoord{}
+\sqrt{\frac{\leftCoord{}l+m+1}{\rightCoord{}2l+1}} Y_{q,l,m+1}\rightCoord{}
+             \end{pmatrix} \rightCoord{}
+\leftCoord{}\ {\rm for}\ j=l-\frac{\leftCoord{}1}{\rightCoord{}2}\ (l\neq 0, m_j=m+\frac{\leftCoord{}1}{\rightCoord{}2}).\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{15}{18}{
+\phi_{ljm_j}=\begin{pmatrix}
+\sqrt{\frac{l+m+1}{2l+1}} Y_{q,l,m} \\
+\sqrt{\frac{l-m}{2l+1}} Y_{q,l,m+1}
+             \end{pmatrix} 
+\ {\rm for}\ j=l+\frac{1}{2}\ (m_j=m+\frac{1}{2}),\\
+\phi_{ljm_j}=\begin{pmatrix}
+-\sqrt{\frac{l-m}{2l+1}} Y_{q,l,m}\\
+\sqrt{\frac{l+m+1}{2l+1}} Y_{q,l,m+1}
+             \end{pmatrix} 
+\ {\rm for}\ j=l-\frac{1}{2}\ (l\neq 0, m_j=m+\frac{1}{2}).}{1}\coordE{}\end{eqnarray}
+They satisfy
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+{\rightCoord{}\leftCoord{}\vec{L}}^2\phi_{ljm_j}=l(l+1)\phi_{ljm_j},\nonumber\rightCoord{}\\\leftCoord{}
+{\rightCoord{}\leftCoord{}\vec{J}^2}\phi_{ljm_j}=j(j+1)\phi_{ljm_j},\nonumber\rightCoord{}\\\leftCoord{}
+J_z\phi_{ljm_j}=m_j\phi_{ljm_j}.\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{5}{7}{
+{\vec{L}}^2\phi_{ljm_j}=l(l+1)\phi_{ljm_j},\\
+{\vec{J}^2}\phi_{ljm_j}=j(j+1)\phi_{ljm_j},\\
+J_z\phi_{ljm_j}=m_j\phi_{ljm_j}.}{1}\coordE{}\end{eqnarray}
+We can summarize the possible value of \myHighlight{$l, j, m_j$}\coordHE{} as follows:
+\begin{align*}\coord{}\boxAlignEqnarray{
+&\leftCoord{}\bullet\ j=|q|-\frac{\leftCoord{}1}{\rightCoord{}2},\ |q|+\frac{\leftCoord{}1}{\rightCoord{}2},\ |q|+\frac{\leftCoord{}3}{\rightCoord{}2},\  
+\leftCoord{}|q|+\frac{\leftCoord{}5}{\rightCoord{}2},\ldots\rightCoord{}\\
+&\leftCoord{}\ ({\rm for}\ q=0,\ j=|q|-\frac{\leftCoord{}1}{\rightCoord{}2} {\rm is\ not\ allowed});\rightCoord{}\\
+&\leftCoord{}\bullet\ {\rm if}\ j=|q|-\frac{\leftCoord{}1}{\rightCoord{}2},\ {\rm then}\ l=j+\frac{\leftCoord{}1}{\rightCoord{}2}=|q|,
+\leftCoord{}\ {\rm otherwise}\ l=j\pm \frac{\leftCoord{}1}{\rightCoord{}2};\rightCoord{}\\
+&\leftCoord{}\bullet\ m_j= -j, -(j-1),\ldots, j-1, j.
+}{0mm}{14}{12}{
+&\bullet\ j=|q|-\frac{1}{2},\ |q|+\frac{1}{2},\ |q|+\frac{3}{2},\  
+|q|+\frac{5}{2},\ldots\\
+&\ ({\rm for}\ q=0,\ j=|q|-\frac{1}{2} {\rm is\ not\ allowed});\\
+&\bullet\ {\rm if}\ j=|q|-\frac{1}{2},\ {\rm then}\ l=j+\frac{1}{2}=|q|,
+\ {\rm otherwise}\ l=j\pm \frac{1}{2};\\
+&\bullet\ m_j= -j, -(j-1),\ldots, j-1, j.
+}{0}\coordE{}\end{align*}
+Any wave-function can be expanded as
+\begin{equation*}\coord{}\boxEquation{
+\psi(\vec{r})=\sum_{l,j,m_j}R_{ljm_j}(r)\phi_{ljm_j}(\theta,\phi).
+}{
+\psi(\vec{r})=\sum_{l,j,m_j}R_{ljm_j}(r)\phi_{ljm_j}(\theta,\phi).
+}{ecuacion}\coordE{}\end{equation*}
+Note that while \myHighlight{$\phi_{ljm_j}$}\coordHE{} is a two-component spinor, \myHighlight{$R_{ljm_j}$}\coordHE{} is 
+just a scalar.
+
+Now we may write \myHighlight{$iD$}\coordHE{} in terms of the angular momenta.
+Define \myHighlight{$\sigma_r$}\coordHE{} as
+\begin{equation*}\coord{}\boxEquation{
+\sigma_r=\frac{\vec{\sigma}\cdot\vec{r}}{r}.
+}{
+\sigma_r=\frac{\vec{\sigma}\cdot\vec{r}}{r}.
+}{ecuacion}\coordE{}\end{equation*}
+One can show that 
+\begin{equation*}\coord{}\boxEquation{
+\sigma_r (iD)=i\frac{\partial}{\partial 
+r}-i\frac{1}{r}\vec{\sigma}\cdot\vec{L}-iq\frac{\sigma_r}{r},
+}{
+\sigma_r (iD)=i\frac{\partial}{\partial 
+r}-i\frac{1}{r}\vec{\sigma}\cdot\vec{L}-iq\frac{\sigma_r}{r},
+}{ecuacion}\coordE{}\end{equation*}
+where we made use of the fact that
+\begin{equation*}\coord{}\boxEquation{
+\left(\vec{\sigma}\cdot\vec{G}\right)\left(\vec{\sigma}\cdot\vec{K}\right) 
+=\vec{G}\cdot\vec{K}+i\vec{\sigma}\cdot\left(\vec{G}\times\vec{K}\right)
+}{
+\left(\vec{\sigma}\cdot\vec{G}\right)\left(\vec{\sigma}\cdot\vec{K}\right) 
+=\vec{G}\cdot\vec{K}+i\vec{\sigma}\cdot\left(\vec{G}\times\vec{K}\right)
+}{ecuacion}\coordE{}\end{equation*}
+for any \myHighlight{$\vec{G}$}\coordHE{} and \myHighlight{$\vec{K}$}\coordHE{} that commute with \myHighlight{$\vec{\sigma}$}\coordHE{}.
+Now using the fact that \myHighlight{${\sigma_r}^2=1$}\coordHE{}, we have
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+iD&=&\sigma_r\sigma_r(iD)=i\sigma_r\frac{\leftCoord{}\partial}{\rightCoord{}\partial 
+r}-i\frac{\leftCoord{}\sigma_r}{\rightCoord{}r}\vec{\sigma}\cdot\vec{L}-iq\frac{\leftCoord{}1}{\rightCoord{}r}\nonumber\rightCoord{}\\
+&\leftCoord{}=&i\sigma_r\frac{\leftCoord{}\partial}{\rightCoord{}\partial r}-i\frac{\leftCoord{}\sigma_r}{\rightCoord{}r}({\vec{J}}^2 
+\leftCoord{}-{\vec{L}}^2-\frac{\leftCoord{}3}{\rightCoord{}4})-iq\frac{\leftCoord{}1}{\rightCoord{}r}.\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{10}{11}{
+iD&=&\sigma_r\sigma_r(iD)=i\sigma_r\frac{\partial}{\partial 
+r}-i\frac{\sigma_r}{r}\vec{\sigma}\cdot\vec{L}-iq\frac{1}{r}\\
+&=&i\sigma_r\frac{\partial}{\partial r}-i\frac{\sigma_r}{r}({\vec{J}}^2 
+-{\vec{L}}^2-\frac{3}{4})-iq\frac{1}{r}.}{1}\coordE{}\end{eqnarray}
+Thus the Dirac Lagrangian on \myHighlight{$\RR^3$}\coordHE{} in the presence of a monopole
+can be written as
+$$\coord{}\boxMath{
+{\cal L}_{R^3}=\frac{i}{r}
+{\bar{\psi}}\sigma_r\left(r\frac{\partial}{\partial r}
+-(\vec{J}^2-\vec{L}^2-\frac34)-q\sigma_r\right)\psi. 
+}{dollar}{0pt}\coordE{}$$
+Setting \myHighlight{$r=e^\tau$}\coordHE{} and performing a Weyl rescaling 
+$$\coord{}\boxMath{
+g_{\mu\nu}\ra e^{-2\tau} g_{\mu\nu},\quad \psi,\bar{\psi}\to e^{-\tau}\psi, e^{-\tau}\bar{\psi},\quad \vec{A}\to\vec{A},
+}{dollar}{0pt}\coordE{}$$
+we obtain the Lagrangian on \myHighlight{${\bf S}^2\times \RR$}\coordHE{}:
+$$\coord{}\boxMath{
+{\cal L}_{{\bf S}^2\times \RR}=i\bar{\psi}\sigma_r\left(
+\frac{\partial}{\partial\tau}-
+(\vec{J}^2-\vec{L}^2+\frac14)-q\sigma_r\right)\psi.
+}{dollar}{0pt}\coordE{}$$
+Note that the norm
+$$\coord{}\boxMath{
+\int_{{\bf S}^2}\phantom{}r^2\, d\Omega\,\bar{\psi}\sigma_r\psi
+}{dollar}{0pt}\coordE{}$$
+on \myHighlight{$\RR^3$}\coordHE{} is transformed to the norm
+$$\coord{}\boxMath{
+\int_{{\bf S}^2}\phantom{}\bar{\psi}\sigma_r\psi
+}{dollar}{0pt}\coordE{}$$
+on \myHighlight{${\bf S}^2\times \RR.$}\coordHE{}
+
+Taking into account the above results, the Euclidean
+equation of motion for \myHighlight{$\psi$}\coordHE{} is 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&\leftCoord{}\ & \rightCoord{}
+\frac{\leftCoord{}dR_{ljm_j}(\tau)}{\rightCoord{}d\tau}-\left(j(j+1)-l(l+1)
+\leftCoord{}+\frac{\leftCoord{}1}{\rightCoord{}4}\right)R_{ljm_j}(\tau) \nonumber\rightCoord{}\\
+&\leftCoord{}\ &- \sum_{\rightCoord{}l'j' m'_j}q R_{l'j'm'_j}(\tau)
+\langle ljm_j\vert\sigma_r\vert l'j'm'_j\rangle  =0,\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{5}{8}{
+&\ & 
+\frac{dR_{ljm_j}(\tau)}{d\tau}-\left(j(j+1)-l(l+1)
++\frac{1}{4}\right)R_{ljm_j}(\tau) \\
+&\ &- \sum_{l'j' m'_j}q R_{l'j'm'_j}(\tau)
+\langle ljm_j\vert\sigma_r\vert l'j'm'_j\rangle  =0,}{1}\coordE{}\end{eqnarray}
+where we have used \myHighlight{$\langle ljm_j\vert\sigma_r\vert l'j'm_j'\rangle$}\coordHE{} 
+to denote \myHighlight{$\int d\Omega \phi_{ljm_j}^\dagger\sigma_r\phi_{l'j'm_j'}.$}\coordHE{}
+
+Now the identity \myHighlight{$\left[\vec{J}, \sigma_r\right]=0$}\coordHE{} tells us that
+\begin{equation*}\coord{}\boxEquation{
+\langle ljm_j\vert\sigma_r\vert l'j'm_j'\rangle= 
+\delta_{jj'}\delta_{m_jm_j'}\langle ljm_j\vert\sigma_r\vert l'jm_j\rangle,
+}{
+\langle ljm_j\vert\sigma_r\vert l'j'm_j'\rangle= 
+\delta_{jj'}\delta_{m_jm_j'}\langle ljm_j\vert\sigma_r\vert l'jm_j\rangle,
+}{ecuacion}\coordE{}\end{equation*}
+and thus the eigenvalue equation becomes, for any given \myHighlight{$j,m_j,$}\coordHE{}
+\begin{eqnarray}\coord{}\boxAlignEqnarray{
+&\leftCoord{}\ & \rightCoord{}
+\frac{\leftCoord{}dR_{ljm_j}(\tau)}{\rightCoord{}d\tau}-\left(j(j+1)-l(l+1)
+\leftCoord{}+\frac{\leftCoord{}1}{\rightCoord{}4}\right)R_{ljm_j}(\tau) \nonumber\rightCoord{}\\
+&\leftCoord{}\ &- \sum_{\rightCoord{}l'}q R_{l'jm_j}(\tau)
+\langle ljm_j|\sigma_r|l'jm_j\rangle  =0.\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{5}{8}{
+&\ & 
+\frac{dR_{ljm_j}(\tau)}{d\tau}-\left(j(j+1)-l(l+1)
++\frac{1}{4}\right)R_{ljm_j}(\tau) \\
+&\ &- \sum_{l'}q R_{l'jm_j}(\tau)
+\langle ljm_j|\sigma_r|l'jm_j\rangle  =0.}{1}\coordE{}\end{eqnarray}
+Let us suppress the \myHighlight{$j,m_j$}\coordHE{} indices, and denote 
+\myHighlight{$R_{(l=j-\frac{1}{2})jm_j}$}\coordHE{} by \myHighlight{$R^a$}\coordHE{}, 
+\myHighlight{$\vert l=j-\frac{1}{2},jm_j\rangle$}\coordHE{} by \myHighlight{$\vert a\rangle$}\coordHE{}, \myHighlight{$R_{(l=j+\frac{1}{2})jm_j}$}\coordHE{} by \myHighlight{$R^b$}\coordHE{}, \myHighlight{$\vert l=j+\frac{1}{2},jm_j\rangle$}\coordHE{}  
+by \myHighlight{$\vert b\rangle$}\coordHE{}, \myHighlight{$\langle a\vert \sigma_r\vert a\rangle$}\coordHE{} by 
+\myHighlight{$\sigma_{aa}$}\coordHE{}, \myHighlight{$\langle a\vert\sigma_r\vert b\rangle$}\coordHE{} by \myHighlight{$\sigma_{ab}$}\coordHE{},
+\myHighlight{$\langle b\vert\sigma_r\vert a\rangle$}\coordHE{} by 
+\myHighlight{$\sigma_{ba}$}\coordHE{}, and \myHighlight{$\langle b\vert\sigma_r\vert b\rangle$}\coordHE{} by \myHighlight{$\sigma_{bb}$}\coordHE{}. Then for any given 
+\myHighlight{$j,m_j$}\coordHE{}, we have two coupled first-order differential equations:
+$$\coord{}\boxMath{
+\frac{dR^a(\tau)}{d\tau}=\left(j+\frac{1}{2}\right)R^a(\tau)
++q(\sigma_{aa}R^a(\tau)+\sigma_{ab}R^b(\tau)),
+}{dollar}{0pt}\coordE{}$$  $$\coord{}\boxMath{
+\frac{dR^b(\tau)}{d\tau}=-\left(j+\frac{1}{2}\right)R^b(\tau)
++q(\sigma_{bb}R^b(\tau)+\sigma_{ba}R^a(\tau)).
+}{dollar}{0pt}\coordE{}$$
+
+A straightforward calculation of the matrix elements \myHighlight{$\sigma_{aa}$}\coordHE{}, \myHighlight{$\sigma_{ab}$}\coordHE{}, and \myHighlight{$\sigma_{bb}$}\coordHE{} gives 
+\begin{equation*}\coord{}\boxEquation{
+\sigma_{aa}=\frac{-q}{j+\frac{1}{2}},\ 
+\sigma_{bb}=\frac{q}{j+\frac{1}{2}},\ 
+\sigma_{ab}=-\sqrt{1-\left(\frac{q}{j+\frac{1}{2}} \right)^2}, 
+}{
+\sigma_{aa}=\frac{-q}{j+\frac{1}{2}},\ 
+\sigma_{bb}=\frac{q}{j+\frac{1}{2}},\ 
+\sigma_{ab}=-\sqrt{1-\left(\frac{q}{j+\frac{1}{2}} \right)^2}, 
+}{ecuacion}\coordE{}\end{equation*}
+and of course \myHighlight{$\sigma_{ba}=\sigma_{ab}^*=\sigma_{ab}$}\coordHE{}.
+
+\subsection*{Energy spectrum and Casimir energy for fermions on \myHighlight{${\bf S}^2$}\coordHE{}}
+
+The energy spectrum can be read off from the behavior of the solutions
+as a function of \myHighlight{$\tau$}\coordHE{}: a solution with energy \myHighlight{$E$}\coordHE{} behaves as \myHighlight{$e^{-E\tau}.$}\coordHE{}
+The results are as follows.
+
+\noindent {\it Case (i): \myHighlight{$q=0.$}\coordHE{}}
+
+The two equations decouple, and we find 
+$$\coord{}\boxMath{
+R^a(\tau)=C^ae^{(j+\frac{1}{2})\tau},\quad R^b(\tau)=
+C^be^{-(j+\frac{1}{2})\tau},
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$C^a$}\coordHE{} and  \myHighlight{$C^b$}\coordHE{} are integration constants, and 
+\myHighlight{$j=\frac{1}{2},\frac{3}{2},\frac{5}{2}\dots$}\coordHE{} 
+There are no zero-energy solutions.
+
+\noindent {\it Case (ii): \myHighlight{$q\neq 0$}\coordHE{}, \myHighlight{$j=|q|-\frac{1}{2}.$}\coordHE{}}
+
+In this case, there is no such thing as \myHighlight{$R^a$}\coordHE{} (because \myHighlight{$l$}\coordHE{} cannot be 
+\myHighlight{$j-\frac{1}{2}=|q|-1$}\coordHE{}). So the first equation is absent, and the 
+second equation gives:
+$$\coord{}\boxMath{
+R^b(\tau)=C,
+}{dollar}{0pt}\coordE{}$$
+with an arbitrary constant \myHighlight{$C$}\coordHE{}. This solution has zero energy 
+and degeneracy \myHighlight{$2j+1=2|q|$}\coordHE{}.
+
+\noindent {\it Case (iii): \myHighlight{$q\neq 0$}\coordHE{} and \myHighlight{$j=|q|-\frac12+p> |q|-\frac{1}{2}$}\coordHE{},
+\myHighlight{$p=1,2,\dots .$}\coordHE{}}
+
+In this case, the two equations are coupled but easy to solve by 
+eliminating one of the two unknowns. The result is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+R^a(\tau)&=&q C_1e^{\tau\sqrt{\left(j+\frac{\leftCoord{}1}{\rightCoord{}2}\right)^2-q^2}} 
+\leftCoord{}+q C_2e^{-\tau\sqrt{\left(j+\frac{\leftCoord{}1}{\rightCoord{}2}\right)^2-q^2}},\nonumber\rightCoord{}\\\leftCoord{}
+R^b(\tau)&=&\left[\sqrt{\left(j+\frac{\leftCoord{}1}{\rightCoord{}2}\right)^2-q^2} \rightCoord{}
+\leftCoord{}-\left(j+\frac{\leftCoord{}1}{\rightCoord{}2}\right)\right] \rightCoord{}
+C_1e^{\tau\sqrt{\left(j+\frac{\leftCoord{}1}{\rightCoord{}2}\right)^2-q^2}}\nonumber\rightCoord{}\\
+&&\leftCoord{}+\left[\sqrt{\left(j+\frac{\leftCoord{}1}{\rightCoord{}2}\right)^2-q^2}+\left(j+\frac{\leftCoord{}1}{\rightCoord{}2}\right) \rightCoord{}
+\right]C_2e^{-\tau\sqrt{\left(j+\frac{\leftCoord{}1}{\rightCoord{}2}\right)^2-q^2}},\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{13}{16}{
+R^a(\tau)&=&q C_1e^{\tau\sqrt{\left(j+\frac{1}{2}\right)^2-q^2}} 
++q C_2e^{-\tau\sqrt{\left(j+\frac{1}{2}\right)^2-q^2}},\\
+R^b(\tau)&=&\left[\sqrt{\left(j+\frac{1}{2}\right)^2-q^2} 
+-\left(j+\frac{1}{2}\right)\right] 
+C_1e^{\tau\sqrt{\left(j+\frac{1}{2}\right)^2-q^2}}\\
+&&+\left[\sqrt{\left(j+\frac{1}{2}\right)^2-q^2}+\left(j+\frac{1}{2}\right) 
+\right]C_2e^{-\tau\sqrt{\left(j+\frac{1}{2}\right)^2-q^2}},}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$C_1$}\coordHE{} and \myHighlight{$C_2$}\coordHE{} are integration constants.
+The corresponding energies are 
+$$\coord{}\boxMath{
+E_p=\pm\sqrt{\left(j+\frac12\right)^2-q^2}=\pm\sqrt{2|q|p+p^2},
+}{dollar}{0pt}\coordE{}$$
+with degeneracies \myHighlight{$2j+1=2|q|+2p$}\coordHE{}. Note that the spectrum is symmetric
+under \myHighlight{$q\to -q$}\coordHE{}.
+
+The regularized Casimir energy is given by
+$$\coord{}\boxMath{
+E_{reg}(\beta)=-\sum_{p=0}^\infty (2p+|n|)\sqrt{p^2+p|n|}
+e^{-\beta\sqrt{p^2+p|n|}}.
+}{dollar}{0pt}\coordE{}$$
+We renormalize it by requiring that the Casimir energy of the vacuum with
+\myHighlight{$n=0$}\coordHE{} be zero. That is, we subtract from the above sum a similar sum
+with \myHighlight{$n=0$}\coordHE{}, and then take the limit \myHighlight{$\beta\ra 0$}\coordHE{}.
+Using the Abel-Plana summation formula
+$$\coord{}\boxMath{
+\sum_{p=0}^\infty F(p)=\frac12 F(0)+\int^\infty_0 dx\, F(x)+
+i\int^\infty_0 dt\, \frac{F(it)-F(-it)}{e^{2\pi t}-1},
+}{dollar}{0pt}\coordE{}$$
+we obtain a finite answer for the Casimir energy:
+\begin{multline}\coord{}\boxAlignEqnarray{
+\leftCoord{}E_{\rightCoord{}Casimir}=\frac16 \sqrt{1+|n|}(|n|-2)
+\leftCoord{}+\rightCoord{}\\
+\leftCoord{}4\,\textrm{Im}\int^\infty_0 dt\phantom{}
+\leftCoord{}\left[ \left(it+\frac{\leftCoord{}|n|}{\rightCoord{}2}+1\right)\sqrt{\left(it+\frac{\leftCoord{}|n|}{\rightCoord{}2}+1\right)^2-
+\leftCoord{}\frac{\leftCoord{}n^2}{\rightCoord{}4}}\right]\frac{\leftCoord{}1}{\rightCoord{}e^{2\pi t}-1}.\nonumber
+}{0mm}{9}{7}{
+E_{Casimir}=\frac16 \sqrt{1+|n|}(|n|-2)
++\\
+4\,\textrm{Im}\int^\infty_0 dt\phantom{}
+\left[ \left(it+\frac{|n|}{2}+1\right)\sqrt{\left(it+\frac{|n|}{2}+1\right)^2-
+\frac{n^2}{4}}\right]\frac{1}{e^{2\pi t}-1}.\nonumber
+}{0}\coordE{}\end{multline}
+Here one needs to take the branch of the square root which is positive on the
+positive real axis. The integral cannot be expressed in terms of elementary functions, but can be easily evaluated numerically for any \myHighlight{$n$}\coordHE{}.
+
+\section*{Acknowledgments}
+This work grew out of attempts by one of the authors (A.K.) and 
+M.~J.~Strassler to improve on the last section of Ref.~\cite{KS}. A.K.
+would like to thank M.~J.~Strassler for numerous discussions which
+helped to realize the importance of fermionic
+zero modes. We also would like to thank J.~Maldacena, T.~Okuda, and
+H.~Ooguri for useful conversations, and S.~Sachdev for informing us about Ref.~\cite{MurthySachdev}.
+This work was supported in part by a 
+DOE grant DE-FG03-92-ER40701.
+
+
+
+\begin{thebibliography}{99}
+
+\bibitem{Coleman}
+S.~R.~Coleman, ``Quantum Sine-Gordon Equation As The Massive Thirring Model,''
+Phys.\ Rev.\ D {\bf 11}, 2088 (1975).
+
+\bibitem{Mandelstam}
+S.~Mandelstam, ``Soliton Operators For The Quantized Sine-Gordon Equation,''
+Phys.\ Rev.\ D {\bf 11}, 3026 (1975).
+
+\bibitem{MO}
+C.~Montonen and D.~I.~Olive,
+``Magnetic Monopoles As Gauge Particles?,''
+Phys.\ Lett.\ B {\bf 72}, 117 (1977).
+
+\bibitem{WO}
+E.~Witten and D.~I.~Olive,
+``Supersymmetry Algebras That Include Topological Charges,''
+Phys.\ Lett.\ B {\bf 78}, 97 (1978).
+
+\bibitem{Osborn}
+H.~Osborn,
+``Topological Charges For N=4 Supersymmetric Gauge Theories And Monopoles Of Spin 1,'' Phys.\ Lett.\ B {\bf 83}, 321 (1979).
+
+\bibitem{Seiberg}
+N.~Seiberg, ``Electric - magnetic duality in supersymmetric nonAbelian gauge theories,'' Nucl.\ Phys.\ B {\bf 435}, 129 (1995) [arXiv:hep-th/9411149].
+
+\bibitem{Peskin}
+M.~E.~Peskin, ``Duality in supersymmetric Yang-Mills theory,''
+arXiv:hep-th/9702094.
+
+\bibitem{CCM}
+M.~Chaichian, W.~F.~Chen and C.~Montonen,
+``New superconformal field theories in four dimensions and N = 1 duality,''
+Phys.\ Rept.\  {\bf 346}, 89 (2001)
+[arXiv:hep-th/0007240].
+
+\bibitem{IS}
+K.~A.~Intriligator and N.~Seiberg,
+``Mirror symmetry in three dimensional gauge theories,''
+Phys.\ Lett.\ B {\bf 387}, 513 (1996)
+[arXiv:hep-th/9607207].
+
+\bibitem{five}
+O.~Aharony, A.~Hanany, K.~A.~Intriligator, N.~Seiberg and M.~J.~Strassler,
+``Aspects of N = 2 supersymmetric gauge theories in three dimensions,''
+Nucl.\ Phys.\ B {\bf 499}, 67 (1997)
+[arXiv:hep-th/9703110].
+
+\bibitem{KS}
+A.~Kapustin and M.~J.~Strassler,
+``On mirror symmetry in three dimensional Abelian gauge theories,''
+JHEP {\bf 9904}, 021 (1999) [arXiv:hep-th/9902033].
+
+\bibitem{Redlich}
+A.~N.~Redlich, ``Gauge Noninvariance And Parity Nonconservation Of Three-Dimensional  Fermions,'' Phys.\ Rev.\ Lett.\  {\bf 52}, 18 (1984);
+``Parity Violation And Gauge Noninvariance Of The Effective Gauge Field 
+Action In Three-Dimensions,'' Phys.\ Rev.\ D {\bf 29}, 2366 (1984).
+
+\bibitem{AP}
+T.~Appelquist and R.~D.~Pisarski, ``Hot Yang-Mills Theories And Three-Dimensional QCD,'' Phys.\ Rev.\ D {\bf 23}, 2305 (1981).
+
+\bibitem{JT}
+R.~Jackiw and S.~Templeton,
+``How Superrenormalizable Interactions Cure Their Infrared Divergences,''
+Phys.\ Rev.\ D {\bf 23}, 2291 (1981).
+
+\bibitem{Templeton}
+S.~Templeton,
+``Summation Of Dominant Coupling Constant Logarithms In QED In Three-Dimensions,'' Phys.\ Lett.\ B {\bf 103}, 134 (1981);
+``Summation Of Coupling Constant Logarithms In QED In Three-Dimensions,''
+Phys.\ Rev.\ D {\bf 24}, 3134 (1981).
+
+\bibitem{AH}
+T.~Appelquist and U.~W.~Heinz,
+``Three-Dimensional O(N) Theories At Large Distances,''
+Phys.\ Rev.\ D {\bf 24}, 2169 (1981).
+
+
+\bibitem{BZ}
+T.~Banks and A.~Zaks,
+``On The Phase Structure Of Vector - Like Gauge Theories With Massless Fermions,'' Nucl.\ Phys.\ B {\bf 196}, 189 (1982).
+
+\bibitem{Pisarski}
+R.~D.~Pisarski, ``Chiral Symmetry Breaking In Three-Dimensional Electrodynamics,'' Phys.\ Rev.\ D {\bf 29}, 2423 (1984).
+
+\bibitem{ANW}
+T.~Appelquist, D.~Nash and L.~C.~Wijewardhana,
+``Critical Behavior In (2+1)-Dimensional QED,''
+Phys.\ Rev.\ Lett.\  {\bf 60}, 2575 (1988).
+
+\bibitem{Nash}
+D.~Nash, ``Higher Order Corrections In (2+1)-Dimensional QED,''
+Phys.\ Rev.\ Lett.\  {\bf 62}, 3024 (1989).
+
+\bibitem{Maris}
+P.~Maris, ``The influence of the full vertex and vacuum polarization on the fermion  propagator in QED3,''
+Phys.\ Rev.\ D {\bf 54}, 4049 (1996)
+[arXiv:hep-ph/9606214].
+
+\bibitem{PW}
+M.~R.~Pennington and D.~Walsh, ``Masses From Nothing: A Nonperturbative Study Of QED In Three-Dimensions,'' Phys.\ Lett.\ B {\bf 253}, 246 (1991).
+
+\bibitem{CPW}
+D.~C.~Curtis, M.~R.~Pennington and D.~Walsh,
+``Dynamical mass generation in QED in three-dimensions and the 1/N expansion,'' Phys.\ Lett.\ B {\bf 295}, 313 (1992).
+
+\bibitem{Ginsparg}
+P.~Ginsparg,
+``Applied Conformal Field Theory,'' HUTP-88-A054,
+{\it Lectures given at Les Houches Summer School in Theoretical Physics, Les Houches, France, Jun 28 - Aug 5, 1988}.
+
+\bibitem{JR}
+R.~Jackiw and C.~Rebbi, ``Solitons With Fermion Number 1/2,''
+Phys.\ Rev.\ D {\bf 13}, 3398 (1976).
+
+\bibitem{NS}
+A.~J.~Niemi and G.~W.~Semenoff,
+``Axial Anomaly Induced Fermion Fractionization And Effective Gauge Theory Actions In Odd Dimensional Space-Times,''
+Phys.\ Rev.\ Lett.\  {\bf 51}, 2077 (1983).
+
+\bibitem{SW2}
+N.~Seiberg and E.~Witten,
+``Monopoles, duality and chiral symmetry breaking in N=2 
+supersymmetric QCD,'' Nucl.\ Phys.\ B {\bf 431}, 484 (1994)
+[arXiv:hep-th/9408099].
+
+\bibitem{MurthySachdev}
+G.~Murthy and S.~Sachdev, ``Action of hedgehog-instantons in the disordered phase of the \myHighlight{$2+1$}\coordHE{}-dimensional
+\myHighlight{$\CC\PP^{N-1}$}\coordHE{} model,'' Nucl.\ Phys.\ B {\bf 344}, 557 (1990).
+
+\bibitem{WY}
+T.~T.~Wu and C.~N.~Yang, ``Dirac Monopole Without Strings: Monopole
+Harmonics,'' Nucl.\ Phys.\ B {\bf 107}, 365 (1976).
+
+
+
+
+
+
+\end{thebibliography}
+
+\end{document}
+
+\bye

@@ -1,0 +1,1565 @@
+
+%
+%
+%
+
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,amstext,eucal,
+amsbsy,amsopn,amsgen}
+
+\addtolength{\topmargin}{-2.0cm}
+\addtolength{\textheight}{3.0cm}
+\addtolength{\hoffset}{-0.75cm}
+\addtolength{\textwidth}{1.5cm}
+
+
+
+
+\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{exa}[thm]{Example}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\numberwithin{equation}{section}
+\providecommand{\norm}[1]{\left\Vert#1\right\Vert}
+\providecommand{\abs}[1]{\left\vert#1\right\vert}
+\providecommand{\set}[1]{\left\{#1\right\}}
+\providecommand{\al}{\alpha}
+\providecommand{\be}{\beta}
+\providecommand{\ga}{\gamma}
+\providecommand{\de}{\delta}
+\providecommand{\la}{\lambda}
+\providecommand{\om}{\omega}
+\providecommand{\si}{\sigma}
+\providecommand{\De}{\Delta}
+\providecommand{\Om}{\Omega}
+\providecommand{\Real}{\mathbb R}
+\providecommand{\eps}{\varepsilon}
+\providecommand{\yh}{\hat{y}}
+\providecommand{\xh}{\hat{x}}
+\providecommand{\qh}{\hat{q}}
+\providecommand{\ph}{\hat{p}}
+\providecommand{\Lh}{\hat{L}}
+\providecommand{\Yh}{\hat{Y}}
+\providecommand{\Qh}{\hat{Q}}
+\providecommand{\erb}{\mathbf{e_r}}
+\providecommand{\etb}{\mathbf{e_{\theta}}}
+\providecommand{\epb}{\mathbf{e_{\phi}}}
+\providecommand{\qb}{\mathbf{q}}
+\providecommand{\pb}{\mathbf{p}}
+\providecommand{\Lb}{\mathbf{L}}
+\providecommand{\Lhb}{\mathbf{\hat{L}}}
+\providecommand{\Imp}{\Rightarrow}
+\providecommand{\ra}{\rightarrow}
+\providecommand{\To}{\longrightarrow}
+\providecommand{\BX}{\mathbf{B}(X)}
+\providecommand{\A}{\mathcal{A}}
+\providecommand{\PP}{\mathcal{P}}
+\providecommand{\M}{\mathcal{M}}
+\providecommand{\Omzero}{\overset{(0)}{\Omega}}
+\providecommand{\bx}{\bar{x}}
+\providecommand{\tx}{\tilde{x}}
+\providecommand{\dx}{\dot{x}}
+\providecommand{\bq}{\bar{q}}
+\providecommand{\bp}{\bar{p}}
+\providecommand{\pa}{\partial}
+\providecommand{\pl}{\overset{\leftarrow}{\partial}}
+\providecommand{\pr}{\overset{\rightarrow}{\partial}}
+\providecommand{\dl}{\overset{\leftarrow}{\delta}}
+
+\usepackage{useful_macros}
+\begin{document}
+
+\title{Exploring the second class constraint quantization approach
+proposed by Batalin and Marnelius}
+
+\author{{\bf Michael Chesterman\footnote{\texttt{M.J.Chesterman@qmul.ac.uk}}}\\ {\small The Physics
+Department,}\\{\small Queen Mary,}\\ \small{University of London,}
+\\ {\small Mile End Road, E1 4NS, UK}}
+
+
+\date{January 2002\\{\small Preprint QMUL-PH-02-02}}
+
+\maketitle
+
+
+
+\begin{abstract}
+I extend upon the paper by Batalin and Marnelius, in which they
+show how to construct and quantize a gauge theory from a
+Hamiltonian system with second class constraints. Among
+the avenues explored, their technique is analyzed in relation to
+other well-known methods of quantization and a bracket is defined,
+such that the operator formalism can be fully developed. I also
+extend to systems with mixed class constraints and look at some
+simple examples.
+\end{abstract}
+
+\section{Introduction}
+
+The subject of this work concerns a paper \cite{Batalin:2001hs} by
+Batalin and Marnelius, in which they propose a novel way of
+constructing a gauge theory from a Hamiltonian system with second
+class constraints. Their work extends on ideas first developed in
+\cite{Lyakhovich:2001cm}.
+
+The covariant quantization of general Hamiltonian systems, with
+second class constraints, is no easy task. Two of the best methods
+so far are `constraint conversion'
+\cite{Batalin:1987fm,Batalin:1990mb,Batalin:1991jm} and `gauge
+unfixing' \cite{Harada:1990aj,Mitra:1990mp}. The first
+introduces additional variables in such a way that the second class
+constraints are converted into first class ones. The second on the
+other hand, finds a subset of half of the constraints in involution
+with each other, and then discards the remaining constraints as
+`gauge fixing' conditions, thus leaving a first class constraint
+surface. The resultant gauge theories can be quantized using the
+full power of Hamiltonian BRST (BFV) quantization. However, even
+the above two methods are limited. For example, `gauge unfixing' is
+only possible locally in general.
+
+Although the authors of the subject paper \cite{Batalin:2001hs}
+constructed the correct path integral following the superfield
+version of antifield (BV) quantization, there were some stones left
+unturned. In particular, an operator formalism was not developed
+and the question of the position of the technique, in relation
+both to standard Dirac bracket quantization and the above two
+approaches, was not fully explored. In the work which follows, I
+explore these points and others in some detail and also extend
+to systems with mixed class constraints.
+
+I do not intend to review the subject paper in any depth, as this
+would be superfluous. Rather, this work is designed to be read in
+conjunction with the subject paper. However, all equations and
+identities from the subject paper that I use are also shown here,
+either in section \ref{sec:BMequations}, or as needed in the text.
+To avoid confusion, I also use the same notation.
+
+\section{Some Preliminaries}
+\label{sec:BMequations}
+
+\subsection{The Setting}
+\label{sec:Setting}
+
+We start, as in \cite{Batalin:2001hs}, with symplectic
+supermanifold \myHighlight{$\M$}\coordHE{} which has co-ordinates \myHighlight{$x^i$}\coordHE{}, \myHighlight{$i=1,\ldots,2N$}\coordHE{}
+with \myHighlight{$\eps^i=\eps(x^i)$}\coordHE{}. The non-degenerate symplectic two-form
+\myHighlight{$\om_{ij}(x)$}\coordHE{} is closed
+\begin{equation}\coord{}\boxEquation{\label{eq:omclosed}
+d\om=0 \Leftrightarrow \pa_i\om_{jk}(x)(-1)^{(\eps^i+1)\eps^k} +
+cycle(i,j,k)=0
+}{d\om=0 \Leftrightarrow \pa_i\om_{jk}(x)(-1)^{(\eps^i+1)\eps^k} +
+cycle(i,j,k)=0
+}{ecuacion}\coordE{}\end{equation}
+and has properties
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\om_{ij}(x)=\om_{ji}(x)(-1)^{(\eps^i+1)(\eps^j+1)} &&
+\eps(\om_{ij})=\eps^i + \eps^j.\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+\om_{ij}(x)=\om_{ji}(x)(-1)^{(\eps^i+1)(\eps^j+1)} &&
+\eps(\om_{ij})=\eps^i + \eps^j.
+}{1}\coordE{}\end{eqnarray}
+Since \myHighlight{$\om_{ij}$}\coordHE{} is non-degenerate, there exists an inverse
+\myHighlight{$\om^{ij}(x)$}\coordHE{}, in terms of which the Poisson bracket is defined by
+\begin{equation}\coord{}\boxEquation{\label{eq:Poissonbracket}
+\{A(x),B(x)\}=A(x)\pl_i \om^{ij}(x) \pr_j B(x).
+}{\{A(x),B(x)\}=A(x)\pl_i \om^{ij}(x) \pr_j B(x).
+}{ecuacion}\coordE{}\end{equation}
+\myHighlight{$w^{ij}$}\coordHE{} obeys
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\om^{ij}(x)=-\om^{ij}(x)(-1)^{\eps^i\eps^j} && \rightCoord{}
+\eps(\om^{ij})=\eps^i + \eps^j. \rightCoord{}
+\rightCoord{}}{0mm}{1}{4}{
+\om^{ij}(x)=-\om^{ij}(x)(-1)^{\eps^i\eps^j} && 
+\eps(\om^{ij})=\eps^i + \eps^j. 
+}{1}\coordE{}\end{eqnarray}
+The Poisson bracket \eqref{eq:Poissonbracket} satisfies the Jacobi
+identities since \eqref{eq:omclosed} implies
+\begin{equation}\coord{}\boxEquation{
+\om^{ij}\pl_l \om^{lk}(-1)^{\eps^i\eps^k} + cycle(i,j,k)=0.
+}{
+\om^{ij}\pl_l \om^{lk}(-1)^{\eps^i\eps^k} + cycle(i,j,k)=0.
+}{ecuacion}\coordE{}\end{equation}
+
+We consider a Hamiltonian \myHighlight{$H(x)$}\coordHE{}, with \myHighlight{$2M<2N$}\coordHE{} irreducible second
+class constraints \myHighlight{$\theta^{\al}(x)$}\coordHE{}, which satisfy regularity
+condition
+\begin{equation}\coord{}\boxEquation{\label{eq:regular}
+\text{Rank } \theta^{\al}(x){\frac{\pl}{\partial x^i}}
+|_{\theta=0}=2M
+}{\text{Rank } \theta^{\al}(x){\frac{\pl}{\partial x^i}}
+|_{\theta=0}=2M
+}{ecuacion}\coordE{}\end{equation}
+and class condition
+\begin{equation}\coord{}\boxEquation{\label{eq:classcnd}
+\text{Rank }{\{\theta^{\al}(x),\theta^{\be}(x)\}}|_{\theta=0}=2M.
+}{\text{Rank }{\{\theta^{\al}(x),\theta^{\be}(x)\}}|_{\theta=0}=2M.
+}{ecuacion}\coordE{}\end{equation}
+Constraints \myHighlight{$\theta^{\al}=0$}\coordHE{} determine a constraint surface
+\myHighlight{$\Gamma$}\coordHE{}, which is itself a symplectic supermanifold of dimension
+\myHighlight{$(2N-2M)$}\coordHE{}.
+
+The equations of motion can be calculated from the extended
+Hamiltonian form of the action
+\begin{equation}\coord{}\boxEquation{
+S_E[x]=\int{dt\, x^i \bar{\om}_{ij}(x) \dx^j - H(x)
+-\la_{\al}\theta^{\al}(x)},
+}{
+S_E[x]=\int{dt\, x^i \bar{\om}_{ij}(x) \dx^j - H(x)
+-\la_{\al}\theta^{\al}(x)},
+}{ecuacion}\coordE{}\end{equation}
+where \cite{Batalin:1998pz}
+\begin{equation}\coord{}\boxEquation{\label{eq:ombar}
+\bar{\om}_{ij}(x)=\int_{0}^{1}{\om_{ij}(\al x)\al \, d\al} \Imp
+\om_{ij}(x)=(x^k\pr_k+2)\bar{\om}_{ij}(x).
+}{\bar{\om}_{ij}(x)=\int_{0}^{1}{\om_{ij}(\al x)\al \, d\al} \Imp
+\om_{ij}(x)=(x^k\pr_k+2)\bar{\om}_{ij}(x).
+}{ecuacion}\coordE{}\end{equation}
+Equations \eqref{eq:omclosed} and \eqref{eq:ombar} yield the
+required property that
+\begin{equation}\coord{}\boxEquation{
+\de \int{dt \, x^i\bar{\om}_{ij}(x)\dx^j}=\int{dt\, \de x^i
+\om_{ij}(x)\dx^j}.
+}{
+\de \int{dt \, x^i\bar{\om}_{ij}(x)\dx^j}=\int{dt\, \de x^i
+\om_{ij}(x)\dx^j}.
+}{ecuacion}\coordE{}\end{equation}
+In general, \myHighlight{$x^i$}\coordHE{} will be canonical co-ordinates with constant
+\myHighlight{$\om^{ij}$}\coordHE{} and \myHighlight{$\bar{\om}^{ij}=\frac{1}{2} \om^{ij}$}\coordHE{}.
+
+In the subject paper, the authors parameterize the constraint
+surface \myHighlight{$\Gamma$}\coordHE{} with the original phase space co-ordinates \myHighlight{$x^i$}\coordHE{},
+constructing functions \myHighlight{$\bx^i(x)$}\coordHE{} satisfying
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}\rightCoord{}\label{eq:xbar1}
+\theta^{\al}(\bx^i(x))=0\rightCoord{}\label{eq:map1}\\\leftCoord{}\rightCoord{}\label{eq:xbar2}
+\bx^i(\tx)=\tx^i \rightCoord{}\label{eq:map2} && \text{for } \tx^i \in \Gamma. \rightCoord{}
+\rightCoord{}}{0mm}{2}{7}{\theta^{\al}(\bx^i(x))=0\\\bx^i(\tx)=\tx^i && \text{for } \tx^i \in \Gamma. 
+}{1}\coordE{}\end{eqnarray}
+As there are \myHighlight{$2M$}\coordHE{} more co-ordinates than the dimension of \myHighlight{$\Gamma$}\coordHE{},
+there are \myHighlight{$2M$}\coordHE{} gauge symmetries denoted by \eqref{eq:gaugegen}. The
+BM gauge invariant action is
+\begin{equation}\coord{}\boxEquation{\label{eq:BMaction}
+S[\bx(x)]=\int{dt\, \bx^i \bar{\om}_{ij}(\bx) \dot{\bx}^j -
+H(\bx)}.
+}{S[\bx(x)]=\int{dt\, \bx^i \bar{\om}_{ij}(\bx) \dot{\bx}^j -
+H(\bx)}.
+}{ecuacion}\coordE{}\end{equation}
+
+\subsection{Equations and Identities from the BM paper}
+\label{sec:BMidentities}
+
+\begin{equation}\coord{}\boxEquation{\label{eq:Zdef}
+\theta^{\al}(x)\pl_i Z^i_{\be}(x)=\delta^{\al}_{\be}
+}{\theta^{\al}(x)\pl_i Z^i_{\be}(x)=\delta^{\al}_{\be}
+}{ecuacion}\coordE{}\end{equation}
+
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+P^i_j(x)=\de^i_j-Z^i_{\al}(x)(\theta^{\al}(x)\pl_j)\rightCoord{}\label{eq:P}\rightCoord{}\\\leftCoord{}
+P^i_j(x)P^j_k(x)=P^i_k(x)\rightCoord{}\\\leftCoord{}
+P^i_j(x)Z^j_{\al}(x)=0 \rightCoord{}\label{eq:PZ}
+\rightCoord{}}{0mm}{3}{6}{
+P^i_j(x)=\de^i_j-Z^i_{\al}(x)(\theta^{\al}(x)\pl_j)\\
+P^i_j(x)P^j_k(x)=P^i_k(x)\\
+P^i_j(x)Z^j_{\al}(x)=0 }{1}\coordE{}\end{eqnarray}
+\begin{equation}\coord{}\boxEquation{\label{eq:xtilda}
+\frac{d\tx^i}{d\la}=Z^i_{\al}(\tx)\theta^{\al}(\tx)
+}{\frac{d\tx^i}{d\la}=Z^i_{\al}(\tx)\theta^{\al}(\tx)
+}{ecuacion}\coordE{}\end{equation}
+\begin{equation}\coord{}\boxEquation{\label{eq:dxbar}
+\bx^i(x)\pl_k=P^i_m(\bx)\sigma^m_k(x)
+}{\bx^i(x)\pl_k=P^i_m(\bx)\sigma^m_k(x)
+}{ecuacion}\coordE{}\end{equation}
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\si^m_k(\bx)=\de^i_k && \det \si^i_k(x)\neq 0
+\rightCoord{}}{0mm}{1}{2}{
+\si^m_k(\bx)=\de^i_k && \det \si^i_k(x)\neq 0
+}{1}\coordE{}\end{eqnarray}
+\begin{equation}\coord{}\boxEquation{\label{eq:si_ambiguity}
+\si^m_k(x) \To \si^m_k(x)+Z^m_\al(\bx)M^\al_k(x)
+}{\si^m_k(x) \To \si^m_k(x)+Z^m_\al(\bx)M^\al_k(x)
+}{ecuacion}\coordE{}\end{equation}
+
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}\rightCoord{}\label{eq:gaugegen}
+\bx^i(x) \pl_k G^k_{\al}(x)=0 && G^k_{\al}(x)=(\si^{-1})^k_m
+Z^m_{\al}(\bx(x))
+\rightCoord{}}{0mm}{1}{3}{\bx^i(x) \pl_k G^k_{\al}(x)=0 && G^k_{\al}(x)=(\si^{-1})^k_m
+Z^m_{\al}(\bx(x))
+}{1}\coordE{}\end{eqnarray}
+
+
+
+
+\section{Conditions for existence of continuous function \myHighlight{$\bx(x)$}\coordHE{}}
+
+In sections 3 and 4 of the subject paper\cite{Batalin:2001hs}, the
+authors argue that given second class constraint functions
+\myHighlight{$\theta^{\al}(x)$}\coordHE{} obeying regularity conditions \eqref{eq:regular}
+and \eqref{eq:classcnd}, the continuous function \myHighlight{$\bx^i(x)$}\coordHE{} always
+exists. In fact, a small modification of their argument is
+necessary. The mathematics required to cast light on this point is
+well known \cite{Nakahara:1990th}. Consider a generic constraint
+surface \myHighlight{$\Gamma$}\coordHE{}, a submanifold of \myHighlight{$\M$}\coordHE{}. If a continuous function
+\myHighlight{$\bx: \M \rightarrow \Gamma$}\coordHE{} exists, obeying \eqref{eq:map1} and
+\eqref{eq:map2}, then \myHighlight{$\bx$}\coordHE{} is said to be a retraction and
+\myHighlight{$\Gamma$}\coordHE{} a retract of \myHighlight{$\M$}\coordHE{}. Furthermore, if there exists a
+continuous map \myHighlight{$H:\M\times I \rightarrow \M$}\coordHE{}, where \myHighlight{$I$}\coordHE{} is the
+interval \myHighlight{$[0,1]$}\coordHE{}, such that \begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}\rightCoord{}\label{eq:dretract1}
+H(x,0)=x & H(x,1) \in \Gamma & \text{for any } x \in \M\rightCoord{}\\\leftCoord{}
+H(x,s)=x & \text{for any } x \in \Gamma &\text{and any } s \in
+I\rightCoord{}\label{eq:dretract2}
+\rightCoord{}}{0mm}{2}{5}{H(x,0)=x & H(x,1) \in \Gamma & \text{for any } x \in \M\\
+H(x,s)=x & \text{for any } x \in \Gamma &\text{and any } s \in
+I}{1}\coordE{}\end{eqnarray}
+then \myHighlight{$\Gamma$}\coordHE{} is said to be a deformation retract of \myHighlight{$\M$}\coordHE{}. Not all
+retracts are deformation retracts, however, it's reasonable here
+to just check for a deformation retract with \myHighlight{$H(x,1)=\bx(x)$}\coordHE{}. The
+properties \eqref{eq:dretract1} and \eqref{eq:dretract2} of
+\myHighlight{$H(x,s)$}\coordHE{} imply that the identity function on \myHighlight{$\M$}\coordHE{} is homotopic to
+the function \myHighlight{$\bx$}\coordHE{}. Thus \myHighlight{$\M$}\coordHE{} and \myHighlight{$\Gamma$}\coordHE{} have the same homotopy
+type. In other words, \myHighlight{$\M$}\coordHE{} and \myHighlight{$\Gamma$}\coordHE{} must have the same
+fundamental group:
+\begin{equation}\coord{}\boxEquation{\label{eq:fundgrp}
+\pi_1(\M)=\pi_1(\Gamma).
+}{\pi_1(\M)=\pi_1(\Gamma).
+}{ecuacion}\coordE{}\end{equation}
+This topological condition can be translated into a restriction on
+the constraint functions. Batalin and Marnelius explicitly
+construct \myHighlight{$\bx^i(x)$}\coordHE{} as a deformation retract, via the
+differential equation \eqref{eq:xtilda} for continuous function
+\myHighlight{$\tx^i(\la,x)$}\coordHE{} in section 4 of the subject paper. Given initial
+conditions \myHighlight{$\tx^i(0,x)=x^i$}\coordHE{}, the authors define
+\begin{equation}\coord{}\boxEquation{
+\bx^i(x)=\lim_{\la \ra -\infty} \tx^i(\la,x).
+}{
+\bx^i(x)=\lim_{\la \ra -\infty} \tx^i(\la,x).
+}{ecuacion}\coordE{}\end{equation}
+By construction, this definition obeys both \eqref{eq:map1} and
+\eqref{eq:map2}. The differential equation \eqref{eq:xtilda}
+uniquely dictates the path in \myHighlight{$\M$}\coordHE{} that the point \myHighlight{$x^i$}\coordHE{} takes to
+\myHighlight{$\bx^i(x)$}\coordHE{} which is traced by \myHighlight{$\tx^i(\la,x)$}\coordHE{} over the interval
+\myHighlight{$\la=[0,-\infty]$}\coordHE{}. We can see that \myHighlight{$\tx(\lambda,x)$}\coordHE{} is a homotopy
+as defined in \eqref{eq:dretract1} and \eqref{eq:dretract2} if we
+substitute \myHighlight{$s=1-e^{\lambda}$}\coordHE{}, since
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\tx(s=0,x)=x && \tx(s=1,x)=\bx(x). \rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+\tx(s=0,x)=x && \tx(s=1,x)=\bx(x). 
+}{1}\coordE{}\end{eqnarray}
+The only problem with the Batalin Marnelius definition of \myHighlight{$\bx(x)$}\coordHE{}
+is that \myHighlight{$Z^i_{\al}(x)$}\coordHE{} can be singular off the constraint surface
+in the general case. The requirement \eqref{eq:regular} on the
+matrix \myHighlight{$\theta^{\al}(x)\pl_i$}\coordHE{} only applies on the constraint
+surface. Away from the surface, \myHighlight{$\text{Rank
+}(\theta^{\al}(x)\pl_i) \leq 2M$}\coordHE{}, but \myHighlight{$Z^i_{\al}(x)$}\coordHE{} obeying
+\eqref{eq:Zdef} can only be defined when
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}\rightCoord{}\label{eq:Zsmooth}
+\text{Rank}\;\theta^{\al}(x)\pl_i = 2M & \text{for any } x \in \M.\rightCoord{}
+\rightCoord{}}{0mm}{1}{4}{\text{Rank}\;\theta^{\al}(x)\pl_i = 2M & \text{for any } x \in \M.
+}{1}\coordE{}\end{eqnarray}
+The above equation is actually equivalent to \eqref{eq:fundgrp}.
+So long as \myHighlight{$Z^i_{\al}(x)$}\coordHE{} can be smoothly defined, the
+differential equation for \myHighlight{$\tx(\la,x)$}\coordHE{} leads to a unique and
+smooth function \myHighlight{$\bx(x)$}\coordHE{} in terms of \myHighlight{$Z^i_{\al}(x)$}\coordHE{} and
+\myHighlight{$\theta^{\al}(x)$}\coordHE{}. The points \myHighlight{$x \in \M$}\coordHE{} where \eqref{eq:Zsmooth}
+doesn't hold correspond to singularities in \myHighlight{$Z^i_{\al}(x)$}\coordHE{} and
+discontinuities or singularities in \myHighlight{$\bx(x)$}\coordHE{}. In order to
+illustrate the connection  between \eqref{eq:fundgrp} and
+\eqref{eq:Zsmooth}, consider a simple example. Suppose
+\myHighlight{$\M=\Real^2\times\Real^2$}\coordHE{}, with canonical co-ordinates \myHighlight{$(q^i,
+p_i)$}\coordHE{}, \myHighlight{$i=1,2$}\coordHE{}. Also, suppose there's one first class constraint
+\myHighlight{$\theta=(q^1)^2+(q^2)^2-R^2=0$}\coordHE{} where \myHighlight{$R$}\coordHE{} is a constant. The class
+of \myHighlight{$\theta$}\coordHE{} isn't important. The constraint surface
+\myHighlight{$\Gamma=S^1\times\Real^2$}\coordHE{}. If we forget the co-ordinates
+\myHighlight{$(p_1,p_2)$}\coordHE{} for now, clearly \myHighlight{$\pi_1(S^1) \neq\pi_1(\Real^2)$}\coordHE{} and
+one can expect a singular point in \myHighlight{$\bx(x)$}\coordHE{} anywhere inside the
+circle, depending on the definition of \myHighlight{$\bx(x)$}\coordHE{}. In fact, the
+singular point is determined by \myHighlight{$\theta$}\coordHE{}.
+\myHighlight{$\text{Rank}\;\theta(x)\pl_i=1$}\coordHE{} everywhere, except at singular
+point \myHighlight{$q^1=q^2=0$}\coordHE{}. The solution is to exclude \myHighlight{$q^1=q^2=0$}\coordHE{} from
+\myHighlight{$\M$}\coordHE{}, then \myHighlight{$\pi_1(\Real^2-\{0\})=\pi_1(S^1)$}\coordHE{}.
+
+One should ask how severe the restriction \eqref{eq:Zsmooth} is.
+In order to use the Dirac bracket for second class constraints
+\myHighlight{$\theta^{\al}(x)$}\coordHE{} , the matrix \myHighlight{$\{\theta^{\al},\theta^{\be}\}$}\coordHE{}
+must be invertible everywhere in \myHighlight{$\M$}\coordHE{}, i.e.
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}\rightCoord{}\label{eq:thetarank1} \text{Rank
+\rightCoord{}}{\{\theta^{\al}(x),\theta^{\be}(x)\}}= 2M & \text{for any } x \in
+\M. \rightCoord{}
+\rightCoord{}}{0mm}{1}{5}{\text{Rank
+}{\{\theta^{\al}(x),\theta^{\be}(x)\}}= 2M & \text{for any } x \in
+\M. 
+}{1}\coordE{}\end{eqnarray}
+Now since
+\begin{equation}\coord{}\boxEquation{\label{eq:thetarank2}
+\{\theta^{\al},\theta^{\be}\}=\theta^{\al}\pl_i \om^{ij} \pr_j
+\theta^{\be},
+}{\{\theta^{\al},\theta^{\be}\}=\theta^{\al}\pl_i \om^{ij} \pr_j
+\theta^{\be},
+}{ecuacion}\coordE{}\end{equation}
+we can write an inequality for the rank of the matrix
+\myHighlight{$\theta^{\al}\pl_i$}\coordHE{} using the following result. For \myHighlight{$N\times N$}\coordHE{}
+matrices \myHighlight{$A_i$}\coordHE{}  \myHighlight{$i=1,\ldots, n$}\coordHE{} and \myHighlight{$B$}\coordHE{} where
+\begin{equation}\coord{}\boxEquation{
+A_1 A_2 \ldots A_n =B,
+}{
+A_1 A_2 \ldots A_n =B,
+}{ecuacion}\coordE{}\end{equation}
+it follows that
+\begin{equation}\coord{}\boxEquation{
+\max{(\text{Ker } A_1, \ldots , \text{Ker } A_n)} \leq \text{Ker }
+B \leq \sum_{i=1}^{n}{\text{Ker } A_i},
+}{
+\max{(\text{Ker } A_1, \ldots , \text{Ker } A_n)} \leq \text{Ker }
+B \leq \sum_{i=1}^{n}{\text{Ker } A_i},
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\text{Ker } A_i=N- \text{Rank } A_i$}\coordHE{}. All matrices in
+\eqref{eq:thetarank2} can be made square \myHighlight{$2N\times 2N$}\coordHE{} by filling
+with zeros as necessary. The resultant inequality is
+\begin{equation}\coord{}\boxEquation{
+\text{Rank } \theta^{\al}\pl_i \geq \text{Rank }
+\{\theta^{\al},\theta^{\be}\} \geq \text{Rank }
+\theta^{\al}\pl_i-\text{Ker }\theta^{\al}\pl_i,
+}{
+\text{Rank } \theta^{\al}\pl_i \geq \text{Rank }
+\{\theta^{\al},\theta^{\be}\} \geq \text{Rank }
+\theta^{\al}\pl_i-\text{Ker }\theta^{\al}\pl_i,
+}{ecuacion}\coordE{}\end{equation}
+thus \eqref{eq:thetarank1} implies \eqref{eq:Zsmooth}. The BM
+technique can be used for all second class systems where a Dirac
+bracket can be smoothly defined. Usually \myHighlight{$\M \equiv R^n \times
+R^n$}\coordHE{} which has trivial fundamental group \myHighlight{$\pi_1(\M)$}\coordHE{}. This might
+seem to severely limit the possible constraint surfaces that can
+be dealt with. However, exclusion of strategic point(s), or in
+general, hyperplanes from \myHighlight{$\M$}\coordHE{}, may sometimes be possible, with
+drastic effects on \myHighlight{$\pi_1(\M)$}\coordHE{}. These points are ones where
+\eqref{eq:Zsmooth} doesn't hold. This is dynamically allowed if
+the excluded points are fixed points.
+
+
+
+
+\section{A suitable bracket on \myHighlight{$\M$}\coordHE{}}\label{sec:Mybracket}
+
+In a previous paper \cite{Lyakhovich:2001cm}, a third condition was
+placed on \myHighlight{$\bx^i(x)$}\coordHE{}
+\begin{equation}\coord{}\boxEquation{\label{eq:Poisson}
+{\{\bx^i(x), \bx^j(x)\}}={\{x^i,x^j\}}_D|_{\:x \ra \bx(x)},
+}{{\{\bx^i(x), \bx^j(x)\}}={\{x^i,x^j\}}_D|_{\:x \ra \bx(x)},
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\{,\}$}\coordHE{} and \myHighlight{$\{,\}_D$}\coordHE{} are the Poisson and Dirac bracket
+respectively on \myHighlight{$\M$}\coordHE{}. In the subject paper \cite{Batalin:2001hs},
+condition \eqref{eq:Poisson} was considered to restrict the choice
+of gauge theory and was removed. In this spirit, one can instead
+search for a new bracket \myHighlight{$\{,\}_M$}\coordHE{} on \myHighlight{$\M$}\coordHE{} with the property
+\begin{equation}\coord{}\boxEquation{\label{eq:mybracket}
+\{A(\bx(x)),B(\bx(x))\}_M=\{A(x),B(x)\}_D|_{x \ra \bx(x)},
+}{\{A(\bx(x)),B(\bx(x))\}_M=\{A(x),B(x)\}_D|_{x \ra \bx(x)},
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$A(\bx(x))$}\coordHE{} and \myHighlight{$B(\bx(x))$}\coordHE{} are arbitrary, gauge invariant
+observables. So
+\begin{equation}\coord{}\boxEquation{ \label{eq:Mbracket}
+\{\bx^i(x),\bx^j(x)\}_M=\{x^i,x^j\}_D|_{x \ra \bx(x)}.
+}{ \{\bx^i(x),\bx^j(x)\}_M=\{x^i,x^j\}_D|_{x \ra \bx(x)}.
+}{ecuacion}\coordE{}\end{equation}
+Utilizing \eqref{eq:dxbar}, equation \eqref{eq:Mbracket} may be
+written as
+\begin{equation}\coord{}\boxEquation{
+P^i_m(\bx)\si^m_k(x)\om^{kl}_M(x)\si_l^n(x)P_n^j(\bx)=\om^{ij}_D(\bx),
+}{
+P^i_m(\bx)\si^m_k(x)\om^{kl}_M(x)\si_l^n(x)P_n^j(\bx)=\om^{ij}_D(\bx),
+}{ecuacion}\coordE{}\end{equation}
+where we define
+\begin{equation}\coord{}\boxEquation{
+\{a(x),b(x)\}_M=a(x)\pl_i\om^{ij}_M(x)\pr_j b(x)
+}{
+\{a(x),b(x)\}_M=a(x)\pl_i\om^{ij}_M(x)\pr_j b(x)
+}{ecuacion}\coordE{}\end{equation}
+and similarly for the Dirac bracket which is characterized by
+\begin{equation}\coord{}\boxEquation{
+\om_D^{ij}(x)=\om^{ij}(x) - \{x^i,\theta^\al\}
+\{\theta^\al,\theta^\be\}^{-1} \{\theta^\be ,x^j\}.
+}{
+\om_D^{ij}(x)=\om^{ij}(x) - \{x^i,\theta^\al\}
+\{\theta^\al,\theta^\be\}^{-1} \{\theta^\be ,x^j\}.
+}{ecuacion}\coordE{}\end{equation}
+Note that \myHighlight{$\text{Rank }P^i_m(\bx)=2N-2M$}\coordHE{}, so \myHighlight{$\om_M^{ij}(x)$}\coordHE{} isn't
+uniquely defined and furthermore this is also reflected by the
+ambiguity in choosing \myHighlight{$\si^m_k(x)$}\coordHE{} shown in
+\eqref{eq:si_ambiguity}. Firstly, a particular solution for
+\myHighlight{$\om^{ij}_M(x)$}\coordHE{} must be found. Since \myHighlight{$\{\theta^\al,x^j\}_D=0$}\coordHE{} and
+making use of the explicit expression for \myHighlight{$P^i_j(x)$}\coordHE{} in
+\eqref{eq:P}, \begin{equation}\coord{}\boxEquation{\label{eq:PomP}
+P^i_k(x)\om^{kl}_D(x)P_l^j(x)=\om^{ij}_D(x).
+}{P^i_k(x)\om^{kl}_D(x)P_l^j(x)=\om^{ij}_D(x).
+}{ecuacion}\coordE{}\end{equation}
+It soon becomes clear that a particular solution is
+\begin{equation}\coord{}\boxEquation{\label{eq:omM}
+\om^{ij}_M(x)=(\si^{-1})^i_k(x)\om^{kl}_D(\bx)(\si^{-1})_l^j(x).
+}{\om^{ij}_M(x)=(\si^{-1})^i_k(x)\om^{kl}_D(\bx)(\si^{-1})_l^j(x).
+}{ecuacion}\coordE{}\end{equation}
+In order to obtain the general solution for \myHighlight{$\om^{ij}_M$}\coordHE{} we add a
+term \myHighlight{$\De^{ij}$}\coordHE{} such that
+\begin{equation}\coord{}\boxEquation{
+P^i_k(\bx)\De^{kl}_{\si}(x)P_l^j(\bx)=0,
+}{
+P^i_k(\bx)\De^{kl}_{\si}(x)P_l^j(\bx)=0,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\De_{\si}^{kl}=(\si\De\si)^{kl}$}\coordHE{} and where we also require
+that \myHighlight{$\De^{ij}=(-)(-)^{\eps^i\eps^j}\De^{ji}$}\coordHE{}. The \myHighlight{$2M$}\coordHE{} vectors
+\myHighlight{$Z_{\al}^i(x)$}\coordHE{} form a basis for the kernel of the matrix
+\myHighlight{$P^i_k(x)$}\coordHE{} as can be seen from \eqref{eq:PZ}. The most general
+such expression is
+\begin{equation}\coord{}\boxEquation{
+\De_{\si}^{kl}(x)=Z^k_{\al}(\bx)J^{\al l}(x)
+-(-1)^{\eps^{al}(1+\eps^k + \eps^l)} J^{\al k}(x)Z^l_{\al}(\bx),
+}{
+\De_{\si}^{kl}(x)=Z^k_{\al}(\bx)J^{\al l}(x)
+-(-1)^{\eps^{al}(1+\eps^k + \eps^l)} J^{\al k}(x)Z^l_{\al}(\bx),
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$J^{\al k}(x)$}\coordHE{} is some arbitrary expression such that
+\myHighlight{$\eps(J^{\al k})=\eps^k-\eps^{\al}$}\coordHE{}. Note that freedom in the
+choice of \myHighlight{$\De^{ij}(x)$}\coordHE{} means freedom in the choice of \myHighlight{$\text{Rank
+} \om_M^{ij}$}\coordHE{}. One can have \myHighlight{$\text{Rank } \om_M^{ij}=2N-2M$}\coordHE{} as in
+\eqref{eq:omM}, or choose \myHighlight{$\De^{ij}(x)$}\coordHE{} such that \myHighlight{$\text{Rank }
+\om_M^{ij}=2N$}\coordHE{}.
+
+The bracket \myHighlight{$\{,\}_M$}\coordHE{} should also satisfy the Jacobi identity. If
+only gauge invariant observables of the form \myHighlight{$A(\bx(x))$}\coordHE{} are ever
+used inside the bracket we simply require that
+\begin{equation}\coord{}\boxEquation{\label{eq:gaugeJacobi}
+\begin{split}
+&\{\{A(\bx),B(\bx)\}_M,C(\bx)\}_M\\
+&\text{  }+(-)^{\eps^A(\eps^B+\eps^C)}\{\{B(\bx),C(\bx)\}_M,A(\bx)\}_M \\
+&\text{  }
++(-)^{\eps^C(\eps^A+\eps^B)}\{\{C(\bx),A(\bx)\}_M,B(\bx)\}_M=0.
+\end{split}
+}{\begin{split}
+&\{\{A(\bx),B(\bx)\}_M,C(\bx)\}_M\\
+&\text{  }+(-)^{\eps^A(\eps^B+\eps^C)}\{\{B(\bx),C(\bx)\}_M,A(\bx)\}_M \\
+&\text{  }
++(-)^{\eps^C(\eps^A+\eps^B)}\{\{C(\bx),A(\bx)\}_M,B(\bx)\}_M=0.
+\end{split}
+}{split}\coordE{}\end{equation}
+Since \myHighlight{$P^i_k(\bx)\om_D^{kj}(\bx)=\om_D^{ij}(\bx)$}\coordHE{}, one can
+carefully show that
+\begin{equation}\coord{}\boxEquation{
+\{\{A(\bx),B(\bx)\}_M,C(\bx)\}_M=\{\{A(x),B(x)\}_D,C(x)\}_D|_{x \ra
+\bx}.
+}{
+\{\{A(\bx),B(\bx)\}_M,C(\bx)\}_M=\{\{A(x),B(x)\}_D,C(x)\}_D|_{x \ra
+\bx}.
+}{ecuacion}\coordE{}\end{equation}
+As the Dirac bracket obeys the Jacobi identity, so
+\eqref{eq:gaugeJacobi} is true trivially. However, if one wants to
+allow general functions inside the bracket too, the Jacobi
+condition is considerably harder to solve and a full solution
+won't be necessary here.
+
+One notable property of \myHighlight{$\{,\}_M$}\coordHE{} is
+\begin{equation}\coord{}\boxEquation{
+\{A(\bx),B(\bx)\}_M \pl_i G^i_{\al}(x)=0,
+}{
+\{A(\bx),B(\bx)\}_M \pl_i G^i_{\al}(x)=0,
+}{ecuacion}\coordE{}\end{equation}
+since \myHighlight{$\{A(\bx),B(\bx)\}_M$}\coordHE{} is a function of \myHighlight{$\bx$}\coordHE{} as can be seen
+in \eqref{eq:mybracket}.
+
+The bracket \myHighlight{$\{,\}_M$}\coordHE{} actually originates from the uniquely
+defined, degenerate, symplectic two-form
+\begin{equation}\coord{}\boxEquation{\label{eq:omMform}
+{\om_M}_{ij}(x)=(\pr_{i}\bx^k) \,\om_{kl}(\bx(x))\,
+(\bx^l\pl_{j}).
+}{{\om_M}_{ij}(x)=(\pr_{i}\bx^k) \,\om_{kl}(\bx(x))\,
+(\bx^l\pl_{j}).
+}{ecuacion}\coordE{}\end{equation}
+One can see for example that \eqref{eq:BMaction} defines equations
+of motion
+\begin{equation}\coord{}\boxEquation{
+{\om_M}_{ij}(x)\dx^j=\pr_i H(\bx(x))
+}{
+{\om_M}_{ij}(x)\dx^j=\pr_i H(\bx(x))
+}{ecuacion}\coordE{}\end{equation}
+The fact that \myHighlight{${\om_M}_{ij}$}\coordHE{} is degenerate means that \myHighlight{$\dx^j$}\coordHE{}
+isn't unique and we can check, using the identities in section
+\ref{sec:BMidentities} and the explicit expression for the Dirac
+bracket, that
+\begin{equation}\coord{}\boxEquation{
+\dx^j=\{x^j,H(\bx(x))\}_M
+}{
+\dx^j=\{x^j,H(\bx(x))\}_M
+}{ecuacion}\coordE{}\end{equation}
+defines the general solution.
+
+
+\section{A review of the difficulties with the Dirac bracket}
+\label{sec:Diracbracket}
+
+It will be useful to review the explicit reasons why, in general,
+the Dirac bracket quantization method fails \cite{Henneaux:1992ig}.
+There are various ways to attempt operator quantization of the
+system described in section \ref{sec:Setting}. One way is to find a
+quantum representation of the Dirac bracket, with second class
+constraints imposed as operator equations.
+Another, possibly simpler, approach is to get rid of the
+constraint conditions in the classical system before quantization,
+by parameterizing the constraint surface \myHighlight{$\Gamma$}\coordHE{} with \myHighlight{$2N-2M$}\coordHE{}
+independent co-ordinates:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+y^{\mu} && \eps(y^\mu)=\eps^\mu, \rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+y^{\mu} && \eps(y^\mu)=\eps^\mu, 
+}{1}\coordE{}\end{eqnarray}
+where there exists a one-to-one continuous mapping \myHighlight{$\bx^i(y)$}\coordHE{},
+obeying
+\begin{equation}\coord{}\boxEquation{
+\theta^{\al}(\bx(y))=0.
+}{
+\theta^{\al}(\bx(y))=0.
+}{ecuacion}\coordE{}\end{equation}
+The non-degenerate, induced, symplectic two-form is
+\begin{equation}\coord{}\boxEquation{\label{eq:omy}
+\om_{\mu\nu}(y)=(\pr_{\mu}\bx^i) \,\om_{ij}(\bx(y))\,
+(\bx^j\pl_{\nu}).
+}{\om_{\mu\nu}(y)=(\pr_{\mu}\bx^i) \,\om_{ij}(\bx(y))\,
+(\bx^j\pl_{\nu}).
+}{ecuacion}\coordE{}\end{equation}
+All observables \myHighlight{$f(y)$}\coordHE{} can be written in the form \myHighlight{$F(\bx(y)$}\coordHE{}. We
+now have a system with no constraints, action \myHighlight{$S_E[\bx(y)]$}\coordHE{} and in
+general, non-trivial Poisson bracket constructed with
+\myHighlight{$\om^{\mu\nu}(y)$}\coordHE{}, the inverse of \myHighlight{$\om_{\mu\nu}(y)$}\coordHE{}. It's well
+known \cite{Henneaux:1992ig} that
+\begin{equation}\coord{}\boxEquation{\label{eq:starbracket}
+\{f(y),g(y)\}_* = \{F(x),G(x)\}_D |_{x\ra \bx(y)}
+}{\{f(y),g(y)\}_* = \{F(x),G(x)\}_D |_{x\ra \bx(y)}
+}{ecuacion}\coordE{}\end{equation}
+for
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+f(y)=F(\bx(y)) && g(y)=G(\bx(y)) \rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+f(y)=F(\bx(y)) && g(y)=G(\bx(y)) 
+}{1}\coordE{}\end{eqnarray}
+\begin{equation}\coord{}\boxEquation{
+\{f(y),g(y)\}_*=f(y)\pl_\mu \om^{\mu\nu}(y) \pr_\nu g(y).
+}{
+\{f(y),g(y)\}_*=f(y)\pl_\mu \om^{\mu\nu}(y) \pr_\nu g(y).
+}{ecuacion}\coordE{}\end{equation}
+We now look for a consistent representation of the bracket
+\eqref{eq:yrep} below, for independent operators \myHighlight{$\hat{y}^\mu$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{\label{eq:yrep}
+[\yh^\mu,\yh^\nu]=i\hbar \om^{\mu\nu}(\yh)
+}{[\yh^\mu,\yh^\nu]=i\hbar \om^{\mu\nu}(\yh)
+}{ecuacion}\coordE{}\end{equation}
+where
+\begin{equation}\coord{}\boxEquation{
+[\yh^\mu,\yh^\nu]=\yh^\mu \yh^\nu -(-)^{\eps^\mu \eps^\nu} \yh^\nu
+\yh^\mu.
+}{
+[\yh^\mu,\yh^\nu]=\yh^\mu \yh^\nu -(-)^{\eps^\mu \eps^\nu} \yh^\nu
+\yh^\mu.
+}{ecuacion}\coordE{}\end{equation}
+The problem is that no such consistent representation exists in
+general, except in particular cases, e.g. when \myHighlight{$\om^{\mu\nu}$}\coordHE{} is
+constant or where \myHighlight{$\yh^\mu$}\coordHE{} form an algebra in the bracket \myHighlight{$[,]$}\coordHE{}.
+
+
+The situation is no easier from the path integral approach. One
+can write the path integral in terms of \myHighlight{$y^\mu$}\coordHE{}
+\begin{equation}\coord{}\boxEquation{\label{eq:ypathint}
+\int{[Dy^\mu]\; \text{sdet}(\om_{\mu\nu})^{1/2}
+\exp{\frac{i}{\hbar}\int{dt \, S_E[\bx(y)]}}},
+}{\int{[Dy^\mu]\; \text{sdet}(\om_{\mu\nu})^{1/2}
+\exp{\frac{i}{\hbar}\int{dt \, S_E[\bx(y)]}}},
+}{ecuacion}\coordE{}\end{equation}
+or in terms of the original co-ordinates \myHighlight{$x^i$}\coordHE{},
+\begin{equation}\coord{}\boxEquation{\label{eq:xpathint}
+\int{[Dx^i] [D\la^{\al}]\; \text{sdet}(\om_{ij})^{-1/2}
+\text{sdet}(\{\theta^\al,\theta^\be\})^{1/2}
+\exp{\frac{i}{\hbar}\int{dt \, S_E[x]}}}.
+}{\int{[Dx^i] [D\la^{\al}]\; \text{sdet}(\om_{ij})^{-1/2}
+\text{sdet}(\{\theta^\al,\theta^\be\})^{1/2}
+\exp{\frac{i}{\hbar}\int{dt \, S_E[x]}}}.
+}{ecuacion}\coordE{}\end{equation}
+Both expressions may look deceptively simple. However, in the
+co-ordinate representation for example, the problem is in the
+boundary conditions. In the co-ordinate representation, both
+\eqref{eq:ypathint} and \eqref{eq:xpathint} are quantum amplitudes
+between states determined by the initial and final configuration
+of fields in the path integral. We need to find a complete set of
+\myHighlight{$N-M$}\coordHE{} independent, commuting operators \myHighlight{$\hat{Q}^{\ga}$}\coordHE{}, in order
+to label states.
+
+
+The problem of finding global, commuting co-ordinates
+\myHighlight{$\hat{Q}^{\ga}$}\coordHE{} is generally unsolvable and seems to be related to
+the difficulty in the operator formalism of finding a consistent
+representation of the bracket in \eqref{eq:yrep}. This explains why
+the methods mentioned in the introduction to this paper are more
+powerful, as they work with the original Poisson bracket
+\myHighlight{$\om^{ij}$}\coordHE{}, which furnishes a representation when, as is most often
+the case, \myHighlight{$x^i$}\coordHE{} are canonical co-ordinates.
+
+
+
+
+\section{Exploring the Batalin Marnelius gauge theory}
+\label{sec:exploreBM}
+
+It's true that two of the most effective approaches,
+\cite{Batalin:1987fm,Batalin:1990mb,Batalin:1991jm} and
+\cite{Harada:1990aj,Mitra:1990mp} described in the introduction,
+to the covariant quantization of Hamiltonian systems with
+irreducible second class constraints are by converting to an
+equivalent gauge theory. However, its not easy to covariantly
+quantize all gauge theories. We should therefore be specific about
+which gauge theories are desirable. To this purpose, I define two
+terms:
+
+I define the `extended Hamiltonian form of the action' to be
+\begin{equation}\coord{}\boxEquation{ S_E[x]=\int{dt\, x^i \bar{\om}_{ij}(x) \dx^j -
+H(x) -\la_{\al}\theta^{\al}(x) -\la_a g^a(x)},
+}{ S_E[x]=\int{dt\, x^i \bar{\om}_{ij}(x) \dx^j -
+H(x) -\la_{\al}\theta^{\al}(x) -\la_a g^a(x)},
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\bar{\om}_{ij}(x)$}\coordHE{} is defined in \eqref{eq:ombar} and
+\myHighlight{$\theta^{\al}(x)$}\coordHE{} and \myHighlight{$g^a(x)$}\coordHE{} are the irreducible second and first
+class constraints respectively.
+
+I define the action to be `desirable' when it can be written in the
+form of \myHighlight{$S_E[x]$}\coordHE{} such that there are no \myHighlight{$\theta^{\al}(x)$}\coordHE{} terms and
+where \myHighlight{$\om_{ij}$}\coordHE{} is constant and thus equal to \myHighlight{$2\bar{\om}_{ij}$}\coordHE{}.
+Usually, constant \myHighlight{$\om_{ij}$}\coordHE{} means that \myHighlight{$S_E[x]$}\coordHE{} is written in
+terms of canonical co-ordinates \myHighlight{$(q^i,p_i)$}\coordHE{}.
+
+Note that we can get rid of the \myHighlight{$\theta^{\al}(x)$}\coordHE{} terms in
+\myHighlight{$S_E[x]$}\coordHE{} by parameterizing the second class constraint surface
+with non-degenerate co-ordinates \myHighlight{$y^\mu$}\coordHE{}, as in section
+\ref{sec:Diracbracket}. The cost is that \myHighlight{$S_E[y]$}\coordHE{} will then have
+in general a symplectic two-form \myHighlight{$\om_{\mu\nu}(y)$}\coordHE{}, as defined in
+\eqref{eq:omy}, which depends on \myHighlight{$y^\mu$}\coordHE{}. The two previously
+mentioned methods convert the original action \myHighlight{$S_E[x]$}\coordHE{}, assumed to
+be in canonical co-ordinates, to a `desirable' one. `Desirable'
+actions can be elegantly covariantly quantized using one of the
+equivalent antifield (BV) or Hamiltonian BRST (BFV) approaches
+\cite{Henneaux:1992ig}. As mentioned in section
+\ref{sec:Diracbracket}, the system can be quantized for some
+non-constant \myHighlight{$\om_{ij}(x)$}\coordHE{}'s, but usually, when converting to a
+gauge theory, we really mean a `desirable' gauge theory.
+
+The point is that the Batalin Marnelius action, \myHighlight{$S[\bx(x)]$}\coordHE{}, isn't
+in `extended Hamiltonian form' because \myHighlight{$\om_M(x)_{km}$}\coordHE{}, defined in
+\eqref{eq:omMform}, is degenerate. It's thus not immediately
+clear whether it's a `desirable' gauge theory or not.
+
+One can convert \myHighlight{$S[\bx(x)]$}\coordHE{} to standard \myHighlight{$S_E$}\coordHE{} form, by treating
+\myHighlight{$x^i$}\coordHE{} as ordinary Lagrangian co-ordinates and then following the
+standard procedure for formation of the Hamiltonian etc. Assume
+for simplicity that the system is bosonic and \myHighlight{$\om_{ij}$}\coordHE{} is
+constant, as is most often the case, and introduce canonical
+momenta and Poisson bracket \myHighlight{$\{,\}_P$}\coordHE{} as follows:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+p_{x^i}=\frac{\leftCoord{}\pa}{\rightCoord{}\pa\dx^i}L(x,\dx) \rightCoord{}\\\leftCoord{}
+\leftCoord{}\{x^i,x^j\}_P=\{p_{x^i},p_{x^j}\}_P=0 && \{x^i,p_{x^j}\}_P=\de^i_j.\rightCoord{}
+\rightCoord{}}{0mm}{4}{5}{
+p_{x^i}=\frac{\pa}{\pa\dx^i}L(x,\dx) \\
+\{x^i,x^j\}_P=\{p_{x^i},p_{x^j}\}_P=0 && \{x^i,p_{x^j}\}_P=\de^i_j.
+}{1}\coordE{}\end{eqnarray}
+The Hamiltonian is
+\begin{equation}\coord{}\boxEquation{
+H(x,p_x)=H(\bx(x))
+}{
+H(x,p_x)=H(\bx(x))
+}{ecuacion}\coordE{}\end{equation}
+and there are \myHighlight{$2N$}\coordHE{} irreducible, primary constraints:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\phi_k=p_{x^k}-\frac{\leftCoord{}1}{\rightCoord{}2}\bx^i(x)\om_{ij}\pa_k\bx^j &&
+\leftCoord{}\{\phi_k,\phi_m\}_P=\om_M(x)_{km},
+\rightCoord{}}{0mm}{3}{3}{
+\phi_k=p_{x^k}-\frac{1}{2}\bx^i(x)\om_{ij}\pa_k\bx^j &&
+\{\phi_k,\phi_m\}_P=\om_M(x)_{km},
+}{1}\coordE{}\end{eqnarray}
+with no further constraints obtained from consistency conditions
+\begin{equation}\coord{}\boxEquation{
+\dot{\phi_k}\approx \{\phi_k,H\}_P + v^m\{\phi_k,\phi_m\}_P \approx
+0,
+}{
+\dot{\phi_k}\approx \{\phi_k,H\}_P + v^m\{\phi_k,\phi_m\}_P \approx
+0,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$A\approx B$}\coordHE{} means \myHighlight{$A=B$}\coordHE{} on the constraint surface
+\myHighlight{$\phi_k=0$}\coordHE{}. Now, \myHighlight{$\text{Rank }\{\phi_k,\phi_m\}_P=2N-2M$}\coordHE{} and 2M
+first class constraints can be projected out
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\phi_{\al}=\phi_k G^k_{\al}(x) &&
+\leftCoord{}\{\phi_k,\phi_{\al}\}_P \approx 0.\rightCoord{}
+\rightCoord{}}{0mm}{2}{3}{
+\phi_{\al}=\phi_k G^k_{\al}(x) &&
+\{\phi_k,\phi_{\al}\}_P \approx 0.
+}{1}\coordE{}\end{eqnarray}
+As expected, \myHighlight{$\phi_{\al}$}\coordHE{} generate the gauge transformations
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\leftCoord{}\{x^i,\phi_{\al}\}_P=G^i_{\al}(x) &&
+\leftCoord{}\{p_{x^i},\phi_{\al}\}_P=-p_{x^k}\pa_iG^k_{\al}(x)
+\rightCoord{}}{0mm}{3}{2}{
+\{x^i,\phi_{\al}\}_P=G^i_{\al}(x) &&
+\{p_{x^i},\phi_{\al}\}_P=-p_{x^k}\pa_iG^k_{\al}(x)
+}{1}\coordE{}\end{eqnarray}
+and the action is
+\begin{equation}\coord{}\boxEquation{
+S_E[x,p_x]=\int{dt\, p_{x^i}\dx^i-H(\bx(x))-\la^k \phi_k(x,p_x)}.
+}{
+S_E[x,p_x]=\int{dt\, p_{x^i}\dx^i-H(\bx(x))-\la^k \phi_k(x,p_x)}.
+}{ecuacion}\coordE{}\end{equation}
+We now parameterize the second class constraint surface using
+co-ordinates \myHighlight{$(p_\al,x^i)$}\coordHE{},
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+x^k(p_\al,x^i)&=& x^k\rightCoord{}\\\leftCoord{}
+p_{x^k}(p_\al,x^i) &=& \frac{\leftCoord{}1}{\rightCoord{}2}\bx^i\om_{ij}\pa_k\bx^j +
+p_{\al}(\pa_m \theta^{\al})(\bx) \si^m_k(x).\rightCoord{}
+\rightCoord{}}{0mm}{3}{5}{
+x^k(p_\al,x^i)&=& x^k\\
+p_{x^k}(p_\al,x^i) &=& \frac{1}{2}\bx^i\om_{ij}\pa_k\bx^j +
+p_{\al}(\pa_m \theta^{\al})(\bx) \si^m_k(x).
+}{1}\coordE{}\end{eqnarray}
+So,
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\phi_k(p_\al,x^i)&=& p_{\al}(\pa_m \theta^{\al})(\bx) \si^m_k(x)\rightCoord{}\\\leftCoord{}
+\phi_\al(p_\al,x^i)&=& p_\al,
+\rightCoord{}}{0mm}{2}{3}{
+\phi_k(p_\al,x^i)&=& p_{\al}(\pa_m \theta^{\al})(\bx) \si^m_k(x)\\
+\phi_\al(p_\al,x^i)&=& p_\al,
+}{1}\coordE{}\end{eqnarray}
+using some of the identities in section \ref{sec:BMidentities}.
+Note that on the first class constraints surface,
+\myHighlight{$\phi_k(p_\al,x^i)=0$}\coordHE{} as required. We now calculate the
+corresponding symplectic two-form in these co-ordinates,
+\begin{equation}\coord{}\boxEquation{
+\om_{(p_\al,x^i),(p_\be,x^j)}= \frac{\pa X^k}{\pa(p_\al,x^i)}
+\Om_{km} \frac{\pa X^m}{\pa(p_\be,x^j)},
+}{
+\om_{(p_\al,x^i),(p_\be,x^j)}= \frac{\pa X^k}{\pa(p_\al,x^i)}
+\Om_{km} \frac{\pa X^m}{\pa(p_\be,x^j)},
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$X^k=(x^i,p_{x^i})$}\coordHE{} and \myHighlight{$\Om_{km}$}\coordHE{} is the symplectic two-form
+corresponding to the bracket \myHighlight{$\{,\}_P$}\coordHE{}.
+\begin{equation}\coord{}\boxEquation{
+\om_{(p_\al,x^i),(p_\be,x^j)}=
+\begin{pmatrix}
+0 & \vdots &(\pa_m \theta^{\al})(\bx) \si^m_j(x) \\
+\hdotsfor{3}\\
+-\si^m_i(x)(\pa_m \theta^{\be})(\bx) &\vdots & {\om_M}_{ij}(x)+
+p_{\al}A^{\al}_{ij}(x)
+\end{pmatrix}_{(p_\al,x^i),(p_\be,x^j)}
+}{
+\om_{(p_\al,x^i),(p_\be,x^j)}=
+\begin{pmatrix}
+0 & \vdots &(\pa_m \theta^{\al})(\bx) \si^m_j(x) \\
+\hdotsfor{3}\\
+-\si^m_i(x)(\pa_m \theta^{\be})(\bx) &\vdots & {\om_M}_{ij}(x)+
+p_{\al}A^{\al}_{ij}(x)
+\end{pmatrix}_{(p_\al,x^i),(p_\be,x^j)}
+}{ecuacion}\coordE{}\end{equation}
+where
+\begin{equation}\coord{}\boxEquation{
+A^{\al}_{ij}(x)=\frac{1}{2}\pa_{[i}((\pa_m \theta^{\al})(\bx)
+\si^m_{j]}(x)).
+}{
+A^{\al}_{ij}(x)=\frac{1}{2}\pa_{[i}((\pa_m \theta^{\al})(\bx)
+\si^m_{j]}(x)).
+}{ecuacion}\coordE{}\end{equation}
+Special co-ordinates \myHighlight{$x^{i\prime}=(\theta^{\al}, y^\mu)$}\coordHE{} can
+always be found such that \myHighlight{$\bx^{i\prime}(x^{\prime})=(0,y^\mu)$}\coordHE{}.
+Note that the modified regularity condition \eqref{eq:Zsmooth}
+implies \myHighlight{$\theta^\al$}\coordHE{} are adequate co-ordinates locally about any
+point \myHighlight{$x\in \M$}\coordHE{}. Then,
+\begin{equation}\coord{}\boxEquation{
+\om_{(p_\al,\theta^\ga ,y^\mu),(p_\be,\theta^\de,y^\nu)}=
+\begin{pmatrix}
+0 & \vdots & 1 & \vdots & 0\\
+\hdotsfor{5}\\
+-1 & \vdots & 0 & \vdots & 0\\
+\hdotsfor{5}\\
+0 & \vdots & 0 & \vdots & \om_{\mu\nu}(y)
+\end{pmatrix}_{(p_\al,\theta^\ga ,y^\mu),(p_\be,\theta^\de,y^\nu)}.
+}{
+\om_{(p_\al,\theta^\ga ,y^\mu),(p_\be,\theta^\de,y^\nu)}=
+\begin{pmatrix}
+0 & \vdots & 1 & \vdots & 0\\
+\hdotsfor{5}\\
+-1 & \vdots & 0 & \vdots & 0\\
+\hdotsfor{5}\\
+0 & \vdots & 0 & \vdots & \om_{\mu\nu}(y)
+\end{pmatrix}_{(p_\al,\theta^\ga ,y^\mu),(p_\be,\theta^\de,y^\nu)}.
+}{ecuacion}\coordE{}\end{equation}
+We can now see that if no non-degenerate co-ordinates \myHighlight{$y^\mu$}\coordHE{} on
+the constraint surface \myHighlight{$\Gamma$}\coordHE{} can be found such that
+\myHighlight{$\om_{\mu\nu}(y)$}\coordHE{} is constant, then \myHighlight{$\om_{(p_\al,x^i),(p_\be,x^j)}$}\coordHE{}
+isn't constant in any co-ordinate system. Thus, \myHighlight{$S[\bx(x)]$}\coordHE{} is only
+`desirable' when canonical co-ordinates \myHighlight{$y^\mu$}\coordHE{} exist on the
+constraint surface, this being one of the few examples where Dirac
+bracket quantization is possible. In other words, we can quantize
+no more systems using the BM form of the action \myHighlight{$S[\bx(x)]$}\coordHE{}, than
+by the standard Dirac bracket discussed in section
+\ref{sec:Diracbracket}.
+
+The repercussions of the above analysis appear on applying the
+superfield version of the antifield (BV) formalism directly to the
+BM action \myHighlight{$S[\bx(x)]$}\coordHE{}, as performed in the subject paper
+\cite{Batalin:2001hs}. One can directly write down the BRST
+cohomology and after choosing a suitable gauge fixing fermion, jump
+straight to the Fadeev-Popov style path integral. This Langranian
+form of BRST quantization is exactly equivalent to following
+through the above construction of \myHighlight{$S_E[x,p_x]$}\coordHE{} and the Hamiltonian
+BRST (BFV) path integral and then integrating out the momenta,
+leaving just \myHighlight{$x^i$}\coordHE{}, Lagrange multipliers and ghosts.
+
+First follows a short recap of this work:
+
+The superfield version of \myHighlight{$S[\bx(x)]$}\coordHE{} is
+\begin{equation}\coord{}\boxEquation{
+S^{\prime}[\bx(x(t,\tau))]=\int{dt\,d\tau\,
+\bx^i\bar{\om}_{ij}(\bx)D\bx^j} - \tau H(\bx),
+}{
+S^{\prime}[\bx(x(t,\tau))]=\int{dt\,d\tau\,
+\bx^i\bar{\om}_{ij}(\bx)D\bx^j} - \tau H(\bx),
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$x^i(t,\tau)=x^i_0 (t) + \tau x^i_1 (t)$}\coordHE{}, \myHighlight{$\tau$}\coordHE{} is an odd
+Grassmann parameter, \myHighlight{$\eps(x^i_0)=\eps^i$}\coordHE{}, \myHighlight{$\eps(x^i_1)=\eps^i+1$}\coordHE{}
+and
+\begin{equation}\coord{}\boxEquation{
+D=\frac{d}{d\tau} + \tau\frac{d}{dt} \implies D^2=\frac{d}{dt}.
+}{
+D=\frac{d}{d\tau} + \tau\frac{d}{dt} \implies D^2=\frac{d}{dt}.
+}{ecuacion}\coordE{}\end{equation}
+The superfield master action is
+\begin{equation}\coord{}\boxEquation{
+\begin{split}
+&S=S^{\prime}[\bx(x(t,\tau))] + \int{\tx_i \, d\tau\, dt\,
+G^i_{\al}(x) C^\al}\\
+&+ \frac{1}{2} \int{\tilde{C}_{\ga}\, d\tau \,
+dt\, U^{\ga}_{\al\be}(x)C^{\be}C^{\al}(-1)^{\eps^\al}}
+- \int{\tilde{\bar{C}}^{\al}\, d\tau\, dt\,
+\la_{\al}(-1)^{\eps^{\al}}}
+\end{split}
+}{
+\begin{split}
+&S=S^{\prime}[\bx(x(t,\tau))] + \int{\tx_i \, d\tau\, dt\,
+G^i_{\al}(x) C^\al}\\
+&+ \frac{1}{2} \int{\tilde{C}_{\ga}\, d\tau \,
+dt\, U^{\ga}_{\al\be}(x)C^{\be}C^{\al}(-1)^{\eps^\al}}
+- \int{\tilde{\bar{C}}^{\al}\, d\tau\, dt\,
+\la_{\al}(-1)^{\eps^{\al}}}
+\end{split}
+}{split}\coordE{}\end{equation}
+where
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}\rightCoord{}\label{eq:master}
+\leftCoord{}(S,S)=0 && \Delta S=0, \rightCoord{}
+\rightCoord{}}{0mm}{2}{4}{(S,S)=0 && \Delta S=0, 
+}{1}\coordE{}\end{eqnarray}
+for superfields \myHighlight{$\{x^i(t,\tau), C^\al(t,\tau), \bar{C}_\al(t,\tau),
+\la_\al(t,\tau)\}$}\coordHE{} and their super antifields. The superfield
+measure has the remarkable property \cite{Batalin:1998pz}, of
+behaving as a scalar under general, superfield co-ordinate
+transformations, thus providing the natural measure. Equation
+\eqref{eq:master} implies that no quantum corrections to the
+measure are necessary.
+
+The authors choose a satisfactory gauge fixing fermion which
+determines the super antifields, leaving the gauge fixed action
+\begin{equation}\coord{}\boxEquation{\label{eq:gfmaster}
+\begin{split}
+&S_{\psi}=S^{\prime}[\bx(x(t,\tau))] +
+\int{d\tau\, dt\, \bar{C}_{\al} \theta^{\al}(x)\pl_i
+G^i_{\be}(x)C^{\be}}\\
+&- \int{d\tau\, dt\, \la_{\al} \theta^{\al}(x)}.
+\end{split}
+}{\begin{split}
+&S_{\psi}=S^{\prime}[\bx(x(t,\tau))] +
+\int{d\tau\, dt\, \bar{C}_{\al} \theta^{\al}(x)\pl_i
+G^i_{\be}(x)C^{\be}}\\
+&- \int{d\tau\, dt\, \la_{\al} \theta^{\al}(x)}.
+\end{split}
+}{split}\coordE{}\end{equation}
+
+There are various points to be made at this stage:
+
+Elements of the zero ghost number cohomology \myHighlight{$f(x)$}\coordHE{} satisfy
+\begin{equation}\coord{}\boxEquation{
+(f(x),S)=0 \implies f(x) \pl_i G^i_{\al}(x)=0,
+}{
+(f(x),S)=0 \implies f(x) \pl_i G^i_{\al}(x)=0,
+}{ecuacion}\coordE{}\end{equation}
+where the ghosts play no role in closing the cohomological algebra.
+
+Although the gauge fixed action \eqref{eq:gfmaster} is in standard
+Fadeev-Popov form, with BRST symmetry
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\de x^i=\eta G^i_{\al}(x) C^{\al} && \de \la_{\al}=0\rightCoord{}\\\leftCoord{}
+\de C^{\al}=-\frac{\leftCoord{}1}{\rightCoord{}2}\eta U^{\al}_{\be\ga} C^{\be}C^{\ga}  &&
+\de\bar{C}_{\al}=\eta \la_{\al},
+\rightCoord{}}{0mm}{3}{4}{
+\de x^i=\eta G^i_{\al}(x) C^{\al} && \de \la_{\al}=0\\
+\de C^{\al}=-\frac{1}{2}\eta U^{\al}_{\be\ga} C^{\be}C^{\ga}  &&
+\de\bar{C}_{\al}=\eta \la_{\al},
+}{1}\coordE{}\end{eqnarray}
+for Grassmann parameter \myHighlight{$\eta$}\coordHE{},  there's no associated conserved
+Noether BRST charge. This follows from the fact that the gauge
+symmetries of \myHighlight{$S[\bx(x)]$}\coordHE{} in the original phase space \myHighlight{$\M$}\coordHE{} have no
+associated Noether charges. If we vary \myHighlight{$x^i$}\coordHE{} as \myHighlight{$\de x^i =
+G^i_{\al}(x) \eta^{\al}(t)$}\coordHE{}, where \myHighlight{$\eta^{\al}$}\coordHE{} is a small
+parameter with Grassmann parity \myHighlight{$\eps(\eta^{\al})=\eps^{\al}$}\coordHE{}, then
+the Noether identity
+\begin{equation}\coord{}\boxEquation{
+\de S[\bx(x)]= \int{dt\, S[\bx]\frac{\dl}{\de \bx^k(t)}
+(\bx^k\pl_i) G^i_{\al}(x)\eta^{\al}(t)}=0,
+}{
+\de S[\bx(x)]= \int{dt\, S[\bx]\frac{\dl}{\de \bx^k(t)}
+(\bx^k\pl_i) G^i_{\al}(x)\eta^{\al}(t)}=0,
+}{ecuacion}\coordE{}\end{equation}
+disappears trivially. The equivalent gauge symmetries in \myHighlight{$S_E[x,p]$}\coordHE{}
+yield the first class constraints \myHighlight{$\phi_{\al}$}\coordHE{} as Noether charges.
+These disappear when \myHighlight{$p_{x^i}$}\coordHE{} are integrated out of the path
+integral.
+
+The ghost part of the path integral disappears on integrating out
+\myHighlight{$C^{\al}$}\coordHE{} and \myHighlight{$\bar{C}_{\al}$}\coordHE{}, which seems to be associated
+with the non-existence of a BRST operator. The identity
+\myHighlight{$\theta^{\al}(x)\pl_i G^i_{\be}(x)|_{\theta=0}=\de^{\al}_{\be}$}\coordHE{}
+used in the subject paper is not needed to show this.
+
+The end result is the superfield version \cite{Batalin:1998pz}, of
+the standard, problematic 2nd class constraint path integral
+\eqref{eq:xpathint}. So, in another way, we have come up against
+the result that \myHighlight{$S[\bx(x)]$}\coordHE{} isn't a `desirable' action. This is
+because, in parameterizing the 2nd class constraint surface
+\myHighlight{$\theta(x)=0$}\coordHE{} degenerately, we haven't escaped from the fact that
+we are still parameterizing the constraint surface with the same
+problems as in non-degenerate parameterization, discussed in
+section \ref{sec:Diracbracket}.
+
+
+
+
+\section{Operator Quantization} \label{sec:operator}
+
+As already alluded to in section \ref{sec:exploreBM}, the gauge
+transformations \eqref{eq:gaugegen} have no corresponding Noether
+charges within the phase space \myHighlight{$\M$}\coordHE{} and hence no generators.
+Specifically, the Batalin Marnelius action \myHighlight{$S[\bx(x)]$}\coordHE{} isn't in
+extended Hamiltonian form, as would be required for gauge
+transformations to be generated by first class constraints.
+However, to use a parameterized \myHighlight{$S_E[x,p_x(x,p_\al)]$}\coordHE{} with first
+class constraint functions \myHighlight{$\phi_{\al}=p_\al$}\coordHE{} instead would be no
+more advantageous, in that no more systems could be quantized than
+using the approach below. Furthermore, \myHighlight{$S_E[x,p_x(x,p_\al)]$}\coordHE{} is
+more cumbersome and, with 2M extra phase space co-ordinates
+\myHighlight{$p_\al$}\coordHE{}, not in the spirit of the subject paper
+\cite{Batalin:2001hs}.
+
+As we shall see, the following methods, are directly related to
+the Dirac bracket approach in section \ref{sec:Diracbracket}.
+Classically, all observables \myHighlight{$F(x)$}\coordHE{} satisfy
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+F(x)\pl_k G^k_{\al}(x)=0 && \Imp F(x)=F(\bx(x))\rightCoord{}\\\leftCoord{}
+\dot{F}(\bx)=\{F(\bx),H(\bx(x))\}_M,
+\rightCoord{}}{0mm}{2}{3}{
+F(x)\pl_k G^k_{\al}(x)=0 && \Imp F(x)=F(\bx(x))\\
+\dot{F}(\bx)=\{F(\bx),H(\bx(x))\}_M,
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$\{,\}_M$}\coordHE{} is the bracket defined in section
+\ref{sec:Mybracket}.
+
+There is a correspondence between the bracket \myHighlight{$\{,\}_M$}\coordHE{} on
+degenerate co-ordinates \myHighlight{$x^i$}\coordHE{} and the bracket \myHighlight{$\{,\}_*$}\coordHE{} on
+non-degenerate co-ordinates \myHighlight{$y^\mu$}\coordHE{}. They have the similar
+properties \eqref{eq:mybracket} and \eqref{eq:starbracket}, thus we
+can write
+\begin{equation}\coord{}\boxEquation{\label{eq:linkxy}
+\{F(\bx(x)),G(\bx(x))\}_M= \{F(\bx(y)),G(\bx(y))\}_*
+}{\{F(\bx(x)),G(\bx(x))\}_M= \{F(\bx(y)),G(\bx(y))\}_*
+}{ecuacion}\coordE{}\end{equation}
+for \myHighlight{$\bx^i(x)=\bx^i(y)$}\coordHE{}. The only difference is that we only
+allow gauge invariant functions, i.e. functions of the form
+\myHighlight{$F(\bx(x)$}\coordHE{}, inside the bracket \myHighlight{$\{,\}_M$}\coordHE{}. All functions \myHighlight{$f(y)$}\coordHE{} can
+be written in the form \myHighlight{$F(\bx(y))$}\coordHE{} however.
+
+
+To emphasize this point, there is \textit{no} equivalent,
+consistent, quantum gauge invariance condition on observables of
+the form
+\begin{equation}\coord{}\boxEquation{
+[\hat{F}(x),\hat{G}_{\al}(x)]=V_{\al}^{\be} \hat{G}_\be,
+}{
+[\hat{F}(x),\hat{G}_{\al}(x)]=V_{\al}^{\be} \hat{G}_\be,
+}{ecuacion}\coordE{}\end{equation}
+as there are no first class constraints within \myHighlight{$\M$}\coordHE{} associated
+with \myHighlight{$\pl_k G^k_{\al}(x)$}\coordHE{}. Thus, there is also \textit{no} gauge
+invariance condition on the states \myHighlight{$|s>$}\coordHE{} in the Hilbert space of
+the form
+\begin{equation}\coord{}\boxEquation{
+\hat{G}_{\al}|s>=0.
+}{
+\hat{G}_{\al}|s>=0.
+}{ecuacion}\coordE{}\end{equation}
+
+One quantization procedure is as follows:
+
+Firstly, we choose a basis for the classical observables
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+Y^\mu(\bx(x)) && \mu=1,\ldots 2N-2M, \rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+Y^\mu(\bx(x)) && \mu=1,\ldots 2N-2M, 
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$Y^\mu(\bx(x))=(y^\mu)^{-1}(\bx(x))$}\coordHE{} and \myHighlight{$y^\mu$}\coordHE{} are
+degenerate co-ordinates on the constraint surface \myHighlight{$\Gamma$}\coordHE{}. So,
+\begin{equation}\coord{}\boxEquation{
+Y^\mu(\bx(y))=y^\mu.
+}{
+Y^\mu(\bx(y))=y^\mu.
+}{ecuacion}\coordE{}\end{equation}
+and
+\begin{equation}\coord{}\boxEquation{
+\begin{split}
+\{Y^\mu(\bx(x)),Y^\nu(\bx(x))\}_M&=
+\{Y^{\mu}(\bx(y),Y^{\nu}(\bx(y))\}_*\\
+&=\om^{\mu\nu}(Y(\bx(x)))
+\end{split}
+}{
+\begin{split}
+\{Y^\mu(\bx(x)),Y^\nu(\bx(x))\}_M&=
+\{Y^{\mu}(\bx(y),Y^{\nu}(\bx(y))\}_*\\
+&=\om^{\mu\nu}(Y(\bx(x)))
+\end{split}
+}{split}\coordE{}\end{equation}
+All observables \myHighlight{$F(\bx(x))$}\coordHE{} are written \myHighlight{$f(Y(\bx(x)))$}\coordHE{}. We can
+remove all mention of \myHighlight{$\bx(x)$}\coordHE{} and the problem reduces to finding a
+representation of
+\begin{equation}\coord{}\boxEquation{
+[\Yh^\mu, \Yh^\nu]=i \hbar \om^{\mu\nu}(\Yh),
+}{
+[\Yh^\mu, \Yh^\nu]=i \hbar \om^{\mu\nu}(\Yh),
+}{ecuacion}\coordE{}\end{equation}
+just as in section \ref{sec:Diracbracket}.
+
+A second procedure is as follows:
+
+Sometimes, we can choose \myHighlight{$\om_M^{ij}(x)$}\coordHE{} such that a representation
+of
+\begin{equation}\coord{}\boxEquation{
+[\xh^i,\xh^j]=i\hbar \om^{ij}_M(\xh)
+}{
+[\xh^i,\xh^j]=i\hbar \om^{ij}_M(\xh)
+}{ecuacion}\coordE{}\end{equation}
+can be found. In particular, if \myHighlight{$\om_M^{ij}=\om^{ij}$}\coordHE{} and \myHighlight{$x^i$}\coordHE{} are
+canonical co-ordinates (q,p), then we can construct the standard
+co-ordinate representation. The states \myHighlight{$|q>$}\coordHE{}, such that
+\myHighlight{$\hat{q^i}|q>=q^i|q>$}\coordHE{} form a basis for the Hilbert space.
+
+It's always possible to  make an appropriate choice of \myHighlight{$\bx^i(x)$}\coordHE{}
+and \myHighlight{$\om_M^{ij}=\om^{ij}$}\coordHE{} when there exist non-degenerate,
+canonical co-ordinates \myHighlight{$y^\mu$}\coordHE{} on the constraint surface.
+
+Clearly, unphysical operators and states are present in this
+representation, and there's no way of projecting them out as in the
+BRST formalism. By its very nature, all unphysical operators must
+be removed at the classical stage.
+
+So, we define some consistent normal ordering scheme, which
+preserves the reality properties of observables
+\myHighlight{$:\hat{F}(\bx(\xh)):$}\coordHE{}. Now, for a co-ordinate representation, we
+find \myHighlight{$N-M$}\coordHE{} commuting observables \myHighlight{$:\Qh^{\ga}(\bx(\xh)):$}\coordHE{}
+\begin{equation}\coord{}\boxEquation{
+[:\Qh^{\ga}(\bx(\xh)):\, , \, :\Qh^{\de}(\bx(\xh)):]=0,
+}{
+[:\Qh^{\ga}(\bx(\xh)):\, , \, :\Qh^{\de}(\bx(\xh)):]=0,
+}{ecuacion}\coordE{}\end{equation}
+then states \myHighlight{$\{|Q>\}$}\coordHE{}, such that \myHighlight{$\Qh^{\ga}|Q>=Q^{\ga}|Q>$}\coordHE{}, form a
+basis for all physical states.
+
+Essentially, this is the formalism advocated in
+\cite{Lyakhovich:2001cm}, where the condition \eqref{eq:Poisson}
+was actually imposed.
+
+It's not always necessary to write down a basis for all physical
+operators. We can consider a sub-algebra of operators, so long as we
+can construct \myHighlight{$:\Qh^{\ga}:$}\coordHE{} from them in order to have a basis for
+all states. Example \ref{exa:Ponsphere} illustrates this point, a
+basis for the sub-algebra being \myHighlight{$\{\Lh_i\}$}\coordHE{} and the maximal set
+of commuting operators \myHighlight{$\{\Lhb^2, \Lh_3\}$}\coordHE{}.
+
+
+
+\section{Mixed class constraints}
+
+There are various ways that one can envisage introducing first
+class constraints into this formalism. Supposing we start with the
+usual irreducible second class constraints \myHighlight{$\theta^{\al}(x)$}\coordHE{} and
+some irreducible first class constraints \myHighlight{$g^a(x)$}\coordHE{},
+
+1. We could introduce good canonical gauge fixing constraints
+\cite{Henneaux:1992ig} \myHighlight{$c^a(x)$}\coordHE{}, such that \myHighlight{$\text{sdet }
+\{g^a(x),c^b(x)\} \neq 0$}\coordHE{}, then all the constraints are second
+class and we can apply the BM formalism to this new system.
+
+2. We could calculate \myHighlight{$\bx^i(x)$}\coordHE{} which parameterizes the second
+class surface as before, however \myHighlight{$g^a(\bx) \neq 0$}\coordHE{} now. We then
+quantize the action \myHighlight{$S[\bx(x)]$}\coordHE{}. This was alluded to in
+\cite{Lyakhovich:2001cm}.
+
+Method 1 is unlikely to be desirable since first class constraints
+are far easier to deal with than a BM processing of second class
+ones, but it is method 2 which is most useful and which I shall
+further explore below.
+
+So after constructing \myHighlight{$\bx^i(x)$}\coordHE{} with the usual
+properties \eqref{eq:xbar1} and \eqref{eq:xbar2}, one can write
+down the action. The original extended action is
+\begin{equation}\coord{}\boxEquation{
+S_E[x]=\int{dt\, (x^i \bar{\om}_{ij}(x) \dot{x}^j
+-H(x)-\lambda_{\al}\theta^{\al}(x) - \lambda_a g^a(x))}.
+}{
+S_E[x]=\int{dt\, (x^i \bar{\om}_{ij}(x) \dot{x}^j
+-H(x)-\lambda_{\al}\theta^{\al}(x) - \lambda_a g^a(x))}.
+}{ecuacion}\coordE{}\end{equation}
+The BM gauge invariant action is
+\begin{equation}\coord{}\boxEquation{\label{eq:S_BM_firstclass}
+S[\bx(x)]=\int{dt\, (\bx^i \bar{\om}_{ij}(\bx) \dot{\bx}^j -H(\bx)
+-\lambda_a g^a(\bx))}.
+}{S[\bx(x)]=\int{dt\, (\bx^i \bar{\om}_{ij}(\bx) \dot{\bx}^j -H(\bx)
+-\lambda_a g^a(\bx))}.
+}{ecuacion}\coordE{}\end{equation}
+As well as the BM gauge symmetries from the degenerate
+parameterization of \myHighlight{$\bx(x)$}\coordHE{} as denoted by
+\begin{equation}\coord{}\boxEquation{
+S[\bx]\frac{\dl}{\de x^i} G^i_{\al}(x)=0,
+}{
+S[\bx]\frac{\dl}{\de x^i} G^i_{\al}(x)=0,
+}{ecuacion}\coordE{}\end{equation}
+there are gauge symmetries arising from \myHighlight{$g^a(\bx)$}\coordHE{}. An
+infinitesimal gauge transformation of a BM observable \myHighlight{$F(\bx)$}\coordHE{} is
+\begin{equation}\coord{}\boxEquation{
+\de_{\eta}F(\bx) =  \{F(\bx),\eta_a g^a(\bx)\}_M
+}{
+\de_{\eta}F(\bx) =  \{F(\bx),\eta_a g^a(\bx)\}_M
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\eta_a$}\coordHE{} are infinitesimal parameters with Grassmann parity
+\myHighlight{$\eps(\eta_a)=\eps(g^a(x))$}\coordHE{}. The relevant \myHighlight{$\{,\}_M$}\coordHE{} bracket
+algebra is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\leftCoord{}\{g_a(\bx),g_b(\bx)\}_M=U^c_{ab}(\bx)g_c(\bx) \rightCoord{}\\\leftCoord{}
+\leftCoord{}\{H(\bx),g_a(\bx)\}_M=V_a^b(\bx)g_b(\bx)
+\rightCoord{}}{0mm}{4}{3}{
+\{g_a(\bx),g_b(\bx)\}_M=U^c_{ab}(\bx)g_c(\bx) \\
+\{H(\bx),g_a(\bx)\}_M=V_a^b(\bx)g_b(\bx)
+}{1}\coordE{}\end{eqnarray}
+and the gauge symmetry of the action \myHighlight{$S[\bx]$}\coordHE{} in
+\eqref{eq:S_BM_firstclass} arising from \myHighlight{$g_a$}\coordHE{} is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\de_{\eta} g_a(\bx)=\{g_a(\bx),\eta^b g_b(\bx)\}_M \rightCoord{}\\\leftCoord{}
+\de_{\eta} H(\bx)=\{H(\bx), \eta^a g_a(\bx)\}_M \rightCoord{}\\\leftCoord{}
+\de_{\eta} \la^a=\dot{\eta^a} + \la^c \eta^b U^a_{bc}(\bx) -\eta^b
+V_b^a(\bx)
+\rightCoord{}}{0mm}{3}{4}{
+\de_{\eta} g_a(\bx)=\{g_a(\bx),\eta^b g_b(\bx)\}_M \\
+\de_{\eta} H(\bx)=\{H(\bx), \eta^a g_a(\bx)\}_M \\
+\de_{\eta} \la^a=\dot{\eta^a} + \la^c \eta^b U^a_{bc}(\bx) -\eta^b
+V_b^a(\bx)
+}{1}\coordE{}\end{eqnarray}
+An observable \myHighlight{$f(x)$}\coordHE{} must be gauge invariant in both senses:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+f(x)\pl_i G^i_{\al}(x)=0 && \{f(x),g_a(\bx)\}_M=
+W^b_a(\bx)g_a(\bx)
+\rightCoord{}}{0mm}{1}{2}{
+f(x)\pl_i G^i_{\al}(x)=0 && \{f(x),g_a(\bx)\}_M=
+W^b_a(\bx)g_a(\bx)
+}{1}\coordE{}\end{eqnarray}
+The above formalism is similar to that which we would obtain on
+parameterizing the second class constraint surface with
+non-degenerate co-ordinates \myHighlight{$y^\mu$}\coordHE{}, as in section
+\ref{sec:Diracbracket}. The approach is nearly identical to that
+in \cite{Henneaux:1992ig}, with the bracket \myHighlight{$\{,\}_*$}\coordHE{} replaced by
+\myHighlight{$\{,\}_M$}\coordHE{}. The relation between the two brackets is evident in
+equation \eqref{eq:linkxy}.
+
+One can then either pursue the operator formalism as laid out in
+section \ref{sec:operator}, or follow the superfield anti-field
+approach, remembering the extra gauge symmetries from \myHighlight{$g_a(\bx)$}\coordHE{}.
+
+
+\section{Examples}
+\exa[The simplest example]{
+The simplest example that one can conceive is where there are
+bosonic, canonical co-ordinates \myHighlight{$\{x^i\}=\{q^1,q^2,p_1,p_2\}$}\coordHE{} and
+second class constraints
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\theta^1=q^1 && \theta^2=p_1.\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+\theta^1=q^1 && \theta^2=p_1.
+}{1}\coordE{}\end{eqnarray}
+For further simplicity, we don't consider the Hamiltonian, we just
+generate the correct quantum representation of the system.
+
+The simplest degenerate parameterization is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\bq^1=0 && \bp_1=0\rightCoord{}\\\leftCoord{}
+\bq^2=q^2 && \bp_2=p_2,
+\rightCoord{}}{0mm}{2}{3}{
+\bq^1=0 && \bp_1=0\\
+\bq^2=q^2 && \bp_2=p_2,
+}{1}\coordE{}\end{eqnarray}
+where
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+Z^i_1 \pa_i=G^i_1 \pa_i=\frac{\leftCoord{}\pa}{\rightCoord{}\pa q^1} && Z^i_2 \pa_i=G^i_2
+\pa_i=\frac{\leftCoord{}\pa}{\rightCoord{}\pa p_1}.\rightCoord{}
+\rightCoord{}}{0mm}{3}{5}{
+Z^i_1 \pa_i=G^i_1 \pa_i=\frac{\pa}{\pa q^1} && Z^i_2 \pa_i=G^i_2
+\pa_i=\frac{\pa}{\pa p_1}.
+}{1}\coordE{}\end{eqnarray}
+Now, \myHighlight{$\bq^2$}\coordHE{} and \myHighlight{$\bp_2$}\coordHE{} form a basis for the observables and in
+this simple case,
+\begin{equation}\coord{}\boxEquation{
+\{\bx^i,\bx^j\}_M=\{\bx^i,\bx^j\}_D|_{x\ra \bx(x)}
+}{
+\{\bx^i,\bx^j\}_M=\{\bx^i,\bx^j\}_D|_{x\ra \bx(x)}
+}{ecuacion}\coordE{}\end{equation}
+is solved by taking \myHighlight{$\{,\}_M \equiv \{,\}$}\coordHE{}, where \myHighlight{$\{,\}$}\coordHE{} is the
+standard Poisson bracket. So a basis of states is \myHighlight{$\{|q^2>\}$}\coordHE{} and
+yields a representation of
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\leftCoord{}[\qh^2,\ph_2]=i\hbar && [\qh^2,\qh^2]=[\ph_2,\ph_2]=0.\rightCoord{}
+\rightCoord{}}{0mm}{2}{3}{
+[\qh^2,\ph_2]=i\hbar && [\qh^2,\qh^2]=[\ph_2,\ph_2]=0.
+}{1}\coordE{}\end{eqnarray}
+}
+
+\exa[A non-relativistic particle on a sphere]{
+
+This example was both considered briefly in
+\cite{Lyakhovich:2001cm}, and in detail in \cite{Harada:1990aj} in
+the context of `gauge-unfixing'.
+
+The action is
+\begin{equation}\coord{}\boxEquation{
+S=\int{dt\,(\frac{m}{2} \dot{\qb}^2 + \la (\qb^2-R^2))},
+}{
+S=\int{dt\,(\frac{m}{2} \dot{\qb}^2 + \la (\qb^2-R^2))},
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\qb=(q^1,q^2,q^3)$}\coordHE{}, \myHighlight{$R$}\coordHE{} is the radius of the sphere and
+\myHighlight{$\la$}\coordHE{} is a Lagrange multiplier. The Hamiltonian is
+\begin{equation}\coord{}\boxEquation{
+H=\frac{1}{2m}\pb^2 - \la(\qb^2-R^2),
+}{
+H=\frac{1}{2m}\pb^2 - \la(\qb^2-R^2),
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\pb=(p_1,p_2,p_3)$}\coordHE{} and \myHighlight{$p_\la$}\coordHE{} are the canonical momenta
+conjugate to \myHighlight{$\qb$}\coordHE{} and \myHighlight{$\la$}\coordHE{} respectively. The constraints are
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\theta^1=p_\la && \theta^2= \qb^2-R^2\rightCoord{}\\\leftCoord{}
+\theta^3=\qb .\pb && \theta^4=\la -\frac{\leftCoord{}\pb^2}{\rightCoord{}2mR^2}. \rightCoord{}
+\rightCoord{}}{0mm}{3}{5}{
+\theta^1=p_\la && \theta^2= \qb^2-R^2\\
+\theta^3=\qb .\pb && \theta^4=\la -\frac{\pb^2}{2mR^2}. 
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$\theta^2,\theta^3,\theta^4$}\coordHE{} come from requiring the
+consistency conditions \myHighlight{$\dot{\theta^\al}\approx 0$}\coordHE{}. We can
+calculate \myHighlight{$\det{\{\theta^\al,\theta^\be\}}\neq 0$}\coordHE{} so long as \myHighlight{$\qb^2
+\neq 0$}\coordHE{}, thus the constraints are second class.
+
+I now compare various different methods.
+
+The `gauge unfixing' procedure, discussed in \cite{Harada:1990aj},
+was to discard the constraints \myHighlight{$\theta^3,\theta^4$}\coordHE{}, leaving first
+class constraints \myHighlight{$\theta^1$}\coordHE{} and \myHighlight{$\theta^2$}\coordHE{}.
+\begin{equation}\coord{}\boxEquation{
+\tilde{H}=\frac{\Lb^2}{2mR^2}
+}{
+\tilde{H}=\frac{\Lb^2}{2mR^2}
+}{ecuacion}\coordE{}\end{equation}
+is then a suitable first class Hamiltonian i.e. \myHighlight{$\{\tilde{H},
+\theta^\al\}|_{\theta^1=\theta^2=0}=0$}\coordHE{} for \myHighlight{$\al=1,2$}\coordHE{}, with
+\myHighlight{$L_i=\eps_{ijk}q^jp_k$}\coordHE{} and
+\begin{equation}\coord{}\boxEquation{\label{eq:Lalg}
+\{L_i,L_j\}=\eps_{ijk}L_k
+}{\{L_i,L_j\}=\eps_{ijk}L_k
+}{ecuacion}\coordE{}\end{equation}
+as the standard angular momenta algebra.
+
+The total Hilbert space is spanned by \myHighlight{$|\la; r; \theta,\phi>$}\coordHE{},
+where \myHighlight{$r^2=\qb^2$}\coordHE{} and \myHighlight{$\theta,\phi$}\coordHE{} are spherical polar
+co-ordinates. A basis for physical states is \myHighlight{$|p_\la=0;r=R;l,m>$}\coordHE{},
+from which a consistent representation of sub-algebra
+\begin{equation}\coord{}\boxEquation{\label{eq:QLalg}
+[\Lh_i,\Lh_j]=i\hbar\Lh_k
+}{[\Lh_i,\Lh_j]=i\hbar\Lh_k
+}{ecuacion}\coordE{}\end{equation}
+is formed. The states \myHighlight{$|l,m>$}\coordHE{} are labelled, by employing commuting
+operators \myHighlight{$\Lhb^2$}\coordHE{} and \myHighlight{$\Lh_3$}\coordHE{}, as follows:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\Lhb^2|l,m>=\hbar^2 l(l+1) && \Lh_3|l,m>=\hbar m|l,m>.\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+\Lhb^2|l,m>=\hbar^2 l(l+1) && \Lh_3|l,m>=\hbar m|l,m>.
+}{1}\coordE{}\end{eqnarray}
+The physical states are energy eigenstates, with eigenvalues
+\begin{equation}\coord{}\boxEquation{
+E_l=\frac{\hbar^2 l(l+1)}{2mR^2}.
+}{
+E_l=\frac{\hbar^2 l(l+1)}{2mR^2}.
+}{ecuacion}\coordE{}\end{equation}
+The point here, is that we use the standard Poisson bracket from
+which a quantum representation is always possible.
+
+A second method is the non-degenerate parameterization technique
+, discussed in section \ref{sec:Diracbracket}.
+We can take spherical polar co-ordinates such that
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\bar{\qb}=R\erb && \bar{\pb}=\frac{\leftCoord{}p_{\theta}}{\rightCoord{}R}\etb +
+\frac{\leftCoord{}p_{\phi}}{\rightCoord{}R\sin{\theta}}\epb
+\rightCoord{}}{0mm}{3}{4}{
+\bar{\qb}=R\erb && \bar{\pb}=\frac{p_{\theta}}{R}\etb +
+\frac{p_{\phi}}{R\sin{\theta}}\epb
+}{1}\coordE{}\end{eqnarray}
+where
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\erb= \rightCoord{}
+\begin{pmatrix} \rightCoord{}
+\sin{\theta}\cos{\phi}\rightCoord{}\\\leftCoord{}
+\sin{\theta}\sin{\phi}\rightCoord{}\\\leftCoord{}
+\cos{\theta}\rightCoord{}
+\end{pmatrix}&& \rightCoord{}
+\etb= \rightCoord{}
+\begin{pmatrix} \rightCoord{}
+\cos{\theta}\cos{\phi}\rightCoord{}\\\leftCoord{}
+\cos{\theta}\sin{\phi}\rightCoord{}\\\leftCoord{}
+\leftCoord{}-\sin{\theta}\rightCoord{}
+\end{pmatrix}\rightCoord{}\\\leftCoord{}
+\epb= \rightCoord{}
+\begin{pmatrix} \rightCoord{}
+\leftCoord{}-\sin{\phi}\rightCoord{}\\\leftCoord{}
+\cos{\phi}\rightCoord{}\\\leftCoord{}
+\leftCoord{}0\rightCoord{}
+\end{pmatrix}. \rightCoord{}
+\rightCoord{}}{0mm}{11}{20}{
+\erb= 
+\begin{pmatrix} 
+\sin{\theta}\cos{\phi}\\
+\sin{\theta}\sin{\phi}\\
+\cos{\theta}
+\end{pmatrix}&& 
+\etb= 
+\begin{pmatrix} 
+\cos{\theta}\cos{\phi}\\
+\cos{\theta}\sin{\phi}\\
+-\sin{\theta}
+\end{pmatrix}\\
+\epb= 
+\begin{pmatrix} 
+-\sin{\phi}\\
+\cos{\phi}\\
+0
+\end{pmatrix}. 
+}{1}\coordE{}\end{eqnarray}
+Constraints \myHighlight{$\theta^1$}\coordHE{} and \myHighlight{$\theta^4$}\coordHE{} are simply parameterized away
+using their defining equations. Applying equation \eqref{eq:omy},
+one can show that \myHighlight{$\{\theta,\phi,p_{\theta},p_{\phi}\}$}\coordHE{} are
+canonical co-ordinates on the constraint surface, thus a quantum
+representation can be found. Writing
+\myHighlight{$\Lb=\bar{\qb}\times\bar{\pb}$}\coordHE{}, we find that the Hamiltonian is
+\begin{equation}\coord{}\boxEquation{
+H=\frac{\Lb^2(\bar{\qb},\bar{\pb})}{2mR^2}
+}{
+H=\frac{\Lb^2(\bar{\qb},\bar{\pb})}{2mR^2}
+}{ecuacion}\coordE{}\end{equation}
+and using \myHighlight{$\{\theta, p_{\theta}\}_*=1$}\coordHE{} etc. ,
+\begin{equation}\coord{}\boxEquation{
+\{L_i,L_j\}_*=\eps_{ijk}L_k.
+}{
+\{L_i,L_j\}_*=\eps_{ijk}L_k.
+}{ecuacion}\coordE{}\end{equation}
+A quantum representation of \eqref{eq:QLalg} is constructed.
+The full Hilbert space of states is spanned by \myHighlight{$\{|l,m>\}$}\coordHE{}, where
+\myHighlight{$\Lhb^2$}\coordHE{} and \myHighlight{$\Lh_3$}\coordHE{} form the maximal set of commuting operators.
+
+A third method is the second operator formalism of section
+\ref{sec:operator}, which in this case, is the same as that in
+\cite{Lyakhovich:2001cm}.
+
+A degenerate parameterization is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\bar{\qb}=\frac{\leftCoord{}R}{\rightCoord{}\sqrt{\qb^2}}\qb && \rightCoord{}
+\bar{\pb}=\frac{\leftCoord{}\sqrt{\qb^2}}{R}(\pb-\frac{\leftCoord{}\pb.\qb}{\rightCoord{}\qb^2}\qb), \rightCoord{}
+\rightCoord{}}{0mm}{4}{6}{
+\bar{\qb}=\frac{R}{\sqrt{\qb^2}}\qb && 
+\bar{\pb}=\frac{\sqrt{\qb^2}}{R}(\pb-\frac{\pb.\qb}{\qb^2}\qb), 
+}{1}\coordE{}\end{eqnarray}
+where we can see that conditions \eqref{eq:xbar1} and
+\eqref{eq:map2} are satisfied.
+The Hamiltonian is
+\begin{equation}\coord{}\boxEquation{
+H=\frac{\bar{\pb}^2}{2m}= \frac{\Lb^2(\qb,\pb)}{2mR^2}.
+}{
+H=\frac{\bar{\pb}^2}{2m}= \frac{\Lb^2(\qb,\pb)}{2mR^2}.
+}{ecuacion}\coordE{}\end{equation}
+We can check that \myHighlight{$\{,\}_M \equiv \{,\}$}\coordHE{} in this case, and also
+that \myHighlight{$\Lb(\bar{\qb},\bar{\pb})=\Lb(\qb,\pb)$}\coordHE{}. Thus the functions
+\myHighlight{$L_i$}\coordHE{} are observables and form the closed algebra as in
+\eqref{eq:Lalg}. We can form a quantum representation of the
+sub-algebra \eqref{eq:QLalg}, and again label states \myHighlight{$|l,m>$}\coordHE{} with
+the maximal commuting sub-algebra of observables, \myHighlight{$\Lhb^2$}\coordHE{} and
+\myHighlight{$\Lh_3$}\coordHE{}.
+
+The point was made in \cite{Lyakhovich:2001cm} of the similarity
+between the above degenerate parameterization quantization
+approach, and the `gauge-unfixing' procedure in the first part of
+this example. As I have argued in sections \ref{sec:exploreBM} and
+\ref{sec:operator} of this paper, the similarities between the
+degenerate and non-degenerate parameterization are more
+fundamental, being linked by equation \eqref{eq:linkxy}.
+}
+
+
+\label{exa:Ponsphere}
+
+
+\section{Concluding remarks}
+
+In the preceding work, it was shown that the regularity conditions
+on the constraints needed to be modified, and also, the bracket
+\myHighlight{$\{,\}_M$}\coordHE{} was introduced from which was developed the operator
+formalism. We have seen that quantization of the BM theory amounts
+to Dirac bracket quantization, and lacks the power of other
+established approaches
+\cite{Batalin:1987fm,Batalin:1990mb,Batalin:1991jm} and
+\cite{Harada:1990aj,Mitra:1990mp} mentioned in the introduction.
+
+However, where Dirac bracket quantization is possible, the second
+of the operator formalisms in section \ref{sec:operator} is an
+attractive alternative to the methods used in section
+\ref{sec:Diracbracket}. It combines the advantage, as with
+non-degenerate parameterization, of imposing the constraints at
+the classical stage whilst avoiding the, often inconvenient,
+co-ordinates \myHighlight{$y^\mu$}\coordHE{}. Example \ref{exa:Ponsphere}, `a
+non-relativistic particle on a sphere', illustrates this point.
+
+
+\medskip
+\section*{Acknowledgments}
+I am grateful to Oleg Soloviev for his support during my PhD. I
+would also like to thank Igor Batalin, Marc Henneaux, Robert
+Marnelius and Daniel Waldram for answering my questions.
+
+This work was funded by PPARC.
+
+-----------------------------------------------------------------
+\bibliographystyle{utphys}
+\bibliography{xbib}
+
+
+\end{document}
+
+\bye

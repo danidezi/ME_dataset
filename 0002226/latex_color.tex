@@ -1,0 +1,2222 @@
+
+\documentclass[a4paper,12pt]{article}
+
+\font\sf=cmss10                    %San-Serif 10
+\textwidth=6.5in
+\textheight=8.5in
+\oddsidemargin=0.0in
+\evensidemargin=0.0in
+\topmargin=0in
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\Tr{\rm Tr\ }
+\def\mt{\tilde{m}}
+\def\varphit{\tilde{\varphi}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\sqr#1#2{{\vcenter{\vbox{\hrule height.#2pt
+         \hbox{\vrule width.#2pt height#1pt \kern#1pt
+            \vrule width.#2pt}
+         \hrule height.#2pt}}}}
+\def\square{\mathop{\mathchoice\sqr56\sqr56\sqr{3.75}4\sqr34\,}\nolimits}
+
+
+\usepackage{useful_macros}
+\begin{document}
+
+\setlength{\baselineskip}{14pt} % Makes the document double spaced
+\setlength{\parskip}{1.35ex}
+\setlength{\parindent}{0em}
+
+\noindent
+
+\thispagestyle{empty}
+{\flushright{\small MIT-CTP-2955\\hep-th/0002226\\}}
+
+\vspace{.3in}
+\begin{center}\Large {\bf 
+Notes on Fluctuations and Correlation Functions 
+in Holographic Renormalization Group Flows}
+\end{center}
+
+
+\vspace{.1in}
+\begin{center}
+{\large Oliver DeWolfe\myHighlight{$^a$}\coordHE{} and Daniel Z. Freedman\myHighlight{$^{a,b}$}\coordHE{}}
+
+\vspace{.1in}
+{ {\it \myHighlight{$^a$}\coordHE{}Center for Theoretical Physics,\\
+Laboratory for Nuclear Science,\\
+Department of Physics\\
+Massachusetts Institute of Technology\\
+Cambridge, Massachusetts 02139, U.S.A. \\ \ \\
+\myHighlight{$^b$}\coordHE{}Department of Mathematics \\
+Massachusetts Institute of Technology\\
+Cambridge, Massachusetts 02139, U.S.A.}}
+\vspace{.2in}
+
+E-mail: {\tt odewolfe@mit.edu, dzf@math.mit.edu}
+\end{center}
+\begin{center}February 2000\end{center}
+
+\vspace{0.1in}
+\begin{abstract}
+We study the coupled equations describing fluctuations of scalars and
+the metric about background solutions of \myHighlight{${\cal N}=8$}\coordHE{} gauged
+supergravity which are dual to boundary field theories with
+renormalization group flow. For the case of a kink solution with a
+single varying scalar, we develop a procedure to decouple the
+equations, and we solve them in particular examples. However,
+difficulties occur in the calculation of correlation functions from
+the fluctuations, presumably because the AdS/CFT correspondence has
+not yet been properly implemented in the coupled scalar-gravity
+sector.  Some new examples of correlators of operators dual to simpler
+uncoupled bulk scalars are given and are satisfactory. As byproducts
+of our study we make some observations relevant to the stability of
+domain walls in the brane-world scenario and to the Hamilton-Jacobi
+formulation of holographic RG flows.
+\end{abstract}
+
+
+\newpage
+\section{Introduction}
+
+In these notes we study correlation functions in certain
+four-dimensional field theories by examining fluctuations about kink
+solutions of gauged 5-dimensional \myHighlight{${\cal N}=8$}\coordHE{} supergravity
+\cite{GRW,PPvN}. In light of the AdS/CFT correspondence
+\cite{juan,gkp,witten1}, these gravitational backgrounds have been
+interpreted as the duals of \myHighlight{${\cal N}=4$}\coordHE{} Super Yang-Mills theory
+either perturbed by various relevant operators \cite{gppz1, dz1,
+fgpw1, gppz, dz2}, or given expectation values for some scalar fields
+\cite{fgpw2}.  Two-, three- and four-point correlation functions
+in pure \myHighlight{${\cal N}=4$}\coordHE{} SYM are by now well-understood \cite{gkp,
+witten1, fmmr, dmmr}, while in kink backgrounds a few two-point
+functions have been calculated for operators whose dual scalars are
+inert \cite{fgpw2}.  Here we focus on the more complex case of field
+theory operators whose dual supergravity scalars are varying radially
+in the kink background, although we obtain some new results for inert
+scalars also.
+
+Implicit in our use of the AdS/CFT correspondence is the assumption
+that 5D maximally supersymmetric gauged supergravity arises as a
+consistent truncation of ten-dimensional Type IIB supergravity on
+\myHighlight{$AdS_5 \times S^5$}\coordHE{}.  In the case where the dual field theory is on the
+Coulomb branch, the ``lifts'' of certain five-dimensional solutions to
+ten-dimensional type IIB supergravity are known and correspond to
+continuous distributions of D3-branes in the compact extra dimensions
+\cite{fgpw2,bs}.  Other ten-dimensional configurations of non-coincident
+D-branes have also been studied \cite{kw, cr, rv}. However, we shall
+largely take a five-dimensional viewpoint.
+
+
+Five-dimensional \myHighlight{${\cal N}=8$}\coordHE{} gauged supergravity possesses 42 scalar
+fields \myHighlight{$\varphi^I$}\coordHE{}, and a potential \myHighlight{$V(\varphi)$}\coordHE{} which depends on
+40 of them.  The scalars fall into various representations of the
+\myHighlight{$SO(6)$}\coordHE{} gauge group: there is a \myHighlight{$20'$}\coordHE{} representation dual to the
+dimension 2 primary operators \myHighlight{${\Tr} X^2$}\coordHE{}, a \myHighlight{$10 \oplus \overline{10}$}\coordHE{}
+representation corresponding to their dimension 3 descendents, and
+finally the singlet axion-dilaton, which does not enter into
+\myHighlight{$V(\varphi)$}\coordHE{} and is dual to the \myHighlight{${\cal N}=4$}\coordHE{} Lagrangian \myHighlight{${\cal L} =
+{\Tr} F^2 + \cdots$}\coordHE{}, and thus corresponds to the exactly marginal
+coupling \myHighlight{$\theta + 4\pi i/g^2$}\coordHE{}.
+
+The part of the supergravity action essential for our concerns is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{Action}
+S = \int d^5x \rightCoord{}\, \sqrt{g} \left[ - \frac{\leftCoord{}1}{\rightCoord{}4} R + \frac{\leftCoord{}1}{\rightCoord{}2} \rightCoord{}\, \rightCoord{}
+g^{\mu \nu} \rightCoord{}\, \partial_{\mu} \rightCoord{}\, \varphi^I \rightCoord{}\, \partial_{\nu} \rightCoord{}\,
+\varphi^I - V(\varphi) \right] \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{3}{13}{
+S = \int d^5x \, \sqrt{g} \left[ - \frac{1}{4} R + \frac{1}{2} \, 
+g^{\mu \nu} \, \partial_{\mu} \, \varphi^I \, \partial_{\nu} \,
+\varphi^I - V(\varphi) \right] \,, 
+}{1}\coordE{}\end{eqnarray}
+where the signature of the bulk metric is \myHighlight{$(+----)$}\coordHE{}. In these
+conventions the scalar fields are dimensionless.  Tractable kink
+solutions typically have 1 or 2 ``active'' scalars \myHighlight{$\varphi^I(r)$}\coordHE{},
+which depend on the radial coordinate \myHighlight{$r$}\coordHE{}, while the remaining
+``inert'' scalars \myHighlight{$\varphi^\alpha$}\coordHE{} are constant (and typically
+vanish). The bulk geometry has an \myHighlight{$r$}\coordHE{}-dependent scale factor, and the
+kink background takes the form
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{Background}
+ds^2 &=& e^{2 A(r)} \rightCoord{}\, (\eta_{ij} \rightCoord{}\, dx^i \rightCoord{}\, dx^j) - dr^2 \rightCoord{}\,, \rightCoord{}\\\leftCoord{}
+\varphi^I &=& \varphi^I(r) \rightCoord{}\,, \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{2}{9}{
+ds^2 &=& e^{2 A(r)} \, (\eta_{ij} \, dx^i \, dx^j) - dr^2 \,, \\
+\varphi^I &=& \varphi^I(r) \,, }{1}\coordE{}\end{eqnarray}
+which is invariant under 4-dimensional Poincar\'e transformations of
+the \myHighlight{$x^i, i=0,1,2,3$}\coordHE{}. The geometries are asymptotically like \myHighlight{$AdS_5$}\coordHE{},
+{\em i.e.}  \myHighlight{$A(r) \sim r/L$}\coordHE{} as \myHighlight{$r \rightarrow \infty$}\coordHE{}. In most cases
+there is a curvature singularity in the interior, {\em i.e.}
+\myHighlight{$A(r)\rightarrow -\infty$}\coordHE{} as \myHighlight{$r\rightarrow r_s$}\coordHE{}. The significance of
+the singularity will be briefly discussed below.
+
+We are primarily interested in fluctuations and correlation functions 
+of SYM operators
+\myHighlight{${\mathcal O}_I(x)$}\coordHE{} dual to the bulk scalars \myHighlight{$\varphi^I(x)$}\coordHE{}.  Due to
+the reduced symmetry in the kink geometries, only two-point
+correlators are currently tractable to analysis.  For inert scalars
+\myHighlight{$\varphi^\alpha$}\coordHE{}, the procedure is straightforward in principle. One
+must obtain solutions of the equations of motion of the fluctuations
+\myHighlight{$\tilde{\varphi}^\alpha(r,x)$}\coordHE{}, governed by the action (\ref{Action})
+expanded to second order in \myHighlight{$\varphit^\alpha$}\coordHE{}.  Notice that the
+effective mass \myHighlight{$U(\varphi^I)$}\coordHE{} depends on the active scalars:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{QuadAction}
+S_\alpha[\varphi_\alpha] = \frac{\leftCoord{}1}{\rightCoord{}2} \int d^5x \sqrt{g} \rightCoord{}\, \left(
+g^{\mu \nu} \partial_{\mu} \varphit^\alpha \partial_{\nu}
+\varphit^\alpha - U(\varphi^I(r)) \rightCoord{}\, \varphit^\alpha{}^2 \right) \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{2}{7}{
+S_\alpha[\varphi_\alpha] = \frac{1}{2} \int d^5x \sqrt{g} \, \left(
+g^{\mu \nu} \partial_{\mu} \varphit^\alpha \partial_{\nu}
+\varphit^\alpha - U(\varphi^I(r)) \, \varphit^\alpha{}^2 \right) \,. 
+}{1}\coordE{}\end{eqnarray}
+The solution \myHighlight{$\varphit^\alpha$}\coordHE{} must be chosen to vanish at the
+singularity, \myHighlight{$r=r_s$}\coordHE{}, and obey Dirichlet boundary conditions
+\myHighlight{$\varphit^\alpha(R,x)=\Phi_\alpha(x)$}\coordHE{} at some large cutoff radius
+\myHighlight{$R$}\coordHE{}. The action (\ref{QuadAction}) is then interpreted as the
+generating functional for the field theory.  Evaluated on the
+solutions to the equations of motion it reduces to a boundary term,
+and the correlation function is obtained from the \myHighlight{$R\rightarrow
+\infty$}\coordHE{} limit,
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{InertCorr}
+\tilde{S}_\alpha[\varphi_\alpha] = \frac{\leftCoord{}1}{\rightCoord{}2} \int d^4x \sqrt{g} \rightCoord{}\,
+g^{rr} \varphit^\alpha (R,x) \rightCoord{}\, \partial_r \rightCoord{}\, \varphit^\alpha (R,x)
+\leftCoord{}\rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{3}{8}{
+\tilde{S}_\alpha[\varphi_\alpha] = \frac{1}{2} \int d^4x \sqrt{g} \,
+g^{rr} \varphit^\alpha (R,x) \, \partial_r \, \varphit^\alpha (R,x)
+\,, 
+}{1}\coordE{}\end{eqnarray}
+as prescribed for two-point functions in pure \myHighlight{$AdS$}\coordHE{} by
+\cite{gkp,fmmr}.
+
+Since \myHighlight{$U(\varphi^I(r))$}\coordHE{} vanishes for the dilaton, the dilaton
+two-point function is usually the simplest to compute. Analyticity
+properties (in the momentum \myHighlight{$p^i$}\coordHE{} conjugate to \myHighlight{$x^i$}\coordHE{}) reveal the
+spectrum of the boundary theory in the large \myHighlight{$N$}\coordHE{}, large \myHighlight{$\lambda=g^2N$}\coordHE{}
+limit. For the various Coulomb branch flows of \cite{fgpw2, bs}, one finds
+either a mass gap and continuous spectrum or an infinite discrete
+spectrum of poles. Since the supergravity description formally breaks
+down at the singularity, it is arguable whether these are actual
+features of the field theory dynamics or artifacts of a poor
+approximation. We have little to add to these arguments except to
+point out that a similar discrete spectrum has also been found for a
+distribution of D3-branes with non-singular metric \cite{cr}. Some new
+examples of correlators of the dilaton and other inert scalars will be
+given below.
+
+For active
+scalars the situation is more complex because the fluctuations
+\myHighlight{$\varphit^I(r,x)$}\coordHE{} are coupled by the equations of motion to metric
+perturbations \myHighlight{$h_{ij}(r,x)$}\coordHE{}, defined by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+ds^2 &=& e^{2A(r)} \left( \eta_{ij} + h_{ij}(r,x) \right) dx^i dx^j
+\leftCoord{}- dr^2 \rightCoord{}\,, \rightCoord{}\\\leftCoord{}
+\nonumber\rightCoord{}
+\varphi^I &=& \bar\varphi^I(r) + \varphit^I(r,x) \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{3}{7}{
+ds^2 &=& e^{2A(r)} \left( \eta_{ij} + h_{ij}(r,x) \right) dx^i dx^j
+- dr^2 \,, \\
+\varphi^I &=& \bar\varphi^I(r) + \varphit^I(r,x) \,. 
+}{1}\coordE{}\end{eqnarray}
+It is especially interesting that the \myHighlight{$\varphit_I$}\coordHE{} couple to trace
+components of \myHighlight{$h_{ij}$}\coordHE{}, {\em i.e.}
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+h_{ij} = \frac{\leftCoord{}1}{\rightCoord{}4} \rightCoord{}\, h(r,x) \rightCoord{}\, \eta_{ij} - \frac{\leftCoord{}\partial}{\rightCoord{}\partial x^i} \frac{\leftCoord{}\partial}{\rightCoord{}\partial x^j} \rightCoord{}\, H(r,x) \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{4}{10}{
+h_{ij} = \frac{1}{4} \, h(r,x) \, \eta_{ij} - \frac{\partial}{\partial x^i} \frac{\partial}{\partial x^j} \, H(r,x) \,. 
+}{1}\coordE{}\end{eqnarray}
+
+This is expected if the flow \myHighlight{$\bar{g}_{\mu\nu}(r), \bar{\varphi}^I(r)$}\coordHE{}
+describes a relevant deformation of \myHighlight{${\cal N}=4$}\coordHE{} SYM.  In this case
+the stress tensor satisfies the operator relation
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{TequalsO}
+T^i_i(x) = \sum_{\rightCoord{}I\rightCoord{}} \beta^I \rightCoord{}\, {\mathcal O}_I(x) \rightCoord{}\,,
+\rightCoord{}}{0mm}{1}{6}{
+T^i_i(x) = \sum_{I} \beta^I \, {\mathcal O}_I(x) \,,
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{${\mathcal O}_I(x)$}\coordHE{} is the relevant operator dual to
+\myHighlight{$\varphi^I$}\coordHE{}, and \myHighlight{$\beta^I$}\coordHE{} is the beta-function for its coupling.
+Hence it is natural that the trace of \myHighlight{$h_{ij}$}\coordHE{}, which is dual to
+\myHighlight{$T^i_i$}\coordHE{}, should not be independent of the \myHighlight{$\varphi^I$}\coordHE{}.  One might hope
+that the present line of investigation interfaces with more general
+studies of holographic RG flows \cite{bk,dbvv} and perhaps with ideas
+concerning the c-theorem, either holographic \cite{gppz1,fgpw1,agpz} or 
+field-theoretic \cite{fl,anselmi,acs}.
+
+On the other hand for a flow describing the Coulomb branch of \myHighlight{${\cal
+N}=4$}\coordHE{} SYM, one expects that \myHighlight{$T_i^i(x)=0$}\coordHE{}, since the trace vanishes as
+an operator if the Lagrangian contains only marginal couplings.  One
+then hopes that despite the fact that \myHighlight{$\varphit^I$}\coordHE{} and \myHighlight{$h^i_i$}\coordHE{} are
+coupled, \myHighlight{$h^i_i$}\coordHE{} will not excite \myHighlight{$T^i_i$}\coordHE{}.  Since it is well-known that
+scalars dual to vevs fall off more rapidly on the boundary than those
+dual to operator perturbations, it is reasonable to expect that the excitation
+of \myHighlight{$h^i_i$}\coordHE{} caused by a fluctuation \myHighlight{$\varphit^I$}\coordHE{} scales away too
+quickly to excite an operator in the field theory.  
+
+In the next section we derive the coupled linear fluctuation equations
+of \myHighlight{$\varphit^I$}\coordHE{}, \myHighlight{$h$}\coordHE{}, and \myHighlight{$H$}\coordHE{}. Other components of \myHighlight{$h_{ij}$}\coordHE{} decouple
+consistently; the transverse traceless modes are known each to obey
+the same wave equation as the dilaton, and the remaining components
+can be set to zero by a choice of coordinates.  We discuss a pure
+diffeomorphism solution to the equations, the universal solution.  A
+more detailed analysis of the coupled fluctuation equations is then
+undertaken.  In the case where the background flow involves a single
+active scalar \myHighlight{$\bar{\varphi}(r)$}\coordHE{}, we derive an uncoupled third order
+differential equation for its fluctuation \myHighlight{$\tilde{\varphi}(r,x)$}\coordHE{}.  The
+universal solution allows us to apply reduction of order methods to
+study this equation. It is also instructive to convert the fluctuation
+equations to equivalent Schr\"odinger form where positivity properties
+of supersymmetric quantum mechanics can be applied.  Indeed it turns
+out that the role of SUSY QM is ubiquitous.
+
+In the following two sections we solve the fluctuation equations in
+detail for two examples of RG flows in which the background is
+explicitly known. In section \ref{sym} we treat the flow obtained in
+\cite{gppz}, which was interpreted as a relevant perturbation of
+\myHighlight{${\cal N}=4$}\coordHE{} SYM leading to pure \myHighlight{${\cal N}=1$}\coordHE{} SYM theory in the
+infrared.  In section \ref{coulomb}, we discuss the Coulomb branch
+flow of \cite{fgpw2} corresponding to a distribution of D3-branes in a
+2-dimensional disc. In both cases we discuss the two-point correlators
+of the dilaton\footnote{The dilaton correlator for the Coulomb branch
+flow was calculated in \cite{fgpw2}, while for the N=1 flow it was
+obtained in the very recent \cite{agpz} which appeared during the
+preparation of this manuscript.  } and of a second inert scalar, and
+obtain a consistent picture of the spectrum of excitations in the
+boundary field theory.  The fluctuation equation for active scalars is
+reduced to a hypergeometric equation and solved in both cases, and the
+metric component \myHighlight{$h(r,x)$}\coordHE{} is also determined.
+
+At this point we attempt to determine the two-point correlation
+function of the active scalars from (\ref{InertCorr}) by the standard
+procedure of identifying the most singular term as \myHighlight{$R \rightarrow
+\infty$}\coordHE{} which is non-analytic in the momentum \myHighlight{$p_i$}\coordHE{} conjugate to
+\myHighlight{$x^i$}\coordHE{}, but encounter difficulties. For the \myHighlight{${\cal N}=1$}\coordHE{} flow, the
+standard procedure does not have the expected structure of leading
+non-analytic term plus more singular polynomials in \myHighlight{$p^2$}\coordHE{}. This
+remains true even if an integration constant initially chosen so that
+the fluctuation vanishes at the curvature singularity is allowed to
+vary. For the Coulomb branch flow, it appears that if the integration
+constant is chosen so the active scalar fluctuation is regular, the
+metric perturbation \myHighlight{$h^i_i$}\coordHE{} does not vanish on the boundary as the
+argument above for vanishing \myHighlight{$T^i_i$}\coordHE{} suggests. If the integration
+constant is chosen to make \myHighlight{$h^i_i$}\coordHE{} behave as expected on the boundary,
+then we can extract a correlator which is physically reasonable except
+for \myHighlight{$p^2=0$}\coordHE{} poles.  However, regularity of the fluctuations in the
+interior then fails.
+
+It is conceivable that the interior curvature singularity is the
+source of the difficulties above, but it is also possible that the
+standard procedure used to calculate correlators must be modified in
+the coupled active scalar/graviton sector. We discuss our attempts to
+do this in Sec \ref{2point}. This includes an evaluation of the
+on-shell action (\ref{Action}), which reduces to boundary terms linear
+and quadratic in fluctuations.  Expected supplementary boundary terms
+in the gravitational action are added. An issue of diffeomorphism
+invariance is also discussed. None of this leads to a resolution of
+the problem, which is left for future work, perhaps by people who can
+approach it with fresh energy and ideas.
+
+It is worthwhile to point out two byproducts of our analysis of the
+fluctuation equations.  First, the boundary values of the metric and
+active scalar fluctuations are not independent, as shown in equation
+(\ref{algh}).  It is not clear that this constraint has been
+incorporated in a recent Hamilton-Jacobi analysis of holographic RG
+flows \cite{dbvv}.  Second, the SUSY QM analysis of the final
+uncoupled active scalar equations appears to be applicable to the
+stability of domain walls in the brane-world scenario \cite{rs1, rs2,
+gw, dfgk}.
+
+
+\section{The coupled graviton/scalar system}
+\label{equations}
+
+
+
+We first review the general structure of kink solutions of 5D \myHighlight{${\cal
+N}=8$}\coordHE{} gauged supergravity which preserve partial supersymmetry. We
+then discuss the equations obeyed by linear fluctuations of the kink
+backgrounds with particular attention to the equations which couple
+fluctuations \myHighlight{$\varphit^I(r,x)$}\coordHE{} of the active scalars \myHighlight{$\varphi^I(r)$}\coordHE{}.
+Fluctuations of inert scalars and transverse traceless metric
+fluctuations satisfy uncoupled equations of a simpler structure.
+
+\subsection{Background Flows}
+
+The scalar field manifold of the supergravity theory can be described
+as the coset \myHighlight{$E_{6(6)}/USp(8)$}\coordHE{}. The potential \myHighlight{$V(\varphi)$}\coordHE{} is
+invariant under \myHighlight{$SO(6) \times SL(2, R) \subset E_{6(6)}$}\coordHE{}, where \myHighlight{$SO(6)
+\sim SU(4)$}\coordHE{} is the gauge group and the \myHighlight{$SL(2,R)$}\coordHE{} factor corresponds to
+the axion-dilaton. The potential is a very complicated function of 40
+scalars, and progress has come from restrictions to smaller sets of
+fields which preserve some subgroup \myHighlight{$H \subset SO(6)$}\coordHE{}. Symmetry
+properties insure that such restrictions are consistent with the full
+dynamics \cite{warnerold}.  The full theory also has a complicated
+coset metric \myHighlight{$G_{IJ}(\varphi)$}\coordHE{} which simplifies to \myHighlight{$\delta_{IJ}$}\coordHE{} on
+the restricted scalar subspaces. This metric was therefore omitted in
+(\ref{Action}).
+
+
+The critical points of \myHighlight{$V(\varphi)$}\coordHE{} are significant for the problem of
+ RG  flows, and  those  extrema  which preserve  at  least an  \myHighlight{$SU(2)$}\coordHE{}
+ subgroup of  \myHighlight{$SO(6)$}\coordHE{} have  been classified \cite{kpw}.  The potential
+ takes  negative values  at these  extrema,  so the  solutions of  the
+ equations include exact anti-de  Sitter geometries with scalars fixed
+ at their  critical values.  In particular there  is a  critical point
+ with  full \myHighlight{$SO(6)$}\coordHE{} symmetry  at the  origin of  field space,  and the
+ corresponding \myHighlight{$AdS_5$}\coordHE{}  solution with \myHighlight{$SO(4,2)$}\coordHE{} isometry  group is the
+ well known holographic  dual of the conformal phase  of \myHighlight{${\cal N}=4$}\coordHE{},
+ d=4  SYM theory. Kink  solutions of  the form  (\ref{Background}) are
+ topologically like \myHighlight{$AdS_5$}\coordHE{} but have  a smaller isometry group. As \myHighlight{$r$}\coordHE{}
+ approaches the  boundary at \myHighlight{$r=  \infty$}\coordHE{}, the kink  metric approaches
+ that of the maximally  symmetric \myHighlight{$AdS_5$}\coordHE{} solution, and scalars vanish
+ at rates determined  by the scale dimensions of  their operator duals
+ in  the SYM  theory.  As \myHighlight{$r$}\coordHE{}  decreases  toward the  interior of  the
+ geometry  certain  known  kinks  \cite{fgpw1} flow  toward  a  second
+ critical  point  of the  potential  with  more negative  cosmological
+ constant. The field theory interpretation is that of \myHighlight{${\cal N}=4$}\coordHE{} SYM
+ perturbed with a relevant operator such that the perturbed theory has
+ a non-trivial IR fixed point. It would be very desirable to study the
+ fluctuations about  such flows,  but this cannot  be done  at present
+ because   the   explicit   form   of   these   kinks   is   not   yet
+ known\footnote{Very recently  the 10D lift of the  fixed point itself
+ has  been constructed by  \cite{pilchwarner}.}. All  explicitly known
+ flows have  a curvature singularity  at some finite \myHighlight{$r=r_s$}\coordHE{}.  This is
+ associated  with a  breakdown of  the supergravity  description.  The
+ standard  prescription  is  to  impose the  boundary  condition  that
+ fluctuations  vanish at  the singularity  and to  proceed  to extract
+ correlation      functions     from      the      on-shell     action
+ (\ref{InertCorr}). This procedure leads  to problematic results as we
+ will see, but we do not yet have a better alternative to propose.
+
+All explicitly known flow solutions are supersymmetric in the sense
+that there are associated Killing spinors in the supergravity
+theory. It is known that the potential \myHighlight{$V(\varphi)$}\coordHE{} can be derived
+from a superpotential \myHighlight{$W(\varphi)$}\coordHE{},
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{Superpot}
+V(\varphi) = \frac{\leftCoord{}g^2}{\rightCoord{}8} \sum_{\rightCoord{}I\rightCoord{}} \left( \frac{\leftCoord{}\partial W(\varphi)}{\rightCoord{}\partial \varphi^I} \rightCoord{}\, \frac{\leftCoord{}\partial W(\varphi)}{\rightCoord{}\partial \varphi^I} \right) - \frac{\leftCoord{}g^2}{\rightCoord{}3} W(\varphi)^2 \rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{5}{11}{
+V(\varphi) = \frac{g^2}{8} \sum_{I} \left( \frac{\partial W(\varphi)}{\partial \varphi^I} \, \frac{\partial W(\varphi)}{\partial \varphi^I} \right) - \frac{g^2}{3} W(\varphi)^2 \,.
+}{1}\coordE{}\end{eqnarray}
+on restricted subsets of the field space which include the active
+scalars \myHighlight{$\varphi^I(r)$}\coordHE{}. Here \myHighlight{$g$}\coordHE{} is the \myHighlight{$SU(4)$}\coordHE{} gauge coupling of the
+5D supergravity theory.  It has dimensions of 1/length, and it is
+related to the length scale \myHighlight{$L$}\coordHE{} of the boundary \myHighlight{$AdS_5$}\coordHE{} space and the
+cosmological constant \myHighlight{$\Lambda$}\coordHE{} by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+g= 2/L \rightCoord{}\,, \quad \quad    \Lambda=-12/L^2 = 4V(\varphi=0). \rightCoord{}
+\rightCoord{}}{0mm}{1}{4}{
+g= 2/L \,, \quad \quad    \Lambda=-12/L^2 = 4V(\varphi=0). 
+}{1}\coordE{}\end{eqnarray}
+
+The main simplification of supersymmetric flows is that any solution
+of the first order Killing spinor conditions \cite{fgpw1} 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{First}
+\frac{\leftCoord{}dA(r)}{\rightCoord{}dr} = - \frac{\leftCoord{}g}{\rightCoord{}3} \rightCoord{}\, W(\varphi) \rightCoord{}\,, \quad \quad
+ \frac{\leftCoord{}\partial \varphi^I(r)}{\rightCoord{}\partial r} = \frac{\leftCoord{}g}{\rightCoord{}2} \rightCoord{}\, \rightCoord{}
+ \frac{\leftCoord{}\partial W(\varphi)}{\rightCoord{}\partial \varphi^I} \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{6}{13}{
+\frac{dA(r)}{dr} = - \frac{g}{3} \, W(\varphi) \,, \quad \quad
+ \frac{\partial \varphi^I(r)}{\partial r} = \frac{g}{2} \, 
+ \frac{\partial W(\varphi)}{\partial \varphi^I} \,, 
+}{1}\coordE{}\end{eqnarray}
+automatically gives a Poincar\'e-invariant kink solution of the more
+complicated second order field equations of the action (\ref{Action}).
+
+It is worth noting that non-supersymmetric solutions of the form
+(\ref{Background}) can also be obtained by solving (\ref{First}), with
+a choice of \myHighlight{$W(\varphi)$}\coordHE{} other than the true superpotential of the
+theory.  It was conjectured in \cite{dfgk} that all solutions of the
+field equations of the form (\ref{Background}) can be obtained this
+way.  Recently this was explained in terms of Hamilton-Jacobi theory
+\cite{dbvv}.  However, our examples will be flows where \myHighlight{$W(\varphi)$}\coordHE{}
+is in fact the true superpotential.
+
+
+\subsection{Fluctuation equations}
+
+
+We now consider fluctuations of the scalars and the metric
+around such a background geometry.  We use the freedom to choose
+coordinates to fix axial gauge,
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{axial}
+h_{\mu 5} = 0 \rightCoord{}\,,
+\rightCoord{}}{0mm}{1}{3}{
+h_{\mu 5} = 0 \,,
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$\mu = 0,1,2,3,5$}\coordHE{}.  With this choice the metric, including
+fluctuations, has the form
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+ds^2 &=& e^{2 A(r)} \rightCoord{}\, \left( (\eta_{ij} + h_{ij}(x, r)) \rightCoord{}\, dx^i \rightCoord{}\, dx^j \right) - dr^2 \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{1}{7}{
+ds^2 &=& e^{2 A(r)} \, \left( (\eta_{ij} + h_{ij}(x, r)) \, dx^i \, dx^j \right) - dr^2 \,. 
+}{1}\coordE{}\end{eqnarray}
+There is still gauge freedom remaining.  We find two classes of
+residual diffeomorphisms \myHighlight{$\delta g_{\mu \nu} = \nabla_{\mu}
+\epsilon_{\nu} + \nabla_{\nu} \epsilon_{\mu}$}\coordHE{} preserving axial gauge
+(\ref{axial}). There are four-dimensional diffeomorphisms
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{4ddiffeo}
+\epsilon_{i} &=& e^{2A(r)} \rightCoord{}\, \omega_i(x), \quad \quad \epsilon_5 = 0
+\leftCoord{}\rightCoord{}\,, \\\leftCoord{} \delta h_{ij} &=&  \partial_i \rightCoord{}\, \omega_j(x) +
+\partial_j \rightCoord{}\, \omega_i(x) \rightCoord{}\,. \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{3}{8}{
+\epsilon_{i} &=& e^{2A(r)} \, \omega_i(x), \quad \quad \epsilon_5 = 0
+\,, \\ \delta h_{ij} &=&  \partial_i \, \omega_j(x) +
+\partial_j \, \omega_i(x) \,. }{1}\coordE{}\end{eqnarray}
+Additionally, there is the transformation \cite{tanaka, gkr}
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{diffeo}
+\epsilon_5 &=& \epsilon_5(x) \rightCoord{}\,, \quad \quad \epsilon_i = -
+ \leftCoord{}(\partial_i \epsilon_5(x) )\rightCoord{}\, \left(e^{2A(r)} \int^r dr' \rightCoord{}\, e^{-2A(r')}
+ \right) \rightCoord{}\,, \\\leftCoord{} \delta h_{ij} &=& - 2 A'(r) \rightCoord{}\, \eta_{ij} \rightCoord{}\, \epsilon_5(x) - 2 \rightCoord{}\, (\partial_i \partial_j \epsilon_5(x)) \left( \int^r dr' \rightCoord{}\, e^{-2A(r)} \right) \rightCoord{}\,. \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{3}{12}{
+\epsilon_5 &=& \epsilon_5(x) \,, \quad \quad \epsilon_i = -
+ (\partial_i \epsilon_5(x) )\, \left(e^{2A(r)} \int^r dr' \, e^{-2A(r')}
+ \right) \,, \\ \delta h_{ij} &=& - 2 A'(r) \, \eta_{ij} \, \epsilon_5(x) - 2 \, (\partial_i \partial_j \epsilon_5(x)) \left( \int^r dr' \, e^{-2A(r)} \right) \,. }{1}\coordE{}\end{eqnarray}
+Here we are viewing the result of an infinitesimal coordinate
+transformation on the background as a metric fluctuation.
+
+Both active and inert scalars can fluctuate around their backgrounds:
+\myHighlight{$\varphi^I(x, r) = \bar\varphi^I(r) + \varphit^I(x,r)$}\coordHE{}.  For ease of
+notation, we shall in the future drop the bar and use \myHighlight{$\varphi(r)$}\coordHE{} to
+denote the classical background.  When we discuss inert scalars, whose
+background values are zero, we will drop the tilde on the fluctuation.
+
+Einstein's equations for linear fluctuations were derived in \cite{dfgk}
+as equations relating the first order Ricci tensor to its scalar source.
+These equations are
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{rij}
+\leftCoord{}``R^{(1)}_{ij}\mbox{''} = e^{2 A} \left(\frac{\leftCoord{}1}{\rightCoord{}2} \partial_r^2 + 2
+A' \partial_r \right) h_{ij} + {1 \leftCoord{}\over\rightCoord{} 2} \rightCoord{}\, \eta_{ij} \rightCoord{}\, e^{2A} A'
+\leftCoord{}\rightCoord{}\, \partial_r (\eta^{kl} h_{kl}) - {1 \leftCoord{}\over\rightCoord{} 2} \square h_{ij} - \rightCoord{}\\\leftCoord{}
+\frac{\leftCoord{}1}{\rightCoord{}2} \rightCoord{}\, \eta^{kl} \left( \partial_i \partial_j h_{kl} -
+\partial_i \partial_k h_{jl} - \partial_j \partial_k h_{il} \right) =
+\leftCoord{}-{4 \leftCoord{}\over\rightCoord{} 3}\rightCoord{}\, e^{2A} \rightCoord{}\, {\partial V(\varphi) \leftCoord{}\over\rightCoord{} \partial
+\varphi^I} \rightCoord{}\, \tilde{\varphi^I}\rightCoord{}\, \eta_{ij} \rightCoord{}\,, \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{11}{19}{
+``R^{(1)}_{ij}\mbox{''} = e^{2 A} \left(\frac{1}{2} \partial_r^2 + 2
+A' \partial_r \right) h_{ij} + {1 \over 2} \, \eta_{ij} \, e^{2A} A'
+\, \partial_r (\eta^{kl} h_{kl}) - {1 \over 2} \square h_{ij} - \\
+\frac{1}{2} \, \eta^{kl} \left( \partial_i \partial_j h_{kl} -
+\partial_i \partial_k h_{jl} - \partial_j \partial_k h_{il} \right) =
+-{4 \over 3}\, e^{2A} \, {\partial V(\varphi) \over \partial
+\varphi^I} \, \tilde{\varphi^I}\, \eta_{ij} \,, }{1}\coordE{}\end{eqnarray}
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{r55}
+R^{(1)}_{55} = - {1 \leftCoord{}\over\rightCoord{} 2} (\partial_r^2 + 2 A'
+\partial_r) \rightCoord{}\, \eta^{kl} h_{kl} = 4 \rightCoord{}\,  \varphi^I{}' \tilde{\varphi}^I{}' 
+\leftCoord{}+ {4 \leftCoord{}\over\rightCoord{} 3} \rightCoord{}
+  {\rightCoord{}\leftCoord{}\partial V(\varphi) \leftCoord{}\over\rightCoord{} \partial \varphi^I} \rightCoord{} 
+   \tilde{\varphi^I} \rightCoord{}\,, \rightCoord{} 
+\rightCoord{}}{0mm}{6}{12}{
+R^{(1)}_{55} = - {1 \over 2} (\partial_r^2 + 2 A'
+\partial_r) \, \eta^{kl} h_{kl} = 4 \,  \varphi^I{}' \tilde{\varphi}^I{}' 
++ {4 \over 3} 
+  {\partial V(\varphi) \over \partial \varphi^I}  
+   \tilde{\varphi^I} \,,  
+}{1}\coordE{}\end{eqnarray}
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{rj5}
+R^{(1)}_{j5} = {1 \leftCoord{}\over\rightCoord{} 2}\rightCoord{}\, \eta^{kl}\rightCoord{}\, \partial_r\rightCoord{}\, (\partial_k h_{jl} - \partial_j
+h_{kl})  = 2 \rightCoord{}\, \varphi'^I \rightCoord{}\, \partial_j \tilde\varphi^I \rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{2}{10}{
+R^{(1)}_{j5} = {1 \over 2}\, \eta^{kl}\, \partial_r\, (\partial_k h_{jl} - \partial_j
+h_{kl})  = 2 \, \varphi'^I \, \partial_j \tilde\varphi^I \,.
+}{1}\coordE{}\end{eqnarray}
+The notation \myHighlight{$``R^{(1)}_{ij}$}\coordHE{}'' indicates that a simplification of the
+ actual \myHighlight{$R^{(1)}_{ij}$}\coordHE{} equation has been made in (\ref{rij}) as in
+ \cite{dfgk}.  The scalar fluctuation equation is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{kg}
+e^{-2A} \rightCoord{}\, \square \rightCoord{}\, \tilde{\varphi}^I - \tilde{\varphi}^I{}'' - 4 A' \rightCoord{} 
+ \tilde{\varphi}^I{}' +  {\partial^2 V(\varphi) \leftCoord{}\over\rightCoord{} \partial \varphi^I \partial \varphi^J} \rightCoord{} 
+  \leftCoord{}\rightCoord{}\,  \tilde{\varphi}^J = {1 \leftCoord{}\over\rightCoord{} 2} \varphi^I{}' \rightCoord{}
+  \eta^{ij} h_{ij}' \rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{4}{12}{
+e^{-2A} \, \square \, \tilde{\varphi}^I - \tilde{\varphi}^I{}'' - 4 A'  
+ \tilde{\varphi}^I{}' +  {\partial^2 V(\varphi) \over \partial \varphi^I \partial \varphi^J}  
+  \,  \tilde{\varphi}^J = {1 \over 2} \varphi^I{}' 
+  \eta^{ij} h_{ij}' \,.
+}{1}\coordE{}\end{eqnarray}
+A prime above denotes \myHighlight{$\partial_r$}\coordHE{}.  In general primes on fields
+\myHighlight{$h_{ij}, \varphit$}\coordHE{} and backgrounds \myHighlight{$A, \varphi$}\coordHE{} will denote a derivative
+with respect to the radial coordinate, while primes on \myHighlight{$V(\varphi)$}\coordHE{}
+or \myHighlight{$W(\varphi)$}\coordHE{} refer to \myHighlight{$\varphi$}\coordHE{}-derivatives.  
+
+
+For inert scalars \myHighlight{$\varphit^{\alpha}$}\coordHE{}, the right-hand side of
+(\ref{kg}) vanishes, and consequently they do not couple to the
+graviton.  Any coupling to the active scalars due to the potential
+term must vanish, otherwise the inert scalars could not have been zero
+in the background:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\frac{\leftCoord{}\partial^2 V(\varphi)}{\rightCoord{}\partial \varphi^{\alpha} \partial
+\varphi^I} = 0 \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{2}{5}{
+\frac{\partial^2 V(\varphi)}{\partial \varphi^{\alpha} \partial
+\varphi^I} = 0 \,. 
+}{1}\coordE{}\end{eqnarray}
+Thus they satisfy decoupled second-order equations, several of which we consider
+explicitly in sections \ref{sym} and \ref{coulomb}.
+
+It is clear from the equations above that active scalar fluctuations couple 
+to the graviton. To simplify the coupled system 
+we consider an arbitrary graviton fluctuation, decomposed in
+a complete momentum-space basis.  We use the vectors
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+p^i = (p, 0, 0, 0) \rightCoord{}\,, \quad \quad \varepsilon^0 = (0,0,0,1) \rightCoord{}\,, \quad \quad \varepsilon^{\pm} = (0, 1, \pm i, 0) / \sqrt{2} \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{1}{6}{
+p^i = (p, 0, 0, 0) \,, \quad \quad \varepsilon^0 = (0,0,0,1) \,, \quad \quad \varepsilon^{\pm} = (0, 1, \pm i, 0) / \sqrt{2} \,, 
+}{1}\coordE{}\end{eqnarray}
+and the decomposition
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+h_{ij}(r,p) &=& \varepsilon_i^+ \varepsilon_j^+ \rightCoord{}\, h^{++}(r,p) +
+\varepsilon_i^- \varepsilon_j^- \rightCoord{}\, h^{--}(r,p) + (\varepsilon_i^+
+\varepsilon_j^0 + \varepsilon_i^0 \varepsilon_j^+) \rightCoord{}\, h^{+0}(r,p) +
+\nonumber\rightCoord{} \\ &\leftCoord{}& (\varepsilon_i^- \varepsilon_j^0 + \varepsilon_i^0
+\varepsilon_j^-) \rightCoord{}\, h^{-0}(r,p) + (\varepsilon_i^+ \varepsilon_j^- +
+\varepsilon_i^- \varepsilon_j^+ - 2 \varepsilon_i^0 \varepsilon_j^0)
+\leftCoord{}\rightCoord{}\, h^{00}(r,p) + \\ &\leftCoord{}& (p_i \varepsilon_j^+ + \varepsilon_i^+ p_j) \rightCoord{}\,
+a^+(r,p) + (p_i \varepsilon_j^- + \varepsilon_i^- p_j) \rightCoord{}\, a^-(r,p) + (p_i
+\varepsilon_j^0 + \varepsilon_i^0 p_j) \rightCoord{}\, a^0(r,p) + \nonumber\rightCoord{} \\&\leftCoord{}&
+ \eta_{ij} \rightCoord{}\, h(r,p) / 4 + p_i \rightCoord{}\, p_j \rightCoord{}\, H(r,p) \rightCoord{}\,.  \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{5}{17}{
+h_{ij}(r,p) &=& \varepsilon_i^+ \varepsilon_j^+ \, h^{++}(r,p) +
+\varepsilon_i^- \varepsilon_j^- \, h^{--}(r,p) + (\varepsilon_i^+
+\varepsilon_j^0 + \varepsilon_i^0 \varepsilon_j^+) \, h^{+0}(r,p) +
+\\ && (\varepsilon_i^- \varepsilon_j^0 + \varepsilon_i^0
+\varepsilon_j^-) \, h^{-0}(r,p) + (\varepsilon_i^+ \varepsilon_j^- +
+\varepsilon_i^- \varepsilon_j^+ - 2 \varepsilon_i^0 \varepsilon_j^0)
+\, h^{00}(r,p) + \\ && (p_i \varepsilon_j^+ + \varepsilon_i^+ p_j) \,
+a^+(r,p) + (p_i \varepsilon_j^- + \varepsilon_i^- p_j) \, a^-(r,p) + (p_i
+\varepsilon_j^0 + \varepsilon_i^0 p_j) \, a^0(r,p) + \\&&
+ \eta_{ij} \, h(r,p) / 4 + p_i \, p_j \, H(r,p) \,.  }{1}\coordE{}\end{eqnarray}
+In this decomposition, the five \myHighlight{$h^{xx}$}\coordHE{} are transverse traceless, the
+\myHighlight{$a^x$}\coordHE{} are traceless and longitudinal, and \myHighlight{$h$}\coordHE{} and \myHighlight{$H$}\coordHE{} are the trace
+components.
+
+The \myHighlight{$h^{xx}$}\coordHE{} contribute only in (\ref{rij}), and it can be shown that
+each \myHighlight{$h^{xx}$}\coordHE{} satisfies the same uncoupled equation as a free massless
+scalar in the background (\ref{Background}), as is well-known
+\cite{dfgk, bs2, glueball}. The \myHighlight{$h^{xx}$}\coordHE{} modes are the expected five physical
+components of a graviton in five bulk dimensions, and they have the
+same fluctuation spectrum as the inert dilaton. This can be obtained
+from an equivalent Schr\"odinger equation with supersymmetric
+potential \cite{dfgk}.  These modes do not couple to the active
+scalars.
+
+Further, we can examine equation (\ref{rj5}) and see that the \myHighlight{$a^x$}\coordHE{}
+must be \myHighlight{$r$}\coordHE{}-independent.  One may then gauge them to zero using the
+residual coordinate invariance (\ref{4ddiffeo}).  One is still free to
+use the transformation (\ref{diffeo}).
+
+We are left with the components \myHighlight{$h$}\coordHE{} and \myHighlight{$H$}\coordHE{}, which do couple to active
+scalar fluctuations.  Before we present the equations of
+this system, consider the action of the remaining gauge freedom
+(\ref{diffeo}).  A transformation parameterized by \myHighlight{$\epsilon_5(x) =
+e^{ipx} \, E(p)$}\coordHE{} modifies the fields by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{Universal}
+\delta h = - 8 A'(r) \rightCoord{}\, E(p) \rightCoord{}\,, \quad \delta H' = 2 \rightCoord{}\, e^{-2A(r)} \rightCoord{}\, \rightCoord{}
+E(p)\rightCoord{}\,, \quad \delta \varphit = - \varphi'(r) \rightCoord{}\, E(p)\rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{1}{11}{
+\delta h = - 8 A'(r) \, E(p) \,, \quad \delta H' = 2 \, e^{-2A(r)} \, 
+E(p)\,, \quad \delta \varphit = - \varphi'(r) \, E(p)\,. 
+}{1}\coordE{}\end{eqnarray}
+One may check that (\ref{Universal}) solves the equations of motion
+(\ref{rij}--\ref{kg}).  We will refer to
+this pure gauge solution as the {\em universal solution}.  It will
+have a vital technical role in our study of the coupled system.
+
+
+
+
+
+The fields that remain in our reduced system are
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{ansatz}
+h_{ij} (r,x) = e^{ipx} \left( \frac{\leftCoord{}1}{\rightCoord{}4} \rightCoord{}\, h(r,p) \rightCoord{}\, \eta_{ij} + p_i
+\leftCoord{}\rightCoord{}\, p_j H(r,p) \right) \rightCoord{}\,, \quad \varphit^I(r, x) = e^{ipx}
+\varphit^I(r,p) \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{3}{9}{
+h_{ij} (r,x) = e^{ipx} \left( \frac{1}{4} \, h(r,p) \, \eta_{ij} + p_i
+\, p_j H(r,p) \right) \,, \quad \varphit^I(r, x) = e^{ipx}
+\varphit^I(r,p) \,. 
+}{1}\coordE{}\end{eqnarray}
+and we now begin the process of simplifying the coupled equations which they
+satisfy.
+
+Substituting the ansatz (\ref{ansatz}) into the \myHighlight{$R_{j5}$}\coordHE{} equation
+(\ref{rj5}), \myHighlight{$H$}\coordHE{} drops out and we are left with
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{rj52}
+h'(r) = - \frac{\leftCoord{}16}{\rightCoord{}3} \rightCoord{}\, \varphi^I{}' \rightCoord{}\, \varphit^I \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{2}{7}{
+h'(r) = - \frac{16}{3} \, \varphi^I{}' \, \varphit^I \,, 
+}{1}\coordE{}\end{eqnarray}
+where we have canceled a uniform factor of \myHighlight{$p_j$}\coordHE{}.  
+
+We now consider linear combinations of the equations (\ref{rij})
+traced with the tensors \myHighlight{$\eta^{ij}$}\coordHE{} and \myHighlight{$p^i \, p^j$}\coordHE{}.  It turns out
+that scalars decouple in the difference of the \myHighlight{$\eta^{ij}$}\coordHE{} trace and
+the \myHighlight{$p^i \, p^j$}\coordHE{} trace. Dividing by \myHighlight{$p^2$}\coordHE{} leaves a simple equation
+relating \myHighlight{$H$}\coordHE{} and \myHighlight{$h$}\coordHE{}:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{Handh}
+H'' + 4 A' H' = - \frac{\leftCoord{}1}{\rightCoord{}2} \rightCoord{}\, e^{-2A} \rightCoord{}\, h \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{2}{7}{
+H'' + 4 A' H' = - \frac{1}{2} \, e^{-2A} \, h \,. 
+}{1}\coordE{}\end{eqnarray}
+One can also show that an independent linear combination of the two traces
+is trivial given the \myHighlight{$R_{j5}$}\coordHE{}
+equation (\ref{rj52}), so the only new relation obtained is
+(\ref{Handh}).
+
+Substituting the ansatz (\ref{ansatz}) into the \myHighlight{$R_{55}$}\coordHE{}
+equation (\ref{r55}), we obtain
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{r552}
+\leftCoord{}- {1 \leftCoord{}\over\rightCoord{} 2} (h'' + 2 A' h' + p^2 H'' + 2 p^2 A' H') = 4 \rightCoord{}\, \rightCoord{}
+  \varphi^I{}' \rightCoord{}\, \tilde{\varphi}^I{}' + {4 \leftCoord{}\over\rightCoord{} 3} \rightCoord{}\, \partial_I
+  V(\varphi) \rightCoord{}\, \tilde{\varphi}^I \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{4}{11}{
+- {1 \over 2} (h'' + 2 A' h' + p^2 H'' + 2 p^2 A' H') = 4 \, 
+  \varphi^I{}' \, \tilde{\varphi}^I{}' + {4 \over 3} \, \partial_I
+  V(\varphi) \, \tilde{\varphi}^I \,. 
+}{1}\coordE{}\end{eqnarray}
+Combining (\ref{Handh}) and (\ref{r552}), we can eliminate \myHighlight{$H''$}\coordHE{} and
+obtain an algebraic relation for \myHighlight{$H'$}\coordHE{}.  Further removing derivatives
+of \myHighlight{$h$}\coordHE{} in favor of \myHighlight{$\varphit^I$}\coordHE{} using (\ref{rj52}) and substituting
+\myHighlight{$\varphi$}\coordHE{}-derivatives of \myHighlight{$W$}\coordHE{} for \myHighlight{$\varphi'$}\coordHE{} and \myHighlight{$V'(\varphi)$}\coordHE{}, we obtain:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{algH}
+\leftCoord{}2 A' H' = - \frac{\leftCoord{}1}{\rightCoord{}2} \rightCoord{}\, e^{-2A} \rightCoord{}\, h + \frac{\leftCoord{}2g \rightCoord{}\, \partial_I
+W(\varphi)}{3 p^2} \left[ 2 \rightCoord{}\, \varphit^I{}' - g \rightCoord{}\, \partial_I
+\partial_J W(\varphi) \rightCoord{}\, \varphit^J \rightCoord{}\, \right] \rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{4}{12}{
+2 A' H' = - \frac{1}{2} \, e^{-2A} \, h + \frac{2g \, \partial_I
+W(\varphi)}{3 p^2} \left[ 2 \, \varphit^I{}' - g \, \partial_I
+\partial_J W(\varphi) \, \varphit^J \, \right] \,.
+}{1}\coordE{}\end{eqnarray}
+
+The equations (\ref{rj52}), (\ref{Handh}), (\ref{algH}), together with
+the Klein-Gordon equation (\ref{kg}), constitute \myHighlight{$n+3$}\coordHE{} equations for
+the \myHighlight{$n+2$}\coordHE{} fields \myHighlight{$h,H$}\coordHE{} and \myHighlight{$\varphit^I$}\coordHE{}.  However, one can show that
+the gravitational equations are related by the Bianchi identity: the
+expected combination of derivatives of (\ref{rj52}), (\ref{Handh}),
+(\ref{algH}) vanishes identically if the Klein-Gordon equation is
+satisfied.
+
+
+It also turns out that we can construct an algebraic equation for \myHighlight{$h$}\coordHE{} 
+which will be of later use.
+The Klein-Gordon equation (\ref{kg}) becomes
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{kg2}
+\leftCoord{}- p^2 \rightCoord{}\, e^{-2A}  \rightCoord{}\, \tilde{\varphi}^I - \tilde{\varphi}^I{}'' - 4 A' \rightCoord{} 
+ \tilde{\varphi}^I{}' +  {\partial^2 V(\varphi) \leftCoord{}\over\rightCoord{} \partial \varphi^I \partial \varphi^J} \rightCoord{} 
+  \leftCoord{}\rightCoord{}\,  \tilde{\varphi}^J = {1 \leftCoord{}\over\rightCoord{} 2} \varphi^I{}' \rightCoord{}
+  \left( h' + p^2 H' \right)\rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{5}{12}{
+- p^2 \, e^{-2A}  \, \tilde{\varphi}^I - \tilde{\varphi}^I{}'' - 4 A'  
+ \tilde{\varphi}^I{}' +  {\partial^2 V(\varphi) \over \partial \varphi^I \partial \varphi^J}  
+  \,  \tilde{\varphi}^J = {1 \over 2} \varphi^I{}' 
+  \left( h' + p^2 H' \right)\,. 
+}{1}\coordE{}\end{eqnarray}
+The left-hand side is just derivatives of \myHighlight{$\varphit^I$}\coordHE{}.  On the right,
+\myHighlight{$h'$}\coordHE{} can be written in terms of \myHighlight{$\varphit^I$}\coordHE{} using (\ref{rj52}), while
+we can eliminate \myHighlight{$H'$}\coordHE{} in favor of \myHighlight{$\varphit$}\coordHE{} and a factor of \myHighlight{$h$}\coordHE{}
+using (\ref{algH}).  Thus \myHighlight{$h$}\coordHE{} is determined solely by \myHighlight{$\varphit^I$}\coordHE{} and
+derivatives.  To avoid tedious notation, we write only the case of a
+single active scalar, although the general case is straightforward:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{algh}
+ \leftCoord{}3 p^2 e^{-2A} \rightCoord{}\, h = \frac{\leftCoord{}-16 W} {W'} \rightCoord{}
+\varphit'' + g \left( \frac{\leftCoord{}64 W^2}{\rightCoord{}3 W'} + 8 \rightCoord{}
+W' \right) \varphit' + \\\leftCoord{} 4 g^2 \left( \frac{\leftCoord{} \rightCoord{}
+W W''^2}{W'} +  W W'''(\varphit) - \frac{\leftCoord{}8 W^2 \rightCoord{}
+W''}{3W'} -  W' \rightCoord{}
+W'' - \frac{\leftCoord{}4 p^2 W}{\rightCoord{}g^2 W'} e^{-2A} \rightCoord{}
+\right) \varphit \rightCoord{}\,. \rightCoord{}
+\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{8}{14}{
+3 p^2 e^{-2A} \, h = \frac{-16 W} {W'} 
+\varphit'' + g \left( \frac{64 W^2}{3 W'} + 8 
+W' \right) \varphit' + \\ 4 g^2 \left( \frac{ 
+W W''^2}{W'} +  W W'''(\varphit) - \frac{8 W^2 
+W''}{3W'} -  W' 
+W'' - \frac{4 p^2 W}{g^2 W'} e^{-2A} 
+\right) \varphit \,. 
+}{1}\coordE{}\end{eqnarray}
+This equation shows that the boundary values of \myHighlight{$h(r,p)$}\coordHE{} and \myHighlight{$\varphit(r,p)$}\coordHE{}
+are not independent, a fact which may have implications for the formulation
+of Hamilton-Jacobi dynamics proposed in \cite{dbvv}.
+
+
+Unfortunately our equations are still coupled. The next step is to
+derive a third order equation involving only the \myHighlight{$\varphit^I$}\coordHE{}. In the
+case of flows with only a single active scalar, this becomes an
+uncoupled equation which is the key to the present exploration and can be
+solved for some specific flows. 
+
+The Klein-Gordon equation (\ref{kg}) has the conventional form of a
+scalar field in the curved background, with an additional source term
+involving the graviton fluctuation.  We can express the source in
+terms of scalars by noting that the \myHighlight{$R_{55}$}\coordHE{} equation (\ref{r55}) can
+be written
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\leftCoord{}- \frac{\leftCoord{}1}{\rightCoord{}2} e^{-2A} \partial_r (e^{2A} \eta^{ij} h_{ij}') = 4 \varphi^I{}'
+ \tilde{\varphi}^I{}' + {4 \leftCoord{}\over\rightCoord{} 3} {\partial V(\varphi) \leftCoord{}\over\rightCoord{} \partial \varphi^I} \rightCoord{}
+ \leftCoord{}\rightCoord{}\, \tilde{\varphi}^I \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{6}{9}{
+- \frac{1}{2} e^{-2A} \partial_r (e^{2A} \eta^{ij} h_{ij}') = 4 \varphi^I{}'
+ \tilde{\varphi}^I{}' + {4 \over 3} {\partial V(\varphi) \over \partial \varphi^I} 
+ \, \tilde{\varphi}^I \,, 
+}{1}\coordE{}\end{eqnarray}
+which can be integrated to obtain
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\eta^{ij} h_{ij}' = - 8 \rightCoord{}\, e^{-2A} \int^r \rightCoord{}\, dr' \rightCoord{}\, e^{2A(r')} \left(
+\varphi^I{}' \rightCoord{}\, \varphit^I{}' + \frac{\leftCoord{}1}{\rightCoord{}3} \rightCoord{}\, \partial_I  V(\varphi) \rightCoord{}\, \varphit^I \right) \rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{2}{11}{
+\eta^{ij} h_{ij}' = - 8 \, e^{-2A} \int^r \, dr' \, e^{2A(r')} \left(
+\varphi^I{}' \, \varphit^I{}' + \frac{1}{3} \, \partial_I  V(\varphi) \, \varphit^I \right) \,.
+}{1}\coordE{}\end{eqnarray}
+Substituting into (\ref{kg}) and taking an \myHighlight{$r$}\coordHE{}-derivative,
+we find the third-order equation 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{thirdmany}
+\partial_r \rightCoord{}\, \left\{ \frac{\leftCoord{}\varphi^I{}'}{\rightCoord{}|\varphi^K{}'|^2} \rightCoord{}\, e^{2A} \rightCoord{}\,
+\left( \left( \partial_r^2 + 4A' \partial_r- e^{-2A} \square \right) \rightCoord{}\,
+\delta_{IJ} - \partial_I \partial_J V(\varphi) \right) \rightCoord{}\, \varphit^J \right\} = \rightCoord{}\\\leftCoord{}
+\leftCoord{}4 \rightCoord{}\, e^{2A} \left( \varphi^J{}' \varphit^J{}' + \frac{\leftCoord{}1}{\rightCoord{}3} \partial_J
+V(\varphi) \rightCoord{}\, \varphit^J \right) \rightCoord{}\,. \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{5}{14}{
+\partial_r \, \left\{ \frac{\varphi^I{}'}{|\varphi^K{}'|^2} \, e^{2A} \,
+\left( \left( \partial_r^2 + 4A' \partial_r- e^{-2A} \square \right) \,
+\delta_{IJ} - \partial_I \partial_J V(\varphi) \right) \, \varphit^J \right\} = \\
+4 \, e^{2A} \left( \varphi^J{}' \varphit^J{}' + \frac{1}{3} \partial_J
+V(\varphi) \, \varphit^J \right) \,. }{1}\coordE{}\end{eqnarray}
+
+Although a simplification, (\ref{thirdmany}) still couples all active
+scalar fluctuations.  Since several known flows involve only one
+active scalar, we
+specialize to the case of a single active scalar \myHighlight{$\varphi$}\coordHE{}. 
+Then (\ref{thirdmany}) reduces to an uncoupled equation,
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{third}
+\partial_r \rightCoord{}\, \left\{ \frac{\leftCoord{}1}{\rightCoord{}\varphi'} \rightCoord{}\, e^{2A} \rightCoord{}\, \left( \partial_r^2 +
+\leftCoord{}4A' \partial_r - V''(\varphi) - e^{-2A} \square \right) \rightCoord{}\, \varphit \right\}
+\leftCoord{}= 4 \rightCoord{}\, e^{2A} \left( \varphi' \varphit' + \frac{\leftCoord{}1}{\rightCoord{}3} V'(\varphi) \rightCoord{}\, \varphit
+\right) \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{5}{12}{
+\partial_r \, \left\{ \frac{1}{\varphi'} \, e^{2A} \, \left( \partial_r^2 +
+4A' \partial_r - V''(\varphi) - e^{-2A} \square \right) \, \varphit \right\}
+= 4 \, e^{2A} \left( \varphi' \varphit' + \frac{1}{3} V'(\varphi) \, \varphit
+\right) \,. 
+}{1}\coordE{}\end{eqnarray}
+
+In the case of a single active scalar, it is also possible to combine
+(\ref{rj52}, \ref{Handh}, \ref{algH}) to obtain an uncoupled third order
+equation for \myHighlight{$h$}\coordHE{}, but we have chosen to work with (\ref{third}) in
+applications to specific flows.
+
+
+One may easily verify that the universal solution, \myHighlight{$\varphit \propto
+W'(\varphi) \, e^{ipx}$}\coordHE{}, satisfies (\ref{third}) by using
+(\ref{Superpot}) and (\ref{First}) to relate \myHighlight{$V(\varphi)$}\coordHE{}, \myHighlight{$\varphi'(r)$}\coordHE{} and
+\myHighlight{$A'(r)$}\coordHE{} to the superpotential \myHighlight{$W(\varphi)$}\coordHE{} and its derivatives. 
+This allows us to use the method of
+reduction of order to obtain a second-order equation for the remaining
+solutions.  Writing
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{tilde}
+\varphit = W'(\varphi) \rightCoord{}\, e^{ipx} \rightCoord{}\, \int^r dr' \rightCoord{}\, R(r',p) \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{1}{7}{
+\varphit = W'(\varphi) \, e^{ipx} \, \int^r dr' \, R(r',p) \,, 
+}{1}\coordE{}\end{eqnarray}
+for some unknown \myHighlight{$R(r,p)$}\coordHE{}, and using the properties of the flow
+(\ref{Superpot}) and (\ref{First}), we find
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{second}
+R''(r,p) + g \rightCoord{}\, (W'' - 2W) \rightCoord{}\, R'(r,p) &+& \rightCoord{}\\\leftCoord{}
+g^2  \left( -\frac{\leftCoord{}2}{\rightCoord{}3} W W'' + \frac{\leftCoord{}8}{\rightCoord{}9} \rightCoord{}
+W^2 + \frac{\leftCoord{}1}{\rightCoord{}2} W' W''' - W'^2 \right) \rightCoord{}\, R(r,p) &+& p^2 \rightCoord{}\, e^{-2A} \rightCoord{}\, \rightCoord{}
+R(r,p) = 0 \rightCoord{}\,. \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{5}{15}{
+R''(r,p) + g \, (W'' - 2W) \, R'(r,p) &+& \\
+g^2  \left( -\frac{2}{3} W W'' + \frac{8}{9} 
+W^2 + \frac{1}{2} W' W''' - W'^2 \right) \, R(r,p) &+& p^2 \, e^{-2A} \, 
+R(r,p) = 0 \,. }{1}\coordE{}\end{eqnarray}
+We remind the reader that primes on \myHighlight{$R(r)$}\coordHE{} are \myHighlight{$r$}\coordHE{}-derivatives while
+those on \myHighlight{$W$}\coordHE{} are with respect to \myHighlight{$\varphi$}\coordHE{}. To determine the boundary
+scaling rates of the three independent solutions of (\ref{third}), we
+may approximate \myHighlight{$W(\varphi) = -3/2 + \rho \, \varphi^2/2$}\coordHE{} where
+\myHighlight{$\rho$}\coordHE{} is related to the operator scale dimension \myHighlight{$\Delta$}\coordHE{} by
+\myHighlight{$\rho=\Delta-4$}\coordHE{} for operator deformations and \myHighlight{$\rho=-\Delta$}\coordHE{} for
+vacuum expectation values. Standard Frobenius analysis then gives the
+exponential rates
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\varphit(r) \sim \exp(\rho r/L), \quad \exp((\rho-2)r/L), \quad
+\exp((-\rho-4)r/L) \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{1}{4}{
+\varphit(r) \sim \exp(\rho r/L), \quad \exp((\rho-2)r/L), \quad
+\exp((-\rho-4)r/L) \,, 
+}{1}\coordE{}\end{eqnarray}
+for the universal solution, and the two independent solutions of
+(\ref{second}), respectively.
+
+By solving (\ref{second}), we can obtain the solution to \myHighlight{$\varphit$}\coordHE{}
+from (\ref{tilde}).  The integration constant is just the freedom to
+add a multiple of the universal solution to our result for \myHighlight{$\varphit$}\coordHE{}.
+This will be important later on for assuring regularity of the
+solutions at the singularity.
+
+\subsection{Supersymmetric Quantum Mechanics}
+
+We now discuss the transformation of the fluctuation equations into
+Schr\"odinger form, which gives considerable intuition \cite{fgpw2}
+into the nature of the fluctuation spectrum.  For the dilaton and for
+the transverse traceless metric fluctuations \cite{dfgk,bakas} the
+Schr\"odinger potential is that of a supersymmetric quantum mechanics,
+and this gives a simple proof that the spectrum of normalizable
+fluctuations contains no tachyons.  We will see that SUSY-QM provides
+a useful framework in which to consider all fluctuations.
+
+The Schr\"odinger form obtains after a change of radial coordinate \myHighlight{$r$}\coordHE{}
+to the horospherical coordinate \myHighlight{$z$}\coordHE{}, defined by the line element
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+ds^2 = e^{2A(z)} \rightCoord{}\, \left[ (\eta_{ij} + h_{ij}(x,z)) \rightCoord{}\, dx^i dx^j - dz^2 \right] \rightCoord{}\,,
+\rightCoord{}}{0mm}{1}{5}{
+ds^2 = e^{2A(z)} \, \left[ (\eta_{ij} + h_{ij}(x,z)) \, dx^i dx^j - dz^2 \right] \,,
+}{1}\coordE{}\end{eqnarray}
+and thus the Jacobian must be
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{horo}
+\frac{\leftCoord{}dz}{\rightCoord{}dr} = \pm \rightCoord{}\, e^{-A} \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{2}{6}{
+\frac{dz}{dr} = \pm \, e^{-A} \,. 
+}{1}\coordE{}\end{eqnarray}
+We choose the \myHighlight{$-$}\coordHE{} sign for the present application, so that the
+boundary region \myHighlight{$r \rightarrow \infty$}\coordHE{} is mapped to \myHighlight{$z=0$}\coordHE{} and the deep
+interior to \myHighlight{$z \rightarrow \infty$}\coordHE{}.
+
+Consider first the fluctuation equation for an inert scalar
+\myHighlight{$\varphit(r,p)$}\coordHE{} obtained from (\ref{QuadAction}),
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{inerteq}
+\leftCoord{}- \left( \square + U(\varphi) \right)  \varphit(r,p) = \varphit''(r,p) \rightCoord{} 
+\leftCoord{}+ 4 A'(r) \rightCoord{}\, \varphit'(r,p) - U(\varphi(r)) \rightCoord{}\, \varphit(r,p) + e^{-2A} \rightCoord{}
+ \leftCoord{}\rightCoord{}\, p^2 \rightCoord{}\, \varphit(r,p) = 0 \rightCoord{}\,. \rightCoord{}  
+\rightCoord{}}{0mm}{4}{10}{
+- \left( \square + U(\varphi) \right)  \varphit(r,p) = \varphit''(r,p)  
++ 4 A'(r) \, \varphit'(r,p) - U(\varphi(r)) \, \varphit(r,p) + e^{-2A} 
+ \, p^2 \, \varphit(r,p) = 0 \,.   
+}{1}\coordE{}\end{eqnarray}
+Performing the field transformation \myHighlight{$\varphit(r,p) = \exp(-3A/2) \,
+\psi(z,p)$}\coordHE{} as well as the change of coordinate \myHighlight{$r \rightarrow z$}\coordHE{}, one
+finds an equation in Schr\"odinger form
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{scheq}
+\leftCoord{}- \psi''(z,p) + {\cal V}(z) \rightCoord{}\, \psi(z,p) = p^2 \psi(z,p) \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{2}{5}{
+- \psi''(z,p) + {\cal V}(z) \, \psi(z,p) = p^2 \psi(z,p) \,, 
+}{1}\coordE{}\end{eqnarray}
+with potential
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{schpot}
+{\rightCoord{}\leftCoord{}\cal V}(z) = \left( \frac{\leftCoord{}3}{\rightCoord{}2} A'(z) \right)^2 + \frac{\leftCoord{}3}{\rightCoord{}2} A''(z) + \rightCoord{}
+e^{2A(z)} \rightCoord{}\, U(\varphi(z)) \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{4}{9}{
+{\cal V}(z) = \left( \frac{3}{2} A'(z) \right)^2 + \frac{3}{2} A''(z) + 
+e^{2A(z)} \, U(\varphi(z)) \,, 
+}{1}\coordE{}\end{eqnarray}
+in which \myHighlight{$A'(z) = dA/dz = \pm \exp(A) \, A'(r)$}\coordHE{}.  (Note that either
+sign choice in (\ref{horo}) leads to the same form for (\ref{scheq})
+and (\ref{schpot}).)  The first two terms in (\ref{schpot}) are in the
+form of a supersymmetric quantum mechanics potential \myHighlight{${\cal V}(z) =
+{\cal U}(z)^2 + {\cal U}'(z)$}\coordHE{} derived from a prepotential \myHighlight{${\cal U}(z)
+= (3/2) \, A'(z)$}\coordHE{}, while \myHighlight{$U(\varphi(z))$}\coordHE{} is determined by the coupling
+of inert and active scalars in the supergravity potential.  If
+\myHighlight{$U(\varphi(z))$}\coordHE{} is positive (or absent as it is for the dilaton
+fluctuation), then one has an immediate argument that normalizable
+fluctuations occur only for \myHighlight{$p^2 \geq 0$}\coordHE{}.  In general, the behavior
+of the potential (\ref{schpot}) near the limits \myHighlight{$z \rightarrow 0$}\coordHE{} and
+\myHighlight{$z \rightarrow \infty$}\coordHE{} is usually enough information to ascertain
+whether the fluctuation spectrum is discrete or continuous, with or
+without gap \cite{fgpw2}.
+
+In our examples in sections \ref{sym} and
+\ref{coulomb}, the two inert fluctuations with nonzero \myHighlight{$U(\varphi(z))$}\coordHE{}
+turn out to have \myHighlight{$U(\varphi(z)) < 0$}\coordHE{}, so that positivity of \myHighlight{$p^2$}\coordHE{} is
+not obvious with the potential in the form (\myHighlight{$\ref{schpot}$}\coordHE{}).  However
+in both cases we are able to rewrite the potentials in an exact SUSY
+QM form with a modified \myHighlight{${\cal U}$}\coordHE{}.  The two examples work
+differently, and we leave the question of the existence of an exact
+SUSY QM potential for general coupled inert scalars for the future.
+
+The norm is a potentially delicate issue.  The Hamiltonian in
+(\ref{scheq}) is self-adjoint with respect to the ``Schr\"odinger
+norm'' \myHighlight{$\int dz \, \psi(z)^2$}\coordHE{}, but not with respect to the transformed
+covariant norm \myHighlight{$\int dz \, \exp(2A) \, \psi(z)^2$}\coordHE{} which is correct in
+the present setting.  (This results because a factor of \myHighlight{$\exp(-2A)$}\coordHE{}
+was dropped in passing from (\ref{inerteq}) to (\ref{scheq}).)
+Because of this delicacy, solutions which have infinite Schr\"odinger
+norm but finite covariant norm would not necessarily have \myHighlight{$p^2>0$}\coordHE{}. 
+
+The treatment of active scalar fluctuations is more complex.
+The goal is to transform the second order equation (\ref{second}) to
+Schr\"odinger form.  The change from \myHighlight{$r$}\coordHE{} to \myHighlight{$z$}\coordHE{} produces 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{schactive}
+\leftCoord{}- R''(z) + g e^A \left( W'' - \frac{\leftCoord{}5}{\rightCoord{}3} W \right)  R'(z) + \rightCoord{}
+  g^2 e^{2A}  \left (W'^2 + \frac{\leftCoord{}2}{\rightCoord{}3}W W'' - \frac{\leftCoord{}8}{\rightCoord{}9} W^2 - \rightCoord{}
+  \frac{\leftCoord{}1}{\rightCoord{}2} W' W''' \right) R = p^2 R \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{6}{10}{
+- R''(z) + g e^A \left( W'' - \frac{5}{3} W \right)  R'(z) + 
+  g^2 e^{2A}  \left (W'^2 + \frac{2}{3}W W'' - \frac{8}{9} W^2 - 
+  \frac{1}{2} W' W''' \right) R = p^2 R \,, 
+}{1}\coordE{}\end{eqnarray}
+in which \myHighlight{$R'$}\coordHE{} and \myHighlight{$R''$}\coordHE{} are derivatives with respect to \myHighlight{$z$}\coordHE{}, but \myHighlight{$W'$}\coordHE{},
+\myHighlight{$W''$}\coordHE{} etc.\ indicate \myHighlight{$\varphi$}\coordHE{}-derivatives, as has been our practice.
+The further transformation
+\myHighlight{$R(z) = \exp(S(z)) \, \psi(z)$}\coordHE{}, with
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\frac{\leftCoord{}dS}{\rightCoord{}dz} = \frac{\leftCoord{}1}{\rightCoord{}2} \rightCoord{}\, g \rightCoord{}\, e^{A(z)}  \left( W''(\varphi(z)) - \rightCoord{}
+\frac{\leftCoord{}5}{\rightCoord{}3} W(\varphi(z)) \right) \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{4}{10}{
+\frac{dS}{dz} = \frac{1}{2} \, g \, e^{A(z)}  \left( W''(\varphi(z)) - 
+\frac{5}{3} W(\varphi(z)) \right) \,, 
+}{1}\coordE{}\end{eqnarray}
+produces the Schr\"odinger form (\ref{scheq}) with the (ugly) potential
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{activepot}
+{\rightCoord{}\leftCoord{}\cal V}(z) = \frac{\leftCoord{}1}{\rightCoord{}4} \rightCoord{}\, g^2 e^{2A(z)} \rightCoord{}\, \left[ \frac{\leftCoord{}1}{\rightCoord{}3} W^2 + \rightCoord{}
+\frac{\leftCoord{}7}{\rightCoord{}3} W'^2 + (W'')^2 - \frac{\leftCoord{}4}{\rightCoord{}3} W W'' - W' W''' \right] \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{6}{12}{
+{\cal V}(z) = \frac{1}{4} \, g^2 e^{2A(z)} \, \left[ \frac{1}{3} W^2 + 
+\frac{7}{3} W'^2 + (W'')^2 - \frac{4}{3} W W'' - W' W''' \right] \,. 
+}{1}\coordE{}\end{eqnarray}
+Unpromising as it seems, one may try to express (\ref{activepot}) in
+SUSY-QM form perhaps with a simple remainder.  To do this we use the
+ansatz 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+{\rightCoord{}\leftCoord{}\cal U} = e^A \rightCoord{}\, (aW +bW' +cW'') \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{2}{6}{
+{\cal U} = e^A \, (aW +bW' +cW'') \,, 
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$a,b,c$}\coordHE{} are free parameters. We find that an exact SUSY form
+cannot be achieved, but analogously to (\myHighlight{$\ref{schpot})$}\coordHE{} one may write
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{activeplusremain}
+{\rightCoord{}\leftCoord{}\cal V}(z) = {\cal U}(z)^2 + {\cal U}'(z) + \frac{\leftCoord{}1}{\rightCoord{}3}\rightCoord{}\, g^2 e^{2A(z)} \rightCoord{}
+\leftCoord{}\rightCoord{}\, (W')^2 \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{4}{9}{
+{\cal V}(z) = {\cal U}(z)^2 + {\cal U}'(z) + \frac{1}{3}\, g^2 e^{2A(z)} 
+\, (W')^2 \,, 
+}{1}\coordE{}\end{eqnarray}
+with prepotential
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{activepre}
+{\rightCoord{}\leftCoord{}\cal U}(z) = \frac{\leftCoord{}1}{\rightCoord{}2} \rightCoord{}\, g \rightCoord{}\, e^{A(z)} \rightCoord{}\, (W'' - W) \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{3}{9}{
+{\cal U}(z) = \frac{1}{2} \, g \, e^{A(z)} \, (W'' - W) \,. 
+}{1}\coordE{}\end{eqnarray}
+The discussion below
+(\ref{schpot}) applies here as well, but here it is manifest that the
+additional term beyond the SUSY-QM structure \myHighlight{$\Delta {\cal V} = (1/3)
+\, e^{2A} \, (W')^2$}\coordHE{} is positive-definite.  This indicates that there
+are no tachyons in the normalized fluctuation spectrum of the active
+scalar.  In particular examples one must be careful to use the correct
+norm which is the transformation of \myHighlight{$\int dr \, e^{4A(r)}\, \varphit^2$}\coordHE{} with
+\myHighlight{$\varphit(r,p)$}\coordHE{} given by (\ref{tilde}).
+
+Two further comments can be made.  Although in general \myHighlight{${\cal V}(z)$}\coordHE{}
+only can be cast in the form (\ref{activeplusremain}), in specific
+examples it may well have an exact SUSY form with a prepotential
+different from (\ref{activepre}).  An example of this appears in
+section \ref{coulombactive}.  Additionally, it is also clear that the
+analysis above has applications to the stability of domain
+walls in the brane world scenario \cite{rs1,rs2} which we plan to
+pursue.
+
+\section{The \myHighlight{${\cal N} = 1$}\coordHE{} Super Yang-Mills flow}
+\label{sym}
+
+
+Several kink solutions involving a single real flowing scalar have
+been considered in the literature.  There are only two inequivalent
+single real scalars transforming in the \myHighlight{${\bf 10} \oplus {\bf
+\overline{10}}$}\coordHE{} of \myHighlight{$SU(4)$}\coordHE{}, as there are two Weyl orbits in the \myHighlight{${\bf
+10}$}\coordHE{}.  Representative scalars in the longer and shorter orbits,
+respectively, have been called \myHighlight{$\sigma$}\coordHE{} and \myHighlight{$m$}\coordHE{}, and we will use this
+convention.  There are three inequivalent choices in the \myHighlight{${\bf 20'}$}\coordHE{}, one of
+which we will discuss in the next section.
+
+Interesting renormalization group flows have been considered in
+\cite{gppz} in which the scalar manifold of bulk \myHighlight{${\cal N}=8$}\coordHE{} gauged
+supergravity was restricted to a subspace of two particular
+inequivalent scalars in the \myHighlight{${\bf 10} \oplus {\bf \overline{10}}$}\coordHE{} of
+\myHighlight{$SU(4)$}\coordHE{}.  A kink solution with only \myHighlight{$m(r)$}\coordHE{} active was obtained and
+interpreted as the holographic dual of a perturbation of \myHighlight{${\cal N}=4$}\coordHE{}
+SYM theory by a dimension 3 operator which leads to a field theoretic
+RG flow to pure \myHighlight{${\cal N}=1$}\coordHE{} SYM theory at long distances. The
+10-dimensional lift of this solution is not known, and the
+5-dimensional geometry has an interior curvature singularity. The
+significance of this is not clear, but a scenario for its stringy
+resolution has been outlined \cite{sp}.
+
+We will use the kink background of \cite{gppz} as a testing ground for
+computations of fluctuations and correlation functions as discussed
+above.  For this purpose we review the background solution in the next
+subsection. We then go on to study fluctuations and correlators of two
+inert scalars, and finally focus on perturbations \myHighlight{$\mt(r,p)$}\coordHE{} of the
+active scalar.
+
+
+\subsection{The background flow}
+
+In the consistent sub-sector of \myHighlight{${\cal N}=8$}\coordHE{} supergravity considered in
+\cite{gppz}, the two scalar fields \myHighlight{$m$}\coordHE{} and \myHighlight{$\sigma$}\coordHE{} have canonical
+kinetic terms and superpotential and potential given by:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+W(m, \sigma) &=& - \frac{\leftCoord{}3}{\rightCoord{}4} \left[ \cosh \left( \frac{\leftCoord{}2m}{\rightCoord{}\sqrt{3}} \right) + \cosh \left(2 \sigma \right) \right] \rightCoord{}\,, \rightCoord{}\\\leftCoord{}
+V(m, \sigma) &=& - \frac{\leftCoord{}3g^2}{\rightCoord{}8} \left[  \frac{\leftCoord{}1}{\rightCoord{}4} \cosh^2 \left( \frac{\leftCoord{}2m}{\rightCoord{}\sqrt{3}} \right) +  \cosh\left(\frac{\leftCoord{}2 \rightCoord{}
+m}{\sqrt{3}}\right) \cosh(2 \sigma) - \frac{\leftCoord{}1}{\rightCoord{}4} \cosh^2 (2 \sigma) + 1 \rightCoord{} 
+\right] \rightCoord{}\,. \rightCoord{}\label{msigmapot}
+\rightCoord{}}{0mm}{9}{14}{
+W(m, \sigma) &=& - \frac{3}{4} \left[ \cosh \left( \frac{2m}{\sqrt{3}} \right) + \cosh \left(2 \sigma \right) \right] \,, \\
+V(m, \sigma) &=& - \frac{3g^2}{8} \left[  \frac{1}{4} \cosh^2 \left( \frac{2m}{\sqrt{3}} \right) +  \cosh\left(\frac{2 
+m}{\sqrt{3}}\right) \cosh(2 \sigma) - \frac{1}{4} \cosh^2 (2 \sigma) + 1  
+\right] \,. }{1}\coordE{}\end{eqnarray}
+Since the \myHighlight{$\sigma$}\coordHE{} field appears quadratically in \myHighlight{$V(m,\sigma)$}\coordHE{} there is a
+supersymmetric flow in which it vanishes. This flow is a solution of
+(\ref{First}) with superpotential
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+W(m) = - \frac{\leftCoord{}3}{\rightCoord{}4} \left[1 + \cosh \left(\frac{\leftCoord{}2m}{\rightCoord{}\sqrt{3}} \right) \rightCoord{}
+\right] \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{3}{7}{
+W(m) = - \frac{3}{4} \left[1 + \cosh \left(\frac{2m}{\sqrt{3}} \right) 
+\right] \,. 
+}{1}\coordE{}\end{eqnarray}
+
+In the following, we set \myHighlight{$g = 2/L$}\coordHE{}, and \myHighlight{$W$}\coordHE{} always refers to \myHighlight{$W(m)$}\coordHE{}.  The kink
+solution is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+m(r) = \frac{\leftCoord{}\sqrt{3}}{2} \log \frac{\leftCoord{}1+ e^{-r/L}}{\rightCoord{}1-e^{-r/L}} \rightCoord{}\,, \rightCoord{}\\\leftCoord{}
+A(r) = \frac{\leftCoord{}1}{\rightCoord{}2} \left( \frac{\leftCoord{}r}{\rightCoord{}L} + \log 2 \sinh \frac{\leftCoord{}r}{\rightCoord{}L} \right) \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{7}{10}{
+m(r) = \frac{\sqrt{3}}{2} \log \frac{1+ e^{-r/L}}{1-e^{-r/L}} \,, \\
+A(r) = \frac{1}{2} \left( \frac{r}{L} + \log 2 \sinh \frac{r}{L} \right) \,. 
+}{1}\coordE{}\end{eqnarray}
+There is a singularity at finite proper distance, which by choice of
+an additive integration constant we have located at \myHighlight{$r_s=0$}\coordHE{}.
+
+The horospheric coordinate \myHighlight{$z$}\coordHE{} is obtained from
+\myHighlight{$dr/dz = - e^A$}\coordHE{}, which can be solved to give
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+e^{2A(z)} = \cot^2 \left( \frac{\leftCoord{}z}{\rightCoord{}L} \right) = e^{\frac{\leftCoord{}2r}{\rightCoord{}L}} -1 \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{3}{6}{
+e^{2A(z)} = \cot^2 \left( \frac{z}{L} \right) = e^{\frac{2r}{L}} -1 \,. 
+}{1}\coordE{}\end{eqnarray}
+Neither \myHighlight{$r$}\coordHE{} nor \myHighlight{$z$}\coordHE{} proves useful for solving the various equations.
+Instead we are able to make progress by using a variable \myHighlight{$u$}\coordHE{} in which
+the boundary is mapped to \myHighlight{$u_b = 1$}\coordHE{} and the singularity to \myHighlight{$u_s = 0$}\coordHE{}.
+This is achieved by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{udef}
+u \equiv \cos^2 \left( \frac{\leftCoord{}z}{\rightCoord{}L} \right) \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{2}{5}{
+u \equiv \cos^2 \left( \frac{z}{L} \right) \,. 
+}{1}\coordE{}\end{eqnarray}
+The equations for fluctuations become hypergeometric in \myHighlight{$u$}\coordHE{} as we will see,
+and the quantities which enter these equations can be expressed as:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{symreference}
+W(u) &=& - \frac{\leftCoord{}3}{\rightCoord{}2u} \rightCoord{}\,, \quad \quad \;\; \rightCoord{}
+W'(u) = - \sqrt{3} \; \frac{\leftCoord{}\sqrt{1-u}}{\rightCoord{}u} \rightCoord{}\,, \nonumber \rightCoord{}\\\leftCoord{}
+W''(u) &=&  \frac{\leftCoord{}u-2}{\rightCoord{}u} \rightCoord{}\,, \quad \; \rightCoord{}
+W'''(u) = - \frac{\leftCoord{}4}{\rightCoord{}\sqrt{3}} \rightCoord{}\, \frac{\leftCoord{}\sqrt{1-u}}{\rightCoord{}u} \rightCoord{}\,, \rightCoord{} 
+\rightCoord{}\\\leftCoord{}
+e^{2A(u)} &=& \frac{\leftCoord{}u}{\rightCoord{}1-u} \rightCoord{}\,, \quad \quad 
+\frac{\leftCoord{}du}{\rightCoord{}dr} = \frac{\leftCoord{}2}{\rightCoord{}L} \rightCoord{}\, (1-u) \rightCoord{}\,. \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{11}{24}{
+W(u) &=& - \frac{3}{2u} \,, \quad \quad \;\; 
+W'(u) = - \sqrt{3} \; \frac{\sqrt{1-u}}{u} \,, \\
+W''(u) &=&  \frac{u-2}{u} \,, \quad \; 
+W'''(u) = - \frac{4}{\sqrt{3}} \, \frac{\sqrt{1-u}}{u} \,,  
+\\
+e^{2A(u)} &=& \frac{u}{1-u} \,, \quad \quad 
+\frac{du}{dr} = \frac{2}{L} \, (1-u) \,. }{1}\coordE{}\end{eqnarray}
+
+\subsection{Correlators of inert scalars}
+
+Let us begin our study of fluctuations in this geometry by calculating the
+two-point function for the dilaton \myHighlight{$\phi$}\coordHE{}.  The dilaton couples to
+\myHighlight{${\cal O}_\phi ={\Tr} F^2 + \cdots$}\coordHE{} and hence provides information 
+about the glueball
+spectrum.  The Klein-Gordon equation for this field is 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\leftCoord{}- \frac{\leftCoord{}1}{\rightCoord{}\sqrt{g}} \rightCoord{}\, \partial_{\mu} \rightCoord{}\, (\sqrt{g} \rightCoord{}\, g^{\mu \nu}
+ \partial_{\nu} ) \rightCoord{}\, \phi = \left(\frac{\leftCoord{}\partial}{\rightCoord{}\partial r} +4A'(r)
+ \right) \frac{\leftCoord{} \partial \phi}{\rightCoord{}\partial r} +p^2 e^{-2A} \phi =0. \rightCoord{}
+\rightCoord{}}{0mm}{5}{10}{
+- \frac{1}{\sqrt{g}} \, \partial_{\mu} \, (\sqrt{g} \, g^{\mu \nu}
+ \partial_{\nu} ) \, \phi = \left(\frac{\partial}{\partial r} +4A'(r)
+ \right) \frac{ \partial \phi}{\partial r} +p^2 e^{-2A} \phi =0. 
+}{1}\coordE{}\end{eqnarray}
+
+In terms of \myHighlight{$u$}\coordHE{} this becomes
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\phi''(u) + \frac{\leftCoord{}1}{\rightCoord{}1-u} \rightCoord{}\, \left( \frac{\leftCoord{}2}{\rightCoord{}u} -1 \right) \rightCoord{}\, \phi'(u) \rightCoord{}
+\leftCoord{}+ \frac{\leftCoord{}p^2 L^2}{\rightCoord{}4} \rightCoord{}\, \frac{\leftCoord{}1}{\rightCoord{}u (1-u)} \rightCoord{}\, \phi(u) = 0 \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{6}{13}{
+\phi''(u) + \frac{1}{1-u} \, \left( \frac{2}{u} -1 \right) \, \phi'(u) 
++ \frac{p^2 L^2}{4} \, \frac{1}{u (1-u)} \, \phi(u) = 0 \,. 
+}{1}\coordE{}\end{eqnarray}
+This equation is hypergeometric; the solution regular in the
+deep interior (\myHighlight{$u = 0$}\coordHE{}) is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\phi(u) = (u-1)^2 \rightCoord{}\, F \left( 2- \frac{\leftCoord{}pL}{\rightCoord{}2},2+ \frac{\leftCoord{}pL}{\rightCoord{}2};2;u \right) \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{3}{7}{
+\phi(u) = (u-1)^2 \, F \left( 2- \frac{pL}{2},2+ \frac{pL}{2};2;u \right) \,. 
+}{1}\coordE{}\end{eqnarray}
+This is a simpler, but presumably equivalent, form of the solution very 
+recently
+obtained in \cite{agpz}, where a different independent variable was used.
+
+We can calculate the two-point function in the established way
+\cite{gkp,fmmr}. Specifically, the \myHighlight{$p$}\coordHE{}-space correlator is obtained by
+imposing a cutoff at \myHighlight{$z=\epsilon$}\coordHE{} in the horospheric coordinate. One
+then finds
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{2ptfunc}
+\langle{\cal O}(p) \rightCoord{}\, {\cal O} (-p)\rangle = - \lim_{\epsilon \rightarrow 0} \rightCoord{}\, \left( \frac{\leftCoord{}1}{\rightCoord{}\epsilon^{2(\Delta-4)}} \right) \left[
+\frac{\leftCoord{}1}{\rightCoord{}z^3} \frac{\leftCoord{}d}{\rightCoord{}dz} \ln(\phi(z,p)) \right]_{z= \epsilon},
+\rightCoord{}}{0mm}{4}{7}{
+\langle{\cal O}(p) \, {\cal O} (-p)\rangle = - \lim_{\epsilon \rightarrow 0} \, \left( \frac{1}{\epsilon^{2(\Delta-4)}} \right) \left[
+\frac{1}{z^3} \frac{d}{dz} \ln(\phi(z,p)) \right]_{z= \epsilon},
+}{1}\coordE{}\end{eqnarray}
+
+where an energy-momentum conserving \myHighlight{$\delta$}\coordHE{}-function has been dropped,
+and \myHighlight{$\Delta$}\coordHE{} is the UV dimension of the operator \myHighlight{${\cal O}(x)$}\coordHE{}. The only
+term which is kept in the limit is the most singular term in
+\myHighlight{$\epsilon$}\coordHE{} which is non-analytic in \myHighlight{$p^2$}\coordHE{}. Other more singular terms
+are multiplied by polynomials in \myHighlight{$p^2$}\coordHE{}, and are dropped because they
+correspond to counter terms. This procedure is equivalent to
+calculating the second variation of the on-shell action
+(\ref{InertCorr}). Field theory considerations imply that correlators
+behave as \myHighlight{$(-p)^{2\nu} \ln(-p^2)$}\coordHE{} for large spacelike momentum, where
+\myHighlight{$\nu = \Delta - 2$}\coordHE{}.
+Our calculations lead directly to correlation functions
+which are normalized so that the leading term has the same coefficient as
+in the \myHighlight{$AdS_5$}\coordHE{} geometry. The analysis of the Appendix of \cite{fmmr}, redone
+for Bessel functions with integer \myHighlight{$\nu > 2$}\coordHE{}, gives 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{pureadscorr}
+\langle{\cal O}(p) \rightCoord{}\, {\cal O} (-p)\rangle = - \left[ \frac{\leftCoord{}2\nu}{\rightCoord{}\Gamma(\nu)\Gamma(\nu+1)4^\nu} \right] (-p)^{2\nu} \ln(-p^2) \rightCoord{}        
+\rightCoord{}}{0mm}{2}{5}{
+\langle{\cal O}(p) \, {\cal O} (-p)\rangle = - \left[ \frac{2\nu}{\Gamma(\nu)\Gamma(\nu+1)4^\nu} \right] (-p)^{2\nu} \ln(-p^2)         
+}{1}\coordE{}\end{eqnarray}
+For the dilaton this procedure gives (with \myHighlight{$s=p^2$}\coordHE{})
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\langle{\cal O}_{\phi}(p) \rightCoord{}\, {\cal O}_{\phi}(-p)\rangle = - \frac{\leftCoord{}1}{\rightCoord{}8} \rightCoord{}\,
+s \left( s-\frac{\leftCoord{}4}{\rightCoord{}L^2} \right) \left[\psi \left( 2 + \frac{\leftCoord{}L\sqrt{s}}{\rightCoord{}2} \right) + \rightCoord{}
+\psi \left( 2 - \frac{\leftCoord{}L \sqrt{s}}{\rightCoord{}2} \right) \right] \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{5}{11}{
+\langle{\cal O}_{\phi}(p) \, {\cal O}_{\phi}(-p)\rangle = - \frac{1}{8} \,
+s \left( s-\frac{4}{L^2} \right) \left[\psi \left( 2 + \frac{L\sqrt{s}}{2} \right) + 
+\psi \left( 2 - \frac{L \sqrt{s}}{2} \right) \right] \,, 
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$\psi(z) \equiv d\ln \Gamma(z)/dz$}\coordHE{}. This result agrees with \cite{agpz}.
+The
+correlator has a discrete spectrum of poles at \myHighlight{$s=4(n+2)^2/L^2 $}\coordHE{} as is
+consistent with the expected glueball spectrum in a confining
+theory.
+
+We can also consider the two-point function of the inert
+scalar \myHighlight{$\sigma$}\coordHE{}.  One must now take into account the coupling \myHighlight{$U(m)$}\coordHE{}
+to the active scalar that results from the potential (\ref{msigmapot}).
+The wave equation is (\ref{inerteq}) with
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+U(m) \equiv \left. \frac{\leftCoord{}\partial^2 V(m,\sigma)}{\rightCoord{}\partial \sigma^2} \rightCoord{}
+\right|_{\sigma = 0} = - \frac{\leftCoord{}3 g^2}{\rightCoord{}4} \left[ 2 \cosh
+\left(\frac{\leftCoord{}2m}{\rightCoord{}\sqrt{3}} \right) -1 \right] \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{4}{8}{
+U(m) \equiv \left. \frac{\partial^2 V(m,\sigma)}{\partial \sigma^2} 
+\right|_{\sigma = 0} = - \frac{3 g^2}{4} \left[ 2 \cosh
+\left(\frac{2m}{\sqrt{3}} \right) -1 \right] \,, 
+}{1}\coordE{}\end{eqnarray}
+which leads to the hypergeometric wave equation
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\sigma''(u) + \frac{\leftCoord{}1}{\rightCoord{}1-u} \rightCoord{}\, \left( \frac{\leftCoord{}2}{\rightCoord{}u} -1 \right) \rightCoord{}\, \sigma'(u) \rightCoord{}
+\leftCoord{}+ \frac{\leftCoord{}1}{\rightCoord{}(1-u)^2} \left( \frac{\leftCoord{}p^2 L^2}{\rightCoord{}4} \rightCoord{}\, \frac{\leftCoord{}1-u}{\rightCoord{}u} \rightCoord{}
+\leftCoord{}+ \frac{\leftCoord{}3}{\rightCoord{}4} \frac{\leftCoord{}4-3u}{\rightCoord{}u} \right) \rightCoord{}
+ \leftCoord{}\rightCoord{}\, \sigma(u) = 0 \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{11}{18}{
+\sigma''(u) + \frac{1}{1-u} \, \left( \frac{2}{u} -1 \right) \, \sigma'(u) 
++ \frac{1}{(1-u)^2} \left( \frac{p^2 L^2}{4} \, \frac{1-u}{u} 
++ \frac{3}{4} \frac{4-3u}{u} \right) 
+ \, \sigma(u) = 0 \,. 
+}{1}\coordE{}\end{eqnarray}
+The solution regular at the horizon is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\sigma(u) = (1-u)^{3/2} F \left( \frac{\leftCoord{}3}{\rightCoord{}2} + \frac{\leftCoord{}1}{\rightCoord{}2} \sqrt{9 + \rightCoord{}
+L^2 p^2}, \frac{\leftCoord{}3}{\rightCoord{}2} - \frac{\leftCoord{}1}{\rightCoord{}2} \sqrt{9 + L^2 p^2};2;u \right) \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{5}{9}{
+\sigma(u) = (1-u)^{3/2} F \left( \frac{3}{2} + \frac{1}{2} \sqrt{9 + 
+L^2 p^2}, \frac{3}{2} - \frac{1}{2} \sqrt{9 + L^2 p^2};2;u \right) \,. 
+}{1}\coordE{}\end{eqnarray}
+The corresponding two-point function is 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{sigmacorr}
+\langle{\cal O}_{\sigma}(p) \rightCoord{}\, {\cal O}_{\sigma}(-p)\rangle =
+\frac{\leftCoord{}s+8/L^2}{\rightCoord{}2} \rightCoord{}\, \left[\psi \left( \frac{\leftCoord{}3}{\rightCoord{}2} + \frac{\leftCoord{}1}{\rightCoord{}2} \rightCoord{}
+\sqrt{9 + L^2 p^2} \right) + \psi \left(\frac{\leftCoord{}3}{\rightCoord{}2} - \frac{\leftCoord{}1}{\rightCoord{}2} \rightCoord{}
+\sqrt{9 + L^2 p^2} \right) \right] \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{6}{13}{
+\langle{\cal O}_{\sigma}(p) \, {\cal O}_{\sigma}(-p)\rangle =
+\frac{s+8/L^2}{2} \, \left[\psi \left( \frac{3}{2} + \frac{1}{2} 
+\sqrt{9 + L^2 p^2} \right) + \psi \left(\frac{3}{2} - \frac{1}{2} 
+\sqrt{9 + L^2 p^2} \right) \right] \,. 
+}{1}\coordE{}\end{eqnarray}
+There is a discrete spectrum of poles at \myHighlight{$s=4n(n+3)/L^2, n=0,1,2...$}\coordHE{}. We
+note the presence a massless state, which we shall not attempt to reconcile
+with the interpretation \cite{gppz}that the flow describes a confining
+field theory.
+
+These results may be compared with expectations based on the form of
+the Schr\"odinger potentials (\ref{schpot}) discussed in section
+\ref{equations}.  For both fields, the one discovers that \myHighlight{${\cal V}(z)
+\rightarrow + \infty$}\coordHE{} in both the boundary and deep interior limits,
+which is indicative of the discrete spectrum found above.  In section
+\ref{equations} we showed that the Schr\"odinger potential of an inert
+dilaton always possesses a SUSY QM form \myHighlight{${\cal V}(z) = {\cal U}(x)^2 +
+{\cal U}'(z)$}\coordHE{}, where
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{universaldil}
+{\rightCoord{}\leftCoord{}\cal U}_{\phi}(z) = \frac{\leftCoord{}1}{\rightCoord{}2} g \rightCoord{}\, e^A \rightCoord{}\, W \rightCoord{}\,,
+\rightCoord{}}{0mm}{3}{7}{
+{\cal U}_{\phi}(z) = \frac{1}{2} g \, e^A \, W \,,
+}{1}\coordE{}\end{eqnarray}
+independent of the flow.  Thus we can argue that the spectrum is
+positive, and we are in the situation of broken supersymmetry since
+the candidate 0-mode (which is just \myHighlight{$\phi = const$}\coordHE{}) is not
+normalizable.  The \myHighlight{$\sigma$}\coordHE{} field has an additional term proportional
+to \myHighlight{$U(m(z))$}\coordHE{}, which turns out to be negative; the \myHighlight{$m$}\coordHE{}-flow sits atop a
+ridge in the \myHighlight{$\sigma$}\coordHE{}-direction of field space.  Thus SUSY quantum
+mechanics does not manifestly apply with the potential written as in
+(\ref{schpot}).  However, one may show that \myHighlight{${\cal V}_{\sigma}(z)$}\coordHE{} can
+be rewritten in an exact SUSY QM form with prepotential
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{symsigmasusypot}
+{\rightCoord{}\leftCoord{}\cal U}_{\sigma}(z) = \frac{\leftCoord{}1}{\rightCoord{}2} g \rightCoord{}\, e^A \left( W + 3 \right) \rightCoord{}\,,
+\rightCoord{}}{0mm}{3}{6}{
+{\cal U}_{\sigma}(z) = \frac{1}{2} g \, e^A \left( W + 3 \right) \,,
+}{1}\coordE{}\end{eqnarray}
+and in this case the zero-mode can be shown to be normalizable, consistent
+with the spectrum of the correlator (\ref{sigmacorr}).
+
+
+\subsection{The graviton/active scalar system}
+
+It is straightforward to show that (\ref{second}) becomes
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{symR}
+R''(u) + \frac{\leftCoord{}1}{\rightCoord{}u(1-u)} R'(u) + \frac{\leftCoord{}1}{\rightCoord{}u(1-u)} \left( \frac{\leftCoord{}2u-1}{\rightCoord{}u(1-u)}+ \rightCoord{}
+p^2L^2/4 \right) R(u) = 0 \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{4}{8}{
+R''(u) + \frac{1}{u(1-u)} R'(u) + \frac{1}{u(1-u)} \left( \frac{2u-1}{u(1-u)}+ 
+p^2L^2/4 \right) R(u) = 0 \,, 
+}{1}\coordE{}\end{eqnarray}
+which has the solution 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{symRsoln}
+R(u) = u (1-u) F\left( \frac{\leftCoord{}3}{\rightCoord{}2} + \frac{\leftCoord{}1}{\rightCoord{}2}\rightCoord{}\, \zeta, \frac{\leftCoord{}3}{\rightCoord{}2} - \frac{\leftCoord{}1}{\rightCoord{}2}\rightCoord{}\, \zeta; 3; u \right) \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{5}{10}{
+R(u) = u (1-u) F\left( \frac{3}{2} + \frac{1}{2}\, \zeta, \frac{3}{2} - \frac{1}{2}\, \zeta; 3; u \right) \,, 
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$\zeta = \sqrt{1 + p^2 L^2}$}\coordHE{}.  We reconstruct \myHighlight{$\mt$}\coordHE{} following
+(\ref{tilde}).  Using the relations (\ref{symreference}), we integrate
+to find
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{symM}
+\mt = \frac{\leftCoord{}\sqrt{1-u}}{\rightCoord{}u} \left[ 4 \rightCoord{}\, F_1 \rightCoord{}\, (p;u) - f_0  +
+p^2 \rightCoord{}\,L^2 \rightCoord{}\, u\rightCoord{}\, F_2\rightCoord{}\, (p;u)  \right] \rightCoord{}\,,
+\rightCoord{}}{0mm}{2}{10}{
+\mt = \frac{\sqrt{1-u}}{u} \left[ 4 \, F_1 \, (p;u) - f_0  +
+p^2 \,L^2 \, u\, F_2\, (p;u)  \right] \,,
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$F_n \, (p ;u)$}\coordHE{} is the hypergeometric function
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+F_n \rightCoord{}\, (p ; u) \equiv F \left( n - \frac{\leftCoord{}3}{\rightCoord{}2} + \frac{\leftCoord{}1}{\rightCoord{}2}\rightCoord{}\, \zeta,  n - \frac{\leftCoord{}3}{\rightCoord{}2} - \frac{\leftCoord{}1}{\rightCoord{}2}\rightCoord{}\, \zeta; n;u \right)  \rightCoord{}\,.     \rightCoord{}
+\rightCoord{}}{0mm}{5}{11}{
+F_n \, (p ; u) \equiv F \left( n - \frac{3}{2} + \frac{1}{2}\, \zeta,  n - \frac{3}{2} - \frac{1}{2}\, \zeta; n;u \right)  \,.     
+}{1}\coordE{}\end{eqnarray}
+Here \myHighlight{$f_0$}\coordHE{} is an integration constant, corresponding to the addition
+of a multiple of the universal solution.  The choice \myHighlight{$f_0 = 4$}\coordHE{} ensures
+regularity at the singularity \myHighlight{$u=0$}\coordHE{}, but we will keep \myHighlight{$f_0$}\coordHE{} as a
+parameter in our further discussion.  The second solution to
+(\ref{symR}) is singular at \myHighlight{$u=0$}\coordHE{} and cannot be made regular.  Near
+the boundary \myHighlight{$u=1$}\coordHE{}, we observe \myHighlight{$\mt \sim \sqrt{1-u} \sim z$}\coordHE{} which is
+the proper scaling for an operator with dimension \myHighlight{$\Delta = 3$}\coordHE{}.
+
+Let us check to see whether the form found for the fluctuation agrees
+with the intuition based on Schr\"odinger form (\ref{schactive}) of
+(\ref{symR}), with potential \myHighlight{${\cal V}(z)$}\coordHE{} given by (\ref{activepot}).
+Near \myHighlight{$z=0$}\coordHE{}, the leading term of the potential is \myHighlight{${\cal V}(z) =
+-1/4z^2$}\coordHE{}, which is the limiting strength of an allowed attractive
+\myHighlight{$1/z^2$}\coordHE{} potential.  Approaching the singularity at \myHighlight{$z \rightarrow
+\pi/2$}\coordHE{}, there is a repulsive \myHighlight{$1/(\pi/2 - z)^2$}\coordHE{} behavior.  Thus one
+expects a positive discrete spectrum, and this is reflected in the
+values of \myHighlight{$\zeta$}\coordHE{} which give a terminating hypergeometric series in
+(\ref{symRsoln}), namely \myHighlight{$\zeta = 2n +3$}\coordHE{} or \myHighlight{$s = p^2 = 4 (n+1)(n+2)$}\coordHE{} for
+\myHighlight{$n = 0,1,2\ldots$}\coordHE{}.  Examining (\ref{symM}) at these values of \myHighlight{$p^2$}\coordHE{},
+we find the behavior near the boundary
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\left. \mt(u,p) \right|_{\zeta = 2n+3} \approx - \sqrt{1-u} \left[ f_0 + c_n (1-u) + {\cal O}(1-u)^2 \right] \rightCoord{}\,,
+\rightCoord{}}{0mm}{1}{3}{
+\left. \mt(u,p) \right|_{\zeta = 2n+3} \approx - \sqrt{1-u} \left[ f_0 + c_n (1-u) + {\cal O}(1-u)^2 \right] \,,
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$c_n$}\coordHE{} is a constant.  These functions are normalizable (in the
+covariant norm \myHighlight{$\int dr \, e^{4A} \, (\mt)^2$}\coordHE{}) only if \myHighlight{$f_0 = 0$}\coordHE{}.
+
+We now attempt to obtain a correlation function by applying the previously used standard procedure.  Hypergeometric analytic continuation formulae \cite{bateman} give the boundary behavior
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{Mboundary}
+\mt(u,p) &\approx& \frac{\leftCoord{}\sqrt{1-u}}{u} \rightCoord{}\, \frac{\leftCoord{}1}{\rightCoord{}\Gamma
+\left(\frac{\leftCoord{}3+ \zeta}{\rightCoord{}2} \right) \Gamma \left(\frac{\leftCoord{}3- \zeta}{\rightCoord{}2} \right)} \rightCoord{}
+\left[ 4+p^2+\frac{\leftCoord{}f_0 \pi p^2}{\rightCoord{}4 \cos(\pi \zeta/2)} \right. \rightCoord{}\\ 
+&\leftCoord{}+& \left. \frac{\leftCoord{}p^4(1-u)}{\rightCoord{}4} \left(h_0''- \ln(1-u) \right) + {\cal
+O}(1-u)^2 \right] \rightCoord{}\,, \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{8}{12}{
+\mt(u,p) &\approx& \frac{\sqrt{1-u}}{u} \, \frac{1}{\Gamma
+\left(\frac{3+ \zeta}{2} \right) \Gamma \left(\frac{3- \zeta}{2} \right)} 
+\left[ 4+p^2+\frac{f_0 \pi p^2}{4 \cos(\pi \zeta/2)} \right. \\ 
+&+& \left. \frac{p^4(1-u)}{4} \left(h_0''- \ln(1-u) \right) + {\cal
+O}(1-u)^2 \right] \,, }{1}\coordE{}\end{eqnarray}
+where \myHighlight{$h_0'' = \psi(1) + \psi(2) - \psi((3+\zeta)/2)- \psi((3-\zeta)/2)$}\coordHE{}.
+Applying (\ref{2ptfunc}) we see that the ``would-be correlator''
+should be the most singular term (in \myHighlight{$(1-u)$}\coordHE{}) that is non-analytic in
+\myHighlight{$p^2$}\coordHE{} in
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{badcorr} ``\langle{\cal O}(p) {\cal O}(-p)\rangle\mbox{''} = \frac{\leftCoord{}s^2}{\rightCoord{}4s + 16/L^2 + \rightCoord{}
+\frac{\leftCoord{}f_0 \pi s}{\rightCoord{}\cos(\pi \zeta/2)}} \left[ \psi \left(\frac{\leftCoord{}3}{\rightCoord{}2} +
+\frac{\leftCoord{}1}{\rightCoord{}2} \zeta \right) + \psi \left(\frac{\leftCoord{}3}{\rightCoord{}2} - \frac{\leftCoord{}1}{\rightCoord{}2} \zeta
+\right) - \ln\left((1-u)e^{2 \gamma} \right) \right] . \rightCoord{}
+\rightCoord{}}{0mm}{7}{10}{
+``\langle{\cal O}(p) {\cal O}(-p)\rangle\mbox{''} = \frac{s^2}{4s + 16/L^2 + 
+\frac{f_0 \pi s}{\cos(\pi \zeta/2)}} \left[ \psi \left(\frac{3}{2} +
+\frac{1}{2} \zeta \right) + \psi \left(\frac{3}{2} - \frac{1}{2} \zeta
+\right) - \ln\left((1-u)e^{2 \gamma} \right) \right] . 
+}{1}\coordE{}\end{eqnarray}
+At this point we hit the first major barrier of our program; we see no
+way to extract the leading non-analytic term.  For example the
+coefficient of \myHighlight{$\ln(1-u)$}\coordHE{} should be a polynomial in \myHighlight{$s$}\coordHE{} in order to be
+interpreted as a contact term.  However here we have (for general
+\myHighlight{$f_0$}\coordHE{}) an entire function of \myHighlight{$s$}\coordHE{} with essential singularity at
+infinity, while at \myHighlight{$f_0 = 0$}\coordHE{} there is a pole at the space-like value
+\myHighlight{$s = - 4/L^2$}\coordHE{}.  One might nevertheless try to identify the correlator
+by simply dropping the log term.  However for general \myHighlight{$f_0$}\coordHE{} the
+expected poles of the discrete spectrum, at \myHighlight{$\zeta = 2s+3$}\coordHE{}, cancel
+between the numerator and denominator, leaving a function with no
+singularities in the finite \myHighlight{$s$}\coordHE{}-plane.  For \myHighlight{$f_0 = 0$}\coordHE{} one regains the
+expected poles, but there are also unphysical tachyon poles.
+
+We are rather sure that our treatment of the fluctuation equations
+leading to (\ref{tilde}), (\ref{second}) is correct.  The solution
+\myHighlight{$\mt(u,p)$}\coordHE{}, especially at \myHighlight{$f_0=4$}\coordHE{}, has the properties expected in the
+\myHighlight{$AdS$}\coordHE{}/CFT correspondence, both at the boundary and the interior
+singularity.  It is reassuring that (\ref{second}) admits solutions
+with unphysical behavior in both limits, yet the actual solution
+\myHighlight{$\mt(r,p)$}\coordHE{} behaves correctly at both ends. It thus appears that it is
+the procedure to obtain the correlation function from the fluctuation
+which must be modified.
+
+We can additionally calculate the associated graviton fluctuations using
+equations (\ref{algH}) and (\ref{algh}).  We find
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{symh}
+h &=& \frac{\leftCoord{}1}{\rightCoord{}3 \sqrt{3} u} \left( 24f_0 - 96 F_1 - 24 L^2 p^2 u
+F_2 +24 L^2 p^2 u (1-u) F_3 \rightCoord{}\,  \right. \\ &\leftCoord{}+& \left.  L^2 p^2 u^2 (1-u)
+\leftCoord{}(8 - L^2 p^2) F_4 \right) \rightCoord{}\,, \nonumber\rightCoord{} \\\leftCoord{} \rightCoord{}\label{symH} H' &=& -
+\frac{\leftCoord{}L(1-u)}{\rightCoord{}12 \sqrt{3} u} \left( 24f_0 - 96 F_1 - 24 L^2 p^2 u F_2
+\leftCoord{}+12 L^2 p^2 u (1-u) F_3 \rightCoord{}\,  \right. \\ &\leftCoord{}+& \left.  L^2 p^2 u^2 (1-u) (8 -
+L^2 p^2) F_4 \right) \rightCoord{}\,. \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{8}{11}{
+h &=& \frac{1}{3 \sqrt{3} u} \left( 24f_0 - 96 F_1 - 24 L^2 p^2 u
+F_2 +24 L^2 p^2 u (1-u) F_3 \,  \right. \\ &+& \left.  L^2 p^2 u^2 (1-u)
+(8 - L^2 p^2) F_4 \right) \,, \\ H' &=& -
+\frac{L(1-u)}{12 \sqrt{3} u} \left( 24f_0 - 96 F_1 - 24 L^2 p^2 u F_2
++12 L^2 p^2 u (1-u) F_3 \,  \right. \\ &+& \left.  L^2 p^2 u^2 (1-u) (8 -
+L^2 p^2) F_4 \right) \,. }{1}\coordE{}\end{eqnarray}
+Only \myHighlight{$H'(r)$}\coordHE{} is determined by the equations.  Note that if \myHighlight{$f_0 = 4$}\coordHE{},
+\myHighlight{$\mt$}\coordHE{}, \myHighlight{$h$}\coordHE{} and \myHighlight{$H'$}\coordHE{} are all regular at the singularity \myHighlight{$u = 0$}\coordHE{}.
+
+In principle, one would like to use (\ref{symh}) and (\ref{symH}) to
+calculate correlation functions of the trace of the energy-momentum
+tensor, such as \myHighlight{$\langle T^{i}_i(p) \,T^j_j(-p)\rangle$}\coordHE{}, which is related to
+renormalization group flows and proposals for c-theorems
+\cite{anselmi}.  The fact that the solutions for \myHighlight{$\mt$}\coordHE{}, \myHighlight{$h$}\coordHE{} and \myHighlight{$H$}\coordHE{}
+are all determined by a single set of boundary data is consistent with
+the field theory reality that the operator \myHighlight{$T^i_i$}\coordHE{} is not
+independent of the operator \myHighlight{${\cal O}_m$}\coordHE{}, as in (\ref{TequalsO}).
+Unfortunately, correlators constructed from the solutions
+(\ref{symh}), (\ref{symH}) seem to suffer from the same pathologies as
+(\ref{badcorr}).
+
+The reader may justifiably complain that two-point functions
+associated to tensor fluctuations should require a more complex
+treatment than the inert scalar case, since the actions
+are different.  This is further evidence that the procedure
+(\ref{InertCorr}) must be generalized in the case of the
+graviton/active scalar system.  In section \ref{2point}, we evaluate
+the full gravity + scalar action to second order in fluctuations, in
+the hope of finding such a generalization.
+
+\section{The Coulomb branch}
+\label{coulomb}
+
+Flows involving a single scalar from the \myHighlight{${\bf 20'}$}\coordHE{} of \myHighlight{$SO(6)$}\coordHE{},
+which preserve 16 of the 32 bulk supercharges, were
+discussed in \cite{fgpw2,bs}.  
+Unlike the flow involving \myHighlight{$m$}\coordHE{}, which
+is dual to an operator deformation of the Lagrangian of \myHighlight{${\cal N} =4$}\coordHE{}
+SYM, these flows change the vacuum of the field theory, moving it out
+onto the Coulomb branch.  The distinction can be perceived by
+examining the scaling of the scalar profile near the boundary.  The
+\myHighlight{${\bf 20'}$}\coordHE{} scalars are dual to operators with \myHighlight{$\Delta = 2$}\coordHE{}, and the
+Coulomb branch profiles scale as \myHighlight{$z^2$}\coordHE{} rather than the \myHighlight{$z^2 \ln z$}\coordHE{}
+associated with an operator flow.
+
+The five flows discussed in \cite{fgpw2} all have known lifts to 10D
+configurations, namely the geometries produced by discs of D3-branes
+of various dimensionalities.  There are three inequivalent single
+scalars in the \myHighlight{${\bf 20'}$}\coordHE{}, and two of these have distinct flows in
+the positive and negative directions in field space, for five in all.
+We consider the flow called \myHighlight{$n=2$}\coordHE{} in \cite{fgpw2}, and examine
+fluctuations of two inert scalars and the graviton/active scalar
+system.
+
+\subsection{The background flow}
+
+
+The scalar field \myHighlight{$\varphi$}\coordHE{} involved in the \myHighlight{$n=2$}\coordHE{} Coulomb branch flow
+also played a role in a two-scalar flow to an \myHighlight{${\cal N}=1$}\coordHE{}
+superconformal fixed point \cite{fgpw1}, where it was denoted
+\myHighlight{$\varphi_3$}\coordHE{}.  The other scalar, there called \myHighlight{$\varphi_1$}\coordHE{}, is a member
+of the same \myHighlight{${\bf 10} \oplus {\bf \overline{10}}$}\coordHE{} Weyl orbit as
+\myHighlight{$\sigma$}\coordHE{}.  The potential and superpotential of this two-scalar
+subspace is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+W(\varphi, \sigma) = - \frac{\leftCoord{}1}{\rightCoord{}4} \rightCoord{}\, e^{-2 \varphi /\sqrt{6}} \left[ \rightCoord{}
+e^{\sqrt{6} \varphi} (3- \cosh(2 \sigma)) + 2 (\cosh(2 \sigma) +1) \rightCoord{}
+\right] \rightCoord{}\,, \\\leftCoord{} \rightCoord{}\label{Coulombpot}
+V(\varphi, \sigma) = - \frac{\leftCoord{}g^2}{\rightCoord{}4} \rightCoord{}\, e^{2 \varphi/\sqrt{6}} \rightCoord{}\, \left[ \rightCoord{}
+e^{-\sqrt{6} \varphi} \left( \frac{\leftCoord{}3}{\rightCoord{}4} + \frac{\leftCoord{}1}{\rightCoord{}2} \cosh(2 \sigma) \rightCoord{}
+\leftCoord{}- \frac{\leftCoord{}1}{\rightCoord{}4} \cosh^2(2 \sigma) \right) + (1+ \cosh(2 \sigma)) + \right. \rightCoord{} 
+\leftCoord{}\\\leftCoord{}  \left. \rightCoord{}
+ \frac{\leftCoord{}1}{\rightCoord{}16} e^{\sqrt{6} \varphi} ( 1- \cosh^2 (2 \sigma) ) \rightCoord{}
+ \right] \rightCoord{}\,. \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{11}{22}{
+W(\varphi, \sigma) = - \frac{1}{4} \, e^{-2 \varphi /\sqrt{6}} \left[ 
+e^{\sqrt{6} \varphi} (3- \cosh(2 \sigma)) + 2 (\cosh(2 \sigma) +1) 
+\right] \,, \\ V(\varphi, \sigma) = - \frac{g^2}{4} \, e^{2 \varphi/\sqrt{6}} \, \left[ 
+e^{-\sqrt{6} \varphi} \left( \frac{3}{4} + \frac{1}{2} \cosh(2 \sigma) 
+- \frac{1}{4} \cosh^2(2 \sigma) \right) + (1+ \cosh(2 \sigma)) + \right.  
+\\  \left. 
+ \frac{1}{16} e^{\sqrt{6} \varphi} ( 1- \cosh^2 (2 \sigma) ) 
+ \right] \,. }{1}\coordE{}\end{eqnarray}
+In the notation of \cite{fgpw2}, \myHighlight{$\varphi = - \mu$}\coordHE{} is the active
+scalar in the \myHighlight{$n=2$}\coordHE{} Coulomb branch flow, while \myHighlight{$\sigma$}\coordHE{} is inert.  The
+superpotential for \myHighlight{$\varphi$}\coordHE{} alone is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{coulW}
+W(\varphi) = - e^{-2 \varphi/\sqrt{6}} - \frac{\leftCoord{}1}{\rightCoord{}2} \rightCoord{}\, \rightCoord{}
+e^{4 \varphi/\sqrt{6}} \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{2}{7}{
+W(\varphi) = - e^{-2 \varphi/\sqrt{6}} - \frac{1}{2} \, 
+e^{4 \varphi/\sqrt{6}} \,. 
+}{1}\coordE{}\end{eqnarray}
+The solution to the equations (\ref{First}) involving (\ref{coulW})
+can be obtained,
+but they are  not of direct
+use since it is more convenient to use a radial coordinate that is a 
+function of the scalar itself:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+v \equiv e^{\sqrt{6} \rightCoord{}\, \varphi} \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{1}{5}{
+v \equiv e^{\sqrt{6} \, \varphi} \,. 
+}{1}\coordE{}\end{eqnarray}
+The boundary is at \myHighlight{$v=1$}\coordHE{}.  For this flow \myHighlight{$\varphi \rightarrow -
+\infty$}\coordHE{}, so \myHighlight{$v \in [0,1]$}\coordHE{} with a curvature singularity at \myHighlight{$v_s = 0$}\coordHE{}.
+We have the relations
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\nonumber\rightCoord{}
+W &=& - \frac{\leftCoord{}1}{\rightCoord{}2} \rightCoord{}\,\frac{\leftCoord{}v + 2}{\rightCoord{}v^{1/3}} \rightCoord{}\,, \quad \quad
+W' = \frac{\leftCoord{}2}{\rightCoord{}\sqrt{6}} \rightCoord{}\, \frac{\leftCoord{}1-v}{\rightCoord{}v^{1/3}} \rightCoord{}\,, \rightCoord{}\\\leftCoord{}
+W'' &=& -\frac{\leftCoord{}2}{\rightCoord{}3} \rightCoord{}\, \frac{\leftCoord{}1+2v}{\rightCoord{}v^{1/3}} \rightCoord{}\,, \quad \quad
+W''' = \frac{\leftCoord{}4}{\rightCoord{}3 \sqrt{6}}  \frac{\leftCoord{}1 - 4 v}{\rightCoord{}v^{1/3}}\rightCoord{}\,, \rightCoord{}\\\leftCoord{}
+e^{2A} &=& \frac{\leftCoord{}\ell^2}{\rightCoord{}L^2} \rightCoord{}\, \frac{\leftCoord{}v^{2/3}}{\rightCoord{}1-v} \rightCoord{}\,, \quad \quad
+\frac{\leftCoord{}\partial v}{\rightCoord{}\partial r} = \frac{\leftCoord{}2}{\rightCoord{}L} \rightCoord{}\, v^{2/3} \rightCoord{}\, (1-v) \rightCoord{}\,. \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{15}{30}{
+W &=& - \frac{1}{2} \,\frac{v + 2}{v^{1/3}} \,, \quad \quad
+W' = \frac{2}{\sqrt{6}} \, \frac{1-v}{v^{1/3}} \,, \\
+W'' &=& -\frac{2}{3} \, \frac{1+2v}{v^{1/3}} \,, \quad \quad
+W''' = \frac{4}{3 \sqrt{6}}  \frac{1 - 4 v}{v^{1/3}}\,, \\
+e^{2A} &=& \frac{\ell^2}{L^2} \, \frac{v^{2/3}}{1-v} \,, \quad \quad
+\frac{\partial v}{\partial r} = \frac{2}{L} \, v^{2/3} \, (1-v) \,. }{1}\coordE{}\end{eqnarray}
+One can calculate the horospheric variable \myHighlight{$z$}\coordHE{} in terms of \myHighlight{$v$}\coordHE{}
+and the relationship is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{horov}
+v = \mbox{sech}^2 \left(\frac{\leftCoord{}z\rightCoord{}\, \ell}{\rightCoord{}L^2} \right) \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{2}{6}{
+v = \mbox{sech}^2 \left(\frac{z\, \ell}{L^2} \right) \,. 
+}{1}\coordE{}\end{eqnarray}
+Following \cite{fgpw2} we have introduced the length \myHighlight{$\ell$}\coordHE{}, the
+radius of the disc of D3-branes in ten dimensions.  Taking \myHighlight{$\ell/L
+\rightarrow 0$}\coordHE{} with \myHighlight{$z/L$}\coordHE{} fixed removes the flow and restores pure
+anti-de~Sitter space.  This definition is reminiscent of that for the
+variable \myHighlight{$u$}\coordHE{} in the \myHighlight{${\cal N}=1$}\coordHE{} flow (\ref{udef}); one difference is
+that for (\ref{horov}) the singularity is at \myHighlight{$z \rightarrow \infty$}\coordHE{},
+and is thus at infinite proper distance.
+
+
+\subsection{Correlators of inert scalars}
+
+The two-point function of the dilaton \myHighlight{$\phi$}\coordHE{} has been calculated
+previously in this background \cite{fgpw2}.  The Klein-Gordon equation
+becomes
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{coulombphieqn}
+\phi''(v) + \frac{\leftCoord{}2-v}{\rightCoord{}v(1-v)} \phi'(v) + \frac{\leftCoord{}p^2 L^4}{\rightCoord{}4 \ell^2} \frac{\leftCoord{}1}{\rightCoord{}v^2(1-v)} \phi(v) = 0\rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{4}{7}{
+\phi''(v) + \frac{2-v}{v(1-v)} \phi'(v) + \frac{p^2 L^4}{4 \ell^2} \frac{1}{v^2(1-v)} \phi(v) = 0\,, 
+}{1}\coordE{}\end{eqnarray}
+which has the solution 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\phi(v) = v^a F(a,a;2+2a;v) \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{1}{4}{
+\phi(v) = v^a F(a,a;2+2a;v) \,, 
+}{1}\coordE{}\end{eqnarray}
+where
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{a}
+a \equiv  -\frac{\leftCoord{}1}{\rightCoord{}2} + \frac{\leftCoord{}1}{\rightCoord{}2}\sqrt{1 - \frac{\leftCoord{}L^4p^2}{\rightCoord{}\ell^2}}  \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{4}{7}{
+a \equiv  -\frac{1}{2} + \frac{1}{2}\sqrt{1 - \frac{L^4p^2}{\ell^2}}  \,. 
+}{1}\coordE{}\end{eqnarray}
+This solution is regular at the singularity for spacelike \myHighlight{$p^2$}\coordHE{}; the
+second solution of (\ref{coulombphieqn}) has a leading \myHighlight{$v^{-a-1}$}\coordHE{} and
+is not regular. The result for the 2-point function calculated
+ from (\ref{2ptfunc}) is
+
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{coulombdilsoln}
+\langle{\cal O}_{\phi}(p) \rightCoord{}\, {\cal O}_{\phi}(-p)\rangle = - \frac{\leftCoord{}1}{\rightCoord{}4} p^4 \psi \left( \frac{\leftCoord{}1}{\rightCoord{}2} +
+\frac{\leftCoord{}1}{\rightCoord{}2}\sqrt{1 - \frac{\leftCoord{}L^4p^2}{\rightCoord{}\ell^2}} \right) \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{5}{9}{
+\langle{\cal O}_{\phi}(p) \, {\cal O}_{\phi}(-p)\rangle = - \frac{1}{4} p^4 \psi \left( \frac{1}{2} +
+\frac{1}{2}\sqrt{1 - \frac{L^4p^2}{\ell^2}} \right) \,, 
+}{1}\coordE{}\end{eqnarray}
+which as remarked in \cite{fgpw2} has a branch cut along the positive
+real axis, indicating a continuous spectrum with gap or threshold at 
+\myHighlight{$m_{gap}^2 =\ell^2/L^4$}\coordHE{}.
+
+For the \myHighlight{$\sigma$}\coordHE{} field, there is a \myHighlight{$U(\varphi)$}\coordHE{} term in the equation
+of motion (\ref{inerteq}) owing to the potential (\ref{Coulombpot}),
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+U(\varphi) \equiv \left. \frac{\leftCoord{}\partial^2 V(\varphi,\sigma)}{\rightCoord{}\partial
+\sigma^2} \right|_{\sigma = 0} = - \frac{\leftCoord{}g^2}{\rightCoord{}4} \rightCoord{}\, e^{2
+\varphi/\sqrt{6}}  \left[4 - e^{\sqrt{6} \varphi} \right] \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{3}{7}{
+U(\varphi) \equiv \left. \frac{\partial^2 V(\varphi,\sigma)}{\partial
+\sigma^2} \right|_{\sigma = 0} = - \frac{g^2}{4} \, e^{2
+\varphi/\sqrt{6}}  \left[4 - e^{\sqrt{6} \varphi} \right] \,, 
+}{1}\coordE{}\end{eqnarray}
+and the wave equation becomes
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\sigma''(v) + \frac{\leftCoord{}2-v}{\rightCoord{}v(1-v)} \sigma'(v) + \frac{\leftCoord{}1}{\rightCoord{}v(1-v)} \left(  \frac{\leftCoord{}p^2 L^4}{\rightCoord{}4 \ell^2} \frac{\leftCoord{}1}{\rightCoord{}v} + \frac{\leftCoord{}(4-v)}{\rightCoord{}4(1-v)} \right) \sigma(v) = 0\rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{6}{9}{
+\sigma''(v) + \frac{2-v}{v(1-v)} \sigma'(v) + \frac{1}{v(1-v)} \left(  \frac{p^2 L^4}{4 \ell^2} \frac{1}{v} + \frac{(4-v)}{4(1-v)} \right) \sigma(v) = 0\,, 
+}{1}\coordE{}\end{eqnarray}
+which has the regular solution
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\sigma(v) = v^a \sqrt{1-v} F(a,a+1;2+2a;v) \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{1}{4}{
+\sigma(v) = v^a \sqrt{1-v} F(a,a+1;2+2a;v) \,, 
+}{1}\coordE{}\end{eqnarray}
+with \myHighlight{$a$}\coordHE{} as (\ref{a}).  The correlation function is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\langle {\cal O}_{\sigma}(p) \rightCoord{}\, {\cal O}_{\sigma}(-p) \rangle = p^2 \psi \left(
+\frac{\leftCoord{}1}{\rightCoord{}2} + \frac{\leftCoord{}1}{\rightCoord{}2}\sqrt{1 - \frac{\leftCoord{}L^4p^2}{\rightCoord{}\ell^2}} \right) \rightCoord{}\,, \rightCoord{}
+\rightCoord{}}{0mm}{4}{8}{
+\langle {\cal O}_{\sigma}(p) \, {\cal O}_{\sigma}(-p) \rangle = p^2 \psi \left(
+\frac{1}{2} + \frac{1}{2}\sqrt{1 - \frac{L^4p^2}{\ell^2}} \right) \,, 
+}{1}\coordE{}\end{eqnarray}
+This correlator also has a continuous spectrum, with the same gap as
+(\ref{coulombdilsoln}).  The momentum-dependence is appropriate for an operator
+of \myHighlight{$\Delta = 3$}\coordHE{}.
+
+We may check that this behavior is consistent with the SUSY QM
+viewpoint.  Calculating the Schr\"odinger potentials \myHighlight{${\cal
+V}_{\phi}(z)$}\coordHE{} and \myHighlight{${\cal V}_{\sigma}(z)$}\coordHE{} (\ref{schpot}), we find that
+\myHighlight{${\cal V}\rightarrow \infty$}\coordHE{} at the boundary for both, while they
+asymptote to \myHighlight{$\ell^2/L^4$}\coordHE{} in the deep interior.  This is precisely the
+expected behavior for a potential with a continuous spectrum and a gap
+at \myHighlight{$m_{gap} = \ell/L^2$}\coordHE{}.  (For the dilaton, this was already noticed
+in \cite{fgpw2}.)
+
+As always, the dilaton wave equation can be rewritten in Schr\"odinger
+form with an exact SUSY QM potential given by the prepotential
+(\ref{universaldil}).  Normalizability fails near the boundary for
+the dilaton zero-mode. As in the \myHighlight{${\cal N}=1$}\coordHE{} case, we find that the
+Coulomb branch flow is along a ridge of the potential (\ref{Coulombpot})
+in the \myHighlight{$\sigma$}\coordHE{}-direction, and
+thus \myHighlight{$U(\varphi)$}\coordHE{} contributes negatively to the \myHighlight{$\sigma$}\coordHE{} Schr\"odinger
+potential (\ref{schpot}).  However, again we find that the potential
+can be cast into exact SUSY QM form, this time with the modified
+prepotential
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+{\rightCoord{}\leftCoord{}\cal U}_{\sigma}(z) = - \frac{\leftCoord{}1}{\rightCoord{}2} g \rightCoord{}\, e^{A} W \rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{3}{7}{
+{\cal U}_{\sigma}(z) = - \frac{1}{2} g \, e^{A} W \,.
+}{1}\coordE{}\end{eqnarray}
+Unlike the \myHighlight{${\cal N}=1$}\coordHE{} case (\ref{symsigmasusypot}), this doesn't
+have a new term beyond that of (\ref{universaldil}), but the
+coefficient is modified instead.  In this case normalizability of
+the zero-mode fails at the singularity.
+
+
+\subsection{The graviton/active scalar system}
+\label{coulombactive}
+
+One can show that (\ref{second}) becomes in this case
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{coulombsecond}
+R''(v) + \frac{\leftCoord{}2}{\rightCoord{}v} R'(v) + \frac{\leftCoord{}p^2 L^2}{\rightCoord{}\ell^2} \rightCoord{}\, \rightCoord{}
+\frac{\leftCoord{}1}{\rightCoord{}v^2(1-v)} R(v) = 0 \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{4}{9}{
+R''(v) + \frac{2}{v} R'(v) + \frac{p^2 L^2}{\ell^2} \, 
+\frac{1}{v^2(1-v)} R(v) = 0 \,. 
+}{1}\coordE{}\end{eqnarray}
+This particularly simple form results because the potential-type term
+\myHighlight{$(2/3) W W'' + (8/9) W^2 + (1/2) W' W''' - W'^2$}\coordHE{} evaluates to zero; we
+have no ready explanation for this cancellation. The relevant solution
+to (\ref{coulombsecond}) is
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{coulombR}
+R(v) = v^a \rightCoord{}\, (1-v) \rightCoord{}\, F \left( 1+a, 2+a; 2+2a; v \right) \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{1}{6}{
+R(v) = v^a \, (1-v) \, F \left( 1+a, 2+a; 2+2a; v \right) \,. 
+}{1}\coordE{}\end{eqnarray}
+The second solution also has \myHighlight{$v^{-a-1}$}\coordHE{} behavior and cannot be made
+regular in the interior.  One can integrate (\ref{coulombR}) to obtain the
+solution for \myHighlight{$\varphit$}\coordHE{}:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{3f2}
+\varphit(v) = v^a \rightCoord{}\, (1-v) \; _3F_2 \left( 1+a, 2+a, \frac{\leftCoord{}1}{\rightCoord{}3} +a; 2+2a,
+\frac{\leftCoord{}4}{\rightCoord{}3} +a; v \right) \rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{3}{7}{
+\varphit(v) = v^a \, (1-v) \; _3F_2 \left( 1+a, 2+a, \frac{1}{3} +a; 2+2a,
+\frac{4}{3} +a; v \right) \,. 
+}{1}\coordE{}\end{eqnarray}
+We could add a multiple of the universal solution to (\ref{3f2}), but this
+would destroy regularity at the interior singularity at \myHighlight{$v=0$}\coordHE{}.
+
+One can see that (\ref{coulombsecond}) has a constant zero-mode solution,
+and that (\ref{coulombR}) reduces to a constant as \myHighlight{$p^2 \rightarrow 0$}\coordHE{} which is
+the same as \myHighlight{$a \rightarrow 0$}\coordHE{}. Although this constant mode is not
+normalizable,
+one might suspect that supersymmetric quantum mechanics is again at work.
+Indeed one can again look back to (\ref{second}) in the present case where
+the
+potential-type term vanishes. The equivalent Schr\"odinger equation is then
+supersymmetric with prepotential \myHighlight{$U(z) = g/2 \, e^A \, (W''- 5W/3)$}\coordHE{}.
+ 
+We may use (\ref{algH}),(\ref{algh}) to determine the graviton modes
+associated with (\ref{3f2}):
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{coulombh}
+h &=& - \frac{\leftCoord{}4 \sqrt{2} v^a}{\rightCoord{}3 \sqrt{3} L^4 p^2 (a+1/3)} \left[ 4 \rightCoord{}
+\ell^2(1+3a) (-2+4v+v^2 + a(-2+v+v^2)) \; \times \right. \rightCoord{}\\ 
+&&\leftCoord{} F(1+a,2+a;2+2a;v) - 2 \ell^2 v(1-v)(2+v) (2+7a+3a^2) F(2+a,3+a,3+2a,v) \rightCoord{}
+\nonumber\rightCoord{}\\   &\leftCoord{}-&3  \left. (2+v) L^4 p^2 \: _3F_2 \left( 1+a, 2+a,
+\frac{\leftCoord{}1}{\rightCoord{}3} +a; 2+2a, \frac{\leftCoord{}4}{\rightCoord{}3} +a; v \right) \right]  \rightCoord{}\,, \nonumber \rightCoord{}\\\leftCoord{}
+\label{coulombH}
+H' &=& - \frac{\leftCoord{} \sqrt{2} v^{a-1/3}(1-v)}{\rightCoord{}3 \sqrt{3} L \ell^2 p^2 \rightCoord{}
+\leftCoord{}(a+1/3)} \left[ 4 \ell^2(1+3a) (-2+5v + 3a(v-1)) \; \times \right. \rightCoord{}\\ 
+&&\leftCoord{} F(1+a,2+a;2+2a;v) +6 \ell^2 v(1-v) (2+7a+3a^2) \rightCoord{}
+F(2+a,3+a,3+2a,v) \nonumber\rightCoord{}\\ &\leftCoord{}+& \left. 3 L^4 p^2 \: _3F_2 \left(
+\leftCoord{}1+a, 2+a, \frac{\leftCoord{}1}{\rightCoord{}3} +a; 2+2a, \frac{\leftCoord{}4}{\rightCoord{}3} +a; v \right) \right] \rightCoord{}\,. \rightCoord{}
+\nonumber\rightCoord{}
+\rightCoord{}}{0mm}{14}{21}{
+h &=& - \frac{4 \sqrt{2} v^a}{3 \sqrt{3} L^4 p^2 (a+1/3)} \left[ 4 
+\ell^2(1+3a) (-2+4v+v^2 + a(-2+v+v^2)) \; \times \right. \\ 
+&& F(1+a,2+a;2+2a;v) - 2 \ell^2 v(1-v)(2+v) (2+7a+3a^2) F(2+a,3+a,3+2a,v) 
+\\   &-&3  \left. (2+v) L^4 p^2 \: _3F_2 \left( 1+a, 2+a,
+\frac{1}{3} +a; 2+2a, \frac{4}{3} +a; v \right) \right]  \,, \\
+H' &=& - \frac{ \sqrt{2} v^{a-1/3}(1-v)}{3 \sqrt{3} L \ell^2 p^2 
+(a+1/3)} \left[ 4 \ell^2(1+3a) (-2+5v + 3a(v-1)) \; \times \right. \\ 
+&& F(1+a,2+a;2+2a;v) +6 \ell^2 v(1-v) (2+7a+3a^2) 
+F(2+a,3+a,3+2a,v) \\ &+& \left. 3 L^4 p^2 \: _3F_2 \left(
+1+a, 2+a, \frac{1}{3} +a; 2+2a, \frac{4}{3} +a; v \right) \right] \,. 
+}{1}\coordE{}\end{eqnarray}
+Our analysis of the fluctuations (\ref{3f2}), (\ref{coulombh}),
+(\ref{coulombH}), all of which contain the generalized hypergeometric
+function \myHighlight{$_3F_2$}\coordHE{}, is hampered because the relevant analytic
+continuation formulae are not in the literature.  In particular we
+need the expansion of (\ref{3f2}) near the boundary, {\em i.e.}\ a
+series in \myHighlight{$(1-v)$}\coordHE{}. We proceed by expanding (\ref{coulombR}) in series
+first, and then integrate to obtain a series for \myHighlight{$\varphit$}\coordHE{}.  Doing
+this we see the leading logarithmic singularity:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{3f2series}
+\varphit = \frac{\leftCoord{}(a+1/3) \Gamma(2+2a)}{\rightCoord{}\Gamma(1+a)\Gamma(2+a)}(1-v) \left( \rightCoord{}
+\leftCoord{}- \ln(1-v) + \varphit_0(a)  +{\cal O}(1-v) \right) \rightCoord{}\,,
+\rightCoord{}}{0mm}{3}{5}{
+\varphit = \frac{(a+1/3) \Gamma(2+2a)}{\Gamma(1+a)\Gamma(2+a)}(1-v) \left( 
+- \ln(1-v) + \varphit_0(a)  +{\cal O}(1-v) \right) \,,
+}{1}\coordE{}\end{eqnarray}
+and while all \myHighlight{${\cal O}(1-v)$}\coordHE{} terms could be calculated from higher
+order terms in the expansion of (\ref{coulombR}), the integration
+constant \myHighlight{$\varphit_0$}\coordHE{} remains undetermined.  In principle it is fixed
+by our choice not to add a multiple of the universal solution to
+(\ref{3f2}), but it is nontrivial to calculate it.
+
+Let us consider \myHighlight{$h$}\coordHE{}.  We expect a graviton mode not to be singular on
+the boundary, and indeed \myHighlight{$1/(1-v)$}\coordHE{} and \myHighlight{$\ln(1-v)$}\coordHE{} terms cancel between
+the various terms in (\ref{coulombh}).  The series expansion of \myHighlight{$h(v)$}\coordHE{}
+is then
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{coulombhseries}
+h(v) = - \frac{\leftCoord{}16 \sqrt{2} \ell^2}{\rightCoord{} \sqrt{3} L^4 p^2} \frac{\leftCoord{} \rightCoord{}
+\Gamma(2+2a)}{\Gamma(1+a)\Gamma(a)} \left( 3 \varphit_0(a)
+\leftCoord{}-\frac{\leftCoord{}2}{\rightCoord{}a(1+a)} + 6 \gamma +6\psi(1+a) \right) + {\cal O}(1-v)^2\rightCoord{}\,. \rightCoord{}
+\rightCoord{}}{0mm}{5}{7}{
+h(v) = - \frac{16 \sqrt{2} \ell^2}{ \sqrt{3} L^4 p^2} \frac{ 
+\Gamma(2+2a)}{\Gamma(1+a)\Gamma(a)} \left( 3 \varphit_0(a)
+-\frac{2}{a(1+a)} + 6 \gamma +6\psi(1+a) \right) + {\cal O}(1-v)^2\,. 
+}{1}\coordE{}\end{eqnarray}
+What form do we expect for \myHighlight{$h(v)$}\coordHE{}?  In the field theory, conformal
+invariance is only spontaneously broken, and consequently
+\myHighlight{$T^i_i = 0$}\coordHE{} continues to hold as an operator equation 
+on the Coulomb branch. As a result, one might expect \myHighlight{$h(v)$}\coordHE{} to fall off
+more rapidly on the boundary than in the case of an operator deformation,
+so that it does not excite a dual field theory operator.  
+A hint of this behavior is
+present in the fact that no \myHighlight{${\cal O}(1-v)$}\coordHE{} term appears in
+(\ref{coulombhseries}).  We are therefore led to postulate that the
+constant term vanishes as well, and
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{intconst}
+\varphit_0(a) = \frac{\leftCoord{}2}{\rightCoord{}3a(1+a)} -2 \gamma -2\psi(1+a) \rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{2}{5}{
+\varphit_0(a) = \frac{2}{3a(1+a)} -2 \gamma -2\psi(1+a) \,.
+}{1}\coordE{}\end{eqnarray}
+This is a tempting assumption, since (\ref{3f2series}) then produces
+the two-point function\footnote{Formulas (\ref{2ptfunc}), (\ref{pureadscorr})
+ are modified for a dimension \myHighlight{$\Delta=2$}\coordHE{}
+operator. See (25) of \cite{mr}.}
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{goodcorr}
+\langle {\cal O}_{\varphi}(p) \rightCoord{}\, {\cal O}_{\varphi}(-p)\rangle \rightCoord{}\, =
+\psi \left( \rightCoord{}
+\frac{\leftCoord{}1}{\rightCoord{}2} + \frac{\leftCoord{}1}{\rightCoord{}2}\sqrt{1 - \frac{\leftCoord{}L^4p^2}{\rightCoord{}\ell^2}} \right) \ \rightCoord{}
+    \leftCoord{}+ \frac{\leftCoord{}4L^4}{\rightCoord{}3p^2 \ell^2} \rightCoord{}
+\rightCoord{}}{0mm}{6}{11}{
+\langle {\cal O}_{\varphi}(p) \, {\cal O}_{\varphi}(-p)\rangle \, =
+\psi \left( 
+\frac{1}{2} + \frac{1}{2}\sqrt{1 - \frac{L^4p^2}{\ell^2}} \right) \ 
+    + \frac{4L^4}{3p^2 \ell^2} 
+}{1}\coordE{}\end{eqnarray}
+In addition to the expected branch point there is a pole at \myHighlight{$p^2 =
+0$}\coordHE{}. This is a problem for the formalism since the associated constant
+zero-mode is non-normalizable, so it should not show up in the
+correlator. It is also a problem for the field theory
+interpretation. To see this recall that an extra factor of \myHighlight{$N^2$}\coordHE{} must
+be inserted to agree with the short distance form \myHighlight{$\langle {\cal
+O}_{\varphi}(x) \, {\cal O}_{\varphi}(0)\rangle \;\; \sim \: N^2/x^4$}\coordHE{}
+in field theory. Although the field theory contains massless Goldstone
+bosons from the breaking of \myHighlight{$SO(6)$}\coordHE{} flavor symmetry to \myHighlight{$SO(4) \times
+SO(2)$}\coordHE{} by the disc of D3-branes, it appears very unlikely that these
+states should couple to \myHighlight{${\cal O}_{\varphi}= {\Tr} X^2$}\coordHE{} with strength
+\myHighlight{$N$}\coordHE{}\footnote{We thank S.~Gubser and A.~Hanany for discussions of this
+issue.}.
+
+
+This motivates us to test the assumption (\ref{intconst}) numerically.
+Specifically we took the defining power series \myHighlight{$_3F_2= \sum_n c_n v^n$}\coordHE{}
+about \myHighlight{$v=0$}\coordHE{} which is logarithmically divergent at \myHighlight{$v=1$}\coordHE{} and subtracted
+the explicitly summable series of the large \myHighlight{$n$}\coordHE{} limit of the \myHighlight{$c_n$}\coordHE{}
+(obtained using Stirling's formula). The result is a convergent series
+whose value at \myHighlight{$v=1$}\coordHE{} gives the unknown constant \myHighlight{${\varphit_0(a)}$}\coordHE{}. The
+numerical series agrees remarkably well with (\ref{coulombhseries})
+for parameter values \myHighlight{$a \gg 1$}\coordHE{}, but agreement fails for small \myHighlight{$a$}\coordHE{} since
+the poles of the power series coefficients for \myHighlight{$a \leq 0$}\coordHE{} do not
+coincide with those of (\ref{coulombhseries}).  We must therefore
+conclude that the physically motivated assumption above does not agree
+with the properties of \myHighlight{$_3F_2$}\coordHE{}. It should also be observed that
+the same correlator (\ref{goodcorr}) can be obtained by subtracting a
+multiple of the universal solution from \myHighlight{$h(v)$}\coordHE{} and \myHighlight{$\varphit(v)$}\coordHE{}, so as
+to impose the condition \myHighlight{$h(1)=0$}\coordHE{}.
+This diffeomorphism has exactly the effect of inserting
+(\ref{intconst}) in (\ref{3f2series}). However the diffeomorphism also
+makes \myHighlight{$h(v)$}\coordHE{} and \myHighlight{$\varphit(v)$}\coordHE{} singular at the origin, and we cannot
+presently justify it.
+
+The situation may be summarized as follows. We imposed the condition
+that \myHighlight{$h(v)$}\coordHE{} vanish on the boundary because it seems to be physically
+required for Coulomb branch flows. This leads to a correlation function
+with apparently unphysical zero-mode poles. Further, the condition
+\myHighlight{$h(1)=0$}\coordHE{} does not seem to be compatible with the properties of \myHighlight{$_3F_2$}\coordHE{}
+obtained by numerical study. Perhaps the analytic form of the constant
+\myHighlight{$\varphit(a)$}\coordHE{} could illuminate the situation.  
+
+
+
+
+\section{Calculation of correlation functions}
+\label{2point}
+
+Our main purpose here is to discuss some of our attempts to determine
+the correct prescription for the calculation of active scalar and
+graviton correlators. First we will outline a calculation of the
+on-shell supergravity action (\ref{Action}) through second order in
+the fields \myHighlight{$\varphit$}\coordHE{}, \myHighlight{$h$}\coordHE{}, and \myHighlight{$H$}\coordHE{} which are coupled by the
+fluctuation equations of Sec \ref{equations}. Because of the coupling,
+a single set of boundary data determines the boundary behavior of all
+the fields.  Accordingly, factors of \myHighlight{$h$}\coordHE{} and \myHighlight{$H$}\coordHE{} in the action will
+contribute to the correlation functions of the active scalars. Hence
+to calculate two-point functions we should keep terms quadratic in any
+of \myHighlight{$\varphit$}\coordHE{}, \myHighlight{$h$}\coordHE{} and \myHighlight{$H$}\coordHE{}.  One then varies the on-shell action with
+respect to the boundary data to obtain the correlation function.
+
+The bulk action is given in (\ref{Action}).  In addition, it is
+well-known that this should be supplemented with certain boundary
+terms \cite{liutseytlin,frolov}.  First among these is the 
+Gibbons-Hawking term, which is
+included to generate a well-posed Hamiltonian formalism \cite{gh}:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{ghterm}
+S_{GH} &=& \frac{\leftCoord{}1}{\rightCoord{}2} \int_{\leftCoord{}\partial} d^4x \sqrt{g_4} \rightCoord{}\, {\cal K} =
+\frac{\leftCoord{}1}{\rightCoord{}2} \int_{\leftCoord{}\partial} d^4x \sqrt{g_4} \rightCoord{}\, \nabla_{\mu} n^{\mu} =
+\frac{\leftCoord{}1}{\rightCoord{}2} \int_{\leftCoord{}\partial} \partial_r \sqrt{g_4} \\ &\leftCoord{}=& \frac{\leftCoord{}1}{\rightCoord{}2}
+\int_{\leftCoord{}\partial} e^{4A} \rightCoord{}\, \left[ \frac{\leftCoord{}1}{\rightCoord{}2} h^i_i{}' + \frac{\leftCoord{}1}{\rightCoord{}4} h^i_i
+h^j_j{}' - \frac{\leftCoord{}1}{\rightCoord{}2} h^{ij} h_{ij}' + 4A' \left(1+ \frac{\leftCoord{}1}{\rightCoord{}2} h^i_i +
+\frac{\leftCoord{}1}{\rightCoord{}8} (h^i_i)^2 - \frac{\leftCoord{}1}{\rightCoord{}4} h^{ij} h_{ij} \right) + \cdots
+\right] \rightCoord{}\,, \nonumber\rightCoord{} 
+\rightCoord{}}{0mm}{16}{17}{
+S_{GH} &=& \frac{1}{2} \int_{\partial} d^4x \sqrt{g_4} \, {\cal K} =
+\frac{1}{2} \int_{\partial} d^4x \sqrt{g_4} \, \nabla_{\mu} n^{\mu} =
+\frac{1}{2} \int_{\partial} \partial_r \sqrt{g_4} \\ &=& \frac{1}{2}
+\int_{\partial} e^{4A} \, \left[ \frac{1}{2} h^i_i{}' + \frac{1}{4} h^i_i
+h^j_j{}' - \frac{1}{2} h^{ij} h_{ij}' + 4A' \left(1+ \frac{1}{2} h^i_i +
+\frac{1}{8} (h^i_i)^2 - \frac{1}{4} h^{ij} h_{ij} \right) + \cdots
+\right] \,, }{1}\coordE{}\end{eqnarray}
+where \myHighlight{${\cal K} = \nabla_{\mu} n^{\mu}$}\coordHE{} is the trace of the second
+fundamental form of the boundary, with \myHighlight{$n^{\mu}$}\coordHE{} a normal to the
+boundary; in the second line we expand this term to second order in
+the fluctuations.  In addition, a boundary cosmological term has been
+recommended for canceling the leading volume divergence:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{volume}
+S_{vol} &=& \beta \int_{\leftCoord{}\partial} \sqrt{g_4} \rightCoord{}\, A' \\ &\leftCoord{}=& \beta
+\int_{\leftCoord{}\partial} e^{4A} \rightCoord{}\, A' \rightCoord{}\, \left( 1 + \frac{\leftCoord{}1}{\rightCoord{}2} h^i_i +
+\frac{\leftCoord{}1}{\rightCoord{}8} (h^i_i)^2 - \frac{\leftCoord{}1}{\rightCoord{}4} h^{ij} h_{ij} + \cdots \right) \rightCoord{}\,,
+\rightCoord{}}{0mm}{7}{9}{
+S_{vol} &=& \beta \int_{\partial} \sqrt{g_4} \, A' \\ &=& \beta
+\int_{\partial} e^{4A} \, A' \, \left( 1 + \frac{1}{2} h^i_i +
+\frac{1}{8} (h^i_i)^2 - \frac{1}{4} h^{ij} h_{ij} + \cdots \right) \,,
+}{1}\coordE{}\end{eqnarray}
+for some \myHighlight{$\beta$}\coordHE{} which we will fix momentarily.  Note that \myHighlight{$A' = 1/L$}\coordHE{}
+is a constant on boundary, which we include explicitly to simplify the
+formulas that follow.
+
+We proceed to expand the bulk action to second order in fluctuations,
+making use of the equations of motion as necessary.  After a
+remarkably tedious calculation, we find that as in simpler cases, the
+bulk action can be reduced entirely to a set of boundary terms:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+S_{bulk} &=& S_0 + S_1 + S_2 \rightCoord{}\,, \nonumber \rightCoord{}\\\leftCoord{}
+S_0 &=& \int d^4x \rightCoord{}\, e^{4A} \left (- \frac{\leftCoord{}1}{\rightCoord{}2} A' \right)\rightCoord{}\,, \rightCoord{}\\\leftCoord{}
+S_1 &=& \int d^4x \rightCoord{}\, e^{4A} \left(- \frac{\leftCoord{}1}{\rightCoord{}4} h^i_i{}' - \frac{\leftCoord{}1}{\rightCoord{}4} A' h^i_i - \varphi' \varphit \right) \rightCoord{}\,, \nonumber \rightCoord{}\\\leftCoord{}
+S_2 &=&
+\int d^4x \rightCoord{}\, e^{4A}\left( - \frac{\leftCoord{}1}{\rightCoord{}2} \varphit \varphit' - \frac{\leftCoord{}1}{\rightCoord{}4} \rightCoord{}
+\varphi' \varphit h^i_i + \frac{\leftCoord{}3}{\rightCoord{}16} h^{ij} h_{ij}' - \frac{\leftCoord{}1}{\rightCoord{}16}
+h^i_i (h^j_j)' + \frac{\leftCoord{}1}{\rightCoord{}8} A' h^{ij} h_{ij} - \frac{\leftCoord{}1}{\rightCoord{}16}
+A' h^i_i h^j_j \right) \rightCoord{}\,, \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{13}{23}{
+S_{bulk} &=& S_0 + S_1 + S_2 \,, \\
+S_0 &=& \int d^4x \, e^{4A} \left (- \frac{1}{2} A' \right)\,, \\
+S_1 &=& \int d^4x \, e^{4A} \left(- \frac{1}{4} h^i_i{}' - \frac{1}{4} A' h^i_i - \varphi' \varphit \right) \,, \\
+S_2 &=&
+\int d^4x \, e^{4A}\left( - \frac{1}{2} \varphit \varphit' - \frac{1}{4} 
+\varphi' \varphit h^i_i + \frac{3}{16} h^{ij} h_{ij}' - \frac{1}{16}
+h^i_i (h^j_j)' + \frac{1}{8} A' h^{ij} h_{ij} - \frac{1}{16}
+A' h^i_i h^j_j \right) \,, }{1}\coordE{}\end{eqnarray}
+evaluated on the boundary \myHighlight{$r=R$}\coordHE{}.
+Here we have organized the action by the order of the fluctuations.
+The zeroth-order term is the volume divergence, which also receives
+contributions from the boundary terms (\ref{ghterm}) and
+(\ref{volume}); it is canceled by the choice \myHighlight{$\beta = 1/2$}\coordHE{}, which in
+fact removes all terms proportional to \myHighlight{$A'$}\coordHE{}.  The total action then
+reduces to 
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+S_{tot} = \int d^4x \rightCoord{}\, e^{4A} \rightCoord{}\, \left(- \varphi' \varphit -
+\frac{\leftCoord{}1}{\rightCoord{}2} \varphit \varphit' - \frac{\leftCoord{}1}{\rightCoord{}4} \phi' \varphit h^i_i +
+\frac{\leftCoord{}1}{\rightCoord{}16} h^i_i h^j_j{}' - \frac{\leftCoord{}1}{\rightCoord{}16} h^{ij} h_{ij}' \right) \rightCoord{}\,.\rightCoord{}
+\rightCoord{}}{0mm}{5}{10}{
+S_{tot} = \int d^4x \, e^{4A} \, \left(- \varphi' \varphit -
+\frac{1}{2} \varphit \varphit' - \frac{1}{4} \phi' \varphit h^i_i +
+\frac{1}{16} h^i_i h^j_j{}' - \frac{1}{16} h^{ij} h_{ij}' \right) \,.
+}{1}\coordE{}\end{eqnarray}
+We can express this in momentum space in terms of \myHighlight{$h$}\coordHE{} and \myHighlight{$H$}\coordHE{},
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{totalaction}
+S_{tot} &=& - \varphi'(R) \rightCoord{}\, \varphit(R,p=0) + \int d^4p \rightCoord{}\, e^{4A} \rightCoord{}\,
+ \left( - \frac{\leftCoord{}1}{\rightCoord{}2} \varphit(R,p) \rightCoord{}\, \varphit'(R,p)\right. \\ &\leftCoord{}+& \rightCoord{}
+ \left. \frac{\leftCoord{}3}{\rightCoord{}32} \rightCoord{}\, h(R,p) \rightCoord{}\, h'(R,p) +\frac{\leftCoord{}3}{\rightCoord{}32} \rightCoord{}\, p^2 H(R,p) \rightCoord{}
+ \leftCoord{}\rightCoord{}\, h'(R,p) + \frac{\leftCoord{}3}{\rightCoord{}64} \rightCoord{}\, p^2 h(R,p) \rightCoord{}\, H'(R,p) \right) \rightCoord{}\,. \rightCoord{}
+ \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{7}{21}{
+S_{tot} &=& - \varphi'(R) \, \varphit(R,p=0) + \int d^4p \, e^{4A} \,
+ \left( - \frac{1}{2} \varphit(R,p) \, \varphit'(R,p)\right. \\ &+& 
+ \left. \frac{3}{32} \, h(R,p) \, h'(R,p) +\frac{3}{32} \, p^2 H(R,p) 
+ \, h'(R,p) + \frac{3}{64} \, p^2 h(R,p) \, H'(R,p) \right) \,. 
+ }{1}\coordE{}\end{eqnarray}
+The first term in (\ref{totalaction}) is linear in the fluctuation
+\myHighlight{$\varphit$}\coordHE{}, and is thus suggestive of a one-point function. It does
+not clearly discriminate between the \myHighlight{${\cal N}=1$}\coordHE{} flow, where no
+one-point function is expected, and the Coulomb branch flow, where
+one is. We find this puzzling.
+
+On the other hand, the quadratic terms suggest a modified calculation
+of the scalar correlator in which \myHighlight{$h$}\coordHE{} and \myHighlight{$H$}\coordHE{} are related to the
+boundary data for \myHighlight{$\varphit$}\coordHE{}.  This is straightforward but
+complicated.  We have performed such a calculation for the case of the
+\myHighlight{${\cal N}=1$}\coordHE{} active scalar, but ultimately encountered the same
+difficulties as in section \ref{sym}.  The resolution of the problem
+presumably involves understanding (\ref{totalaction}) better, but
+other pieces of the puzzle may still be missing.
+
+A further uncertainty is the issue of the diffeomorphism
+invariance.  We refer particularly to (\ref{diffeo}) which has been
+interpreted as describing \cite{tanaka,gkr} bending of the
+cutoff surface and horizon. It is unsettling that the calculation of
+the active correlator in the Coulomb branch flow was so markedly
+changed by such a diffeomorphism.  The on-shell action must be
+diffeomorphism invariant, and it is not clear to us that this is
+manifest in (\ref{totalaction}).  In particular, a term \myHighlight{$H$}\coordHE{} with no
+derivatives appears; this quantity is absent from the equation of
+motion and its constant term is thus not determined, but has the form
+of a pure diffeomorphism (\ref{4ddiffeo}).  A better understanding
+will have to involve coming to terms with these issues.
+
+\section*{Acknowledgements}
+
+We are grateful for discussions with D.~Anselmi, S.~Gubser, A.~Hanany,
+A.~Karch, J.~Minahan, G.~Moore, J.~Polchinski, L.~Rastelli, and
+N.~Warner.  The research of O.D.\ was supported by the U.S.\
+Department of Energy under contract \#DE-FC02-94ER40818.  The research
+of D.Z.F.\ was supported in part by the NSF under grant number
+PHY-97-22072.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thebibliography}{99}
+
+
+\bibitem{GRW} M.~Gunaydin, L.~J. Romans, and N.~P. Warner, {\em
+Gauged \myHighlight{$N=8$}\coordHE{} supergravity in five-dimensions,} Phys. Lett.
+{\bf B154} (1985) 268.
+
+\bibitem{PPvN}
+M.~Pernici, K.~Pilch, and P.~van Nieuwenhuizen, {\em Gauged N=8 D=5
+  supergravity,}  Nucl. Phys. {\bf B259} (1985) 460.
+
+
+\bibitem{juan}
+J.~Maldacena, {\em The Large N limit of superconformal field theories and
+  supergravity,} Adv. Theor. Math. Phys. {\bf 2} (1998) 231,
+   hep-th/9711200.
+
+\bibitem{gkp} S.~S. Gubser, I.~R. Klebanov, and A.~M. Polyakov, {\em
+Gauge theory correlators from noncritical string theory,}
+Phys. Lett. {\bf B428} (1998) 105, hep-th/9802109.
+
+\bibitem{witten1}
+E.~Witten, {\em Anti-de Sitter space and holography,} Adv. Theor. Math.
+  Phys. {\bf 2} (1998) 253, hep-th/9802150.
+
+\bibitem{gppz1} L.~Girardello, M.~Petrini, M.~Porrati, and
+A.~Zaffaroni, {\em Novel local CFT and exact results on perturbations
+of N=4 Super Yang Mills from AdS dynamics}, JHEP 9812 (1998) 022,
+hep-th/9810126.
+
+\bibitem{dz1} J.~Distler and F.~Zamora, {\em Nonsupersymmetric
+conformal field theories from stable anti-de Sitter spaces,}
+Adv.~Theor.~Math.~Phys. 2 (1999) 1405, hep-th/9810206.
+
+\bibitem{fgpw1} D.~Z. Freedman, S.~S. Gubser, K.~Pilch, and
+N.~P. Warner, {\em Renormalization group flows from
+holography---supersymmetry and a c-theorem,} hep-th/9904017.
+
+\bibitem{gppz} L.~Girardello, M.~Petrini, M.~Porrati, and
+A.~Zaffaroni, {\em The Supergravity Dual of N=1 Super Yang-Mills
+Theory}, hep-th/9909047.
+
+
+\bibitem{dz2} J.~Distler and F.~Zamora, {\em Chiral symmetry breaking in
+the AdS/CFT correspondence}, hep-th/9911040.
+
+
+
+\bibitem{fgpw2} D.~Z. Freedman, S.~S. Gubser, K.~Pilch, and
+N.~P. Warner, {\em Continuous distributions of D3-branes and gauged
+supergravity,}, hep-th/9906194.
+
+
+
+\bibitem{fmmr} D.~Z.~Freedman, S.~D.~Mathur, A.~Matusis and
+L.~Rastelli, {\em Correlation functions in the CFT(d)/AdS(d+1)
+correspondence,} Nucl.~Phys. {\bf B546} (1999) 96, hep-th/9804058.
+
+\bibitem{dmmr} E.~D'Hoker, S.~D.~Mathur, A.~Matusis and L.~Rastelli,
+{\em The Operator Product Expansion of N=4 SYM and the 4-point
+Functions of Supergravity,}, hep-th/9911222.
+
+\bibitem{bs} A.~Brandhuber and K.~Sfetsos, {\em Wilson loops from
+multicentre and rotating branes, mass gaps and phase structure in
+gauge theories,}, to appear in Adv.~Theor.~Math.~Phys,
+hep-th/9906201.
+ 
+
+\bibitem{kw} I.~R. Klebanov and E.~Witten, {\em AdS/CFT
+correspondence and symmetry breaking,} hep-th/9905104.
+
+\bibitem{cr} I.~Chepelev and R.~Roiban, {\em A note on correlation
+functions in \myHighlight{$AdS_5/SYM_4$}\coordHE{} correspondence on the Coulomb branch,}
+Phys.~Lett. {\bf B462} (1999) 74, hep-th/9906224.
+
+
+\bibitem{rv} R.~C.~Rashkov and K.~S.~Viswanathan, {\em Correlation
+functions in the Coulomb branch of N=4 SYM from AdS/CFT
+correspondence,} hep-th/9911160.
+
+
+
+
+\bibitem{bk} V.~Balasubramanian and P.~Kraus, {\em Spacetime and the
+holographic renormalization group,} Phys.~Rev.~Lett. {\bf 83} (1999)
+3605, hep-th/9903190.
+
+\bibitem{dbvv}
+J.de Boer, E.~Verlinde and H.~Verlinde, {\em On the holographic renormalization group,} hep-th/9912012.
+
+\bibitem{fl} S.~Forte and J.~I.~Latorre, {\em A proof of the
+irreversibility of renormalization group flows in four dimensions,}
+Nucl.~Phys. {\bf B535} (1998) 709, hep-th/9805015.
+
+\bibitem{anselmi} D.~Anselmi, {\em Irreversibility and higher-spin
+conformal field theory,} hep-th/9912122.
+
+\bibitem{acs} T.~Appelquist, A.~G.~Cohen and M.~Schmaltz, {\em A new
+constraint on strongly coupled field theories,} Phys.~Rev. {\bf D60}
+(1999) 045003 , hep-th/9901109.
+
+
+\bibitem{agpz} D.~Anselmi, L.~Girardello, M.~Porrati, A.~Zaffaroni,
+{\em A note on the holographic beta and c functions}, hep-th/0002066.
+
+\bibitem{rs1} L.~Randall and R.~Sundrum, {\em A Large mass hierarchy
+from a small extra dimension,} hep-ph/9905221.
+
+\bibitem{rs2} L.~Randall and R.~Sundrum, {\em An Alternative to
+compactification,} hep-th/9906064.
+
+\bibitem{gw} W.~D. Goldberger and M.~B. Wise, {\em Modulus
+stabilization with bulk fields,} hep-ph/9907447.
+
+\bibitem{dfgk} O.~DeWolfe, D.~Z.~Freedman, S.~S.~Gubser and A.~Karch,
+{\em Modeling the fifth dimension with scalars and gravity}, to appear
+in Phys.~Rev. {\bf D}, hep-th/9909134.
+
+
+\bibitem{warnerold} N.~Warner, {\em Some new extreama of the scalar
+potential of gauged N=8 supergravity,} Phys.~Lett. {\bf B128} (1983)
+169.
+
+\bibitem{kpw} A.~Khavaev, K.~Pilch, and N.~P. Warner, {\em New vacua
+of gauged N=8 supergravity in five-dimensions,} hep-th/9812035.
+
+\bibitem{pilchwarner} K.~Pilch and N.~P.~Warner, {\em A new
+supersymmetric compactification of chiral IIB supergravity,}
+hep-th/0002192.
+
+
+\bibitem{tanaka} J.~Garriga and T.~Tanaka {\em Gravity in the
+brane-world}, hep-th/9911055.
+
+\bibitem{gkr} S.~B.~Giddings, E.~Katz and L.~Randall, {\em Linearized
+gravity in brane backgrounds}, hep-th/0002091.
+
+\bibitem{bs2} A.~Brandhuber and K.~Sfetsos, {\em Non-standard
+compactifications with mass gaps and Newton's law}, JHEP 9910 (1999)
+013, hep-th/9908116.
+
+\bibitem{glueball}
+N.~R. Constable and R.~C. Myers, ``Spin two glueballs, positive energy theorems
+  and the AdS/CFT correspondence,'' hep-th/9908175; \hfill \break
+R.~C. Brower, S.~D. Mathur, and C.-I. Tan, ``Discrete spectrum of the graviton
+  in the \myHighlight{$AdS_5$}\coordHE{} black hole background,''
+hep-th/9908196.
+
+
+\bibitem{bakas} I.~Bakas, A.~Brandhuber and K.~Sfetsos , {\em Domain
+walls of gauged supergravity, M-branes, and algebraic curves},
+hep-th/9912132; \hfill \break I.~Bakas, A.~Brandhuber and K.~Sfetsos,
+{\em Riemann surfaces and Schrodinger potentials of gauged
+supergravity,} hep-th/0002092.
+
+\bibitem{sp} M.~Strassler and J.~Polchinski, to appear.
+
+\bibitem{bateman} A. Erdelyi, {\em Higher Transcendental Functions,
+Vol 1,} McGraw-Hill, 1953.
+
+\bibitem{mr} P.~Minces and V.~O.~Rivelles, {\em Scalar field theory in
+the AdS/CFT correspondence revisited}, hep-th/9907079.
+
+\bibitem{liutseytlin} H.~Liu and A.~A.~Tseytlin, {\em D=4 Super Yang
+Mills, D=5 gauged supergravity and D=4 conformal supergravity,}
+Nucl.~Phys. {\bf B533} (1998) 88, hep-th/9804083.
+
+\bibitem{frolov} G.~E.~Arutyunov and S.~A.~Frolov, {\em On the origin
+of supergravity boundary terms in the AdS/CFT correspondence,}
+Nucl.~Phys. {\bf B544} (1999) 576, hep-th/9806216.
+
+\bibitem{gh} G.~W.~Gibbons and S.~W.~Hawking, {\em Action integrals
+and partition functions in quantum gravity,} Phys.~Rev.~ {\bf D15}
+(1977) 2752.
+
+
+
+\end{thebibliography}
+\end{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\bye

@@ -1,0 +1,828 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                                          %%%
+%%%        LIGHT-CONE GAUGE FOR N=2 STRINGS                  %%%
+%%%							     %%% 
+%%%                        by                                %%%
+%%%                                                          %%%
+%%%  	 Olaf Lechtenfeld  and  Warren Siegel	  	     %%%
+%%%                                                          %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                                                          %%%
+%%%               Latex source file: latex twice             %%%
+%%%                                                          %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%							     %%%         
+%%% hep-th/0204073					     %%%
+%%% Hannover preprint ITP-UH-06/02                           %%%
+%%% Stony Brook preprint YITP-SB-02-16                       %%%
+%%% 1+7 pages, no figures, macros included, 26 kb            %%%
+%%% released 08 April, 2002                                  %%%
+%%%			                                     %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsmath}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\oddsidemargin -1mm
+\evensidemargin -1mm
+\topmargin -15mm
+\textheight 230mm
+\textwidth 165mm
+\setlength{\parskip}{\medskipamount}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\catcode`@=11
+\renewcommand{\section}{\@startsection{section}{1}{0pt}{\medskipamount}
+{\medskipamount}{\large\bf}}
+\catcode`@=12
+
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\de{\delta}
+\def\eps{\epsilon}
+\def\ve{\varepsilon}
+\def\z{\zeta}
+\def\h{\eta}
+\def\th{\theta}
+\def\vt{\vartheta}
+\def\k{\kappa}
+\def\l{\lambda}
+\def\m{\mu}
+\def\n{\nu}
+\def\r{\rho}
+\def\s{\sigma}
+\def\t{\tau}
+\def\x{\xi}
+\def\p{\phi}
+\def\vp{\varphi}
+\def\c{\chi}
+\def\j{\psi}
+\def\o{\omega}
+
+\providecommand{\C}{\mathbb C}
+\providecommand{\R}{\mathbb R}
+\providecommand{\Z}{\mathbb Z}
+\providecommand{\Hcal}{{\cal H}}
+\providecommand{\Pcal}{{\cal P}}
+
+\def\e{\textrm{e}}
+\def\i{\textrm{i}}
+\def\N2{\myHighlight{$N{=}2$}\coordHE{}}
+\def\NN4{\myHighlight{$N{=}4$}\coordHE{}}
+\def\pa{\mbox{\myHighlight{$\partial$}\coordHE{}}}
+\def\diff{\mbox{d}}
+\def\tr{{\rm tr}}
+\def\sfrac#1#2{{\textstyle\frac{#1}{#2}}}
+\def\shalf{\sfrac{1}{2}}
+\def\rd#1{\buildrel{_{_{\hskip 0.01in}\rightarrow}}\over{#1}}
+\def\ld#1{\buildrel{_{_{\hskip 0.01in}\leftarrow}}\over{#1}}
+
+\def\ad{{\dot{\alpha}}}
+\def\bd{{\dot{\beta}}}
+\def\gd{{\dot{\gamma}}}
+\def\zd{{\dot{0}}}
+\def\od{{\dot{1}}}
+\def\add{{\ddot{\alpha}}}
+\def\bdd{{\ddot{\beta}}}
+\def\gdd{{\ddot{\gamma}}}
+\def\zdd{{\ddot{0}}}
+\def\odd{{\ddot{1}}}
+
+\def\pinv{\sfrac{1}{p^{0\zd}}}
+\def\kinv{\sfrac{1}{k^{0\zd}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{useful_macros}
+\begin{document}
+\begin{titlepage}
+\setcounter{page}{0}
+\begin{flushright}
+hep-th/0204073\\
+ITP--UH--06/02\\
+YITP-SB-02-16
+\end{flushright}
+
+\vskip 2.0cm
+
+\begin{center}
+
+{\Large\bf  Light-Cone Gauge for N=2 Strings~\myHighlight{$^*$}\coordHE{} }
+
+
+\vspace{14mm}
+
+{\Large 
+Olaf Lechtenfeld~\myHighlight{$^+$}\coordHE{}
+\ \ and\ \ 
+Warren Siegel }
+\\[5mm]
+{
+C.N. Yang Institute for Theoretical Physics \\
+State University of New York \\
+Stony Brook, NY 11794-3840, USA 
+} \\[3mm]
+{Emails: olaf@lechtenfeld.de, siegel@insti.physics.sunysb.edu}
+\\[5mm]
+
+\end{center}
+
+\vspace{2cm}
+
+\begin{abstract}
+\noindent
+Covariant quantization of self-dual strings in \myHighlight{$2{+}2$}\coordHE{} flat dimensions reduces 
+them to their zero modes, a consequence of extended world-sheet supersymmetry. 
+We demonstrate how to arrive at the same result more directly by employing 
+a `double' light-cone gauge. An unconventional feature of this gauge is the 
+removal of anticommuting degrees of freedom by commuting symmetries and vice 
+versa. The reducibility of the \myHighlight{$N{=}4$}\coordHE{} string and its equivalence with the 
+\myHighlight{$N{=}2$}\coordHE{} string become apparent.
+\end{abstract}
+
+\vfill
+
+\textwidth 6.5truein
+\hrule width 5.cm
+\vskip.1in
+
+{\small
+\noindent \myHighlight{${}^*$}\coordHE{}
+Contribution to a special issue of the Russian Physics Journal \\
+\noindent \myHighlight{${}^+$}\coordHE{}
+On sabbatical leave from Institut f\"ur Theoretische Physik,
+Universit\"at Hannover, Germany
+}
+
+\end{titlepage}
+
+
+\noindent
+{\bf 1. N=2 and N=4 strings in superconformal gauge.\ }
+String theories with more than one world-sheet supersymmetry
+`suffer' from the absence of higher dimensions~\cite{n2,n4}. 
+Indeed, covariant quantization and naive BRST ghost-counting for the
+\N2 and \NN4 superconformal algebras of constraints yield critical
+dimensions of four and minus eight(!), respectively.
+However, as was realized by Siegel~\cite{n4red}, the \NN4 constraints are
+reducible, and the \NN4 string turns out to be the same as the \N2 string.
+Yet, in contrast to the \N2 formulation, the \NN4 description is manifestly
+Lorentz covariant. Since the required signature of the four-dimensional target
+is \myHighlight{$({+}{+}{-}{-})$}\coordHE{}, by `Lorentz group' we mean 
+\myHighlight{$SO(2,2)\simeq SL(2,\R)\otimes SL(2,\R)'$}\coordHE{}.
+These global symmetries are not to be confused with the local R~symmetry
+of \NN4 supersymmetry, denoted by~\myHighlight{$SL(2,\R)''$}\coordHE{}.
+
+In this letter we shall employ (Majorana) spinor notation for all Lorentz and
+internal indices. We distinguish the different groups by using
+\begin{equation}\coord{}\boxEquation{
+\a\ \leftrightarrow\ SL(2,\R) \quad,\qquad
+\ad\ \leftrightarrow\ SL(2,\R)' \quad,\qquad
+\add\ \leftrightarrow\ SL(2,\R)'' \quad,\qquad
+\textrm{where} \quad \a\in\{0,1\} \quad.
+}{
+\a\ \leftrightarrow\ SL(2,\R) \quad,\qquad
+\ad\ \leftrightarrow\ SL(2,\R)' \quad,\qquad
+\add\ \leftrightarrow\ SL(2,\R)'' \quad,\qquad
+\textrm{where} \quad \a\in\{0,1\} \quad.
+}{ecuacion}\coordE{}\end{equation}
+In particular, fundamental spinors are taken to be real.\footnote{
+Hence, \myHighlight{$v^\a$}\coordHE{} and \myHighlight{$v^\ad$}\coordHE{} are not related by complex conjugation,
+as in \myHighlight{$3{+}1$}\coordHE{}~dimensions.}
+In the NSR formulation, both \N2 and \NN4 strings are parametrized by the 
+four coordinates~\myHighlight{$X^{\a\ad}$}\coordHE{} plus four anticommuting NSR~fields~\myHighlight{$\j^{\add\ad}$}\coordHE{}.
+{}From the world-sheet point of view, the former are scalars while the latter
+form two-component Majorana spinors, 
+\myHighlight{$\j^{\add\ad}=(\j_+^{\add\ad},\j_-^{\add\ad})$}\coordHE{} in a Weyl basis.
+With `\myHighlight{$\pm$}\coordHE{}' we generally indicate light-cone components 
+of world-sheet tensors, i.e. \myHighlight{$\pa_\pm=\shalf(\pa_\tau\pm\pa_\sigma)$}\coordHE{}.
+Sharing a world-sheet supersymmetry multiplet with~\myHighlight{$X^{\a\ad}$}\coordHE{}, 
+the anticommuting coordinates~\myHighlight{$\j^{\add\ad}$}\coordHE{} should also carry an undotted 
+\myHighlight{$SL(2,\R)$}\coordHE{} index. However, its value is coupled to that of the \myHighlight{$SL(2,\R)''$}\coordHE{} 
+index and we suppress it.
+The action defines a (target-space) light-cone pairing,
+\begin{equation}\coord{}\boxEquation{
+(X^{0\zd},X^{1\od})\quad,\quad(\j^{\zdd\zd},\j^{\odd\od})
+\qquad\textrm{and}\qquad
+(X^{0\od},X^{1\zd})\quad,\quad(\j^{\zdd\od},\j^{\odd\zd}) \quad,
+}{
+(X^{0\zd},X^{1\od})\quad,\quad(\j^{\zdd\zd},\j^{\odd\od})
+\qquad\textrm{and}\qquad
+(X^{0\od},X^{1\zd})\quad,\quad(\j^{\zdd\od},\j^{\odd\zd}) \quad,
+}{ecuacion}\coordE{}\end{equation}
+which decomposes the variables into two \myHighlight{$N{=}1$}\coordHE{} light-cone sets.
+
+Starting from the formulation with auxiliary world-sheet \N2 or
+\NN4 supergravity~\cite{brink,pernici}, we advance to the superconformal gauge.
+In the critical dimension, all supergravity remnants then disappear thanks to
+super Weyl invariance. The residual (superconformal) freedom in this gauge 
+does not prevent quantization but implies that physical states are
+subject to constraints and gauge identifications. 
+The \N2 constraints \myHighlight{$(T,G^{\zdd 1},G^{\odd 0},J^{\zdd\odd})$}\coordHE{}
+represent a non-degenerate subset of the (reducible) \NN4 constraints
+\myHighlight{$(T,G^{\add\a},J^{(\add\bdd)})$}\coordHE{}, 
+which entails the selection of a one-parameter subgroup of the \myHighlight{$SL(2,\R)''$}\coordHE{} 
+R-symmetry group generated by the spin-one constraints~\myHighlight{$J^{(\add\bdd)}$}\coordHE{}. 
+Because we work with real spinors it is preferable to choose a noncompact
+subgroup \myHighlight{$GL(1,\R)\subset SL(2,\R)''$}\coordHE{}.
+As the R-symmetry index of~\myHighlight{$\j^{\add\a}$}\coordHE{} is tied to the space-time \myHighlight{$SL(2,\R)$}\coordHE{} 
+index, the choice of~\myHighlight{$J^{\zdd\odd}$}\coordHE{} incidentally also breaks the Lorentz group,
+\begin{equation}\coord{}\boxEquation{
+SO(2,2)\ \simeq\ SL(2,\R)\otimes SL(2,\R)'\quad\longrightarrow\quad
+GL(1,\R)\otimes SL(2,\R)' \quad.
+}{
+SO(2,2)\ \simeq\ SL(2,\R)\otimes SL(2,\R)'\quad\longrightarrow\quad
+GL(1,\R)\otimes SL(2,\R)' \quad.
+}{ecuacion}\coordE{}\end{equation}
+
+Being non-degenerate,
+each (commuting or anticommuting) \N2 constraint essentially removes
+one timelike and one spacelike degree of freedom (of matching statistics).
+Hence, we expect \myHighlight{$(T,G^{\zdd 1},G^{\odd 0},J^{\zdd\odd})$}\coordHE{} to eliminate
+{\it all\/} string coordinates~\myHighlight{$X^{\a\ad}$}\coordHE{} and their partners~\myHighlight{$\j^{\add\ad}$}\coordHE{}
+in the \myHighlight{$2{+}2$}\coordHE{} dimensional space-time. 
+Indeed, this expectation is confirmed by direct analysis~\cite{bien} as well as
+by amplitude computations which reveal that the \N2 string is just a point
+particle encoding the dynamics of self-dual Yang-Mills and gravity~\cite{OV},
+at least at tree-level.\footnote{
+For a review see~\cite{marcus,dubna}. 
+Quantization is detailed in~\cite{bischoff}.
+The loop structure is subject of~\cite{CLN,CS}.}
+
+Yet, it is unclear how to reproduce this result by further gauge-fixing
+to a light-cone gauge.
+As in other string theories, conformal reparametrizations can trivialize
+one light-cone coordinate, e.g. \myHighlight{$\pa X^{0\zd}=p^{0\zd}$}\coordHE{}, and solving
+\myHighlight{$T{=}0$}\coordHE{} fixes a second one, e.g. \myHighlight{$\pa X^{1\od}$}\coordHE{}. The remaining commuting 
+gauge transformations, \myHighlight{$GL(1,\R)$}\coordHE{} generated by \myHighlight{$J^{\zdd\odd}$}\coordHE{}, only affect 
+\myHighlight{$\j$}\coordHE{} but not~\myHighlight{$X$}\coordHE{}, and so cannot eliminate the pair \myHighlight{$(X^{0\od},X^{1\zd})$}\coordHE{}. 
+It seems that one is still left with 
+\myHighlight{$1{+}1$}\coordHE{} dimensional `transverse' string excitations.
+In the following, 
+we resolve this contradiction by showing that the light-cone
+gauge can still be used to get rid of {\it all\/} string excitations,
+provided we permit {\it commuting\/} transformations to gauge-fix
+{\it anticommuting\/} degrees of freedom and vice versa.
+\\
+
+
+\bigskip\noindent
+{\bf 2. Residual N=2 superconformal symmetry.\ }
+As is well known, the superconformal gauge possesses residual
+gauge freedom in the form of \N2 superconformal transformations.
+In light-cone world-sheet coordinates, these read
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\de X^{0\ad}\ &=\ (\x^+\pa_++\x^-\pa_-) X^{0\ad}\
+\leftCoord{}-\ \i\eps_1^+\j_+^{\zdd\ad}\ -\ \i\eps_1^-\j_-^{\zdd\ad} \quad , \rightCoord{}\\
+\leftCoord{}\de X^{1\ad}\ &=\ (\x^+\pa_++\x^-\pa_-) X^{1\ad}\
+\leftCoord{}+\ \i\eps_0^+\j_+^{\odd\ad}\ +\ \i\eps_0^-\j_-^{\odd\ad} \quad , \rightCoord{}\\
+\leftCoord{}\de\j_\pm^{\zdd\ad}\ &=\ \x^\pm \pa_\pm \j_\pm^{\zdd\ad}\
+\leftCoord{}-\ \eps_0^\pm\pa_\pm X^{0\ad}\ -\ \l^\pm\j_\pm^{\zdd\ad} \quad , \rightCoord{}\\
+\leftCoord{}\de\j_\pm^{\odd\ad}\ &=\ \x^\pm \pa_\pm \j_\pm^{\odd\ad}\
+\leftCoord{}+\ \eps_1^\pm\pa_\pm X^{1\ad}\ +\ \l^\pm\j_\pm^{\odd\ad} \quad ,
+}{0mm}{8}{4}{
+\de X^{0\ad}\ &=\ (\x^+\pa_++\x^-\pa_-) X^{0\ad}\
+-\ \i\eps_1^+\j_+^{\zdd\ad}\ -\ \i\eps_1^-\j_-^{\zdd\ad} \quad , \\
+\de X^{1\ad}\ &=\ (\x^+\pa_++\x^-\pa_-) X^{1\ad}\
++\ \i\eps_0^+\j_+^{\odd\ad}\ +\ \i\eps_0^-\j_-^{\odd\ad} \quad , \\
+\de\j_\pm^{\zdd\ad}\ &=\ \x^\pm \pa_\pm \j_\pm^{\zdd\ad}\
+-\ \eps_0^\pm\pa_\pm X^{0\ad}\ -\ \l^\pm\j_\pm^{\zdd\ad} \quad , \\
+\de\j_\pm^{\odd\ad}\ &=\ \x^\pm \pa_\pm \j_\pm^{\odd\ad}\
++\ \eps_1^\pm\pa_\pm X^{1\ad}\ +\ \l^\pm\j_\pm^{\odd\ad} \quad ,
+}{0}\coordE{}\end{align}
+where the commuting parameter functions \myHighlight{$(\x^+,\l^+)$}\coordHE{} and \myHighlight{$(\x^-,\l^-)$}\coordHE{}
+depend only on \myHighlight{$\t{+}\s$}\coordHE{} and \myHighlight{$\t{-}\s$}\coordHE{}, respectively, while the anticommuting
+parameter functions \myHighlight{$(\eps^+_0,\eps^+_1)$}\coordHE{} and \myHighlight{$(\eps^-_0,\eps^-_1)$}\coordHE{}
+do likewise.
+
+The transformations parametrized by
+\myHighlight{$(\x^+,\eps^+_0,\eps^+_1,\l^+)$}\coordHE{} are generated by the left-moving \N2 currents
+\myHighlight{$(T,G^{\odd 0},G^{\zdd 1},J^{\zdd\odd})$}\coordHE{}, in that order. 
+The other half (carrying a `\myHighlight{$-$}\coordHE{}' superscript) goes with a right-moving 
+copy of those currents. We shall focus on the left-movers and drop all
+world-sheet indices. Then the \N2 generators read
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}T\ &=\ \pa X^{0\zd} \pa X^{1\od} - \pa X^{0\od} \pa X^{1\zd} +
+       \leftCoord{}\i\j^{\zdd\zd} \pa\j^{\odd\od} - \i\j^{\zdd\od} \pa\j^{\odd\zd} -
+       \leftCoord{}\i\j^{\odd\zd} \pa\j^{\zdd\od} + \i\j^{\odd\od} \pa\j^{\zdd\zd} \quad,
+\leftCoord{}\label{T}\rightCoord{}\\
+\leftCoord{}G^{\zdd 1}\ &=\ \j^{\zdd\zd} \pa X^{1\od} - \j^{\zdd\od} \pa X^{1\zd} \quad,
+\leftCoord{}\label{G01}\rightCoord{}\\
+\leftCoord{}G^{\odd 0}\ &=\ \j^{\odd\zd} \pa X^{0\od} - \j^{\odd\od} \pa X^{0\zd} \quad,
+\leftCoord{}\label{G10}\rightCoord{}\\
+\leftCoord{}J^{\zdd\odd}\ &=\ \j^{\zdd\zd} \j^{\odd\od} - \j^{\zdd\od} \j^{\odd\zd} \quad.
+\label{J01}
+}{0mm}{9}{4}{
+T\ &=\ \pa X^{0\zd} \pa X^{1\od} - \pa X^{0\od} \pa X^{1\zd} +
+       \i\j^{\zdd\zd} \pa\j^{\odd\od} - \i\j^{\zdd\od} \pa\j^{\odd\zd} -
+       \i\j^{\odd\zd} \pa\j^{\zdd\od} + \i\j^{\odd\od} \pa\j^{\zdd\zd} \quad,
+\\
+G^{\zdd 1}\ &=\ \j^{\zdd\zd} \pa X^{1\od} - \j^{\zdd\od} \pa X^{1\zd} \quad,
+\\
+G^{\odd 0}\ &=\ \j^{\odd\zd} \pa X^{0\od} - \j^{\odd\od} \pa X^{0\zd} \quad,
+\\
+J^{\zdd\odd}\ &=\ \j^{\zdd\zd} \j^{\odd\od} - \j^{\zdd\od} \j^{\odd\zd} \quad.
+}{0}\coordE{}\end{align}
+As usual, \myHighlight{$T$}\coordHE{} is associated with conformal coordinate transformations
+while \myHighlight{$J^{\zdd\odd}$}\coordHE{} holomorphically rescales the NSR fields only.
+Note that the \myHighlight{$GL(1,\R)$}\coordHE{} current is antihermitian.
+More interesting is the action of the anticommuting generators, 
+depicted in full detail as
+\begin{equation}\coord{}\boxEquation{ \label{cd}
+\begin{CD}
+X^{0\zd} @>{G^{\zdd 1}}>> \j^{\zdd\zd} @>{\cdot\;G^{\odd 0}}>> \pa X^{0\zd} \\
+@V{\Big\uparrow}VV @V{\Big\uparrow}VV @V{\Big\uparrow}VV \\
+X^{1\od} @>{G^{\odd 0}\cdot}>> \j^{\odd\od} @>{G^{\zdd 1}}>> \pa X^{1\od}
+\end{CD}
+\qquad\textrm{and}\qquad
+\begin{CD}
+X^{0\od} @>{\cdot\;G^{\zdd 1}}>> \j^{\zdd\od} @>{G^{\odd 0}}>> \pa X^{0\od} \\
+@V{\Big\uparrow}VV @V{\Big\uparrow}VV @V{\Big\uparrow}VV \\
+X^{1\zd} @>{G^{\odd 0}}>> \j^{\odd\zd} @>{G^{\zdd 1}\cdot}>> \pa X^{1\zd}
+\end{CD} 
+}{ \begin{CD}
+X^{0\zd} @>{G^{\zdd 1}}>> \j^{\zdd\zd} @>{\cdot\;G^{\odd 0}}>> \pa X^{0\zd} \\
+@V{\Big\uparrow}VV @V{\Big\uparrow}VV @V{\Big\uparrow}VV \\
+X^{1\od} @>{G^{\odd 0}\cdot}>> \j^{\odd\od} @>{G^{\zdd 1}}>> \pa X^{1\od}
+\end{CD}
+\qquad\textrm{and}\qquad
+\begin{CD}
+X^{0\od} @>{\cdot\;G^{\zdd 1}}>> \j^{\zdd\od} @>{G^{\odd 0}}>> \pa X^{0\od} \\
+@V{\Big\uparrow}VV @V{\Big\uparrow}VV @V{\Big\uparrow}VV \\
+X^{1\zd} @>{G^{\odd 0}}>> \j^{\odd\zd} @>{G^{\zdd 1}\cdot}>> \pa X^{1\zd}
+\end{CD} 
+}{ecuacion}\coordE{}\end{equation}
+where the vertical arrows relate (target-space) light-cone conjugate\footnote{
+Two variables are light-cone conjugate when their part of the (target-space)
+metric is \myHighlight{$\left(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}\right)$}\coordHE{}.
+It implies that the momentum and annihilation parts of one variable are 
+canonically conjugate to the position and creation parts of the other.}
+variables.
+\\
+
+
+\bigskip
+\noindent
+{\bf 3. Gauge fixing part one -- the conventional part.\ }
+As is well-known, the residual-invariance generators play a double role
+because their vanishing has to be imposed as a constraint on the theory.
+In the bosonic string, for example, one employs \myHighlight{$T$}\coordHE{} first to gauge-fix
+a light-cone coordinate, say~\myHighlight{$\pa X^+=p^+$}\coordHE{}, and then a second time to
+solve \myHighlight{$T{=}0$}\coordHE{} for the light-cone conjugate coordinate~\myHighlight{$\pa X^-$}\coordHE{}, in effect
+getting rid of \myHighlight{$1{+}1$}\coordHE{}~dimensions.
+This mechanism generalizes to the \myHighlight{$N{=}1$}\coordHE{} supersymmetric case,
+where an anticommuting generator~\myHighlight{$G$}\coordHE{} allows one to transform \myHighlight{$\j^+$}\coordHE{} to zero
+and obtain \myHighlight{$\j^-$}\coordHE{} as a function of the transversal coordinates by solving
+\myHighlight{$G{=}0$}\coordHE{}.
+
+Let us do the same for the light-cone pair
+\myHighlight{$(X^{0\zd},X^{1\od})$}\coordHE{} plus \myHighlight{$(\j^{\zdd\zd},\j^{\odd\od})$}\coordHE{}
+by making use of the generators \myHighlight{$T$}\coordHE{} and~\myHighlight{$G^{\odd 0}$}\coordHE{}.
+By additional dots in the left part of~(\ref{cd}) we indicate
+the function of the anticommuting generator.
+In this way we arrive at
+\begin{align}\coord{}\boxAlignEqnarray{ \label{slice1}
+\leftCoord{}\pa X^{0\zd}\ &=\ p^{0\zd} \quad,\qquad
+\leftCoord{}\pa X^{1\od}\  =\ \pinv (\pa X^{0\od} \pa X^{1\zd}
+	\leftCoord{}+ \i\j^{\zdd\od} \pa\j^{\odd\zd} + \i\j^{\odd\zd} \pa\j^{\zdd\od}) \rightCoord{}\\
+\label{slice2}
+\leftCoord{}\j^{\zdd\zd}\ &=\ 0 \quad,\qquad\quad
+\leftCoord{}\j^{\odd\od}\  =\ \pinv\;\j^{\odd\zd} \pa X^{0\od} \quad,
+}{0mm}{5}{2}{ \pa X^{0\zd}\ &=\ p^{0\zd} \quad,\qquad
+\pa X^{1\od}\  =\ \pinv (\pa X^{0\od} \pa X^{1\zd}
+	+ \i\j^{\zdd\od} \pa\j^{\odd\zd} + \i\j^{\odd\zd} \pa\j^{\zdd\od}) \\
+\j^{\zdd\zd}\ &=\ 0 \quad,\qquad\quad
+\j^{\odd\od}\  =\ \pinv\;\j^{\odd\zd} \pa X^{0\od} \quad,
+}{0}\coordE{}\end{align}
+and the remaining \N2 generators simplify to
+\begin{equation}\coord{}\boxEquation{ \label{constraints}
+G^{\zdd 1}\ =\ -\j^{\zdd\od} \pa X^{1\zd} 
+\qquad\textrm{and}\qquad
+J^{\zdd\odd}\ =\ -\j^{\zdd\od} \j^{\odd\zd} \quad.
+}{ G^{\zdd 1}\ =\ -\j^{\zdd\od} \pa X^{1\zd} 
+\qquad\textrm{and}\qquad
+J^{\zdd\odd}\ =\ -\j^{\zdd\od} \j^{\odd\zd} \quad.
+}{ecuacion}\coordE{}\end{equation}
+Although this reasoning is purely classical, it can be incorporated in the
+quantum theory by reading~(\ref{slice1})--(\ref{constraints}) as operator
+statements and replacing \myHighlight{$p^{0\zd}$}\coordHE{} by the c-number \myHighlight{$k^{0\zd}$}\coordHE{}.
+\\
+
+
+\bigskip\noindent
+{\bf 4. Chiral bosonization.\ }
+In order to get rid of the remaining pair
+\myHighlight{$(X^{0\od},X^{1\zd})$}\coordHE{} plus \myHighlight{$(\j^{\zdd\od},\j^{\odd\zd})$}\coordHE{}
+we must attempt to employ the {\it commuting\/} generator~\myHighlight{$J^{\zdd\odd}$}\coordHE{}
+to eliminate the {\it anticommuting\/}~\myHighlight{$\j$}\coordHE{}'s and then kill the \myHighlight{$X$}\coordHE{}'s 
+with~\myHighlight{$G^{\zdd 1}$}\coordHE{}.
+On the classical level this makes no sense because ordinary and Grassmann
+numbers are not related in any way. Upon quantization, however, this
+distinction blurs: fermionic creation and annihilation operators may be
+represented by finite matrices (with commuting entries), simply leading to
+multi-component wave functions. In two dimensions, one even has a direct
+relation between commuting and anticommuting fields by means of bosonization.
+Following this idea, we describe the \myHighlight{$(\j^{\zdd\od},\j^{\odd\zd})$}\coordHE{} system
+by a chiral boson~\myHighlight{$\phi$}\coordHE{} (normal-ordering implied),
+\begin{equation}\coord{}\boxEquation{ \label{bosonize}
+\j^{\zdd\od}\ =\ \e^{-\phi} 
+\qquad\textrm{and}\qquad
+\j^{\odd\zd}\ =\ \e^{+\phi} \quad,
+\qquad\textrm{so that}\qquad
+\j^{\odd\zd}\,\j^{\zdd\od}\ =\ \i\,\pa\phi \quad.
+}{ \j^{\zdd\od}\ =\ \e^{-\phi} 
+\qquad\textrm{and}\qquad
+\j^{\odd\zd}\ =\ \e^{+\phi} \quad,
+\qquad\textrm{so that}\qquad
+\j^{\odd\zd}\,\j^{\zdd\od}\ =\ \i\,\pa\phi \quad.
+}{ecuacion}\coordE{}\end{equation}
+Note that \myHighlight{$\phi$}\coordHE{} is not an angle but a scale; there are no winding modes.
+Let us remark on the statistics. 
+For more than one pair of anticommuting fields the above equations have
+to be supplemented by suitable cocycle (a.k.a. Jordan-Wigner or Klein) factors
+which ensure that the different pairs mutually anticommute.
+Since in the present case, however, only a single pair of NSR~fields is left,
+its statistics is irrelevant and we can fully describe it by the 
+chiral commuting~\myHighlight{$\phi$}\coordHE{}.
+
+Invoking the decomposition
+\begin{equation}\coord{}\boxEquation{
+\phi\ =\ \phi_< + q + (\t{+}\s)p + \phi_> 
+}{
+\phi\ =\ \phi_< + q + (\t{+}\s)p + \phi_> 
+}{ecuacion}\coordE{}\end{equation}
+into negative-, zero-, and positive-frequency parts,\footnote{
+Positive frequency means positive Fourier modes, i.e. the annihilation part.
+Zero modes obey \myHighlight{$[q,p]=\i$}\coordHE{}.}
+the exponential operators read
+\begin{equation}\coord{}\boxEquation{
+\e^{n\phi}\ =\ \e^{n\phi_<}\;\e^{nq+n(\t{+}\s)p}\;\e^{n\phi_>}\ =\
+\e^{n\phi_<}\;\e^{\frac{n}{2}q}\;\e^{n(\t{+}\s)p}\;\e^{\frac{n}{2}q}\;
+\e^{n\phi_>} \quad.
+}{
+\e^{n\phi}\ =\ \e^{n\phi_<}\;\e^{nq+n(\t{+}\s)p}\;\e^{n\phi_>}\ =\
+\e^{n\phi_<}\;\e^{\frac{n}{2}q}\;\e^{n(\t{+}\s)p}\;\e^{\frac{n}{2}q}\;
+\e^{n\phi_>} \quad.
+}{ecuacion}\coordE{}\end{equation}
+The \myHighlight{$\phi$}\coordHE{} Fock space is generated by \myHighlight{$\phi$}\coordHE{} creation operators 
+(contained in~\myHighlight{$\phi_<$}\coordHE{}) acting on a momentum eigenstate~\myHighlight{$|a\rangle$}\coordHE{}, defined by
+\begin{equation}\coord{}\boxEquation{
+p\,|a\rangle\ =\ a\,|a\rangle 
+}{
+p\,|a\rangle\ =\ a\,|a\rangle 
+}{ecuacion}\coordE{}\end{equation}
+and created from the vacuum state via
+\begin{equation}\coord{}\boxEquation{
+|a\rangle\ =\ \e^{\i a q}\,|0\rangle\ =\ 
+\e^{\i a\phi}(\t{\to}{-}\infty)\,|0\rangle \quad.
+}{
+|a\rangle\ =\ \e^{\i a q}\,|0\rangle\ =\ 
+\e^{\i a\phi}(\t{\to}{-}\infty)\,|0\rangle \quad.
+}{ecuacion}\coordE{}\end{equation}
+On such a state, exponential operators act as
+\begin{equation}\coord{}\boxEquation{
+\e^{n\phi}\,|a\rangle\ =\ 
+\e^{n(a-\i\frac{n}{2})(\t+\s)}\;\e^{n\phi_<}\, |a{-}n\i\rangle \quad.
+}{
+\e^{n\phi}\,|a\rangle\ =\ 
+\e^{n(a-\i\frac{n}{2})(\t+\s)}\;\e^{n\phi_<}\, |a{-}n\i\rangle \quad.
+}{ecuacion}\coordE{}\end{equation}
+
+{}From this we learn two things.
+First, \myHighlight{$\i p$}\coordHE{} is nothing but fermion number because
+the NSR~fields \myHighlight{$\e^{\pm\phi}$}\coordHE{} shift the eigenvalue by~\myHighlight{$\pm1$}\coordHE{} unit.~\footnote{
+Due to the indefinite target-space metric there is no conflict with the
+anti-hermiticity of~\myHighlight{$\i p$}\coordHE{}.}
+Second, \myHighlight{$a$}\coordHE{} is tied to the monodromy for the NSR~fields,
+\begin{equation}\coord{}\boxEquation{
+\e^{\pm\phi}(\s{+}2\pi)\,|a\rangle\ =\ 
+-\,\e^{\pm 2\pi a}\,\e^{\pm\phi}(\s)\,|a\rangle \quad.
+}{
+\e^{\pm\phi}(\s{+}2\pi)\,|a\rangle\ =\ 
+-\,\e^{\pm 2\pi a}\,\e^{\pm\phi}(\s)\,|a\rangle \quad.
+}{ecuacion}\coordE{}\end{equation}
+It should be noted that, due to the reality of the NSR~fields, the monodromy
+group is~\myHighlight{$\R_+$}\coordHE{} and not \myHighlight{$U(1)$}\coordHE{}. The Fourier modes are
+\begin{equation}\coord{}\boxEquation{
+\j^{\zdd\od}_{m+\frac12+\i a}
+\qquad\textrm{and}\qquad
+\j^{\odd\zd}_{m+\frac12-\i a}
+}{
+\j^{\zdd\od}_{m+\frac12+\i a}
+\qquad\textrm{and}\qquad
+\j^{\odd\zd}_{m+\frac12-\i a}
+}{ecuacion}\coordE{}\end{equation}
+with \myHighlight{$m\in\Z$}\coordHE{}, so all monodromy sectors are NS-like. 
+Due to the spectral flow isometry, which acts as
+\begin{equation}\coord{}\boxEquation{
+\j\ \longmapsto\ \e^{-\i a q}\,\j\,\e^{\i a q}\ =\ \e^{\pm(\t+\s)a}\,\j \quad,
+}{
+\j\ \longmapsto\ \e^{-\i a q}\,\j\,\e^{\i a q}\ =\ \e^{\pm(\t+\s)a}\,\j \quad,
+}{ecuacion}\coordE{}\end{equation}
+all monodromy sectors are equivalent. In the following, we choose \myHighlight{$a{=}0$}\coordHE{}.
+\\
+
+
+\bigskip\noindent
+{\bf 5. Gauge fixing part two -- the unconventional part.\ }
+How is the gauge-fixing accomplished in this framework?
+As for example in the Gupta-Bleuler method, we shall impose the remaining
+constraints 
+\begin{equation}\coord{}\boxEquation{
+G^{\zdd 1}\ =\ -\e^{-\phi}\,\pa X^{1\zd}
+\qquad\textrm{and}\qquad
+J^{\zdd\odd}\ =\ \i\,\pa\phi 
+}{
+G^{\zdd 1}\ =\ -\e^{-\phi}\,\pa X^{1\zd}
+\qquad\textrm{and}\qquad
+J^{\zdd\odd}\ =\ \i\,\pa\phi 
+}{ecuacion}\coordE{}\end{equation}
+not as operator equations but rather demand that their 
+positive- and zero-frequency parts annihilate the physical states,\footnote{
+except for the zero mode \myHighlight{$J_0^{\zdd\odd}=\i p$}\coordHE{} as seen above.
+\myHighlight{$G^{\zdd 1}$}\coordHE{} has no zero modes.}
+\begin{equation}\coord{}\boxEquation{
+G_\ge^{\zdd 1}(\s)\,|\textrm{phys}\rangle\ =\ 0
+\qquad\textrm{and}\qquad
+J_\ge^{\zdd\odd}(\s)\,|\textrm{phys}\rangle\ =\ \i a\,|\textrm{phys}\rangle 
+\quad.
+}{
+G_\ge^{\zdd 1}(\s)\,|\textrm{phys}\rangle\ =\ 0
+\qquad\textrm{and}\qquad
+J_\ge^{\zdd\odd}(\s)\,|\textrm{phys}\rangle\ =\ \i a\,|\textrm{phys}\rangle 
+\quad.
+}{ecuacion}\coordE{}\end{equation}
+If a constraint is not self-conjugate its conjugate will create a gauge 
+invariance which allows us to further restrict the physical states.
+Our state space consists of the zero modes and excitations of the free fields
+\myHighlight{$\phi$}\coordHE{}, \myHighlight{$X^{0\od}$}\coordHE{}, and~\myHighlight{$X^{1\zd}$}\coordHE{}. In other words, its basis is generated
+by acting with their creation operators on the momentum eigenstates
+\myHighlight{$|a,k^{0\od},k^{1\zd}\rangle$}\coordHE{}. 
+
+We first attend to the commuting generator, \myHighlight{$J^{\zdd\odd}=\i\pa\phi$}\coordHE{}.
+Classically, it effects local translations of~\myHighlight{$\phi$}\coordHE{}.
+On quantum states, we demand
+\begin{equation}\coord{}\boxEquation{
+\pa\phi_>\,|\textrm{phys}\rangle\ =\ 0 \quad,
+}{
+\pa\phi_>\,|\textrm{phys}\rangle\ =\ 0 \quad,
+}{ecuacion}\coordE{}\end{equation}
+which removes all \myHighlight{$\phi$}\coordHE{} creation operators from \myHighlight{$|\textrm{phys}\rangle$}\coordHE{}.
+The \myHighlight{$\phi$}\coordHE{} content of \myHighlight{$|\textrm{phys}\rangle$}\coordHE{} is thus reduced to its zero mode,
+whose value we chose to be \myHighlight{$a{=}0$}\coordHE{}.
+
+Finally, we expose the action of the anticommuting generator, 
+\myHighlight{$G^{\zdd 1}=-\e^{-\phi}\pa X^{1\zd}$}\coordHE{}. Since 
+\begin{equation}\coord{}\boxEquation{ \label{nozero}
+\e^{-\phi}\,|0\rangle\ =\ 
+\e^{-\frac{\i}{2}(\t+\s)}\;\e^{-\phi_<}\,|\i\rangle
+}{ \e^{-\phi}\,|0\rangle\ =\ 
+\e^{-\frac{\i}{2}(\t+\s)}\;\e^{-\phi_<}\,|\i\rangle
+}{ecuacion}\coordE{}\end{equation}
+the r.h.s. contains only negative-frequency (and no zero-mode) parts.
+Therefore,
+\myHighlight{$G_\ge^{\zdd 1}$}\coordHE{} on physical states will involve all positive modes
+of~\myHighlight{$\pa X^{1\zd}$}\coordHE{} but no others. Consequently, the requirement
+\begin{equation}\coord{}\boxEquation{
+\bigl( \pa X^{1\zd}\,\e^{-\phi} \bigr)_\ge\,|\textrm{phys}\rangle\ =\ 0
+}{
+\bigl( \pa X^{1\zd}\,\e^{-\phi} \bigr)_\ge\,|\textrm{phys}\rangle\ =\ 0
+}{ecuacion}\coordE{}\end{equation}
+eliminates all \myHighlight{$X^{0\od}$}\coordHE{} creation operators from \myHighlight{$|\textrm{phys}\rangle$}\coordHE{}.
+By conjugation, the associated gauge symmetry allows us to gauge away all
+\myHighlight{$X^{1\zd}$}\coordHE{} creation operators as well.
+We are now left with 
+\begin{equation}\coord{}\boxEquation{ \label{phys}
+|\textrm{phys}\rangle\ =\ |0,k^{0\od},k^{1\zd}\rangle \quad.
+}{ |\textrm{phys}\rangle\ =\ |0,k^{0\od},k^{1\zd}\rangle \quad.
+}{ecuacion}\coordE{}\end{equation}
+
+Finally, we may include the momenta \myHighlight{$k^{0\zd}$}\coordHE{} and~\myHighlight{$k^{1\od}$}\coordHE{} back into
+the parametrization of the physical states.
+Then, the `\myHighlight{$11$}\coordHE{}' coordinates from
+(\ref{slice1}) and~(\ref{slice2}) may be expressed as\footnote{
+The classical constraint \myHighlight{$T{=}0$}\coordHE{} gets modified to \myHighlight{$T{=}a^2$}\coordHE{}.
+This cancels the contribution of the NSR~momenta to~\myHighlight{$L_0$}\coordHE{}.}
+\begin{equation}\coord{}\boxEquation{
+\pa X^{1\od}\ =\ \kinv ( \pa X^{0\od} \pa X^{1\zd} + a^2 - \pa\phi\pa\phi )
+\qquad\textrm{and}\qquad
+\j^{\odd\od}\ =\ \kinv\;\pa X^{0\od}\,\e^{+\phi} \quad.
+}{
+\pa X^{1\od}\ =\ \kinv ( \pa X^{0\od} \pa X^{1\zd} + a^2 - \pa\phi\pa\phi )
+\qquad\textrm{and}\qquad
+\j^{\odd\od}\ =\ \kinv\;\pa X^{0\od}\,\e^{+\phi} \quad.
+}{ecuacion}\coordE{}\end{equation}
+On the states~(\ref{phys}) only the non-positive modes contribute.
+The zero mode of \myHighlight{$\pa X^{1\od}$}\coordHE{} yields the mass-shell condition
+\myHighlight{$k^{0\zd}k^{1\od}-k^{0\od}k^{1\zd}=0$}\coordHE{}.
+
+Summarizing, the `double' light-cone gauge reduces the \N2 string
+degrees of freedom to the zero modes of its bosonic coordinates
+and puts them on mass-shell. As in the covariant treatment, 
+a massless free boson makes up the entire spectrum of states.
+
+We finally remark that the elimination mechanism works differently for bosons 
+and fermions. It is crucial that the bosons come in light-cone pairs, i.e.
+they support an indefinite space-time metric, while each (light-cone conjugate)
+fermion pair gives rise (via bosonization) to a single self-conjugate boson,
+so that these chiral bosons support only a Euclidean metric.
+For this reason it is impossible\footnote{
+It is possible only for the zero modes.} 
+to employ a commuting gauge invariance to gauge-fix only half 
+of a fermionic pair and eliminate the other half through the constraint, 
+as is done for the \myHighlight{$X$}\coordHE{}'s.
+After both gauge-fixing and imposing the constraints, however, the counting
+for bosons and fermions again coincides.
+\\
+
+
+\bigskip
+\noindent
+{\bf 6. The N=4 case.\  }
+To streamline the equations for the \NN4 string, 
+we only display the left-moving degrees of freedom 
+and drop the world-sheet \myHighlight{$(\pm)$}\coordHE{} indices. 
+The right-moving part behaves completely analogously.
+The \NN4 superconformal transformations 
+\begin{align}\coord{}\boxAlignEqnarray{ \label{N41}
+\leftCoord{}\de X^{0\ad}\ &=\ \x\,\pa X^{0\ad}\
+\leftCoord{}+\ \i\eps_1^\zdd\j^{\odd\ad}\ -\ \i\eps_1^\odd\j^{\zdd\ad} \quad , \rightCoord{}\\
+\leftCoord{}\de X^{1\ad}\ &=\ \x\,\pa X^{1\ad}\
+\leftCoord{}+\ \i\eps_0^\zdd\j^{\odd\ad}\ -\ \i\eps_0^\odd\j^{\zdd\ad} \quad , \rightCoord{}\\
+\leftCoord{}\de\j^{\zdd\ad}\ &=\ \x\,\pa \j^{\zdd\ad}\
+\leftCoord{}+\ \eps_0^\zdd \pa X^{0\ad}\ +\ \eps_1^\zdd \pa X^{1\ad}\
+\leftCoord{}+\ \l^{\zdd\zdd} \j^{\odd\ad}\ -\ \l^{\zdd\odd} \j^{\zdd\ad} \quad , \rightCoord{}\\
+\leftCoord{}\de\j^{\odd\ad}\ &=\ \x\,\pa \j^{\odd\ad}\
+\leftCoord{}+\ \eps_0^\odd \pa X^{0\ad}\ +\ \eps_1^\odd \pa X^{1\ad}\
+\leftCoord{}+\ \l^{\odd\zdd} \j^{\odd\ad}\ -\ \l^{\odd\odd} \j^{\zdd\ad} 
+\label{N44}
+}{0mm}{10}{4}{ \de X^{0\ad}\ &=\ \x\,\pa X^{0\ad}\
++\ \i\eps_1^\zdd\j^{\odd\ad}\ -\ \i\eps_1^\odd\j^{\zdd\ad} \quad , \\
+\de X^{1\ad}\ &=\ \x\,\pa X^{1\ad}\
++\ \i\eps_0^\zdd\j^{\odd\ad}\ -\ \i\eps_0^\odd\j^{\zdd\ad} \quad , \\
+\de\j^{\zdd\ad}\ &=\ \x\,\pa \j^{\zdd\ad}\
++\ \eps_0^\zdd \pa X^{0\ad}\ +\ \eps_1^\zdd \pa X^{1\ad}\
++\ \l^{\zdd\zdd} \j^{\odd\ad}\ -\ \l^{\zdd\odd} \j^{\zdd\ad} \quad , \\
+\de\j^{\odd\ad}\ &=\ \x\,\pa \j^{\odd\ad}\
++\ \eps_0^\odd \pa X^{0\ad}\ +\ \eps_1^\odd \pa X^{1\ad}\
++\ \l^{\odd\zdd} \j^{\odd\ad}\ -\ \l^{\odd\odd} \j^{\zdd\ad} 
+}{0}\coordE{}\end{align}
+involve the four commuting left-moving parameters \myHighlight{$(\x,\l^{(\add\bdd)})$}\coordHE{}
+and four anticommuting left-moving parameters \myHighlight{$(\eps_\a^\add)$}\coordHE{}.
+Clearly, the relation with the \N2 parameters is
+\begin{equation}\coord{}\boxEquation{
+\x=\x \quad,\qquad
+\l=\l^{\zdd\odd}=\l^{\odd\zdd} \quad,\qquad
+\eps_0= \eps_0^\zdd \quad,\qquad
+\eps_1= \eps_1^\odd \quad.
+}{
+\x=\x \quad,\qquad
+\l=\l^{\zdd\odd}=\l^{\odd\zdd} \quad,\qquad
+\eps_0= \eps_0^\zdd \quad,\qquad
+\eps_1= \eps_1^\odd \quad.
+}{ecuacion}\coordE{}\end{equation}
+The \NN4 constraints which generate the above transformations
+consist of the \N2 set
+(\ref{T})--(\ref{J01}) enlarged by
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\eps_0^\odd:\
+\leftCoord{}G^{\zdd 0}\ &=\ \j^{\zdd\zd} \pa X^{0\od}\ -\ \j^{\zdd\od} \pa X^{0\zd} \quad,
+\leftCoord{}\label{G00}\rightCoord{}\\
+\leftCoord{}\eps_1^\zdd:\
+\leftCoord{}G^{\odd 1}\ &=\ \j^{\odd\zd} \pa X^{1\od}\ -\ \j^{\odd\od} \pa X^{1\zd} \quad, 
+\leftCoord{}\label{G11}\rightCoord{}\\
+\leftCoord{}\l^{\odd\odd}:\
+\leftCoord{}J^{\zdd\zdd}\ &=\ 2\,\j^{\zdd\zd} \j^{\zdd\od} \quad,
+\leftCoord{}\label{J00}\rightCoord{}\\
+\leftCoord{}\l^{\zdd\zdd}:\
+\leftCoord{}J^{\odd\odd}\ &=\ 2\,\j^{\odd\zd} \j^{\odd\od} \quad.
+\label{J11}
+}{0mm}{11}{4}{
+\eps_0^\odd:\
+G^{\zdd 0}\ &=\ \j^{\zdd\zd} \pa X^{0\od}\ -\ \j^{\zdd\od} \pa X^{0\zd} \quad,
+\\
+\eps_1^\zdd:\
+G^{\odd 1}\ &=\ \j^{\odd\zd} \pa X^{1\od}\ -\ \j^{\odd\od} \pa X^{1\zd} \quad, 
+\\
+\l^{\odd\odd}:\
+J^{\zdd\zdd}\ &=\ 2\,\j^{\zdd\zd} \j^{\zdd\od} \quad,
+\\
+\l^{\zdd\zdd}:\
+J^{\odd\odd}\ &=\ 2\,\j^{\odd\zd} \j^{\odd\od} \quad.
+}{0}\coordE{}\end{align}
+
+Let us investigate if the non-negative-frequency parts of the additional 
+four constraints imply any further restrictions on the physical states 
+of the \N2 string. On the gauge slice (\ref{slice1}) and (\ref{slice2})
+the above generators reduce to
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}G^{\zdd 0}\ &=\ -\e^{-\phi}\,k^{0\zd} \quad, \rightCoord{}\\
+\leftCoord{}G^{\odd 1}\ &=\ -\e^{+\phi}\,(\pa\phi\pa\phi -a^{\leftCoord{}2})/k^{0\zd} \quad, \rightCoord{}\\
+\leftCoord{}J^{\zdd\zdd}\ &=\ 0 \quad, \rightCoord{}\\
+\leftCoord{}J^{\odd\odd}\ &=\ 2\,:\e^{+\phi} \e^{+\phi}:\,\pa X^{0\od}/k^{0\zd}\ =\ 0\quad.
+}{0mm}{5}{4}{
+G^{\zdd 0}\ &=\ -\e^{-\phi}\,k^{0\zd} \quad, \\
+G^{\odd 1}\ &=\ -\e^{+\phi}\,(\pa\phi\pa\phi -a^{2})/k^{0\zd} \quad, \\
+J^{\zdd\zdd}\ &=\ 0 \quad, \\
+J^{\odd\odd}\ &=\ 2\,:\e^{+\phi} \e^{+\phi}:\,\pa X^{0\od}/k^{0\zd}\ =\ 0\quad.
+}{0}\coordE{}\end{align}
+On the physical states~\myHighlight{$|0,k^{\a\ad}\rangle$}\coordHE{},
+only negative-frequency modes will be created,
+and \myHighlight{$G^{\add\b}$}\coordHE{} do not contain zero modes.
+Therefore, indeed
+\begin{equation}\coord{}\boxEquation{
+G_\ge^{\zdd 0}\,|0,k^{\a\ad}\rangle\ =\ 0\ =\
+G_\ge^{\odd 1}\,|0,k^{\a\ad}\rangle \quad.
+}{
+G_\ge^{\zdd 0}\,|0,k^{\a\ad}\rangle\ =\ 0\ =\
+G_\ge^{\odd 1}\,|0,k^{\a\ad}\rangle \quad.
+}{ecuacion}\coordE{}\end{equation}
+Hence, the additional \NN4 constraints are obsolete on the physical
+states of the \N2 string, as expected.
+\\
+
+
+\bigskip\noindent
+{\bf Acknowledgements.\  }
+O.L. thanks Gordon Chalmers for collaboration at an early stage.
+This work is partially supported by DFG grant Le 838/7-1, by a sabbatical
+research grant of the Volkswagen-Stiftung, and by NSF grant PHY-0098527.
+
+
+\vfill\eject
+\begin{thebibliography}{99}
+
+\bibitem{n2}
+M. Ademollo, L. Brink, A. D'Adda, R. D'Auria, E. Napolitano, S. Sciuto, 
+E. Del Giudice, P.~Di Vecchia, S. Ferrara, F. Gliozzi, R. Musto, R. Pettorino, 
+J.H. Schwarz,\\
+{\sl Nucl. Phys.} {\bf B111} (1976) 77. 
+
+\bibitem{n4}
+M. Ademollo, L. Brink, A. D'Adda, R. D'Auria, E. Napolitano, S. Sciuto, 
+E. Del Giudice, P.~Di Vecchia, S. Ferrara, F. Gliozzi, R. Musto, 
+R. Pettorino,\\
+{\sl Nucl. Phys.} {\bf B114} (1976) 297;
+{\sl Phys. Lett.} {\bf B62} (1976) 105.
+
+\bibitem{n4red}
+W. Siegel,
+{\sl Phys. Rev. Lett.} {\bf 69} (1992) 1493 [hep-th/9204005].
+
+\bibitem{brink}
+L.~Brink and J.H.~Schwarz,
+{\sl Nucl. Phys.} {\bf B121} (1977) 285.
+
+\bibitem{pernici}
+M.~Pernici and P.~van Nieuwenhuizen,
+{\sl Phys. Lett.} {\bf B169} (1986) 381.
+
+\bibitem{bien}
+J.~Bienkowska,
+{\sl Phys. Lett.} {\bf B281} (1992) 59 
+[hep-th/9111047].
+
+\bibitem{OV}
+H. Ooguri and C. Vafa,
+{\sl Nucl. Phys.} {\bf B361} (1991) 469;\\
+{\sl Mod. Phys. Lett.} {\bf A5} (1990) 1389.
+
+\bibitem{marcus}
+N. Marcus,
+{\it A tour through N=2 strings}
+[hep-th/9211059].
+
+\bibitem{dubna}
+O. Lechtenfeld,
+{\it Mathematics and physics of N=2 strings}
+[hep-th/9912281].
+
+\bibitem{bischoff}
+J. Bischoff and O. Lechtenfeld,
+{\sl Int. J. Mod. Phys.} {\bf A12} (1997) 4933 
+[hep-th/9612218].
+
+\bibitem{CLN}
+G. Chalmers, O. Lechtenfeld and B. Niemeyer,
+{\sl Nucl. Phys.} {\bf B591} (2000) 39 
+[hep-th/0007020].
+
+\bibitem{CS}
+G. Chalmers and W. Siegel,
+{\sl Phys. Rev.} {\bf D64} (2001) 026001 
+[hep-th/0010238].
+
+
+\end{thebibliography}
+
+\end{document}
+
+
+
+\bye

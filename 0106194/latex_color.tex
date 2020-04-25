@@ -1,0 +1,2815 @@
+
+%
+%
+\documentclass[a4paper,reqno]{amsart}
+\usepackage{amscd,amssymb,url}
+
+\hfuzz=17pt
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\mesh}{mesh}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Fred}{Fred}
+\DeclareMathOperator{\Ch}{Ch}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Pro}{Pro}
+\DeclareMathOperator{\Lin}{Lin}
+\DeclareMathOperator{\Bun}{Bun}
+\DeclareMathOperator{\ind}{ind}
+
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{question}[theorem]{Question}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{example}{Example}[section]
+\newtheorem{note}{Note}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{remark}{Remark}[section] 
+
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+
+\providecommand{\cH}{{\mathcal H}}
+\providecommand{\cS}{{\mathcal S}}
+\providecommand{\cA}{{\mathcal A}}
+\providecommand{\cE}{{\mathcal E}}
+\providecommand{\cK}{{\mathcal K}}
+\providecommand{\cU}{{\mathcal U}}
+\providecommand{\cO}{{\mathcal O}}
+\providecommand{\cP}{{\mathcal P}}
+
+
+\providecommand{\CC}{{\mathbb C}}
+\providecommand{\RR}{{\mathbb R}}
+\providecommand{\ZZ}{{\mathbb Z}}
+\providecommand{\QQ}{{\mathbb Q}}
+
+
+\providecommand{\redK}{\widetilde K} % reduced K theory
+\providecommand{\norm}[1]{\lVert {#1} \rVert}
+\providecommand{\RP}{\RR {\rm P}}
+\providecommand{\mar}[1]{{\marginpar{\textsf{#1}}}}
+
+\providecommand{\UK}{U{_\mathcal K}}
+
+\renewcommand{\d}{\partial}
+
+\providecommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+
+
+\providecommand{\ad}{\text{ad}} 
+
+
+\usepackage{useful_macros}
+\begin{document}
+
+
+\title[Twisted K-theory and K-theory of bundle gerbes]{Twisted K-theory
+and K-theory of bundle gerbes}
+
+
+
+\author[P. Bouwknegt]{Peter Bouwknegt}
+\address[Peter Bouwknegt]
+{Department of Physics and Mathematical Physics
+and Department of Pure Mathematics\\
+University of Adelaide\\
+Adelaide, SA 5005 \\
+Australia}
+\email{pbouwkne@physics.adelaide.edu.au, pbouwkne@maths.adelaide.edu.au}
+
+\author[A.L. Carey]{Alan L. Carey}
+\address[Alan L. Carey]
+{Department of Pure Mathematics\\
+University of Adelaide\\
+Adelaide, SA 5005 \\
+Australia}
+\email{acarey@maths.adelaide.edu.au}
+
+
+\author[V. Mathai]{Varghese Mathai}
+\address[Varghese Mathai]
+{Department of Mathematics\\
+MIT \\
+Cambridge, MA 02139 \\
+USA and Department of Pure Mathematics\\
+University of Adelaide\\
+Adelaide, SA 5005 \\
+Australia}
+\email{vmathai@math.mit.edu, vmathai@maths.adelaide.edu.au }
+
+
+\author[M.K. Murray]{Michael K. Murray}
+\address[Michael K. Murray]
+{Department of Pure Mathematics\\
+University of Adelaide\\
+Adelaide, SA 5005 \\
+Australia}
+\email{mmurray@maths.adelaide.edu.au}
+
+\author[D. Stevenson]{Danny Stevenson}
+\address[Danny Stevenson]
+{Department of Pure Mathematics\\
+University of Adelaide\\
+Adelaide, SA 5005 \\
+Australia}
+\email{dstevens@maths.adelaide.edu.au}
+
+
+\thanks{The authors acknowledge the support of the Australian
+Research Council.  In addition PB acknowledges support from the
+Caltech/USC Center for Theoretical Physics, VM and ALC from the
+Clay Mathematics Institute and ALC from the Max Planck Institute,
+Albert Einstein, Potsdam.}
+
+\subjclass{81T30, 19K99}
+
+
+
+
+\begin{abstract}
+In this note we introduce the notion of bundle gerbe \myHighlight{$K$}\coordHE{}-theory
+and investigate the relation to twisted \myHighlight{$K$}\coordHE{}-theory.  We provide
+some examples.  Possible applications of bundle gerbe \myHighlight{$K$}\coordHE{}-theory to
+the classification of \myHighlight{$D$}\coordHE{}-brane charges in nontrivial backgrounds are
+briefly discussed.
+\end{abstract}
+\maketitle
+
+\section{Introduction}
+
+Based on explicit calculations of \myHighlight{$D$}\coordHE{}-brane charges and the analysis of
+brane creation-annihilation processes it has been argued that
+\myHighlight{$D$}\coordHE{}-branes, in the absence of background \myHighlight{$B$}\coordHE{}-fields, carry charges which
+take values in \myHighlight{$K$}\coordHE{}-theory \cite{MM,Wit1,Hor,MW}.  (For background on
+\myHighlight{$D$}\coordHE{}-branes see, e.g., \cite{Pol}.)  This proposal has been extended
+to incorporate nontrivial background \myHighlight{$B$}\coordHE{}-fields in \cite{Wit1,Kap}
+for torsion \myHighlight{$B$}\coordHE{}-fields, and in \cite{BM,Ati2} for general \myHighlight{$B$}\coordHE{}-fields,
+in which case twisted \myHighlight{$K$}\coordHE{}-theory \cite{Ros} is needed.
+The picture of \myHighlight{$D$}\coordHE{}-brane charges taking values in (twisted)
+\myHighlight{$K$}\coordHE{}-theory has received further support from an analysis of \myHighlight{$M$}\coordHE{}-theory
+\cite{DMW}, noncommutative tachyons \cite{Wit2,HM} and explicit
+examples (see, e.g., \cite{FS} and references therein).
+
+On the other hand, since \myHighlight{$B$}\coordHE{}-fields are most naturally
+described as connections over 1-gerbes,
+it has been clear for some time that gerbes are relevant to
+understanding the properties of \myHighlight{$D$}\coordHE{}-branes in string theory.
+The occurrence of gerbes
+can, for instance, be inferred from the anomaly cancellation
+argument in \cite{FW} and is mentioned explicitly in \cite{HM}.
+
+We believe that gerbes play a role in string theory which is yet to be
+fully understood. The aim of this note is to argue that the twisted
+\myHighlight{$K$}\coordHE{}-theory of a pair \myHighlight{$(M,[H])$}\coordHE{}, where \myHighlight{$M$}\coordHE{} is a manifold and \myHighlight{$[H]$}\coordHE{} is
+an integral \v Cech class, can be obtained from the
+\myHighlight{$K$}\coordHE{}-theory of a special kind of gerbe over \myHighlight{$M$}\coordHE{}, namely the bundle
+gerbes of \cite{Mur}.  In this paper, for the
+first time, we introduce the notion of a bundle gerbe
+module, which, in a sense, can also be thought of as a twisted
+vector bundle or non-abelian gerbe (see \cite{Kalk} for an
+earlier proposal), and define the \myHighlight{$K$}\coordHE{}-theory of bundle gerbes as
+the Grothendieck group of the semi-group of bundle gerbe modules.
+We show that bundle gerbe \myHighlight{$K$}\coordHE{}-theory is isomorphic
+to twisted \myHighlight{$K$}\coordHE{}-theory, whenever \myHighlight{$[H]$}\coordHE{} is a torsion class in \myHighlight{$H^3(M,
+\mathbb Z)$}\coordHE{}.
+When \myHighlight{$[H]$}\coordHE{} is not a torsion class in \myHighlight{$H^3(M, \mathbb Z)$}\coordHE{} we consider the
+lifting bundle gerbe associated to the \myHighlight{$PU(\cH)$}\coordHE{} bundle with Dixmier-Douady
+class \myHighlight{$[H]$}\coordHE{} and in this case we prove
+that twisted \myHighlight{$K$}\coordHE{}-theory
+is the Grothendieck group of the semi-group of  \myHighlight{$\UK$}\coordHE{}-bundle gerbe modules,
+which are the infinite dimensional cousins of bundle gerbe modules.
+   It remains to understand how it might be used in string theory for
+example whether the analysis of
+\cite{FW} applies in the case where the background \myHighlight{$B$}\coordHE{}-field does not
+define a torsion class in
+\myHighlight{$H^3(M,\ZZ)$}\coordHE{} (related issues have recently been discussed in 
+\cite{MalMooSei}).
+
+This note is organised as follows. Section 2 summarises the theory of
+bundle gerbes. These are geometric objects that are associated with
+degree 3 integral \v Cech cohomology classes on \myHighlight{$M$}\coordHE{}. The notion of stable
+equivalence of bundle gerbes, which is essential for the understanding
+of the sense in which the degree 3 class (known as the Dixmier-Douady
+class of the bundle gerbe) determines an associated bundle gerbe is
+the subject of Section 3.  The \myHighlight{$K$}\coordHE{}-theory of bundle gerbes is
+introduced in Sections 4 and 5 and in Section 6 we analyse
+characteristic classes of bundle gerbe modules.   
+Twisted \myHighlight{$K$}\coordHE{}-theory in its various
+manifestations is described in Section 6 where we prove that the
+bundle gerbe \myHighlight{$K$}\coordHE{}-theory is isomorphic to twisted \myHighlight{$K$}\coordHE{}-theory in the torsion
+case and analyse characteristic classes of bundle gerbe modules.
+In Section 7 we consider bundle gerbes with non-torsion
+Dixmier-Douady class  and show that twisted \myHighlight{$K$}\coordHE{}-theory  is isomorphic
+to the  \myHighlight{$\UK$}\coordHE{} bundle gerbe \myHighlight{$K$}\coordHE{}-theory
+of the lifting bundle gerbe.
+We extend our discussion of characteristic classes for bundle 
+gerbe modules to the non-torsion case in Section 9, where 
+we also discuss twisted cohomology.
+In Section 8 we calculate some examples of twisted \myHighlight{$K$}\coordHE{}-theory,
+and we conclude with some remarks in Section 10.
+
+While completing this note a preprint \cite{LupUri} appeared which
+uses similar ideas in the context of the \myHighlight{$K$}\coordHE{}-theory of orbifolds and
+another \cite{Mac} which introduces twisted vector and principal
+bundles which are the same as our bundle gerbe modules when the bundle
+gerbe arises from an open cover.
+
+
+\section{Bundle gerbes}
+\label{bundle_gerbes}
+
+\subsection{Bundle gerbes and Dixmier-Douady classes}
+
+Before recalling the definition of bundle gerbe from \cite{Mur} we
+need some notation for fibre products.  Mostly we will be working with
+smooth manifolds and smooth maps but often these will need to be
+infinite-dimensional. In the interest of brevity we will just say map.
+
+
+We will be interested in maps  \myHighlight{$\pi \colon Y \to M$}\coordHE{} which admit local
+sections.  That is, for every \myHighlight{$x \in M$}\coordHE{} there is an open set \myHighlight{$U  $}\coordHE{}
+containing \myHighlight{$x$}\coordHE{} and  a local section \myHighlight{$s \colon U \to Y$}\coordHE{}.
+          We call such maps locally split.   Note that a locally split map is
+necessarily
+surjective.  
+Locally trivial fibrations are, of course, locally split, but the
+converse is not true. Indeed one case of particular
+interest will be when \myHighlight{$M$}\coordHE{} has an open cover \myHighlight{$\{U_i \}_{i \in I}$}\coordHE{} and
+$$\coord{}\boxMath{
+Y = \{ (x, i) \mid x \in U_i \}
+}{dollar}{0pt}\coordE{}$$
+the
+disjoint union of all the open sets \myHighlight{$U_i$}\coordHE{} with \myHighlight{$\pi(x, i) =x$}\coordHE{}.
+          This example is locally split by \myHighlight{$s_i \colon U_i \to Y$}\coordHE{}, with
+\myHighlight{$s_i(x) = (x, i)$}\coordHE{} but it is rarely a fibration.
+
+
+Let \myHighlight{$\pi \colon Y \to M$}\coordHE{} be locally split. Then we denote by
+          \myHighlight{$Y^{[2]} = Y\times_\pi Y$}\coordHE{} the fibre product
+of \myHighlight{$Y$}\coordHE{} with itself over \myHighlight{$\pi$}\coordHE{},
+          that is the subset of pairs \myHighlight{$(y, y')$}\coordHE{} in
+\myHighlight{$Y \times Y$}\coordHE{} such that \myHighlight{$\pi(y) = \pi(y')$}\coordHE{}.  More generally we denote
+the \myHighlight{$p$}\coordHE{}th fold fibre product by \myHighlight{$Y^{[p]}$}\coordHE{}.
+
+Recall that a hermitian line bundle  \myHighlight{$L \to M$}\coordHE{} is a complex line
+bundle with a fibrewise
+hermitian inner product. For such a line bundle the set of all
+vectors of norm \myHighlight{$1$}\coordHE{} is
+a principal \myHighlight{$U(1)$}\coordHE{} bundle. Conversely if \myHighlight{$P \to M$}\coordHE{} is a principal
+\myHighlight{$U(1)$}\coordHE{} bundle then associated to it is a complex
+line bundle with fibrewise hermitian inner product.  This is
+formed in the standard way as the quotient of \myHighlight{$P \times \CC$}\coordHE{} by the
+action of \myHighlight{$U(1)$}\coordHE{} given by \myHighlight{$(p, z)w = (pw, w^{-1}z)$}\coordHE{} where \myHighlight{$w \in U(1)$}\coordHE{}.
+       The theory of
+bundle gerbes as developed in \cite{Mur} used principal bundles
+(actually \myHighlight{$\CC^\times$}\coordHE{} bundles) but it can be equivalently
+expressed in terms of hermitian line bundles. In the
+discussion below we will mostly adopt this perspective.
+All maps between hermitian line bundles will be assumed
+to preserve the inner product unless we explicitly comment otherwise.
+
+
+A bundle gerbe\footnote{Strictly speaking what we are about to define
+should be called a hermitian  bundle gerbe but the extra terminology is
+overly burdensome.} over \myHighlight{$M$}\coordHE{} is a pair \myHighlight{$(L, Y)$}\coordHE{} where
+\myHighlight{$\pi \colon Y \to M$}\coordHE{} is a locally split map and
+\myHighlight{$L$}\coordHE{} is a hermitian line bundle \myHighlight{$L \to Y^{[2]}$}\coordHE{} with a product, that is,
+a hermitian  isomorphism
+$$\coord{}\boxMath{
+L_{(y_1, y_2)} \otimes L_{(y_2, y_3)} \to L_{(y_1, y_3)}
+}{dollar}{0pt}\coordE{}$$
+for every \myHighlight{$(y_1, y_2)$}\coordHE{} and \myHighlight{$(y_2, y_3)$}\coordHE{} in \myHighlight{$Y^{[2]}$}\coordHE{}.
+We require the product to be smooth in \myHighlight{$y_1$}\coordHE{}, \myHighlight{$y_2$}\coordHE{} and
+\myHighlight{$y_3$}\coordHE{} but in the interests of brevity we will not state the various
+definitions needed to make this requirement precise, they  can be found in
+\cite{Mur}.
+The product is required to be
+associative whenever triple products are defined. Also in \cite{Mur}
+it is shown that the existence of the product and the associativity
+imply isomorphisms \myHighlight{$L_{(y, y)} \simeq \CC$}\coordHE{} and \myHighlight{$L_{(y_1, y_2)} \simeq
+L_{(y_2, y_1)}^*$}\coordHE{}. We shall
+often refer to a bundle gerbe \myHighlight{$(L, Y)$}\coordHE{} as just \myHighlight{$L$}\coordHE{}.
+
+Various operations are possible on bundle gerbes.  Let \myHighlight{$(L, Y)$}\coordHE{}
+be a bundle gerbe over \myHighlight{$M$}\coordHE{}.
+Let \myHighlight{$\pi \colon Z \to N$}\coordHE{} be another locally split map
+and let  \myHighlight{$\hat\phi \colon Z \to Y$}\coordHE{} be a fibre map covering
+a map \myHighlight{$\phi \colon N \to M$}\coordHE{}.  Then there is an induced map
+\myHighlight{${\hat \phi}^{[2]} \colon Z^{[2]} \to Y^{[2]}$}\coordHE{} which can
+          be used to pull-back the bundle \myHighlight{$L \to Y^{[2]}$}\coordHE{} to a bundle
+\myHighlight{$({\hat\phi}^{[2]})^{-1}(L) \to Z^{[2]}$}\coordHE{}.  This has an induced product on it
+and defines a bundle gerbe which we denote, for simplicity,
+by \myHighlight{$(\phi^{-1}(L), Z)$}\coordHE{} or \myHighlight{$\phi^{-1}(L)$}\coordHE{}.  Two special cases
+of this are important. The first is when we just have a map
+          \myHighlight{$f\colon N \to M$}\coordHE{} and use this to pull-back \myHighlight{$Y \to M$}\coordHE{} to
+\myHighlight{$f^{-1}(Y) \to N$}\coordHE{}. The second is when we have \myHighlight{$M = N$}\coordHE{} and
+\myHighlight{$\phi$}\coordHE{} the identity.
+
+If \myHighlight{$(L, Y)$}\coordHE{} is a bundle gerbe  we can define a
+new bundle gerbe, \myHighlight{$(L^*, Y)$}\coordHE{}, the dual of \myHighlight{$(L, Y)$}\coordHE{}, by taking
+the dual of \myHighlight{$L$}\coordHE{}.
+Also if  \myHighlight{$(L, Y)$}\coordHE{} and \myHighlight{$(J, Z)$}\coordHE{} are two bundle gerbes we can define their
+product \myHighlight{$(L\otimes J,  Y\times_\pi Z)$}\coordHE{} where \myHighlight{$Y\times_\pi Z
+=\{ (y, z) \colon \pi_Y(y) = \pi_Z(z) \} $}\coordHE{} is
+the fibre product of \myHighlight{$Y$}\coordHE{} and \myHighlight{$Z$}\coordHE{} over their projection maps.
+
+A morphism from a bundle gerbe  \myHighlight{$(L, Y)$}\coordHE{} to a bundle
+gerbe  \myHighlight{$(J, Z)$}\coordHE{} consists of a pair of maps \myHighlight{$(g, f)$}\coordHE{} where
+           \myHighlight{$f \colon Y \to Z$}\coordHE{} is a map commuting with the
+projection to \myHighlight{$M$}\coordHE{} and  \myHighlight{$g \colon L \to J$}\coordHE{} is a bundle map covering the
+induced map \myHighlight{$f^{[2]} \colon Y^{[2]} \to Z^{[2]}$}\coordHE{} and commuting with the
+bundle gerbe products on \myHighlight{$J$}\coordHE{} and \myHighlight{$L$}\coordHE{} respectively. If \myHighlight{$f$}\coordHE{} and \myHighlight{$g$}\coordHE{} are
+isomorphisms
+then we call \myHighlight{$(g, f)$}\coordHE{} a bundle gerbe isomorphism.
+
+If \myHighlight{$J$}\coordHE{} is a hermitian line bundle over \myHighlight{$Y$}\coordHE{} then we can define a
+bundle gerbe \myHighlight{$\delta(J)$}\coordHE{} by \myHighlight{$\delta(J) = {\pi_1^{-1}(J)}\otimes
+\pi_2^{-1}(J)^*$}\coordHE{}, that is \myHighlight{$\delta(J)_{(y_1, y_2)} = J_{y_2} \otimes J_{y_1}^*$}\coordHE{},
+where \myHighlight{$\pi_i\,:\,Y^{[2]} \to Y$}\coordHE{} is the map which omits the \myHighlight{$i$}\coordHE{}th element.
+The bundle gerbe product
+is induced by the natural pairing
+$$\coord{}\boxMath{
+J_{y_2}\otimes J_{y_1}^*\otimes J_{y_3}\otimes J_{y_2}^* \to
+J_{y_3}\otimes J_{y_1}^*.}{dollar}{0pt}\coordE{}$$
+
+A bundle gerbe which is isomorphic
+to a  bundle gerbe of the form \myHighlight{$\delta(J)$}\coordHE{} is  called {\em trivial}.
+A choice of \myHighlight{$J$}\coordHE{} and  a bundle gerbe  isomorphism \myHighlight{$\delta(J) \simeq L$}\coordHE{} is called
+a {\em trivialisation}.  If \myHighlight{$J$}\coordHE{} and \myHighlight{$K$}\coordHE{} are trivialisations
+of \myHighlight{$P$}\coordHE{} then we have natural isomorphisms
+$$\coord{}\boxMath{
+J_{y_1}\otimes J_{y_2}^* \simeq K_{y_1}\otimes K_{y_2}^*
+}{dollar}{0pt}\coordE{}$$
+and hence
+$$\coord{}\boxMath{
+J_{y_1}^*\otimes K_{y_1} \simeq J_{y_2}^*\otimes K_{y_2}
+}{dollar}{0pt}\coordE{}$$
+so that the bundle \myHighlight{$J\otimes K$}\coordHE{} is the pull-back of a hermitian line
+bundle on \myHighlight{$M$}\coordHE{}. Moreover if \myHighlight{$J$}\coordHE{} is a trivialisation and
+\myHighlight{$L$}\coordHE{} is a bundle on \myHighlight{$M$}\coordHE{} then \myHighlight{$J \otimes \pi^{-1}(L)$}\coordHE{} is
+also a trivialisation.  Hence the set of all trivialisations of
+a given bundle gerbe is naturally acted on by the set of all
+hermitian line bundles on \myHighlight{$M$}\coordHE{}.  This is analogous to the way in which the
+set of all trivialisations of a hermitian line bundle \myHighlight{$ L\to M$}\coordHE{} is acted
+on by the set of all maps \myHighlight{$M \to U(1)$}\coordHE{}.
+
+One can think of
+bundle gerbes as one stage in a hierarchy of objects with
+each type of object having a characteristic class in \myHighlight{$H^p(M, \ZZ)$}\coordHE{}.
+For example if \myHighlight{$p=1$}\coordHE{} we have maps from \myHighlight{$M$}\coordHE{} to \myHighlight{$U(1)$}\coordHE{}, the characteristic
+class is the pull-back of \myHighlight{$dz$}\coordHE{}.  When \myHighlight{$p=2$}\coordHE{}  we have hermitian line
+bundles on \myHighlight{$M$}\coordHE{} with
+characteristic class the Chern class. When \myHighlight{$p=3$}\coordHE{} we have bundle gerbes and
+they have a characteristic class \myHighlight{$d(L) = d(L, Y) \in H^3(M, \ZZ)$}\coordHE{},
+the Dixmier-Douady class of \myHighlight{$(L, Y)$}\coordHE{}.  The Dixmier-Douady class is the
+obstruction to the gerbe being trivial.
+It is shown in \cite{Mur} that
+\begin{theorem}[\cite{Mur}]
+\label{th:trivial}
+A bundle gerbe \myHighlight{$(L, Y)$}\coordHE{} has zero Dixmier-Douady class
+precisely when it is trivial.
+\end{theorem}
+
+Strictly speaking the theorem in \cite{Mur} dealt with bundle gerbes defined
+using line bundles or \myHighlight{$\CC^\times$}\coordHE{} principal bundles not hermitian
+line bundles.  To see
+that it generalises we need to know that if \myHighlight{$L = \delta(J)$}\coordHE{} for \myHighlight{$J
+\to Y$}\coordHE{} a line
+bundle then we can choose an inner product on \myHighlight{$J$}\coordHE{} so that \myHighlight{$\delta(J)$}\coordHE{} has an
+isomorphic inner product to that on \myHighlight{$L$}\coordHE{}.  Notice that if \myHighlight{$V$}\coordHE{} is a
+one dimensional hermitian inner product then the set of vectors of
+unit length is an orbit under \myHighlight{$U(1)$}\coordHE{}. It follows that any two hermitian
+inner products differ by multiplication by \myHighlight{$e^\lambda$}\coordHE{} for some
+real number \myHighlight{$\lambda$}\coordHE{}.  So if we choose any
+hermitian inner product on the fibres of \myHighlight{$J$}\coordHE{} the induced inner product
+on \myHighlight{$\delta(J)$}\coordHE{} differs from that on \myHighlight{$L$}\coordHE{} by a function \myHighlight{$e^g$}\coordHE{}
+where \myHighlight{$g  \colon Y^{[2]} \to (0, \infty)$}\coordHE{}.
+Because these inner products are compatible with the bundle gerbe
+product we will
+have that \myHighlight{$\delta(g)(y_1, y_2, y_3) = g(y_2, y_3) - g(y_1, y_3) +
+g(y_1, y_2) = 0$}\coordHE{}.
+If we change the inner product on \myHighlight{$J$}\coordHE{} then \myHighlight{$g$}\coordHE{} is altered by addition
+of \myHighlight{$\delta(h)(y_1, y_2) = h(y_2) - h(y_1)$}\coordHE{} where \myHighlight{$h \colon Y \to
+\RR$}\coordHE{}.  So we need to solve
+\myHighlight{$\delta(g) = h$}\coordHE{} and this can be done using the exact sequence  in
+Section 8 of \cite{Mur}.
+
+Notice that the same is true of the other objects in our hierarchy,
+line bundles
+are trivial if and only if their chern class vanishes and maps into
+\myHighlight{$U(1)$}\coordHE{} are
+trivial (i.e. homotopic to the constant map \myHighlight{$1$}\coordHE{}) if and only if the pull-back
+of \myHighlight{$dz$}\coordHE{} vanishes in cohomology.
+
+The construction
+of the Dixmier-Douady class is natural in the sense that
+if \myHighlight{$Z \to N$}\coordHE{} is another locally split map
+and \myHighlight{$\hat\phi \colon Z \to Y$}\coordHE{} is a  fibre map covering
+\myHighlight{$\phi \colon N \to M$}\coordHE{} then it is straightforward to
+check from the definition that
+\begin{equation}\coord{}\boxEquation{
+\label{eq:natural0}
+d(\phi^{-1}(L), Z) = \phi^*(d(L, Y)).
+}{
+d(\phi^{-1}(L), Z) = \phi^*(d(L, Y)).
+}{ecuacion}\coordE{}\end{equation}
+In particular if \myHighlight{$M = N$}\coordHE{} and \myHighlight{$\phi $}\coordHE{} is the identity
+then
+\begin{equation}\coord{}\boxEquation{
+\label{eq:natural1}
+d(\phi^{-1}(L)) = d(L).
+}{
+d(\phi^{-1}(L)) = d(L).
+}{ecuacion}\coordE{}\end{equation}
+
+          From \cite{Mur} we also have
+\begin{theorem}[\cite{Mur}]
+\label{th:dd}
+If \myHighlight{$L$}\coordHE{} and \myHighlight{$J$}\coordHE{} are bundle gerbes over \myHighlight{$M$}\coordHE{} then
+\begin{enumerate}
+\item \myHighlight{$d(L^*) = -d(L)$}\coordHE{} and
+\item\myHighlight{$d(L\otimes J) = d(L)
++ d(J)$}\coordHE{}.
+\end{enumerate}
+\end{theorem}
+
+\subsection{Lifting bundle gerbes}
+\label{sec:lbg}
+We will need one example of a bundle gerbe in a number of places.
+Consider a central
+extension of groups
+$$\coord{}\boxMath{
+U(1) \to \hat G \to G.
+}{dollar}{0pt}\coordE{}$$
+If \myHighlight{$Y \to M$}\coordHE{} is a principal \myHighlight{$G$}\coordHE{} bundle then it is well known that the
+obstruction to lifting \myHighlight{$Y$}\coordHE{} to a \myHighlight{$\hat G$}\coordHE{} bundle is a class in \myHighlight{$H^3(M, \ZZ)$}\coordHE{}.
+It was shown in \cite{Mur} that a bundle gerbe can be constructed
+from \myHighlight{$Y$}\coordHE{}, the so-called lifting bundle gerbe, whose Dixmier-Douady
+class is the obstruction to lifting \myHighlight{$Y$}\coordHE{} to a \myHighlight{$\hat G$}\coordHE{} bundle. The construction
+of the lifting bundle gerbe is quite simple. As \myHighlight{$Y$}\coordHE{} is a principal bundle
+there is a map \myHighlight{$g \colon Y^{[2]}\to G$}\coordHE{} defined by \myHighlight{$y_1 g(y_1, y_2) = y_2$}\coordHE{}.
+We use this
+to pull back the \myHighlight{$U(1)$}\coordHE{} bundle \myHighlight{$\hat G \to G$}\coordHE{} and form the associated hermitian
+line bundle \myHighlight{$L \to Y^{[2]}$}\coordHE{}. The bundle gerbe product is induced by the group
+structure of \myHighlight{$\hat G$}\coordHE{}.
+
+We will be interested in the lifting bundle gerbes for
+$$\coord{}\boxMath{
+U(1) \to U(n) \to PU(n)
+}{dollar}{0pt}\coordE{}$$
+and
+$$\coord{}\boxMath{
+U(1) \to U(\cH)\to PU(\cH)
+}{dollar}{0pt}\coordE{}$$
+for \myHighlight{$\cH$}\coordHE{} an infinite dimensional, separable, Hilbert space.
+
+\section{Stable isomorphism of bundle gerbes}
+Equation \eqref{eq:natural1} shows that there are many
+bundle gerbes which have the same Dixmier-Douady class but
+which  are not isomorphic.
+For bundle gerbes there is a  notion called {\em stable isomorphism}
+which corresponds exactly to two bundle gerbes having the
+same Dixmier-Douady class.  To motivate this consider the case
+of two hermitian line bundles \myHighlight{$L \to M$}\coordHE{} and \myHighlight{$J \to M$}\coordHE{} they are isomorphic
+if there is a bijective map \myHighlight{$L \to J$}\coordHE{} preserving all structure, i.e. the
+projections to \myHighlight{$M$}\coordHE{} and the \myHighlight{$U(1)$}\coordHE{} action on the fibres.  Such isomorphisms
+are exactly the same thing as trivialisations of \myHighlight{$L^*\otimes J$}\coordHE{}.  For the
+case of bundle gerbes the latter is the correct notion and we have
+\begin{definition}
+\label{def:stableiso}
+A stable isomorphism between bundle gerbes  \myHighlight{$(L, Y)$}\coordHE{} and \myHighlight{$(J, Z)$}\coordHE{}
+is a trivialisation of \myHighlight{$L^*\otimes J$}\coordHE{}.
+\end{definition}
+
+
+We  have \cite{MurSte}
+
+\begin{proposition}
+\label{prop:stable}
+A stable isomorphism exists from  \myHighlight{$(L, Y)$}\coordHE{} to \myHighlight{$(J, Z)$}\coordHE{}
+if and only if \myHighlight{$d(L) = d(J)$}\coordHE{}.
+\end{proposition}
+
+If a stable isomorphism exists from \myHighlight{$(L, Y)$}\coordHE{} to \myHighlight{$(J, Z)$}\coordHE{}
+we say that \myHighlight{$(L, Y)$}\coordHE{} and \myHighlight{$(J, Z)$}\coordHE{} are stably isomorphic.
+
+It follows easily that  stable
+isomorphism is an equivalence relation.
+It was shown in \cite{Mur} that every class in \myHighlight{$H^3(M, \ZZ)$}\coordHE{} is
+the Dixmier-Douady class of some bundle gerbe. Hence we can deduce
+from Proposition \ref{prop:stable} that
+\begin{theorem}
+\label{th:stableiso}
+The Dixmier-Douady class defines a bijection between
+stable isomorphism classes of  bundle gerbes and \myHighlight{$H^3(M, \ZZ)$}\coordHE{}.
+\end{theorem}
+
+It is shown in \cite{MurSte} that a morphism from  \myHighlight{$(L, Y)$}\coordHE{} to \myHighlight{$(J, Z)$}\coordHE{}
+induces a stable isomorphism but the converse is not true.
+
+Assume that we have a stable isomorphism \myHighlight{$\alpha$}\coordHE{} from  \myHighlight{$(L, Y)$}\coordHE{}
+to \myHighlight{$(J, Z)$}\coordHE{}
+and another stable isomorphism \myHighlight{$\beta$}\coordHE{} from \myHighlight{$(J, Z)$}\coordHE{} to \myHighlight{$(K, X)$}\coordHE{} then
+it is shown
+in \cite{Ste} that there is a stable isomorphism \myHighlight{$\beta\circ \alpha$}\coordHE{}
+from \myHighlight{$(L, Y)$}\coordHE{} to \myHighlight{$(K, X)$}\coordHE{} called the composition of \myHighlight{$\alpha$}\coordHE{} and \myHighlight{$\beta$}\coordHE{}.
+To define this we note that \myHighlight{$d(L, Y) = d(J, Z) = d(K, X)$}\coordHE{} so that
+there exists a stable isomorphism \myHighlight{$\gamma $}\coordHE{} from \myHighlight{$(L, Y)$}\coordHE{} to \myHighlight{$(K,
+X)$}\coordHE{}. By definition
+\myHighlight{$\alpha$}\coordHE{} is trivialisation of \myHighlight{$L^*\otimes J$}\coordHE{} and \myHighlight{$\beta$}\coordHE{} is a trivialisation
+of \myHighlight{$J^* \otimes K$}\coordHE{}. It is straightforward to show \cite{MurSte} that
+\myHighlight{$J^* \otimes J$}\coordHE{}  has
+a canonical trivialisation say \myHighlight{$\epsilon$}\coordHE{}.  Trivialisations can be
+multiplied so we have
+two trivialisations \myHighlight{$\alpha\otimes \beta $}\coordHE{} and \myHighlight{$\gamma \otimes
+\epsilon$}\coordHE{} of \myHighlight{$L^* \otimes J
+\otimes J^* \otimes K$}\coordHE{}. It follows that there is a hermitian line bundle
+\myHighlight{$S$}\coordHE{} over \myHighlight{$M$}\coordHE{} such that
+\myHighlight{$\alpha\otimes \beta = \gamma \otimes \epsilon \otimes \pi^{-1}(S)$}\coordHE{}.  We define
+\myHighlight{$\beta \circ \alpha = \gamma \otimes \pi^{-1}(S)$}\coordHE{} or equivalently we define
+\myHighlight{$\beta \circ \alpha$}\coordHE{} so that \myHighlight{$\alpha\otimes \beta = (\beta \circ \alpha)
+\otimes \epsilon$}\coordHE{}.  The composition of stable isomorphisms is not quite
+associative, see  \cite{Ste} for details.
+
+Notice that this construction also applies to line bundles. If \myHighlight{$L$}\coordHE{},
+\myHighlight{$J$}\coordHE{} and \myHighlight{$K$}\coordHE{} are
+line bundles over \myHighlight{$M$}\coordHE{} and  \myHighlight{$\alpha $}\coordHE{} is a section
+of \myHighlight{$L^* \otimes J$}\coordHE{} and \myHighlight{$\beta$}\coordHE{} is a section of \myHighlight{$J^* \otimes K$}\coordHE{} then
+\myHighlight{$\beta \circ \alpha
+\colon L \to K$}\coordHE{} is a section of \myHighlight{$L^* \otimes K$}\coordHE{} satisfying \myHighlight{$\alpha
+\otimes \beta =
+(\beta\circ \alpha) \otimes \epsilon$}\coordHE{} where \myHighlight{$\epsilon$}\coordHE{} is the
+canonical section of
+\myHighlight{$J^* \otimes J$}\coordHE{}.
+
+\section{Bundle gerbe modules}
+
+Let \myHighlight{$(L, Y)$}\coordHE{} be a bundle gerbe over a manifold \myHighlight{$M$}\coordHE{} and let \myHighlight{$E \to Y$}\coordHE{}
+be a finite rank, hermitian vector bundle. Assume that there is a
+hermitian bundle
+isomorphism
+\begin{equation}\coord{}\boxEquation{
+\label{eq:bgmod}
+\phi \colon L\otimes \pi_1^{-1}E \stackrel{\sim}{\to}
+\pi_2^{-1}E
+}{
+\phi \colon L\otimes \pi_1^{-1}E \stackrel{\sim}{\to}
+\pi_2^{-1}E
+}{ecuacion}\coordE{}\end{equation}
+which is compatible with the bundle gerbe multiplication in the sense
+that the two maps
+$$\coord{}\boxMath{
+L_{(y_1, y_2)} \otimes (L_{(y_2, y_3)} \otimes E_{y_3} ) \to
+L_{(y_1, y_2)} \otimes E_{y_2} \to E_{y_1}
+}{dollar}{0pt}\coordE{}$$
+and
+$$\coord{}\boxMath{
+(L_{(y_1, y_2)} \otimes L_{(y_2, y_3)} )\otimes E_{y_3} \to
+L_{(y_1, y_3)} \otimes E_{y_3} \to E_{y_1}
+}{dollar}{0pt}\coordE{}$$
+are the same.  In such a case we call \myHighlight{$E$}\coordHE{} a  bundle gerbe module and say
+that the bundle gerbe acts on \myHighlight{$E$}\coordHE{}.  Bundle gerbe modules have also
+been considered for the case that \myHighlight{$Y$}\coordHE{} is a disjoint
+union of open sets in \cite{LupUri} and in \cite{Mac} where they are called
+twisted bundles.
+
+We define two bundle gerbe modules to be isomorphic if they are
+isomorphic as vector bundles and the isomorphism
+preserves the action of the bundle gerbe.
+Denote by \myHighlight{$\Mod(L)$}\coordHE{} the set of all isomorphism classes of
+bundle gerbe modules for \myHighlight{$L$}\coordHE{}.
+If \myHighlight{$(L, Y)$}\coordHE{} acts on \myHighlight{$E$}\coordHE{} and also on \myHighlight{$F$}\coordHE{} then it acts on \myHighlight{$E\oplus F$}\coordHE{}
+in the obvious diagonal manner.  The set  \myHighlight{$\Mod(L)$}\coordHE{} is therefore
+a semi-group.
+
+Notice that if \myHighlight{$E$}\coordHE{} has rank one then it is a trivialisation
+of \myHighlight{$L$}\coordHE{}. Moreover if \myHighlight{$E$}\coordHE{}  has  rank \myHighlight{$r$}\coordHE{} then \myHighlight{$L^r$}\coordHE{}
+acts on \myHighlight{$\wedge^r(E)$}\coordHE{} and we deduce
+\begin{proposition}
+\label{prop:torsion}
+If \myHighlight{$(L, Y)$}\coordHE{} has a bundle gerbe module \myHighlight{$Y \to E$}\coordHE{} of rank \myHighlight{$r$}\coordHE{} then its
+Dixmier-Douady class \myHighlight{$d(L)$}\coordHE{} satisfies \myHighlight{$r d(L) = 0$}\coordHE{}.
+\end{proposition}
+
+
+Recall that if \myHighlight{$E \to Y$}\coordHE{} is a bundle then {\em descent data} \cite{Bry}
+for \myHighlight{$E$}\coordHE{} is a collection of   hermitian isomorphisms
+\myHighlight{$\chi(y_1, y_2) \colon E_{y_2} \to E_{y_1}$}\coordHE{} such that \myHighlight{$\chi(y_1, y_2) \circ
+\chi(y_2, y_3) = \chi(y_1, y_3)$}\coordHE{}.  The existence of descent data
+is equivalent to the existence of a bundle \myHighlight{$F \to M$}\coordHE{} and an
+isomorphism \myHighlight{$E \to \pi^{-1}(F)$}\coordHE{}.
+
+If \myHighlight{$L$}\coordHE{} is a trivial bundle gerbe then \myHighlight{$L_{(y_1, y_2)} = K_{y_2} \otimes
+K_{y_1}^*$}\coordHE{}
+so if \myHighlight{$E$}\coordHE{} is an \myHighlight{$(L, Y)$}\coordHE{} module we have isomorphisms \myHighlight{$K_{y_2} \otimes
+E_{y_2} \simeq
+K_{y_1} \otimes E_{y_1} $}\coordHE{} which are descent data and hence \myHighlight{$K \otimes E$}\coordHE{} is the
+pull back of a bundle on \myHighlight{$M$}\coordHE{}.
+     Conversely
+if \myHighlight{$F$}\coordHE{} is a bundle on \myHighlight{$M$}\coordHE{} then \myHighlight{$L$}\coordHE{} acts on \myHighlight{$K\otimes \pi^{-1}(F)$}\coordHE{}. Denote
+by \myHighlight{$\Bun(M)$}\coordHE{} the semi-group of all isomorphism classes of vector
+bundles on \myHighlight{$M$}\coordHE{}. Then we have
+we have
+\begin{proposition}
+\label{prop:trivialcase}
+A trivialisation of  \myHighlight{$(L, Y)$}\coordHE{} defines  a semi-group
+isomorphism from \myHighlight{$\Mod(L)$}\coordHE{} to \myHighlight{$\Bun(M)$}\coordHE{}.
+\end{proposition}
+
+
+Notice that this isomorphism is not canonical but depends on the choice
+of the trivialisation. If we change the trivialisation by tensoring
+with the pull-back of a line bundle \myHighlight{$J$}\coordHE{} on \myHighlight{$M$}\coordHE{} then the isomorphism changes
+by composition with the endomorphism of \myHighlight{$\Bun(M)$}\coordHE{} defined by tensoring
+with the \myHighlight{$J$}\coordHE{}.
+
+Recall that a stable isomorphism from a bundle gerbe \myHighlight{$(L, Y)$}\coordHE{}
+to a bundle gerbe \myHighlight{$(J, X)$}\coordHE{} is a trivialisation of \myHighlight{$L^*\otimes J$}\coordHE{}. This
+means there is a bundle \myHighlight{$K \to Y \times_f X$}\coordHE{} and an isomorphism
+\myHighlight{$ L^*\otimes J \to \delta(K)$}\coordHE{} or, in other words for
+every \myHighlight{$(y_1, y_2)$}\coordHE{} and \myHighlight{$(x_1, x_2)$}\coordHE{} we have an isomorphism
+$$\coord{}\boxMath{
+     L_{(y_1, y_2)}^*\otimes J_{(x_1, x_2)}
+\to K_{(y_2, x_2)} \otimes K_{(y_1, x_1)}^*.
+}{dollar}{0pt}\coordE{}$$
+
+Let \myHighlight{$E \to Y$}\coordHE{} be an \myHighlight{$L$}\coordHE{} module and define \myHighlight{$\hat F_{(y, x)} = K_{(y,x)}^* \otimes
+E_y$}\coordHE{} a bundle on \myHighlight{$Y \times_f X$}\coordHE{}.   We have isomorphisms
+\begin{align*}\coord{}\boxAlignEqnarray{
+\leftCoord{}\hat F_{\rightCoord{}(y_2, x)} &= K_{\rightCoord{}(y_2,x)}^* \otimes E_{\rightCoord{}y_2}\rightCoord{}\\
+&\leftCoord{}= K_{\rightCoord{}(y_1, x)}^* \otimes L_{\rightCoord{}(y_1, y_2)} \otimes 
+\leftCoord{}E_{\rightCoord{}y_2} \rightCoord{}\\
+&\leftCoord{}= K_{\rightCoord{}(y_1, x)}^* \otimes E_{\rightCoord{}y_1} \rightCoord{}\\
+&\leftCoord{}= \hat F_{\rightCoord{}(y_1, x)}.
+}{0mm}{5}{13}{
+\hat F_{(y_2, x)} &= K_{(y_2,x)}^* \otimes E_{y_2}\\
+&= K_{(y_1, x)}^* \otimes L_{(y_1, y_2)} \otimes 
+E_{y_2} \\
+&= K_{(y_1, x)}^* \otimes E_{y_1} \\
+&= \hat F_{(y_1, x)}.
+}{0}\coordE{}\end{align*}
+These define   a descent map
+for \myHighlight{$\hat F$}\coordHE{} for the map \myHighlight{$Y \times_\pi X \to X$}\coordHE{}
+and hence define a bundle \myHighlight{$F$}\coordHE{} on \myHighlight{$X$}\coordHE{}.  Note that
+as the inner products are everywhere preserved \myHighlight{$F$}\coordHE{} is also
+a hermitian bundle.
+
+We also have
+\begin{align*}\coord{}\boxAlignEqnarray{
+\leftCoord{}J_{\rightCoord{}(x_1, x_2)} \otimes F_{\rightCoord{}x_2} &=J_{\rightCoord{}(x_1, x_2)} \otimes K_{\rightCoord{}(y,
+\leftCoord{}x_2)}^*\otimes E_y \rightCoord{}\\
+&\leftCoord{}= K_{\rightCoord{}(y, x_1)}^* \otimes E_y \rightCoord{}\\
+&\leftCoord{}= F_{\rightCoord{}x_1}
+}{0mm}{4}{9}{
+J_{(x_1, x_2)} \otimes F_{x_2} &=J_{(x_1, x_2)} \otimes K_{(y,
+x_2)}^*\otimes E_y \\
+&= K_{(y, x_1)}^* \otimes E_y \\
+&= F_{x_1}
+}{0}\coordE{}\end{align*}
+and this makes \myHighlight{$F$}\coordHE{} a \myHighlight{$(J, X)$}\coordHE{} module.
+
+So the choice of stable isomorphism has defined a map
+$$\coord{}\boxMath{
+\Mod(L) \to \Mod(J).
+}{dollar}{0pt}\coordE{}$$
+In a similar fashion we can define a map
+$$\coord{}\boxMath{
+\Mod(J) \to \Mod(L)
+}{dollar}{0pt}\coordE{}$$
+which is an inverse.  Hence we have
+
+
+\begin{proposition}
+\label{prop:module}
+A stable isomorphism from \myHighlight{$(L, Y)$}\coordHE{} to
+\myHighlight{$(J, Y)$}\coordHE{} induces an isomorphism of semi-groups
+between \myHighlight{$\Mod(L)$}\coordHE{} and \myHighlight{$\Mod(J)$}\coordHE{}.
+\end{proposition}
+
+Note that, as in the trivial case, this isomorphism is not
+canonical but depends on the choice of stable isomorphism. Changing the
+stable isomorphism by tensoring with the pull-back of a line bundle
+\myHighlight{$J$}\coordHE{} over \myHighlight{$M$}\coordHE{}
+changes the isomorphism in Prop.  \ref{prop:module}
+by composition with the endomorphism
+of \myHighlight{$\Mod(J)$}\coordHE{} induced by tensoring with the pull-back of \myHighlight{$J$}\coordHE{}.
+
+There is a close relationship between bundle
+gerbe modules and bundles of projectives spaces. Recall that a
+bundle of projective spaces \myHighlight{$\cP \to M$}\coordHE{} is a fibration whose fibres
+are isomorphic
+to \myHighlight{$P(V)$}\coordHE{} for \myHighlight{$V$}\coordHE{} a Hilbert space, either finite or infinite dimensional,
+and whose structure group is \myHighlight{$PU(V)$}\coordHE{}. This  means that there is a
+\myHighlight{$PU(V)$}\coordHE{} bundle \myHighlight{$X \to M$}\coordHE{} and \myHighlight{$\cP = X \times_{PU(V)} P(V)$}\coordHE{}.
+Associated to \myHighlight{$X$}\coordHE{} is a
+lifting bundle gerbe \myHighlight{$J \to X^{[2]}$}\coordHE{} and a Dixmier-Douady class.
+This Dixmier-Douady class is the obstruction to \myHighlight{$\cP$}\coordHE{} being the
+projectivisation of a vector bundle.  The lifting bundle gerbe acts naturally
+on the bundle gerbe module \myHighlight{$E = X \times H$}\coordHE{} because each \myHighlight{$J_{(x_1,
+x_2)} \subset U(V)$}\coordHE{} by
+construction \ref{sec:lbg}.
+
+Let \myHighlight{$(L, Y)$}\coordHE{} be a
+bundle gerbe and \myHighlight{$E \to Y$}\coordHE{} a bundle gerbe module. Then the projectivisation
+of \myHighlight{$E$}\coordHE{} descends to a projective bundle \myHighlight{$\cP_E \to M$}\coordHE{} because of the
+bundle gerbe action. It is straightforward to check that the class of this
+projective bundle is \myHighlight{$d(L)$}\coordHE{}.  Conversely if \myHighlight{$\cP \to M$}\coordHE{} is a projective
+bundle with class \myHighlight{$d(L)$}\coordHE{} the associated lifting bundle gerbe has class
+\myHighlight{$d(L)$}\coordHE{} and hence is stably isomorphic to \myHighlight{$(L, Y)$}\coordHE{}. So the module on which the
+lifting bundle gerbe acts defines a module on which \myHighlight{$(L, Y)$}\coordHE{} acts.  From the
+discussion before \ref{prop:module} one can see that if  two modules
+are related
+by a stable isomorphism they give rise to the same projective bundle
+on \myHighlight{$M$}\coordHE{}.   We also  have that \myHighlight{$E \to Y$}\coordHE{} and \myHighlight{$F \to Y$}\coordHE{} give rise to
+   isomorphic projective bundles on \myHighlight{$M$}\coordHE{} if and only if there is a line
+bundle \myHighlight{$K \to M$}\coordHE{} with \myHighlight{$E = \pi^{-1}(K)\otimes F$}\coordHE{}.
+Denote by \myHighlight{$\Lin(M)$}\coordHE{} the group
+of all isomorphism classes of line bundles on \myHighlight{$M$}\coordHE{}. Then this acts on
+\myHighlight{$\Mod(L)$}\coordHE{} by \myHighlight{$E \mapsto \pi^{-1}(K) \otimes E$}\coordHE{} for any line
+bundle \myHighlight{$K \in \Lin(M)$}\coordHE{}.  If \myHighlight{$[H] \in H^3(M, \ZZ)$}\coordHE{} denote
+by \myHighlight{$\Pro(M, [H])$}\coordHE{} the set of all isomorphism classes of
+projective bundles with class \myHighlight{$[H]$}\coordHE{}.
+Then we have
+
+\begin{proposition}
+\label{prop:proj}
+If \myHighlight{$(L, Y)$}\coordHE{} is a bundle gerbe then the  map
+which associates to any element of \myHighlight{$\Mod(L)$}\coordHE{} a projective
+bundle on \myHighlight{$M$}\coordHE{} whose Dixmier-Douady class is equal to \myHighlight{$d(L)$}\coordHE{} induces
+a bijection
+$$\coord{}\boxMath{
+\frac{\Mod(L)}{\Lin(M)} \to \Pro(M, d(L)).
+}{dollar}{0pt}\coordE{}$$
+\end{proposition}
+
+
+\section{\myHighlight{$K$}\coordHE{}-theory for torsion bundle gerbes}
+
+Given a bundle gerbe \myHighlight{$(L, Y)$}\coordHE{} with torsion Dixmier-Douady class
+we denote by
+\myHighlight{$K(L)$}\coordHE{} the Grothendieck group of the
+semi-group \myHighlight{$\Mod(L)$}\coordHE{} and call this the
+\myHighlight{$K$}\coordHE{} group of the bundle gerbe. We  immediately have
+from Prop. \ref{prop:module}:
+
+\begin{proposition}
+             A choice of stable isomorphism from \myHighlight{$L$}\coordHE{} to \myHighlight{$J$}\coordHE{} defines a
+             canonical isomorphism \myHighlight{$K(L) \simeq K(J)$}\coordHE{}.
+             \end{proposition}
+
+
+Notice that the group \myHighlight{$K(L)$}\coordHE{} depends only on the class \myHighlight{$d(L) \in H^3(M, \ZZ)$}\coordHE{}
+and for any class \myHighlight{$[H]$}\coordHE{} in \myHighlight{$H^3(M, \ZZ)$}\coordHE{} we can define a bundle gerbe \myHighlight{$L$}\coordHE{} with
+\myHighlight{$d(L)= [H] $}\coordHE{} and hence a group \myHighlight{$K(L)$}\coordHE{}. When we want to emphasise the
+dependence on \myHighlight{$[H]$}\coordHE{} we denote
+this by \myHighlight{$K_{bg}(M, [H])$}\coordHE{}.
+
+
+It is easy to deduce from the theory of bundle gerbes various
+      properties of this \myHighlight{$K$}\coordHE{}-theory:
+
+\begin{proposition}
+\label{prop:bgkprops}
+Bundle gerbe \myHighlight{$K$}\coordHE{} theory satisfies the following properties:\\
+
+(1) If \myHighlight{$(L, Y)$}\coordHE{} is a trivial bundle gerbe then \myHighlight{$K_{bg}(L) = K(M)$}\coordHE{}.
+
+(2) \myHighlight{$K_{bg}(L)$}\coordHE{} is a module over \myHighlight{$K(M)$}\coordHE{}.
+
+(3)  If \myHighlight{$[H]$}\coordHE{} and \myHighlight{$[H']$}\coordHE{} are classes in \myHighlight{$H^3(M, \ZZ)$}\coordHE{} there is a homomorphism
+$$\coord{}\boxMath{
+K_{bg}(M, [H]) \otimes K_{bg}(M, [H']) \to K_{bg}(M, [H] + [H']).
+}{dollar}{0pt}\coordE{}$$
+
+(4) If \myHighlight{$[H]$}\coordHE{} is a class in \myHighlight{$H^3(M, \ZZ)$}\coordHE{} and \myHighlight{$f \colon N \to M$}\coordHE{} is a
+map  there is a homomorphism
+$$\coord{}\boxMath{
+K_{bg}(M, [H]) \to K_{bg}(N, f^*([H])).
+}{dollar}{0pt}\coordE{}$$
+
+\end{proposition}
+\begin{proof}
+(1)   This follows from applying
+Prop.~\ref{prop:trivialcase} which shows that
+\myHighlight{$\Mod(L)$}\coordHE{} is isomorphic to the
+semi-group of all vector bundles on \myHighlight{$M$}\coordHE{}
+
+(2) If we pull a bundle back from \myHighlight{$M$}\coordHE{} to \myHighlight{$Y$}\coordHE{} and tensor it with a bundle
+gerbe module the result is still a bundle gerbe module.
+
+(3) If \myHighlight{$E \to Y$}\coordHE{} is a bundle gerbe module for \myHighlight{$(L, Y)$}\coordHE{} and \myHighlight{$F \to X$}\coordHE{}
+is a bundle gerbe module for \myHighlight{$(J, X)$}\coordHE{} it is straightforward to see that
+\myHighlight{$E \otimes F$}\coordHE{} defines a bundle over the fibre product of \myHighlight{$Y$}\coordHE{} and \myHighlight{$X$}\coordHE{}
+which is a bundle gerbe module for \myHighlight{$L \otimes J$}\coordHE{}.
+
+(4) This follows easily by pull-back.
+
+\end{proof}
+
+
+
+
+There is another  construction that associates to any class
+\myHighlight{$[H]$}\coordHE{} in  \myHighlight{$H^3(M, \ZZ)$}\coordHE{} a group \myHighlight{$K(M, [H])$}\coordHE{} or the  {\em twisted}
+\myHighlight{$K$}\coordHE{} group. Twisted
+\myHighlight{$K$}\coordHE{}-theory shares the same properties as those in Prop. \ref{prop:bgkprops}.
+In the next section  we discuss twisted cohomology and show that,
+in the torsion case, bundle gerbe cohomology and twisted cohomology
+coincide.
+
+\section{Twisted \myHighlight{$K$}\coordHE{}-theory and bundle gerbe modules}
+
+\subsection{Twisted \myHighlight{$K$}\coordHE{}-theory}
+
+We recall the definition  of twisted cohomology  \cite{Ros}.
+In this discussion the class \myHighlight{$[H] \in H^3(M, \ZZ)$}\coordHE{} is
+not restricted to be torsion.
+
+Given a class \myHighlight{$[H] \in H^3(M, \ZZ)$}\coordHE{} choose a \myHighlight{$PU(\cH)$}\coordHE{} bundle \myHighlight{$Y$}\coordHE{} whose
+class is \myHighlight{$[H]$}\coordHE{}. We can form an associated bundle
+$$\coord{}\boxMath{
+Y(\Fred) = Y \times_{PU(\cH)} \Fred
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$\Fred$}\coordHE{} is the space of Fredholm operators on \myHighlight{$\cH$}\coordHE{} acted
+on by conjugation.  Let \myHighlight{$[M, Y(\Fred)]$}\coordHE{} denote the
+space of all homotopy classes of sections of \myHighlight{$Y(\Fred)$}\coordHE{} then we have
+\cite{Ros}
+\begin{definition}[\cite{Ros}]
+\label{def:twisted}
+If \myHighlight{$[H] \in H^3(M, \ZZ)$}\coordHE{} the twisted \myHighlight{$K$}\coordHE{} theory
+of \myHighlight{$M$}\coordHE{} is defined by
+$$\coord{}\boxMath{
+K(M, [H]) = [M, Y(\Fred)].
+}{dollar}{0pt}\coordE{}$$
+\end{definition}
+
+It is a standard result that sections of \myHighlight{$Y(\Fred)$}\coordHE{} are equivalent
+to \myHighlight{$PU(\cH)$}\coordHE{} equivariant maps from \myHighlight{$Y \to \Fred$}\coordHE{} so we have
+\begin{equation*}\coord{}\boxEquation{
+K(M, [H]) =[M, Y(\Fred)]_{PU(\cH)}
+}{
+K(M, [H]) =[M, Y(\Fred)]_{PU(\cH)}
+}{ecuacion}\coordE{}\end{equation*}
+where \myHighlight{$[M, Y(\Fred)]_{PU(\cH)}$}\coordHE{} is the space
+of all homotopy classes of equivariant maps with the homotopies
+being by equivariant maps.
+
+
+\subsection{Bundle gerbe  \myHighlight{$K$}\coordHE{}-theory and twisted \myHighlight{$K$}\coordHE{}-theory in the
+torsion case}
+
+In the case when the Dixmier-Douady class \myHighlight{$[H]$}\coordHE{} is torsion, we will
+prove that bundle gerbe \myHighlight{$K$}\coordHE{} theory and twisted \myHighlight{$K$}\coordHE{}-theory
+are the same and indicate their relationship with equivariant
+\myHighlight{$K$}\coordHE{}-theory.
+
+The Serre-Grothendieck theorem cf. \cite{DK} says that, given a
+torsion class, there is a \myHighlight{$PU(n)$}\coordHE{} bundle \myHighlight{$X\to M$}\coordHE{}, with Dixmier-Douady
+invariant equal to \myHighlight{$[H]$}\coordHE{}. We can define an action  \myHighlight{$U(n)$}\coordHE{} on \myHighlight{$\CC^n
+\otimes \cH = \cH^n$}\coordHE{}
+letting \myHighlight{$g$}\coordHE{} act as \myHighlight{$g \otimes 1$}\coordHE{}. This gives a
+representation \myHighlight{$\rho_n \colon U(n) \to U(\cH^n)$}\coordHE{}
+and induces  a \myHighlight{$PU(\cH^n)$}\coordHE{} bundle with Dixmier-Douady
+   class \myHighlight{$[H]$}\coordHE{}. As \myHighlight{$\cH^N \simeq \cH$}\coordHE{} and all \myHighlight{$PU(\cH)$}\coordHE{}
+bundles are determined by their Dixmier-Douady class we can
+assume that this bundle is \myHighlight{$Y$}\coordHE{} and contains \myHighlight{$X$}\coordHE{} as a \myHighlight{$U(n)$}\coordHE{}
+reduction.  Then we have
+$$\coord{}\boxMath{
+(Y \times \Fred)/PU(\mathcal H)  \cong (X \times \Fred)/PU(n),
+}{dollar}{0pt}\coordE{}$$
+so that
+$$\coord{}\boxMath{
+K(M,  [H]) = [Y, \Fred]^{PU(\mathcal H)} \cong [X, \Fred]^{PU(n)}.
+}{dollar}{0pt}\coordE{}$$
+
+
+The lifting bundle gerbe for \myHighlight{$Y \to M$}\coordHE{} pulls-back to become the lifting
+bundle gerbe \myHighlight{$L$}\coordHE{} for \myHighlight{$X \to M$}\coordHE{}.  We will now prove that \myHighlight{$K_{bg}(M, L)
+= K(M, [H])$}\coordHE{}. Notice
+that this will prove the result also for {\em any} bundle gerbe with
+torsion Dixmier-Douady class as we already know that bundle gerbe K-theory
+depends only on the Dixmier-Douady class.
+
+In the case where there is no twist Atiyah showed that \myHighlight{$K(M) = [M,
+\Fred]$}\coordHE{} and we
+will follow his proof indicating just what needs to be modified to
+cover this equivariant case.
+
+First we have have the following
+\begin{lemma} If \myHighlight{$W$}\coordHE{} is  a finite dimensional subspace of \myHighlight{$\CC^n
+\otimes \cH$}\coordHE{} there
+is a finite co-dimensional subspace \myHighlight{$V$}\coordHE{} of \myHighlight{$\cH$}\coordHE{} such that \myHighlight{$\CC^n \otimes V
+\cap W = 0$}\coordHE{}.
+\end{lemma}
+\begin{proof} Let \myHighlight{$U$}\coordHE{} be  the image of \myHighlight{$V$}\coordHE{} under the map \myHighlight{$\CC^n
+\otimes \CC^n \otimes
+\cH \to \cH$}\coordHE{} were we contract the two copies of \myHighlight{$\CC^n$}\coordHE{} with the inner
+product. Then \myHighlight{$V \subset \CC^n \otimes U$}\coordHE{}. So take \myHighlight{$W = U^{\perp}$}\coordHE{}.
+\end{proof}
+
+Using the compactness of \myHighlight{$X$}\coordHE{} and the methods in Atiyah we can show that if
+\myHighlight{$f \colon X \to \Fred(\CC^n \otimes \cH)$}\coordHE{} then there is a
+   subspace \myHighlight{$V \subset \cH$}\coordHE{}, of finite co-dimension, such that
+\myHighlight{$\ker(f(x)) \cap \CC^n \otimes V = 0$}\coordHE{}. Then \myHighlight{$\cH/V$}\coordHE{} and \myHighlight{$\cH/f(V)$}\coordHE{}
+will be vector bundles
+on \myHighlight{$X$}\coordHE{} and moreover they will  by acted on by \myHighlight{$U(n)$}\coordHE{} in such a way as to make
+them bundle gerbe modules.  So we define
+$$\coord{}\boxMath{
+\ind \colon [X, \Fred(\CC^n \otimes \cH ) ] _{U(n)}\to K_{bg}(M, L)
+}{dollar}{0pt}\coordE{}$$
+by \myHighlight{$\ind(f) = \cH/V -\cH/f(V)$}\coordHE{}. Again the methods of \cite{Ati} will show that
+this index map is well-defined and a homomorphism.
+
+As in \cite{Ati} we can identify the kernel of \myHighlight{$\ind$}\coordHE{} as
+\myHighlight{$ [X, U(\CC^n \otimes \cH ) ] _{U(n)}$}\coordHE{} and use the result of Segal \cite{Seg2}
+which shows that \myHighlight{$U(\CC^n \otimes \cH )$}\coordHE{} is contractible so \myHighlight{$\ind$}\coordHE{} is
+injective.
+
+Finally we consider surjectivity. First we need from \cite{Seg1} the following
+\begin{proposition}
+\label{prop:sub}
+If \myHighlight{$E \to X$}\coordHE{} is a bundle gerbe module for \myHighlight{$L$}\coordHE{} then there is a representation
+\myHighlight{$\mu\colon U(n) \to U(N)$}\coordHE{} such that \myHighlight{$E$}\coordHE{} is a sub-bundle gerbe module of
+\myHighlight{$\CC^N \otimes X$}\coordHE{}.
+\end{proposition}
+
+If \myHighlight{$E \to X$}\coordHE{} is a bundle gerbe module then Proposition \ref{prop:sub}
+enables us to find a \myHighlight{$U(n)$}\coordHE{}
+equivariant map \myHighlight{$\tilde f \colon X \to \Fred(\CC^N \otimes X)$}\coordHE{} whose
+index is \myHighlight{$E$}\coordHE{}.
+The action of \myHighlight{$U(n)$}\coordHE{} used here on \myHighlight{$\CC^N \otimes X$}\coordHE{} is that induced from the
+representation \myHighlight{$\mu$}\coordHE{}.
+To prove surjectivity of the index map it suffice to find a
+map \myHighlight{$f \colon X \to \Fred(\CC^n \otimes X)$}\coordHE{}
+whose index is \myHighlight{$E$}\coordHE{}. Then if \myHighlight{$E-F$}\coordHE{} is a class in \myHighlight{$K_{bg}(M, L)$}\coordHE{} we can
+apply a similar technique
+to obtain a map whose index is \myHighlight{$-F$}\coordHE{} and combine these to get a map
+whose index is \myHighlight{$E-F$}\coordHE{} and we are done.
+
+To construct \myHighlight{$f$}\coordHE{} we proceed as follows.  We have a representation
+\myHighlight{$\rho_n \colon U(n) \to \CC^n \otimes \cH$}\coordHE{}
+and a representation  \myHighlight{$\rho_N \colon U(n) \to \CC^N \otimes \cH$}\coordHE{}.
+These can be used to induce a
+\myHighlight{$PU(\CC^n \otimes \cH)$}\coordHE{} bundle and a \myHighlight{$PU(\CC^N \otimes \cH)$}\coordHE{} bundle, both
+with Dixmier-Douady class \myHighlight{$[H]$}\coordHE{}.
+So they must be isomorphic.  We need the precise form of this isomorphism.
+Choose an isomorphism \myHighlight{$\phi \colon \CC^n \otimes \cH \to \CC^N
+\otimes \cH$}\coordHE{}. This induces
+an isomorphism \myHighlight{$U(\CC^n \otimes \cH )\to U(\CC^N \otimes \cH)$}\coordHE{} given
+by \myHighlight{$u \mapsto
+\phi u \phi^{-1}$}\coordHE{} which we will denote by \myHighlight{$\phi[u]$}\coordHE{} for convenience.
+There is a similar
+identification \myHighlight{$\Fred(\CC^n \otimes \cH) \to \Fred(\CC^N \otimes \cH)$}\coordHE{}. The two
+\myHighlight{$PU$}\coordHE{} bundles are given by \myHighlight{$X \times_{\rho_n} U(\CC^n \otimes \cH)$}\coordHE{}
+and \myHighlight{$X \times_{\rho_N} U(\CC^N \otimes \cH)$}\coordHE{}
+and consist of cosets  \myHighlight{$[x, u] = [xg, \rho^{-1}_n(g)u]$}\coordHE{} and \myHighlight{$[x, u] =
+[xg, \rho^{-1}_N(g)u]$}\coordHE{}
+respectively. The action of
+\myHighlight{$U(\CC^n \otimes \cH)$}\coordHE{} is \myHighlight{$[x, u]v = [x, uv]$}\coordHE{} and similarly for
+\myHighlight{$U(\CC^N \otimes \cH)$}\coordHE{}. Because these
+are isomorphic bundles there must be a bundle map
+$$\coord{}\boxMath{
+\phi \colon X \times_{\rho_n} U(\CC^n \otimes \cH) \to
+\times_{\rho_N} U(\CC^N \otimes \cH)
+}{dollar}{0pt}\coordE{}$$
+satisfying \myHighlight{$\phi([x,u]v) = \phi([x, u]) \phi[v]$}\coordHE{} and hence
+\myHighlight{$\phi([x,u]) = \phi([x, 1]) \phi[u]$}\coordHE{}.
+Define \myHighlight{$\alpha \colon X \to U(\CC^N \otimes \cH)$}\coordHE{} by requiring that
+\myHighlight{$\phi([x, 1]) =
+[x, \alpha(x)]$}\coordHE{}. Then if \myHighlight{$g \in U(n)$}\coordHE{} we have
+\begin{align*}\coord{}\boxAlignEqnarray{
+\leftCoord{}[xg, \alpha(xg)] &= \phi([xg, 1])\rightCoord{}\\
+&\leftCoord{}= \phi([x, \rho_n(g)]) \rightCoord{}\\
+&\leftCoord{}= \phi([x, 1])\phi[\rho_n(g)] \rightCoord{}\\
+&\leftCoord{}= [x, \alpha(x)]\phi[\rho_n(g)] \rightCoord{}\\
+&\leftCoord{}= [x, \alpha(x)\phi[\rho_n(g)]] \rightCoord{}\\
+&\leftCoord{}= [xg, \rho_N(g)^{-1} \alpha(x) \phi[\rho_n(g)]]
+}{0mm}{6}{6}{
+[xg, \alpha(xg)] &= \phi([xg, 1])\\
+&= \phi([x, \rho_n(g)]) \\
+&= \phi([x, 1])\phi[\rho_n(g)] \\
+&= [x, \alpha(x)]\phi[\rho_n(g)] \\
+&= [x, \alpha(x)\phi[\rho_n(g)]] \\
+&= [xg, \rho_N(g)^{-1} \alpha(x) \phi[\rho_n(g)]]
+}{0}\coordE{}\end{align*}
+so that
+\begin{equation}\coord{}\boxEquation{
+\label{eq:relation}
+\alpha(xg) = \rho_N(g)^{-1} \alpha(x) \phi[(\rho_n(g)].
+}{
+\alpha(xg) = \rho_N(g)^{-1} \alpha(x) \phi[(\rho_n(g)].
+}{ecuacion}\coordE{}\end{equation}
+
+We can now define \myHighlight{$ f \colon X \to \Fred(\CC^n \otimes X)$}\coordHE{} by
+$$\coord{}\boxMath{
+f(x)  =     \alpha(x)\phi^{-1}[ \tilde f(x) ]
+}{dollar}{0pt}\coordE{}$$
+and it is straightforward to see that this is \myHighlight{$U(n)$}\coordHE{} equivariant
+by applying the equation \eqref{eq:relation}.  It is clear that
+\myHighlight{$\alpha(x)$}\coordHE{} and \myHighlight{$\phi$}\coordHE{} can be used to
+establish an isomorphism between \myHighlight{$\ker(f)$}\coordHE{}
+and \myHighlight{$\ker(\tilde f)$}\coordHE{} and hence between \myHighlight{$\ker(f) $}\coordHE{} and \myHighlight{$E$}\coordHE{}.
+
+This proves
+\begin{proposition} If \myHighlight{$L$}\coordHE{} is a bundle gerbe over \myHighlight{$M$}\coordHE{} with
+Dixmier-Douady class \myHighlight{$[H]$}\coordHE{}
+which is torsion then
+\myHighlight{$K_{bg}(M, L) = K(M, [H])$}\coordHE{}.
+\end{proposition}
+
+
+The lifting bundle gerbe for \myHighlight{$Y \to M$}\coordHE{} pulls-back to become the lifting
+bundle gerbe for \myHighlight{$X \to M$}\coordHE{}.  A bundle gerbe module for
+this is a bundle \myHighlight{$E \to X$}\coordHE{} with a \myHighlight{$U(n)$}\coordHE{} action covering the
+action of \myHighlight{$PU(n)$}\coordHE{} on \myHighlight{$X$}\coordHE{}.  This \myHighlight{$U(n)$}\coordHE{} action has to have the
+property that the center \myHighlight{$U(1) \subset U(n)$}\coordHE{} acts on the fibres of
+\myHighlight{$E$}\coordHE{} by scalar multiplication.  Considered from this perspective we see that
+we are in  the context
+of equivariant \myHighlight{$K$}\coordHE{} theory \cite{Seg1}. Notice that by projecting to
+\myHighlight{$PU(n)$}\coordHE{} we can make
+\myHighlight{$U(n)$}\coordHE{} act on
+\myHighlight{$X$}\coordHE{}. Of course this action is
+not   free, the center \myHighlight{$U(1)$}\coordHE{} is the isotropy subgroup
+at every point.   The equivariant \myHighlight{$K$}\coordHE{} theory
+\myHighlight{$K_{U(n)}(Q)$}\coordHE{} is the \myHighlight{$K$}\coordHE{} theory formed from vector bundles
+on \myHighlight{$Q$}\coordHE{} which have an \myHighlight{$U(n)$}\coordHE{} action covering the action on \myHighlight{$X$}\coordHE{}.  We
+need a subset
+of such bundles with a particular action.  To understand this note that
+because the center \myHighlight{$U(1) \subset U(n)$}\coordHE{} is the isotropy subgroup for the \myHighlight{$U(n)$}\coordHE{}
+action on \myHighlight{$X$}\coordHE{} it must act on the fibres of \myHighlight{$E$}\coordHE{} and hence define a
+representation
+of \myHighlight{$U(1)$}\coordHE{} on \myHighlight{$\CC^r$}\coordHE{} if the bundle \myHighlight{$E$}\coordHE{} has rank \myHighlight{$r$}\coordHE{}.  This defines an
+element of
+\myHighlight{$R(U(1))$}\coordHE{}, the representation ring  of \myHighlight{$U(1)$}\coordHE{}, and to be a bundle gerbe module
+this representation must be scalar multiplication on \myHighlight{$\CC^r$}\coordHE{}.  In terms
+of equivariant \myHighlight{$K$}\coordHE{} theory we can consider the map which is
+restriction to a fibre of \myHighlight{$X \to M$}\coordHE{} and then we have
+$$\coord{}\boxMath{
+K_{U(n)}(X) \to K_{U(n)}(U(n)/U(1)) = R(U(1)).
+}{dollar}{0pt}\coordE{}$$  \myHighlight{$K_{bg}(M, L)$}\coordHE{} is the pre-image under this map of the representation
+of \myHighlight{$U(1)$}\coordHE{} on \myHighlight{$\CC^n$}\coordHE{} by scalar multiplication.
+
+
+\subsection{Characteristic classes of bundle gerbe modules}
+In this section we discuss the Chern character of a twisted
+bundle gerbe module.
+Suppose \myHighlight{$(L,Y)$}\coordHE{} is a bundle gerbe on \myHighlight{$M$}\coordHE{} and
+that \myHighlight{$E\to Y$}\coordHE{} is a bundle gerbe module. Recall \eqref{eq:bgmod}
+that this means that there is an isomorphism:
+$$\coord{}\boxMath{
+\phi \colon L\otimes \pi_1^{-1}E \ \stackrel{\sim}{\to}\
+\pi_2^{-1}E
+}{dollar}{0pt}\coordE{}$$
+which is compatible with the bundle gerbe product
+on \myHighlight{$L$}\coordHE{}.  Recall from \cite{Mur} that a \emph{bundle
+gerbe connection} on \myHighlight{$L$}\coordHE{} is a connection \myHighlight{$\nabla_L$}\coordHE{}
+on \myHighlight{$L$}\coordHE{} which is compatible in the obvious sense with
+the bundle gerbe product on \myHighlight{$L$}\coordHE{}.  Furthermore, one
+can show (see \cite{Mur}), that the curvature
+\myHighlight{$F_L$}\coordHE{} of \myHighlight{$\nabla_L$}\coordHE{} satisfies \myHighlight{$F_L = \delta(f) = \pi_1^*f
+- \pi_2^*f$}\coordHE{} for some \myHighlight{$2$}\coordHE{}-form \myHighlight{$f$}\coordHE{} on \myHighlight{$Y$}\coordHE{}.  \myHighlight{$f$}\coordHE{} is unique
+up to \myHighlight{$2$}\coordHE{}-forms pulled back from \myHighlight{$M$}\coordHE{}.  We call a choice
+of such an \myHighlight{$f$}\coordHE{} a \emph{curving} for the connection
+\myHighlight{$\nabla_L$}\coordHE{}.  In \cite{Mur} it is shown that there is
+a closed, integral \myHighlight{$3$}\coordHE{}-form \myHighlight{$\omega$}\coordHE{} on \myHighlight{$M$}\coordHE{} such
+that \myHighlight{$df = \pi^* \omega$}\coordHE{}.  \myHighlight{$\omega$}\coordHE{} is called the
+\myHighlight{$3$}\coordHE{}-curvature of the connection \myHighlight{$\nabla_L$}\coordHE{} and
+curving \myHighlight{$f$}\coordHE{}.  It is the image in real cohomology
+of the Dixmier-Douady class of \myHighlight{$L$}\coordHE{}.  In our case,
+since \myHighlight{$L$}\coordHE{} has torsion Dixmier-Douady class, one
+can choose a bundle gerbe connection \myHighlight{$\nabla_L$}\coordHE{}
+for \myHighlight{$L$}\coordHE{} and a curving \myHighlight{$f$}\coordHE{} for \myHighlight{$\nabla_L$}\coordHE{} such that
+\myHighlight{$df =0$}\coordHE{}.
+We want a connection \myHighlight{$D$}\coordHE{} on
+\myHighlight{$E$}\coordHE{} so that \myHighlight{$\phi$}\coordHE{} is a connection preserving
+isomorphism of vector bundles, where \myHighlight{$L\otimes
+\pi_1^{-1}E$}\coordHE{} is given the tensor product connection
+\myHighlight{$\nabla_L \otimes I + \pi_1^{-1}D$}\coordHE{}.
+
+Take an open cover \myHighlight{$\{U_i\}_{i\in I}$}\coordHE{} of \myHighlight{$M$}\coordHE{} such
+that there exist local sections over \myHighlight{$U_i$}\coordHE{} of
+\myHighlight{$\pi\colon Y\to M$}\coordHE{} and such that there exists a
+partition of unity \myHighlight{$\{\rho_i\}_{i\in I}$}\coordHE{} of \myHighlight{$M$}\coordHE{}
+subordinate to \myHighlight{$U_i$}\coordHE{}.  Then \myHighlight{$L$}\coordHE{} is trivialised over
+\myHighlight{$U_i$}\coordHE{} --- say \myHighlight{$L = \delta(K_i)$}\coordHE{} over \myHighlight{$U_i$}\coordHE{}.  The connection
+\myHighlight{$\nabla_L$}\coordHE{} on \myHighlight{$L$}\coordHE{} induces a connection \myHighlight{$\nabla_i$}\coordHE{} on
+\myHighlight{$K_i$}\coordHE{}.  The bundle \myHighlight{$E\otimes K_i$}\coordHE{} on \myHighlight{$Y_i = Y|_{U_i}$}\coordHE{} descends
+to a bundle \myHighlight{$F_i$}\coordHE{} on \myHighlight{$U_i$}\coordHE{}.  Choose any connection
+\myHighlight{$\nabla_E$}\coordHE{} on \myHighlight{$E$}\coordHE{}, and a connection \myHighlight{$\nabla_{F_i}$}\coordHE{} on
+\myHighlight{$F_i$}\coordHE{}.  Then the pullback connection \myHighlight{$\pi^{-1}\nabla_{F_i}$}\coordHE{}
+on \myHighlight{$\pi^{-1}F_i$}\coordHE{} differs from the connection
+\myHighlight{$\nabla_E + \nabla_i\otimes I$}\coordHE{} on \myHighlight{$E\otimes K_i$}\coordHE{}
+by an \myHighlight{$\End(E\otimes L_i) = \End(E)$}\coordHE{} valued \myHighlight{$1$}\coordHE{}-form
+\myHighlight{$B_i$}\coordHE{} on \myHighlight{$Y_i$}\coordHE{}.  Give \myHighlight{$E|_{Y_i}$}\coordHE{} the connection
+\myHighlight{$D_i = \nabla_E - B_i$}\coordHE{}.  Then, over \myHighlight{$Y^{[2]}_i$}\coordHE{}, \myHighlight{$\phi$}\coordHE{}
+induces an isomorphism of vector bundles with
+connection
+$$\coord{}\boxMath{
+L|_{Y_i^{[2]}}\otimes \pi_1^{-1}E|_{Y_i^{[2]}}
+\stackrel{\sim}{\to} \pi_2^{-1}E|_{Y_i^{[2]}}.
+}{dollar}{0pt}\coordE{}$$
+Using the partition of unity \myHighlight{$\{\rho_i\}_{i\in I}$}\coordHE{}
+pulled back to \myHighlight{$\{Y_i\}_{i\in I}$}\coordHE{} we can patch together
+the local connections \myHighlight{$D_i$}\coordHE{} on \myHighlight{$E|_{Y_i}$}\coordHE{} to get a
+connection \myHighlight{$D$}\coordHE{} on \myHighlight{$E$}\coordHE{} which is compatible with \myHighlight{$\nabla_L$}\coordHE{} under
+\myHighlight{$\phi$}\coordHE{} in the above sense.
+Calculating curvatures we get the following equality
+of \myHighlight{$\End(\pi_1^{-1}E\otimes L) = \End(\pi_2^{-1}E)$}\coordHE{}
+valued \myHighlight{$2$}\coordHE{}-forms on \myHighlight{$Y^{[2]}$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{ 
+\label{eq:module connection transfm law}
+F_{\pi_1^{-1}D} + F_L I = \phi^{-1}\circ F_{\pi_2^{-1}D}
+\circ \phi.
+}{ 
+F_{\pi_1^{-1}D} + F_L I = \phi^{-1}\circ F_{\pi_2^{-1}D}
+\circ \phi.
+}{ecuacion}\coordE{}\end{equation} 
+Writing \myHighlight{$F_L = \pi_1^* f - \pi_2^* f$}\coordHE{} we get
+$$\coord{}\boxMath{
+\pi_1^*(F_{D} + f I) = \phi^{-1}\circ \pi_2^*(F_{D} + f I)\circ \phi.
+}{dollar}{0pt}\coordE{}$$
+   If \myHighlight{$P$}\coordHE{} is an invariant polynomial in
+Lie algebra valued variables then this
+equation shows that $$\coord{}\boxMath{
+\pi_1^*(P(F_D + fI,\ldots ,F_D + fI)) = \pi_2^*(P(F_D + fI,\ldots ,F_D + fI))
+}{dollar}{0pt}\coordE{}$$
+and hence the Chern-Weil \myHighlight{$2k$}\coordHE{}-forms
+on \myHighlight{$Y$}\coordHE{} descend to \myHighlight{$M$}\coordHE{}.  Moreover
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{
+&&\leftCoord{} dP(F_D+fI,\ldots ,F_D+fI) \rightCoord{}\\
+&\leftCoord{}= & \sum P(F_D+fI,\ldots ,dF_D + dfI,\ldots ,F_D+fI) \rightCoord{}\\
+&\leftCoord{}= & \sum P(F_D+fI,\ldots,[F_D,A],\ldots ,F_D+fI).\rightCoord{}
+\rightCoord{}}{0mm}{3}{5}{
+&& dP(F_D+fI,\ldots ,F_D+fI) \\
+&= & \sum P(F_D+fI,\ldots ,dF_D + dfI,\ldots ,F_D+fI) \\
+&= & \sum P(F_D+fI,\ldots,[F_D,A],\ldots ,F_D+fI).
+}{1}\coordE{}\end{eqnarray*}
+Using the standard trick of writing \myHighlight{$g_t = \exp (tA)$}\coordHE{}
+and using the invariance of \myHighlight{$P$}\coordHE{} we get
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{}
+\leftCoord{}0 & = & \frac{\leftCoord{}d}{\rightCoord{}dt}|_{t=0} P(g_t^{-1}F_Dg_t + fI,\ldots,
+g_t^{-1}F_Dg_t + fI)                                       \rightCoord{}\\
+&\leftCoord{}= & \sum P(F_D+fI,\ldots ,[F_D,A],\ldots ,F_D+fI).\rightCoord{}
+\rightCoord{}}{0mm}{4}{5}{
+0 & = & \frac{d}{dt}|_{t=0} P(g_t^{-1}F_Dg_t + fI,\ldots,
+g_t^{-1}F_Dg_t + fI)                                       \\
+&= & \sum P(F_D+fI,\ldots ,[F_D,A],\ldots ,F_D+fI).
+}{1}\coordE{}\end{eqnarray*}
+So the \myHighlight{$2k$}\coordHE{}-forms \myHighlight{$P(F_D+fI,\ldots ,F_D+fI)$}\coordHE{} on
+\myHighlight{$M$}\coordHE{} are all closed.
+
+
+The usual definition of the chern character can be applied to define
+\myHighlight{$\Ch(E) \in H^*(M, \QQ)$}\coordHE{}
+for any bundle gerbe module. This satisfies \myHighlight{$\Ch(E+F) = \Ch(E) +
+\Ch(F)$}\coordHE{} and hence
+defines a chern character:
+$$\coord{}\boxMath{
+\Ch \colon K_{bg}(M) \to H^*(M, \QQ).
+}{dollar}{0pt}\coordE{}$$
+
+\section{Twisted \myHighlight{$K$}\coordHE{}-theory in the  non-torsion case.}
+\label{sec:non-torsion case} 
+
+We have seen that approaching twisted \myHighlight{$K$}\coordHE{}-theory via finite rank
+bundle gerbes is not possible if the class \myHighlight{$[H]$}\coordHE{}
+is not torsion as there are then no finite rank bundle gerbe modules.
+A possible
+generalisation would be to allow bundle gerbe modules which
+are infinite Hilbert bundles. In that case the induced
+projective bundle on \myHighlight{$M$}\coordHE{} is a \myHighlight{$PU(\cH)$}\coordHE{} bundle for \myHighlight{$\cH$}\coordHE{}
+an infinite dimensional Hilbert bundle and it is well
+known that there is only one such bundle for a given
+Dixmier-Douady class and hence Proposition \ref{prop:proj}
+implies that
+
+\begin{proposition}
+Every bundle gerbe admits exactly one bundle gerbe module which is a
+bundle of infinite dimensional Hilbert spaces  with structure group \myHighlight{$U(\cH)$}\coordHE{}.
+\end{proposition}
+
+
+In particular if \myHighlight{$E$}\coordHE{} and \myHighlight{$F$}\coordHE{} are Hilbert bundle gerbe modules
+then \myHighlight{$E = F$}\coordHE{} so that the class \myHighlight{$E=F$}\coordHE{} in the induced
+\myHighlight{$K$}\coordHE{} group is zero. So the \myHighlight{$K$}\coordHE{} group is zero.
+
+In the remainder of this section
+we discuss another approach to twisted cohomology
+where the structure group of the bundle gerbe module
+is the group \myHighlight{$\UK$}\coordHE{}, the subgroup of \myHighlight{$U(\cH)$}\coordHE{} 
+of unitaries which differ from the identity by a compact 
+operator (here \myHighlight{$\mathcal{K}$}\coordHE{} denotes the compact operators 
+on \myHighlight{$\cH$}\coordHE{}).  
+To see how this arises notice that in
+Rosenberg's definition \ref{def:twisted} we can replace  \myHighlight{$\Fred$}\coordHE{} by a
+homotopy equivalent space.
+For our purposes we choose \myHighlight{$BU{_\mathcal K}\times \ZZ$}\coordHE{}.  
+This can be done in a \myHighlight{$PU(\cH)$}\coordHE{}
+equivariant fashion as follows. For \myHighlight{$BU{_\mathcal K}$}\coordHE{}
+we could choose the connected component of the
+identity of the invertibles in the Calkin algebra \myHighlight{$B(\cH)/\mathcal K$}\coordHE{}
+which is homotopy equivalent in a \myHighlight{$PU(\cH)$}\coordHE{} equivariant way
+to the Fredholms of index zero under the quotient map
+\myHighlight{$\pi: B(\cH)\to B(\cH)/\mathcal K$}\coordHE{}. Note however
+that the identity component of the invertibles in the Calkin
+algebra is just \myHighlight{$GL(\cH)/GL_\mathcal K$}\coordHE{} where \myHighlight{$GL(\cH)$}\coordHE{}
+denotes the invertible operators on \myHighlight{$\cH$}\coordHE{} and \myHighlight{$GL_\mathcal K$}\coordHE{}
+are the invertibles differing from the identity by a compact.
+Thus we can take \myHighlight{$BU_{\mathcal K}$}\coordHE{} to be \myHighlight{$GL(\cH)/GL_{\mathcal K}$}\coordHE{}
+and this choice is \myHighlight{$PU(\cH)$}\coordHE{} equivariant. We could equally well take
+\myHighlight{$B\UK = U(\cH)/\UK$}\coordHE{}.
+
+As \myHighlight{$U(\cH)$}\coordHE{} acts on \myHighlight{$U_{\mathcal K}$}\coordHE{} by conjugation there is
+a semi-direct product
+$$\coord{}\boxMath{
+U_{\mathcal K} \to U_{\mathcal K} \rtimes PU(\cH) \to PU(\cH).\
+}{dollar}{0pt}\coordE{}$$
+Note that this means that any \myHighlight{$ U_{\mathcal K} \rtimes PU(\cH)$}\coordHE{}
+bundle over \myHighlight{$M$}\coordHE{} induces a \myHighlight{$PU(\cH)$}\coordHE{} bundle and hence a class
+in \myHighlight{$H^3(M, \ZZ)$}\coordHE{}.   If \myHighlight{$R \to Y$}\coordHE{} is a \myHighlight{$U_{\mathcal K}$}\coordHE{} bundle
+we call it \myHighlight{$PU(\cH)$}\coordHE{} covariant if there is an action
+of \myHighlight{$PU(\cH)$}\coordHE{} on the right of \myHighlight{$R$}\coordHE{} covering the action on \myHighlight{$Y$}\coordHE{} such that
+\myHighlight{$(rg)[u] = r[u] u^{-1}gu$}\coordHE{} for any \myHighlight{$r \in R$}\coordHE{},
+\myHighlight{$[u] \in PU(\cH)$}\coordHE{} and \myHighlight{$g \in U_{\mathcal K}$}\coordHE{}. Here \myHighlight{$[u]$}\coordHE{} is the
+projective class of some \myHighlight{$u \in U(\cH)$}\coordHE{}.
+
+Because \myHighlight{$B\UK$}\coordHE{} is homotopy equivalent to only the connected component
+of index \myHighlight{$0$}\coordHE{} of \myHighlight{$\Fred$}\coordHE{} it is convenient to work with reduced twisted
+\myHighlight{$K$}\coordHE{} theory, \myHighlight{$\redK(M, [H])$}\coordHE{}, defined by
+$$\coord{}\boxMath{
+\redK(M, [H]) = [M, Y(B\UK)].
+}{dollar}{0pt}\coordE{}$$
+
+
+We have
+\begin{proposition}
+Given a \myHighlight{$PU(\cH)$}\coordHE{} bundle \myHighlight{$Y \to M$}\coordHE{} with class \myHighlight{$[H] \in H^3(M, \ZZ)$}\coordHE{} the
+following are equivalent
+spaces
+\begin{enumerate}
+\item \myHighlight{$\redK(M, [H])$}\coordHE{}
+\item space of homotopy classes of sections of \myHighlight{$Y \times_{PU(\cH)}
+BU{_\mathcal K}$}\coordHE{}
+\item space of homotopy classes of  \myHighlight{$PU(\cH)$}\coordHE{} equivariant maps from \myHighlight{$Y$}\coordHE{} to
+\myHighlight{$BU{_\mathcal K}$}\coordHE{}
+\item space of isomorphism classes of \myHighlight{$PU(\cH)$}\coordHE{} covariant \myHighlight{$U{_\mathcal
+K}$}\coordHE{} bundles on \myHighlight{$Y$}\coordHE{}, and
+\item space of isomorphism classes of \myHighlight{$U{_\mathcal K} \rtimes PU(\cH)$}\coordHE{}
+bundles on \myHighlight{$M$}\coordHE{} whose projection to a \myHighlight{$PU(\cH)$}\coordHE{} bundle has class \myHighlight{$[H]$}\coordHE{}.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) \myHighlight{$\iff$}\coordHE{} (2) This is just the reduced version of Rosenberg's
+definition of twisted \myHighlight{$K$}\coordHE{}-theory \ref{def:twisted}.
+
+(2) \myHighlight{$\iff$}\coordHE{} (3) This is a standard construction.
+
+(3) \myHighlight{$ \implies$}\coordHE{} (4) Notice that the \myHighlight{$\UK$}\coordHE{} bundle \myHighlight{$E\UK \to B\UK$}\coordHE{} is \myHighlight{$PU(\cH)$}\coordHE{}
+covariant. It follows that if we pull it back to \myHighlight{$Y$}\coordHE{} by a \myHighlight{$PU(\cH)$}\coordHE{}
+equivariant map \myHighlight{$Y \to B\UK$}\coordHE{} that we must get a
+\myHighlight{$PU(\cH)$}\coordHE{} covariant bundle on \myHighlight{$Y$}\coordHE{}.
+
+(4) \myHighlight{$ \iff$}\coordHE{} (5) Let \myHighlight{$R \to Y$}\coordHE{} be a \myHighlight{$PU(\cH) $}\coordHE{} covariant \myHighlight{$\UK$}\coordHE{} bundle.
+By composing the projections \myHighlight{$R \to Y \to M$}\coordHE{} we think of \myHighlight{$R$}\coordHE{} as a
+bundle on \myHighlight{$M$}\coordHE{}. Both groups \myHighlight{$\UK$}\coordHE{} and \myHighlight{$PU(\cH)$}\coordHE{} act on \myHighlight{$R$}\coordHE{} and the
+combined action is an action of the semi-direct product and realises
+\myHighlight{$R$}\coordHE{} as a bundle over \myHighlight{$M$}\coordHE{} for this semi-direct product.  Conversely
+consider a bundle \myHighlight{$R \to M$}\coordHE{} for the semi-direct product for which the
+induced \myHighlight{$PU(\cH)$}\coordHE{} bundle is isomorphic (as a \myHighlight{$PU(\cH)$}\coordHE{} bundle) to \myHighlight{$Y$}\coordHE{}.
+Identify this bundle with \myHighlight{$Y$}\coordHE{} and hence \myHighlight{$R$}\coordHE{} is a bundle over \myHighlight{$Y$}\coordHE{} and,
+in fact, a \myHighlight{$PU(\cH)$}\coordHE{} covariant \myHighlight{$\UK$}\coordHE{} bundle.
+
+(5) \myHighlight{$ \implies$}\coordHE{} (3) A \myHighlight{$\UK \rtimes PU(\cH)$}\coordHE{} bundle over \myHighlight{$M$}\coordHE{} is
+determined by a classifying
+map \myHighlight{$\phi \colon M \to B(\UK \rtimes PU(\cH))$}\coordHE{}.  A little thought shows
+that we can realise
+this latter space as \myHighlight{$EPU(\cH) \times_{PU(\cH)} B\UK$}\coordHE{} which fibres over
+\myHighlight{$BPU(\cH)$}\coordHE{}. The composition
+\myHighlight{$\tilde\phi \colon M \to BPU(\cH)$}\coordHE{} of \myHighlight{$\phi$}\coordHE{} with the projection to
+\myHighlight{$BPU(\cH)$}\coordHE{} is the
+classifying map of the induced \myHighlight{$PU(\cH)$}\coordHE{} bundle which is \myHighlight{$Y$}\coordHE{}. This
+means that we can find
+a \myHighlight{$PU(\cH)$}\coordHE{} equivariant map \myHighlight{$\hat\phi \colon Y \to EPU(\cH)$}\coordHE{}
+covering \myHighlight{$\tilde\phi$}\coordHE{}.
+Using this we define \myHighlight{$\rho \colon Y \to B\UK$}\coordHE{} by \myHighlight{$\phi(\pi(y)) = [
+\hat\phi(y), \rho(y)]_{PU(\cH)}$}\coordHE{}.
+This is well-defined. Moreover if \myHighlight{$g \in PU(\cH)$}\coordHE{}
+then \myHighlight{$\pi(yg) = \pi(y)$}\coordHE{} so that
+\myHighlight{$ [ \hat\phi(y), \rho(y)]_{PU(\cH)} = [\hat\phi(yg), \rho(yg)]_{PU(\cH)}  =
+        [\hat\phi(y)g, \rho(yg)]_{PU(\cH)} = [\hat\phi(yg),
+g\rho(yg)]_{PU(\cH)}$}\coordHE{} and hence
+\myHighlight{$\rho(yg) = g^{-1} \rho(y)$}\coordHE{} proving equivariance.
+
+\end{proof}
+
+\begin{note} Notice that if we worked with \myHighlight{$\Fred$}\coordHE{} instead
+of \myHighlight{$B\UK$}\coordHE{} then it has connected components \myHighlight{$\Fred_n$}\coordHE{} consisting
+of operators of index \myHighlight{$n$}\coordHE{}.  We can then consider sections
+of \myHighlight{$Y \times_{PU(\cH)} \Fred_n$}\coordHE{} for every \myHighlight{$n$}\coordHE{}, not just zero.
+Such a section will pull back a \myHighlight{$K$}\coordHE{} class and if we take
+the determinant of this \myHighlight{$K$}\coordHE{} class we will obtain a line bundle
+on \myHighlight{$Y$}\coordHE{} on which the gerbe \myHighlight{$L^n$}\coordHE{} acts.  Hence we will have
+\myHighlight{$n [H] = n d(L) = 0$}\coordHE{} as in Prop. \ref{prop:torsion} and so
+we deduce the result noted in \cite{Ati2} that if \myHighlight{$[H] $}\coordHE{} is
+not torsion then there are no sections of \myHighlight{$Y \times_{PU(\cH)} \Fred_n$}\coordHE{}
+except when \myHighlight{$n = 0$}\coordHE{} so \myHighlight{$\redK(M, [H]) = K(M, [H])$}\coordHE{}.
+\end{note}
+
+
+
+
+\subsection{\myHighlight{$\UK$}\coordHE{} bundle gerbe modules}
+
+Given a \myHighlight{$PU(\cH)$}\coordHE{} covariant \myHighlight{$U{_\mathcal K}$}\coordHE{} bundle \myHighlight{$R$}\coordHE{} over \myHighlight{$Y$}\coordHE{} we can
+define the associated bundle
+\begin{equation}\coord{}\boxEquation{
+\label{eq:associated}
+E = R \times_{U{_\mathcal K}} \cH \to Y.
+}{
+E = R \times_{U{_\mathcal K}} \cH \to Y.
+}{ecuacion}\coordE{}\end{equation}
+We claim that this is a bundle gerbe module for the
+lifting bundle gerbe \myHighlight{$P$}\coordHE{}.
+Let \myHighlight{$[r, v] \in E_{y_1}$}\coordHE{} be a \myHighlight{$U{_\mathcal K}$}\coordHE{} equivalence class
+where \myHighlight{$r \in R_{y_1}$}\coordHE{}, the
+fibre of \myHighlight{$R$}\coordHE{} over \myHighlight{$y_1 \in Y$}\coordHE{}  and \myHighlight{$v \in \cH$}\coordHE{}.
+Let \myHighlight{$u \in L_{y_1y_2}$}\coordHE{} be an element of the lifting bundle
+gerbe. Then, by definition, \myHighlight{$u \in U(\cH)$}\coordHE{} and \myHighlight{$y_1[u] = y_2$}\coordHE{}.  We
+define the action of \myHighlight{$u$}\coordHE{} by \myHighlight{$[r, v]u = [r[u], u^{-1}v]$}\coordHE{}.  It is
+straightforward to check that this is well defined.  Hence we have
+associated to any \myHighlight{$PU(\cH)$}\coordHE{} covariant \myHighlight{$U{_\mathcal K}$}\coordHE{} bundle \myHighlight{$R$}\coordHE{} on \myHighlight{$Y$}\coordHE{}
+a module for the lifting bundle gerbe.
+
+The inverse construction is also possible if the bundle gerbe
+module is a \myHighlight{$\UK$}\coordHE{} bundle gerbe module which we now define.
+Let \myHighlight{$E\to Y$}\coordHE{} be a  Hilbert bundle with structure
+group \myHighlight{$\UK$}\coordHE{}.  We recall what it means for a Hilbert bundle
+to have structure group \myHighlight{$\UK$}\coordHE{}.  To any Hilbert bundle  there is  associated a
+\myHighlight{$U(\cH)$}\coordHE{} bundle
+\myHighlight{$U(E)$}\coordHE{} whose fibre, \myHighlight{$U(E)_y$}\coordHE{}, at \myHighlight{$y$}\coordHE{} is all unitary isomorphisms
+\myHighlight{$f \colon \cH \to E_y$}\coordHE{}. If
+\myHighlight{$u \in U(\cH)$}\coordHE{} it acts on \myHighlight{$U(\cH)_y$}\coordHE{} by \myHighlight{$fu = f \circ u$}\coordHE{} and hence \myHighlight{$U(E)$}\coordHE{} is
+a principal \myHighlight{$U(\cH)$}\coordHE{} bundle.  For \myHighlight{$E$}\coordHE{} to have structure
+group \myHighlight{$\UK$}\coordHE{} means that we have a reduction of \myHighlight{$U(E)$}\coordHE{} to a \myHighlight{$\UK$}\coordHE{} bundle
+\myHighlight{$R \subset U(E)$}\coordHE{}.
+Each  \myHighlight{$R_y \subset U(E)_y$}\coordHE{} is an orbit under \myHighlight{$\UK$}\coordHE{}, that
+is \myHighlight{$R$}\coordHE{} is a principal \myHighlight{$\UK$}\coordHE{} bundle.
+
+For \myHighlight{$E$}\coordHE{} to be a \myHighlight{$\UK$}\coordHE{} bundle gerbe module we need to define
+an action of the bundle gerbe on it.  By comparing with the action on the
+bundle \myHighlight{$E$}\coordHE{} defined in \eqref{eq:associated} we see that we need to make the
+following  definition.  If
+\myHighlight{$u \in U(\cH)$}\coordHE{} such that \myHighlight{$y_{1}[u] = y_{2}$}\coordHE{}  then \myHighlight{$u \in L_{(y_1, y_2)}$}\coordHE{}
+where \myHighlight{$L \to Y^{[2]}$}\coordHE{} is the lifting bundle gerbe so if \myHighlight{$f \in R_{y_1}$}\coordHE{} then
+\myHighlight{$ufu^{-1} \in U(E)_{y_2}$}\coordHE{}.  We require that \myHighlight{$ufu^{-1} \in R_{y_2}$}\coordHE{}. So
+a lifting bundle gerbe module which is a \myHighlight{$\UK$}\coordHE{} Hilbert bundle and
+satisfies this condition we call a \myHighlight{$\UK$}\coordHE{} bundle gerbe module.  By
+construction
+we have that the associated \myHighlight{$R$}\coordHE{} is a \myHighlight{$\UK$}\coordHE{} bundle over \myHighlight{$Y$}\coordHE{} on which
+\myHighlight{$PU(\cH)$}\coordHE{} acts.  Let us denote by \myHighlight{$\Mod_{\UK}(M, [H])$}\coordHE{}
+the semi-group of all \myHighlight{$\UK$}\coordHE{} bundle gerbe modules for the
+lifting bundle gerbe of the \myHighlight{$PU(\cH)$}\coordHE{} bundle with three class \myHighlight{$[H]$}\coordHE{}. As
+any two \myHighlight{$PU(\cH)$}\coordHE{} bundles with the same three class are isomorphic we see
+that \myHighlight{$\Mod_{\UK}(M, [H])$}\coordHE{} depends only on \myHighlight{$[H]$}\coordHE{}.
+
+We have now proved
+\begin{proposition}
+\label{prop:U_K bg modules equals K(M;H)} 
+If \myHighlight{$(L, Y)$}\coordHE{} is the lifting bundle gerbe for a \myHighlight{$PU(\cH)$}\coordHE{}
+bundle with Dixmier-Douady class \myHighlight{$[H]$}\coordHE{}  $$\coord{}\boxMath{
+\redK(M, [H]) =  \Mod_{\UK}(M, [H]) .
+}{dollar}{0pt}\coordE{}$$
+\end{proposition}
+
+If \myHighlight{$L_1$}\coordHE{} and \myHighlight{$L_2$}\coordHE{} are two \myHighlight{$PU(\cH)$}\coordHE{} covariant \myHighlight{$U{_\mathcal K}$}\coordHE{} bundles
+on \myHighlight{$Y$}\coordHE{} note that
+\myHighlight{$L_1 \times L_2$}\coordHE{} is a \myHighlight{$U{_\mathcal K} \times U{_\mathcal K}$}\coordHE{} bundle.
+Choose an
+isomorphism \myHighlight{$\cH \times \cH \to \cH$}\coordHE{} which induces an isomorphism
+\myHighlight{$U{_\mathcal K} \times U{_\mathcal K} \to U{_\mathcal K}$}\coordHE{} and hence defines a
+new \myHighlight{$PU(\cH)$}\coordHE{} covariant bundle \myHighlight{$L_1 \otimes L_2$}\coordHE{}.  It is straightfoward
+to check that
+$$\coord{}\boxMath{
+(L_1 \otimes L_2 )(\cH) \simeq L_1(\cH) \times L_2(\cH).
+}{dollar}{0pt}\coordE{}$$
+
+This makes \myHighlight{$\Mod_{\UK}(M, [H])$}\coordHE{} a semi-group and the map
+\myHighlight{$\redK(M, [H]) =  \Mod_{\UK}(M, [H])$}\coordHE{} is a semi-group isomorphism.
+Note that with our definition \myHighlight{$B\UK$}\coordHE{} is a group. Moreover
+the space of all equivariant maps \myHighlight{$Y \to B\UK$}\coordHE{} is a group as well.
+To see this notice that if
+   \myHighlight{$f$}\coordHE{} and \myHighlight{$g$}\coordHE{} are equivariant maps and we multiply
+pointwise then for  \myHighlight{$y \in Y$}\coordHE{} and \myHighlight{$[u] \in PU(\cH)$}\coordHE{} we have
+\begin{align*}\coord{}\boxAlignEqnarray{
+\leftCoord{}(fg)(y[u]) &= f(y[u]) g(y[u]) \rightCoord{}\\
+&\leftCoord{}= (u^{-1} f(y) u) (u^{-1} g(y) u) \rightCoord{}\\
+&\leftCoord{}= u^{-1}(fg)(y) u
+}{0mm}{3}{3}{
+(fg)(y[u]) &= f(y[u]) g(y[u]) \\
+&= (u^{-1} f(y) u) (u^{-1} g(y) u) \\
+&= u^{-1}(fg)(y) u
+}{0}\coordE{}\end{align*}
+and if \myHighlight{$f^{-1}$}\coordHE{} is the pointwise inverse then  \myHighlight{$f^{-1}(y[u]) =
+\left( u^{-1} f(y) u \right)^{-1} = u^{-1} f^{-1}(y) u$}\coordHE{}.
+This induces a group structure on \myHighlight{$\Mod_{\UK}(M, [H])$}\coordHE{}. We have already
+noted that it is a semi-group but this implies more, for every \myHighlight{$\UK$}\coordHE{} bundle
+gerbe module \myHighlight{$E$}\coordHE{} there is a \myHighlight{$\UK$}\coordHE{} bundle gerbe module  
+\myHighlight{$E^{-1}$}\coordHE{} such that \myHighlight{$E \oplus E^{-1}$}\coordHE{}
+is the trivial \myHighlight{$\UK$}\coordHE{} bundle gerbe. Hence we have
+
+\begin{proposition} If \myHighlight{$(L, Y)$}\coordHE{} is the lifting bundle gerbe for a \myHighlight{$PU(\cH)$}\coordHE{}
+bundle with Dixmier-Douady class \myHighlight{$[H]$}\coordHE{} then
+$$\coord{}\boxMath{
+    K_{\UK}(M, [H]) = \Mod_{\UK}(M, [H])  = \redK(M, [H])
+}{dollar}{0pt}\coordE{}$$
+\end{proposition}
+
+
+\begin{note}
+\label{note:replace U_K with U_1} 
+(1) The group \myHighlight{$\UK$}\coordHE{} used here could be replaced by any
+other group to which it is homotopy equivalent by a homotopy
+equivalence preserving the \myHighlight{$PU(\cH)$}\coordHE{} action.  In particular we 
+could consider \myHighlight{$U_1$}\coordHE{}, the subgroup of \myHighlight{$U(\cH)$}\coordHE{} consisting 
+of unitary operators which differ from the identity by a 
+trace class operator.   
+In Section 9 we show that the computation in Section 6 of bundle gerbe
+characteristic classes generalizes, with some modifications, to
+\myHighlight{$U_1$}\coordHE{} bundle gerbe modules.  
+
+(2) In \cite{Har} it is argued that \myHighlight{$\UK$}\coordHE{} is the appropriate gauge
+group for non-commutative gauge theory.
+\end{note}
+
+
+
+\subsection{Local description of \myHighlight{$\UK$}\coordHE{} bundle gerbe modules}
+Let \myHighlight{$\{ U_i \}_{i\in I}$}\coordHE{} be a good cover of \myHighlight{$M$}\coordHE{} and let \myHighlight{$U_{ij\dots
+k} = U_{i} \cap U_{j} \cap \dots \cap U_{k}$}\coordHE{}.
+The trivial bundle has a sections \myHighlight{$s_i$}\coordHE{} which are related by
+$$\coord{}\boxMath{
+s_i = s_j [u_{ji}]
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$[u_{ji}] \colon U_{ij} \to PU(\cH)$}\coordHE{} for some \myHighlight{$u_{ji} \colon
+U_{ij}\to U(\cH)$}\coordHE{} where
+\myHighlight{$u_{ij}u_{jk}u_{ki} = g_{ijk}1$}\coordHE{} where \myHighlight{$1$}\coordHE{} is the
+identity operator and the \myHighlight{$g_{ijk}$}\coordHE{} are non-zero scalars.
+
+
+Over each of the \myHighlight{$s_i(U_i)$}\coordHE{}  are sections \myHighlight{$\sigma_i $}\coordHE{} of the \myHighlight{$\UK$}\coordHE{}
+bundle \myHighlight{$R$}\coordHE{}. We can compare
+\myHighlight{$\sigma_i$}\coordHE{} and \myHighlight{$\sigma_j[u_{ji}]$}\coordHE{} so that
+$$\coord{}\boxMath{
+\sigma_i = \sigma_j [u_{ji}] g_{ji}
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$g_{ij} \colon U_{ij} \to \UK$}\coordHE{}. These satisfy
+\begin{equation}\coord{}\boxEquation{
+\label{eq:twisted}
+g_{ki} = ([u_{ji}^{-1}] g_{kj} [u_{ji}]) g_{ji}.
+}{
+g_{ki} = ([u_{ji}^{-1}] g_{kj} [u_{ji}]) g_{ji}.
+}{ecuacion}\coordE{}\end{equation}
+
+If \myHighlight{$Y_i = \pi^{-1}(U_i)$}\coordHE{} you can define a section of \myHighlight{$R$}\coordHE{} over all of \myHighlight{$Y_i$}\coordHE{} by
+\myHighlight{$\hat\sigma_i ( s_i [u]) = \sigma_i[u]$}\coordHE{}.  The transition functions for these
+are \myHighlight{$\hat g_{ij}$}\coordHE{} where \myHighlight{$\hat g_{ij} (s_j[u]) = [u^{-1}] g_{ji} [u]$}\coordHE{} and the
+identity \eqref{eq:twisted}  is equivalent to \myHighlight{$\hat g_{ki} = \hat
+g_{kj} \hat g_{ji}$}\coordHE{}.
+
+
+
+\section{Examples}
+\label{sec:examples}
+
+This section contains calculations of twisted \myHighlight{$K$}\coordHE{}-theory, mainly for
+3 dimensional manifolds. In the ensuing computations, we sometimes make
+use of the  following observation in defining the connecting
+homomorphisms. Dixmier-Douady classes can be regarded canonically as
+elements in
+\myHighlight{$K^1$}\coordHE{}-theory in 3 dimensions. This is because when \myHighlight{$X$}\coordHE{} is a
+3 dimensional manifold, then it is a standard fact, since \myHighlight{$SU(2) \cong
+S^3$}\coordHE{}, that
+\myHighlight{$ H^3(X, \mathbb Z) = [X, SU(2)]$}\coordHE{}, where
+\myHighlight{$[\ ,\ ]$}\coordHE{} means homotopy classes.
+But \myHighlight{$SU(2)$}\coordHE{} includes canonically as a subgroup of
+\myHighlight{$U(\infty) = \displaystyle\lim_{\stackrel{\to}{n}} U(n)$}\coordHE{}, so that any
+map \myHighlight{$f: X \to
+SU(2)$}\coordHE{} can be regarded canonically as an element in \myHighlight{$K^1(X) = [X,
+U(\infty)]$}\coordHE{}. It follows that the map
+\myHighlight{$\phi: H^3(X, \mathbb Z) \to K^1(X)$}\coordHE{} is a homomorphism of groups, for
+3 dimensional
+manifolds \myHighlight{$X$}\coordHE{}. There is also a homomorphism \myHighlight{$\Ch_3: K^1(X)\to H^3( X,
+\mathbb Z)$}\coordHE{}
+that is derived from the Chern character and is given by the formula
+\myHighlight{$\Ch_3(t) = \frac{1}{12\pi}\Tr((t^{-1}dt)^3)$}\coordHE{}. Noting that
+\myHighlight{$H^3(X, \mathbb Z)$}\coordHE{} is torsion-free, a calculation shows that
+the composition \myHighlight{$\Ch_3\circ \phi$}\coordHE{} is the identity, since
+\myHighlight{$\frac{1}{12\pi}\Tr((g^{-1}dg)^3)$}\coordHE{} is the volume form of \myHighlight{$SU(2)$}\coordHE{}
+and so the differential form representative of a map
+\myHighlight{$f: X \to SU(2)$}\coordHE{} is just \myHighlight{$\Ch_3(f)$}\coordHE{}.
+Therefore \myHighlight{$\phi$}\coordHE{}
+is injective, which allows us to identify Dixmier-Douady classes
+with elements in \myHighlight{$K^1(X)$}\coordHE{}.
+
+
+
+\subsection{The three-sphere}
+
+We first discuss a few methods to compute the \myHighlight{$K$}\coordHE{}-theory \myHighlight{$K^\bullet(S^3)$}\coordHE{}
+in the untwisted case, and then generalize to the twisted case.
+
+\subsubsection{Mayer-Vietoris}
+
+Suppose \myHighlight{$X=U_1\cup U_2$}\coordHE{}, where \myHighlight{$U_i, i=1,2$}\coordHE{}, are closed subsets
+of a locally compact space \myHighlight{$X$}\coordHE{}. Then we have the short exact
+sequence of \myHighlight{$C^*$}\coordHE{}-algebras
+\begin{equation}\coord{}\boxEquation{
+\begin{CD}
+0 @>>> C_0(X) @>\imath>> C_0(U_1) \oplus C_0(U_2) @>\pi>>
+C_0(U_1\cap U_2) @>>> 0
+\end{CD}
+}{
+\begin{CD}
+0 @>>> C_0(X) @>\imath>> C_0(U_1) \oplus C_0(U_2) @>\pi>>
+C_0(U_1\cap U_2) @>>> 0
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+and the associated six-term exact
+(Mayer-Vietoris) sequence on \myHighlight{$K$}\coordHE{}-theory \cite[Th. 4.18]{Kar} %
+\footnote{There exists an analogous sequence if the \myHighlight{$U_i$}\coordHE{}'s are
+open subsets \cite[Th. 4.19]{Kar}.}
+\begin{equation}\coord{}\boxEquation{ \label{eqab}
+\begin{CD}
+K^0(X) @>\imath_*>> K^0(U_1)\oplus K^0(U_2) @>\pi_*>>
+        K^0(U_1\cap U_2) \\
+@AAA      && @VVV \\
+K^1(U_1\cap U_2) @<\pi_*<< K^1(U_1)\oplus K^1(U_2) @<\imath_*<<
+         K^1(X)
+\end{CD}
+}{ \begin{CD}
+K^0(X) @>\imath_*>> K^0(U_1)\oplus K^0(U_2) @>\pi_*>>
+        K^0(U_1\cap U_2) \\
+@AAA      && @VVV \\
+K^1(U_1\cap U_2) @<\pi_*<< K^1(U_1)\oplus K^1(U_2) @<\imath_*<<
+         K^1(X)
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+Now consider \myHighlight{$X=S^3$}\coordHE{}.  Take for the \myHighlight{$U_i$}\coordHE{} the upper and lower
+(closed) hemispheres \myHighlight{$D_\pm$}\coordHE{}, respectively.  Then, since \myHighlight{$D_\pm$}\coordHE{}
+is contractible, we have \myHighlight{$K^0(D_\pm)=\ZZ$}\coordHE{}, \myHighlight{$K^1(D_\pm)=0$}\coordHE{}, while
+\myHighlight{$D_+\cap D_- \sim_h S^2$}\coordHE{}.  Hence \eqref{eqab} reduces to
+\begin{equation}\coord{}\boxEquation{
+\begin{CD}
+K^0(S^3) @>\imath_*>> \ZZ \oplus \ZZ @>\pi_*>> K^0(S^2) \\
+@AAA      && @VVV \\
+K^1(S^2) @<\pi_*<< 0 @<\imath_*<<    K^1(S^3)
+\end{CD}
+}{
+\begin{CD}
+K^0(S^3) @>\imath_*>> \ZZ \oplus \ZZ @>\pi_*>> K^0(S^2) \\
+@AAA      && @VVV \\
+K^1(S^2) @<\pi_*<< 0 @<\imath_*<<    K^1(S^3)
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+If we use the fact that \myHighlight{$K^0(S^2)=\ZZ \oplus \ZZ$}\coordHE{} and \myHighlight{$K^0(S^2)=0$}\coordHE{},
+then we have a short exact sequence
+\begin{equation}\coord{}\boxEquation{
+\begin{CD}
+0 @>>> K^0(S^3) @>\imath_*>> \ZZ \oplus \ZZ @>\pi_*>> \ZZ \oplus \ZZ
+@>>> K^1(S^3) @>>> 0
+\end{CD}
+}{
+\begin{CD}
+0 @>>> K^0(S^3) @>\imath_*>> \ZZ \oplus \ZZ @>\pi_*>> \ZZ \oplus \ZZ
+@>>> K^1(S^3) @>>> 0
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+where the map \myHighlight{$\pi_*$}\coordHE{} is easily seen to be given by \myHighlight{$\pi_*(m,n)=(m-n,0)$}\coordHE{}.
+We conclude \myHighlight{$K^0(S^3)=\ZZ$}\coordHE{}, \myHighlight{$K^1(S^3)=\ZZ$}\coordHE{}.
+
+We can use the same procedure to compute the twisted \myHighlight{$K$}\coordHE{}-theory of
+\myHighlight{$S^3$}\coordHE{} (or, more generally, when
+the \myHighlight{$PU(\cH)$}\coordHE{} bundle \myHighlight{$\cE_{[H]}$}\coordHE{} is trivial over \myHighlight{$U_i$}\coordHE{}).
+In that case, \myHighlight{$C_0(X,\cE_{[H]})$}\coordHE{} is given by pasting
+\myHighlight{$C_0(U_1)\otimes \cK$}\coordHE{} and \myHighlight{$C_0(U_2)\otimes \cK$}\coordHE{} over
+\myHighlight{$U_1\cap U_2$}\coordHE{} via a map \myHighlight{$L_{[H]}\,:\,U_1\cap U_2\to PU(\cH)$}\coordHE{}, i.e.\
+$$\coord{}\boxMath{
+C_0(X,\cE_{[H]})  = \{ (f_1,f_2)\ | \ f_i\in C_0(U_i)\otimes \cK\,,\
+       f_1{}_{\lvert U_1\cap U_2} = L_{[H]} (f_2{}_{\lvert U_1\cap U_2} )
+        \}  \,,
+}{dollar}{0pt}\coordE{}$$
+and we have a short exact sequence
+$$\coord{}\boxMath{
+\begin{CD}
+0 @>>> C_0(X,\cE_{[H]}) @>\imath>> \bigoplus_i C_0(U_i)\otimes \cK
+@>\pi>> C_0(U_1\cap U_2) \otimes \cK @>>> 0
+\end{CD}
+}{dollar}{0pt}\coordE{}$$
+where
+$$\coord{}\boxMath{
+\imath(f_1,f_2) = f_1\oplus f_2 \,,\qquad
+\pi(f_1\oplus f_2) = f_1{}_{\lvert U_1\cap U_2} -
+        L_{[H]} (f_2{}_{\lvert U_1\cap U_2} ) \,.
+}{dollar}{0pt}\coordE{}$$
+The associated six-term exact sequence in twisted \myHighlight{$K$}\coordHE{}-theory
+is given by \cite{Rosa}
+\begin{equation}\coord{}\boxEquation{
+\begin{CD}
+K^0(X,[H]) @>\imath_*>> K^0(U_1)\oplus K^0(U_2) @>\pi_*>>
+        K^0(U_1\cap U_2) \\
+@AAA      && @VVV \\
+K^1(U_1\cap U_2) @<\pi_*<< K^1(U_1)\oplus K^1(U_2) @<\imath_*<<
+         K^1(X,[H])
+\end{CD}
+}{
+\begin{CD}
+K^0(X,[H]) @>\imath_*>> K^0(U_1)\oplus K^0(U_2) @>\pi_*>>
+        K^0(U_1\cap U_2) \\
+@AAA      && @VVV \\
+K^1(U_1\cap U_2) @<\pi_*<< K^1(U_1)\oplus K^1(U_2) @<\imath_*<<
+         K^1(X,[H])
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+and in the case of \myHighlight{$S^3$}\coordHE{} collapses to
+\begin{equation}\coord{}\boxEquation{
+\begin{CD}
+0 @>>> K^0(S^3,[H]) @>\imath_*>> \ZZ \oplus \ZZ @>\pi_*>> \ZZ \oplus \ZZ
+@>>> K^1(S^3,[H]) @>>> 0
+\end{CD}
+}{
+\begin{CD}
+0 @>>> K^0(S^3,[H]) @>\imath_*>> \ZZ \oplus \ZZ @>\pi_*>> \ZZ \oplus \ZZ
+@>>> K^1(S^3,[H]) @>>> 0
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+where now the map \myHighlight{$\pi_*$}\coordHE{} is given by \myHighlight{$\pi_*(m,n)=(m-n,-nN)$}\coordHE{}
+if \myHighlight{$[H]=N[H_0]$}\coordHE{} where \myHighlight{$[H_0]$}\coordHE{} is the generator of \myHighlight{$H^3(S^3,\ZZ)=\ZZ$}\coordHE{}.
+We conclude \myHighlight{$K^0(S^3,[H])=0$}\coordHE{}, \myHighlight{$K^1(S^3,[H])=\ZZ/N\ZZ$}\coordHE{}.
+This computation was initially performed in \cite{Rosa} and was
+recently reviewed in the context of D-branes in \cite{Maly}.
+
+\subsubsection{The three-sphere at infinity}
+
+We can think of \myHighlight{$S^3$}\coordHE{} as being the boundary of the closed four-ball
+\myHighlight{$B^4$}\coordHE{}.  This leads to a short exact sequence
+\begin{equation}\coord{}\boxEquation{ \label{eqba}
+\begin{CD}
+0 @>>> C_0(\RR^4) @>\imath>> C(B^4) @>>> C(S^3) @>>> 0
+\end{CD}
+}{ \begin{CD}
+0 @>>> C_0(\RR^4) @>\imath>> C(B^4) @>>> C(S^3) @>>> 0
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+and associated six-terms sequence in \myHighlight{$K$}\coordHE{}-theory
+\begin{equation}\coord{}\boxEquation{
+\begin{CD}
+K^0(\RR^4) @>\imath_*>> K^0(B^4) @>>>   K^0(S^3) \\
+        @AAA      &            &      @VVV \\
+K^1(S^3)   @<<< K^1(B^4) @<<<    K^1(\RR^4)
+\end{CD}
+}{
+\begin{CD}
+K^0(\RR^4) @>\imath_*>> K^0(B^4) @>>>   K^0(S^3) \\
+        @AAA      &            &      @VVV \\
+K^1(S^3)   @<<< K^1(B^4) @<<<    K^1(\RR^4)
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+Using Bott-periodicity, \myHighlight{$K^0(\RR^4)=\ZZ$}\coordHE{}, \myHighlight{$K^1(\RR^4)=0$}\coordHE{}, while
+contractibility of \myHighlight{$B^4$}\coordHE{} implies \myHighlight{$K^0(B^4)=\ZZ$}\coordHE{}, \myHighlight{$K^1(B^4)=0$}\coordHE{}.
+Using furthermore that the map \myHighlight{$\imath_*:K^0(\RR^4)\to K^0(B^4)$}\coordHE{}
+is trivial in this case, we again have \myHighlight{$K^0(S^3)=K^1(S^3)=\ZZ$}\coordHE{}.
+However, since in general a \myHighlight{$PU(\cH)$}\coordHE{}-bundle \myHighlight{$\cE_{[H]}$}\coordHE{} over
+\myHighlight{$S^3$}\coordHE{} does not extend to \myHighlight{$B^4$}\coordHE{} we can not generalize \eqref{eqba}
+to the twisted case.
+
+\subsubsection{Excision of a point}
+
+Excising a point \myHighlight{$x_0$}\coordHE{} from \myHighlight{$S^3$}\coordHE{} we have
+\begin{equation}\coord{}\boxEquation{ \label{eqca}
+\begin{CD}
+0 @>>> C_0(\RR^3) @>>> C(S^3) @>>> C(\{x_0\}) @>>> 0
+\end{CD}
+}{ \begin{CD}
+0 @>>> C_0(\RR^3) @>>> C(S^3) @>>> C(\{x_0\}) @>>> 0
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+and, accordingly,
+\begin{equation}\coord{}\boxEquation{ \label{eqcb}
+\begin{CD}
+K^0(\RR^3) @>>> K^0(S^3) @>>>   K^0(\{x_0\}) \\
+        @AAA      &            &      @VV\Delta V \\
+K^1(\{x_0\})   @<<< K^1(S^3) @<<<    K^1(\RR^3)
+\end{CD}
+}{ \begin{CD}
+K^0(\RR^3) @>>> K^0(S^3) @>>>   K^0(\{x_0\}) \\
+        @AAA      &            &      @VV\Delta V \\
+K^1(\{x_0\})   @<<< K^1(S^3) @<<<    K^1(\RR^3)
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+Again, using Bott-periodicity, \myHighlight{$K^0(\RR^3)=0$}\coordHE{}, \myHighlight{$K^1(\RR^3)=\ZZ$}\coordHE{}, while
+\myHighlight{$K^0(\{x_0\}) =\ZZ$}\coordHE{}, \myHighlight{$K^1(\{x_0\}) =0$}\coordHE{}.  In this case the
+connecting map \myHighlight{$\Delta:K^0(\{x_0\})\to K^1(\RR^3)$}\coordHE{} is trivial.
+And thus, we conclude \myHighlight{$K^0(S^3)=K^1(S^3)=\ZZ$}\coordHE{}.
+In this case we can generalize \eqref{eqca} to the twisted case, namely
+\begin{equation}\coord{}\boxEquation{ \label{eqcc}
+\begin{CD}
+0 @>>> C_0(\RR^3)\otimes \cK @>>> C(S^3,\cE_{[H]}) @>>>
+C(\{x_0\})\otimes \cK  @>>> 0
+\end{CD}
+}{ \begin{CD}
+0 @>>> C_0(\RR^3)\otimes \cK @>>> C(S^3,\cE_{[H]}) @>>>
+C(\{x_0\})\otimes \cK  @>>> 0
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+The associated six-term sequence in twisted \myHighlight{$K$}\coordHE{}-theory is similar
+to \eqref{eqcb}, except that \myHighlight{$\Delta:K^0(\{x_0\})=\ZZ\to K^1(\RR^3)=\ZZ$}\coordHE{},
+is now given by \myHighlight{$\Delta(m) = mN$}\coordHE{}.
+We conclude again \myHighlight{$K^0(S^3,[H])=0$}\coordHE{}, \myHighlight{$K^1(S^3,[H])=\ZZ/N\ZZ$}\coordHE{}.
+
+\subsection{Product of one- and two-sphere}
+
+The case \myHighlight{$X=S^1\times S^2$}\coordHE{} is interesting since an explicit
+realization of the principle \myHighlight{$PU(\cH)$}\coordHE{}-bundles over \myHighlight{$X$}\coordHE{},
+for \myHighlight{$[H]\in H^3(S^1\times S^2,\ZZ)=\ZZ$}\coordHE{}, is known
+\cite{Bry}.
+We can compute \myHighlight{$K^\bullet(S^1\times S^2,[H])$}\coordHE{} using the Mayer-Vietoris
+sequence as in Section 8.1.1, but the analogue of the procedure in
+section 8.1.3 is more convenient.  Take a point \myHighlight{$x_0\in S^1$}\coordHE{}. We have
+\begin{equation}\coord{}\boxEquation{ \label{eqda}
+\begin{CD}
+0 @>>> C_0(\RR\times S^2) @>>> C(S^1\times S^2) @>>>
+C(\{x_0\}\times S^2) @>>> 0
+\end{CD}
+}{ \begin{CD}
+0 @>>> C_0(\RR\times S^2) @>>> C(S^1\times S^2) @>>>
+C(\{x_0\}\times S^2) @>>> 0
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+Using \myHighlight{$K^n(\RR\times S^2) = K^{n+1}(S^2)$}\coordHE{} and
+\myHighlight{$K^\bullet(\{x_0\}\times S^2) =
+K^\bullet(S^2)$}\coordHE{}, we have for the twisted analogue of \eqref{eqda}
+\begin{equation}\coord{}\boxEquation{ \label{eqdb}
+\begin{CD}
+K^1(S^2) @>>> K^0(S^1\times S^2,[H]) @>>>   K^0(S^2) \\
+        @AAA      &            &      @VV\Delta V \\
+K^1(S^2)   @<<< K^1(S^1\times S^2,[H]) @<<<    K^0(S^2)
+\end{CD}
+}{ \begin{CD}
+K^1(S^2) @>>> K^0(S^1\times S^2,[H]) @>>>   K^0(S^2) \\
+        @AAA      &            &      @VV\Delta V \\
+K^1(S^2)   @<<< K^1(S^1\times S^2,[H]) @<<<    K^0(S^2)
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+Now, \myHighlight{$K^0(S^2) = \ZZ\oplus \ZZ$}\coordHE{} and \myHighlight{$K^1(S^2)=0$}\coordHE{}.  The connecting
+map \myHighlight{$\Delta: K^0(S^2) \to K^0(S^2)$}\coordHE{} corresponds to taking the cup-product
+with \myHighlight{$[H]$}\coordHE{}.  Say, if \myHighlight{$[\omega]$}\coordHE{} is the generating line-bundle of \myHighlight{$K^0(S^2)$}\coordHE{}
+then \myHighlight{$\Delta (m\cdot 1 + n [\omega]) = (m\cdot 1 + n [\omega])\cup [H]$}\coordHE{}.
+We conclude \myHighlight{$\Delta: (m,n) = (0,mN)$}\coordHE{}.  Hence,
+\myHighlight{$K^0(S^1\times S^2,[H]) = \ZZ$}\coordHE{} and \myHighlight{$K^1(S^1\times S^2,[H]) = \ZZ \oplus
+(\ZZ/N\ZZ)$}\coordHE{} for \myHighlight{$N\neq0$}\coordHE{}, while for \myHighlight{$N=0$}\coordHE{} we have
+\myHighlight{$K^0(S^1\times S^2,[H]) = K^1(S^1\times S^2,[H]) = \ZZ \oplus\ZZ$}\coordHE{},
+as it should.
+The same conclusion is reached from the (twisted) Atiyah-Hirzebruch
+spectral sequence, cf.\ \cite{Rosa}.
+
+
+
+\subsection{The real projective three-space}
+
+The \myHighlight{$K$}\coordHE{}-theory for the real projective spaces \myHighlight{$\RP^n$}\coordHE{} is given in
+\cite[Prop. 2.7.7]{Ati}.
+\begin{align}\coord{}\boxAlignEqnarray{
+\leftCoord{}\widetilde{K}^{\leftCoord{}0}(\RP^{2n+1}) = \widetilde{K}^{\leftCoord{}0}(\RP^{\leftCoord{}2n}) & =\ZZ_{\rightCoord{}2^{\leftCoord{}n}}\,,
+&\leftCoord{}\nonumber \rightCoord{}\\
+\leftCoord{}K^{\leftCoord{}1}(\RP^{2n+1}) & = \ZZ \,, & K^{\leftCoord{}1}(\RP^{\leftCoord{}2n}) & = 0 \,.
+}{0mm}{10}{3}{
+\widetilde{K}^{0}(\RP^{2n+1}) = \widetilde{K}^{0}(\RP^{2n}) & =\ZZ_{2^{n}}\,,
+&\nonumber \\
+K^{1}(\RP^{2n+1}) & = \ZZ \,, & K^{1}(\RP^{2n}) & = 0 \,.
+}{0}\coordE{}\end{align}
+For \myHighlight{$\RP^3$}\coordHE{} part of this result is derived by looking
+at the six-term sequence related to the short exact sequence
+\begin{equation}\coord{}\boxEquation{ \label{eqea}
+\begin{CD}
+0 @>>> C_0(\RR^3) @>>> C(\RP^3) @>>> C(\RP^2) @>>> 0
+\end{CD}
+}{ \begin{CD}
+0 @>>> C_0(\RR^3) @>>> C(\RP^3) @>>> C(\RP^2) @>>> 0
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+i.e., the exact sequence corresponding to the pair \myHighlight{$(\RP^3,\RP^2)$}\coordHE{}.
+The associated six-term exact sequence is
+\begin{equation}\coord{}\boxEquation{ \label{eqeb}
+\begin{CD}
+K^0(\RR^3) @>>> K^0(\RP^3) @>>>   K^0(\RP^2) \\
+        @AAA      &            &      @VV\Delta V \\
+K^1(\RP^2)   @<<< K^1(\RP^3) @<<<    K^1(\RR^3)
+\end{CD}
+}{ \begin{CD}
+K^0(\RR^3) @>>> K^0(\RP^3) @>>>   K^0(\RP^2) \\
+        @AAA      &            &      @VV\Delta V \\
+K^1(\RP^2)   @<<< K^1(\RP^3) @<<<    K^1(\RR^3)
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+Now, \myHighlight{$K^0(\RR^3)=0$}\coordHE{} and \myHighlight{$K^1(\RR^3)=\ZZ$}\coordHE{}.  So, the result of \cite{Ati},
+\myHighlight{$K^0(\RP^3)=K^0(\RP^2) = \ZZ \oplus \ZZ_2$}\coordHE{} and \myHighlight{$K^1(\RP^2)=0$}\coordHE{},
+\myHighlight{$K^1(\RP^3)=\ZZ$}\coordHE{}
+is perfectly consistent with \eqref{eqea} provided the connecting map
+\myHighlight{$\Delta : K^0(\RP^2) \to K^1(\RR^3)$}\coordHE{} vanishes in this case (which is not
+too hard to check independently, i.e.\ as in \eqref{eqdb}).
+In the twisted version of \eqref{eqea} and \eqref{eqeb} the connecting
+map \myHighlight{$\Delta$}\coordHE{} is given by \myHighlight{$\Delta (m,n) = mN$}\coordHE{}, if \myHighlight{$[H]$}\coordHE{}
+is \myHighlight{$N$}\coordHE{} times the generator of \myHighlight{$H^3(\RP^3,\ZZ)=\ZZ$}\coordHE{}.
+Thus \myHighlight{$K^0(\RP^3,[H]) = \ZZ_2$}\coordHE{} and \myHighlight{$K^1(\RP^3,[H]) = \ZZ/N\ZZ$}\coordHE{}.
+
+Alternatively, we may use \myHighlight{$\RP^3=S^3/\ZZ_2$}\coordHE{} and
+compute \myHighlight{$K^\bullet(\RP^3)$}\coordHE{} through the \myHighlight{$\ZZ_2$}\coordHE{}-equivariant \myHighlight{$K$}\coordHE{}-theory
+of \myHighlight{$S^3$}\coordHE{}.  In that case, however, none of the sequences for \myHighlight{$S^3$}\coordHE{}
+discussed in Section 1 are appropriate since we need \myHighlight{$\ZZ_2$}\coordHE{} to act
+on the subspace.  We can however slightly modify \eqref{eqca} by
+cutting out two points \myHighlight{$\{x_0,x_1\} \in S^3$}\coordHE{} related by the \myHighlight{$\ZZ_2$}\coordHE{} action.
+I.e.\
+\begin{equation}\coord{}\boxEquation{ \label{eqec}
+\begin{CD}
+0 @>>> C_0(\RR \times S^2) @>>> C(S^3) @>>> C(\{x_0,x_1\}) @>>> 0
+\end{CD}
+}{ \begin{CD}
+0 @>>> C_0(\RR \times S^2) @>>> C(S^3) @>>> C(\{x_0,x_1\}) @>>> 0
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+The associated six-term sequence in \myHighlight{$\ZZ_2$}\coordHE{}-equivariant \myHighlight{$K$}\coordHE{}-theory
+is
+\begin{equation}\coord{}\boxEquation{ \label{eqed}
+\begin{CD}
+K^0_{\ZZ_2}(\RR\times S^2) @>>> K^0(\RP^3) @>>>   K^0(\{x_0\}) \\
+        @AAA        &               &                      @VV\Delta V \\
+K^1(\{x_0\})   @<<< K^1(\RP^3) @<<<    K^1_{\ZZ_2}(\RR\times S^2)
+\end{CD}
+}{ \begin{CD}
+K^0_{\ZZ_2}(\RR\times S^2) @>>> K^0(\RP^3) @>>>   K^0(\{x_0\}) \\
+        @AAA        &               &                      @VV\Delta V \\
+K^1(\{x_0\})   @<<< K^1(\RP^3) @<<<    K^1_{\ZZ_2}(\RR\times S^2)
+\end{CD}
+}{ecuacion}\coordE{}\end{equation}
+where we have used \myHighlight{$K^\bullet_{\ZZ_2}(\{x_0,x_1\}) =
+K^\bullet(\{x_0\})$}\coordHE{} since
+\myHighlight{$\ZZ_2$}\coordHE{} acts freely on \myHighlight{$\{x_0,x_1\}$}\coordHE{}.  Note however that while \myHighlight{$\ZZ_2$}\coordHE{}
+does act freely on \myHighlight{$\RR\times S^2$}\coordHE{} it does not act freely on \myHighlight{$\RR$}\coordHE{}
+separately.  Hence it would be wrong to conclude that
+\myHighlight{$K^0_{\ZZ_2}(\RR\times S^2)$}\coordHE{} is equal to
+\myHighlight{$K^0(\RR\times \RP^2) = K^1(\RP^2) = 0$}\coordHE{}.  In fact, the connecting map
+\myHighlight{$\Delta$}\coordHE{} vanishes in this case. Using our result for \myHighlight{$K^\bullet(\RP^3)$}\coordHE{}
+then yields
+\myHighlight{$K^0_{\ZZ_2}(\RR\times S^2) = \ZZ_2$}\coordHE{}, \myHighlight{$K^1_{\ZZ_2}(\RR\times S^2) = \ZZ$}\coordHE{}
+(this also follows from \cite[Prop. 2.4]{Kar}).  In the twisted case
+\myHighlight{$\Delta (m) = mN$}\coordHE{} and again we find
+\myHighlight{$K^0(\RP^3,[H]) = \ZZ_2$}\coordHE{} and \myHighlight{$K^1(\RP^3,[H]) = \ZZ/N\ZZ$}\coordHE{}.
+
+
+\subsection{Lens spaces}
+
+In the case of a Lens space \myHighlight{$L_p=S^3/\ZZ_p$}\coordHE{}, for \myHighlight{$p$}\coordHE{} a prime, we can
+compute \myHighlight{$K^\bullet(L_p)$}\coordHE{} as in \cite{Ati} with the result
+\begin{equation}\coord{}\boxEquation{
+K^0(L_p) = \ZZ\oplus \ZZ_p\,,\qquad K^1(L_p)= \ZZ \,.
+}{
+K^0(L_p) = \ZZ\oplus \ZZ_p\,,\qquad K^1(L_p)= \ZZ \,.
+}{ecuacion}\coordE{}\end{equation}
+Generalizing the equivariant computation of section 3 immediately gives
+\begin{equation}\coord{}\boxEquation{
+K^0(L_p,[H]) = \ZZ_p\,,\qquad K^1(L_p,[H])= \ZZ/N\ZZ \,.
+}{
+K^0(L_p,[H]) = \ZZ_p\,,\qquad K^1(L_p,[H])= \ZZ/N\ZZ \,.
+}{ecuacion}\coordE{}\end{equation}
+D-branes on Lens spaces were recently considered in \cite{MMS}.
+
+\subsection{Group manifolds}
+
+In the case of \myHighlight{$G=SU(n)$}\coordHE{} we have \\
+\myHighlight{$H^\bullet(G,\QQ) = \bigwedge \{ c_3,c_5,\ldots,c_{2n-1} \}$}\coordHE{}
+where \myHighlight{$c_n\in H^n(G,\QQ)$}\coordHE{}.  The \myHighlight{$K$}\coordHE{}-groups are given similarly in
+terms of certain appropriately normalized linear combinations of the
+\myHighlight{$c_n$}\coordHE{}.  Since the generator of \myHighlight{$H^3(G,\ZZ)=\ZZ$}\coordHE{} corresponds to
+\myHighlight{$c_3$}\coordHE{}  (appropriately normalized), the third differential \myHighlight{$d_3$}\coordHE{} in the
+(twisted) Atiyah-Hirzebruch spectral sequence corresponds to taking the
+wedge product with \myHighlight{$Nc_3$}\coordHE{} if \myHighlight{$[H]=Nc_3$}\coordHE{}.
+Thus
+\begin{equation}\coord{}\boxEquation{
+{\rm Ker} \ d_3 = \ZZ c_3 \wedge \left( \bigwedge \{ c_5,\ldots,c_{2n-1} \}
+       \right)
+}{
+{\rm Ker} \ d_3 = \ZZ c_3 \wedge \left( \bigwedge \{ c_5,\ldots,c_{2n-1} \}
+       \right)
+}{ecuacion}\coordE{}\end{equation}
+while
+\begin{equation}\coord{}\boxEquation{
+{\rm Im} \ d_3 = N \ZZ c_3 \wedge \left( \bigwedge \{ c_5,\ldots,c_{2n-1} \}
+       \right) \,.
+}{
+{\rm Im} \ d_3 = N \ZZ c_3 \wedge \left( \bigwedge \{ c_5,\ldots,c_{2n-1} \}
+       \right) \,.
+}{ecuacion}\coordE{}\end{equation}
+I.e., at the 3rd term of the spectral sequence, we have
+\begin{equation}\coord{}\boxEquation{
+E_3^\bullet(SU(n),[H]) = (\ZZ/N\ZZ) \ c_3 \wedge \left(
+\bigwedge \{ c_5,\ldots,c_{2n-1} \} \right) \,.
+}{
+E_3^\bullet(SU(n),[H]) = (\ZZ/N\ZZ) \ c_3 \wedge \left(
+\bigwedge \{ c_5,\ldots,c_{2n-1} \} \right) \,.
+}{ecuacion}\coordE{}\end{equation}
+The spectral sequence collapses at the 3rd term for \myHighlight{$G=SU(2)$}\coordHE{}, e.g.
+\begin{equation}\coord{}\boxEquation{
+K^0(SU(2),[H])  = 0\,, \qquad  K^1(SU(2),[H])  = \ZZ/N\ZZ\,, 
+}{
+K^0(SU(2),[H])  = 0\,, \qquad  K^1(SU(2),[H])  = \ZZ/N\ZZ\,, 
+}{ecuacion}\coordE{}\end{equation}
+(in agreement with the results of Section 8.1.1), but for 
+\myHighlight{$G=SU(n), n>2$}\coordHE{}, the higher order differentials are nonzero
+\cite{Hop} (see also \cite{MalMooSei}).
+D-branes on group manifolds were studied in, e.g.,
+\cite{AlSc,FigSta,FS}.
+
+
+\section{The Chern character in the non-torsion case} 
+
+\subsection{\myHighlight{$U_{\mathcal{K}}$}\coordHE{} bundle gerbe modules} 
+
+Recall that in the finite dimensional case we were able 
+to consider connections \myHighlight{$\nabla$}\coordHE{} on a finite rank bundle gerbe module 
+\myHighlight{$E$}\coordHE{} which were compatible with a bundle gerbe connection 
+on the bundle gerbe \myHighlight{$L$}\coordHE{}, so-called `bundle gerbe 
+module connections'.  If \myHighlight{$F_{\nabla}$}\coordHE{} denoted the 
+curvature \myHighlight{$2$}\coordHE{}-form of \myHighlight{$\nabla$}\coordHE{}, we were able to show 
+that the \myHighlight{$2$}\coordHE{}-form \myHighlight{$F_{\nabla} + fI$}\coordHE{} with values in the 
+bundle \myHighlight{$\Omega^2(\End(E))$}\coordHE{} was compatible with the descent isomorphism 
+for \myHighlight{$\End(E)$}\coordHE{}, where \myHighlight{$f$}\coordHE{} was the `curving' for the 
+bundle gerbe connection on \myHighlight{$L$}\coordHE{}.  It followed that the 
+forms \myHighlight{$\tr(F_{\nabla} + fI)^k$}\coordHE{} descend to \myHighlight{$M$}\coordHE{}.   
+
+In the case of infinite rank bundle gerbe modules, to make 
+sense of the trace, we need to restrict our attention to 
+bundle gerbe modules with a reduction of the structure 
+group to \myHighlight{$U_1$}\coordHE{}, the group of unitaries differing from the 
+identity by a trace class operator.  As remarked earlier, 
+in Note~\ref{note:replace U_K with U_1}, 
+in the definition of twisted \myHighlight{$K$}\coordHE{}-theory 
+we can replace Fred by any homotopy equivalent space, as 
+long as that space is \myHighlight{$PU(\mathcal{H})$}\coordHE{} equivariant.  
+The notion of a bundle 
+gerbe module connection continues to make sense in this 
+setting however it is not possible to find module connections 
+so that the bundle-valued \myHighlight{$2$}\coordHE{}-forms \myHighlight{$F_{\nabla} + fI$}\coordHE{} 
+take trace class values, ie lie in the adjoint bundle 
+\myHighlight{$\Omega^2 (\ad(P))$}\coordHE{} associated to the \myHighlight{$PU(\mathcal{H})$}\coordHE{} covariant 
+principal \myHighlight{$U_1$}\coordHE{} bundle \myHighlight{$P$}\coordHE{} via the adjoint action of 
+\myHighlight{$U_1$}\coordHE{} on its Lie algebra \myHighlight{$\mathcal{L}_1$}\coordHE{}, the ideal 
+of trace class operators on \myHighlight{$\mathcal{H}$}\coordHE{}.  Instead, 
+given a pair of \myHighlight{$PU(\mathcal{H})$}\coordHE{} covariant principal 
+\myHighlight{$U_1$}\coordHE{} bundles \myHighlight{$P$}\coordHE{} and \myHighlight{$Q$}\coordHE{}, defining a class in 
+twisted \myHighlight{$K$}\coordHE{}-theory, we can consider differences of 
+bundle-valued \myHighlight{$2$}\coordHE{}-forms \myHighlight{$(\mathcal{F}_P + fI) - (\mathcal{F}_Q 
++fI)$}\coordHE{} coming from module connections on the  
+Hilbert vector bundles associated to \myHighlight{$P$}\coordHE{} and \myHighlight{$Q$}\coordHE{}.  We will 
+show that it is still possible to make sense of the 
+trace in this setting and that we can define 
+forms on \myHighlight{$M$}\coordHE{} representing classes in the 
+twisted cohomology group \myHighlight{$H^{\bullet}(M;H)$}\coordHE{}.  We propose that 
+these forms on \myHighlight{$M$}\coordHE{} define the Chern character for reduced twisted 
+\myHighlight{$K$}\coordHE{}-theory \myHighlight{$\tilde{K}^0(M;[H])$}\coordHE{}.  Recall that the Chern character for 
+(reduced) twisted \myHighlight{$K$}\coordHE{}-theory is a homomorphism \myHighlight{$ch_{[H]}\colon 
+\tilde{K}^0(M;[H])\to H^\bullet(M;[H])$}\coordHE{}.  \myHighlight{$ch_{[H]}$}\coordHE{} is 
+uniquely characterised by requiring that it is functorial 
+with respect to pullbacks, respects the 
+\myHighlight{$\tilde{K}^0(M)$}\coordHE{}-module structure of \myHighlight{$\tilde{K}^0(M;[H])$}\coordHE{} 
+and reduces to the ordinary Chern character in the 
+untwisted case when \myHighlight{$[H] = 0$}\coordHE{}.  
+      
+     
+\subsection{Remarks on the projective unitary group} 
+
+Dixmier and Douady's 1963 work on continuous fields of 
+\myHighlight{$C^*$}\coordHE{}-algebras exploited the fact that there is a 
+natural bijection between \myHighlight{$H^3(M;\ZZ)$}\coordHE{} and isomorphism 
+classes of principal \myHighlight{$PU$}\coordHE{} bundles on \myHighlight{$M$}\coordHE{}.  They used 
+the strong operator topology on \myHighlight{$U(\mathcal{H})$}\coordHE{}, the group of unitary 
+operators on an infinite dimensional separable Hilbert space 
+\myHighlight{$\mathcal{H}$}\coordHE{}.  Neither \myHighlight{$U(\mathcal{H})$}\coordHE{} with the 
+strong operator topology nor \myHighlight{$PU(\mathcal{H})$}\coordHE{} with the 
+induced topology are Lie groups.     
+In 1965 Kuiper proved that \myHighlight{$U(\mathcal{H})$}\coordHE{} 
+equipped with the norm topology is contractible.  
+\myHighlight{$U(\mathcal{H})$}\coordHE{}, equipped with the norm topology, is a Lie group 
+(see for instance \cite{Milnor}) 
+and one can show that \myHighlight{$PU(\mathcal{H})$}\coordHE{} equipped with the 
+topology induced by the norm topology on \myHighlight{$U(\mathcal{H})$}\coordHE{} 
+is a Lie group modelled locally on the quotient 
+\myHighlight{$Lie(U(\mathcal{H}))/i\RR$}\coordHE{} \cite{Tol}. 
+
+
+\subsection{Twisted cohomology} 
+
+There are several definitions of twisted cohomology 
+that are well known among experts and which are all 
+probably equivalent.  One such definition is 
+given by Atiyah in \cite{Ati2}.  We give another 
+definition here.   
+If \myHighlight{$H$}\coordHE{} is a closed, differential \myHighlight{$3$}\coordHE{}-form on 
+\myHighlight{$M$}\coordHE{} then we can use \myHighlight{$H$}\coordHE{} to introduce 
+a `twist' on the usual cohomology of \myHighlight{$M$}\coordHE{} and consider the 
+twisted cohomology group \myHighlight{$H^\bullet(M;H)$}\coordHE{}.   
+\myHighlight{$H^\bullet(M;H)$}\coordHE{} is constructed 
+from the algebra \myHighlight{$\Omega^\bullet(M)$}\coordHE{} of differential forms 
+on \myHighlight{$M$}\coordHE{} by introducing a twisted differential \myHighlight{$\delta$}\coordHE{} on \myHighlight{$\Omega^\bullet(M)$}\coordHE{} 
+given by \myHighlight{$\delta = d-H$}\coordHE{}, where \myHighlight{$d$}\coordHE{} is the usual exterior derivative of 
+differential forms on \myHighlight{$M$}\coordHE{}.  It is easy to see that 
+\myHighlight{$\delta^2 = 0$}\coordHE{} using the fact that \myHighlight{$H$}\coordHE{} is of degree 
+three and hence \myHighlight{$H^2 = 0$}\coordHE{}.  We then set 
+$$\coord{}\boxMath{ 
+H^\bullet(M;H) = \text{ker}\{\delta\colon \Omega^\bullet(M) 
+\to \Omega^\bullet(M)\}/\text{im}\{\delta\colon \Omega^\bullet(M) 
+\to \Omega^\bullet(M)\}. 
+}{dollar}{0pt}\coordE{}$$  \myHighlight{$H^\bullet(M;H)$}\coordHE{} is then a group under addition which 
+satisfies the obvious functorial property that a 
+smooth map \myHighlight{$f\colon N\to M$}\coordHE{} induces a homomorphism 
+\myHighlight{$f^*\colon H^\bullet(M;H) \to H^\bullet(N;f^*H)$}\coordHE{}.   
+Note that although there is no algebra structure on 
+\myHighlight{$H^\bullet(M;H)$}\coordHE{}, there exist homomorphisms 
+\myHighlight{$H^\bullet(M;H)\otimes H^\bullet(M;H') \to 
+H^\bullet(M;H+H')$}\coordHE{}.  When \myHighlight{$H = H' = 0$}\coordHE{} this is 
+just the usual wedge product of forms.  If \myHighlight{$H' = 0$}\coordHE{} only 
+then this map defines an action of the ordinary cohomology algebra  
+\myHighlight{$H^\bullet(M)$}\coordHE{} on \myHighlight{$H^\bullet(M;H)$}\coordHE{} making 
+\myHighlight{$H^\bullet(M;H)$}\coordHE{} into 
+a \myHighlight{$H^\bullet(M)$}\coordHE{}-module.  Note that if \myHighlight{$\lambda$}\coordHE{} is a 
+\myHighlight{$2$}\coordHE{}-form on \myHighlight{$M$}\coordHE{} then we can define a map \myHighlight{$H^\bullet(M;H) 
+\to H^\bullet(M;H+d\lambda)$}\coordHE{} by sending a representative 
+\myHighlight{$\omega$}\coordHE{} of a class \myHighlight{$[\omega]$}\coordHE{} in \myHighlight{$H^\bullet(M;H)$}\coordHE{} to 
+the class in \myHighlight{$H^\bullet(M;H+d\lambda)$}\coordHE{} represented by 
+\myHighlight{$\exp(\lambda)\omega$}\coordHE{}.  This is well defined, since if 
+\myHighlight{$\omega' = \omega + d\mu - H\mu$}\coordHE{} then 
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{\leftCoord{} 
+\exp(\lambda)\omega' & = & \exp(\lambda)\omega   
+\leftCoord{}+ \exp(\lambda)d\mu - H\exp(\lambda)\mu           \rightCoord{}\\ 
+&\leftCoord{}= & \exp(\lambda)\omega + d(\exp(\lambda)\mu) - \rightCoord{} 
+\leftCoord{}(H+ d\lambda)\exp(\lambda)\mu. \rightCoord{} 
+\rightCoord{}}{0mm}{4}{5}{ 
+\exp(\lambda)\omega' & = & \exp(\lambda)\omega   
++ \exp(\lambda)d\mu - H\exp(\lambda)\mu           \\ 
+&= & \exp(\lambda)\omega + d(\exp(\lambda)\mu) -  
+(H+ d\lambda)\exp(\lambda)\mu.  
+}{1}\coordE{}\end{eqnarray*} 
+Suppose that the closed \myHighlight{$3$}\coordHE{}-form 
+\myHighlight{$H$}\coordHE{} is the representative for the image, in real 
+cohomology, of the Dixmier-Douady class of a principal 
+\myHighlight{$PU(\mathcal{H})$}\coordHE{} bundle \myHighlight{$Y$}\coordHE{} on \myHighlight{$M$}\coordHE{}.  We interpret 
+\myHighlight{$H$}\coordHE{} as the \myHighlight{$3$}\coordHE{}-curvature of a bundle gerbe connection 
+\myHighlight{$\nabla_L$}\coordHE{} and curving \myHighlight{$f$}\coordHE{} for the lifting bundle gerbe 
+\myHighlight{$L\to Y^{[2]}$}\coordHE{} associated to \myHighlight{$Y$}\coordHE{}.  Recall that a curving 
+\myHighlight{$f$}\coordHE{} for \myHighlight{$\nabla_L$}\coordHE{} satisfies \myHighlight{$\delta(f) = F_{\nabla_L}$}\coordHE{} 
+and \myHighlight{$df = \pi^*H$}\coordHE{} where \myHighlight{$F_{\nabla_L}$}\coordHE{} is the curvature of the 
+connection \myHighlight{$\nabla_L$}\coordHE{} on the line bundle \myHighlight{$L$}\coordHE{} and \myHighlight{$\pi\colon 
+Y\to M$}\coordHE{} is the projection.  Any two curvings for 
+\myHighlight{$\nabla_L$}\coordHE{} differ by the pullback of a \myHighlight{$2$}\coordHE{}-form \myHighlight{$\lambda$}\coordHE{} 
+on \myHighlight{$M$}\coordHE{}.  We define \myHighlight{$H^\bullet(M;[H])$}\coordHE{} to be the set 
+of equivalence classes of quadruples \myHighlight{$([\omega],L,\nabla_L,f)$}\coordHE{}, 
+where \myHighlight{$L$}\coordHE{} is the lifting bundle gerbe for a 
+principal \myHighlight{$PU(\cH)$}\coordHE{} bundle \myHighlight{$Y$}\coordHE{} with Dixmier-Douady 
+class \myHighlight{$[H]$}\coordHE{}, 
+\myHighlight{$f$}\coordHE{} is a curving for the bundle gerbe 
+connection \myHighlight{$\nabla_L$}\coordHE{} with \myHighlight{$3$}\coordHE{}-curvature 
+\myHighlight{$H$}\coordHE{} (so that \myHighlight{$df = \pi^*H$}\coordHE{}) and \myHighlight{$[\omega] \in H^\bullet(M;H)$}\coordHE{}.  
+If \myHighlight{$J$}\coordHE{} is the lifting bundle gerbe for another principal 
+\myHighlight{$PU(\cH)$}\coordHE{} bundle \myHighlight{$X$}\coordHE{} on \myHighlight{$M$}\coordHE{} whose Dixmier-Douady class 
+is also equal to \myHighlight{$[H]$}\coordHE{}, then \myHighlight{$Y$}\coordHE{} and \myHighlight{$X$}\coordHE{} are isomorphic.  
+This extends to an isomorphism between the lifting 
+bundle gerbes \myHighlight{$L$}\coordHE{} and \myHighlight{$J$}\coordHE{}.  We declare 
+two quadruples \myHighlight{$([\omega],L,\nabla_L,f_L)$}\coordHE{} 
+and \myHighlight{$([\omega'],J,\nabla_J,f_J)$}\coordHE{} 
+to be equivalent if, under the ismorphism 
+\myHighlight{$L = J$}\coordHE{}, we have \myHighlight{$\nabla_J = \nabla_L + \delta(\rho)$}\coordHE{} 
+for some complex valued \myHighlight{$1$}\coordHE{}-form \myHighlight{$\rho$}\coordHE{} on \myHighlight{$X$}\coordHE{},   
+\myHighlight{$f_J = f_L + d\rho + \pi^*\lambda$}\coordHE{} for some 
+\myHighlight{$2$}\coordHE{}-form \myHighlight{$\lambda$}\coordHE{} on \myHighlight{$M$}\coordHE{}  
+and \myHighlight{$[\omega'] = [\exp(\lambda)\omega]$}\coordHE{}, where 
+\myHighlight{$[\omega] \in H^\bullet(M;H)$}\coordHE{} and \myHighlight{$[\omega'] \in 
+H^\bullet(M;H+d\lambda)$}\coordHE{}.  Here we are identifying 
+\myHighlight{$[\omega']$}\coordHE{} with the image of \myHighlight{$[\omega]$}\coordHE{} under the isomorphism 
+of complexes \myHighlight{$H^\bullet(M;H) \to H^\bullet(M;H+d\lambda)$}\coordHE{} 
+defined above.  For a curving \myHighlight{$f$}\coordHE{} for 
+\myHighlight{$\nabla_L$}\coordHE{} we will also define \myHighlight{$H^\bullet(M;L,\nabla_L,f)$}\coordHE{} to 
+be \myHighlight{$H^\bullet(M;H)$}\coordHE{} where \myHighlight{$H$}\coordHE{} is the \myHighlight{$3$}\coordHE{}-curvature 
+of the pair \myHighlight{$(\nabla_L,f)$}\coordHE{}.  Then \myHighlight{$H^\bullet(M;[H])$}\coordHE{} 
+is equal to the quotient of the union of the \myHighlight{$H^\bullet(M;L,\nabla_L,f)$}\coordHE{} 
+over all bundle gerbe connections \myHighlight{$\nabla_L$}\coordHE{} and curvings \myHighlight{$f$}\coordHE{} 
+on the lifting bundle gerbes \myHighlight{$L$}\coordHE{},    
+under the equivalence relation defined above.  The twisted cohomology 
+groups satisfy the following properties.  If 
+\myHighlight{$f\colon N\to M$}\coordHE{} is a smooth map then there is an 
+induced map \myHighlight{$f^*\colon H^\bullet(M;[H]) \to 
+H^\bullet(N;f^*[H])$}\coordHE{}.  \myHighlight{$H^\bullet(M;[H])$}\coordHE{} is a module 
+over \myHighlight{$H^\bullet(M)$}\coordHE{}.  This in turn follows from the 
+property that if \myHighlight{$[H]$}\coordHE{} and \myHighlight{$[H']$}\coordHE{} are classes in 
+\myHighlight{$H^3(M;\mathbb{Z})$}\coordHE{}, then there is a homomorphism 
+\myHighlight{$H^\bullet(M;[H])\otimes H^\bullet(M;[H'])\to 
+H^\bullet(M;[H]+[H'])$}\coordHE{}.  These properties are 
+analogous to those for twisted \myHighlight{$K$}\coordHE{}-theory.    
+
+\subsection{Defining the Chern Character} 
+
+Suppose \myHighlight{$L\to Y^{[2]}$}\coordHE{} is a bundle gerbe with 
+bundle gerbe connection \myHighlight{$\nabla_L$}\coordHE{}.  
+Recall that a module connection \myHighlight{$\nabla_E$}\coordHE{} 
+on a bundle gerbe module \myHighlight{$E$}\coordHE{} for \myHighlight{$L$}\coordHE{} is a connection on 
+the vector bundle \myHighlight{$E$}\coordHE{} which is compatible with the 
+bundle gerbe connection \myHighlight{$\nabla_L$}\coordHE{}, ie under the 
+isomorphism \myHighlight{$\pi_1^{-1}E\otimes L\to \pi_2^{-1}E$}\coordHE{} 
+the tensor product connection \myHighlight{$\pi_1^{-1}\nabla_E\otimes 
+\nabla_L$}\coordHE{} on \myHighlight{$\pi_1^{-1}E\otimes L$}\coordHE{} is mapped into 
+the connection \myHighlight{$\pi_2^{-1}\nabla_E$}\coordHE{} on \myHighlight{$\pi_2^{-1}E$}\coordHE{}.  
+Suppose now that \myHighlight{$L\to Y^{[2]}$}\coordHE{} is the lifting bundle 
+gerbe for the principal \myHighlight{$PU(\mathcal{H})$}\coordHE{} bundle 
+\myHighlight{$Y\to M$}\coordHE{} and that \myHighlight{$\nabla_L$}\coordHE{} is a bundle gerbe 
+connection on \myHighlight{$L$}\coordHE{} with curving \myHighlight{$f$}\coordHE{} such that the 
+associated \myHighlight{$3$}\coordHE{}-curvature (which represents the image, in 
+real cohomology, of the Dixmier-Douady class of \myHighlight{$L$}\coordHE{}) is 
+equal to the closed, integral \myHighlight{$3$}\coordHE{}-form \myHighlight{$H$}\coordHE{}.  If \myHighlight{$E$}\coordHE{} is a 
+\myHighlight{$U_1$}\coordHE{} bundle gerbe module for \myHighlight{$E$}\coordHE{} then we can consider 
+module connections \myHighlight{$\nabla_E$}\coordHE{} on \myHighlight{$E$}\coordHE{}; however, as remarked 
+above, the algebra valued \myHighlight{$2$}\coordHE{}-form \myHighlight{$F_E +fI$}\coordHE{} cannot take 
+trace class values (here \myHighlight{$F_E$}\coordHE{} denotes the curvature 
+of the connection \myHighlight{$\nabla_E$}\coordHE{}).  If \myHighlight{$F$}\coordHE{} is another 
+\myHighlight{$U_1$}\coordHE{} bundle gerbe module for \myHighlight{$L$}\coordHE{}, so that the difference 
+\myHighlight{$E-F$}\coordHE{} represents a class in \myHighlight{$\tilde{K}^0(M;[H])$}\coordHE{} 
+under the isomorphism of Proposition~\ref{prop:U_K 
+bg modules equals K(M;H)}, we can consider  
+module connections \myHighlight{$\nabla_E$}\coordHE{} and \myHighlight{$\nabla_F$}\coordHE{} on \myHighlight{$E$}\coordHE{} and 
+\myHighlight{$F$}\coordHE{} respectively such that the difference of connections 
+\myHighlight{$\nabla_E - \nabla_F$}\coordHE{} is trace class.  By this we mean 
+that in local trivialisations of \myHighlight{$E$}\coordHE{} and \myHighlight{$F$}\coordHE{} such that 
+the connections \myHighlight{$\nabla_E$}\coordHE{} and \myHighlight{$\nabla_F$}\coordHE{} are given by 
+\myHighlight{$d + A_E$}\coordHE{} and \myHighlight{$d + A_F$}\coordHE{} respectively, the difference 
+\myHighlight{$A_E - A_F$}\coordHE{} is trace class.  It follows that the difference   
+of curvatures \myHighlight{$F_E - F_F$}\coordHE{} in local trivialisations of \myHighlight{$E$}\coordHE{} and \myHighlight{$F$}\coordHE{} 
+respectively is trace class.  One can show that it is 
+always possible to find such module connections.    
+
+It follows that the differences \myHighlight{$(F_E + fI) - (F_F +fI)$}\coordHE{} 
+and hence \myHighlight{$(F_E +fI)^k - (F_F +fI)^k$}\coordHE{} take trace class 
+values (considered in local trivialisations of \myHighlight{$E$}\coordHE{} 
+and \myHighlight{$F$}\coordHE{} respectively).  Therefore the \myHighlight{$2k$}\coordHE{}-forms 
+\myHighlight{$\tr((F_E +fI)^k - (F_F +fI)^k)$}\coordHE{} on \myHighlight{$Y$}\coordHE{} are well defined.   
+To see this, note that in a local trivialisation of \myHighlight{$E$}\coordHE{}, \myHighlight{$F_E$}\coordHE{} is given
+by operator valued \myHighlight{$2$}\coordHE{}-forms \myHighlight{$F_E^i$}\coordHE{} which are related 
+on overlaps by \myHighlight{$F_E^j = g_{ij}^{-1}F_E^i g_{ij}$}\coordHE{}, where 
+\myHighlight{$g_{ij}$}\coordHE{} are the \myHighlight{$U_1$}\coordHE{} valued transition functions for 
+\myHighlight{$E$}\coordHE{}.  Similarly, in local trivialisations of \myHighlight{$F$}\coordHE{} defined 
+over the same open cover of \myHighlight{$Y$}\coordHE{} as the local trivialisations 
+of \myHighlight{$E$}\coordHE{}, the curvature \myHighlight{$2$}\coordHE{}-form \myHighlight{$F_F$}\coordHE{} is given locally 
+by the operator valued \myHighlight{$2$}\coordHE{}-forms \myHighlight{$F_F^i$}\coordHE{} which are related 
+on overlaps by \myHighlight{$F_F^j = h_{ij}^{-1}F_F^ih_{ij}$}\coordHE{} where \myHighlight{$h_{ij}$}\coordHE{} are
+the \myHighlight{$U_1$}\coordHE{} valued transition functions for \myHighlight{$F$}\coordHE{}.  Therefore 
+the local \myHighlight{$2k$}\coordHE{}-forms \myHighlight{$\tr((F_E^i + fI)^k - (F_F^i + fI)^k)$}\coordHE{} 
+define global forms, since    
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{ 
+&&\leftCoord{} \tr((F_E^j +fI)^k - (F_F^j +fI)^k) \rightCoord{}\\ 
+&\leftCoord{}= & \tr(g_{ij}^{-1}(F_E^i +fI)^k g_{ij} - 
+h_{ij}^{-1}(F_F^i +fI)^k h_{ij})                \rightCoord{}\\ 
+&\leftCoord{}= & \tr(g_{ij}^{-1}(F_E^i +fI)^k 
+g_{ij} - (F_E^i +fI)^k) 
+\leftCoord{}+ \tr((F_E^i +fI)^k - (F_F^i +fI)^k)  \rightCoord{}\\  
+&&\leftCoord{} + \tr((F_F^i +fI)^k - h_{ij}^{-1}
+\leftCoord{}(F_F^i +fI)^k h_{ij}) \rightCoord{}\\ 
+&\leftCoord{}= & \tr((F_E^i +fI)^k - (F_F^i +fI)^k). \rightCoord{}
+\rightCoord{}}{0mm}{7}{7}{ 
+&& \tr((F_E^j +fI)^k - (F_F^j +fI)^k) \\ 
+&= & \tr(g_{ij}^{-1}(F_E^i +fI)^k g_{ij} - 
+h_{ij}^{-1}(F_F^i +fI)^k h_{ij})                \\ 
+&= & \tr(g_{ij}^{-1}(F_E^i +fI)^k 
+g_{ij} - (F_E^i +fI)^k) 
++ \tr((F_E^i +fI)^k - (F_F^i +fI)^k)  \\  
+&& + \tr((F_F^i +fI)^k - h_{ij}^{-1}
+(F_F^i +fI)^k h_{ij}) \\ 
+&= & \tr((F_E^i +fI)^k - (F_F^i +fI)^k). 
+}{1}\coordE{}\end{eqnarray*} 
+We want to know that the forms we have defined live on 
+\myHighlight{$M$}\coordHE{}.  This follows from the fact that the \myHighlight{$F_E$}\coordHE{} 
+and \myHighlight{$F_F$}\coordHE{} are curvatures of module connections, and 
+therefore satisfy equation~\ref{eq:module connection transfm law}.  
+More precisely, suppose that \myHighlight{$\mathcal{U} = \{U_{\alpha}\}_{\alpha\in 
+\Sigma}$}\coordHE{} is an open cover of \myHighlight{$M$}\coordHE{} such that there exist 
+local sections \myHighlight{$s_{\alpha}\colon U_{\alpha}\to Y$}\coordHE{} 
+of the \myHighlight{$PU(\mathcal{H})$}\coordHE{} bundle \myHighlight{$Y\to M$}\coordHE{}.  Suppose that 
+\myHighlight{$Y$}\coordHE{} has transition functions \myHighlight{$g_{\alpha\beta}$}\coordHE{} relative 
+to this open covering.  If \myHighlight{$E$}\coordHE{} is a \myHighlight{$U_1$}\coordHE{} bundle gerbe module 
+for \myHighlight{$L$}\coordHE{} then we can use the sections \myHighlight{$s_{\alpha}$}\coordHE{} to pullback 
+\myHighlight{$E$}\coordHE{} to form Hilbert vector bundles \myHighlight{$E_{\alpha}$}\coordHE{} on 
+\myHighlight{$U_{\alpha}$}\coordHE{} whose structure group reduces to \myHighlight{$U_1$}\coordHE{}.  
+The transition functions \myHighlight{$g_{\alpha\beta}$}\coordHE{} for \myHighlight{$Y$}\coordHE{}  
+then provide maps \myHighlight{$E_{\alpha}\stackrel{g_{\alpha\beta}}{\to} 
+E_{\beta}$}\coordHE{}.  If \myHighlight{$F$}\coordHE{} is the curvature of a module 
+connection on \myHighlight{$E$}\coordHE{}, then the pullbacks \myHighlight{$F_{\alpha} 
++ f_{\alpha}I$}\coordHE{} are related by \myHighlight{$F_{\beta} + 
+f_{\beta}I = \hat{g}_{\alpha\beta}^{-1}(F_{\alpha} 
++ f_{\alpha}I)\hat{g}_{\alpha\beta}$}\coordHE{}.  On taking traces 
+of differences of powers as above we see that these forms 
+are globally defined.    
+Note that 
+\begin{equation}\coord{}\boxEquation{ 
+\label{eq:character form} 
+\tr(\exp(F_E + fI) - \exp(F_F + fI)) 
+= \exp(f)\tr(\exp(F_E) - \exp(F_F)). 
+}{ 
+\tr(\exp(F_E + fI) - \exp(F_F + fI)) 
+= \exp(f)\tr(\exp(F_E) - \exp(F_F)). 
+}{ecuacion}\coordE{}\end{equation} 
+We have the following Proposition. 
+\begin{proposition} 
+Suppose that \myHighlight{$E$}\coordHE{} and \myHighlight{$F$}\coordHE{} are \myHighlight{$U_1$}\coordHE{} bundle gerbe modules for 
+the lifting bundle gerbe \myHighlight{$L\to Y^{[2]}$}\coordHE{} equipped with a 
+bundle gerbe connection \myHighlight{$\nabla_L$}\coordHE{} and curving \myHighlight{$f$}\coordHE{}, such 
+that the associated \myHighlight{$3$}\coordHE{}-curvature is \myHighlight{$H$}\coordHE{}.  
+Suppose that \myHighlight{$\nabla_E$}\coordHE{} and \myHighlight{$\nabla_F$}\coordHE{} are module 
+connections on \myHighlight{$E$}\coordHE{} and \myHighlight{$F$}\coordHE{} respectively 
+such that the difference \myHighlight{$\nabla_E - \nabla_F$}\coordHE{} is trace class, 
+considered in local trivialisations of \myHighlight{$E$}\coordHE{} and \myHighlight{$F$}\coordHE{}.    
+Let \myHighlight{$ch_H(\nabla_E,\nabla_F) \in \Omega^\bullet(M)$}\coordHE{} denote the differential 
+form on \myHighlight{$M$}\coordHE{} whose lift to \myHighlight{$Y$}\coordHE{} is given by \myHighlight{$\exp(f) \textnormal{tr} ( 
+\exp(F_E) - \exp(F_F))$}\coordHE{}.  Then 
+\myHighlight{$ch_H(\nabla_E,\nabla_F)$}\coordHE{} is closed with respect to the twisted differential 
+\myHighlight{$d-H$}\coordHE{} on \myHighlight{$\Omega^\bullet(M)$}\coordHE{} and hence represents a class 
+in \myHighlight{$H^\bullet(M;H)$}\coordHE{}.  The class \myHighlight{$[ch_H(\nabla_E,\nabla_F)]$}\coordHE{} is independent 
+of the choice of module connections \myHighlight{$\nabla_E$}\coordHE{} and 
+\myHighlight{$\nabla_F$}\coordHE{} on \myHighlight{$E$}\coordHE{} and \myHighlight{$F$}\coordHE{}.  
+\end{proposition} 
+
+\begin{remark} 
+Some care needs to be taken when working with connections 
+on infinite dimensional vector bundles, as it is not always clear 
+that the difference of two connections on \myHighlight{$E$}\coordHE{} is a section of 
+\myHighlight{$\Omega^1(\End(E))$}\coordHE{}, where \myHighlight{$\End(E)$}\coordHE{} denotes the bundle on 
+\myHighlight{$Y$}\coordHE{} whose fibre at \myHighlight{$y$}\coordHE{} is the space of all bounded linear 
+operators \myHighlight{$E_y \to E_y$}\coordHE{}.  We will avoid this problem by 
+fixing a module connection on \myHighlight{$E$}\coordHE{} and then only consider module 
+connections which differ from this fixed connection by 
+a section of \myHighlight{$\Omega^1(\End(E))$}\coordHE{}.    
+\end{remark} 
+
+To show that \myHighlight{$ch_H(\nabla_E,\nabla_F)$}\coordHE{} is closed under \myHighlight{$d-H$}\coordHE{} it is 
+sufficient to show that \myHighlight{$\tr(\exp(F_E) - 
+\exp(F_F))$}\coordHE{} is closed.  
+We have   
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{ 
+&&\leftCoord{} d\tr((F_E^i)^k - (F_F^i)^k) \rightCoord{}\\ 
+&\leftCoord{}= & \tr(\sum F_E^i \cdots dF_E^i 
+\cdots F_E^i - \sum F_F^i \cdots 
+dF_F^i \cdots F_F^i)              \rightCoord{}\\ 
+&\leftCoord{}= & \tr(\sum F_E^i \cdots [F_E^i, 
+A_E^i]\cdots F_E^i - \sum 
+F_F^i \cdots [F_F^i,A_E^i] 
+\cdots F_F^i)                                 \rightCoord{}\\  
+&\leftCoord{}= & \tr(\sum F_E^i \cdots [F_E^i, 
+A_E^i] \cdots F_E^i - \sum F_F^i 
+\cdots [F_F^i,A_E^i]\cdots F_F^i \rightCoord{}\\  
+&&\leftCoord{} + \sum F_F^i \cdots [F_F^i,A_E^i 
+\leftCoord{}- A_F^i]\cdots F_F^i)                    \rightCoord{}\\ 
+&\leftCoord{}= & \tr(\sum F_E^i\cdots [F_E^i, 
+A_E^i]\cdots F_E^i - \sum F_F^i 
+\cdots [F_F^i,A_E^i]\cdots F_F^i) \rightCoord{}\\  
+&&\leftCoord{} + \tr(\sum F_F^i \cdots [F_F^i, 
+A_E^i - A_F^i]\cdots F_F^i)           
+\rightCoord{}}{0mm}{8}{8}{ 
+&& d\tr((F_E^i)^k - (F_F^i)^k) \\ 
+&= & \tr(\sum F_E^i \cdots dF_E^i 
+\cdots F_E^i - \sum F_F^i \cdots 
+dF_F^i \cdots F_F^i)              \\ 
+&= & \tr(\sum F_E^i \cdots [F_E^i, 
+A_E^i]\cdots F_E^i - \sum 
+F_F^i \cdots [F_F^i,A_E^i] 
+\cdots F_F^i)                                 \\  
+&= & \tr(\sum F_E^i \cdots [F_E^i, 
+A_E^i] \cdots F_E^i - \sum F_F^i 
+\cdots [F_F^i,A_E^i]\cdots F_F^i \\  
+&& + \sum F_F^i \cdots [F_F^i,A_E^i 
+- A_F^i]\cdots F_F^i)                    \\ 
+&= & \tr(\sum F_E^i\cdots [F_E^i, 
+A_E^i]\cdots F_E^i - \sum F_F^i 
+\cdots [F_F^i,A_E^i]\cdots F_F^i) \\  
+&& + \tr(\sum F_F^i \cdots [F_F^i, 
+A_E^i - A_F^i]\cdots F_F^i)           
+}{1}\coordE{}\end{eqnarray*} 
+Note that the second term makes sense as the difference of the 
+two module connections \myHighlight{$A_E^i - A_F^i$}\coordHE{} is 
+trace class.  The first term vanishes by the usual argument 
+for Chern-Weil theory, the trace is invariant: \myHighlight{$\tr(g^{-1}Ag) 
+= \tr(A)$}\coordHE{} for any \myHighlight{$g \in U(\mathcal{H})$}\coordHE{} so long as \myHighlight{$A$}\coordHE{} is trace class.  
+The second term also vanishes: we could write it as 
+$$\coord{}\boxMath{
+k\tr(F_F^i \cdots F_F^i[F_F^i, 
+A_E^i -A_F^i]),  
+}{dollar}{0pt}\coordE{}$$
+since the \myHighlight{$F_F$}\coordHE{} are all even forms we can shuffle 
+them around in the trace to show that this is zero.  
+
+We now show that the forms \myHighlight{$ch_H(\nabla_E,\nabla_F)$}\coordHE{} are independent of 
+the choice of module connections \myHighlight{$\nabla_E$}\coordHE{} 
+and \myHighlight{$\nabla_F$}\coordHE{} on the \myHighlight{$U_1$}\coordHE{} bundle gerbe modules \myHighlight{$E$}\coordHE{} and \myHighlight{$F$}\coordHE{}.   
+So suppose that  
+\myHighlight{$\nabla'_E$}\coordHE{} and \myHighlight{$\nabla'_F$}\coordHE{} is another pair of module 
+connections on the \myHighlight{$U_1$}\coordHE{} bundle gerbe modules \myHighlight{$E$}\coordHE{} and 
+\myHighlight{$F$}\coordHE{} respectively such that the difference \myHighlight{$\nabla'_E - 
+\nabla'_F$}\coordHE{} is trace class when considered in local trivialisations 
+of \myHighlight{$E$}\coordHE{} and \myHighlight{$F$}\coordHE{}.   
+Form the families of module connections \myHighlight{$\nabla_E(t)$}\coordHE{} and 
+\myHighlight{$\nabla_F(t)$}\coordHE{} on \myHighlight{$E$}\coordHE{} and \myHighlight{$F$}\coordHE{} respectively given 
+by \myHighlight{$\nabla_E(t) = t\nabla_E + (1-t)\nabla'_E$}\coordHE{} 
+and \myHighlight{$\nabla_F(t) = t\nabla_F +(1-t)\nabla'_F$}\coordHE{}.  It is 
+clear that the difference \myHighlight{$\nabla_E(t) - \nabla_F(t)$}\coordHE{} 
+is trace class.   
+Consider the \myHighlight{$2k-1$}\coordHE{} forms \myHighlight{$\Psi_k$}\coordHE{} on \myHighlight{$Y$}\coordHE{} given locally by 
+\begin{equation}\coord{}\boxEquation{ 
+\Psi_k = \tr (\frac{d}{dt}(A_E(t))(F_E(t) 
++fI)^{k-1} - \frac{d}{dt}(A_F(t))(F_F(t) 
++fI)^{k-1}). 
+}{ 
+\Psi_k = \tr (\frac{d}{dt}(A_E(t))(F_E(t) 
++fI)^{k-1} - \frac{d}{dt}(A_F(t))(F_F(t) 
++fI)^{k-1}). 
+}{ecuacion}\coordE{}\end{equation} 
+It is easy to see that \myHighlight{$\Psi_k$}\coordHE{} is in fact a global 
+\myHighlight{$2k-1$}\coordHE{}-form on \myHighlight{$Y$}\coordHE{} and that moreover 
+\myHighlight{$\Psi_k$}\coordHE{} descends to a form on \myHighlight{$M$}\coordHE{}.  We 
+calculate the exterior derivative of \myHighlight{$\Psi_k$}\coordHE{}: 
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{ 
+&&\leftCoord{} d\Psi_k                        \rightCoord{}\\ 
+&\leftCoord{}= & \tr(\frac{\leftCoord{}d}{\rightCoord{}dt}(dA_E(t))(F_E(t)  
+\leftCoord{}+ fI)^{k-1} - \frac{\leftCoord{}d}{\rightCoord{}dt}(dA_F(t))(F_F(t) + fI)^{k-1} \rightCoord{}\\ 
+&&\leftCoord{} +\frac{\leftCoord{}d}{\rightCoord{}dt}(A_F(t))\sum (F_F(t) 
+\leftCoord{}+ fI)\cdots ([F_F(t),A_F(t)] + HI)\cdots 
+\leftCoord{}(F_F(t) + fI)                                      \rightCoord{}\\ 
+&&\leftCoord{} -\frac{\leftCoord{}d}{\rightCoord{}dt}(A_E(t))\sum (F_E(t) 
+\leftCoord{}+ fI)\cdots ([F_E(t),A_E(t)] + HI) 
+\cdots (F_E(t) + fI))                                \rightCoord{}\\ 
+&\leftCoord{}= & \tr(\frac{\leftCoord{}d}{\rightCoord{}dt}(dA_E(t))(F_E(t) 
+\leftCoord{}+ fI)^{k-1} - \frac{\leftCoord{}d}{\rightCoord{}dt}(dA_F(t))(F_F(t) 
+\leftCoord{}+ fI)^{k-1}                                                   \rightCoord{}\\ 
+&&\leftCoord{} +\frac{\leftCoord{}d}{\rightCoord{}dt}(A_F(t))\sum (F_F(t) + fI) 
+\cdots [F_F(t),A_F(t)]\cdots (F_F(t) + fI) \rightCoord{}\\ 
+&&\leftCoord{} - \frac{\leftCoord{}d}{\rightCoord{}dt}(A_E(t))\sum (F_E(t) 
+\leftCoord{}+ fI)\cdots [F_E(t),A_E(t)]\cdots 
+\leftCoord{}(F_E(t) + fI))                                    \rightCoord{}\\ 
+&&\leftCoord{} + (k-1)H\Psi_{k-1}.  \rightCoord{}
+\rightCoord{}}{0mm}{24}{18}{ 
+&& d\Psi_k                        \\ 
+&= & \tr(\frac{d}{dt}(dA_E(t))(F_E(t)  
++ fI)^{k-1} - \frac{d}{dt}(dA_F(t))(F_F(t) + fI)^{k-1} \\ 
+&& +\frac{d}{dt}(A_F(t))\sum (F_F(t) 
++ fI)\cdots ([F_F(t),A_F(t)] + HI)\cdots 
+(F_F(t) + fI)                                      \\ 
+&& -\frac{d}{dt}(A_E(t))\sum (F_E(t) 
++ fI)\cdots ([F_E(t),A_E(t)] + HI) 
+\cdots (F_E(t) + fI))                                \\ 
+&= & \tr(\frac{d}{dt}(dA_E(t))(F_E(t) 
++ fI)^{k-1} - \frac{d}{dt}(dA_F(t))(F_F(t) 
++ fI)^{k-1}                                                   \\ 
+&& +\frac{d}{dt}(A_F(t))\sum (F_F(t) + fI) 
+\cdots [F_F(t),A_F(t)]\cdots (F_F(t) + fI) \\ 
+&& - \frac{d}{dt}(A_E(t))\sum (F_E(t) 
++ fI)\cdots [F_E(t),A_E(t)]\cdots 
+(F_E(t) + fI))                                    \\ 
+&& + (k-1)H\Psi_{k-1}.  
+}{1}\coordE{}\end{eqnarray*} 
+We now examine \myHighlight{$d/dt$}\coordHE{} of \myHighlight{$\tr((F_E(t) + fI)^k 
+- (F_F(t) + fI)^k)$}\coordHE{}.  Using \myHighlight{$\dot{F}_t = d\dot{\theta}_t 
++ \dot{\theta}_t\theta_t + \theta_t\dot{\theta}_t$}\coordHE{} we get 
+\begin{eqnarray*}\coord{}\boxAlignEqnarray{ 
+&&\leftCoord{} \frac{\leftCoord{}d}{\rightCoord{}dt}\tr((F_E(t)+fI)^k - 
+\leftCoord{}(F_F(t) + fI)^k)                         \rightCoord{}\\ 
+&\leftCoord{}= & \tr(\sum (F_E(t) + fI) \cdots 
+\leftCoord{}(\frac{\leftCoord{}d}{\rightCoord{}dt}(dA_E(t)) + \frac{\leftCoord{}d}{\rightCoord{}dt}(A_E(t)) 
+A_E(t)                                    \rightCoord{}\\  
+&&\leftCoord{} + A_E(t)\frac{\leftCoord{}d}{\rightCoord{}dt}(A_E(t))) 
+\cdots (F_E(t) + fI)                       
+ \leftCoord{}- \sum (F_F(t)+fI)\cdots             \rightCoord{}\\ 
+&&\leftCoord{} (\frac{\leftCoord{}d}{\rightCoord{}dt} \rightCoord{} 
+dA_F(t) + \frac{\leftCoord{}d}{\rightCoord{}dt}(A_F(t))A_F(t) 
+\leftCoord{}+ A_F(t)\frac{\leftCoord{}d}{\rightCoord{}dt}(A_F(t)))\cdots 
+\leftCoord{}(F_F(t) + fI))                                \rightCoord{}\\ 
+&\leftCoord{}= & k\tr(\frac{\leftCoord{}d}{\rightCoord{}dt}(dA_E(t))(F_E(t) 
+\leftCoord{}+ fI)^{k-1} - \frac{\leftCoord{}d}{\rightCoord{}dt}(dA_F(t))(F_F(t) 
+\leftCoord{}+ fI)^{k-1})                                                 \rightCoord{}\\ 
+&&\leftCoord{} - k\tr(\frac{\leftCoord{}d}{\rightCoord{}dt}(A_E(t))\sum (F_E(t) + fI) 
+\cdots [F_E(t),A_E(t)]\cdots 
+\leftCoord{}(F_E(t) + fI)                                      \rightCoord{}\\ 
+&&\leftCoord{} + \frac{\leftCoord{}d}{\rightCoord{}dt}(A_F(t))\sum (F_F(t) + fI) 
+\cdots [F_F(t),A_F(t)]\cdots (F_F(t) + fI)). \rightCoord{}
+\rightCoord{}}{0mm}{26}{21}{ 
+&& \frac{d}{dt}\tr((F_E(t)+fI)^k - 
+(F_F(t) + fI)^k)                         \\ 
+&= & \tr(\sum (F_E(t) + fI) \cdots 
+(\frac{d}{dt}(dA_E(t)) + \frac{d}{dt}(A_E(t)) 
+A_E(t)                                    \\  
+&& + A_E(t)\frac{d}{dt}(A_E(t))) 
+\cdots (F_E(t) + fI)                       
+ - \sum (F_F(t)+fI)\cdots             \\ 
+&& (\frac{d}{dt}  
+dA_F(t) + \frac{d}{dt}(A_F(t))A_F(t) 
++ A_F(t)\frac{d}{dt}(A_F(t)))\cdots 
+(F_F(t) + fI))                                \\ 
+&= & k\tr(\frac{d}{dt}(dA_E(t))(F_E(t) 
++ fI)^{k-1} - \frac{d}{dt}(dA_F(t))(F_F(t) 
++ fI)^{k-1})                                                 \\ 
+&& - k\tr(\frac{d}{dt}(A_E(t))\sum (F_E(t) + fI) 
+\cdots [F_E(t),A_E(t)]\cdots 
+(F_E(t) + fI)                                      \\ 
+&& + \frac{d}{dt}(A_F(t))\sum (F_F(t) + fI) 
+\cdots [F_F(t),A_F(t)]\cdots (F_F(t) + fI)). 
+}{1}\coordE{}\end{eqnarray*} 
+Hence we see that \myHighlight{$kd\Psi_k - k(k-1)H\Psi_{k-1} = d/dt\tr((F_E(t) 
++ fI)^k - (F_F(t) + fI)^k)$}\coordHE{}.  Integrating 
+from \myHighlight{$t=0$}\coordHE{} to \myHighlight{$t=1$}\coordHE{} shows that the \myHighlight{$(1/(k-1)!)\int^1_0\Psi_k\ dt$}\coordHE{} relate 
+the two character forms \myHighlight{$ch_H(\nabla_E,\nabla_F)$}\coordHE{} and 
+\myHighlight{$ch_H(\nabla'_E,\nabla'_F)$}\coordHE{}.   
+
+Recall that \myHighlight{$\text{Mod}_{U_1}(L)$}\coordHE{} denotes the 
+semi-group of all \myHighlight{$U_1$}\coordHE{} bundle gerbe modules for 
+the lifting bundle gerbe \myHighlight{$L\to Y^{[2]}$}\coordHE{} associated to 
+a principal \myHighlight{$PU(\mathcal{H})$}\coordHE{} bundle \myHighlight{$Y\to M$}\coordHE{} with 
+Dixmier-Douady class equal to \myHighlight{$[H]$}\coordHE{} (previously we 
+were interested in \myHighlight{$U_{\mathcal{K}}$}\coordHE{} bundle gerbe 
+modules but, as we have already mentioned, 
+the extension of the theory to \myHighlight{$U_1$}\coordHE{} presents no 
+difficulties).  
+For a fixed bundle gerbe connection \myHighlight{$\nabla_L$}\coordHE{} on 
+\myHighlight{$L$}\coordHE{} and a curving \myHighlight{$f$}\coordHE{} for \myHighlight{$\nabla_L$}\coordHE{}, the  
+character forms \myHighlight{$ch_H(\nabla_E,\nabla_F)$}\coordHE{} define a 
+map \myHighlight{$ch_H(L,\nabla_L,f)\colon \text{Mod}_{U_1}(L) 
+\to H^\bullet(M;L,\nabla_L,f)$}\coordHE{}.  Specifically, \myHighlight{$ch_H(L,\nabla_L,f)(E-F) 
+= [ch_H(\nabla_E,\nabla_F)] \in H^\bullet(M;L,\nabla_L,f)$}\coordHE{}.  We have 
+shown that this is independent of the choice of module 
+connections \myHighlight{$\nabla_E$}\coordHE{} and \myHighlight{$\nabla_F$}\coordHE{} for \myHighlight{$E$}\coordHE{} and 
+\myHighlight{$F$}\coordHE{}.     
+We need to investigate the effect that changing the 
+bundle gerbe connection \myHighlight{$\nabla_L$}\coordHE{} on \myHighlight{$L$}\coordHE{} 
+and the curving \myHighlight{$f$}\coordHE{} has on the character forms 
+\myHighlight{$ch_H(\nabla_E,\nabla_F)$}\coordHE{}.  It is only possible to 
+change the bundle gerbe connection \myHighlight{$\nabla_L$}\coordHE{} on 
+\myHighlight{$L$}\coordHE{} by \myHighlight{$\delta(a)$}\coordHE{} for some complex valued \myHighlight{$1$}\coordHE{}-form 
+\myHighlight{$a$}\coordHE{} on \myHighlight{$Y$}\coordHE{}.  Then \myHighlight{$\nabla_E$}\coordHE{} and \myHighlight{$\nabla_F$}\coordHE{} no longer 
+define module connections on \myHighlight{$E$}\coordHE{} and \myHighlight{$F$}\coordHE{}, instead 
+\myHighlight{$\nabla_E - aI$}\coordHE{} and \myHighlight{$\nabla_F - aI$}\coordHE{} define module 
+connections on \myHighlight{$E$}\coordHE{} and \myHighlight{$F$}\coordHE{} for the new bundle gerbe 
+connection \myHighlight{$\nabla_L + \delta(a)$}\coordHE{}.  It is easy 
+to check that \myHighlight{$[ch_H(\nabla_E - aI,\nabla_F - aI)] = 
+[ch_H(\nabla_E,\nabla_F)]$}\coordHE{}.  
+Changing the curving \myHighlight{$f$}\coordHE{} by 
+the pullback of a \myHighlight{$2$}\coordHE{}-form \myHighlight{$\lambda$}\coordHE{} on \myHighlight{$M$}\coordHE{} to \myHighlight{$Y$}\coordHE{} 
+changes the character forms by the exponential 
+factor \myHighlight{$\exp(\lambda)$}\coordHE{}; the maps \myHighlight{$ch_H(L,\nabla_L,f)\colon 
+\text{Mod}_{U_1}(L)\to H^\bullet(M;L,\nabla_L,f)$}\coordHE{} and 
+\myHighlight{$ch_H(L,\nabla_L,f+\pi^*\lambda)\colon \text{Mod}_{U_1}(L)\to 
+H^\bullet(M;L,\nabla_L,f+\pi^*\lambda)$}\coordHE{} are related by 
+\myHighlight{$ch_H(L,\nabla_L,f+\pi^*\lambda) = \exp(\lambda)ch_H(L,\nabla_L,f)$}\coordHE{}.  
+Any two principal \myHighlight{$PU(\mathcal{H})$}\coordHE{} bundles 
+\myHighlight{$Y$}\coordHE{} and \myHighlight{$X$}\coordHE{} with Dixmier-Douady class \myHighlight{$[H]$}\coordHE{} are isomorphic, 
+and this isomorphism extends to an isomorphism of 
+the lifting bundle gerbes \myHighlight{$L\to Y^{[2]}$}\coordHE{} and \myHighlight{$J\to X^{[2]}$}\coordHE{} 
+associated to \myHighlight{$Y$}\coordHE{} and \myHighlight{$X$}\coordHE{} respectively.   
+There exist isomorphisms \myHighlight{$\text{Mod}_{U_1}(L) = 
+\text{Mod}_{U_1}(J)$}\coordHE{} and we write \myHighlight{$\text{Mod}_{U_1}(M,[H])$}\coordHE{} 
+for this isomorphism class of semi-groups.  It is 
+clear that the maps \myHighlight{$ch_H(L,\nabla_L,f_L)$}\coordHE{} 
+and \myHighlight{$ch_H(J,\nabla_J,f_J)$}\coordHE{} 
+are compatible under the isomorphisms \myHighlight{$\text{Mod}_{U_1}(L) 
+= \text{Mod}_{U_1}(J)$}\coordHE{} and hence descend to define a map 
+\myHighlight{$ch_{[H]}\colon \text{Mod}_{U_1}(M,[H])\to H^\bullet(M;[H])$}\coordHE{}.  
+Under the isomorphism \myHighlight{$\text{Mod}_{U_1}(M,[H]) = 
+\tilde{K}^0(M;[H])$}\coordHE{} of 
+Proposition~\ref{prop:U_K bg modules equals K(M;H)} we 
+get a map 
+$$\coord{}\boxMath{
+ch_{[H]}\colon \tilde{K}^0(M;[H])\to 
+H^\bullet(M;[H]).
+}{dollar}{0pt}\coordE{}$$
+We propose that this map 
+defines the Chern character for (reduced) twisted 
+\myHighlight{$K$}\coordHE{}-theory.  It can be shown that the 
+Chern character for twisted \myHighlight{$K$}\coordHE{}-theory 
+is uniquely characterised by requiring that 
+it is a functorial homomorphism which is compatible 
+with the \myHighlight{$\tilde{K}^0(M)$}\coordHE{}-module 
+structure on \myHighlight{$\tilde{K}^0(M;[H])$}\coordHE{} and reduces to 
+the ordinary Chern character when \myHighlight{$[H] = 0$}\coordHE{}.  
+It is easy to check that the map \myHighlight{$ch_{[H]}
+\colon \tilde{K}^0(M;[H])\to H^\bullet(M;[H])$}\coordHE{}   
+is functorial with respect to smooth maps 
+\myHighlight{$f\colon N\to M$}\coordHE{}.  To show that \myHighlight{$ch_{[H]}$}\coordHE{} is a 
+homomorphism, it is sufficient to show that the various  
+maps \myHighlight{$ch_H(L,\nabla_L,f)\colon \text{Mod}_{U_1}(L)\to 
+H^\bullet(M;L,\nabla_L,f)$}\coordHE{} are homomorphisms.  To see this,   
+recall that the semi-group 
+structure of \myHighlight{$\text{Mod}_{U_1}(L)$}\coordHE{} 
+is defined via the direct sum of \myHighlight{$U_1$}\coordHE{} bundle gerbe 
+modules (the direct sum \myHighlight{$E\oplus F$}\coordHE{} acquires a 
+\myHighlight{$U_1$}\coordHE{} reduction rather than a \myHighlight{$U_1\times U_1$}\coordHE{} 
+reduction from a fixed isomorphism 
+\myHighlight{$\mathcal{H}\oplus \mathcal{H} = \mathcal{H}$}\coordHE{}).  
+>From here it is easy to see that \myHighlight{$ch_H(\nabla_{E_1} \oplus 
+\nabla_{E_2},\nabla_{F_1}\oplus \nabla_{F_2}) = 
+ch_H(\nabla_{E_1},\nabla_{F_1}) 
++ ch_H(\nabla_{E_2},\nabla_{F_2})$}\coordHE{}.  We do not show here 
+that \myHighlight{$ch_{[H]}$}\coordHE{} is compatible with the \myHighlight{$\tilde{K}^0(M)$}\coordHE{}-module 
+structure of \myHighlight{$\tilde{K}^0(M;[H])$}\coordHE{} (this can easily be 
+shown to be true when \myHighlight{$[H]$}\coordHE{} is torsion, it is more 
+difficult to prove this when \myHighlight{$[H]$}\coordHE{} is not torsion).  
+
+
+\section{Conclusion}
+
+Let us conclude with a final remark about \myHighlight{$C^*$}\coordHE{} algebras and bundle gerbes.
+There is a well-known construction of a continuous
+trace  \myHighlight{$C^*$}\coordHE{} algebra from
+a groupoid \cite{Ren}.  This can be used to construct a \myHighlight{$C^*$}\coordHE{} algebra
+from some bundle gerbes as follows.  If the fibres of
+       \myHighlight{$Y \to M$}\coordHE{} have an appropriate measure on them then we can
+define a product on two sections \myHighlight{$f, g \colon  Y^{[2]} \to P$}\coordHE{} by
+$$\coord{}\boxMath{
+(fg)(y_1, y_2) = \int f(y_1, y)g(y, y_2) dy
+}{dollar}{0pt}\coordE{}$$
+where in the integrand we use the bundle gerbe product so that
+\myHighlight{$f(y_1, y) g(y, y_2) \in L_{(y_1, y_2)}$}\coordHE{}.  Appropriately
+closing this space of sections gives a \myHighlight{$C^*$}\coordHE{} algebra with spectrum \myHighlight{$M$}\coordHE{}
+and Dixmier-Douady class the Dixmier-Douady class of \myHighlight{$(L, Y)$}\coordHE{}.
+Some constructions in the theory of \myHighlight{$C^*$}\coordHE{} algebras become easy from this
+perspective. For example if \myHighlight{$A$}\coordHE{} is an algebra with spectrum \myHighlight{$X$}\coordHE{} and
+\myHighlight{$f \colon Y \to X$}\coordHE{}
+is a continuous map there is an algebra \myHighlight{$f^{-1}(A)$}\coordHE{} with spectrum \myHighlight{$Y$}\coordHE{}.
+This is just the pullback of bundle gerbes.  It is tempting to define
+the \myHighlight{$K$}\coordHE{}-theory of a bundle gerbe to be the \myHighlight{$K$}\coordHE{}-theory of the
+associated \myHighlight{$C^*$}\coordHE{} algebra.
+However a result from \cite{Mur} is an obstruction to this. If a
+bundle gerbe has non-torsion Dixmier-Douady class then the fibres of
+\myHighlight{$Y \to M$}\coordHE{} are either infinite-dimensional (in which case there is no
+measure) or disconnected. The simplest example of the disconnected
+case is the one originally used by Raeburn and Taylor \cite{RaeTay},
+in their proof that every three class is the Dixmier-Douady class of
+some \myHighlight{$C^*$}\coordHE{} algebra, which is to take \myHighlight{$Y$}\coordHE{} the disjoint union of an
+open cover so the fibres are discrete and counting measure
+suffices. It follows from general theory however that when the \myHighlight{$C^*$}\coordHE{}
+algebra can be defined, because it has the same Dixmier-Douady class
+as the bundle gerbe, its \myHighlight{$K$}\coordHE{}-theory is the \myHighlight{$K$}\coordHE{}-theory of the bundle
+gerbe.
+
+
+\bigskip \noindent
+{\it Errata to \cite{BM}}: Bouwknegt and Mathai would like to correct
+the following errors.\\
+\myHighlight{$\bullet$}\coordHE{} page 5 in \cite{BM}, last paragraph. The \myHighlight{$\mathcal
+K$}\coordHE{}-bundles with torsion
+Dixmier-Douady class \myHighlight{$[H]$}\coordHE{} described there are those that are pulled back
+from the classifying space of the fundamental group, even though it is
+not explicitly mentioned there. In general there are
+\myHighlight{$\mathcal K$}\coordHE{}-bundles with torsion
+Dixmier-Douady class that can not be described in this manner.\\
+\myHighlight{$\bullet$}\coordHE{} page 7 in \cite{BM}, in section 3. Since \myHighlight{$\mathcal K$}\coordHE{} has
+no unit, one has
+to add a unit in defining the \myHighlight{$K$}\coordHE{}-theory of the algebra of sections
+of the bundle of compact operators \myHighlight{${\mathcal E}_{[H]}$}\coordHE{}. The definition
+given in page 7 works only in the case when the Dixmier-Douady class
+\myHighlight{$[H]$}\coordHE{} is torsion, since in this case it can be shown that that the relevant
+algebra of sections has
+an approximate identity of idempotents, cf. \cite{Bla} \S 5.5.4.
+This affects the discussion in the remaining part of the section
+starting from the last paragraph on page 8, in
+the sense that it is valid only when the Dixmier-Douady class \myHighlight{$[H]$}\coordHE{}
+is torsion. In particular, the finite dimensional description of
+elements in twisted \myHighlight{$K$}\coordHE{}-theory is valid only in the torsion case.
+In the general case, sections of the twisted Fredholm
+operators as in equation \myHighlight{$(3.2)$}\coordHE{} in \cite{BM} define elements in
+twisted \myHighlight{$K$}\coordHE{}-theory. \\
+\myHighlight{$\bullet$}\coordHE{} page 8, equation \myHighlight{$(3.3)$}\coordHE{} in \cite{BM} should read
+$$\coord{}\boxMath{K^1(X, [H]) = [Y, \UK]^{Aut(\mathcal K)}}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$\UK$}\coordHE{} is the group of unitaries on a
+Hilbert space \myHighlight{$\mathcal H$}\coordHE{} of the form, identity operator
+   + compact operator.
+    
+\begin{thebibliography}{99}
+
+\bibitem{AlSc}
+A.Yu. Alekseev and V. Schomerus, {\it D-branes in the WZW model},
+Phys.\ Rev.\ {\bf D60} (1999) 061901, hep-th/9812193;
+{\it RR charges of D2-branes in the WZW model}, hep-th/0007096.
+
+\bibitem{Ati}
+M.~Atiyah, {\it \myHighlight{$K$}\coordHE{}-theory},
+(W.A.~Benjamin, New York, 1967).
+
+\bibitem{Ati2}
+M.~Atiyah, {\it \myHighlight{$K$}\coordHE{}-theory Past and Present},
+math.KT/0012213.
+
+\bibitem{Bla}
+B.~Blackadar,
+{\it \myHighlight{$K$}\coordHE{}-theory for operator algebras},
+MSRI Publications, Vol.\ {\bf 5},
+(Cambridge University Press, Cambridge, 1998).
+
+\bibitem{BM}
+P. Bouwknegt and V. Mathai,
+{\it \myHighlight{$D$}\coordHE{}-branes, \myHighlight{$B$}\coordHE{}-fields and twisted \myHighlight{$K$}\coordHE{}-theory},
+J. High Energy Phys. {\bf 03} (2000) 007, hep-th/0002023.
+
+\bibitem{Bry}
+J.-L. Brylinski, {\it Loop spaces, characteristic classes and
+geometric quantization},
+Prog. Math., {\bf 107}, (Birkh\"auser Boston, Boston, 1993).
+
+\bibitem{DMW}
+D.-E.~Diaconescu, G.~Moore and E.~Witten,
+{\it E8 Gauge Theory, and a Derivation of \myHighlight{$K$}\coordHE{}-theory from M-Theory},
+hep-th/0005090.
+
+
+\bibitem{DK} P.~Donovan and M.~Karoubi, {\em Graded Brauer
+groups and \myHighlight{$K$}\coordHE{}-theory with local coefficients}, Inst.\ Hautes
+\'Etudes Sci.\ Publ.\ Math., {\bf 38} (1970) 5--25.
+
+
+\bibitem{FigSta}
+J.M. Figueroa-O'Farrill and S. Stanciu,
+{\it D-brane charge, flux quantisation and relative (co)homology},
+J.\ High Energy Phys.\ {\bf 01} (2001) 006, hep-th/0008038.
+
+\bibitem{FS}
+S.~Fredenhagen and V.~Schomerus,
+{\it Branes on Group Manifolds, Gluon Condensates, and twisted \myHighlight{$K$}\coordHE{}-theory},
+hep-th/0012164.
+
+\bibitem{FW}
+D.~Freed and E.~Witten
+{\it Anomalies in String Theory with D-Branes}, hep-th/9907189.
+
+\bibitem{Har}
+J.A.~Harvey,
+{\it Topology of the Gauge Group in Noncommutative Gauge Theory},
+hep-th/0105242.
+
+\bibitem{HM}
+J.A.~Harvey and G.~Moore,
+{\it Noncommutative Tachyons and \myHighlight{$K$}\coordHE{}-Theory}, hep-th/0009030.
+
+\bibitem{Hop}
+M.~Hopkins, unpublished.
+
+\bibitem{Hor}
+P. Ho\v rava, {\it Type \myHighlight{$IIA$}\coordHE{}  \myHighlight{$D$}\coordHE{}-branes, \myHighlight{$K$}\coordHE{}-Theory and Matrix Theory},
+Adv. Theor. Math. Phys. {\bf 2} (1999) 1373, hep-th/9812135.
+
+\bibitem{Kalk}
+J.~Kalkkinen, {\it Non-Abelian gerbes from strings on a branched
+space-time}, hep-th/9910048.
+
+\bibitem{Kap}
+A. Kapustin,
+{\it \myHighlight{$D$}\coordHE{}-branes in a topologically non-trivial \myHighlight{$B$}\coordHE{}-field},
+Adv.\ Theor.\ Math.\ Phys.\ {\bf 4} (2001) 127, hep-th/9909089.
+
+\bibitem{Kar}
+M.~Karoubi, {\it \myHighlight{$K$}\coordHE{}-theory}, Grundlehren der Mathematischen
+Wissenschaften {\bf 226}, (Springer Verlag, Berlin, 1978).
+
+\bibitem{LupUri}
+E. Lupercio and B. Uribe,
+{\it Gerbes over Orbifolds and \myHighlight{$K$}\coordHE{}-theory},
+math.AT/0105039.
+
+\bibitem{Mac}
+M. Mackaay,
+{\it A note on the holonomy of connections in twisted bundles},
+math.DG/0106019.
+
+\bibitem{MMS}
+J.~Maldacena, G.~Moore and N.~Seiberg, {\it Geometrical
+interpretation of D-branes in gauged WZW models}, hep-th/0105038.
+
+\bibitem{MalMooSei} 
+J.~Maldacena, G.~Moore and N. ~Seiberg, {\it D-brane Instantons 
+and \myHighlight{$K$}\coordHE{}-theory Charges}, hep-th/0108100. 
+
+\bibitem{Maly}
+Y.~Malyuta, {\it D-branes and twisted \myHighlight{$K$}\coordHE{}-theory}, hep-th/0103213.
+
+\bibitem{Milnor} 
+J. W. Milnor, {\it Remarks on infinite dimensional Lie groups}, 
+in Relativity, Groups and Topology II, Les Houches Session XL, 
+1983, edited by B. S. de Witt and R. Stora.  North Holland, 
+Amsterdam, 1984. 
+
+\bibitem {MM}
+G. Moore and R. Minasian,
+{\it \myHighlight{$K$}\coordHE{}-theory and Ramond-Ramond charge},
+J. High Energy Phys. {\bf 11} (1997) 002, hep-th/9609122.
+
+\bibitem{MW}
+G. Moore and E. Witten,
+{\it Self-duality, Ramond-Ramond fields and \myHighlight{$K$}\coordHE{}-theory},
+J. High Energy Phys. {\bf 05} (2000) 032,
+hep-th/9912279.
+
+\bibitem{Mur}
+M.K. Murray, {\it Bundle gerbes},
+J. London Math. Soc. (2) {\bf 54}
+(1996), no.~2, 403--416.
+
+\bibitem{MurSte}
+M.K. Murray and D. Stevenson, {\it Bundle Gerbes: Stable
+Isomorphism and Local Theory}, J. London Math. Soc. (2) {\bf 62}
+(2000), no.~3, 925--937, math.DG/9908135.
+
+\bibitem{Pol}
+J.~Polchinski, {\it String Theory}, Vol. I \& II,
+(Cambridge University Press, Cambridge, 1998).
+
+\bibitem{RaeTay}
+I. Raeburn and J.L. Taylor
+{\sl Continuous trace \myHighlight{$C^*$}\coordHE{}-algebras with given Dixmier-Douady class},
+J. Austral. Math. Soc. Ser. A, {\bf 38}, 1985, no. 3,
+394--407.
+
+\bibitem{Ren}
+J. Renault, {\em A groupoid approach to \myHighlight{$C^*$}\coordHE{} algebras},
+Springer Lecture Notes in Mathematics, 793, (Springer-Verlag, New York,
+1980).
+
+
+\bibitem{RLL}
+M.~R\o rdam, F.~Larsen and N.J.~Laustsen, {\it An introduction
+to \myHighlight{$K$}\coordHE{}-theory for \myHighlight{$C^*$}\coordHE{}-algebras},
+London Mathematical Society Student Texts {\bf 49}, (Cambridge
+University Press, Cambridge, 2000).
+
+
+\bibitem{Rosa}
+J.~Rosenberg, {\it Homological invariants of extensions of
+\myHighlight{$C^*$}\coordHE{}-algebras}, Proc.\ Symp.\ in Pure Math.\ {\bf 38} (1982), 35--75.
+
+
+\bibitem{Ros}
+J. Rosenberg, {\it Continuous trace \myHighlight{$C^*$}\coordHE{}-algebras from
+the bundle theoretic point of view},
+J. Aust. Math. Soc. {\bf A47} (1989) 368.
+
+\bibitem{Seg1}
+G.~Segal, {\it Equivariant \myHighlight{${K}$}\coordHE{}-theory},
+Inst. Hautes \'Etudes Sci. Publ. Math.
+{\bf 34}, 1968, 129--151.
+
+\bibitem{Seg2}
+G.~Segal,
+{\it Equivariant contractibility of the general linear group of
+               Hilbert space}, Bull. London Math. Soc.
+   {\bf 1}, 1969, 329--331.
+
+\bibitem{Ste}
+D. Stevenson,
+{\it The Geometry of Bundle Gerbes},
+PhD thesis, Department of Pure Mathematics, University of Adelaide, 2000,
+math.DG/0004117.
+
+\bibitem{Tol} 
+V. Toledano Laredo, {\it Fusion of Positive Energy Representations 
+of \myHighlight{$LSpin_{2n}$}\coordHE{}}, PhD Dissertation, University of Cambridge, 1997. 
+
+\bibitem{WO}
+N.E.~Wegge-Olsen, {\it \myHighlight{$K$}\coordHE{}-theory and \myHighlight{$C^*$}\coordHE{}-algebras},
+(Oxford University Press, Oxford, 1993).
+
+\bibitem{Wit1}
+E. Witten,
+{\it \myHighlight{$D$}\coordHE{}-Branes and \myHighlight{$K$}\coordHE{}-theory},
+J. High Energy Phys. {\bf 12} (1998) 019, hep-th/9810188.
+
+\bibitem{Wit2}
+E.~Witten,
+{\it Overview of \myHighlight{$K$}\coordHE{}-theory applied to strings},
+Int. J. Mod. Phys. {\bf A16} (2001) 693, hep-th/0007175.
+
+\end{thebibliography}
+\end{document}
+     
+
+\bye

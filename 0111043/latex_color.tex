@@ -1,0 +1,882 @@
+
+\documentclass[a4paper]{amsart}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{amssymb}
+\usepackage{amsxtra}
+
+\providecommand{\diag}{\operatorname{diag}}
+\providecommand{\supp}{\operatorname{supp}}
+\providecommand{\ch}{\operatorname{ch}}
+\providecommand{\td}{\operatorname{td}}
+\providecommand{\Ext}{\operatorname{Ext}}
+\providecommand{\Tr}{\operatorname{Tr}}
+\providecommand{\Hom}{\operatorname{Hom}}
+\providecommand{\Ob}{\operatorname{Ob}}
+\providecommand{\Aut}{\operatorname{Aut}}
+\providecommand{\rk}{\operatorname{rk}}
+\providecommand{\End}{\operatorname{End}}
+\providecommand{\Coh}{\operatorname{Coh}}
+\providecommand{\Vect}{\operatorname{Vect}}
+\providecommand{\Pic}{\operatorname{Pic}}
+\providecommand{\NS}{\operatorname{NS}}
+\providecommand{\field}[1]{\mathbb{#1}}
+\providecommand{\C}{\field{C}}
+\providecommand{\R}{\field{R}}
+\providecommand{\Q}{\field{Q}}
+\providecommand{\Z}{\field{Z}}
+\providecommand{\hstar}{\text{\myHighlight{$\ast$}\coordHE{}}}
+\renewcommand{\det}{\operatorname{det}}
+\renewcommand{\Im}{\operatorname{Im}} % imaginary part
+\renewcommand{\Re}{\operatorname{Re}} % real part
+\providecommand{\im}{\operatorname{im}} % image
+\providecommand{\dop}{\mathrm{d}}
+\providecommand{\Hgrp}{\mathrm{H}}
+\providecommand{\grp}[1]{\operatorname{#1}}
+\providecommand{\GL}{\grp{GL}}
+\providecommand{\SO}{\grp{SO}}
+\providecommand{\Spin}{\grp{Spin}}
+\providecommand{\id}{\operatorname{id}}
+\providecommand{\vol}{\operatorname{vol}}
+\providecommand{\Fix}{\operatorname{Fix}}
+\providecommand{\Func}{\operatorname{Func}}
+\providecommand{\Gr}{\operatorname{Gr}}
+\providecommand{\Coder}{\operatorname{Coder}}
+\providecommand{\ad}{\operatorname{ad}}
+\providecommand{\HH}{\mathrm{HH}}
+\providecommand{\vertic}{\operatorname{vert}}
+\providecommand{\FM}{\operatorname{FM}}
+\providecommand{\PD}{\operatorname{PD}}
+\providecommand{\sign}{\operatorname{sign}}
+\providecommand{\ev}{\operatorname{ev}}
+\providecommand{\preTrcat}{\operatorname{Pre-Tr}}
+\providecommand{\Trcat}{\operatorname{Tr}}
+\providecommand{\Mor}{\operatorname{Mor}}
+\providecommand{\Rep}{\operatorname{Rep}}
+\providecommand{\sgn}{\operatorname{sgn}}
+
+\providecommand{\href}[2]{#2}
+
+\usepackage{varioref}
+
+\makeatletter
+\def\newsrefformat#1#2{%
+  \@namedef{sr@#1}##1{#2}}
+\def\newrefformat#1#2{%
+  \@namedef{pr@#1}##1{#2}}
+\newrefformat{eq}{\textup{(\ref{#1})}}
+\newrefformat{lem}{Lemma~\vref{#1}}
+\newsrefformat{lem}{Lemma~\ref{#1}}
+\newrefformat{thm}{Theorem~\vref{#1}}
+\newsrefformat{thm}{Theorem~\ref{#1}}
+\newrefformat{prop}{Proposition~\vref{#1}}
+\newsrefformat{prop}{Proposition~\ref{#1}}
+\newrefformat{ass}{Assumption~\vref{#1}}
+\newsrefformat{ass}{Assumption~\ref{#1}}
+\newrefformat{conj}{Conjecture~\vref{#1}}
+\newsrefformat{conj}{Conjecture~\ref{#1}}
+\newrefformat{ch}{Chapter~\ref{#1}}
+\newrefformat{sec}{Section~\ref{#1}}
+\newrefformat{tab}{Table~\vref{#1}}
+\newsrefformat{tab}{Table~\ref{#1}}
+\newrefformat{fig}{\figurename~\vref{#1}}
+\newsrefformat{fig}{\figurename~\ref{#1}}
+\newrefformat{def}{Definition~\vref{#1}}
+\newsrefformat{def}{Definition~\ref{#1}}
+\newrefformat{it}{(\ref{#1})}
+\def\prettyref#1{\@prettyref#1:}
+\def\@prettyref#1:#2:{%
+  \expandafter\ifx\csname pr@#1\endcsname\relax%
+    \PackageWarning{myref}{Full reference format #1\space undefined}%
+    \ref{#1:#2}%
+  \else%
+    \csname pr@#1\endcsname{#1:#2}%
+  \fi%
+}
+\def\shortref#1{\@shortref#1:}
+\def\@shortref#1:#2:{%
+  \expandafter\ifx\csname sr@#1\endcsname\relax%
+    \PackageWarning{myref}{Short reference format #1\space undefined}%
+    \ref{#1:#2}%
+  \else%
+    \csname sr@#1\endcsname{#1:#2}%
+  \fi%
+}
+\makeatother
+
+\providecommand{\pref}{\prettyref}
+\providecommand{\sref}{\shortref}
+
+\numberwithin{equation}{section}
+
+\usepackage{useful_macros}
+\begin{document}
+\title{Note on mirror symmetry and coisotropic D-branes on tori}
+\author{Christian van Enckevort}
+\address{Johannes Gutenberg Universität\\Mainz\\Germany}
+\email{enckevor@mathematik.uni-mainz.de}
+\maketitle
+
+\begin{abstract}
+We describe mirror symmetry on higher dimensional tori, paying special
+attention to the behaviour of D-branes under mirror symmetry. To find the
+mirror D-branes the description of mirror symmetry on D-branes due to
+Ooguri, Oz en Yin is used. This method allows us to deal with the
+coisotropic D-branes recently introduced by Kapustin and Orlov. We
+compare this to the description of mirror symmetry on D-branes using
+the Fourier-Mukai transform of charges.
+\end{abstract}
+
+\section{Introduction}
+Since its first breakthrough in 1991 (see \cite{COGP91}) mirror
+symmetry has been developed in many directions. This topic has
+stimulated a lively exchange of ideas between mathematics and physics.
+Since the formulation of the homological mirror symmetry conjecture by
+Kontsevich in \cite{Kon94} and the introduction of D-branes by
+Polchinsky (see \cite{Pol95,Pol96}), D-branes have started to play an
+increasingly important role. We will restrict our attention to
+BPS-branes on Calabi-Yau spaces. These come in two classes the
+(special) Lagrangian D-branes and the holomorphic D-branes. These are
+also often called the A-branes and B-branes, because the Lagrangrian
+branes can also be discussed in the topological A-model, whereas the
+B-branes can be included into the topological B-model.
+
+Kontsevich proposes to combine each of these classes of D-branes into
+a category. The holomorphic D-branes should lead to the category which
+is known among mathematicians as the derived category of coherent
+sheaves. The Lagrangian D-branes should give rise to the so-called
+Fukaya category (or better a derived version thereof). The homological
+mirror symmetry conjecture then says that for a mirror pair of
+Calabi-Yau manifolds \myHighlight{$X$}\coordHE{} and \myHighlight{$Y$}\coordHE{} the derived Fukaya category of \myHighlight{$X$}\coordHE{}
+should be equivalent to the derived category of coherent sheaves of
+\myHighlight{$Y$}\coordHE{}.
+
+Recently these D-brane categories have been investigated more closely
+by physicists (see e.g. \cite{Dou00} and references therein). These
+investigations led to interesting conjectures and results about
+stability, the relation to Witten's open string field theory etc.
+Another interesting line of research was initiated by Kapustin and
+Orlov in \cite{KO01}, where it was shown that the description of
+A-branes as Lagrangian branes is in general incomplete and extra
+objects corresponding to so-called coisotropic manifolds have to be
+introduced. To find these objects Kapustin and Orlov used the
+description of mirror symmetry introduced in \cite{OOY96}.
+
+In this article I want to give a more concrete description of these
+extra objects. In \cite{KO01} they were studied from a general
+perspective. Here we will restrict ourselves to even-dimensional tori
+as a special example of Calabi-Yau manifolds.  This restriction allows
+us to give a much more concrete description of these still rather
+mysterious objects. We also investigate some general properties of
+these objects and check that they match the expectations from mirror
+symmetry.
+
+\section{Mirror symmetry on tori}
+\subsection{Notation}
+Let us first briefly discuss the notation that we will use throughout
+this text. We write \myHighlight{$X = T^n \times T^n$}\coordHE{} for a \myHighlight{$2n$}\coordHE{}-dimensional torus
+and \myHighlight{$Y = T^n \times \check{T}^n$}\coordHE{} for its mirror. We will use
+coordinates \myHighlight{$(x, y) \in \R^n/\Z^n \times \R^n/\Z^n$}\coordHE{} on \myHighlight{$X$}\coordHE{} and \myHighlight{$(x,
+\check{y}) \in \R^n/\Z^n \times \R^n/\Z^n$}\coordHE{} on \myHighlight{$Y$}\coordHE{}. The data describing
+objects on \myHighlight{$X$}\coordHE{} will have a tilde, to distinguish them from the data
+describing objects on \myHighlight{$Y$}\coordHE{}. The SYZ-fibration is given by projection to
+the \myHighlight{$x$}\coordHE{}-coordinates. We will discuss the A-model on \myHighlight{$X$}\coordHE{} and the
+B-model on \myHighlight{$Y$}\coordHE{}.
+
+The tangent bundle is trivial and can be written as \myHighlight{$TX = X \times
+\R^n \times \R^n$}\coordHE{}. A Ricci flat metric can then be identified with a
+positive definite \myHighlight{$2n \times 2n$}\coordHE{}-matrix \myHighlight{$g$}\coordHE{}, the complex structure
+with a \myHighlight{$2n \times 2n$}\coordHE{}-matrix squaring to \myHighlight{$-I_{2n}$}\coordHE{}. The compatibility
+of the complex structure and the metric can be written as \myHighlight{$J^t g J =
+g$}\coordHE{}. It follows that \myHighlight{$\omega = g J$}\coordHE{} is an antisymmetric matrix defining
+the Kähler form on \myHighlight{$X$}\coordHE{}.
+
+The complex structure can also be defined by requiring \myHighlight{$z := \tau x +
+y$}\coordHE{} to define complex coordinates on \myHighlight{$X$}\coordHE{}. Here \myHighlight{$\tau = \tau_1 + i
+\tau_2$}\coordHE{} is a complex \myHighlight{$n \times n$}\coordHE{}-matrix. For simplicity we will
+assume that \myHighlight{$\tau_1 = 0$}\coordHE{} and that \myHighlight{$\tau_2$}\coordHE{} be symmetric. This mirror
+symmetric to requiring the B-field to vanish. The relation between
+these two ways of define the complex structure is that in term of
+\myHighlight{$\tau$}\coordHE{} the matrix \myHighlight{$J$}\coordHE{} can be written as
+\begin{equation}\coord{}\boxEquation{
+\label{eq:cplxstr}
+  J = \begin{pmatrix}
+          0       & \tau_2^{-1} \\
+          -\tau_2 & 0
+      \end{pmatrix}.
+}{
+J = \begin{pmatrix}
+          0       & \tau_2^{-1} \\
+          -\tau_2 & 0
+      \end{pmatrix}.
+}{ecuacion}\coordE{}\end{equation}
+On a Calabi-Yau manifold we also have a holomorphic \myHighlight{$(n,0)$}\coordHE{}-form
+\myHighlight{$\Omega$}\coordHE{}. On a torus is can be written as \myHighlight{$\Omega = \dop^n z$}\coordHE{}.
+
+\subsection{\myHighlight{$R$}\coordHE{}-matrices}
+We will use the description of D-branes in Calabi-Yau spaces that was
+given in \cite{OOY96}. This description was also used by Kapustin and
+Orlov to give a general description of the non-Langrangian A-branes.
+In \cite{OOY96} everything is discussed in terms of local coordinates
+and it is not completely clear how to formulate all of it in a
+coordinate independent way, especially because in general the mirror
+manifold and the original manifold are really different manifolds.
+Fortunately the mirror manifold of a torus is a torus again and in
+addition we can use global flat coordinates on the tori (as discussed
+above). So we give a description taylored for tori and ignore
+subtleties that do not matter for tori.
+
+Let \myHighlight{$X$}\coordHE{} be a complex torus as discussed above. The worldsheet \myHighlight{$\Sigma$}\coordHE{}
+is a two-dimensial surface with metric \myHighlight{$h$}\coordHE{}. The fields\footnote{I use
+  the notation from \cite{Enc00}. The fields \myHighlight{$x$}\coordHE{}, \myHighlight{$\psi_+$}\coordHE{} and
+  \myHighlight{$\psi_-$}\coordHE{} correspond to the fields \myHighlight{$X$}\coordHE{}, \myHighlight{$\psi_L$}\coordHE{} and \myHighlight{$\psi_R$}\coordHE{} in
+  \cite{OOY96}.} of the sigma model are the bosonic field \myHighlight{$x$}\coordHE{} which is
+a map \myHighlight{$\Sigma \rightarrow X$}\coordHE{} and the fermionic fields \myHighlight{$\psi_+$}\coordHE{} and
+\myHighlight{$\psi_-$}\coordHE{}, which are sections of \myHighlight{$x^*(TX) \otimes K^{1/2}$}\coordHE{} and \myHighlight{$x^*(TX)
+\otimes \bar{K}^{1/2}$}\coordHE{} respectively. Here \myHighlight{$K$}\coordHE{} is the bundle of
+\myHighlight{$(1,0)$}\coordHE{}-forms on the surface \myHighlight{$\Sigma$}\coordHE{}.
+
+Let \myHighlight{$S$}\coordHE{} be a submanifold of \myHighlight{$X$}\coordHE{}. We will assume that \myHighlight{$S$}\coordHE{} corresponds
+to an affine subspace of \myHighlight{$\R^n \times \R^n$}\coordHE{}. This assumption will
+allow us to describe the D-brane in terms of a matrix. We want to
+discuss boundary conditions for open strings ending on \myHighlight{$S$}\coordHE{}. For string
+theory on a Calabi-Yau manifolds there are two special classes of
+boundary conditions that preserve half of the supersymmetry, which are
+called A- and B-type boundary conditions. For D-branes on a torus they
+can be described using an \myHighlight{$2n \times 2n$}\coordHE{}-matrix \myHighlight{$R$}\coordHE{}. On the boundary
+of \myHighlight{$\Sigma$}\coordHE{} the following boundary conditions should hold
+\[\coord{}\boxMath{
+  \partial x^\mu = R^\mu{}_\nu \bar{\partial} x^\nu, \quad
+  \psi^\mu_+ = \pm R^\mu{}_\nu \psi^\nu_-.
+}{corchetes}{0pt}\coordE{}\]
+The matrix \myHighlight{$R$}\coordHE{} should be orthogonal with respect to the metric \myHighlight{$g$}\coordHE{} on
+the Calabi-Yau manifold \myHighlight{$X$}\coordHE{}. As explained in \cite{OOY96} the
+codimension of the D-brane with \myHighlight{$R$}\coordHE{}-matrix \myHighlight{$R$}\coordHE{} is given by the
+dimension of the eigenspace \myHighlight{$E_{-1}$}\coordHE{} for eigenvalue \myHighlight{$-1$}\coordHE{} of \myHighlight{$R$}\coordHE{}. The
+orthogonal complement \myHighlight{$E_{-1}^\perp$}\coordHE{} of that eigenspace is the tangent
+space to the D-brane. The restriction of \myHighlight{$R$}\coordHE{} to that eigenspace can be
+written as 
+\[\coord{}\boxMath{
+  R|_{E_{-1}^\perp} = (I+F)^{-1}(I-F).
+}{corchetes}{0pt}\coordE{}\]
+Here \myHighlight{$F$}\coordHE{} is an antisymmetric matrix defining the curvature of the
+connection on the D-brane.
+
+Whether these boundary conditions are of A- or B-type depends on the
+additional conditions that we impose on \myHighlight{$R$}\coordHE{}. The conditions for A-type
+boundary conditions can be formulated as
+\[\coord{}\boxMath{
+\begin{split}
+  R^t \omega R &= -\omega, \\
+     R^*\Omega &= \bar{\Omega}.
+\end{split}
+}{corchetes}{0pt}\coordE{}\]
+For B-type boundary conditions \myHighlight{$R$}\coordHE{} should satisfy
+\[\coord{}\boxMath{
+\begin{split}
+  R^t \omega R &= \omega, \\
+     R^*\Omega &= e^{i\theta} \Omega,
+\end{split}
+}{corchetes}{0pt}\coordE{}\]
+for some \myHighlight{$\theta \in \R$}\coordHE{}.
+
+\subsection{T-duality and mirror symmetry}
+When the target manifold \myHighlight{$X$}\coordHE{} has a fibration with a torus as factor,
+one can apply T-duality and replace the torus by its dual. Because
+T-duality affects the boundary conditions, we should describe what
+T-duality does with the \myHighlight{$R$}\coordHE{}-matrices discussed above. Following
+\cite{OOY96} we will describe T-duality using a matrix \myHighlight{$T$}\coordHE{}. This
+matrix should square to \myHighlight{$I_{2n}$}\coordHE{}, be symmetric (or equivalently
+orthogonal) with respect to the metric \myHighlight{$g$}\coordHE{} and satisfy \myHighlight{$T J T = -J$}\coordHE{}.
+In terms of this matrix mirror symmetry on D-branes should be
+described as follows. If we start with a D-brane with \myHighlight{$R$}\coordHE{}-matrix \myHighlight{$R$}\coordHE{},
+then mirror D-brane should have \myHighlight{$R$}\coordHE{}-matrix \myHighlight{$R' = RT$}\coordHE{}. However, for
+this description to be valid there must be a relation between the
+choice of coordinates on \myHighlight{$X$}\coordHE{} and on \myHighlight{$Y$}\coordHE{} (because \myHighlight{$R$}\coordHE{}, \myHighlight{$T$}\coordHE{} depend on
+the coordinates on \myHighlight{$X$}\coordHE{} and \myHighlight{$R'$}\coordHE{} on the coordinates on \myHighlight{$Y$}\coordHE{}). We will
+suppose this description is valid for coordinates on \myHighlight{$X$}\coordHE{} such that
+\myHighlight{$g=I_{2n}$}\coordHE{} and \myHighlight{$J=\left ( \begin{smallmatrix} 0 & I_n \\ -I_n &
+    0\end{smallmatrix} \right )$}\coordHE{}. We will use appropriate coordinate
+transformations to transform to this situation. To see how that works,
+we must have a closer look at the background fields. 
+
+In the coordinates that we are using here \myHighlight{$T = \diag(I_n, -I_n)$}\coordHE{}. For
+this matrix to be symmetric with respect to the metric \myHighlight{$g$}\coordHE{}, we have to
+require that \myHighlight{$g$}\coordHE{} has the following block diagonal form \myHighlight{$g =
+\diag(g_{xx}, g_{yy})$}\coordHE{}, where \myHighlight{$g_{xx}$}\coordHE{} and \myHighlight{$g_{yy}$}\coordHE{} a positive
+definite symmetric \myHighlight{$n \times n$}\coordHE{}-matrices. Recall that we consider a
+complex structure of the block form \pref{eq:cplxstr}. Note that \myHighlight{$J$}\coordHE{}
+automatically satisfies \myHighlight{$T J T = -J$}\coordHE{}. The condition that \myHighlight{$J$}\coordHE{} be
+orthogonal with respect to \myHighlight{$g$}\coordHE{} yields \myHighlight{$g_{xx} = \tau_2^t g_{yy}
+\tau_2$}\coordHE{}. Let \myHighlight{$S_{xx}$}\coordHE{} be an \myHighlight{$n \times n$}\coordHE{}-matrix such \myHighlight{$g_{xx} =
+S_{xx}^t S_{xx}$}\coordHE{}. Then we can introduce new coordinates \myHighlight{$(x',y')$}\coordHE{}
+defined by the following equation
+\[\coord{}\boxMath{
+  \begin{pmatrix} x' \\ y' \end{pmatrix} =
+  S \begin{pmatrix} x \\ y \end{pmatrix} =
+  \begin{pmatrix}
+    S_{xx} & 0 \\
+    0      & S_{xx} \tau_2^{-1}
+  \end{pmatrix}
+  \begin{pmatrix} x \\ y \end{pmatrix}.
+}{corchetes}{0pt}\coordE{}\]
+With respect to these new coordinates the metric and the complex
+structure have the standard form discussed above. In the new
+coordinates the D-brane is described by the \myHighlight{$R$}\coordHE{}-matrix \myHighlight{$\tilde{R} := S
+R S^{-1}$}\coordHE{}. Note that \myHighlight{$T$}\coordHE{} is invariant under such coordinate
+transformations. So the mirror D-brane is described by \myHighlight{$\tilde{R}' =
+\tilde{R} T$}\coordHE{}. However, this description is in terms of certain unknown
+coordinates \myHighlight{$(x'',\check{y}')$}\coordHE{} on \myHighlight{$Y$}\coordHE{}.  Recalling that \myHighlight{$\check{y}$}\coordHE{} is
+dual to \myHighlight{$y$}\coordHE{}, a reasonable guess for the definition of these new
+coordinates is
+\[\coord{}\boxMath{
+  \begin{pmatrix} x'' \\ \check{y}' \end{pmatrix} =
+  \check{S} \begin{pmatrix} x \\ \check{y} \end{pmatrix} =
+  \begin{pmatrix}
+    S_{xx} & 0 \\
+    0      & S_{xx}^{-t} \tau_2^t
+  \end{pmatrix}
+  \begin{pmatrix} x \\ \check{y} \end{pmatrix}.
+}{corchetes}{0pt}\coordE{}\]
+In the coordinates \myHighlight{$(x'', \check{y}') = (x', \check{y}')$}\coordHE{}, the metric
+on \myHighlight{$Y$}\coordHE{} is the standard metric, so in the coordinates \myHighlight{$(x, \check{y})$}\coordHE{}
+the metric is
+\[\coord{}\boxMath{
+  \check{g} = \check{S}^t \check{S} =
+  \begin{pmatrix}
+    g_{xx} & 0 \\
+    0      & g_{yy}^{-1}
+  \end{pmatrix}.
+}{corchetes}{0pt}\coordE{}\]
+Similarly we find the complex structure
+\[\coord{}\boxMath{
+ \check{J} = \check{S}^{-1}
+   \begin{pmatrix}
+      0  & I_n \\
+    -I_n &  0
+   \end{pmatrix}
+   \check{S} =
+  \begin{pmatrix}
+    0 & g_{xx}^{-1} \tau_2^t \\
+    -\tau_2^{-t} g_{xx} & 0
+  \end{pmatrix}.
+}{corchetes}{0pt}\coordE{}\]
+Comparing to \pref{eq:cplxstr}, we see \myHighlight{$\check{\tau}_2 = \tau_2^{-t}
+g_{xx}$}\coordHE{}. Together with \myHighlight{$\check{g}_{xx} = g_{xx}$}\coordHE{} and
+\myHighlight{$\check{g}_{\check{y}\check{y}} = g_{yy}^{-1}$}\coordHE{}, this defines the
+mirror map on the background fields. To compare this with the mirror
+map in e.g. \cite{Enc00}, let us define \myHighlight{$k = g_{yy} \tau_2 =
+\tau_2^{-t} g_{xx}$}\coordHE{}.  One can easily check that the Kähler form can be
+written as an antisymmetric block matrix
+\[\coord{}\boxMath{
+  \begin{pmatrix}
+     0 & k^t \\
+    -k & 0
+  \end{pmatrix}.
+}{corchetes}{0pt}\coordE{}\]
+So \myHighlight{$k$}\coordHE{} parametrises the Kähler structure. In this notation the mirror
+map on the background fields is given by \myHighlight{$\check{k} = \tau_2$}\coordHE{} and
+\myHighlight{$\check{\tau}_2 = k$}\coordHE{}, which matches the result in \cite{Enc00}.
+
+
+\subsection{D-brane charges}
+To D-branes one can associate so-called charges. These are easiest to
+define for B-branes. For a vector bundle \myHighlight{$E$}\coordHE{} on a Calabi-Yau manifold
+\myHighlight{$Y$}\coordHE{} the charge vector is given by the Chern class \myHighlight{$\ch(E)$}\coordHE{}. Instead
+also the so-called Mukai vector \myHighlight{$v(E)=\ch(E)\sqrt{\td(Y)}$}\coordHE{} is used
+quite frequently. Of course for a torus \myHighlight{$\td(Y) = 1$}\coordHE{}, so \myHighlight{$v(E) =
+\ch(E)$}\coordHE{}.
+\[\coord{}\boxMath{
+  \chi(E,F) = \int_Y \ch(\check{E}) \cup \ch(F) \cup \td(Y)
+    = \int_Y v(\check{E}) \cup v(F).
+}{corchetes}{0pt}\coordE{}\]
+According to the Riemann-Roch theorem we have
+\begin{equation}\coord{}\boxEquation{
+\label{eq:RR}
+  \chi(E,F) = \sum_i (-1)^i h^i(E,F),
+}{
+\chi(E,F) = \sum_i (-1)^i h^i(E,F),
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$h^i(E,F) := \dim \Hom^i(E,F)$}\coordHE{}. For the purposes of this article
+these definitions suffice. However, it has been suggested in the
+literature that one should really use K-theory instead of cohomology
+classes.
+
+For A-branes the definition is quite simple in the case of Lagrangian
+branes, where one can simply use the cohomology class of the Poincaré
+dual of the Lagrangian submanifold. For more general coisotropic
+submanifolds \myHighlight{$Z \subset X$}\coordHE{} with a bundle \myHighlight{$F$}\coordHE{} defined on \myHighlight{$Z$}\coordHE{}, we can
+define the charge as follows
+\[\coord{}\boxMath{
+  c(Z,F) := i_*(\ch(F)),
+}{corchetes}{0pt}\coordE{}\]
+where \myHighlight{$i : Z \rightarrow X$}\coordHE{} is the embedding.  For Lagrangian
+submanifolds this reproduces the older definition.  In the simplest
+case of two Lagrangian submanifolds \myHighlight{$L$}\coordHE{} and \myHighlight{$M$}\coordHE{}, the Euler
+characteristic can be defined as
+\[\coord{}\boxMath{
+  \chi(L,M) := [L] \cdot [M].
+}{corchetes}{0pt}\coordE{}\]
+The general definition of the Euler characteristic for objects of the
+Fukaya category in not yet clear, but it should be such that an
+analogon of \pref{eq:RR} holds in the Fukaya category.
+
+The mirror map on charge vectors is expected to be given by fibrewise
+Fourier-Mukai \myHighlight{$\FM: A^*_Y \rightarrow A^*_X$}\coordHE{} transform of differential
+forms, where \myHighlight{$A^*_X$}\coordHE{} denotes the space of differential forms on \myHighlight{$X$}\coordHE{}
+and similarly for \myHighlight{$A^*_Y$}\coordHE{}. This map is defined as follows
+\[\coord{}\boxMath{
+  \FM(\alpha) = \int_{T^n_{\check{y}}} \alpha e^{-\langle \dop
+  \check{y}, \dop y \rangle}.
+}{corchetes}{0pt}\coordE{}\]
+Let \myHighlight{$\mu$}\coordHE{} be the mirror map of D-branes, mapping holomorphic D-branes
+on \myHighlight{$Y$}\coordHE{} to objects of the Fukaya category on \myHighlight{$X$}\coordHE{}. Then one expects
+\[\coord{}\boxMath{
+  \FM(\ch(E)) = c(\mu(E)).
+}{corchetes}{0pt}\coordE{}\]
+The charges depend on the support of the D-brane and the curvature of
+the connection. This is also the information contained in the
+\myHighlight{$R$}\coordHE{}-matrix. In both cases we have a description of how mirror symmetry
+should act. In the sequel we will analyse mirror symmetry using both
+descriptions and compare the results.
+
+\section{Mirror symmetry for D-branes}
+\subsection{Line bundles}
+Let us first consider a line bundle \myHighlight{$L$}\coordHE{} on \myHighlight{$Y$}\coordHE{} and its mirror object on
+\myHighlight{$X$}\coordHE{}. The first Chern class of this line bundle can be written as
+\[\coord{}\boxMath{
+  c_1(L) = \tfrac{1}{2} \langle \dop x, A \dop x \rangle +
+  \tfrac{1}{2} \langle \dop \check{y}, B \dop \check{y} \rangle +
+  \langle C \dop x, \dop \check{y} \rangle.
+}{corchetes}{0pt}\coordE{}\]
+Because \myHighlight{$c_1(L)$}\coordHE{} should be integral, we see that the entries of the \myHighlight{$n
+\times n$}\coordHE{} matrices \myHighlight{$A$}\coordHE{}, \myHighlight{$B$}\coordHE{} and \myHighlight{$C$}\coordHE{} have to be integers. Note that the
+matrices \myHighlight{$A$}\coordHE{} and \myHighlight{$B$}\coordHE{} can be chosen to be antisymmetric. To make
+contact with the usual notation in physics, the curvature matrix \myHighlight{$F$}\coordHE{}
+of the line bundle \myHighlight{$L$}\coordHE{} can, in terms of the matrices \myHighlight{$A$}\coordHE{}, \myHighlight{$B$}\coordHE{} and
+\myHighlight{$C$}\coordHE{}, be written as \myHighlight{$F = \left ( \begin{smallmatrix} A & C^t \\ -C & B
+\end{smallmatrix} \right )$}\coordHE{}.
+
+Another requirement is that \myHighlight{$c_1(L)$}\coordHE{} should be a \myHighlight{$(1,1)$}\coordHE{}-form. If \myHighlight{$z =
+\tau x + y$}\coordHE{} defines complex coordinates on \myHighlight{$Y$}\coordHE{}, then \myHighlight{$y = (z +
+\bar{z})/2$}\coordHE{} and \myHighlight{$x = (2i\tau_2)^{-1} (z - \bar{z})$}\coordHE{}. So the
+\myHighlight{$(0,2)$}\coordHE{}-part of \myHighlight{$c_1(L)$}\coordHE{} is given by
+\[\coord{}\boxMath{
+  c_1(L)^{(0,2)} = -\tfrac{1}{8} \langle \dop \bar{z}, \tau_2^{-t} A
+  \tau_2^{-1} \dop \bar{z} \rangle + 
+  \tfrac{1}{8} \langle \dop \bar{z}, B \dop \bar{z} \rangle -
+  \tfrac{i}{4} \langle \dop \bar{z}, \tau_2^{-t} C \dop \bar{z} \rangle.
+}{corchetes}{0pt}\coordE{}\]
+So for \myHighlight{$c_1(L)$}\coordHE{} to be a \myHighlight{$(1,1)$}\coordHE{}-form \myHighlight{$\tau_2^{-t} C$}\coordHE{} should be
+symmetric and the antisymmetric matrices \myHighlight{$\tau_2^{-t} A
+\tau_2^{-1}$}\coordHE{} and \myHighlight{$B$}\coordHE{} should be equal.
+  
+For the SYZ-fibration that we fixed above, mirror symmetry is given by
+the T-duality matrix \myHighlight{$T = \left ( \begin{smallmatrix} I_n & 0 \\ 0 &
+    -I_n \end{smallmatrix} \right )$}\coordHE{}. As discussed above a very
+general description of T-duality can be given in terms of the
+\myHighlight{$R$}\coordHE{}-matrices. For simplicity we will first assume that the metric is
+the standard metric given by the matrix \myHighlight{$g = I_{2n}$}\coordHE{}. In that case the
+\myHighlight{$R$}\coordHE{}-matrix for the line bundle \myHighlight{$L$}\coordHE{} is given by \myHighlight{$R =
+(I_{2n}+F)^{-1}(I_{2n}-F)$}\coordHE{}. The \myHighlight{$R$}\coordHE{}-matrix of the dual A-brane is then
+given by \myHighlight{$\tilde{R} = RT$}\coordHE{}. For a geometric interpretation of the
+B-brane in terms of a Lagrangian submanifold we need that \myHighlight{$\tilde{R}$}\coordHE{}
+is a symmetric matrix. Using the antisymmetry of \myHighlight{$F$}\coordHE{} and the symmetry
+of \myHighlight{$T$}\coordHE{} this condition can be written as \myHighlight{$(I_{2n}-F)T(I_{2n}-F) =
+(I_{2n}+F)T(I_{2n}+F)$}\coordHE{}. A small calculation with block matrices shows
+that condition is met when \myHighlight{$A$}\coordHE{} and \myHighlight{$B$}\coordHE{} vanish. So we find that the
+geometric case is exactly the case investigated in \cite{Enc00}.
+
+In this case \myHighlight{$\tilde{R}$}\coordHE{} can easily be calculated. We can write
+\myHighlight{$\tilde{R} = \bigl ( \begin{smallmatrix} \alpha & \gamma \\ \gamma^t &
+  \beta \end{smallmatrix} \bigr )$}\coordHE{}. If we write the defining equation
+for \myHighlight{$\tilde{R}$}\coordHE{} as \myHighlight{$(I_{2n}+F) \tilde{R} = (I_{2n}-F) T$}\coordHE{}, is a matter
+of some careful computations with block matrices to find
+\[\coord{}\boxMath{
+  \tilde{R} = 
+     \begin{pmatrix}
+       I_n - 2C^t(I_n + CC^t)^{-1} C & 2C^t(I_n + C C^t)^{-1} \\
+       2(I_n + CC^t)^{-1} C          & -I_n + 2CC^t(I_n + CC^t)^{-1}
+     \end{pmatrix}
+}{corchetes}{0pt}\coordE{}\]
+One can verify that the eigenspace with eigenvalue \myHighlight{$1$}\coordHE{} is \myHighlight{$\{ \left (
+ \begin{smallmatrix} x \\ C x \end{smallmatrix} \right ) \}$}\coordHE{} and
+that its orthogonal complement \myHighlight{$\{ \left (
+\begin{smallmatrix} -C^t y \\ y \end{smallmatrix} \right ) \}$}\coordHE{} is the
+eigenspace with eigenvalue \myHighlight{$-1$}\coordHE{}. This is in complete agreement with
+\cite{Enc00}, where the mirror brane was found to be given by the
+equation \myHighlight{$y = C x + \alpha$}\coordHE{} for some shift vector \myHighlight{$\alpha \in \R^n$}\coordHE{},
+which we cannot find in this way.
+
+It is interesting to check what this looks like when the metric is not
+the standard metric. As we did above we will use a coordinate
+transform given by a block diagonal matrix \myHighlight{$S = \diag(S_{xx}, S_{xx}
+\tau_2^{-1})$}\coordHE{} to transform to the standard metric and the standard
+complex structure (note however, that we are starting on \myHighlight{$Y$}\coordHE{} and
+transforming to \myHighlight{$X$}\coordHE{} instead of the other way around). We will denote
+the matrices on the B-side with respect to the new orthogonal
+coordinates with primes. We find \myHighlight{$R' = (I_{2n} + F')^{-1} (I_{2n}
+-F')$}\coordHE{}. Again \myHighlight{$R'$}\coordHE{} will only be symmetric when \myHighlight{$F'= S^{-t} F
+S^{-1}$}\coordHE{} has the form \myHighlight{$F' = \left ( \begin{smallmatrix}0 & {C'}^t \\
+    -C' & 0
+  \end{smallmatrix} \right )$}\coordHE{}, where \myHighlight{$C' = S_{xx}^{-t} \tau_2^t
+C S_{xx}^{-1}$}\coordHE{}. Because \myHighlight{$T' = T$}\coordHE{}, we can use the result above to find
+\myHighlight{$\tilde{R}'$}\coordHE{}. However, this result is still with respect to
+transformed coordinates. The transformation to the original
+coordinates on \myHighlight{$X$}\coordHE{} is given by \myHighlight{$\tilde{S}=\diag(S_{xx}, S_{xx}^{-t}
+\tau_2^t)$}\coordHE{}. So the eigenspace of \myHighlight{$\tilde{R}$}\coordHE{} for the eigenvalue \myHighlight{$1$}\coordHE{}
+can be written as
+\[\coord{}\boxMath{
+  E^{\tilde{R}}_1 = \bigl \{ \tilde{S}^{-1} \left ( \begin{smallmatrix} x'
+  \\ C' x' \end{smallmatrix} \right ) \mid x' \in \R^n \bigr \} 
+  = \bigl \{ \left ( \begin{smallmatrix} S_{xx}^{-1} x' \\ 
+   C S_{xx}^{-1} x' \end{smallmatrix} \right ) \mid x' \in \R^n \bigr \}
+  = \{ \left ( \begin{smallmatrix} x \\ 
+   C x \end{smallmatrix} \right ) \mid x \in \R^n \}.
+}{corchetes}{0pt}\coordE{}\]
+So we see that the mirror brane does not depend on the metric.
+
+The more complicated case is when \myHighlight{$\tilde{R}$}\coordHE{} is not symmetric. We
+will first describe this case in terms of charges. Using an orthogonal
+basis transformation we can write obtain a basis compatible with the
+decomposition \myHighlight{$\R^{2n} = \ker A \oplus \ker B \oplus (\ker A)^\perp
+\oplus (\ker B)^\perp$}\coordHE{}. Note that orthogonal and perpendicular is with
+respect to the standard metric on \myHighlight{$\R^{2n}$}\coordHE{} (and not the one inducing
+the metric on the torus). The corresponding coordinates will be
+denoted with \myHighlight{$(x_0, \check{y}_0, x_1, \check{y}_1)$}\coordHE{}.
+
+Using these coordinates we can write \myHighlight{$A = \left ( \begin{smallmatrix}
+    0 & 0 \\ 0 & A' \end{smallmatrix} \right )$}\coordHE{} (w.r.t.\ \myHighlight{$x_0$}\coordHE{},
+\myHighlight{$x_1$}\coordHE{}), \myHighlight{$B = \left ( \begin{smallmatrix} 0 & 0 \\ 0 & B'
+  \end{smallmatrix} \right )$}\coordHE{} (w.r.t.\
+\myHighlight{$\check{y}_0$}\coordHE{}, \myHighlight{$\check{y}_1$}\coordHE{}) and \myHighlight{$C = \left ( \begin{smallmatrix}
+    C_{00} & C_{01} \\ C_{10} & C_{11} \end{smallmatrix} \right )$}\coordHE{}
+(w.r.t.\ \myHighlight{$\check{y}_0$}\coordHE{}, \myHighlight{$\check{y}_1$}\coordHE{} and \myHighlight{$x_0$}\coordHE{}, \myHighlight{$x_1$}\coordHE{}). In this
+notation the matrix \myHighlight{$F$}\coordHE{} can be written as
+\[\coord{}\boxMath{
+  F = \begin{pmatrix}
+           0    & C_{00}^t &     0   & C_{01}^t \\
+        -C_{00} &   0      & -C_{10} &   0      \\
+           0    & C_{10}^t &     A'  & C_{11}^t \\
+        -C_{01} &   0      & -C_{11} &   B'
+      \end{pmatrix}
+}{corchetes}{0pt}\coordE{}\]
+The charge on the B-side is given by the Chern character 
+\[\coord{}\boxMath{
+  \ch(L) = e^{\frac{1}{2} \langle \dop v, F v \rangle},
+}{corchetes}{0pt}\coordE{}\]
+where \myHighlight{$v = (x_0, \check{y}_0, x_1, \check{y}_1)$}\coordHE{}.  On the A-side the
+D-brane is given by a coisotropic submanifold \myHighlight{$Z \subset X$}\coordHE{}. On the
+submanifold \myHighlight{$Z$}\coordHE{} a \myHighlight{$C^\infty$}\coordHE{} vector bundle \myHighlight{$E$}\coordHE{} with connection
+\myHighlight{$\nabla$}\coordHE{} is defined. The charge of such a D-brane should be defined as
+\myHighlight{$i_* \ch(E)$}\coordHE{}, where \myHighlight{$i: Z \rightarrow X$}\coordHE{} is the inclusion.  A
+fibrewise Fourier-Mukai transform on differential forms should map a
+representative of the charge cohomology class on the B-side to one
+representing the charge on the A-side, i.e.
+\[\coord{}\boxMath{
+\begin{split}
+  \FM(\ch(L)) &= \int_{T^n_{\check{y}}} e^{\frac{1}{2} \langle \dop v, 
+  F \dop v \rangle}
+  e^{-\langle \dop \check{y}_0, \dop y_0 \rangle - \langle
+  \dop \check{y}_1, \dop y_1 \rangle } \\
+  &= \int_{T^n_{\check{y}}} e^{\frac{1}{2} \langle \dop x_1, A' \dop
+  x_1 \rangle + \frac{1}{2} \langle \dop y_1, B' \dop y_1 \rangle 
+  + \langle C_{00} \dop x_0 + C_{10} \dop x_1 - y_0, 
+  \dop \check{y}_0 \rangle} \\
+  &\quad \times e^{\langle C_{01} \dop x_0 + 
+  C_{11} \dop x_1 - \dop y_1, \dop \check{y}_1 \rangle }.
+\end{split}
+}{corchetes}{0pt}\coordE{}\]
+Writing \myHighlight{$T^n_{\check{y}}$}\coordHE{} as \myHighlight{$T^{n-p}_{\check{y}_0} \times T^p_{\check{y}_1}$}\coordHE{}
+and integrating over \myHighlight{$T^p_{\check{y}_0}$}\coordHE{}, we obtain using \pref{eq:deltaform}
+\[\coord{}\boxMath{
+\begin{split}
+  \FM(\ch(L)) &= e^{\frac{1}{2} \langle \dop x_1, A' \dop x_1 \rangle}
+  \dop^p(C_{00} \dop x_0 + C_{10} \dop x_1 - y_0) \\
+  &\quad \times \int_{T^{n-p}_{\check{y}_1}} e^{\frac{1}{2} \langle \dop y_1, 
+  B' \dop y_1 \rangle + \langle C_{01} \dop x_0 + C_{11} \dop x_1 
+  - \dop y_1, \dop \check{y}_1 \rangle}.
+\end{split}
+}{corchetes}{0pt}\coordE{}\]
+Using \pref{eq:complsqr} we find
+\begin{multline}\coord{}\boxAlignEqnarray{
+\label{eq:FM}
+  \leftCoord{}\FM(\ch(L)) = 
+  \leftCoord{}\dop^p(C_{\rightCoord{}00} x_0 + C_{\rightCoord{}10} x_1 - y_0) \rightCoord{}\\
+  \leftCoord{}\times e^{\frac{\leftCoord{}1}{\rightCoord{}2} \langle \dop x_1, A' \dop x_1 \rangle}
+  \leftCoord{}e^{\frac{\leftCoord{}1}{\rightCoord{}2} \langle C_{\rightCoord{}01} \dop x_0 + 
+  \leftCoord{}C_{\rightCoord{}11} \dop x_1 - \dop y_1,
+  \leftCoord{}(B')^{-1} (C_{\rightCoord{}01} \dop x_0 + C_{\rightCoord{}11} \dop x_1 - \dop y_1)
+  \leftCoord{}\rangle} \sqrt{\det(B')}.
+}{0mm}{9}{10}{
+\FM(\ch(L)) = 
+  \dop^p(C_{00} x_0 + C_{10} x_1 - y_0) \\
+  \times e^{\frac{1}{2} \langle \dop x_1, A' \dop x_1 \rangle}
+  e^{\frac{1}{2} \langle C_{01} \dop x_0 + 
+  C_{11} \dop x_1 - \dop y_1,
+  (B')^{-1} (C_{01} \dop x_0 + C_{11} \dop x_1 - \dop y_1)
+  \rangle} \sqrt{\det(B')}.
+}{0}\coordE{}\end{multline}
+This is a very nice formula, but the interpretation is a bit
+complicated. The easy case is when \myHighlight{$A=B=0$}\coordHE{}, which we already discussed
+in terms of \myHighlight{$R$}\coordHE{}-matrices above. In that case we only keep \myHighlight{$x_0$}\coordHE{}, \myHighlight{$y_0$}\coordHE{}
+and \myHighlight{$C_{00}$}\coordHE{}. Dropping the indices \myHighlight{$0$}\coordHE{}, we obtain the following
+formula
+\[\coord{}\boxMath{
+  \FM(\ch(L)) = d^n(C x -y),
+}{corchetes}{0pt}\coordE{}\]
+which is the Poincaré dual of the Lagrangian submanifold given by the
+equation \myHighlight{$y = C x$}\coordHE{}. So this is in full agreement with previous results.
+
+In the general case expect this to be of the form \myHighlight{$\PD(Z)\ch(F)$}\coordHE{},
+where \myHighlight{$Z \subset X$}\coordHE{} is a coisotropic submanifold of \myHighlight{$X$}\coordHE{} and \myHighlight{$F$}\coordHE{} is a
+vector bundle defined on \myHighlight{$Z$}\coordHE{}. If we define
+\[\coord{}\boxMath{
+  Z := \{ (x_0, C_{00} x_0 + C_{10} x_1, x_1, y_1) \mid \text{$x_0 \in
+  \R^p$, $x_1,y_1 \in \R^{n-p}$} \},
+}{corchetes}{0pt}\coordE{}\]
+then the first factor in \pref{eq:FM} can be identified with the
+Poincaré dual \myHighlight{$\PD(Z)$}\coordHE{} of \myHighlight{$Z$}\coordHE{}. The second line of \pref{eq:FM} should
+therefore be interpreted as \myHighlight{$\ch(F)$}\coordHE{}. The degree \myHighlight{$0$}\coordHE{} part of the Chern
+character is the rank of the vector bundle. So we see that \myHighlight{$F$}\coordHE{} has
+rank \myHighlight{$\sqrt{B'}$}\coordHE{}. The 2-form 
+\[\coord{}\boxMath{
+\begin{split}
+  & \tfrac{1}{2} \langle \dop x_0, C_{01}^t (B')^{-1} 
+  C_{01} \dop x_0 \rangle +
+  \tfrac{1}{2} \langle \dop x_1, (A' + C_{11}^t (B')^{-1} 
+  C_{11}) \dop x_1 \rangle \\
+  & + \tfrac{1}{2} \langle \dop y_1,
+  (B')^{-1} \dop y_1 \rangle -
+  \langle \dop x_0, C_{01}^t \dop y_1 \rangle - \langle \dop
+  x_1, C_{11}^t (B')^{-1} \dop y_1 \rangle +
+  \langle \dop x_0, C_{01}^t C_{11} \dop x_1 \rangle
+\end{split}
+}{corchetes}{0pt}\coordE{}\]
+is not integral on \myHighlight{$\Z^p \times \Z^p \times \Z^{n-p} \times \Z^{n-p}$}\coordHE{},
+but it is integral on \myHighlight{$\Lambda_{B'} := \Z^p \times \Z^p \times
+\Z^{n-p} \times B'\Z^{n-p}$}\coordHE{}. So we can find a line bundle \myHighlight{$L$}\coordHE{} on the
+torus \myHighlight{$\tilde{Y} = \R^{2n}/\Lambda_{B'}$}\coordHE{} with first Chern class given
+by the above 2-form. Using the isogeny \myHighlight{$i: \tilde{Y} \rightarrow Y$}\coordHE{},
+we can define \myHighlight{$\tilde{F} := i_*L$}\coordHE{}. The restriction of \myHighlight{$\tilde{F}$}\coordHE{} to
+\myHighlight{$Z$}\coordHE{} is then the vector bundle on \myHighlight{$Z$}\coordHE{} that we are looking for.
+
+Checking if this matches the description in terms of \myHighlight{$R$}\coordHE{}-matrices is
+rather complicated. In the coordinates discussed above mirror symmetry
+is given by the matrix \myHighlight{$T=\diag(I_p, -I_p, I_{n-p}, -I_{n-p})$}\coordHE{}. The
+\myHighlight{$R$}\coordHE{}-matrix \myHighlight{$\tilde{R}$}\coordHE{} of the mirror D-brane is given by the equation
+\myHighlight{$(I_{2n} + F) \tilde{R} = (I_{2n} - F) T$}\coordHE{}. Recall that the
+\myHighlight{$R$}\coordHE{}-matrices are orthogonal matrices, so the eigenspaces for different
+eigenvalues are orthogonal. It is again easiest to use a suitable
+coordinate transform so that we only have to deal with the standard
+metric and the standard complex structure. Then one can check that the
+orthogonal complement of the eigenspace for eigenvalue \myHighlight{$-1$}\coordHE{} of
+\myHighlight{$\tilde{R}$}\coordHE{} is indeed given by \myHighlight{$Z$}\coordHE{}. Further checks get increasingly
+complicated.
+
+\subsection{Higher rank bundles}
+To describe higher rank bundles on the B-side and their mirrors on the
+A-side, we use the classification of semi-homegeneous vector bundles
+on tori (see Chapter~4 in \cite{Enc00}). Such vector bundles can be
+constructed out of line bundles on tori using isogenies and tensor
+product with flat line bundles. We will discuss these two
+possibilities in turn.
+
+\subsubsection{Tensor product with flat vector bundle}
+The simplest possibility is tensor product with a flat vector bundle.
+Flat vector bundles correspond to representations of the fundamental
+group. For the torus \myHighlight{$T^n \times \check{T}^n$}\coordHE{} on the B-side, we have
+\myHighlight{$\pi_1(T^n \times \check{T}^n) = \Z^n \times \Z^n$}\coordHE{}. We can always use
+a holomorphic bundle isomorphism to find an equivalent bundle \myHighlight{$F$}\coordHE{} such
+that the representation is trivial on the second \myHighlight{$\Z^n$}\coordHE{}-factor. Such a
+representation also induces a vector bundle on the base torus \myHighlight{$T^{2n}$}\coordHE{}
+and using pull back with the projection on the mirror a vector bundle
+\myHighlight{$\tilde{F}$}\coordHE{} on the mirror torus \myHighlight{$T^n \times T^n$}\coordHE{} on the A-side. One
+has
+\[\coord{}\boxMath{
+  \mu(E \otimes F) = \mu(E) \otimes F.
+}{corchetes}{0pt}\coordE{}\]
+
+\subsubsection{Isogenies}
+Another way to construct vector bundles of rank greater than one, is
+to use isogenies. For a general isogeny it is not clear what the
+effect on the mirror will be, but there are two special cases which
+can be described. These two cases are when the isogeny is compatible
+with the SYZ-fibration.
+
+The easiest of these two special cases is an isogeny \myHighlight{$i: \tilde{T}^n
+\rightarrow T^n$}\coordHE{} on the base torus
+alone. This simply commutes with the mirror map, so we have
+\[\coord{}\boxMath{
+  \mu(i_*(L)) = i_*(\mu(L)).
+}{corchetes}{0pt}\coordE{}\]
+Here we slightly abuse notation by using \myHighlight{$i$}\coordHE{} for both isogenies
+\myHighlight{$\tilde{T}^n \times T^n \rightarrow T^n \times T^n$}\coordHE{} and \myHighlight{$\tilde{T}^n
+\times \check{T}^n \rightarrow T^n \times \check{T}^n$}\coordHE{}.
+
+The second case is an isogeny on the fibres alone. Let \myHighlight{$i: \tilde{T}^n
+\rightarrow T^n$}\coordHE{} be an isogeny. This induces an isogeny \myHighlight{$\check{i}:
+\check{T}^n \rightarrow \check{\tilde{T}}^n$}\coordHE{}. The mirror map
+intertwines \myHighlight{$\check{i}_*$}\coordHE{} and \myHighlight{$i^*$}\coordHE{} as follows
+\[\coord{}\boxMath{
+  \mu(\check{i}_*(L)) = i^*(\mu(L)).
+}{corchetes}{0pt}\coordE{}\]
+The isogeny that we used above, can presumably be interpreted in this
+way.
+
+
+\section{Conclusions and outlook}
+We have given a preliminary description of the mirror objects of
+semi-homegeneous vector bundles. These include coisotropic, but not
+Lagrangian D-branes. We have also investigated some of their
+properties and the results fit in nicely with the expectations from
+physics in particular from mirror symmetry. Semi-homegeneous vector
+bundles are conjectured to generate in a certain sense the full
+derived category. So we may hope that this provides us with a fairly
+complete understanding of the mirror map on the level of objects.
+
+To do these calculations we restricted the class of background fields
+that we considered. In \cite{Enc01b} we will discuss an extension to
+more general background fields. This should also clarify the role of
+the B-field. In that article we will also give some more details on
+things that were left rather sketchy in this article.
+
+Another restriction is that we described the mirror map only on
+objects.  However, it should be a functor of D-brane categories, so it
+should also define a map on morphisms. Here we have made less
+progress, because it remains difficult to define morphisms in the
+Fukaya category, especially when non Lagrangian objects are involved.
+One approach to make progress would be to give a general definition of
+an Euler characteristic using the charges that we defined. This would
+at least give some information about the dimensions of the graded
+pieces of the space of morphisms.
+
+\appendix
+\section{Gaussian integrals with differential forms on a torus}
+Let \myHighlight{$T^{2m}$}\coordHE{} be an even dimensional torus and let \myHighlight{$A$}\coordHE{} be a
+nondegenerate antisymmetric \myHighlight{$2m \times 2m$}\coordHE{}-matrix. We can choose
+coordinates \myHighlight{$y_1, \dots, y_{2m}$}\coordHE{}, such that \myHighlight{$A = \left (
+  \begin{smallmatrix} 0 & B \\ -B^t & 0 \end{smallmatrix} \right
+)$}\coordHE{}. This allows us to write the Gaussian integral, that we want to
+calculate, as follows
+\[\coord{}\boxMath{
+  \int_{T^{2m}} e^{\tfrac{1}{2} \langle \dop y, A \dop y \rangle}=
+  \int_{T^{2m}} e^{\sum_{i,j} \dop y_i \wedge \dop y_j B_{i,j-m}} =
+  \int_{T^{2m}} \frac{1}{m!} (\sum_{i,j} \dop y_i \wedge \dop y_j B_{i,j-m})^m.
+}{corchetes}{0pt}\coordE{}\]
+Here the sum is over \myHighlight{$i=1, \dots, m$}\coordHE{} and \myHighlight{$j=m+1, \dots, 2m$}\coordHE{}. Because
+the integral is only nonvanishing when all \myHighlight{$\dop y_i$}\coordHE{} and \myHighlight{$\dop y_j$}\coordHE{}
+occur exactly once, we find
+\[\coord{}\boxMath{
+\begin{split}
+  \int_{T^{2m}} e^{\frac{1}{2} \langle \dop y, A \dop y \rangle} &=
+  \int_{T^{2m}} \sum_{j_1, \dots, j_m} \dop y_1 \wedge \dop y_{j_1}
+  \wedge \dots \wedge \dop y_m \wedge  \dop y_{j_m} 
+  B_{1,j_1-m} \dots B_{m, j_m-m} \\
+  &= \int_{T^{2m}} \sum_{\sigma \in S^m} \sgn(\sigma) \dop y_1 
+  \wedge \dop y_{m+1} \wedge \dots \wedge \dop y_m \wedge \dop y_{2m}
+  B_{1,\sigma(1)} \dots B_{m,\sigma(m)} \\
+  &= \det(B) \vol(T^{2m}) = \sqrt{\det(A)} \vol(T^{2m}).
+\end{split}
+}{corchetes}{0pt}\coordE{}\]
+More general integrals can be computed by `completing the square'.
+\begin{equation}\coord{}\boxEquation{
+\label{eq:complsqr}
+\begin{split}
+  \int_{T^{2m}} e^{\frac{1}{2} \langle \dop y, A \dop y \rangle +
+  \langle a, \dop y \rangle} &= \int_{T^{2m}} e^{\frac{1}{2} \langle
+  \dop y - A^{-1} a, A(y - A^{-1} a) \rangle - 
+  \frac{1}{2} \langle A^{-1} a, a \rangle} \\
+  &= e^{\frac{1}{2} \langle a, A^{-1} a \rangle} \sqrt{\det(A)}.
+\end{split}
+}{
+\begin{split}
+  \int_{T^{2m}} e^{\frac{1}{2} \langle \dop y, A \dop y \rangle +
+  \langle a, \dop y \rangle} &= \int_{T^{2m}} e^{\frac{1}{2} \langle
+  \dop y - A^{-1} a, A(y - A^{-1} a) \rangle - 
+  \frac{1}{2} \langle A^{-1} a, a \rangle} \\
+  &= e^{\frac{1}{2} \langle a, A^{-1} a \rangle} \sqrt{\det(A)}.
+\end{split}
+}{split}\coordE{}\end{equation}
+Here \myHighlight{$a$}\coordHE{} is a vector of 1-forms vanishing on \myHighlight{$T^{2m}$}\coordHE{}, so
+\myHighlight{$\langle \dop y, a \rangle = - \langle a, \dop y \rangle$}\coordHE{}. We also use
+the antisymmetry of \myHighlight{$A$}\coordHE{} to rewrite \myHighlight{$- \langle A^{-1} a, A \dop y
+\rangle = \langle a, \dop y \rangle$}\coordHE{}. The shift over \myHighlight{$a$}\coordHE{} does not
+affect the Gaussian integral, because we have \myHighlight{$2m$}\coordHE{} different 1-forms
+\myHighlight{$\dop y_i + a_i$}\coordHE{}. So wedge products of more than \myHighlight{$2m$}\coordHE{} factors vanish
+automatically. The integral picks out the term with only \myHighlight{$\dop y_i$}\coordHE{},
+because we are in dimension \myHighlight{$2m$}\coordHE{}.
+
+Another simple, but useful formula for integrals of differential forms
+on a torus is
+\begin{equation}\coord{}\boxEquation{
+\label{eq:deltaform}
+  \int_{T^m} e^{\langle a, \dop y \rangle} = \dop a_1 \wedge \dots
+  \wedge \dop a_m =: \dop^m a.
+}{
+\int_{T^m} e^{\langle a, \dop y \rangle} = \dop a_1 \wedge \dots
+  \wedge \dop a_m =: \dop^m a.
+}{ecuacion}\coordE{}\end{equation}
+Here \myHighlight{$a$}\coordHE{} is a vector of 1-forms vanishing on \myHighlight{$T^m$}\coordHE{}.
+
+\begin{raggedright}
+\bibliographystyle{hep}
+\begin{thebibliography}{W}
+
+\bibitem{COGP91}
+P.~Candelas, X.~C. de~la Ossa, P.~S. Green and L.~Parkes, \textsl{ A pair of
+  {C}alabi-{Y}au manifolds as an exactly soluble superconformal theory},
+\newblock Nucl. Phys. \textbf{ B359}, 21--74 (1991).
+
+\bibitem{Dou00}
+M.~R. Douglas, \textsl{ D-Branes on Calabi-Yau Manifolds},
+\newblock (2000),
+  \href{http://xxx.lanl.gov/abs/math.AG/0009209}{math.AG/0009209}.
+
+\bibitem{Enc00}
+C.~v. Enckevort,
+\newblock \textsl{ Mirror Symmetry and {T}-duality, Equivalence of {D}-brane
+  categories},
+\newblock PhD thesis, University of Utrecht, 2000.
+
+\bibitem{Enc01b} C.~v. Enckevort, \newblock in preparation
+
+\bibitem{KO01}
+A.~Kapustin and D.~Orlov, \textsl{ Remarks On A-branes, Mirror Symmetrz, And
+  The {F}ukaya Category},
+\newblock (2001),
+  \href{http://xxx.lanl.gov/abs/hep-th/0109098}{hep-th/0109098}.
+
+\bibitem{Kon94}
+M.~Kontsevich, \textsl{ Homological algebra of mirror symmetry},
+\newblock (1994),
+  \href{http://xxx.lanl.gov/abs/alg-geom/9411018}{alg-geom/9411018}.
+
+\bibitem{OOY96}
+H.~Ooguri, Y.~Oz and Z.~Yin, \textsl{ D-Branes on {C}alabi {Y}au Spaces and
+  Their Mirrors},
+\newblock (1996),
+  \href{http://xxx.lanl.gov/abs/hep-th/9606112}{hep-th/9606112}.
+
+\bibitem{Pol96}
+J.~Polchinski, S.~Chaudhuri and C.~V. Johnson, \textsl{ Notes on D-Branes},
+\newblock (1996),
+  \href{http://xxx.lanl.gov/abs/hep-th/9602052}{hep-th/9602052}.
+
+\bibitem{Pol95}
+J.~Polchinski, \textsl{ Dirichlet-Branes and Ramond-Ramond Charges},
+\newblock (1995),
+  \href{http://xxx.lanl.gov/abs/hep-th/9510017}{hep-th/9510017}.
+
+\end{thebibliography}
+
+\end{raggedright}
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
+
+\bye

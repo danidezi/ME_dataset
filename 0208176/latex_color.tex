@@ -1,0 +1,1745 @@
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{amssymb}
+\topmargin=-0.3truein \textheight=8.9truein \textwidth=6.65truein
+\oddsidemargin=-0.3truein \evensidemargin=-0.3truein
+\usepackage{useful_macros}
+\begin{document}
+\baselineskip=18pt \pagenumbering{arabic}
+\parskip1.5em
+\thispagestyle{empty} \vskip2.5em
+\begin{center}
+{\Large{\bf An Algorithm for the Microscopic Evaluation of the Coefficients of the Seiberg-Witten
+Prepotential}}\\\vskip1.5em R. Flume\myHighlight{$^{a}$}\coordHE{}\hspace{3em}R. Poghossian\myHighlight{$^{b}$}\coordHE{}
+\\ \vskip3em
+\myHighlight{$^{a}$}\coordHE{}{\sl Physikalisches Institut der Universit\"at Bonn}\\
+{\sl Nu{\ss}allee 12, D--53115 Bonn, Germany}\\
+\vskip2em \myHighlight{$^{b}$}\coordHE{} {\sl Yerevan Physics
+Institute}\\
+{\sl Alikhanian Br. st. 2, 375036 Yerevan, Armenia}
+\end{center}
+\begin{abstract}
+\noindent A procedure, allowing to calculate the coefficients of
+the SW prepotential in the framework of the instanton calculus is
+presented. As a demonstration explicit calculations for \myHighlight{$2$}\coordHE{}, \myHighlight{$3$}\coordHE{}
+and \myHighlight{$4-$}\coordHE{} instanton contributions are carried out.
+\end{abstract}
+
+\begin{center}
+To the memory of Lochlainn O'Raifeartaigh
+\end{center}
+
+\vspace{2 cm}
+{\small{
+e-mail: flume@th.physik.uni-bonn.de\\
+\hspace*{1.85 cm} poghos@moon.yerphi.am}}
+\vfill\eject\setcounter{page}{1}
+
+\setcounter{equation}{0}
+\section{Introduction}
+\renewcommand{\theequation}{1.\arabic{equation}}
+One of the challenges put forward by the Seiberg-Witten proposal
+\cite{sw1} for an exact expression of the prepotential in \myHighlight{$N=2$}\coordHE{}
+extended \myHighlight{$d=4$}\coordHE{} Super Yang-Mills theory is its verification through
+microscopic instanton calculations. Dorey, Khoze and Mattis made
+the first steps into that direction determining the 1 and
+2-instanton contribution to the prepotential \cite{dorey1}. (The
+1-instanton contribution was already calculated before in
+references \cite{finnel} and \cite{ito}.) These authors also
+derived a representation of the integration measure of instanton
+moduli in general \cite{dorey3}. After this work further progress
+was hampered by the fact that beyond instanton number 3 the ADHM
+(Atiyah, Drinfeld, Hitchin, Manin \cite{adhm}) moduli space is not
+known explicitly. In \cite{FPS1}, \cite{FPS2} we derived a
+standard algebraic-geometric form, to be reproduced below,
+representing the expansion coefficients of the prepotential as
+integral of the exponential of an equivariantly exact mixed
+differential form. This can be reduced  in the \myHighlight{$k$}\coordHE{}-instanton
+sector to an integral of a (4k-3)-fold wedge product of a closed
+differential 2-form, which is the formal representative of the
+Euler class of the moduli space viewed as U(1) principal bundle.
+So we were led to an algebraic-geometric interpretation of the
+coefficients. But we failed in our main objective, which was to
+calculate via localization technique concrete numbers. The reason
+for our failure was clarified and cured in a recent work by
+Hollowood \cite{H}, where it is argued that one should, to start
+with, resolve the short distance singularities of the moduli
+space\footnote{ R.F. thanks Francesco Fucito for a discussion of
+this point.}.
+
+An elegant method to achieve the resolution consists in deforming
+the instanton configurations into a non-commutative domain
+\cite{NSch}. The parameter measuring the non-commutativity, a new
+length scale, acts as an ultraviolet regulator, while the
+integrals in question are - as formally shown below- insensitive
+to the deformation. The integrals can now be localized at the
+surface of critical points of the abelean vector field which goes
+with the remaining torus symmetry after spontaneous breakdown of
+the non-abelean gauge symmetry of the N=2 Yang-Mills
+theory\footnote{Localization without regularization renders a
+vanishing residuum at the corresponding critical surface.}.
+
+The critical surface happens to coincide with the the manifold of
+non-commutative U(1) instantons (imbedded as submanifold into the
+ADHM moduli space of the non-abelean gauge group). The remaining
+integral along the critical surface has according to the recipes
+of the equivariant localization technique \cite{B}, \cite{BGV} the
+appearance of a sum of characteristic classes of the unitary
+bundle connected with the ADHM construction. Their evaluation is
+for general instanton number still a highly cumbersome task.
+
+A conceivable way to overcome the difficulties relies on the
+deformation invariance of the characteristic classes. So one may
+follow backwards a gradient flow along a Gl(k) orbit \cite{DK}
+(chapter 6), \cite{Nak}, which relates the relevant matrices of
+the ADHM construction to diagonal matrices. We will not follow
+this approach here since we were reminded meanwhile by Nekrasov
+\cite{N} of a technically simpler method\footnote{We still believe
+that it is worthwhile to pursue attempts either to evaluate the
+integrals without regularization or to handle the U(1)-instanton
+manifolds. It may lead to new mathematical insights.}. The idea,
+already used some time ago in a macroscopical context
+\cite{MNSch1}, \cite{MNSch2}, is to modify the vector field
+underlying the localization method by adding pieces corresponding
+to space rotations. The critical set of the modified vector field
+consists of discrete points and the evaluation of the integrals is
+reduced to a manageable task: to find the eigenvalues of the
+vector field action on the tangent space of the respective
+critical point. The purpose of this paper is to show that the
+program can be implemented on the microscopic level following the
+conceptual lines of our previous papers \cite{FPS1}, \cite{FPS2}.
+Similar results have been announced in \cite{N}. We collect in the
+following section 2 some material concerning the instanton
+calculus. Section 3 is devoted to a description of the algorithm
+allowing to determine (in principle) the contributions from
+arbitrary instanton sectors. We will work out for the purpose of
+illustration the 2 ,3 and 4-instanton coefficient of the pure N=2
+vector theory (i.e. without matter multipletts) with SU(2) as
+underlying gauge group in section 4. We end this section
+presenting a formula for the determinant of the deformed vector
+field action on the neighborhood of an arbitrary critical point in
+the general case of \myHighlight{$SU(N)$}\coordHE{} as gauge group.
+
+\setcounter{equation}{0}
+\section{Instanton calculus}
+\renewcommand{\theequation}{2.\arabic{equation}}
+We quote the ADHM data for the construction of \myHighlight{$SU(2)$}\coordHE{} instantons
+in a form which is generalizable to \myHighlight{$SU(N)$}\coordHE{}, \myHighlight{$N\geq 2$}\coordHE{}. (The
+restriction to \myHighlight{$SU(2)$}\coordHE{} is a matter of convenience; all our results
+can easily be extended to \myHighlight{$SU(N)$}\coordHE{}). These data consist of complex
+matrices, two \myHighlight{$k\times k$}\coordHE{} matrices \myHighlight{$B_1$}\coordHE{}, \myHighlight{$B_2$}\coordHE{}, a \myHighlight{$k\times 2$}\coordHE{}
+matrix \myHighlight{$I$}\coordHE{} and a \myHighlight{$2\times k$}\coordHE{} matrix \myHighlight{$J$}\coordHE{}, fulfilling a certain rank
+condition (cf. \cite{adhm}, \cite{DKM'}) and obeying the relations
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\label{complexADHM}
+\left[ B_1, B_2\right]+IJ=0; \rightCoord{}\\\leftCoord{}
+\label{realADHM} \left[ B_1, B_1^{\dagger}\right]+\left[ B_2, B_2^{\dagger}\right]+II^{\dagger}-J^{\dagger}J=0,
+\rightCoord{}}{0mm}{2}{3}{
+\left[ B_1, B_2\right]+IJ=0; \\
+\left[ B_1, B_1^{\dagger}\right]+\left[ B_2, B_2^{\dagger}\right]+II^{\dagger}-J^{\dagger}J=0,
+}{1}\coordE{}\end{eqnarray}
+where \myHighlight{$"^{\dagger}"$}\coordHE{} denotes hermitean conjugation. The data are redundant in the sense that sets of matrices
+related by \myHighlight{$U(k)$}\coordHE{} transformations,
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+{\rightCoord{}\leftCoord{}\cal A}\equiv \left(B_1, B_2, I, J\right)\leftrightarrow {\cal A}^{\prime}, \nonumber \rightCoord{}\\\leftCoord{}
+B_i^{\prime}=gB_ig^{-1}, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, I^{\prime}=gI, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, J^{\prime}=Jg^{-1}; \nonumber \rightCoord{}\\\leftCoord{}
+i=1,2; \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, g\in U(k) \rightCoord{}
+\rightCoord{}}{0mm}{4}{16}{
+{\cal A}\equiv \left(B_1, B_2, I, J\right)\leftrightarrow {\cal A}^{\prime}, \\
+B_i^{\prime}=gB_ig^{-1}, \, \, \, I^{\prime}=gI, \, \, \, J^{\prime}=Jg^{-1}; \\
+i=1,2; \, \, \, \, g\in U(k) 
+}{1}\coordE{}\end{eqnarray}
+give rise to the same self dual Yang-Mills configuration of
+topological charge \myHighlight{$k$}\coordHE{}. Factoring out the redundancy from the
+above data (e.g. by imposing gauge fixing conditions) one is lead
+to the instanton moduli space as the set of gauge equivalence
+classes of solutions of Eq.'s (\ref{complexADHM}),
+(\ref{realADHM}). This space is not smooth. It contains boundary
+points where the previously mentioned rank condition is violated
+(which corresponds to Yang-Mills configurations with topological
+charge density concentrated in part at single points). A
+resolution of singularities is achieved \cite{Nak} through a
+modification of Eq. (\ref{realADHM}):
+\begin{equation}\coord{}\boxEquation{
+\label{realADHMdeformed} \left[ B_1, B_1^{\dagger}\right]+\left[ B_2,
+B_2^{\dagger}\right]+II^{\dagger}-J^{\dagger}J=\zeta \, {\bf 1}_{k \times k},
+}{
+\left[ B_1, B_1^{\dagger}\right]+\left[ B_2,
+B_2^{\dagger}\right]+II^{\dagger}-J^{\dagger}J=\zeta \, {\bf 1}_{k \times k},
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\zeta$}\coordHE{} denotes a positive real number. Eq.
+(\ref{realADHMdeformed}) is in fact the starting point for the
+construction of solutions of the Yang-Mills selfduality  equation
+on a non-commutative space-time \cite{NSch} with \myHighlight{$\zeta$}\coordHE{} setting
+the scale of the non-commutativity. The appearance of the
+non-commutative space will be of no relevance for our purposes.
+Going from Eq. (\ref{realADHM}) to Eq. (\ref{realADHMdeformed}) we
+will content ourselves with an argument, to be given below, that
+the numbers we want to calculate do not depend on \myHighlight{$\zeta$}\coordHE{}.
+
+Dealing with a supersymmetric theory in quasi-classical
+approximation one has to take into account fermionic degrees of
+freedom which are here the Weyl zero modes of positive chirality
+in the selfdual Yang-Mills background. It turns out, \cite{FPS1},
+\cite{FPS2}, that a neat realization of the fermions is supplied
+on the level of moduli through their identification with a basis
+of the cotangent bundle of these moduli. To adapt the cotangent
+space in a \myHighlight{$U(k)$}\coordHE{}-invariant way we introduce some notation. Let
+\myHighlight{${\bf L}$}\coordHE{} be a selfadjoint operator acting on the space of
+anti-hermitean \myHighlight{$k \times k$}\coordHE{} matrices \myHighlight{$M$}\coordHE{} by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+{\rightCoord{}\leftCoord{}\bf L}\cdot M=\left\{ II^{\dagger}+J^{\dagger}J,M \rightCoord{}
+\right\}+\sum_{\rightCoord{}l=1,2}\left( \left[B_l, \left[B_l^{\dagger}, M
+\right]\right]+\left[B_l^{\dagger}, \left[B_l, M\right]
+\right]\right). \rightCoord{}
+\rightCoord{}}{0mm}{2}{6}{
+{\bf L}\cdot M=\left\{ II^{\dagger}+J^{\dagger}J,M 
+\right\}+\sum_{l=1,2}\left( \left[B_l, \left[B_l^{\dagger}, M
+\right]\right]+\left[B_l^{\dagger}, \left[B_l, M\right]
+\right]\right). 
+}{1}\coordE{}\end{eqnarray}
+It can be shown that \myHighlight{${\bf L}$}\coordHE{} is invertible (in fact positive) as
+long as the above mentioned rank condition is satisfied (under the
+supposition of Eq.'s (\ref{complexADHM}), (\ref{realADHM}). The
+invertibility is guaranteed per se if one relies on Eq.'s
+(\ref{complexADHM}), (\ref{realADHMdeformed}) ). Let \myHighlight{${\bf X}$}\coordHE{} be
+the matrix valued differential one-form
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+{\rightCoord{}\leftCoord{}\bf X}=\sum_{\rightCoord{}i=1,2}\left[B_i^{\dagger},dB_i\right]+J^{\dagger}dJ-dII^{\dagger}-h.c.\rightCoord{}
+\rightCoord{}}{0mm}{2}{5}{
+{\bf X}=\sum_{i=1,2}\left[B_i^{\dagger},dB_i\right]+J^{\dagger}dJ-dII^{\dagger}-h.c.
+}{1}\coordE{}\end{eqnarray}
+We introduce a \myHighlight{$U(k)$}\coordHE{}-covariantized exterior derivative on the ADHM matrices \myHighlight{${\cal A}\equiv (B_1, B_2, I, J)$}\coordHE{}
+setting
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+{\rightCoord{}\leftCoord{}\cal D}{\cal A}\equiv d{\cal A}+Y\cdot {\cal A}, \rightCoord{}
+\label{covderivative}
+\rightCoord{}}{0mm}{2}{4}{
+{\cal D}{\cal A}\equiv d{\cal A}+Y\cdot {\cal A}, 
+}{1}\coordE{}\end{eqnarray}
+with \myHighlight{$Y={\bf L}^{-1}{\bf X}$}\coordHE{} and \myHighlight{$Y\cdot {\cal A}\equiv
+(\left[Y,B_1\right], \left[Y,B_2\right], YI, -JY)$}\coordHE{}. \myHighlight{${\cal D}{\cal
+A}$}\coordHE{} satisfies by construction (cf. \cite{FPS1}, \cite{FPS2}), the
+fermionic part of the supersymmetrized ADHM conditions
+(\ref{complexADHM}) and (\ref{realADHM}) (or
+(\ref{realADHMdeformed}) resp.) thus giving rise to Weyl zero
+modes. It is worth to mention the geometric meaning of the \myHighlight{$U(k)$}\coordHE{}
+connection field \myHighlight{$Y$}\coordHE{}. The flat euclidean space of data \myHighlight{${\cal A}$}\coordHE{}
+(without Eq.'s (\ref{complexADHM}), (\ref{realADHM})
+((\ref{realADHMdeformed})) can be supplied with a K\"{a}hler
+metric. The K\"{a}hler property is preserved by the restriction
+imposed by Eq.'s (\ref{complexADHM}), (\ref{realADHM})
+((\ref{realADHMdeformed})) provided one projects in the tangent
+bundle of the moduli manifold onto the lifted (with respect to the
+\myHighlight{$U(k)$}\coordHE{} action) horizontal subspace \cite{HKLR}, \cite{BF}. To come
+to terms with the latter notion let us assume that the moduli
+space is realized through the imposition of a gauge fixing
+condition, e.g. by demanding that, say, the hermitean part of
+\myHighlight{$B_1$}\coordHE{} is diagonal. The tangent space of the larger manifold
+(without gauge fixing) may be decomposed into the subspace spanned
+by the infinitesimal \myHighlight{$U(k)$}\coordHE{} generators, the so called "vertical"
+subspace and its orthogonal\footnote{orthogonal with respect to
+the induced metric.} complement, the "horizontal" subspace, the
+latter being isomorphic to the tangent space of the gauge fixed
+moduli manifold \myHighlight{${\cal M}_k$}\coordHE{}. Given a tangent vector \myHighlight{$T$}\coordHE{} on \myHighlight{${\cal
+M}_k$}\coordHE{} one finds a unique vector \myHighlight{$V$}\coordHE{} in the vertical subspace s.t.
+\myHighlight{$(V+T)$}\coordHE{}, called "the horizontal lift of \myHighlight{$T$}\coordHE{}", is contained in the
+horizontal space. All that extends naturally to the corresponding
+cotangent bundles. The covariant derivative introduced in Eq.
+(\ref{covderivative}) serves just this purpose: it lifts the
+ordinary exterior derivative on \myHighlight{${\cal M}_k$}\coordHE{} to the horizontal
+subspace of the larger cotangent bundle. A natural metric \myHighlight{${\tilde
+g}$}\coordHE{} on the horizontal subspace induced from the flat one is given
+by
+\begin{equation}\coord{}\boxEquation{
+{\tilde g}\left(d {\cal A}^{\dagger}, d {\cal A}\right)=g \left({\cal D} {\cal A}^{\dagger}, {\cal D} {\cal
+A}\right),
+}{
+{\tilde g}\left(d {\cal A}^{\dagger}, d {\cal A}\right)=g \left({\cal D} {\cal A}^{\dagger}, {\cal D} {\cal
+A}\right),
+}{ecuacion}\coordE{}\end{equation}
+\myHighlight{$g$}\coordHE{} being the flat metric
+\begin{equation}\coord{}\boxEquation{
+g\left(d {\cal A}^{\dagger}, d {\cal A}\right)=tr \left( \, \,  \sum_{l=1,2} dB_l^{\dagger} dB_l +dI^{\dagger}
+dI+dJ dJ^{\dagger}\right).
+}{
+g\left(d {\cal A}^{\dagger}, d {\cal A}\right)=tr \left( \, \,  \sum_{l=1,2} dB_l^{\dagger} dB_l +dI^{\dagger}
+dI+dJ dJ^{\dagger}\right).
+}{ecuacion}\coordE{}\end{equation}
+
+One of the results of \cite{FPS1}, \cite{FPS2} is that the coefficient \myHighlight{${\cal F}_k$}\coordHE{} of the \myHighlight{${\cal N}=2$}\coordHE{}
+prepotential
+\begin{equation}\coord{}\boxEquation{
+{\cal F}(\Psi)=\frac{i}{2\pi} \Psi^2\log \frac{2\Psi^2}{e^3\Lambda^2} -\frac{i}{\pi}\sum_{k=1}^{\infty}{\cal
+F}_k \left(\frac{\Lambda}{\Psi} \right)^{4k} \Psi^2, \label{Fexpansion}
+}{
+{\cal F}(\Psi)=\frac{i}{2\pi} \Psi^2\log \frac{2\Psi^2}{e^3\Lambda^2} -\frac{i}{\pi}\sum_{k=1}^{\infty}{\cal
+F}_k \left(\frac{\Lambda}{\Psi} \right)^{4k} \Psi^2, }{ecuacion}\coordE{}\end{equation}
+quoted here as a function of the \myHighlight{${\cal N}=2$}\coordHE{} chiral vector superfield \myHighlight{$\Psi$}\coordHE{} can be represented as an integral
+over the reduced moduli space \myHighlight{$ {\cal M}'_k$}\coordHE{} - that is the space from which the coordinates of the instanton
+center and its fermionic counterparts have been eliminated,
+\begin{equation}\coord{}\boxEquation{
+{\cal F}_k \simeq \int_{{\cal M}'_k} e^{-d_x\omega}, \label{modspaceint}
+}{
+{\cal F}_k \simeq \int_{{\cal M}'_k} e^{-d_x\omega}, }{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\omega$}\coordHE{} is here the differential one-form
+\begin{equation}\coord{}\boxEquation{
+\omega=\Re e \left({\cal D}I \bar{v} I^{\dagger} +J^{\dagger} v
+{\cal D}J \right), \label{omega}
+}{
+\omega=\Re e \left({\cal D}I \bar{v} I^{\dagger} +J^{\dagger} v
+{\cal D}J \right), }{ecuacion}\coordE{}\end{equation}
+\myHighlight{$v$}\coordHE{} denotes the Higgs field (the scalar component of the above mentioned superfield \myHighlight{$\Psi$}\coordHE{}) vacuum expectation
+value breaking  the gauge group \myHighlight{$SU(2)$}\coordHE{} down to \myHighlight{$U(1)$}\coordHE{}. We will chose \myHighlight{$v$}\coordHE{} to be of the form
+\begin{equation}\coord{}\boxEquation{
+v=\left(
+\begin{array}{cc}
+ia & 0 \\
+0 & -ia \end{array}
+\right),
+}{
+v=\left(
+\begin{array}{cc}
+ia & 0 \\
+0 & -ia \end{array}
+\right),
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$a$}\coordHE{} is real.
+ \myHighlight{$d_x$}\coordHE{} in Eq. (\ref{modspaceint}) stands for an
+equivariant differential
+\begin{equation}\coord{}\boxEquation{
+d_x\equiv d+i_{x},
+}{
+d_x\equiv d+i_{x},
+}{ecuacion}\coordE{}\end{equation}
+\myHighlight{$d$}\coordHE{} being the ordinary exterior derivative and \myHighlight{$i_x$}\coordHE{} meaning contraction with the \myHighlight{$U(1)$}\coordHE{} vector field (denoted
+below by \myHighlight{$x$}\coordHE{} ) going along with the infinitesimal transformation
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta B_i \sim 0; \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \delta I\sim Iv; \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \delta J\sim -vJ.\rightCoord{}
+\label{vectorfield}
+\rightCoord{}}{0mm}{1}{10}{
+\delta B_i \sim 0; \, \, \, \, \delta I\sim Iv; \, \, \, \delta J\sim -vJ.
+}{1}\coordE{}\end{eqnarray}
+It is worthwhile to note, that the one-form \myHighlight{$\omega$}\coordHE{} is dual to
+the vector field (\ref{vectorfield}) with respect to the metric
+\myHighlight{${\tilde g}$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+\omega =\Re e \,{\tilde g}\left(x^{\dagger}, d{\cal A} \right).
+\label{omega'}
+}{
+\omega =\Re e \,{\tilde g}\left(x^{\dagger}, d{\cal A} \right).
+}{ecuacion}\coordE{}\end{equation}
+The coefficient \myHighlight{${\cal F}_k$}\coordHE{} may be deformed into
+\begin{equation}\coord{}\boxEquation{
+{\cal F}_k(t) \equiv \int_{{\cal M}'_k} e^{-\frac{1}{t}d_x\omega} \label{tdeformedmodspaceint}
+}{
+{\cal F}_k(t) \equiv \int_{{\cal M}'_k} e^{-\frac{1}{t}d_x\omega} }{ecuacion}\coordE{}\end{equation}
+and we obtain
+\begin{equation}\coord{}\boxEquation{
+\label{tindependence1}
+\frac{d}{dt}{\cal F}_k(t) =-\frac{1}{t^2} \int_{{\cal M}'_k}d_x \left(\omega e^{-\frac{1}{t}d_x\omega}\right) = \\
+\label{tindependence2}
+ =-\frac{1}{t^2} \int_{{\cal M}'_k}d \left(\omega
+ e^{-\frac{1}{t}d_x\omega}\right).
+\label{tdeformedmodspaceint}
+}{
+\frac{d}{dt}{\cal F}_k(t) =-\frac{1}{t^2} \int_{{\cal M}'_k}d_x \left(\omega e^{-\frac{1}{t}d_x\omega}\right) = \\
+=-\frac{1}{t^2} \int_{{\cal M}'_k}d \left(\omega
+ e^{-\frac{1}{t}d_x\omega}\right).
+}{ecuacion}\coordE{}\end{equation}
+For the equality (\ref{tindependence1}) use has been made of the equivariance of the one-form \myHighlight{$\omega$}\coordHE{},
+\begin{equation}\coord{}\boxEquation{
+d_x^2 \omega=\left(d \circ i_x+i_x \circ d\right)\omega={\cal L}_x
+\omega=0,
+}{
+d_x^2 \omega=\left(d \circ i_x+i_x \circ d\right)\omega={\cal L}_x
+\omega=0,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{${\cal L}_x$}\coordHE{} is the Lie-derivative of the above introduced
+\myHighlight{$U(1)$}\coordHE{} vector field. To understand the second equality in
+(\ref{tindependence2}) one has to note that the the integral over
+\myHighlight{${\cal M}'_k$}\coordHE{} has to be taken with the top form from \myHighlight{$\exp
+{-(\frac{1}{t}d_x\omega )}$}\coordHE{} inserted, which can be reached (being
+a top form ) only by \myHighlight{$d$}\coordHE{}, not by \myHighlight{$i_x$}\coordHE{}. The \myHighlight{$t$}\coordHE{}-dependence of
+\myHighlight{${\cal F}_k(t)$}\coordHE{} hinges on whether the total derivative integral in
+(\ref{tindependence2}) picks up boundary terms. Boundary terms are
+apparently present in the unregularized version of \myHighlight{${\cal M}'_k$}\coordHE{}
+defined by Eq.'s (\ref{complexADHM}), (\ref{realADHM}) (see
+\cite{FPS1}, \cite{FPS2}), but are not present, as has been
+convincingly argued by Hollowood \cite{H}, after
+\myHighlight{$\zeta$}\coordHE{}-regularization\footnote{One may worry that the
+non-compactness of \myHighlight{${\cal M}'_k$}\coordHE{} may create problems. This is not
+the case . Estimates involving the dilute gas approximation for
+instantons show that the integrands decay fast enough into the
+non-compact directions to avoid trouble.}. \myHighlight{${\cal F}_k$}\coordHE{} does
+nevertheless not depend on \myHighlight{$\zeta$}\coordHE{}. Indeed, the integral
+(\ref{tdeformedmodspaceint}) over manifolds \myHighlight{${\cal M}'_k$}\coordHE{}
+associated to different parameters \myHighlight{$\zeta$}\coordHE{} are related by a simple
+rescaling which can be absorbed into a change of the parameter \myHighlight{$t$}\coordHE{}
+and so does not, according to Hollowood, alter \myHighlight{${\cal F}_k$}\coordHE{}.
+
+The result
+\begin{equation}\coord{}\boxEquation{
+\left. \frac{d {\cal F}_k}{d t}\right|_{\zeta \neq 0}=0 \nonumber
+}{
+\left. \frac{d {\cal F}_k}{d t}\right|_{\zeta \neq 0}=0 \nonumber
+}{ecuacion}\coordE{}\end{equation}
+suggests a saddle point evaluation of the integral over \myHighlight{${\cal
+M}'_k$}\coordHE{}, which should render an exact result. The saddle points are
+determined by \myHighlight{$i_x \omega$}\coordHE{},
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+i_x \omega= {\tilde g}\left(x^{\dagger}, x\right)=tr \left(
+\sum_{\rightCoord{}l=1,2}\left[{\bf L}^{-1}\Lambda,
+B_l^{\dagger}\right]\left[{\bf L}^{-1}\Lambda, B_l\right]\right.\rightCoord{}
+\nonumber\rightCoord{} \\\leftCoord{} + \left(-vI^{\dagger}-I^{\dagger}{\bf
+L}^{-1}\Lambda\right)\left(I v+{\bf L}^{-1}\Lambda I\right) \rightCoord{}
+\nonumber\rightCoord{}
+\leftCoord{}\\\leftCoord{}+\left. \left(J^{\dagger}v+{\bf L}^{-1} \rightCoord{}
+\Lambda J^{\dagger}\right)\left( -vJ-J{\bf L}^{-1}\Lambda \right)\right). \rightCoord{}
+\label{bosonicpart}
+\rightCoord{}}{0mm}{4}{9}{
+i_x \omega= {\tilde g}\left(x^{\dagger}, x\right)=tr \left(
+\sum_{l=1,2}\left[{\bf L}^{-1}\Lambda,
+B_l^{\dagger}\right]\left[{\bf L}^{-1}\Lambda, B_l\right]\right.
+\\ + \left(-vI^{\dagger}-I^{\dagger}{\bf
+L}^{-1}\Lambda\right)\left(I v+{\bf L}^{-1}\Lambda I\right) 
+\\+\left. \left(J^{\dagger}v+{\bf L}^{-1} 
+\Lambda J^{\dagger}\right)\left( -vJ-J{\bf L}^{-1}\Lambda \right)\right). 
+}{1}\coordE{}\end{eqnarray}
+The r.h.s. of Eq. (\ref{bosonicpart}) is a sum of squares, each of
+which should vanish for itself at a saddle point. In this way we
+are lead to the saddle point equalities
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\left[{\bf L}^{-1}\Lambda, B_l\right]=0; \nonumber \rightCoord{}\\\leftCoord{}
+I v+{\bf L}^{-1}\Lambda I=0; \nonumber \rightCoord{}\\\leftCoord{}
+\leftCoord{}-vJ-J{\bf L}^{-1}\Lambda =0. \rightCoord{}\label{saddlepointconditions}
+\rightCoord{}}{0mm}{4}{5}{
+\left[{\bf L}^{-1}\Lambda, B_l\right]=0; \\
+I v+{\bf L}^{-1}\Lambda I=0; \\
+-vJ-J{\bf L}^{-1}\Lambda =0. }{1}\coordE{}\end{eqnarray}
+One should note that the \myHighlight{${\bf L}^{-1}\Lambda$}\coordHE{} appearing in these
+equations are emerging from the \myHighlight{$U(k)$}\coordHE{} connections of the \myHighlight{$U(1)$}\coordHE{}
+vector field due to the horizontal lift of the latter. The
+interpretation of Eq.'s (\ref{saddlepointconditions}) is obvious:
+The saddle points are identical with the places at which the
+lifted vector field vanishes and can be shown, \cite{H}, to
+coincide with the union of direct products of two \myHighlight{$U(1)$}\coordHE{} instanton
+configurations with topological charges \myHighlight{$k_1$}\coordHE{} and \myHighlight{$k_2$}\coordHE{} satisfying
+the condition \myHighlight{$k_1+k_2=k$}\coordHE{}. Using the general localization formula
+(see \cite{BGV}, p. 216 ff.) we can reduce the \myHighlight{$8k-4$}\coordHE{} dimensional
+integral (\ref{modspaceint}) over the moduli space \myHighlight{${\cal M}'_k$}\coordHE{}
+to a sum of \myHighlight{$4k_1 +4k_2-4=4k-4$}\coordHE{} dimensional integrals over the
+spaces \myHighlight{${\cal M}'_{k_1 , k_2}\equiv {\cal M}_{k_1}(U(1)) \times
+{\cal M}_{k_2}(U(1))\backslash {\bf C}^2$}\coordHE{} (the common center of
+two \myHighlight{$U(1)$}\coordHE{} instantons is eliminated)
+\begin{equation}\coord{}\boxEquation{
+\int_{{\cal M}'_k} e^{-d_x\omega}=\sum_{\sb {k_1, k_2} \atop k_1+k_2=1} \int_{{\cal M}_{k_1 ,
+k_2}}\frac{1}{\det^{1/2} \left({\cal L}_{\cal N}+{\cal R}_{\cal N}\right)}, \label{normalbundleint}
+}{
+\int_{{\cal M}'_k} e^{-d_x\omega}=\sum_{\sb {k_1, k_2} \atop k_1+k_2=1} \int_{{\cal M}_{k_1 ,
+k_2}}\frac{1}{\det^{1/2} \left({\cal L}_{\cal N}+{\cal R}_{\cal N}\right)}, }{ecuacion}\coordE{}\end{equation}
+where \myHighlight{${\cal L}_{\cal N}$}\coordHE{} is the action of the vector field on the
+subspaces of horizontal spaces orthogonal to \myHighlight{${\cal M}_{k_1 ,
+k_2}$}\coordHE{} (these subspaces constitute the so called normal bundle) and
+\myHighlight{${\cal R}_{\cal N}$}\coordHE{}, a two form along \myHighlight{${\cal M}_{k_1 , k_2}$}\coordHE{} and a
+linear operator acting on these orthogonal subspaces, is the
+curvature of the normal bundle. Eq. (\ref{normalbundleint}) shows
+that each SW coefficient \myHighlight{${\cal F}_k$}\coordHE{} is equal to a certain
+polynomial of the characteristic classes of the normal bundle. The
+formula (\ref{normalbundleint}) providing a drastic simplification
+of the initial problem, still does not allow us to perform
+computations beyond \myHighlight{$2$}\coordHE{}-instantons\footnote{The \myHighlight{$2$}\coordHE{}-instanton
+calculation goes smoothly and gives the desired result.}.
+
+\setcounter{equation}{0}
+\section{The modified vector field }
+\renewcommand{\theequation}{3.\arabic{equation}}
+We have seen in section 2, that the main building block of the
+superinstanton action is the vector field \myHighlight{$x$}\coordHE{} (see
+(\ref{modspaceint}), (\ref{omega}), (\ref{omega'})). The
+difficulty we have encountered was a too large zero set of this
+vector field. We describe a natural deformation of this vector
+field whose zero set is only a discrete finite set. Such a
+vectorfield has been for good use in mathematics (cf. \cite{Nak},
+and references therein\footnote{We became aware of the relevance
+of Nakajima's work through \cite{N}.}). We will heavily rely on
+some of the results of Nakajima in the following. Consider two
+independent rotations of space-time, first  on the \myHighlight{$x_1$}\coordHE{}, \myHighlight{$x_2$}\coordHE{}
+plane with the rotation angle \myHighlight{$\epsilon_1$}\coordHE{} and the second one on
+the plane \myHighlight{$x_3$}\coordHE{}, \myHighlight{$x_4$}\coordHE{} with rotation angle \myHighlight{$\epsilon_2$}\coordHE{}. It is
+convenient to introduce complex coordinates \myHighlight{$z_1=x_1+ix_2$}\coordHE{},
+\myHighlight{$z_2=x_3+ix_4$}\coordHE{} in (euclidean) space-time. The group element
+specified by the parameters \myHighlight{$(t_1,t_2)$}\coordHE{} (\myHighlight{$t_l\equiv \exp
+i\epsilon_l$}\coordHE{}, \myHighlight{$l=1,2$}\coordHE{}) acts on \myHighlight{$(z_1,z_2)$}\coordHE{} as
+\myHighlight{$(z_1,z_2)\rightarrow (t_1 z_1, t_2 z_2)$}\coordHE{}. The respective action
+on the ADHM data is given by:
+\begin{equation}\coord{}\boxEquation{
+B_l\rightarrow t_l B_l ; \, \, \, \, I\rightarrow I; \, \, \, \, J\rightarrow t_1 t_2 J.
+\label{torusaction}
+}{
+B_l\rightarrow t_l B_l ; \, \, \, \, I\rightarrow I; \, \, \, \, J\rightarrow t_1 t_2 J.
+}{ecuacion}\coordE{}\end{equation}
+The unbroken \myHighlight{$U(1)$}\coordHE{} subgroup of the gauge group acts as:
+\begin{equation}\coord{}\boxEquation{
+B_l\rightarrow B_l ; \, \, \, \, I\rightarrow It_v; \, \, \, \, J\rightarrow t_v^{-1} J,
+\label{u1action}
+}{
+B_l\rightarrow B_l ; \, \, \, \, I\rightarrow It_v; \, \, \, \, J\rightarrow t_v^{-1} J,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$t_v=\exp ia \sigma_3$}\coordHE{} (our vector field \myHighlight{$x$}\coordHE{} is just the
+generator of the transformations (\ref{u1action}) ). It is evident
+that the transformations (\ref{u1action}), (\ref{torusaction}) act
+properly also on the moduli space \myHighlight{${\cal M}_k$}\coordHE{}, because they
+commute with \myHighlight{$U(k)$}\coordHE{}. Let us combine the transformations
+(\ref{u1action}), (\ref{torusaction})
+\begin{equation}\coord{}\boxEquation{
+B_l\rightarrow t_l B_l ; \, \, \, \, I\rightarrow It_v; \, \, \,
+\, J\rightarrow t_1 t_2 t_v^{-1}J
+\label{combinedaction}
+}{
+B_l\rightarrow t_l B_l ; \, \, \, \, I\rightarrow It_v; \, \, \,
+\, J\rightarrow t_1 t_2 t_v^{-1}J
+}{ecuacion}\coordE{}\end{equation}
+and consider its generating vector field - to be denoted \myHighlight{${\tilde
+x}$}\coordHE{} - in the construction of a modified superinstanton action as
+the main building block substituting the vector field \myHighlight{$x$}\coordHE{}. The
+components of the vector field \myHighlight{${\tilde x}$}\coordHE{} are determined through
+the infinitesimal form of the transformations
+(\ref{combinedaction})
+\begin{equation}\coord{}\boxEquation{
+\delta B_l\sim \epsilon_l B_l ; \, \, \, \, \delta I\sim Iv; \, \,
+\, \, \delta J\sim -\epsilon vJ, \label{tildex}
+}{
+\delta B_l\sim \epsilon_l B_l ; \, \, \, \, \delta I\sim Iv; \, \,
+\, \, \delta J\sim -\epsilon vJ, }{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\epsilon=\epsilon_1+\epsilon_2$}\coordHE{}. To find the deformed
+one-form \myHighlight{${\tilde \omega}$}\coordHE{} we substitute in Eq. (\ref{omega'}) \myHighlight{$x$}\coordHE{}
+by \myHighlight{${\tilde x}$}\coordHE{}. As a result we get
+\begin{equation}\coord{}\boxEquation{
+{\tilde \omega} =\Re e \, tr\left(-i\sum_{l=1,2}\epsilon_l {\cal
+D}B_l B_l^{\dagger}-{\cal D}I v
+I^{\dagger}+J^{\dagger}\left(v-i\epsilon \right){\cal D}J\right).
+}{
+{\tilde \omega} =\Re e \, tr\left(-i\sum_{l=1,2}\epsilon_l {\cal
+D}B_l B_l^{\dagger}-{\cal D}I v
+I^{\dagger}+J^{\dagger}\left(v-i\epsilon \right){\cal D}J\right).
+}{ecuacion}\coordE{}\end{equation}
+For the bosonic part of the deformed superinstanton action \myHighlight{$d_{{\tilde x}} {\tilde \omega}$}\coordHE{} we obtain
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+i_{{\tilde x}} {\tilde \omega}= {\tilde g}\left({\tilde
+x}^{\dagger}, {\tilde x}\right)=tr \left( \rightCoord{}
+\sum_{\rightCoord{}l=1,2}\left(-i\epsilon_l B_l^{\dagger}+\left[{\bf
+L}^{-1}{\tilde \Lambda}, \rightCoord{}
+B_l^{\dagger}\right]\right)\left(i\epsilon_l B_l+\left[{\bf
+L}^{-1}{\tilde \Lambda}, B_l\right]\right)\right. \nonumber\rightCoord{} \\\leftCoord{} +
+\left(-vI^{\dagger}-I^{\dagger}{\bf L}^{-1}{\tilde
+\Lambda}\right)\left(I v+{\bf L}^{-1}{\tilde \Lambda} I\right) \rightCoord{}
+\nonumber\rightCoord{} \\\leftCoord{}+\left. \left(J^{\dagger}\left(v-i\epsilon
+\right)+{\bf L}^{-1}{\tilde
+\Lambda}J^{\dagger}\right)\left(\left(-v+i\epsilon\right)J-J{\bf
+L}^{-1}{\tilde \Lambda} \right)\right), \rightCoord{}
+\rightCoord{}}{0mm}{3}{9}{
+i_{{\tilde x}} {\tilde \omega}= {\tilde g}\left({\tilde
+x}^{\dagger}, {\tilde x}\right)=tr \left( 
+\sum_{l=1,2}\left(-i\epsilon_l B_l^{\dagger}+\left[{\bf
+L}^{-1}{\tilde \Lambda}, 
+B_l^{\dagger}\right]\right)\left(i\epsilon_l B_l+\left[{\bf
+L}^{-1}{\tilde \Lambda}, B_l\right]\right)\right. \\ +
+\left(-vI^{\dagger}-I^{\dagger}{\bf L}^{-1}{\tilde
+\Lambda}\right)\left(I v+{\bf L}^{-1}{\tilde \Lambda} I\right) 
+\\+\left. \left(J^{\dagger}\left(v-i\epsilon
+\right)+{\bf L}^{-1}{\tilde
+\Lambda}J^{\dagger}\right)\left(\left(-v+i\epsilon\right)J-J{\bf
+L}^{-1}{\tilde \Lambda} \right)\right), 
+}{1}\coordE{}\end{eqnarray}
+where
+\begin{equation}\coord{}\boxEquation{
+{\tilde \Lambda}=i_{\tilde x} {\bf X}=\sum_{l=1,2} i\epsilon_l
+\left[B_l^{\dagger},
+B_l\right]+J^{\dagger}\left(-v+i\epsilon\right)J-IvI^{\dagger}-h.c.
+\, \, .
+}{
+{\tilde \Lambda}=i_{\tilde x} {\bf X}=\sum_{l=1,2} i\epsilon_l
+\left[B_l^{\dagger},
+B_l\right]+J^{\dagger}\left(-v+i\epsilon\right)J-IvI^{\dagger}-h.c.
+\, \, .
+}{ecuacion}\coordE{}\end{equation}
+The deformed super-instanton action has an explicit dependence on
+the instanton center. Hence we are not allowed to restrict the
+moduli space of instantons imposing the condition \myHighlight{$tr B_1=tr
+B_2=0$}\coordHE{} which means that the center of instantons has zero
+coordinates.  We define the deformed version of the Eq.
+(\ref{modspaceint}) as
+\begin{equation}\coord{}\boxEquation{
+Z_k \left(a, \epsilon_1, \epsilon_2 \right)\equiv\int_{{\cal M}_k} e^{-d_{\tilde x}{\tilde \omega}},
+\label{deformedmodspaceint}
+}{
+Z_k \left(a, \epsilon_1, \epsilon_2 \right)\equiv\int_{{\cal M}_k} e^{-d_{\tilde x}{\tilde \omega}},
+}{ecuacion}\coordE{}\end{equation}
+where integration is over the entire moduli space \myHighlight{${\cal M}_k$}\coordHE{}.
+The evaluation of this integral by means of localization technic
+is much simpler, because on the right hand side of the
+localization formula (\ref{normalbundleint}) we will have a finite
+sum over the zero locus set of vector field \myHighlight{${\tilde x}$}\coordHE{} and
+therefore the curvature term of the normal bundle \myHighlight{${\cal R}_{\cal
+N}$}\coordHE{} is absent. A zero locus of the vector field \myHighlight{${\tilde x}$}\coordHE{}
+(equivalently a fixed point of the combined action
+(\ref{combinedaction})) on the moduli space) is defined by the
+conditions:
+\begin{equation}\coord{}\boxEquation{
+t_l B_l=g^{-1}B_lg ; \, \, \, \, It_v=g^{-1}I; \, \, \, \, t_1 t_2
+t_v^{-1}J=J g. \label{fixedpointconditions}
+}{
+t_l B_l=g^{-1}B_lg ; \, \, \, \, It_v=g^{-1}I; \, \, \, \, t_1 t_2
+t_v^{-1}J=J g. }{ecuacion}\coordE{}\end{equation}
+Using the freedom of \myHighlight{$U(k)$}\coordHE{} transformations we will assume that
+the group element \myHighlight{$g$}\coordHE{} out of \myHighlight{$U(k)$}\coordHE{} is diagonal
+\begin{equation}\coord{}\boxEquation{
+g=\left( \begin{array}{ccc} e^{i\Phi_1} & \cdots & 0 \\
+ & \cdots &  \\
+0 & \cdots & e^{i\Phi_k}
+\end{array}
+\right). \label{diagonaluk}
+}{
+g=\left( \begin{array}{ccc} e^{i\Phi_1} & \cdots & 0 \\
+ & \cdots &  \\
+0 & \cdots & e^{i\Phi_k}
+\end{array}
+\right). }{ecuacion}\coordE{}\end{equation}
+The fixed point condition (\ref{fixedpointconditions}) implies:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta B_{l,ij}\equiv \left(\Phi_{ij}+\epsilon_l\right)B_{l,ij}=0; \nonumber \rightCoord{}\\\leftCoord{}
+\delta I_{i \lambda}\equiv \left(\Phi_i+a_{\lambda}\right)I_{i\lambda}=0; \nonumber \rightCoord{}\\\leftCoord{}
+\delta J_{\lambda i}\equiv \left(-\Phi_i-a_{\lambda}+\epsilon \right)J_{\lambda i}=0; \nonumber \rightCoord{}\\\leftCoord{}
+i,j=1,2, \cdots, k; \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, l, \lambda=1,2; \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+\Phi_{ij}\equiv \Phi_i-\Phi_j. \rightCoord{}\label{fixedpointconditions'}
+\rightCoord{}}{0mm}{4}{15}{
+\delta B_{l,ij}\equiv \left(\Phi_{ij}+\epsilon_l\right)B_{l,ij}=0; \\
+\delta I_{i \lambda}\equiv \left(\Phi_i+a_{\lambda}\right)I_{i\lambda}=0; \\
+\delta J_{\lambda i}\equiv \left(-\Phi_i-a_{\lambda}+\epsilon \right)J_{\lambda i}=0; \\
+i,j=1,2, \cdots, k; \, \, \, \, l, \lambda=1,2; \, \, \, \, 
+\Phi_{ij}\equiv \Phi_i-\Phi_j. }{1}\coordE{}\end{eqnarray}
+The geometrical meaning of these equations (as before for \myHighlight{$x$}\coordHE{}) is
+the criticality of the horizontally lifted vector field \myHighlight{${\tilde
+x}'$}\coordHE{} whose action  in the neighborhood  of a critical point is
+given by equation
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta_{{\tilde x}'} B_{l,ij}\equiv \left(\Phi_{ij}+\epsilon_l\right)B_{l,ij} \rightCoord{}\, \rightCoord{}\, ; \nonumber \rightCoord{}\\\leftCoord{}
+\delta_{{\tilde x}'} I_{i \lambda}\equiv \left(\Phi_i+a_{\lambda}\right)I_{i\lambda} \rightCoord{}\, \rightCoord{}\, ; \nonumber \rightCoord{}\\\leftCoord{}
+\delta_{{\tilde x}'} J_{\lambda i}\equiv
+\left(-\Phi_i-a_{\lambda}+\epsilon \right)J_{\lambda i} \rightCoord{}\, \rightCoord{}\, .\rightCoord{}
+\label{xtildeaction}
+\rightCoord{}}{0mm}{3}{11}{
+\delta_{{\tilde x}'} B_{l,ij}\equiv \left(\Phi_{ij}+\epsilon_l\right)B_{l,ij} \, \, ; \\
+\delta_{{\tilde x}'} I_{i \lambda}\equiv \left(\Phi_i+a_{\lambda}\right)I_{i\lambda} \, \, ; \\
+\delta_{{\tilde x}'} J_{\lambda i}\equiv
+\left(-\Phi_i-a_{\lambda}+\epsilon \right)J_{\lambda i} \, \, .
+}{1}\coordE{}\end{eqnarray}
+The classification of fixed points of the torus action
+(\ref{torusaction}) in the case of \myHighlight{$U(1)$}\coordHE{} (non-commutative)
+instantons can be found in \cite{Nak} chapter 5.2. Fortunately, to
+adapt this to our case of \myHighlight{$SU(2)$}\coordHE{} (or \myHighlight{$SU(N)$}\coordHE{} in general)
+instantons and the combined action (\ref{combinedaction}) only
+some minor modifications are needed.
+
+There is one-to-one correspondence between the fixed points of
+\myHighlight{${\tilde x}'$}\coordHE{} and ordered pairs of Young diagrams \myHighlight{$(Y_1,Y_2)$}\coordHE{} with
+\myHighlight{$k_1$}\coordHE{} and \myHighlight{$k_2$}\coordHE{} boxes resp. , s.t. \myHighlight{$k_1+k_2=k$}\coordHE{}. Denote the number
+of boxes in the rows of the Young diagram \myHighlight{$Y_l$}\coordHE{} by \myHighlight{$\nu_{l,1}\geq
+\nu_{l,2} \geq \cdots \geq 0 $}\coordHE{} and the number of boxes in
+columns\footnote{Our convention is to numerate rows beginning from
+the top to the bottom and columns from left to right.} by
+\myHighlight{$\nu'_{l_,1}\geq \nu'_{l,2} \geq \cdots \geq 0 $}\coordHE{}. Then we
+distribute the phases \myHighlight{$\Phi_1, \Phi_2, \cdots, \Phi_{k_1}$}\coordHE{} in the
+Young diagrams \myHighlight{$Y_1$}\coordHE{} and \myHighlight{$\Phi_{k_1+1}, \Phi_{k_1+2}, \cdots,
+\Phi_{k}$}\coordHE{} in \myHighlight{$Y_2$}\coordHE{} subsequently filling row after row beginning
+from the upper left corner boxes. To the phase \myHighlight{$\Phi_m$}\coordHE{}
+distributed in a box of \myHighlight{$Y_l$}\coordHE{} in the \myHighlight{$i$}\coordHE{}-th row and \myHighlight{$j$}\coordHE{}-th column
+we assign the value
+\begin{equation}\coord{}\boxEquation{
+\Phi_m=-a_l-(i-1)\epsilon_2-(j-1)\epsilon_1, \label{Phivalues}
+}{
+\Phi_m=-a_l-(i-1)\epsilon_2-(j-1)\epsilon_1, }{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$a_1=-a_2=a$}\coordHE{}. The matrix element \myHighlight{$B_{1,mn}$}\coordHE{} (\myHighlight{$B_{2,mn}$}\coordHE{}) is
+nonzero if and only if \myHighlight{$\Phi_m$}\coordHE{} and \myHighlight{$\Phi_n$}\coordHE{} are neighbors in a
+row (column). The only nonzero matrix elements of \myHighlight{$I$}\coordHE{} are
+\myHighlight{$I_{1,1}$}\coordHE{} and \myHighlight{$I_{k_1+1,2}$}\coordHE{}. \myHighlight{$J$}\coordHE{} vanishes identically. These are
+some special points belonging to the manifold \myHighlight{${\cal M}_{k_1,k_2}$}\coordHE{}
+introduced earlier. It is easy to see that the conditions
+(\ref{fixedpointconditions'}) are fulfilled. Of course, to
+determine the actual values of nonzero matrix elements one should
+impose the ADHM equations (\ref{complexADHM}),
+(\ref{realADHMdeformed}) but this is a more delicate problem.
+Below we will solve this problem for instanton charges \myHighlight{$k=2,3,4$}\coordHE{}.
+
+The next step is the construction of tangent spaces passing
+through the fixed points and to calculate the determinants of
+\myHighlight{${\tilde x}'$}\coordHE{}-action on this spaces. To do this, one needs to find
+all solutions of the linearized ADHM equations (the so called
+fermionic ADHM equations)
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\left[ \delta B_1, B_2\right]+\left[B_1, \delta B_2\right]+\delta IJ+I\delta J=0; \nonumber \rightCoord{}\\\leftCoord{}
+\sum_{\rightCoord{}l=1,2} \left[ \delta B_l, B_l^{\dagger}\right]+\delta II^{\dagger}-J^{\dagger}\delta J=0
+\label{fermionicADHM}
+\rightCoord{}}{0mm}{2}{4}{
+\left[ \delta B_1, B_2\right]+\left[B_1, \delta B_2\right]+\delta IJ+I\delta J=0; \\
+\sum_{l=1,2} \left[ \delta B_l, B_l^{\dagger}\right]+\delta II^{\dagger}-J^{\dagger}\delta J=0
+}{1}\coordE{}\end{eqnarray}
+around the fixed points. Denote the fixed point ADHM data corresponding to the Young diagrams \myHighlight{$(Y_1, Y_2)$}\coordHE{} as
+\myHighlight{${\cal A}_{Y_1,Y_2}$}\coordHE{}. The function \myHighlight{$Z_k \left( a, \epsilon_1, \epsilon_2 \right)$}\coordHE{} can be completely determined
+in terms of above data:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+Z_k \left(a, \epsilon_1, \epsilon_2 \right)= \left. \sum_{\rightCoord{}Y_1,
+Y_2} \frac{\leftCoord{}1}{\rightCoord{}\det {\cal L}_{{\tilde x}'}} \rightCoord{}\, \rightCoord{}\, \right|_{{\cal
+A}_{Y_1,Y_2}}. \rightCoord{}\label{localization}
+\rightCoord{}}{0mm}{2}{7}{
+Z_k \left(a, \epsilon_1, \epsilon_2 \right)= \left. \sum_{Y_1,
+Y_2} \frac{1}{\det {\cal L}_{{\tilde x}'}} \, \, \right|_{{\cal
+A}_{Y_1,Y_2}}. }{1}\coordE{}\end{eqnarray}
+The reason of appearance of \myHighlight{$1/\det $}\coordHE{} instead of \myHighlight{$1/\sqrt{\det}$}\coordHE{}
+as in Eq. (\ref{normalbundleint}) is due to our convention to
+consider complex tangent spaces and linear operators acting  on
+them instead of their real forms.
+
+Though the deformed superinstanton action \myHighlight{$d_{{\tilde x}'}{\tilde
+\omega}$}\coordHE{} tends to the initial one as \myHighlight{$\epsilon_1, \epsilon_2
+\rightarrow 0$}\coordHE{}, it is not true for the \myHighlight{$Z_k(a, \epsilon_1,
+\epsilon_2)$}\coordHE{} which is highly singular at this limit. In his recent
+paper N.Nekrasov \cite{N} brings some field theoretical arguments
+to come to the remarkable conclusion that the generating function
+\begin{equation}\coord{}\boxEquation{
+Z\left(q, a, \epsilon_1, \epsilon_2 \right)\equiv 1+\sum_{k=1}^{\infty} Z_k\left(a, \epsilon_1, \epsilon_2
+\right)q^k \label{generatingZ}
+}{
+Z\left(q, a, \epsilon_1, \epsilon_2 \right)\equiv 1+\sum_{k=1}^{\infty} Z_k\left(a, \epsilon_1, \epsilon_2
+\right)q^k }{ecuacion}\coordE{}\end{equation}
+can be represented as
+\begin{equation}\coord{}\boxEquation{
+Z\left(q, a, \epsilon_1, \epsilon_2
+\right)=\exp{-\frac{1}{\epsilon_1 \epsilon_2}{\cal F}\left(q, a,
+\epsilon_1, \epsilon_2 \right)}, \label{singularitystructure}
+}{
+Z\left(q, a, \epsilon_1, \epsilon_2
+\right)=\exp{-\frac{1}{\epsilon_1 \epsilon_2}{\cal F}\left(q, a,
+\epsilon_1, \epsilon_2 \right)}, }{ecuacion}\coordE{}\end{equation}
+where \myHighlight{${\cal F}$}\coordHE{} is regular at \myHighlight{$\epsilon_1, \epsilon_2 =0$}\coordHE{} and
+that the SW coefficients \myHighlight{${\cal F}_k$}\coordHE{} are nothing else than the
+coefficients of the Taylor expansion of \myHighlight{${\cal F}\left(q, a,
+\epsilon_1, \epsilon_2 \right)$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{
+{\cal F}\left(q, a, \epsilon_1, \epsilon_2 \right)=\sum_{k=1}^{\infty}{\cal F}_k\left(a, \epsilon_1, \epsilon_2
+\right)q^k \label{TaylorF}
+}{
+{\cal F}\left(q, a, \epsilon_1, \epsilon_2 \right)=\sum_{k=1}^{\infty}{\cal F}_k\left(a, \epsilon_1, \epsilon_2
+\right)q^k }{ecuacion}\coordE{}\end{equation}
+at \myHighlight{$\epsilon_1, \epsilon_2 =0$}\coordHE{}. More precisely\footnote{The factor
+\myHighlight{$2^{2k-2}$}\coordHE{} is needed to have the normalization adopted in
+\cite{dorey1}.}
+\begin{equation}\coord{}\boxEquation{
+{\cal F}_k a^{2-4k} =2^{2k-2}{\cal F}_k\left(a, \epsilon_1, \epsilon_2 \right).
+}{
+{\cal F}_k a^{2-4k} =2^{2k-2}{\cal F}_k\left(a, \epsilon_1, \epsilon_2 \right).
+}{ecuacion}\coordE{}\end{equation}
+We hope to return to this point in a future publication and to
+present an intrinsic explanation of the singularity structure
+(\ref{singularitystructure}) using directly the definition of
+\myHighlight{$Z\left(q, a, \epsilon_1, \epsilon_2 \right)$}\coordHE{}.
+
+\setcounter{equation}{0}
+\section{Low charge instanton calculations}
+\renewcommand{\theequation}{4.\arabic{equation}}
+
+In this section we carry out explicit calculations for instanton charges up to four. For simplicity we rescale
+ADHM data and set \myHighlight{$\zeta=1$}\coordHE{}.
+\begin{itemize}
+\item {\bf One-instantons} \end{itemize}
+This case is almost trivial. We have two pairs of Young diagrams\footnote{We always note only nonzero \myHighlight{$\nu$}\coordHE{}'s.}: \\
+{\bf a)} \myHighlight{$Y_1=\left\{\nu_{1,1}=1\right\}$}\coordHE{}, \myHighlight{$Y_2=\left\{\emptyset\right\}$}\coordHE{}; \\
+{\bf b)} \myHighlight{$Y_1=\left\{\emptyset\right\}$}\coordHE{},
+\myHighlight{$Y_2=\left\{\nu_{1,1}=1\right\}$}\coordHE{}. In the case a) \myHighlight{$B_1=B_2=0$}\coordHE{},
+\myHighlight{$I=\left(\begin{array}{cc}1 & 0 \end{array}\right)$}\coordHE{},
+\myHighlight{$\Phi_1=-a_1$}\coordHE{}. The tangent space vectors are given by
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta B_l=\left(\delta B_{l,11}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\,
+\delta I=\left( \rightCoord{}
+\begin{array}{cc} 0 & \delta I_{12}
+\end{array}\right); \rightCoord{}
+\leftCoord{}\rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+\delta J=\left( \rightCoord{}
+\begin{array}{c} \rightCoord{}
+\delta J_{11} \rightCoord{}\\\leftCoord{}
+\leftCoord{}0\rightCoord{}
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{4}{16}{
+\delta B_l=\left(\delta B_{l,11}\right); \, \, \,
+\delta I=\left( 
+\begin{array}{cc} 0 & \delta I_{12}
+\end{array}\right); 
+\, \, \, 
+\delta J=\left( 
+\begin{array}{c} 
+\delta J_{11} \\
+0
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+The dimension of the tangent space is \myHighlight{$2\times 4=8$}\coordHE{} as it should. Taking into account (\ref{xtildeaction}) one
+easily calculates the determinant
+\begin{equation}\coord{}\boxEquation{
+\det {\cal L}_{{\tilde x}'}=\epsilon_1 \epsilon_2 a_{21}
+\left(a_{12}+\epsilon \right),
+}{
+\det {\cal L}_{{\tilde x}'}=\epsilon_1 \epsilon_2 a_{21}
+\left(a_{12}+\epsilon \right),
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$a_{\lambda \mu}\equiv a_{\lambda}-a_{\mu}; \lambda , \mu
+=1,2$}\coordHE{}. There is no need to carry out calculation for the case b)
+because for interchanged \myHighlight{$Y_1$}\coordHE{} and \myHighlight{$Y_2$}\coordHE{} one obtains the same
+determinant with interchanged \myHighlight{$a_1$}\coordHE{} and \myHighlight{$a_2$}\coordHE{}. Note also that
+simultaneous transposition of both Young diagrams gives rise to a
+determinant with interchanged \myHighlight{$\epsilon_1 \leftrightarrow
+\epsilon_2$}\coordHE{}. Below we will explicitly mention only one pair of
+such symmetry related diagrams, but of course we will take all of
+them into account in final expressions of \myHighlight{$Z_k$}\coordHE{} Eq.
+(\ref{localization}). Thus for the \myHighlight{$1$}\coordHE{}-instantons
+\begin{equation}\coord{}\boxEquation{
+Z_1\left(a, \epsilon_1, \epsilon_2 \right)=\left(\epsilon_1 \epsilon_2 a_{21} \left(a_{12}+\epsilon
+\right)\right)^{-1}+\left(\epsilon_1 \epsilon_2 a_{12} \left(a_{21}+\epsilon \right)\right)^{-1}.
+}{
+Z_1\left(a, \epsilon_1, \epsilon_2 \right)=\left(\epsilon_1 \epsilon_2 a_{21} \left(a_{12}+\epsilon
+\right)\right)^{-1}+\left(\epsilon_1 \epsilon_2 a_{12} \left(a_{21}+\epsilon \right)\right)^{-1}.
+}{ecuacion}\coordE{}\end{equation}
+From Eq. (\ref{generatingZ})-(\ref{TaylorF})
+\begin{equation}\coord{}\boxEquation{
+{\cal F}_1\left(a, \epsilon_1, \epsilon_2 \right)=-\epsilon_1
+\epsilon_2 Z_1 =\frac{2}{a_{12}^2-\epsilon^2}.
+}{
+{\cal F}_1\left(a, \epsilon_1, \epsilon_2 \right)=-\epsilon_1
+\epsilon_2 Z_1 =\frac{2}{a_{12}^2-\epsilon^2}.
+}{ecuacion}\coordE{}\end{equation}
+Taking the limit \myHighlight{$\epsilon_{1,2}\rightarrow 0$}\coordHE{} one obtains
+\[\coord{}\boxMath{
+{\cal F}_1=1/2.
+}{corchetes}{0pt}\coordE{}\]
+\begin{itemize}
+\item {\bf 2-instantons} \end{itemize} There are two basic cases.
+\\
+{\bf a)} \myHighlight{$Y_1=\left\{\nu_{1,1}=2)\right\}$}\coordHE{},
+\myHighlight{$Y_2=\left\{\emptyset\right\}$}\coordHE{};
+\myHighlight{$\Phi_1=-a_1$}\coordHE{}, \myHighlight{$\Phi_2=-a_1-\epsilon_1$}\coordHE{}. \\
+The fixed point ADHM data:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+B_1=\left(\begin{array}{cc}
+\leftCoord{}0 & 0 \\\leftCoord{} 1 & 0\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+B_2=0; \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, I=\left(\begin{array}{cc} \sqrt{2} & 0 \\\leftCoord{} 0 & 0
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{4}{13}{
+B_1=\left(\begin{array}{cc}
+0 & 0 \\ 1 & 0
+\end{array}\right); \, \, \, \, 
+B_2=0; \, \, \, \, I=\left(\begin{array}{cc} \sqrt{2} & 0 \\ 0 & 0
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+The tangent space:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta B_1 &=& \left(\begin{array}{cc} \delta B_{1,11} & \delta B_{1,12} \\\leftCoord{} 0 & \delta B_{1,11}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+\delta B_2 =\left(\begin{array}{cc} \delta B_{2,11} & 0 \\\leftCoord{} \delta B_{2,21} & \delta B_{2,11}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta I &=&\left(\begin{array}{cc} 0 & \delta I_{12} \\\leftCoord{} 0 & \delta I_{22}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+\delta J=\left(\begin{array}{cc} 0 & 0 \\\leftCoord{} \delta J_{21} & \delta J_{22}
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{6}{25}{
+\delta B_1 &=& \left(\begin{array}{cc} \delta B_{1,11} & \delta B_{1,12} \\ 0 & \delta B_{1,11}
+\end{array}\right); \, \, \, \, 
+\delta B_2 =\left(\begin{array}{cc} \delta B_{2,11} & 0 \\ \delta B_{2,21} & \delta B_{2,11}
+\end{array}\right); \\
+\delta I &=&\left(\begin{array}{cc} 0 & \delta I_{12} \\ 0 & \delta I_{22}
+\end{array}\right); \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, 
+\delta J=\left(\begin{array}{cc} 0 & 0 \\ \delta J_{21} & \delta J_{22}
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+The determinant:
+\begin{equation}\coord{}\boxEquation{
+\det {\cal L}_{{\tilde x}'}=2 \epsilon_1^2 \epsilon_2
+\epsilon_{21} a_{21} \left(a_{21}-\epsilon_1 \right)
+\left(a_{12}+\epsilon \right) \left(a_{12}+2 \epsilon_1
++\epsilon_2 \right).
+}{
+\det {\cal L}_{{\tilde x}'}=2 \epsilon_1^2 \epsilon_2
+\epsilon_{21} a_{21} \left(a_{21}-\epsilon_1 \right)
+\left(a_{12}+\epsilon \right) \left(a_{12}+2 \epsilon_1
++\epsilon_2 \right).
+}{ecuacion}\coordE{}\end{equation}
+{\bf b)} \myHighlight{$Y_1=\left\{\nu_{1,1}=1)\right\}$}\coordHE{}, \myHighlight{$Y_2=\left\{\nu_{2,1}=1\right\}$}\coordHE{}; \myHighlight{$\Phi_1=-a_1$}\coordHE{}, \myHighlight{$\Phi_2=-a_2$}\coordHE{}. \\
+Fixed point:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+B_1=B_2=0; \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, I=\left(\begin{array}{cc} 1 & 0 \\\leftCoord{} 0 & 1
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{2}{7}{
+B_1=B_2=0; \, \, \, \, I=\left(\begin{array}{cc} 1 & 0 \\ 0 & 1
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+Tangent space:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta B_1 &=& \left(\begin{array}{cc} \delta B_{1,11} & \delta B_{1,12} \\\leftCoord{} \delta B_{1,21} & \delta B_{1,22}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+\delta B_2 =\left(\begin{array}{cc} \delta B_{2,11} & \delta B_{2,12} \\\leftCoord{} \delta B_{2,21} & \delta B_{2,22}
+\end{array}\right); \nonumber\rightCoord{} \\\leftCoord{} \delta I &=& 0; \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \delta J=0. \rightCoord{}
+\rightCoord{}}{0mm}{4}{12}{
+\delta B_1 &=& \left(\begin{array}{cc} \delta B_{1,11} & \delta B_{1,12} \\ \delta B_{1,21} & \delta B_{1,22}
+\end{array}\right); \, \, \, \, 
+\delta B_2 =\left(\begin{array}{cc} \delta B_{2,11} & \delta B_{2,12} \\ \delta B_{2,21} & \delta B_{2,22}
+\end{array}\right); \\ \delta I &=& 0; \, \, \, \delta J=0. 
+}{1}\coordE{}\end{eqnarray}
+Determinant:
+\begin{equation}\coord{}\boxEquation{
+\det {\cal L}_{{\tilde x}'}=\epsilon_1^2 \epsilon_2^2
+\left(a_{12}^2-\epsilon_1^2 \right)\left(a_{12}^2-\epsilon_2^2
+\right).
+}{
+\det {\cal L}_{{\tilde x}'}=\epsilon_1^2 \epsilon_2^2
+\left(a_{12}^2-\epsilon_1^2 \right)\left(a_{12}^2-\epsilon_2^2
+\right).
+}{ecuacion}\coordE{}\end{equation}
+Using above data one first calculates \myHighlight{$Z_2$}\coordHE{} and then
+\[\coord{}\boxMath{ {\cal F}_2\left(a, \epsilon_1,\epsilon_2\right)=-\epsilon_1 \epsilon_2 \left( Z_2-\frac{1}{2} Z_1^2\right). }{corchetes}{0pt}\coordE{}\]
+The final result reads:
+\begin{equation}\coord{}\boxEquation{
+{\cal F}_2\left(a, \epsilon_1, \epsilon_2\right)=\frac{20 a^2 + 7 \epsilon_1^2 + 16 \epsilon_1 \epsilon_2 + 7
+\epsilon_2^2}{\left(4a^2 - \epsilon^2 \right)^2  \left(4a^2 - \left( 2\epsilon_1 + \epsilon_2\right)^2 \right)
+ \left(4a^2 - \left(\epsilon_1 + 2\epsilon_2 \right)^2 \right)}.
+}{
+{\cal F}_2\left(a, \epsilon_1, \epsilon_2\right)=\frac{20 a^2 + 7 \epsilon_1^2 + 16 \epsilon_1 \epsilon_2 + 7
+\epsilon_2^2}{\left(4a^2 - \epsilon^2 \right)^2  \left(4a^2 - \left( 2\epsilon_1 + \epsilon_2\right)^2 \right)
+ \left(4a^2 - \left(\epsilon_1 + 2\epsilon_2 \right)^2 \right)}.
+}{ecuacion}\coordE{}\end{equation}
+Now let us take the limit \myHighlight{$\epsilon_{1,2}\rightarrow 0$}\coordHE{}:
+\[\coord{}\boxMath{
+{\cal F}_2=\frac{5}{2^{4}}.
+}{corchetes}{0pt}\coordE{}\]
+
+\begin{itemize}
+\item {\bf 3-instantons} \end{itemize} There are three basic
+cases. \\
+{\bf a)} \myHighlight{$Y_1=\left\{\nu_{1,1}=3\right\}$}\coordHE{},
+\myHighlight{$Y_2=\left\{\emptyset\right\}$}\coordHE{}; \myHighlight{$\Phi_1=-a_1$}\coordHE{},
+\myHighlight{$\Phi_2=-a_1-\epsilon_1$}\coordHE{},
+\myHighlight{$\Phi_3=-a_1-2\epsilon_1$}\coordHE{}. \\
+Fixed point:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+B_1=\left(\begin{array}{ccc} 0 & 0 & 0\\\leftCoord{} \sqrt{2} & 0 & 0 \\\leftCoord{} 0 & 1 & 0
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+B_2=0; \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, I=\left(\begin{array}{cc} \sqrt{3} & 0 \\\leftCoord{} 0 & 0 \\\leftCoord{}0 & 0
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{5}{12}{
+B_1=\left(\begin{array}{ccc} 0 & 0 & 0\\ \sqrt{2} & 0 & 0 \\ 0 & 1 & 0
+\end{array}\right); \, \, \, \, 
+B_2=0; \, \, \, \, I=\left(\begin{array}{cc} \sqrt{3} & 0 \\ 0 & 0 \\0 & 0
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+Tangent space:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta B_1 &=& \left(\begin{array}{ccc} \delta B_{1,11} & \delta B_{1,12} & \delta B_{1,13}\\\leftCoord{} 0 & \delta
+B_{1,11} & \frac{\leftCoord{}1}{\rightCoord{}\sqrt{2}}\delta B_{1,12} \\\leftCoord{}0 & 0 & \delta B_{1,11}\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+\delta B_2 =\left(\begin{array}{ccc} \delta B_{2,11} & 0 & 0 \\\leftCoord{} \delta B_{2,21} & \delta B_{2,11} & 0 \\\leftCoord{} \delta
+B_{2,31} & \frac{\leftCoord{}1}{\rightCoord{}\sqrt{2}}\delta B_{2,21} & \delta B_{2,11}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta I &=&\left(\begin{array}{cc} 0 & \delta I_{12} \\\leftCoord{} 0 & \delta I_{22} \\\leftCoord{} 0 & \delta I_{32}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+\delta J=\left(\begin{array}{ccc} 0 & 0 & 0 \\\leftCoord{} \delta J_{21} & \delta J_{22} & \delta J_{23}
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{11}{29}{
+\delta B_1 &=& \left(\begin{array}{ccc} \delta B_{1,11} & \delta B_{1,12} & \delta B_{1,13}\\ 0 & \delta
+B_{1,11} & \frac{1}{\sqrt{2}}\delta B_{1,12} \\0 & 0 & \delta B_{1,11}
+\end{array}\right); \, \, \, \, 
+\delta B_2 =\left(\begin{array}{ccc} \delta B_{2,11} & 0 & 0 \\ \delta B_{2,21} & \delta B_{2,11} & 0 \\ \delta
+B_{2,31} & \frac{1}{\sqrt{2}}\delta B_{2,21} & \delta B_{2,11}
+\end{array}\right); \\
+\delta I &=&\left(\begin{array}{cc} 0 & \delta I_{12} \\ 0 & \delta I_{22} \\ 0 & \delta I_{32}
+\end{array}\right); \, \, \, \, \, \, \, \, \, \, \, \, \, \, \, 
+\delta J=\left(\begin{array}{ccc} 0 & 0 & 0 \\ \delta J_{21} & \delta J_{22} & \delta J_{23}
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+The determinant:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\det {\cal L}_{{\tilde x}'}=6 \epsilon_1^3 \epsilon_2
+\epsilon_{21} \left(\epsilon_2-2\epsilon_1\right) a_{21}
+\left(a_{21}-\epsilon_1 \right) \left(a_{21}-2\epsilon_1 \right) \nonumber \rightCoord{}\\\leftCoord{}
+\times \left(a_{12}+\epsilon \right) \left(a_{12}+2 \epsilon_1 +\epsilon_2 \right) \left(a_{12}+3 \epsilon_1
+\leftCoord{}+\epsilon_2 \right).\rightCoord{}
+\rightCoord{}}{0mm}{3}{4}{
+\det {\cal L}_{{\tilde x}'}=6 \epsilon_1^3 \epsilon_2
+\epsilon_{21} \left(\epsilon_2-2\epsilon_1\right) a_{21}
+\left(a_{21}-\epsilon_1 \right) \left(a_{21}-2\epsilon_1 \right) \\
+\times \left(a_{12}+\epsilon \right) \left(a_{12}+2 \epsilon_1 +\epsilon_2 \right) \left(a_{12}+3 \epsilon_1
++\epsilon_2 \right).
+}{1}\coordE{}\end{eqnarray}
+{\bf b)} \myHighlight{$Y_1=\left\{\nu_{1,1}=2, \nu_{1,2}=1 \right\}$}\coordHE{},
+\myHighlight{$Y_2=\left\{\emptyset\right\}$}\coordHE{}; \myHighlight{$\Phi_1=-a_1$}\coordHE{},
+\myHighlight{$\Phi_2=-a_1-\epsilon_1$}\coordHE{}, \myHighlight{$\Phi_3=-a_1-\epsilon_1-\epsilon_2$}\coordHE{}. \\
+Fixed point:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+B_1=\left(\begin{array}{ccc} 0 & 0 & 0\\\leftCoord{} 1 & 0 & 0 \\\leftCoord{} 0 & 0 & 0
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+B_2=\left(\begin{array}{ccc} 0 & 0 & 0\\\leftCoord{} 0 & 0 & 0 \\\leftCoord{} 1 & 0 & 0
+\end{array}\right);  \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, I=\left(\begin{array}{cc} \sqrt{3} & 0 \\\leftCoord{} 0 & 0 \\\leftCoord{}0 & 0 \rightCoord{}
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{7}{13}{
+B_1=\left(\begin{array}{ccc} 0 & 0 & 0\\ 1 & 0 & 0 \\ 0 & 0 & 0
+\end{array}\right); \, \, \, \, 
+B_2=\left(\begin{array}{ccc} 0 & 0 & 0\\ 0 & 0 & 0 \\ 1 & 0 & 0
+\end{array}\right);  \, \, \, \, I=\left(\begin{array}{cc} \sqrt{3} & 0 \\ 0 & 0 \\0 & 0 
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+Tangent space:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta B_1 &=& \left(\begin{array}{ccc} \delta B_{1,11} & 0 & 0 \\\leftCoord{} 0 & \delta B_{1,22} & \delta B_{2,22}-\delta
+B_{2,11}\\\leftCoord{}0 & \delta B_{1,32} & 2 \delta B_{1,11}-\delta B_{1,22}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta B_2 &=&\left(\begin{array}{ccc} \delta B_{2,11} & 0 & 0 \\\leftCoord{} 0 & \delta B_{2,22} & \delta B_{2,23} \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & \delta B_{1,11}-\delta B_{1,22} & 2 \delta B_{211}-\delta B_{2,22}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta I &=& \left(\begin{array}{cc} 0 & \delta I_{12} \\\leftCoord{} 0 & \delta I_{22} \\\leftCoord{} 0 & \delta I_{32}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+\delta J=\left(\begin{array}{ccc} 0 & 0 & 0 \\\leftCoord{} \delta J_{21} & \delta J_{22} & \delta J_{23}
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{11}{18}{
+\delta B_1 &=& \left(\begin{array}{ccc} \delta B_{1,11} & 0 & 0 \\ 0 & \delta B_{1,22} & \delta B_{2,22}-\delta
+B_{2,11}\\0 & \delta B_{1,32} & 2 \delta B_{1,11}-\delta B_{1,22}
+\end{array}\right); \\
+\delta B_2 &=&\left(\begin{array}{ccc} \delta B_{2,11} & 0 & 0 \\ 0 & \delta B_{2,22} & \delta B_{2,23} \\
+0 & \delta B_{1,11}-\delta B_{1,22} & 2 \delta B_{211}-\delta B_{2,22}
+\end{array}\right); \\
+\delta I &=& \left(\begin{array}{cc} 0 & \delta I_{12} \\ 0 & \delta I_{22} \\ 0 & \delta I_{32}
+\end{array}\right); \, \, \, \, \, \, \, \, \, 
+\delta J=\left(\begin{array}{ccc} 0 & 0 & 0 \\ \delta J_{21} & \delta J_{22} & \delta J_{23}
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+Determinant:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\det {\cal L}_{{\tilde x}'}=\epsilon_1^2 \epsilon_2^2 \left(2
+\epsilon_1-\epsilon_2\right)\left(2
+\epsilon_2-\epsilon_1\right)a_{21}\left(a_{21}-\epsilon_1 \right)\left(a_{21}-\epsilon_2 \right) \nonumber \rightCoord{}\\\leftCoord{}
+\times \left(a_{12}+\epsilon \right)\left(a_{12}+2 \epsilon_1 +\epsilon_2 \right)\left(a_{12}+2 \epsilon_2
+\leftCoord{}+\epsilon_1 \right).\rightCoord{}
+\rightCoord{}}{0mm}{3}{4}{
+\det {\cal L}_{{\tilde x}'}=\epsilon_1^2 \epsilon_2^2 \left(2
+\epsilon_1-\epsilon_2\right)\left(2
+\epsilon_2-\epsilon_1\right)a_{21}\left(a_{21}-\epsilon_1 \right)\left(a_{21}-\epsilon_2 \right) \\
+\times \left(a_{12}+\epsilon \right)\left(a_{12}+2 \epsilon_1 +\epsilon_2 \right)\left(a_{12}+2 \epsilon_2
++\epsilon_1 \right).
+}{1}\coordE{}\end{eqnarray}
+{\bf c)} \myHighlight{$Y_1=\left\{\nu_{1,1}=1, \nu_{1,2}=1 \right\}$}\coordHE{},
+\myHighlight{$Y_2=\left\{\nu_{2,1}=1\right\}$}\coordHE{}; \myHighlight{$\Phi_1=-a_1$}\coordHE{},
+\myHighlight{$\Phi_2=-a_1-\epsilon_2$}\coordHE{}, \myHighlight{$\Phi_3=-a_2$}\coordHE{}. \\
+Fixed point:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+B_1=0; \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, B_2=\left(\begin{array}{ccc} 0 & 0 & 0\\\leftCoord{} 1 & 0 & 0 \\\leftCoord{} 0 & 0 & 0
+\end{array}\right);  \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, I=\left(\begin{array}{cc} \sqrt{2} & 0 \\\leftCoord{} 0 & 0 \\\leftCoord{}0 & 1 \rightCoord{}
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{5}{12}{
+B_1=0; \, \, \, \, B_2=\left(\begin{array}{ccc} 0 & 0 & 0\\ 1 & 0 & 0 \\ 0 & 0 & 0
+\end{array}\right);  \, \, \, \, I=\left(\begin{array}{cc} \sqrt{2} & 0 \\ 0 & 0 \\0 & 1 
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+Tangent space:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta B_1 &=& \left(\begin{array}{ccc} \delta B_{1,11} & 0 & 0 \rightCoord{}\\\leftCoord{}
+\delta B_{1,21}  & \delta B_{1,11} & \delta B_{1,23} \\\leftCoord{} \delta\rightCoord{}
+B_{1,31} & \delta B_{1,32} & \delta B_{1,33}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta B_2 &=&\left(\begin{array}{ccc} \delta B_{2,11} & \delta B_{2,12} & \delta B_{2,13} \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & \delta B_{2,11} & \delta B_{2,23} \rightCoord{}\\\leftCoord{}
+ \leftCoord{}0 & \delta B_{2,32} & \delta B_{2,33}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta I &=& \left(\begin{array}{cc} 0 & \delta B_{2,23} \\\leftCoord{} 0 & 0
+\leftCoord{}\\\leftCoord{} 0 & 0\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+\delta J=\left(\begin{array}{ccc} 0 & 0 & 0 \\\leftCoord{} -\delta B_{1,32} &
+\leftCoord{}0 & 0\rightCoord{}
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{14}{23}{
+\delta B_1 &=& \left(\begin{array}{ccc} \delta B_{1,11} & 0 & 0 \\
+\delta B_{1,21}  & \delta B_{1,11} & \delta B_{1,23} \\ \delta
+B_{1,31} & \delta B_{1,32} & \delta B_{1,33}
+\end{array}\right); \\
+\delta B_2 &=&\left(\begin{array}{ccc} \delta B_{2,11} & \delta B_{2,12} & \delta B_{2,13} \\
+0 & \delta B_{2,11} & \delta B_{2,23} \\
+ 0 & \delta B_{2,32} & \delta B_{2,33}
+\end{array}\right); \\
+\delta I &=& \left(\begin{array}{cc} 0 & \delta B_{2,23} \\ 0 & 0
+\\ 0 & 0
+\end{array}\right); \, \, \, \, \, \, \, \, \, 
+\delta J=\left(\begin{array}{ccc} 0 & 0 & 0 \\ -\delta B_{1,32} &
+0 & 0
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+Determinant:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\det {\cal L}_{{\tilde x}'}=2 \epsilon_1^2 \epsilon_2^3
+\epsilon_{12} a_{21}
+\left(a_{21}+\epsilon_1-\epsilon_2 \right)\left(a_{12}+\epsilon_1 \right) \left(a_{21}+\epsilon_2 \right)\nonumber \rightCoord{}\\\leftCoord{}
+\times \left(a_{12}+\epsilon \right)\left(a_{12}+2 \epsilon_2 \right).\rightCoord{}
+\rightCoord{}}{0mm}{2}{4}{
+\det {\cal L}_{{\tilde x}'}=2 \epsilon_1^2 \epsilon_2^3
+\epsilon_{12} a_{21}
+\left(a_{21}+\epsilon_1-\epsilon_2 \right)\left(a_{12}+\epsilon_1 \right) \left(a_{21}+\epsilon_2 \right)\\
+\times \left(a_{12}+\epsilon \right)\left(a_{12}+2 \epsilon_2 \right).
+}{1}\coordE{}\end{eqnarray}
+Using these data we have calculated \myHighlight{$Z_3$}\coordHE{} and then
+\[\coord{}\boxMath{ {\cal F}_3\left(a, \epsilon_1,\epsilon_2\right)=-\epsilon_1 \epsilon_2 \left(Z_3 +
+\frac{1}{3} Z_1^3 - Z_1 Z_2 \right). }{corchetes}{0pt}\coordE{}\]
+Here is the final result:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+{\rightCoord{}\leftCoord{}\cal F}_3\left(a, \epsilon_1,\epsilon_2\right)= \hspace{6 cm} \\\leftCoord{} \frac{\leftCoord{}16 \left(144 a^4 + 29 \epsilon_1^4 + 154
+\epsilon_1^3 \epsilon_2 + 258 \epsilon_1^2 \epsilon_2^2 +154 \epsilon_1 \epsilon_2^3 + 29 \epsilon_2^4 + 8 a^2
+\left(29 \epsilon_1^2 + 71 \epsilon_1 \epsilon_2 + 29 \epsilon_2^2 \right) \right)}{3\left(4a^2 - \epsilon^2
+\right)^3 \left(4a^2 -\left( 2 \epsilon_1  + \epsilon_2\right)^2 \right) \left(4a^2 -\left( 3\epsilon_1
+\leftCoord{}+\epsilon_2\right)^2 \right)\left( 4a^2 -\left( \epsilon_1 + 2\epsilon_2\right)^2 \right) \left(4a^2 -\left(
+\epsilon_1 + 3\epsilon_2\right)^2 \right)}. \nonumber\rightCoord{}
+\rightCoord{}}{0mm}{5}{4}{
+{\cal F}_3\left(a, \epsilon_1,\epsilon_2\right)= \hspace{6 cm} \\ \frac{16 \left(144 a^4 + 29 \epsilon_1^4 + 154
+\epsilon_1^3 \epsilon_2 + 258 \epsilon_1^2 \epsilon_2^2 +154 \epsilon_1 \epsilon_2^3 + 29 \epsilon_2^4 + 8 a^2
+\left(29 \epsilon_1^2 + 71 \epsilon_1 \epsilon_2 + 29 \epsilon_2^2 \right) \right)}{3\left(4a^2 - \epsilon^2
+\right)^3 \left(4a^2 -\left( 2 \epsilon_1  + \epsilon_2\right)^2 \right) \left(4a^2 -\left( 3\epsilon_1
++\epsilon_2\right)^2 \right)\left( 4a^2 -\left( \epsilon_1 + 2\epsilon_2\right)^2 \right) \left(4a^2 -\left(
+\epsilon_1 + 3\epsilon_2\right)^2 \right)}. }{1}\coordE{}\end{eqnarray}
+Now let us take the limit \myHighlight{$\epsilon_{1,2}\rightarrow 0$}\coordHE{}:
+\[\coord{}\boxMath{
+{\cal F}_3=\frac{3}{4}.
+}{corchetes}{0pt}\coordE{}\]
+\begin{itemize}
+\item {\bf 4-instantons}
+\end{itemize}
+Now we need to investigate 7 different cases.\\
+{\bf a)} \myHighlight{$Y_1=\left\{\nu_{1,1}=4\right\}$}\coordHE{},
+\myHighlight{$Y_2=\left\{\emptyset\right\}$}\coordHE{}; \myHighlight{$\Phi_1=-a_1$}\coordHE{},
+\myHighlight{$\Phi_2=-a_1-\epsilon_1$}\coordHE{},
+\myHighlight{$\Phi_3=-a_1-2\epsilon_1$}\coordHE{}, \myHighlight{$\Phi_4=-a_1-3\epsilon_1$}\coordHE{}. \\
+Fixed point:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+B_1=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\\leftCoord{} \sqrt{3} & 0 & 0 & 0 \\\leftCoord{} 0 & \sqrt{2} & 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & 0 & 1 & 0\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+B_2=0; \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, I=\left(\begin{array}{cc} 2 & 0 \\\leftCoord{} 0 & 0 \\\leftCoord{}0 & 0 \\\leftCoord{} 0 & 0
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{8}{14}{
+B_1=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\ \sqrt{3} & 0 & 0 & 0 \\ 0 & \sqrt{2} & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{array}\right); \, \, \, \, 
+B_2=0; \, \, \, \, I=\left(\begin{array}{cc} 2 & 0 \\ 0 & 0 \\0 & 0 \\ 0 & 0
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+Tangent space:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta B_1 &=& \left(\begin{array}{cccc} \delta B_{1,11} & \delta B_{1,12} & \delta B_{1,13} & \delta B_{1,14}\rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & \delta B_{1,11} & \sqrt{\frac{\leftCoord{}2}{\rightCoord{}3}}\delta B_{1,12} &\rightCoord{}
+\frac{\leftCoord{}1}{\rightCoord{}\sqrt{3}} \delta B_{1,13} \\\leftCoord{} 0 & 0 & \delta B_{1,11} &\rightCoord{}
+\frac{\leftCoord{}1}{\rightCoord{}\sqrt{3}} \delta B_{1,12} \\\leftCoord{} 0 & 0 & 0 & \delta B_{1,11}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta B_2 &=& \left(\begin{array}{cccc} \delta B_{2,11} & 0 & 0 & 0 \\\leftCoord{} \delta B_{2,21} & \delta B_{211} & 0 & 0 \rightCoord{}\\\leftCoord{}
+\delta B_{2,31} & \sqrt{\frac{\leftCoord{}2}{\rightCoord{}3}} \delta B_{2,21} & \delta B_{2,11} & 0 \rightCoord{}\\\leftCoord{}
+\delta B_{2,41} & \frac{\leftCoord{}1}{\rightCoord{}\sqrt{3}} \delta B_{2,31} & \frac{\leftCoord{}1}{\rightCoord{}\sqrt{3}} \delta B_{2,21} & \delta B_{2,11}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta I &=& \left(\begin{array}{cc} 0 & \delta I_{12} \\\leftCoord{} 0 & \delta I_{22} \\\leftCoord{} 0 & \delta I_{32} \\\leftCoord{} 0 & \delta
+I_{42}\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+\delta J=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\\leftCoord{} \delta J_{21} & \delta J_{22} & \delta J_{23} & \delta
+J_{24}\rightCoord{}
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{20}{28}{
+\delta B_1 &=& \left(\begin{array}{cccc} \delta B_{1,11} & \delta B_{1,12} & \delta B_{1,13} & \delta B_{1,14}\\
+0 & \delta B_{1,11} & \sqrt{\frac{2}{3}}\delta B_{1,12} &
+\frac{1}{\sqrt{3}} \delta B_{1,13} \\ 0 & 0 & \delta B_{1,11} &
+\frac{1}{\sqrt{3}} \delta B_{1,12} \\ 0 & 0 & 0 & \delta B_{1,11}
+\end{array}\right); \\
+\delta B_2 &=& \left(\begin{array}{cccc} \delta B_{2,11} & 0 & 0 & 0 \\ \delta B_{2,21} & \delta B_{211} & 0 & 0 \\
+\delta B_{2,31} & \sqrt{\frac{2}{3}} \delta B_{2,21} & \delta B_{2,11} & 0 \\
+\delta B_{2,41} & \frac{1}{\sqrt{3}} \delta B_{2,31} & \frac{1}{\sqrt{3}} \delta B_{2,21} & \delta B_{2,11}
+\end{array}\right); \\
+\delta I &=& \left(\begin{array}{cc} 0 & \delta I_{12} \\ 0 & \delta I_{22} \\ 0 & \delta I_{32} \\ 0 & \delta
+I_{42}
+\end{array}\right); \, \, \, \, \, \, \, 
+\delta J=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\ \delta J_{21} & \delta J_{22} & \delta J_{23} & \delta
+J_{24}
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+The determinant:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\det {\cal L}_{{\tilde x}'}=24 \epsilon_1^4 \prod_{\rightCoord{}j=0}^3
+\left(\epsilon_2-j\epsilon_1 \right) \left(a_{21}-j\epsilon_1
+\right) \left(a_{12}+ \epsilon +j \epsilon_1 \right).\rightCoord{}
+\rightCoord{}}{0mm}{1}{4}{
+\det {\cal L}_{{\tilde x}'}=24 \epsilon_1^4 \prod_{j=0}^3
+\left(\epsilon_2-j\epsilon_1 \right) \left(a_{21}-j\epsilon_1
+\right) \left(a_{12}+ \epsilon +j \epsilon_1 \right).
+}{1}\coordE{}\end{eqnarray}
+{\bf b)} \myHighlight{$Y_1=\left\{\nu_{1,1}=3, \nu_{1,2}=1 \right\}$}\coordHE{},
+\myHighlight{$Y_2=\left\{\emptyset\right\}$}\coordHE{}; \myHighlight{$\Phi_1=-a_1$}\coordHE{},
+\myHighlight{$\Phi_2=-a_1-\epsilon_1$}\coordHE{},
+\myHighlight{$\Phi_3=-a_1-2\epsilon_1$}\coordHE{}, \myHighlight{$\Phi_4=-a_1-\epsilon_2$}\coordHE{}. \\
+Fixed point:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+B_1=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\\leftCoord{} \sqrt{2} & 0 & 0 & 0 \\\leftCoord{} 0 & 1 & 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & 0 & 0 & 0\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+B_2=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\\leftCoord{} 0 & 0 & 0 & 0 \\\leftCoord{} 0 & 0 & 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}1 & 0 & 0 & 0\rightCoord{}
+\end{array}\right); \rightCoord{}
+\rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, I=\left(\begin{array}{cc} 2 & 0 \\\leftCoord{} 0 & 0 \\\leftCoord{}0 & 0 \\\leftCoord{} 0 & 0 \rightCoord{}
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{12}{18}{
+B_1=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\ \sqrt{2} & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{array}\right); \, \, \, \, 
+B_2=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0
+\end{array}\right); 
+\, \, \, \, I=\left(\begin{array}{cc} 2 & 0 \\ 0 & 0 \\0 & 0 \\ 0 & 0 
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+Tangent space:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta B_1 &=& \left(\begin{array}{cccc} \delta B_{1,11} & \delta B_{1,12} & 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & \delta B_{1,22} & \sqrt{2}\delta B_{1,12} & \sqrt{2} \left(\delta B_{2,22} -\delta B_{2,11} \right) \\\leftCoord{} 0 & 0\rightCoord{}
+&\leftCoord{}\delta B_{1,22} & \delta B_{1,34} \\\leftCoord{} 0 & 0 & \delta_{1,43} & 3 \delta B_{1,11}-2 \delta B_{1,22}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta B_2 &=& \left(\begin{array}{cccc} \delta B_{2,11} & 0 & 0 & 0 \\\leftCoord{} \delta B_{1,34} & \delta B_{2,22} & 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & \sqrt{2} \delta B_{1,34} & \delta B_{2,22} & \delta B_{2,34} \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & \sqrt{2}\left( \delta B_{1,11}-\delta B_{1,22}\right) & -\delta B_{1,12} & 3 \delta B_{2,11}-2 \delta\rightCoord{}
+B_{2,22}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta I &=& \left(\begin{array}{cc} 0 & \delta I_{12} \\\leftCoord{} 0 & \delta I_{22} \\\leftCoord{} 0 & \delta I_{32} \\\leftCoord{} 0 & \delta
+I_{42}\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+\delta J=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\\leftCoord{} \delta J_{21} & \delta J_{22} & \delta J_{23} & \delta
+J_{24}\rightCoord{}
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{17}{22}{
+\delta B_1 &=& \left(\begin{array}{cccc} \delta B_{1,11} & \delta B_{1,12} & 0 & 0 \\
+0 & \delta B_{1,22} & \sqrt{2}\delta B_{1,12} & \sqrt{2} \left(\delta B_{2,22} -\delta B_{2,11} \right) \\ 0 & 0
+&\delta B_{1,22} & \delta B_{1,34} \\ 0 & 0 & \delta_{1,43} & 3 \delta B_{1,11}-2 \delta B_{1,22}
+\end{array}\right); \\
+\delta B_2 &=& \left(\begin{array}{cccc} \delta B_{2,11} & 0 & 0 & 0 \\ \delta B_{1,34} & \delta B_{2,22} & 0 & 0 \\
+0 & \sqrt{2} \delta B_{1,34} & \delta B_{2,22} & \delta B_{2,34} \\
+0 & \sqrt{2}\left( \delta B_{1,11}-\delta B_{1,22}\right) & -\delta B_{1,12} & 3 \delta B_{2,11}-2 \delta
+B_{2,22}
+\end{array}\right); \\
+\delta I &=& \left(\begin{array}{cc} 0 & \delta I_{12} \\ 0 & \delta I_{22} \\ 0 & \delta I_{32} \\ 0 & \delta
+I_{42}
+\end{array}\right); \, \, \, \, \, \, \, 
+\delta J=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\ \delta J_{21} & \delta J_{22} & \delta J_{23} & \delta
+J_{24}
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+The determinant:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\det {\cal L}_{{\tilde x}'}=4 \epsilon_1^3 \epsilon_2^2
+\epsilon_{21}^2 \left(3 \epsilon_1 -\epsilon_2 \right)a_{21}
+\left(a_{21}-\epsilon_1 \right) \left(a_{21}-2 \epsilon_1
+\right)\left(a_{21}-\epsilon_2
+\right)\left(a_{12}+\epsilon \right) \nonumber \rightCoord{}\\\leftCoord{}
+\times \left(a_{12}+2\epsilon_1 +\epsilon_2 \right)\left(a_{12}+3\epsilon_1 +\epsilon_2
+\right)\left(a_{12}+\epsilon_1 +2\epsilon_2 \right).\rightCoord{}
+\rightCoord{}}{0mm}{2}{4}{
+\det {\cal L}_{{\tilde x}'}=4 \epsilon_1^3 \epsilon_2^2
+\epsilon_{21}^2 \left(3 \epsilon_1 -\epsilon_2 \right)a_{21}
+\left(a_{21}-\epsilon_1 \right) \left(a_{21}-2 \epsilon_1
+\right)\left(a_{21}-\epsilon_2
+\right)\left(a_{12}+\epsilon \right) \\
+\times \left(a_{12}+2\epsilon_1 +\epsilon_2 \right)\left(a_{12}+3\epsilon_1 +\epsilon_2
+\right)\left(a_{12}+\epsilon_1 +2\epsilon_2 \right).
+}{1}\coordE{}\end{eqnarray}
+{\bf c)} \myHighlight{$Y_1=\left\{\nu_{1,1}=2, \nu_{1,2}=2 \right\}$}\coordHE{},
+\myHighlight{$Y_2=\left\{\emptyset\right\}$}\coordHE{}; \myHighlight{$\Phi_1=-a_1$}\coordHE{},
+\myHighlight{$\Phi_2=-a_1-\epsilon_1$}\coordHE{},
+\myHighlight{$\Phi_3=-a_1-\epsilon_2$}\coordHE{}, \myHighlight{$\Phi_4=-a_1-\epsilon$}\coordHE{}. \\
+Fixed point:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+B_1=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\\leftCoord{} \sqrt{\frac{\leftCoord{}3}{\rightCoord{}2}} & 0 & 0 & 0 \\\leftCoord{} 0 & 0 & 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & 0 & \frac{\leftCoord{}1}{\rightCoord{}\sqrt{2}} & 0\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+B_2=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\\leftCoord{} 0 & 0 & 0 & 0  \\\leftCoord{} \sqrt{\frac{\leftCoord{}3}{\rightCoord{}2}} & 0 & 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & \frac{\leftCoord{}1}{\rightCoord{}\sqrt{2}} & 0 & 0\rightCoord{}
+\end{array}\right); \rightCoord{}
+\rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, I=\left(\begin{array}{cc} 2 & 0 \\\leftCoord{} 0 & 0 \\\leftCoord{}0 & 0 \\\leftCoord{} 0 & 0 \rightCoord{}
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{16}{22}{
+B_1=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\ \sqrt{\frac{3}{2}} & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\
+0 & 0 & \frac{1}{\sqrt{2}} & 0
+\end{array}\right); \, \, \, \, 
+B_2=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0  \\ \sqrt{\frac{3}{2}} & 0 & 0 & 0 \\
+0 & \frac{1}{\sqrt{2}} & 0 & 0
+\end{array}\right); 
+\, \, \, \, I=\left(\begin{array}{cc} 2 & 0 \\ 0 & 0 \\0 & 0 \\ 0 & 0 
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+Tangent space:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta B_1 &=& \left(\begin{array}{cccc} \delta B_{1,11} & \delta B_{1,12} & 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & \delta B_{1,11} & 0 & 0 \\\leftCoord{} \delta B_{1,31} & \delta B_{1,32} & \delta B_{1,11} & \sqrt{3}\delta B_{1,12}\rightCoord{}
+\leftCoord{}\\\leftCoord{} 0 & \sqrt{3} \delta B_{1,31} & 0 & \delta B_{1,11}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta B_2 &=& \left(\begin{array}{cccc} \delta B_{2,11} & 0 & \delta B_{2,13} & 0 \\\leftCoord{} \delta B_{2,21} & \delta B_{2,11} & \delta B_{2,23} & \sqrt{3} \delta B_{2,13} \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & 0 & \delta B_{2,11} & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & 0 & \sqrt{3} \delta B_{2,21} & \delta B_{2,11}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta I &=& \left(\begin{array}{cc} 0 & \delta I_{12} \\\leftCoord{} 0 & \delta I_{22} \\\leftCoord{} 0 & \delta I_{32} \\\leftCoord{} 0 & \delta
+I_{42}\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+\delta J=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\\leftCoord{} \delta J_{21} & \delta J_{22} & \delta J_{23} & \delta
+J_{24}\rightCoord{}
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{17}{21}{
+\delta B_1 &=& \left(\begin{array}{cccc} \delta B_{1,11} & \delta B_{1,12} & 0 & 0 \\
+0 & \delta B_{1,11} & 0 & 0 \\ \delta B_{1,31} & \delta B_{1,32} & \delta B_{1,11} & \sqrt{3}\delta B_{1,12}
+\\ 0 & \sqrt{3} \delta B_{1,31} & 0 & \delta B_{1,11}
+\end{array}\right); \\
+\delta B_2 &=& \left(\begin{array}{cccc} \delta B_{2,11} & 0 & \delta B_{2,13} & 0 \\ \delta B_{2,21} & \delta B_{2,11} & \delta B_{2,23} & \sqrt{3} \delta B_{2,13} \\
+0 & 0 & \delta B_{2,11} & 0 \\
+0 & 0 & \sqrt{3} \delta B_{2,21} & \delta B_{2,11}
+\end{array}\right); \\
+\delta I &=& \left(\begin{array}{cc} 0 & \delta I_{12} \\ 0 & \delta I_{22} \\ 0 & \delta I_{32} \\ 0 & \delta
+I_{42}
+\end{array}\right); \, \, \, \, \, \, \, 
+\delta J=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\ \delta J_{21} & \delta J_{22} & \delta J_{23} & \delta
+J_{24}
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+The determinant:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\det {\cal L}_{{\tilde x}'}=4 \epsilon_1^2 \epsilon_2^2
+\epsilon_{12}^2 \left(2 \epsilon_1 -\epsilon_2 \right)\left(2
+\epsilon_2 -\epsilon_1 \right)a_{21} \left(a_{21}-\epsilon_1
+\right) \left(a_{21}-\epsilon_2
+\right)\left(a_{12}+\epsilon \right)^2 \nonumber \rightCoord{}\\\leftCoord{}
+\times \left(a_{12}+2\epsilon_1 +\epsilon_2 \right)\left(a_{12}+2\epsilon_2 +\epsilon_1
+\right)\left(a_{12}+2\epsilon \right).\rightCoord{}
+\rightCoord{}}{0mm}{2}{4}{
+\det {\cal L}_{{\tilde x}'}=4 \epsilon_1^2 \epsilon_2^2
+\epsilon_{12}^2 \left(2 \epsilon_1 -\epsilon_2 \right)\left(2
+\epsilon_2 -\epsilon_1 \right)a_{21} \left(a_{21}-\epsilon_1
+\right) \left(a_{21}-\epsilon_2
+\right)\left(a_{12}+\epsilon \right)^2 \\
+\times \left(a_{12}+2\epsilon_1 +\epsilon_2 \right)\left(a_{12}+2\epsilon_2 +\epsilon_1
+\right)\left(a_{12}+2\epsilon \right).
+}{1}\coordE{}\end{eqnarray}
+{\bf d)} \myHighlight{$Y_1=\left\{\nu_{1,1}=1 \right\}$}\coordHE{},
+\myHighlight{$Y_2=\left\{\nu_{2,1}=3 \right\}$}\coordHE{}; \myHighlight{$\Phi_1=-a_1$}\coordHE{}, \myHighlight{$\Phi_2=-a_2$}\coordHE{},
+\myHighlight{$\Phi_3=-a_2-\epsilon_1$}\coordHE{}, \myHighlight{$\Phi_4=-a_2-2\epsilon_1$}\coordHE{}. \\
+Fixed point:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+B_1=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\\leftCoord{} 0 & 0 & 0 & 0 \\\leftCoord{} 0 & \sqrt{2} & 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & 0 & 1 & 0\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, B_2=0;
+ \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, I=\left(\begin{array}{cc} 1 & 0 \\\leftCoord{} 0 & \sqrt{3} \\\leftCoord{}0 & 0 \\\leftCoord{} 0 & 0 \rightCoord{}
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{8}{14}{
+B_1=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & \sqrt{2} & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{array}\right); \, \, \, \, B_2=0;
+ \, \, \, \, I=\left(\begin{array}{cc} 1 & 0 \\ 0 & \sqrt{3} \\0 & 0 \\ 0 & 0 
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+Tangent space:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta B_1 &=& \left(\begin{array}{cccc} \delta B_{1,11} & 0 & 0 & \delta B_{1,14} \rightCoord{}\\\leftCoord{}
+\delta B_{1,21} & \delta B_{1,22} & \delta B_{1,23} & \delta B_{1,24} \\\leftCoord{} \delta B_{1,31} & 0 & \delta B_{1,22} &\rightCoord{}
+\frac{\leftCoord{}1}{\rightCoord{}\sqrt{2}} \delta B_{1,23}\rightCoord{}
+\leftCoord{}\\\leftCoord{} \delta B_{1,41} & 0 & 0 & \delta B_{1,22}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta B_2 &=& \left(\begin{array}{cccc} \delta B_{2,11} & \delta B_{2,12} & \delta B_{2,13} & \delta B_{2,14} \\\leftCoord{} 0 & \delta B_{2,22} & 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & \delta B_{2,32} & \delta B_{2,22} & 0 \rightCoord{}\\\leftCoord{}
+\delta B_{2,41} & \delta B_{2,42} & \frac{\leftCoord{}1}{\rightCoord{}\sqrt{2}} \delta B_{2,32} & \delta B_{2,22}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta I &=& \left(\begin{array}{cc} 0 & 0 \\\leftCoord{} \sqrt{2}\delta B_{1,31} & 0 \\\leftCoord{} \delta B_{1,41} & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & 0\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+\delta J=\left(\begin{array}{cccc} 0 & \sqrt{2} \delta B_{2,13} & \delta B_{2,14} & 0 \\\leftCoord{} 0 & 0 & 0 & 0
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{18}{24}{
+\delta B_1 &=& \left(\begin{array}{cccc} \delta B_{1,11} & 0 & 0 & \delta B_{1,14} \\
+\delta B_{1,21} & \delta B_{1,22} & \delta B_{1,23} & \delta B_{1,24} \\ \delta B_{1,31} & 0 & \delta B_{1,22} &
+\frac{1}{\sqrt{2}} \delta B_{1,23}
+\\ \delta B_{1,41} & 0 & 0 & \delta B_{1,22}
+\end{array}\right); \\
+\delta B_2 &=& \left(\begin{array}{cccc} \delta B_{2,11} & \delta B_{2,12} & \delta B_{2,13} & \delta B_{2,14} \\ 0 & \delta B_{2,22} & 0 & 0 \\
+0 & \delta B_{2,32} & \delta B_{2,22} & 0 \\
+\delta B_{2,41} & \delta B_{2,42} & \frac{1}{\sqrt{2}} \delta B_{2,32} & \delta B_{2,22}
+\end{array}\right); \\
+\delta I &=& \left(\begin{array}{cc} 0 & 0 \\ \sqrt{2}\delta B_{1,31} & 0 \\ \delta B_{1,41} & 0 \\
+0 & 0
+\end{array}\right); \, \, \, \, \, \, \, 
+\delta J=\left(\begin{array}{cccc} 0 & \sqrt{2} \delta B_{2,13} & \delta B_{2,14} & 0 \\ 0 & 0 & 0 & 0
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+The determinant:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\det {\cal L}_{{\tilde x}'}=6\epsilon_1^4 \epsilon_2^2
+\epsilon_{21} \left(\epsilon_2 -2\epsilon_1 \right) a_{12}
+\left(a_{21}+3\epsilon_1 \right) \left(a_{12}^2-\epsilon_1^2
+\right)\left(a_{21}+\epsilon_2 \right) \nonumber \rightCoord{}\\\leftCoord{}
+\times \left(a_{21}+\epsilon \right)\left(a_{21}+2\epsilon_1 +\epsilon_2 \right)\left(a_{12}-2\epsilon_1
+\leftCoord{}+\epsilon_2 \right).\rightCoord{}
+\rightCoord{}}{0mm}{3}{4}{
+\det {\cal L}_{{\tilde x}'}=6\epsilon_1^4 \epsilon_2^2
+\epsilon_{21} \left(\epsilon_2 -2\epsilon_1 \right) a_{12}
+\left(a_{21}+3\epsilon_1 \right) \left(a_{12}^2-\epsilon_1^2
+\right)\left(a_{21}+\epsilon_2 \right) \\
+\times \left(a_{21}+\epsilon \right)\left(a_{21}+2\epsilon_1 +\epsilon_2 \right)\left(a_{12}-2\epsilon_1
++\epsilon_2 \right).
+}{1}\coordE{}\end{eqnarray}
+{\bf e)} \myHighlight{$Y_1=\left\{\nu_{1,1}=1 \right\}$}\coordHE{},
+\myHighlight{$Y_2=\left\{\nu_{2,1}=2, \nu_{2,2}=1 \right\}$}\coordHE{}; \myHighlight{$\Phi_1=-a_1$}\coordHE{},
+\myHighlight{$\Phi_2=-a_2$}\coordHE{},
+\myHighlight{$\Phi_3=-a_2-\epsilon_1$}\coordHE{}, \myHighlight{$\Phi_4=-a_2-\epsilon_2$}\coordHE{}. \\
+Fixed point:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+B_1=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\\leftCoord{} 0 & 0 & 0 & 0 \\\leftCoord{} 0 & 1 & 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & 0 & 0 & 0\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+B_2=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\\leftCoord{} 0 & 0 & 0 & 0 \\\leftCoord{} 0 & 0 & 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & 1 & 0 & 0\rightCoord{}
+\end{array}\right); \rightCoord{}
+ \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, I=\left(\begin{array}{cc} 1 & 0 \\\leftCoord{} 0 & \sqrt{3} \\\leftCoord{}0 & 0 \\\leftCoord{} 0 & 0 \rightCoord{}
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{12}{18}{
+B_1=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{array}\right); \, \, \, \, 
+B_2=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0
+\end{array}\right); 
+ \, \, \, \, I=\left(\begin{array}{cc} 1 & 0 \\ 0 & \sqrt{3} \\0 & 0 \\ 0 & 0 
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+Tangent space:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta B_1 &=& \left(\begin{array}{cccc} \delta B_{1,11} & 0 & \delta B_{1,13} & \delta B_{1,14} \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & \delta B_{1,22} & 0 & 0 \\\leftCoord{} \delta B_{1,31} & 0 & \delta B_{1,33} & \delta B_{2,33}-\delta B_{2,22}\rightCoord{}
+\leftCoord{}\\\leftCoord{} \delta B_{1,41} & 0 & \delta B_{1,43} & 2\delta B_{1,22}-\delta B_{1,33}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta B_2 &=& \left(\begin{array}{cccc} \delta B_{2,11} & 0 & \delta B_{2,13} & \delta B_{2,14} \\\leftCoord{} 0 & \delta B_{2,22} & 0 & 0 \rightCoord{}\\\leftCoord{}
+\delta B_{2,31} & 0 & \delta B_{2,33} & \delta B_{2,34} \rightCoord{}\\\leftCoord{}
+\delta B_{2,41} & 0 & \delta B_{1,22}-\delta B_{1,33} & 2\delta B_{2,22}-\delta B_{2,33}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta I &=& \left(\begin{array}{cc} 0 & 0 \\\leftCoord{} \delta B_{1,31}+\delta B_{2,41} & 0 \\\leftCoord{} 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & 0\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+\delta J=\left(\begin{array}{cccc} 0 & \delta B_{2,13}-\delta B_{1,14} & 0 & 0 \\\leftCoord{} 0 & 0 & 0 & 0
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{16}{21}{
+\delta B_1 &=& \left(\begin{array}{cccc} \delta B_{1,11} & 0 & \delta B_{1,13} & \delta B_{1,14} \\
+0 & \delta B_{1,22} & 0 & 0 \\ \delta B_{1,31} & 0 & \delta B_{1,33} & \delta B_{2,33}-\delta B_{2,22}
+\\ \delta B_{1,41} & 0 & \delta B_{1,43} & 2\delta B_{1,22}-\delta B_{1,33}
+\end{array}\right); \\
+\delta B_2 &=& \left(\begin{array}{cccc} \delta B_{2,11} & 0 & \delta B_{2,13} & \delta B_{2,14} \\ 0 & \delta B_{2,22} & 0 & 0 \\
+\delta B_{2,31} & 0 & \delta B_{2,33} & \delta B_{2,34} \\
+\delta B_{2,41} & 0 & \delta B_{1,22}-\delta B_{1,33} & 2\delta B_{2,22}-\delta B_{2,33}
+\end{array}\right); \\
+\delta I &=& \left(\begin{array}{cc} 0 & 0 \\ \delta B_{1,31}+\delta B_{2,41} & 0 \\ 0 & 0 \\
+0 & 0
+\end{array}\right); \, \, \, \, \, \, \, 
+\delta J=\left(\begin{array}{cccc} 0 & \delta B_{2,13}-\delta B_{1,14} & 0 & 0 \\ 0 & 0 & 0 & 0
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+The determinant:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\det {\cal L}_{{\tilde x}'}=\epsilon_1^3 \epsilon_2^3
+\left(2\epsilon_1 -\epsilon_2 \right) \left(2\epsilon_2
+\leftCoord{}-\epsilon_1 \right)a_{12}^2 \left(a_{21}+2\epsilon_1 \right)
+\left(a_{21}+2\epsilon_2 \right)\left(a_{21}+\epsilon
+\right)^2\left(a_{12}^2-\epsilon_{12}^2 \right).\rightCoord{}
+\rightCoord{}}{0mm}{2}{3}{
+\det {\cal L}_{{\tilde x}'}=\epsilon_1^3 \epsilon_2^3
+\left(2\epsilon_1 -\epsilon_2 \right) \left(2\epsilon_2
+-\epsilon_1 \right)a_{12}^2 \left(a_{21}+2\epsilon_1 \right)
+\left(a_{21}+2\epsilon_2 \right)\left(a_{21}+\epsilon
+\right)^2\left(a_{12}^2-\epsilon_{12}^2 \right).
+}{1}\coordE{}\end{eqnarray}
+{\bf f)} \myHighlight{$Y_1=\left\{\nu_{1,1}=2 \right\}$}\coordHE{},
+\myHighlight{$Y_2=\left\{\nu_{2,1}=2 \right\}$}\coordHE{}; \myHighlight{$\Phi_1=-a_1$}\coordHE{},
+\myHighlight{$\Phi_2=-a_1-\epsilon_1$}\coordHE{},
+\myHighlight{$\Phi_3=-a_2$}\coordHE{}, \myHighlight{$\Phi_4=-a_2-\epsilon_1$}\coordHE{}. \\
+Fixed point:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+B_1=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\\leftCoord{} 1 & 0 & 0 & 0 \\\leftCoord{} 0 & 0 & 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & 0 & 1 & 0\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+B_2=0; \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, I=\left(\begin{array}{cc} \sqrt{2} & 0 \\\leftCoord{} 0 & 0 \\\leftCoord{} 0 & \sqrt{2} \\\leftCoord{}0 & 0
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{8}{14}{
+B_1=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{array}\right); \, \, \, \, 
+B_2=0; \, \, \, \, I=\left(\begin{array}{cc} \sqrt{2} & 0 \\ 0 & 0 \\ 0 & \sqrt{2} \\0 & 0
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+Tangent space:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta B_1 &=& \left(\begin{array}{cccc} \delta B_{1,11} & \delta B_{1,12} & \delta B_{1,13} & \delta B_{1,14} \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & \delta B_{1,11} & 0 & \delta B_{1,13} \rightCoord{}\\\leftCoord{}
+\delta B_{1,31} & \delta B_{1,32} & \delta B_{1,33} & \delta B_{1,34}\rightCoord{}
+\leftCoord{}\\\leftCoord{} 0 & \delta B_{1,31} & 0 & \delta B_{1,33}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta B_2 &=& \left(\begin{array}{cccc} \delta B_{2,11} & 0 & \delta B_{2,13} & 0 \\\leftCoord{} \delta B_{2,21} & \delta B_{2,11} & \delta B_{2,23} & \delta B_{2,13} \rightCoord{}\\\leftCoord{}
+\delta B_{2,31} & 0 & \delta B_{2,33} & 0 \rightCoord{}\\\leftCoord{}
+\delta B_{2,41} & \delta B_{2,31} & \delta B_{2,43} & \delta B_{2,33}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta I &=& 0; \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \delta J= 0. \rightCoord{}
+\rightCoord{}}{0mm}{11}{19}{
+\delta B_1 &=& \left(\begin{array}{cccc} \delta B_{1,11} & \delta B_{1,12} & \delta B_{1,13} & \delta B_{1,14} \\
+0 & \delta B_{1,11} & 0 & \delta B_{1,13} \\
+\delta B_{1,31} & \delta B_{1,32} & \delta B_{1,33} & \delta B_{1,34}
+\\ 0 & \delta B_{1,31} & 0 & \delta B_{1,33}
+\end{array}\right); \\
+\delta B_2 &=& \left(\begin{array}{cccc} \delta B_{2,11} & 0 & \delta B_{2,13} & 0 \\ \delta B_{2,21} & \delta B_{2,11} & \delta B_{2,23} & \delta B_{2,13} \\
+\delta B_{2,31} & 0 & \delta B_{2,33} & 0 \\
+\delta B_{2,41} & \delta B_{2,31} & \delta B_{2,43} & \delta B_{2,33}
+\end{array}\right); \\
+\delta I &=& 0; \, \, \, \, \, \, \, \delta J= 0. 
+}{1}\coordE{}\end{eqnarray}
+The determinant:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\det {\cal L}_{{\tilde x}'}=4\epsilon_1^4 \epsilon_2^2
+\epsilon_{12}^2 \left(a_{12}^2-\epsilon_1^2
+\right)\left(a_{12}^2-4\epsilon_1^2
+\right)\left(a_{12}^2-\epsilon_2^2
+\right)\left(a_{12}^2-\epsilon_{12}^2 \right).\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+\det {\cal L}_{{\tilde x}'}=4\epsilon_1^4 \epsilon_2^2
+\epsilon_{12}^2 \left(a_{12}^2-\epsilon_1^2
+\right)\left(a_{12}^2-4\epsilon_1^2
+\right)\left(a_{12}^2-\epsilon_2^2
+\right)\left(a_{12}^2-\epsilon_{12}^2 \right).
+}{1}\coordE{}\end{eqnarray}
+{\bf g)} \myHighlight{$Y_1=\left\{\nu_{1,1}=2 \right\}$}\coordHE{},
+\myHighlight{$Y_2=\left\{\nu_{2,1}=1, \nu_{2,2}=1 \right\}$}\coordHE{}; \myHighlight{$\Phi_1=-a_1$}\coordHE{},
+\myHighlight{$\Phi_2=-a_1-\epsilon_1$}\coordHE{},
+\myHighlight{$\Phi_3=-a_2$}\coordHE{}, \myHighlight{$\Phi_4=-a_2-\epsilon_2$}\coordHE{}. \\
+Fixed point:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+B_1=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\\leftCoord{} 1 & 0 & 0 & 0 \\\leftCoord{} 0 & 0 & 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & 0 & 0 & 0\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+B_2=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\\leftCoord{} 0 & 0 & 0 & 0 \\\leftCoord{} 0 & 0 & 0 & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & 0 & 1 & 0\rightCoord{}
+\end{array}\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, I=\left(\begin{array}{cc} \sqrt{2} & 0 \\\leftCoord{} 0 & 0 \\\leftCoord{} 0 & \sqrt{2} \\\leftCoord{}0 & 0 \rightCoord{}
+\end{array}\right). \rightCoord{}
+\rightCoord{}}{0mm}{12}{17}{
+B_1=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{array}\right); \, \, \, \, 
+B_2=\left(\begin{array}{cccc} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{array}\right); \, \, \, \, I=\left(\begin{array}{cc} \sqrt{2} & 0 \\ 0 & 0 \\ 0 & \sqrt{2} \\0 & 0 
+\end{array}\right). 
+}{1}\coordE{}\end{eqnarray}
+Tangent space:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\delta B_1 &=& \left(\begin{array}{cccc} \delta B_{1,11} & \delta B_{1,12} & \delta B_{1,13} & \delta B_{1,14} \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & \delta B_{1,11} & \delta B_{1,23} & 0 \rightCoord{}\\\leftCoord{}
+\leftCoord{}0 & 0 & \delta B_{1,33} & 0\rightCoord{}
+\leftCoord{}\\\leftCoord{} 0 & \delta B_{1,42} & \delta B_{1,43} & \delta B_{1,33}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta B_2 &=& \left(\begin{array}{cccc} \delta B_{2,11} & 0 & 0 & 0 \\\leftCoord{} \delta B_{2,21} & \delta B_{2,11} & 0 & \delta B_{2,24} \rightCoord{}\\\leftCoord{}
+\delta B_{2,31} & \delta B_{2,32} & \delta B_{2,33} & \delta B_{2,34} \rightCoord{}\\\leftCoord{}
+\delta B_{2,41} & 0 & 0 & \delta B_{2,33}\rightCoord{}
+\end{array}\right); \nonumber \rightCoord{}\\\leftCoord{}
+\delta I &=& \left( \rightCoord{}
+\begin{array}{cc} \rightCoord{}
+\leftCoord{}0 & \frac{\leftCoord{}1}{\rightCoord{}\sqrt{2}}\delta B_{1,23} \\\leftCoord{} 0 & 0 \\\leftCoord{} \frac{\leftCoord{}1}{\rightCoord{}\sqrt{2}}\delta B_{2,41} & 0 \\\leftCoord{} 0 & 0\rightCoord{}
+\end{array} \rightCoord{}
+\right); \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}\, \rightCoord{}
+\delta J= \left( \rightCoord{}
+\begin{array}{cccc} \rightCoord{}
+\leftCoord{}0 & 0 & -\frac{\leftCoord{}1}{\rightCoord{}\sqrt{2}}\delta B_{1,14} & 0 \\\leftCoord{} \frac{\leftCoord{}1}{\rightCoord{}\sqrt{2}}\delta B_{2,32} & 0 & 0 & 0\rightCoord{}
+\end{array} \rightCoord{}
+\right); \rightCoord{}
+\rightCoord{}}{0mm}{22}{32}{
+\delta B_1 &=& \left(\begin{array}{cccc} \delta B_{1,11} & \delta B_{1,12} & \delta B_{1,13} & \delta B_{1,14} \\
+0 & \delta B_{1,11} & \delta B_{1,23} & 0 \\
+0 & 0 & \delta B_{1,33} & 0
+\\ 0 & \delta B_{1,42} & \delta B_{1,43} & \delta B_{1,33}
+\end{array}\right); \\
+\delta B_2 &=& \left(\begin{array}{cccc} \delta B_{2,11} & 0 & 0 & 0 \\ \delta B_{2,21} & \delta B_{2,11} & 0 & \delta B_{2,24} \\
+\delta B_{2,31} & \delta B_{2,32} & \delta B_{2,33} & \delta B_{2,34} \\
+\delta B_{2,41} & 0 & 0 & \delta B_{2,33}
+\end{array}\right); \\
+\delta I &=& \left( 
+\begin{array}{cc} 
+0 & \frac{1}{\sqrt{2}}\delta B_{1,23} \\ 0 & 0 \\ \frac{1}{\sqrt{2}}\delta B_{2,41} & 0 \\ 0 & 0
+\end{array} 
+\right); \, \, \, \, \, \, \, 
+\delta J= \left( 
+\begin{array}{cccc} 
+0 & 0 & -\frac{1}{\sqrt{2}}\delta B_{1,14} & 0 \\ \frac{1}{\sqrt{2}}\delta B_{2,32} & 0 & 0 & 0
+\end{array} 
+\right); 
+}{1}\coordE{}\end{eqnarray}
+The determinant:
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\det {\cal L}_{{\tilde x}'}=4\epsilon_1^3 \epsilon_2^3
+\epsilon_{12}^2 a_{12}^2 \left(a_{12}^2-\epsilon^2
+\right)\left(a_{12}-\epsilon_1 \right)\left(a_{12}+\epsilon_2
+\right)\left(a_{12}+2\epsilon_1-\epsilon_2
+\right)\left(a_{21}+2\epsilon_2-\epsilon_1 \right).\rightCoord{}
+\rightCoord{}}{0mm}{1}{3}{
+\det {\cal L}_{{\tilde x}'}=4\epsilon_1^3 \epsilon_2^3
+\epsilon_{12}^2 a_{12}^2 \left(a_{12}^2-\epsilon^2
+\right)\left(a_{12}-\epsilon_1 \right)\left(a_{12}+\epsilon_2
+\right)\left(a_{12}+2\epsilon_1-\epsilon_2
+\right)\left(a_{21}+2\epsilon_2-\epsilon_1 \right).
+}{1}\coordE{}\end{eqnarray}
+The expression for
+\[\coord{}\boxMath{
+{\cal F}_4\left(a, \epsilon_1,\epsilon_2\right)= \epsilon_1 \epsilon_2 \left(Z_4 - Z_1 Z_3 - \frac{1}{2} Z_2^2 +
+Z_1^2 Z_2 - \frac{1}{4} Z_1^4\right)
+}{corchetes}{0pt}\coordE{}\]
+is very lengthy to present here. We only note here that it is
+indeed regular at \myHighlight{$\epsilon_{1,2}\rightarrow 0$}\coordHE{}. Here are the
+first nontrivial terms of its expansion:
+\begin{equation}\coord{}\boxEquation{
+{\cal
+F}_4\left(a,\epsilon_1,\epsilon_2\right)=\frac{1469}{2^{15}a^{14}}+
+\frac{18445}{2^{15}a^{16}}\left(\epsilon_1^2+\epsilon_2^2\right)
++\frac{15151}{2^{14}a^{16}}\epsilon_1 \epsilon_2 +\cdots ,
+}{
+{\cal
+F}_4\left(a,\epsilon_1,\epsilon_2\right)=\frac{1469}{2^{15}a^{14}}+
+\frac{18445}{2^{15}a^{16}}\left(\epsilon_1^2+\epsilon_2^2\right)
++\frac{15151}{2^{14}a^{16}}\epsilon_1 \epsilon_2 +\cdots ,
+}{ecuacion}\coordE{}\end{equation}
+Thus
+\[\coord{}\boxMath{
+{\cal F}_4=\frac{1469}{2^{9}},
+}{corchetes}{0pt}\coordE{}\]
+which is as it should be.
+
+Finally we quote a general formula for the determinant of the
+vector field action on the tangent space of a generic critical
+point at arbitrary instanton number and gauge group \myHighlight{$SU(N)$}\coordHE{}. To
+obtain this formula we closely follow the line of arguments
+presented in \cite{Nak}, Section 5.2, where the characters of the
+torus action around fixed points are calculated. For our purposes
+we need to calculate the character of the representation of the
+group
+\begin{equation}\coord{}\boxEquation{
+U(1)^{N-1}\times U(1)^2 \label{group}
+}{
+U(1)^{N-1}\times U(1)^2 }{ecuacion}\coordE{}\end{equation}
+(the first factor is the Cartan subgroup of the group \myHighlight{$SU(N)$}\coordHE{} and
+the second is the 2-torus acting in space-time and on ADHM data)
+in the tangent space at the fixed point specified by the Young
+diagrams \myHighlight{$Y_1, \dots, Y_N$}\coordHE{}. The result reads (cf. with the formula
+in proposition 5.8 page 67 of Nakajima's book \cite{Nak}):
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\chi \left(a_l, \epsilon_1 , \epsilon_2\right)=\sum_{\rightCoord{}\lambda ,\mu
+\leftCoord{}=1}^N T_{a_{\mu}} T_{a_{\lambda}}^{-1} \left(\sum_{\rightCoord{}s\in
+Y_{\lambda}} T_1^{-h_{\lambda} (s)} T_2^{1+v_{\mu} (s)}+
+\sum_{\rightCoord{}s'\in Y_{\mu}} T_1^{1+h_{\mu} (s')} T_2^{-v_{\lambda}
+\leftCoord{}(s')}\right), \rightCoord{}\label{character}
+\rightCoord{}}{0mm}{3}{6}{
+\chi \left(a_l, \epsilon_1 , \epsilon_2\right)=\sum_{\lambda ,\mu
+=1}^N T_{a_{\mu}} T_{a_{\lambda}}^{-1} \left(\sum_{s\in
+Y_{\lambda}} T_1^{-h_{\lambda} (s)} T_2^{1+v_{\mu} (s)}+
+\sum_{s'\in Y_{\mu}} T_1^{1+h_{\mu} (s')} T_2^{-v_{\lambda}
+(s')}\right), }{1}\coordE{}\end{eqnarray}
+where \myHighlight{$h_{\lambda} (s)=\nu_{\lambda ,i} -j$}\coordHE{}, \myHighlight{$v_{\lambda}
+(s)=\nu'_{\lambda ,j} -i$}\coordHE{} if the box \myHighlight{$s$}\coordHE{} is located on the \myHighlight{$i$}\coordHE{}-th
+row and the \myHighlight{$j$}\coordHE{}-th column of a Young diagram. It is assumed that
+\myHighlight{$\nu_{\lambda ,i}$}\coordHE{}, \myHighlight{$\nu'_{\lambda ,j}$}\coordHE{} are defined for arbitrary
+positive integers \myHighlight{$i$}\coordHE{}, \myHighlight{$j$}\coordHE{}. For \myHighlight{$i > \nu'_{\lambda ,1}$}\coordHE{} and \myHighlight{$j>
+\nu_{\lambda ,1}$}\coordHE{} by definition they are identically zero. In
+(\ref{character}) \myHighlight{$T_{a_{\lambda}} \equiv \exp ia_{\lambda} $}\coordHE{},
+\myHighlight{$T_{l} \equiv \exp i\epsilon_l$}\coordHE{} are elements of respective \myHighlight{$U(1)$}\coordHE{}
+factors of the group (\ref{group}) taken in the fundamental
+representations. A term of the form \myHighlight{$T_{a_{\mu}}
+T_{a_{\lambda}}^{-1} T_1^m T_2^n$}\coordHE{} in Eq. (\ref{character})
+indicates that the tangent space includes a (complex) one
+dimensional invariant subspace of our deformed vector field
+\myHighlight{${\tilde x}'$}\coordHE{} action with eigenvalue \myHighlight{$a_{\mu}-a_{\nu}+m \epsilon_1
++n \epsilon_2$}\coordHE{}. Multiplying all these eigenvalues for the
+determinant of \myHighlight{${\tilde x}'$}\coordHE{} action we find\footnote{A more
+complicated formula for the (inverse ) determinant is presented
+also in \cite{N} Eq. (3.20) which has a discrepancy as compared to
+our formula (\ref{generaldet}). We have checked that in all cases
+explicitly described in this section the formula
+(\ref{generaldet}) gives correct results.}
+\begin{eqnarray}\coord{}\boxAlignEqnarray{\leftCoord{}
+\left. \det {\cal L}_{{\tilde x}'} \right|_{\left(Y_1, \cdots,
+Y_N\right)}= \prod_{\rightCoord{}\lambda ,\mu =1}^N  \left( \prod_{\rightCoord{}s\in
+Y_{\lambda}}\left( a_{\mu \lambda }-\epsilon_1 h_{\lambda
+\rightCoord{}}(s)+\epsilon_2 \left(1+v_{\mu }(s)\right)\right)\right. \nonumber\rightCoord{}
+\leftCoord{}\\\leftCoord{} \left. \times \prod_{\rightCoord{}s'\in Y_{\mu}}\left( a_{\mu \lambda
+\rightCoord{}}+\epsilon_1 \left(1+h_{\mu }(s')\right)-\epsilon_2 v_{\lambda
+\rightCoord{}}(s')\right)\right). \rightCoord{}\label{generaldet}
+\rightCoord{}}{0mm}{3}{10}{
+\left. \det {\cal L}_{{\tilde x}'} \right|_{\left(Y_1, \cdots,
+Y_N\right)}= \prod_{\lambda ,\mu =1}^N  \left( \prod_{s\in
+Y_{\lambda}}\left( a_{\mu \lambda }-\epsilon_1 h_{\lambda
+}(s)+\epsilon_2 \left(1+v_{\mu }(s)\right)\right)\right. \\ \left. \times \prod_{s'\in Y_{\mu}}\left( a_{\mu \lambda
+}+\epsilon_1 \left(1+h_{\mu }(s')\right)-\epsilon_2 v_{\lambda
+}(s')\right)\right). }{1}\coordE{}\end{eqnarray}
+The repercussions of this formula will be discussed in a
+subsequent publication.
+
+\section{Acknowledgements}
+
+This work has been supported by the Volkswagen Foundation of
+Germany. R. P. gratefully acknowledges the partial financial
+support of INTAS 00-561 and  the Swiss grant SCOPE.
+
+
+
+
+
+
+
+
+\begin{thebibliography}{99}
+\bibitem{sw1}N. Seiberg, E. Witten, Nucl.Phys. B426 (1994) 19-52;
+Erratum-ibid. B430 (1994) 485-486, hep-th/9407087.
+\bibitem{dorey1}N. Dorey, V.V. Khoze, M.P. Mattis,
+Phys.Rev. D54 (1996) 2921-2943, hep-th/9603136;
+\bibitem{finnel}D. Finnell, P. Pouliot, Nucl.Phys. B453 (1995) 225-239,
+hep-th/9503115;
+\bibitem{ito}K. Ito, N. Sasakura, Phys.Lett. B382 (1996):95-103,
+hep-th/9602073;
+\bibitem{dorey3}N. Dorey, V.V. Khoze, M.P. Mattis,
+Nucl.Phys. B513 (1998) 681-708, hep-th/9708036;
+\bibitem{adhm}M. Atyah, V. Drinfeld, N. Hitchin, Yu. Manin,
+Phys. Lett. A65 (1978) 185;
+\bibitem{FPS1} R. Flume R. Poghossian H. Storch, The coefficients of
+the Seiberg-Witten prepotential as intersection numbers (?),
+published in the collection ``From Integrable Models to Gauge
+Theories'' (World Scientific, Singapore, 02) hep-th/0110240;
+\bibitem{FPS2} R. Flume, R. Poghossian, H. Storch,
+Mod.Phys.Lett. A17 (2002) 327-340, hep-th/0112211;
+\bibitem{H}T. Hollowood, hep-th/0201007,0202197;
+\bibitem{NSch}N. Nekrasov, A.Schwarz, Commun.Math.Phys.198(1998),689 ;
+\bibitem{B} J.-M. Bismut, Localization Formulas, Superconnections
+and the Index Theorem of Families, Commun.Math.Phys. 103 (1986), 127-166;
+\bibitem{BGV}N. Berline, E. Getzler and M. Vergne,
+Heat Kernels and Dirac Operators, Springer, Berlin, 1996;
+\bibitem{DK}S. K. Donaldson, P. B. Kronheimer, The Geometry of
+Four-Manifolds, Oxford University Press, 1990;
+\bibitem{Nak}H. Nakajima, Lectures on Hilbert schems of
+Points on Surfaces, American Mathematical Society, (University Lecture Series v18) 1999;
+\bibitem{N} N.Nekrasov, Seiberg-Witten Prepotential from Instanton Counting, hep-th/0206161;
+\bibitem{MNSch1}G.Moore, N.Nekrasov and S.Shatashvili, Commun.Math.Phys. 209 (2000) 97-121, hep-th/9712241;
+\bibitem{MNSch2}G. Moore, N. Nekrasov and S. Shatashvili, Commun.Math.Phys. 209 (2000) 77-95, hep-th/9803265;
+\bibitem{DKM'}N. Dorey, T. Hollowood, V. Khoze, M. Mattis, The Calculus of Many Instantons,
+hep-th/0206063;
+\bibitem{HKLR}Hitchin, N.J., Karlhede, A., Lindstroem, U., Rocek, M., Hyperkaehler Metrics
+and Supersymmetry, Commun. Math. Phys. 108 (1987),535-589;
+\bibitem{BF} U. Bruzzo, F. Fucito, A. Tanzini, G. Travaglini, Nucl. Phys. B 611 (2001)205-226, hep-th/0008225.
+\end{thebibliography}
+
+
+\end{document}
+
+\bye

@@ -1,0 +1,1337 @@
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{amsthm,amsfonts,amssymb,amsmath}
+
+
+\topmargin  0.0in
+\headheight 0in
+\headsep 0pt
+\footskip 0.6in
+\oddsidemargin 0pt
+\textheight 8.5in
+\textwidth 6.5in
+\parskip 5pt plus 1pt
+
+\makeatletter
+
+
+\@addtoreset{equation}{section}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+\makeatother
+
+\providecommand{\p}{\partial}
+\providecommand{\wt}{\widetilde}
+\providecommand{\comp}{\mathbb C}
+\providecommand{\inte}{\mathbb Z}
+\providecommand{\wh}{\widehat}
+\providecommand{\cL}{{\cal L}}
+\providecommand{\cA}{{\cal A}}
+\providecommand{\cB}{{\cal B}}
+\providecommand{\cE}{{\cal E}}
+\providecommand{\vL}{\Vec{\Lambda}}
+\providecommand{\vB}{\Vec{B}}
+\providecommand{\vS}{\Vec{S}}
+\providecommand{\vU}{\Vec{U}}
+\providecommand{\vV}{\Vec{V}}
+\providecommand{\vZ}{\Vec{Z}}
+\providecommand{\vN}{{\mathbf n}}
+\providecommand{\vM}{{\mathbf m}}
+
+%
+\DeclareMathOperator{\Tr}{Tr}
+\providecommand{\res}{\mathop{\rm res}\nolimits}
+
+\theoremstyle{plain}
+\newtheorem{teo}{Theorem}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem*{pr}{Problems}
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{ex}{Example}
+
+\usepackage{useful_macros}
+\begin{document}
+
+\begin{titlepage}
+
+\title{Elliptic Families of Solutions of the
+Kadomtsev\,--\,Petviashvili Equation and
+the Field Elliptic Calogero\,--\,Moser
+System\thanks{Research
+is supported in part by the National Science
+Foundation under the grant DMS-01-04621.}}
+
+\bigskip
+\author{A. Akhmetshin\myHighlight{${}^{**}$}\coordHE{}\and I. Krichever\myHighlight{${}^{\dagger}$}\coordHE{}\and
+Yu. Volvovski\myHighlight{${}^{\ddagger}$}\coordHE{}}
+\date{}
+\maketitle
+
+\thispagestyle{empty}
+
+\begin{center}
+\small
+\myHighlight{${}^{**\,\ddagger}$}\coordHE{}Department of Mathematics,\\
+Columbia University,\\
+2990 Broadway, Mail Code 4406, New York, NY 10027, USA
+\end{center}
+
+\begin{center}
+\small
+\myHighlight{${}^{\dagger}$}\coordHE{}Department of Mathematics,\\
+Columbia University,\\
+and\\
+Landau Institute for Theoretical Physics,\\
+Kosygina 2, 117334 Moscow, Russia,\\
+and\\
+Institute for Theoretical and Experimental Physics,\\
+B.~Cheremushkinskaja 25, 117259 Moscow, Russia
+\end{center}
+
+\begin{center}
+\small
+e-mail:\\
+\myHighlight{${}^{**}$}\coordHE{}\verb"alakhm@math.columbia.edu"\\
+\myHighlight{${}^{\dagger}$}\coordHE{}\verb"krichev@math.columbia.edu"\\
+\myHighlight{${}^{\ddagger}$}\coordHE{}\verb"yurik@math.columbia.edu"
+\end{center}
+
+\bigskip
+\begin{abstract}
+We present the Lax pair for the field elliptic Calogero\,--\,Moser
+system and establish a connection between this system and the
+Kadomtsev\,--\,Petviashvili equation.
+Namely, we consider elliptic families of solutions of the KP equation,
+such that their poles satisfy a constraint of being \emph{balanced}.
+We show that the dynamics of these poles is described by a reduction
+of the field elliptic CM system.
+
+We construct a wide class of solutions to the field elliptic
+CM system by showing that any \myHighlight{$N$}\coordHE{}-fold branched cover of an
+elliptic curve gives rise to an elliptic family of solutions
+of the KP equation with balanced poles.
+\end{abstract}
+
+\vfill
+
+\end{titlepage}
+
+\section{Introduction}
+
+The main goal of this paper is to establish a connection between
+the field analog of the elliptic Calogero\,--\,Moser system (CM)
+introduced in \cite{krvb} and the Kadomtsev\,--\,Petviashvili
+equation (KP).
+This connection is a next step along the line which goes back to the
+work \cite{amkm} where it was found that dynamic of poles of the
+elliptic (rational or trigonometric) solutions of the Korteweg\,--\,de
+Vries equation (KdV) can be described in terms of commuting flows of
+the elliptic (rational or trigonometric) CM system.
+
+In the earlier work of one of the authors \cite{krelkp} it was shown that
+constrained correspondence between a theory of the elliptic CM system
+and a theory of the elliptic solutions of the KdV equation becomes an
+isomorphism for the case of the KP equation. It turns out that a
+function \myHighlight{$u(x,y,t)$}\coordHE{} which is an elliptic function with respect to the
+variable~\myHighlight{$x$}\coordHE{} satisfies the KP equation if and only if it has the form
+\begin{equation}\coord{}\boxEquation{\label{pot}
+u(x,y,t)=-2\sum_{i=1}^N\wp(x-q_i(y,t))+c,
+}{u(x,y,t)=-2\sum_{i=1}^N\wp(x-q_i(y,t))+c,
+}{ecuacion}\coordE{}\end{equation}
+and its poles \myHighlight{$q_i$}\coordHE{} as functions of \myHighlight{$y$}\coordHE{} satisfy the equations of
+motion of the elliptic CM system. The latter is a system of \myHighlight{$N$}\coordHE{} particles
+on an elliptic curve with pairwise interactions. Its Hamiltonian has the
+form
+$$\coord{}\boxMath{
+H_2=\frac{1}{2}\sum_{i=1}^N p_i^2 - 2 \sum_{i\ne j}\wp(q_i-q_j),
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$\wp(q)$}\coordHE{} is the Weierstrass \myHighlight{$\wp$}\coordHE{}-function. The dynamics of
+the particles~\myHighlight{$q_i$}\coordHE{} with respect to~\myHighlight{$t$}\coordHE{} coincides with
+the commuting flow generated by the third Hamiltonian~\myHighlight{$H_3$}\coordHE{} of the system.
+Recall, that the elliptic~CM system is a completely integrable system.
+It admits the Lax representation \myHighlight{$\dot L=[L,M]$}\coordHE{}, where~\myHighlight{$L=L(z)$}\coordHE{} and~\myHighlight{$M=M(z)$}\coordHE{}
+are \myHighlight{$(N\times N)$}\coordHE{} matrices depending on a spectral parameter~\myHighlight{$z$}\coordHE{} \cite{c}.
+The involutive integrals~\myHighlight{$H_n$}\coordHE{} are defined as \myHighlight{$H_n=n^{-1}\Tr L^n$}\coordHE{}.
+
+An explicit theta-functional formula for algebro-geometric solutions
+of the KP equation provides an \emph{algebraic} solution
+of the Cauchy problem for the elliptic CM system \cite{krelkp}.
+Namely, the positions \myHighlight{$q_i(y)$}\coordHE{} of the particles at any time~\myHighlight{$y$}\coordHE{} are roots of
+the equation
+$$\coord{}\boxMath{
+\theta \bigl(\vU q_i+\vV y+\vZ\,|\,B)=0 ,
+}{dollar}{0pt}\coordE{}$$
+where the theta-function \myHighlight{$\theta(z\,|\,B)$}\coordHE{} is the Riemann theta-function
+constructed with the help of the matrix of \myHighlight{$b$}\coordHE{}-periods of the holomorphic
+differentials on a \emph{time-independent} spectral curve~\myHighlight{$\Gamma$}\coordHE{}.
+The spectral curve is given by \myHighlight{$R(k,z)=\det (kI-L(z))=0$}\coordHE{}
+and the vectors \myHighlight{$\vU$}\coordHE{}, \myHighlight{$\vV$}\coordHE{}, \myHighlight{$\vZ$}\coordHE{} are defined by the initial data.
+
+The correspondence between finite-dimensional integrable systems and
+poles systems of various soliton equation has been extensively studied
+in \cite{krbab,krnest,kreltoda,krwz,krzab}. A general scheme of
+constructing such systems using a specific inverse problem for
+linear equations with elliptic coefficents is presented in \cite{krnest}.
+
+A problem we address in this paper is as follows. The KP equation
+\begin{equation}\coord{}\boxEquation{\label{kp}
+\frac{3}{4} u_{yy}=\frac{\p}{\p x} \biggl( u_t-\frac{1}{4}u_{xxx}-
+\frac{3}{2} u u_x \biggr)
+}{\frac{3}{4} u_{yy}=\frac{\p}{\p x} \biggl( u_t-\frac{1}{4}u_{xxx}-
+\frac{3}{2} u u_x \biggr)
+}{ecuacion}\coordE{}\end{equation}
+is the first equation of a hierarchy of commuting flows.
+A general solution of the whole hierarchy is known to be of
+the form
+$$\coord{}\boxMath{
+u(x,y,t,t_4\ldots)=2 \frac{\p^2}{\p x^2}\ln\tau(x,y,t,t_4\ldots),
+\qquad x=t_1,\ y=t_2,\ t=t_3,
+}{dollar}{0pt}\coordE{}$$
+where~\myHighlight{$\tau$}\coordHE{} is the so-called KP \emph{tau}-function.
+We consider solutions \myHighlight{$u$}\coordHE{} that are elliptic function with
+respect to some variable \myHighlight{$t_k$}\coordHE{} or a linear combination of times
+\myHighlight{$\lambda=\sum_k\alpha_kt_k$}\coordHE{}.
+
+It is instructive to consider first the algebraic-geometrical solutions of
+the KP equation. According to \cite{kr} any smooth algebraic curve~\myHighlight{$\Gamma$}\coordHE{}
+with a puncture defines a solution of the KP hierarchy by the formula
+\begin{equation}\coord{}\boxEquation{
+u=2 \frac{\p^2}{\p x^2}\ln \theta \left(\bigl.
+\sum\nolimits_{k} \vU_k t_k+\vZ\, \bigr|\,B \right),\qquad x=t_1,
+}{
+u=2 \frac{\p^2}{\p x^2}\ln \theta \left(\bigl.
+\sum\nolimits_{k} \vU_k t_k+\vZ\, \bigr|\,B \right),\qquad x=t_1,
+}{ecuacion}\coordE{}\end{equation}
+where as before \myHighlight{$B$}\coordHE{} is the matrix of \myHighlight{$b$}\coordHE{}-periods of the normalized holomorphic
+differentials on~\myHighlight{$\Gamma$}\coordHE{} and~\myHighlight{$\vZ$}\coordHE{} is the vector of Riemann constants.
+The vectors~\myHighlight{$\vU_k$}\coordHE{} are the vectors of \myHighlight{$b$}\coordHE{}-periods of
+certain meromorphic differentials on~\myHighlight{$\Gamma$}\coordHE{}. The algebraic-geometrical
+solution is elliptic with respect to some direction if there is a
+vector~\myHighlight{$\vL$}\coordHE{} which spans an elliptic curve~\myHighlight{$\cE$}\coordHE{} embedded in the
+Jacobian~\myHighlight{$J(\Gamma)$}\coordHE{}. This is a nontrivial constraint and the space of
+corresponding algebraic curves has codimension \myHighlight{$g-1$}\coordHE{} in the moduli space
+of all the curves. If the vector~\myHighlight{$\vL$}\coordHE{} does exist then the theta-divisor
+intersects the shifted elliptic curve \myHighlight{$\cE+\sum_{k}\vU_kt_k$}\coordHE{} at
+a finite number of points \myHighlight{$\lambda_i(t_1,t_2, \ldots)$}\coordHE{}.
+
+It can be shown directly that if \myHighlight{$u(x,y,t,\lambda)$}\coordHE{} is an elliptic
+family of solutions of the KP equation, then it has the form
+\begin{equation}\coord{}\boxEquation{\label{ukp}
+u=-2 \sum_{i=1}^N \bigl[ \lambda_{i\,x}^2\wp(\lambda-\lambda_i) -
+\lambda_{i\,xx}\zeta(\lambda-\lambda_i) \bigr] +
+c(x,y,t),\qquad \lambda_i=\lambda_i(x,y,t).
+}{u=-2 \sum_{i=1}^N \bigl[ \lambda_{i\,x}^2\wp(\lambda-\lambda_i) -
+\lambda_{i\,xx}\zeta(\lambda-\lambda_i) \bigr] +
+c(x,y,t),\qquad \lambda_i=\lambda_i(x,y,t).
+}{ecuacion}\coordE{}\end{equation}
+The sum of the residues vanishes for an elliptic function~\myHighlight{$u$}\coordHE{}.
+Therefore, \myHighlight{$\sum_i\lambda_{ixx}=0$}\coordHE{}.
+We shall consider only solutions~\myHighlight{$u$}\coordHE{} with the poles~\myHighlight{$\lambda_i$}\coordHE{}
+satisfying an additional constraint.
+Namely, we say that the poles \myHighlight{$\lambda_i$}\coordHE{}, \myHighlight{$i=1,\ldots,N$}\coordHE{}
+are \emph{balanced} if they can be presented in the form
+\begin{equation}\coord{}\boxEquation{\label{bal}
+\lambda_i(x,y,t)=q_i(x,y,t)-h x,\qquad
+\sum_{i=1}^N q_i(x,y,t)=const ,
+}{\lambda_i(x,y,t)=q_i(x,y,t)-h x,\qquad
+\sum_{i=1}^N q_i(x,y,t)=const ,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$h$}\coordHE{} is an arbitrary non-zero constant.
+We prove that if the poles of \myHighlight{$u$}\coordHE{} are balanced, then the functions~\myHighlight{$q_i(x,y)$}\coordHE{}
+satisfy the following equations:
+\begin{equation}\coord{}\boxEquation{\label{qyy}
+\begin{aligned}
+q_{i\,yy} = &-\left\{ \frac{q_{i\,y}^2}{h-q_{i\,x}} \right\}_{\! x}
+ +\frac{1}{Nh}(h-q_{i\,x}) \sum_{k=1}^N \left\{ \frac{q_{k\,y}^2}{h-q_{k\,x}}
+ \right\}_{\! x}+{}\\
+&{}+2(h-q_{i\,x})\frac{\delta U(q)}{\delta q_i}-\frac{2}{Nh}(h-q_{i\,x})
+\sum_{k=1}^N (h-q_{k\,x})\frac{\delta U(q)}{\delta q_k} ,
+\qquad 1\le i\le N,
+\end{aligned}
+}{\begin{aligned}
+q_{i\,yy} = &-\left\{ \frac{q_{i\,y}^2}{h-q_{i\,x}} \right\}_{\! x}
+ +\frac{1}{Nh}(h-q_{i\,x}) \sum_{k=1}^N \left\{ \frac{q_{k\,y}^2}{h-q_{k\,x}}
+ \right\}_{\! x}+{}\\
+&{}+2(h-q_{i\,x})\frac{\delta U(q)}{\delta q_i}-\frac{2}{Nh}(h-q_{i\,x})
+\sum_{k=1}^N (h-q_{k\,x})\frac{\delta U(q)}{\delta q_k} ,
+\qquad 1\le i\le N,
+\end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+where
+\begin{equation}\coord{}\boxEquation{\label{U}
+\begin{aligned}
+U(q)=\sum_{i=1}^N \frac{q^2_{i\,xx}}{4(h-q_{i\,x})}
+&-\frac{1}{2} \sum_{j\neq i} \bigl[ (h-q_{j\,x})q_{i\,xx}-(h-q_{i\,x})q_{j\,xx} \bigr]
+\zeta(q_i-q_j)+{}\\
+{}&+\frac{1}{2}\sum_{j\neq i}
+\bigl[(h-q_{j\,x})^2(h-q_{i\,x})+(h-q_{j\,x})(h-q_{i\,x})^2 \bigr]\wp(q_i-q_j) .
+\end{aligned}
+}{\begin{aligned}
+U(q)=\sum_{i=1}^N \frac{q^2_{i\,xx}}{4(h-q_{i\,x})}
+&-\frac{1}{2} \sum_{j\neq i} \bigl[ (h-q_{j\,x})q_{i\,xx}-(h-q_{i\,x})q_{j\,xx} \bigr]
+\zeta(q_i-q_j)+{}\\
+{}&+\frac{1}{2}\sum_{j\neq i}
+\bigl[(h-q_{j\,x})^2(h-q_{i\,x})+(h-q_{j\,x})(h-q_{i\,x})^2 \bigr]\wp(q_i-q_j) .
+\end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+Here \myHighlight{$\delta/\delta q_i$}\coordHE{} is the variational derivative. Since \myHighlight{$U(q)$}\coordHE{} depends
+only on \myHighlight{$q_i$}\coordHE{} and its two derivatives, we have
+$$\coord{}\boxMath{
+\frac{\delta U(q)}{\delta q_i}=\frac{\p U(q)}{\p q_i}-
+\frac{d}{dx}\frac{\p U(q)}{\p q_{i\,x}}+
+\frac{d^2}{d x^2}\frac{\p U(q)}{\p q_{i\,xx}}, \qquad 1\le i\le N,
+}{dollar}{0pt}\coordE{}$$
+Equations (\ref{qyy}) can be identified with a reduction of a particular
+case of the Hamiltonian system introduced in \cite{krvb}. We call the
+latter system a field analog of the elliptic Calogero\,--\,Moser sytem.
+The phase space for this system is the space of functions
+\myHighlight{$q_1(x),\dots,q_N(x)$}\coordHE{}, \myHighlight{$p_1(x),\dots,p_N(x)$}\coordHE{}, the Poisson brackets are given by
+$$\coord{}\boxMath{
+\{q_i(x),p_j(\tilde x)\}=\delta_{ij}\delta(x-\tilde x) .
+}{dollar}{0pt}\coordE{}$$
+and the Hamiltonian equals
+\begin{equation}\coord{}\boxEquation{\label{ham}
+\widehat H=\int H(x)\,dx, \qquad
+H= \sum_{i=1}^N p_i^2(h-q_{i\,x})-
+\frac{1}{N h} \biggl( \sum_{i=1}^N p_i(h-q_{i\,x}) \biggr)^{\!2}-{\wt U}(q),
+}{\widehat H=\int H(x)\,dx, \qquad
+H= \sum_{i=1}^N p_i^2(h-q_{i\,x})-
+\frac{1}{N h} \biggl( \sum_{i=1}^N p_i(h-q_{i\,x}) \biggr)^{\!2}-{\wt U}(q),
+}{ecuacion}\coordE{}\end{equation}
+where
+$$\coord{}\boxMath{
+{\wt U}(q)=U(q)+\frac{\p}{\p x} \biggl(\frac{h}{2} \sum_{i\ne j}
+(q_{i\,x}-q_{j\,x}) \zeta(q_i-q_j) \biggr) .
+}{dollar}{0pt}\coordE{}$$
+The corresponding equations of motion are presented in section~3,
+see (\ref{sys}).
+Note, that if \myHighlight{$q_i$}\coordHE{} do not depend on \myHighlight{$x$}\coordHE{}, then (\ref{ham})
+reduces to the Hamiltonian of the elliptic CM system.
+
+In particular, for \myHighlight{$N=2$}\coordHE{} the hamiltonian reduction of this system
+corresponding to the constraint \myHighlight{$\sum_{i} q_i=0$}\coordHE{} is a hamiltonian system
+on the space of two functions \myHighlight{$q(x)$}\coordHE{}, \myHighlight{$p(x)$}\coordHE{}, where we set
+$$\coord{}\boxMath{
+q=q_1=-q_2,\qquad \frac{1}{h}p(h^2-q_x^2)=p_1(h-q_x)=-p_2(h-q_x),
+}{dollar}{0pt}\coordE{}$$
+The Poisson brackets are canonical, i.e.
+\myHighlight{$\{q(x),p(\tilde x)\}=\delta(x-\tilde x)$}\coordHE{},
+while the Hamiltonian density~\myHighlight{$H$}\coordHE{} in the coordinates \myHighlight{$\{p,q\}$}\coordHE{} may be
+rewritten as
+$$\coord{}\boxMath{
+H=\frac{2}{h}p^2(h^2-q_x^2)-h\frac{q^2_{xx}}{2(h^2-q_x^2)}-
+2h(h^2-3q_x^2)\wp(2q).
+}{dollar}{0pt}\coordE{}$$
+It was noticed by A.\,Shabat that the equations of motion given by
+this Hamiltonian are equivalent to Landau\,--\,Lifshitz equation.
+This case \myHighlight{$N=2$}\coordHE{} was independently studied in \cite{loz}.
+
+The paper is organized as follows.
+In sections 2 and 3 we show that the field analog of the elliptic CM system
+describes a solution of the inverse Picard type problem for the linear equation
+\begin{equation}\coord{}\boxEquation{\label{pic}
+\left(\frac{\p}{\p y}-\cL\right)\psi(x,y,\lambda)=0, \qquad
+\cL=\frac{\p^2}{\p x^2}+u(x,y,\lambda),
+}{\left(\frac{\p}{\p y}-\cL\right)\psi(x,y,\lambda)=0, \qquad
+\cL=\frac{\p^2}{\p x^2}+u(x,y,\lambda),
+}{ecuacion}\coordE{}\end{equation}
+which is one of the equations in the auxiliary linear problem for
+the KP equation.  Namely, it turns out that if equation (\ref{pic}) with
+a family of elliptic in~\myHighlight{$\lambda$}\coordHE{} potentials of the form (\ref{ukp})
+has~\myHighlight{$N$}\coordHE{} linearly independent meromorphic in~\myHighlight{$\lambda$}\coordHE{} {\it double-Bloch}
+solutions, then the variables \myHighlight{$q_i=\lambda_i+h x$}\coordHE{} satisfy the equations
+of motion generated by the Hamiltonian (\ref{ham}).
+As in \cite{krelkp} this inverse problem provides the Lax representation
+for the hamiltonian system (\ref{sys}).
+
+In section 4 we show that if \myHighlight{$u(x,y,t,\lambda)$}\coordHE{} is an elliptic family of
+solutions of the KP equation with balanced poles, then the corresponding
+family of operators \myHighlight{$\p/\p y-\cL$}\coordHE{} has infinitely many double-Bloch solution.
+Consequently, the dynamics of \myHighlight{$q_i(x,y,t)$}\coordHE{} with respect to \myHighlight{$y$}\coordHE{}
+coincides with the equations of motion of the field elliptic CM system.
+We are quite sure that the dynamics of~\myHighlight{$q_i$}\coordHE{} with respect to all the times
+of the KP hierarchy coincides with the hierarchy of commuting flows
+for the system (\ref{sys}), but up to now this question remains open.
+We plan to investigate it elsewhere.
+
+In the last section we consider the finite-gap solutions of the KP
+hierarchy corresponding to an algebraic curve which is an \myHighlight{$N$}\coordHE{}-fold
+branched cover of the elliptic curve. We show that they are elliptic with
+respect to a certain linear combination~\myHighlight{$\lambda$}\coordHE{} of the times~\myHighlight{$t_k$}\coordHE{}.
+Moreover, as a function of~\myHighlight{$\lambda$}\coordHE{} these solutions have precisely~\myHighlight{$N$}\coordHE{}
+poles.  Therefore, they provide a wide class of exact algebraic
+solutions of the field elliptic CM system.
+
+The definitions and properties of classical elliptic functions
+and the Riemann \myHighlight{$\theta$}\coordHE{}-function are gathered in the appendix.
+
+\section{Generating problem}
+
+Let us choose a pair of periods \myHighlight{$2\omega_1, 2\omega_2\in\comp$}\coordHE{},
+where \myHighlight{$\Im(\omega_2/\omega_1)>0$}\coordHE{}.
+A meromorphic function \myHighlight{$f(\lambda)$}\coordHE{} is called \emph{double-Bloch}
+if it satisfies the following monodromy properties:
+$$\coord{}\boxMath{
+f(\lambda+2\omega_a)=B_a f(\lambda),\qquad a=1,2.
+}{dollar}{0pt}\coordE{}$$
+The complex constants \myHighlight{$B_a$}\coordHE{} are called \emph{Bloch multipliers}.
+Equivalently, \myHighlight{$f(\lambda)$}\coordHE{} is a section of a linear bundle over
+the elliptic curve \myHighlight{$\cE=\comp/\inte[2\omega_1,2\omega_2]$}\coordHE{}.
+
+We consider the non-stationary Schr\"odinger operator
+$$\coord{}\boxMath{
+\p_y-\cL=\p_y-\p^2_{xx}-u(x,y,\lambda),
+\qquad \p_x=\p/\p x, \quad \p_y=\p/\p y ,
+}{dollar}{0pt}\coordE{}$$
+where the potential \myHighlight{$u(x,y,\lambda)$}\coordHE{} is a double-periodic function of
+the variable \myHighlight{$\lambda$}\coordHE{}. We do not assume any special dependence
+with respect to the other variables. Our goal is to find the
+potentials \myHighlight{$u(x,y,\lambda)$}\coordHE{} such that the equation
+\begin{equation}\coord{}\boxEquation{\label{sch}
+\left(\p_y-\cL \right) \psi(x,y,\lambda) = 0
+}{\left(\p_y-\cL \right) \psi(x,y,\lambda) = 0
+}{ecuacion}\coordE{}\end{equation}
+has \emph{sufficiently many} double-Bloch solutions.
+The existence of such solutions turns out to be a very
+restrictive condition (see the discussion in \cite{krnest}).
+
+The basis in the space of the double-Bloch functions can be written
+in terms of the fundamental function \myHighlight{$\Phi(\lambda,z)$}\coordHE{} defined by
+the formula
+\begin{equation}\coord{}\boxEquation{\label{phi}
+\Phi(\lambda,z)=\frac{\sigma(z-\lambda)}{\sigma(z)\sigma(\lambda)}
+e^{\zeta(z)\lambda} .
+}{\Phi(\lambda,z)=\frac{\sigma(z-\lambda)}{\sigma(z)\sigma(\lambda)}
+e^{\zeta(z)\lambda} .
+}{ecuacion}\coordE{}\end{equation}
+This function is a solution of the Lam\`e equation
+\begin{equation}\coord{}\boxEquation{
+\Phi''(\lambda,z)=\Phi(\lambda,z) \bigl[ \wp(z)+2\wp(\lambda) \bigr] .
+}{
+\Phi''(\lambda,z)=\Phi(\lambda,z) \bigl[ \wp(z)+2\wp(\lambda) \bigr] .
+}{ecuacion}\coordE{}\end{equation}
+From the monodromy properties of the Weierstrass functions it follows
+that \myHighlight{$\Phi(\lambda,z)$}\coordHE{} is double-periodic as a function of \myHighlight{$z$}\coordHE{}
+though it is not elliptic in the classical sense due to the essential
+singularity at \myHighlight{$z=0$}\coordHE{} for \myHighlight{$\lambda\ne 0$}\coordHE{}. It also follows that
+\myHighlight{$\Phi(\lambda,z)$}\coordHE{} is double-Bloch as a function of \myHighlight{$\lambda$}\coordHE{}, namely
+$$\coord{}\boxMath{
+\Phi(\lambda+2\omega_a,z)=T_a(z) \Phi(\lambda,z),\qquad
+T_a(z)=\exp\left[ 2\omega_a\zeta(z)-2\eta_a z \right],\quad a=1,2.
+}{dollar}{0pt}\coordE{}$$
+In the fundamental domain of the lattice defined by the periods \myHighlight{$2\omega_1$}\coordHE{},
+\myHighlight{$2\omega_2$}\coordHE{} the function \myHighlight{$\Phi(\lambda,z)$}\coordHE{} has a unique pole at the point
+\myHighlight{$\lambda=0$}\coordHE{} with the following expansion in the neighborhood of this point:
+\begin{equation}\coord{}\boxEquation{\label{phil}
+\Phi(\lambda,z)=\lambda^{-1}+O(\lambda) .
+}{\Phi(\lambda,z)=\lambda^{-1}+O(\lambda) .
+}{ecuacion}\coordE{}\end{equation}
+Let \myHighlight{$f(\lambda)$}\coordHE{} be a double-Bloch function with Bloch multipliers~\myHighlight{$B_a$}\coordHE{}.
+The gauge transformation
+$$\coord{}\boxMath{
+f(\lambda)\longmapsto \wt f(\lambda)=f(\lambda) e^{k\lambda}
+}{dollar}{0pt}\coordE{}$$
+does not change the poles of \myHighlight{$f$}\coordHE{}, and produces the double-Bloch
+function~\myHighlight{$\wt f(\lambda)$}\coordHE{} with the Bloch multipliers
+\myHighlight{$\wt{B_a}=B_a e^{2k \omega_a}$}\coordHE{}.
+The two pairs of Bloch multipliers~\myHighlight{$B_a$}\coordHE{} and~\myHighlight{$\wt{B_a}$}\coordHE{} connected by
+such a relation are called equivalent. Note that for all the equivalent
+pairs of Bloch multipliers the product \myHighlight{$B_1^{\omega_2} B_2^{-\omega_1}$}\coordHE{}
+is a constant depending only on the equivalence class.
+Further note that any pair of Bloch multipliers may be represented in
+the form
+$$\coord{}\boxMath{
+B_a=T_a(z) e^{2\omega_a k},\qquad a=1,2,
+}{dollar}{0pt}\coordE{}$$
+with an appropriate choice of the parameters \myHighlight{$z$}\coordHE{} and \myHighlight{$k$}\coordHE{}.
+
+There is no differentiation with respect to the variable~\myHighlight{$\lambda$}\coordHE{}
+in the equation (\ref{sch}). Thus, it will be sufficient to
+study the double-Bloch solutions \myHighlight{$\psi(x,t,\lambda)$}\coordHE{} with
+Bloch multipliers~\myHighlight{$B_a$}\coordHE{} such that \myHighlight{$B_a=T_a(z)$}\coordHE{} for some~\myHighlight{$z$}\coordHE{}.
+
+It follows from (\ref{phil}) that a double-Bloch function \myHighlight{$f(\lambda)$}\coordHE{}
+with simple poles \myHighlight{$\lambda_i$}\coordHE{} in the fundamental domain and with Bloch
+multipliers \myHighlight{$B_a=T_a(z)$}\coordHE{}  can be represented in the form
+\begin{equation}\coord{}\boxEquation{\label{db}
+f(\lambda)=\sum_{i=1}^N s_i \Phi(\lambda-\lambda_i,z),
+}{f(\lambda)=\sum_{i=1}^N s_i \Phi(\lambda-\lambda_i,z),
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$s_i$}\coordHE{} is the residue of the function \myHighlight{$f(\lambda)$}\coordHE{} at the
+pole~\myHighlight{$\lambda_i$}\coordHE{}. Indeed, the difference of the left and right hand sides
+in (\ref{db}) is a double-Bloch function with the same Bloch multipliers
+as~\myHighlight{$f(\lambda)$}\coordHE{}. It is also holomorphic in the fundamental domain.
+Therefore, it equals zero since any non-zero double-Bloch
+function with at least one of the Bloch multipliers distinct from~\myHighlight{$1$}\coordHE{}
+has at least one pole in the fundamental domain.
+
+Now we are in position to present the generating problem for the
+equations~(\ref{qyy}).
+\begin{teo}
+The equation \emph{(\ref{sch})} with the potential given by
+\begin{equation}\coord{}\boxEquation{\label{ut1}
+u(x,y,\lambda)=-2\sum_{i=1}^N \bigl[ (\lambda_{i\,x})^2\wp(\lambda-\lambda_i)
++\lambda_{i\,xx}\,\zeta(\lambda-\lambda_i) \bigr] +c(x,y),
+}{u(x,y,\lambda)=-2\sum_{i=1}^N \bigl[ (\lambda_{i\,x})^2\wp(\lambda-\lambda_i)
++\lambda_{i\,xx}\,\zeta(\lambda-\lambda_i) \bigr] +c(x,y),
+}{ecuacion}\coordE{}\end{equation}
+and the balanced set of poles \emph{(\ref{bal})}, has \myHighlight{$N$}\coordHE{} linearly independent
+double-Bloch solutions with Bloch multipliers~\myHighlight{$T_a(z)$}\coordHE{},
+that is, solutions of the form \emph{(\ref{db})}, if and only if
+\begin{equation}\coord{}\boxEquation{\label{c}
+c(x,y)=\frac{2}{Nh} U(q)-
+\frac{1}{2Nh} \sum_{i=1}^N \frac{q_{i\,y}^2}{h-q_{i\,x}} ,
+}{c(x,y)=\frac{2}{Nh} U(q)-
+\frac{1}{2Nh} \sum_{i=1}^N \frac{q_{i\,y}^2}{h-q_{i\,x}} ,
+}{ecuacion}\coordE{}\end{equation}
+and the functions \myHighlight{$q_i(x,y)$}\coordHE{} satisfy \emph{(\ref{qyy})}.
+
+If \emph{(\ref{sch})} has \myHighlight{$N$}\coordHE{} linearly independent solutions of the form
+\emph{(\ref{db})} for some \myHighlight{$z$}\coordHE{}, then they exist for all values of \myHighlight{$z$}\coordHE{}.
+\end{teo}
+
+\noindent{\it Proof.} We begin with a remark. In fact, if
+\myHighlight{$u(x,y,\lambda)$}\coordHE{} is an elliptic function with a balanced set of
+poles then it has to be of the form (\ref{ut1}) provided there
+exist \myHighlight{$N$}\coordHE{} linearly independent double-Bloch solutions of
+(\ref{sch}) for all values of the parameter \myHighlight{$z$}\coordHE{} in a neighborhood
+of \myHighlight{$z=0$}\coordHE{}.
+
+Indeed, let us substitute (\ref{db}) into (\ref{sch}).
+First of all, we conclude that the potential \myHighlight{$u$}\coordHE{} has at most double poles
+at the points~\myHighlight{$\lambda_i$}\coordHE{}. Thus, the potential is of the form
+$$\coord{}\boxMath{
+u(\lambda,x,y)=\sum_{i=1}^N \bigl[
+a_i \wp(\lambda-\lambda_i)+b_i \zeta(\lambda-\lambda_i) \bigr]+c(x,y)
+}{dollar}{0pt}\coordE{}$$
+with some unknown coefficients \myHighlight{$a_i=a_i(x,y)$}\coordHE{} and \myHighlight{$b_i=b_i(x,y)$}\coordHE{}.
+Now, the coefficients of the singular part of the right hand side in~(\ref{sch})
+must equal zero. The vanishing of the triple poles \myHighlight{$(\lambda-\lambda_i)^{-3}$}\coordHE{}
+implies \myHighlight{$a_i=-2(\lambda_{i\,x})^2$}\coordHE{}.
+The vanishing of the double poles \myHighlight{$(\lambda-\lambda_i)^{-2}$}\coordHE{} gives
+the equalities
+\begin{equation}\coord{}\boxEquation{\label{sx}
+2s_{i\,x} \lambda_{i\,x}=s_i (\lambda_{i\,y}-\lambda_{i\,xx}-b_i)
+-\sum_{j\ne i} s_j a_i \Phi(\lambda_i-\lambda_j,z) .
+}{2s_{i\,x} \lambda_{i\,x}=s_i (\lambda_{i\,y}-\lambda_{i\,xx}-b_i)
+-\sum_{j\ne i} s_j a_i \Phi(\lambda_i-\lambda_j,z) .
+}{ecuacion}\coordE{}\end{equation}
+Finally, the vanishing of the simple poles \myHighlight{$(\lambda-\lambda_i)^{-1}$}\coordHE{}
+leads to the equalities
+\begin{equation}\coord{}\boxEquation{\label{sy}
+\begin{aligned}
+s_{i\,y}-s_{i\,xx}=s_i & \biggl( \lambda^2_{i\,x}\wp(z) +
+\sum_{j\ne i} \bigl[ a_i \wp(\lambda_i-\lambda_j)+
+b_j\zeta(\lambda_i-\lambda_j) \bigr] + c \biggr) +{}\\
+{}&+\sum_{j\ne i} s_j \bigl( a_i \Phi'(\lambda_i-\lambda_j,z)+
+b_j\Phi(\lambda_i-\lambda_j,z) \bigr) .
+\end{aligned}
+}{\begin{aligned}
+s_{i\,y}-s_{i\,xx}=s_i & \biggl( \lambda^2_{i\,x}\wp(z) +
+\sum_{j\ne i} \bigl[ a_i \wp(\lambda_i-\lambda_j)+
+b_j\zeta(\lambda_i-\lambda_j) \bigr] + c \biggr) +{}\\
+{}&+\sum_{j\ne i} s_j \bigl( a_i \Phi'(\lambda_i-\lambda_j,z)+
+b_j\Phi(\lambda_i-\lambda_j,z) \bigr) .
+\end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+The equations (\ref{sx}) and (\ref{sy}) are linear equations
+for~\myHighlight{$s_i=s_i(x,y,z)$}\coordHE{}. If we introduce the vector \myHighlight{$\vS=(s_1,\dots,s_N)$}\coordHE{}
+and the matrices \myHighlight{$L=(L_{ij})$}\coordHE{}, \myHighlight{$A=(A_{ij})$}\coordHE{} with matrix elements
+\begin{equation}\coord{}\boxEquation{\label{lij}
+L_{ij}=\delta_{ij}\xi_i+(1-\delta_{ij}) \lambda_{i\,x}
+\Phi(\lambda_i-\lambda_j,z),
+\qquad\mbox{where}\qquad
+\xi_i=\frac{\lambda_{i\,y}-\lambda_{i\,xx}-b_i}{2\lambda_{i\,x}},
+}{L_{ij}=\delta_{ij}\xi_i+(1-\delta_{ij}) \lambda_{i\,x}
+\Phi(\lambda_i-\lambda_j,z),
+\qquad\mbox{where}\qquad
+\xi_i=\frac{\lambda_{i\,y}-\lambda_{i\,xx}-b_i}{2\lambda_{i\,x}},
+}{ecuacion}\coordE{}\end{equation}
+and
+$$\coord{}\boxMath{
+\begin{aligned}
+A_{ij} &=\delta_{ij}\biggl( \lambda^2_{i\,x}\wp(z) +\sum_{j\ne i}
+\bigl[ -2\lambda_{i\,x}^2 \wp(\lambda_i-\lambda_j)+
+b_j\zeta(\lambda_i-\lambda_j) \bigr] + c \biggr) +{}\\
+{}&\qquad{}+(1-\delta_{ij}) \bigl( -2\lambda_{i\,x}^2
+\Phi'(\lambda_i-\lambda_j,z)+ b_j\Phi(\lambda_i-\lambda_j,z) \bigr) .
+\end{aligned}
+}{dollar}{0pt}\coordE{}$$
+then the equations (\ref{sx}) and (\ref{sy}) can be written in the
+form
+\begin{equation}\coord{}\boxEquation{\label{la}
+\vS_x=L \vS,\qquad \vS_y=\vS_{xx}+A \vS=(L^2+L_x+A)\vS.
+}{\vS_x=L \vS,\qquad \vS_y=\vS_{xx}+A \vS=(L^2+L_x+A)\vS.
+}{ecuacion}\coordE{}\end{equation}
+Let \myHighlight{$M=L^2+L_x+A$}\coordHE{}, then the compatibility of the equations (\ref{la})
+is equivalent to the zero-curvature equation for \myHighlight{$L$}\coordHE{} and \myHighlight{$M$}\coordHE{}, i.e.
+\begin{equation}\coord{}\boxEquation{\label{zc}
+L_y-M_x+[L,M]=0 .
+}{L_y-M_x+[L,M]=0 .
+}{ecuacion}\coordE{}\end{equation}
+The matrix elements of \myHighlight{$M$}\coordHE{} can be computed with the help of the
+identities (\ref{pp}):
+\begin{equation}\coord{}\boxEquation{\label{mij}
+\begin{aligned}
+M_{ii} &=\lambda_{i\,x} \biggl(\sum_{k=1}^N \lambda_{k\,x}\biggr)
+\wp(z)+m_{i}^0, \\
+M_{ij} &=-\lambda_{i\,x} \biggl(\sum_{k=1}^N \lambda_{k\,x}\biggr)
+\Phi'(\lambda_i-\lambda_j,z)+m_{ij}\Phi(\lambda_i-\lambda_j,z),\qquad i\ne j
+\end{aligned}
+}{\begin{aligned}
+M_{ii} &=\lambda_{i\,x} \biggl(\sum_{k=1}^N \lambda_{k\,x}\biggr)
+\wp(z)+m_{i}^0, \\
+M_{ij} &=-\lambda_{i\,x} \biggl(\sum_{k=1}^N \lambda_{k\,x}\biggr)
+\Phi'(\lambda_i-\lambda_j,z)+m_{ij}\Phi(\lambda_i-\lambda_j,z),\qquad i\ne j
+\end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+where
+$$\coord{}\boxMath{
+\begin{aligned}
+m_{i}^0 &=\xi_i^2+\xi_{i\,x}-\sum_{k\ne i} \lambda_{k\,x}
+\bigl( 2\lambda_{k\,x}^2+\lambda_{i\,x} \bigr)\wp(\lambda_i-\lambda_k)
++\sum_{k\ne i} b_k\zeta(\lambda_i-\lambda_k)+c ,\\
+m_{ij} &=\lambda_{i\,x}(\xi_i+\xi_j)+\lambda_{i\,xx}+b_i+
+\sum_{k\ne i,j} \lambda_{i\,x}\lambda_{k\,x}\,
+\eta(\lambda_i,\lambda_k,\lambda_j) .
+\end{aligned}
+}{dollar}{0pt}\coordE{}$$
+The coefficients \myHighlight{$b_i$}\coordHE{} can be determined from the off-diagonal part
+of the zero curvature equation. The left-hand side of the equation
+corresponding to a pair of indexes \myHighlight{$i\ne j$}\coordHE{} is a double-periodic function
+of~\myHighlight{$z$}\coordHE{}. It is holomorphic except at \myHighlight{$z=0$}\coordHE{}, where it has the form
+\myHighlight{$O(z^{-3})\exp\bigl[(\lambda_i-\lambda_j)\zeta(z)\bigr]$}\coordHE{}. Such a function equals
+zero if and only if the corresponding coefficients at \myHighlight{$z^{-3}$}\coordHE{}, \myHighlight{$z^{-2}$}\coordHE{}
+and \myHighlight{$z^{-1}$}\coordHE{} vanish. A direct computation shows that the coefficient
+at \myHighlight{$z^{-3}$}\coordHE{} vanishes identically, while the coefficient at \myHighlight{$z^{-2}$}\coordHE{}
+equals
+$$\coord{}\boxMath{
+\biggl( \sum_{k=1}^N \lambda_{k\,x} \biggr)(b_i+2\lambda_{i\,xx}) .
+}{dollar}{0pt}\coordE{}$$
+Since our assumption prevents the first factor from vanishing we conclude
+that \myHighlight{$b_i=-2\lambda_{i\,xx}$}\coordHE{}. Given this, another direct computation shows
+that the coefficient at~\myHighlight{$z^{-1}$}\coordHE{} also vanishes identically.
+
+The zero-curvature equation (\ref{zc}) is not only a necessary but
+also a sufficient condition for (\ref{sch}) to have solutions of
+the form~(\ref{db}). The following lemma now completes the proof
+of the theorem.
+\begin{lem}
+Let \myHighlight{$L=(L_{ij}(x,y,z))$}\coordHE{} and \myHighlight{$M=(M_{ij}(x,y,z))$}\coordHE{} be defined by the formulas
+\emph{(\ref{lij})} and \emph{(\ref{mij})}, where
+\myHighlight{$b_i=-2\lambda_{i\,xx}$}\coordHE{} and the set of \myHighlight{$\lambda_i(x,y)$}\coordHE{}, \myHighlight{$i=1,\dots, N$}\coordHE{}
+is balanced. Then \myHighlight{$L$}\coordHE{} and \myHighlight{$M$}\coordHE{} satisfy the equation \emph{(\ref{zc})}
+if and only if \myHighlight{$c(x,y)$}\coordHE{} is given by \emph{(\ref{c})} and the
+functions \myHighlight{$q_i(x,y)$}\coordHE{} solve \emph{(\ref{qyy})}.
+\end{lem}
+\begin{proof}
+It was mentioned above that all the off-diagonal equations in (\ref{zc}) become
+identities if \myHighlight{$b_i=-2\lambda_{i\,xx}$}\coordHE{}.
+The diagonal part of the zero-curvature equation (\ref{zc}) simplifies with
+the help of the identities (\ref{pp}) and (\ref{ppp}). Under a change
+of variables \myHighlight{$\lambda_i=q_i-h x$}\coordHE{} it takes the form
+\begin{equation}\coord{}\boxEquation{\label{qyyc}
+\begin{aligned}
+q_{i\,yy} &= -2(h-q_{i\,x})c_x+\biggl\{
+\frac{q_{i\,xx}^2-q_{i\,y}^2}{h-q_{i\,x}} +q_{i\,xxx}
+\biggr\}_{\!x}+{}\\
+{}&\ {}+4(h-q_{i\,x}) \sum_{j\ne i} \bigl[ (h-q_{j\,x})^3 \wp'(q_i-q_j)
+-3(h-q_{j\,x})q_{j\,xx}\,\wp(q_i-q_j)+q_{j\,xxx}\,\zeta(q_i-q_j) \bigr]
+\end{aligned}
+}{\begin{aligned}
+q_{i\,yy} &= -2(h-q_{i\,x})c_x+\biggl\{
+\frac{q_{i\,xx}^2-q_{i\,y}^2}{h-q_{i\,x}} +q_{i\,xxx}
+\biggr\}_{\!x}+{}\\
+{}&\ {}+4(h-q_{i\,x}) \sum_{j\ne i} \bigl[ (h-q_{j\,x})^3 \wp'(q_i-q_j)
+-3(h-q_{j\,x})q_{j\,xx}\,\wp(q_i-q_j)+q_{j\,xxx}\,\zeta(q_i-q_j) \bigr]
+\end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+Now consider the sum of the equations (\ref{qyyc}) for all \myHighlight{$i$}\coordHE{} from \myHighlight{$1$}\coordHE{} to~\myHighlight{$N$}\coordHE{}.
+Since the poles are balanced, the left hand side vanishes
+and the coefficient at \myHighlight{$c_x$}\coordHE{} becomes \myHighlight{$-2Nh$}\coordHE{}.
+The other terms in the right hand side can be written as
+$$\coord{}\boxMath{
+\frac{\p}{\p x} \biggl(
+-\sum_{i=1}^N \frac{q_{i\,y}^2}{h-q_{i\,x}}+4U(q) \biggr) .
+}{dollar}{0pt}\coordE{}$$
+Therefore, \myHighlight{$c$}\coordHE{} is given by (\ref{c}) up to an arbitrary function of \myHighlight{$y$}\coordHE{}, which
+does not affect the equations (\ref{qyyc}). Finally, substituting (\ref{c})
+into (\ref{qyyc}) we arrive at~(\ref{qyy}).
+\end{proof}
+
+
+\section{Field analog of the elliptic Calogero\,--\,Moser system}
+
+In this section we show that equations (\ref{qyy}) can be obtained
+as a reduction of the field elliptic CM system.
+
+In \cite{n} the elliptic CM system was identified with a particular case
+of the Hitchin system on an elliptic curve with a puncture. In \cite{krvb}
+a Hamiltonian theory of zero-curvature equations on algebraic curves was
+developed and identified with infinite-dimentional field analogs of the
+Hitchin system.
+In particular, it was shown that the zero-curvature equation on an
+elliptic curve with a puncture can be seen as a field generalization
+of the elliptic~CM system.
+
+The field elliptic CM system is a Hamiltonian system on the space of
+functions \myHighlight{$\{q_i(x),p_i(x)\}_{i=1}^N$}\coordHE{} with the canonical Poisson brackets
+$$\coord{}\boxMath{
+\bigl\{ q_i(x),q_j(\tilde x)\bigr\}=\bigl\{ p_i(x),p_j(\tilde
+x)\bigr\}=0, \quad \bigl\{ q_i(x),p_j(\tilde x)
+\bigr\}=\delta_{ij}\,\delta (x-\tilde x) , \qquad 1\le i,j\le N ,
+}{dollar}{0pt}\coordE{}$$
+Its Hamiltonian is given by (\ref{ham}). Note, that \myHighlight{$\wt U(q)$}\coordHE{} is elliptic
+function of each of the variables \myHighlight{$q_i$}\coordHE{}, \myHighlight{$i=1,\dots,N$}\coordHE{}.
+Substituting the definition of \myHighlight{$\wt U(q)$}\coordHE{} into (\ref{ham}) we obtain
+the following expression for the hamiltonian density:
+$$\coord{}\boxMath{
+\begin{aligned}
+H &= \sum_{i=1}^N p_i^2(h-q_{i\,x})-
+ \frac{1}{N h} \biggl( \sum_{i=1}^N p_i(h-q_{i\,x}) \biggr)^{\!2} -{}\\
+{}&\quad{}-\sum_{i=1}^N \frac{q^2_{i\,xx}}{4(h-q_{i\,x})}
+ -\frac{1}{2} \sum_{i\neq j}
+ \bigl[ q_{i\,x}q_{j\,xx}-q_{j\,x}q_{i\,xx} \bigr] \zeta(q_i-q_j)+{}\\
+{}&\quad{}+\frac{1}{2}\sum_{i\neq j}
+ \bigl[(h-q_{i\,x})^2(h-q_{j\,x})+(h-q_{i\,x})(h-q_{j\,x})^2
+ -h(q_{i\,x}-q_{j\,x})^2 \bigr]\wp(q_i-q_j) .
+\end{aligned}
+}{dollar}{0pt}\coordE{}$$
+The equations of motion are
+\begin{equation}\coord{}\boxEquation{\label{sys}
+\begin{aligned}
+\dot q_i &=2p_i(h-q_{i\,x})-\frac{2}{Nh}
+ \sum_{k=1}^N p_k (h-q_{k\,x})(h-q_{i\,x}) , \\
+\dot p_i &=-2p_ip_{i\,x}+
+ \frac{2}{Nh}\biggl\{\sum_{k=1}^N p_i p_k(h-q_{k\,x})\biggr\}_{\!x}+
+ \biggl\{
+ \frac{q_{i\,xxx}}{2(h-q_{i\,x})}+\frac{q_{i\,xx}^2}{4(h-q_{i\,x})^2}
+ \biggr\}_{\!x}+{}\\
+{}&\quad{}+2\sum_{j\ne i}\bigl[
+ q_{j\,xxx}\zeta(q_i-q_j)-3(h-q_{j\,x})q_{j\,xx}\wp(q_i-q_j)+
+ (h-q_{j\,x})^3\wp'(q_i-q_j) \bigr]
+\end{aligned}
+}{\begin{aligned}
+\dot q_i &=2p_i(h-q_{i\,x})-\frac{2}{Nh}
+ \sum_{k=1}^N p_k (h-q_{k\,x})(h-q_{i\,x}) , \\
+\dot p_i &=-2p_ip_{i\,x}+
+ \frac{2}{Nh}\biggl\{\sum_{k=1}^N p_i p_k(h-q_{k\,x})\biggr\}_{\!x}+
+ \biggl\{
+ \frac{q_{i\,xxx}}{2(h-q_{i\,x})}+\frac{q_{i\,xx}^2}{4(h-q_{i\,x})^2}
+ \biggr\}_{\!x}+{}\\
+{}&\quad{}+2\sum_{j\ne i}\bigl[
+ q_{j\,xxx}\zeta(q_i-q_j)-3(h-q_{j\,x})q_{j\,xx}\wp(q_i-q_j)+
+ (h-q_{j\,x})^3\wp'(q_i-q_j) \bigr]
+\end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+
+Let us make a remark on the notations. Throughout this section by dots
+we mean derivatives with respect to the variable~\myHighlight{$y$}\coordHE{}, which we treat as
+a time variable.
+In view of the connection with the KP equation this time variable
+corresponds to the second time of the KP hierarchy, for which~\myHighlight{$y$}\coordHE{} is
+a standard notation.
+
+It is easy to check that the subspace \myHighlight{$\cal N$}\coordHE{} defined by the constraint
+\begin{equation}\coord{}\boxEquation{\label{con}
+\sum_{i=1}^N q_i(x)=const ,
+}{\sum_{i=1}^N q_i(x)=const ,
+}{ecuacion}\coordE{}\end{equation}
+is invariant for the system (\ref{sys}).
+On that subspace the first two terms of the Hamiltonian density~\myHighlight{$H$}\coordHE{} can be
+represented in the form
+\begin{equation}\coord{}\boxEquation{
+H=\frac{1}{2Nh}\biggl(\sum_{i\ne j} (p_i-p_j)^2 (h-q_{i\,x})(h-q_{j\,x})
+\biggr) -\wt U(q) .
+}{
+H=\frac{1}{2Nh}\biggl(\sum_{i\ne j} (p_i-p_j)^2 (h-q_{i\,x})(h-q_{j\,x})
+\biggr) -\wt U(q) .
+}{ecuacion}\coordE{}\end{equation}
+Therefore, the Hamiltonian (\ref{ham}) restricted to \myHighlight{${\cal N}$}\coordHE{} is invariant
+under the transformation
+\begin{equation}\coord{}\boxEquation{\label{psym}
+p_i(x)\to p_i(x)+f(x),
+}{p_i(x)\to p_i(x)+f(x),
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$f(x)$}\coordHE{} is an arbitrary function.
+The constraint (\ref{con}) is the Hamiltonian of that symmetry. The canonical
+symplectic form is also invariant with respect to (\ref{con}). Therefore, the
+Hamiltonian system (\ref{sys}) restricted to \myHighlight{$\cal N$}\coordHE{} can be reduced to a
+factor space. The reduction can be described as follows.
+
+Let us define the variables \myHighlight{$\ell_i=p_i+\kappa$}\coordHE{}, \myHighlight{$i=1,\dots,N$}\coordHE{}, where
+\begin{equation}\coord{}\boxEquation{\label{kap}
+\kappa=-\frac{1}{Nh}\sum_{k=1}^N p_k(h-q_{k\,x}).
+}{\kappa=-\frac{1}{Nh}\sum_{k=1}^N p_k(h-q_{k\,x}).
+}{ecuacion}\coordE{}\end{equation}
+They are invariant with respect to the symmetry (\ref{psym}), and satisfy
+the equation
+\begin{equation}\coord{}\boxEquation{\label{conl}
+\sum_{k=1}^N \ell_k(h-q_{k\,x})=0.
+}{\sum_{k=1}^N \ell_k(h-q_{k\,x})=0.
+}{ecuacion}\coordE{}\end{equation}
+A direct substitution shows that equations (\ref{sys}) imply the system
+of equation
+\begin{equation}\coord{}\boxEquation{\label{sys1}
+\begin{aligned}
+\dot q_i&=2\ell_i (h-q_{ix}) ,\\
+\dot \ell_i&=-2\ell_i\ell_{i\,x}+\frac{2}{Nh} \biggl\{ \sum_{k=1}^N
+ \ell_k^2(h-q_{kx}) - U(q) \biggr\}_{\!x} + \biggl\{
+ \frac{q_{i\,xxx}}{2(h-q_{i\,x})}+\frac{q_{i\,xx}^2}{4(h-q_{i\,x})^2}
+\biggr\}_{\!x} + {}\\
+{}&\qquad{}+2 \sum_{j\ne i} \bigl[ (h-q_{j\,x})^3 \wp'(q_i-q_j)
+ -3(h-q_{j\,x})q_{j\,xx}\,\wp(q_i-q_j)+q_{j\,xxx}\,\zeta(q_i-q_j) \bigr] ,
+\end{aligned}
+}{\begin{aligned}
+\dot q_i&=2\ell_i (h-q_{ix}) ,\\
+\dot \ell_i&=-2\ell_i\ell_{i\,x}+\frac{2}{Nh} \biggl\{ \sum_{k=1}^N
+ \ell_k^2(h-q_{kx}) - U(q) \biggr\}_{\!x} + \biggl\{
+ \frac{q_{i\,xxx}}{2(h-q_{i\,x})}+\frac{q_{i\,xx}^2}{4(h-q_{i\,x})^2}
+\biggr\}_{\!x} + {}\\
+{}&\qquad{}+2 \sum_{j\ne i} \bigl[ (h-q_{j\,x})^3 \wp'(q_i-q_j)
+ -3(h-q_{j\,x})q_{j\,xx}\,\wp(q_i-q_j)+q_{j\,xxx}\,\zeta(q_i-q_j) \bigr] ,
+\end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+\begin{teo}
+Equations \emph{(\ref{qyy})} are equivalent to the restriction of
+the system \emph{(\ref{sys1})} to the subspace \myHighlight{$\cal M$}\coordHE{} defined
+by the constraints \emph{(\ref{con})} and \emph{(\ref{conl})}.
+\end{teo}
+\begin{proof}
+Let us show that equations (\ref{qyy}) imply (\ref{sys1}).
+The first equations can be regarded as the definition of \myHighlight{$\ell_i$}\coordHE{},
+\myHighlight{$i=1,\dots,N$}\coordHE{}. Taking their derivative we obtain
+\begin{equation}\coord{}\boxEquation{\label{ddq}
+\ddot q_i=2\dot\ell_i(h-q_{i\,x})-2\ell_i
+\bigl( 2\ell_{i\,x}(h-q_{i\,x})-2\ell_i q_{i\,xx}\bigr) .
+}{\ddot q_i=2\dot\ell_i(h-q_{i\,x})-2\ell_i
+\bigl( 2\ell_{i\,x}(h-q_{i\,x})-2\ell_i q_{i\,xx}\bigr) .
+}{ecuacion}\coordE{}\end{equation}
+Therefore,
+$$\coord{}\boxMath{
+\dot\ell_i=2\ell_i\ell_{i\,x}-2\ell_i^2 \frac{q_{i\,xx}}{h-q_{i\,x}}
++\frac{\ddot q_i}{2(h-q_{i\,x})} .
+}{dollar}{0pt}\coordE{}$$
+To obtain the second equations of (\ref{sys1}) it is now sufficient
+to substitute the right hand side of (\ref{qyyc}) for \myHighlight{$\ddot q_i$}\coordHE{}
+and use formula (\ref{c}).
+
+The equation (\ref{ddq}) can also be used to derive (\ref{qyy})
+from (\ref{sys1}) in a straightforward manner.
+\end{proof}
+
+Note that a solution of (\ref{sys1}) restricted to the the subspace \myHighlight{$\cal M$}\coordHE{}
+defines a solution of (\ref{sys}) uniquely up to initial data. Namely,
+it can be checked directly that if \myHighlight{$\kappa(x,y)$}\coordHE{} as a solution of the equation
+\begin{equation}\coord{}\boxEquation{\label{kap}
+\dot \kappa= \biggl\{-\kappa^2 +
+\frac{2}{Nh}\sum_{k=1}^N \ell_i^2(h-q_{kx})-\frac{2}{Nh} U(q)
+\biggr\}_{\!x}\ ,
+}{\dot \kappa= \biggl\{-\kappa^2 +
+\frac{2}{Nh}\sum_{k=1}^N \ell_i^2(h-q_{kx})-\frac{2}{Nh} U(q)
+\biggr\}_{\!x}\ ,
+}{ecuacion}\coordE{}\end{equation}
+and \myHighlight{$\ell_i$}\coordHE{}, \myHighlight{$q_i$}\coordHE{} is a solution of (\ref{sys1}) on \myHighlight{$\cal M$}\coordHE{}, then
+\myHighlight{$q_i$}\coordHE{}, \myHighlight{$p_i=\ell_i-\kappa$}\coordHE{} is a solution of (\ref{sys}).
+
+Our final goal for this section is to present the Lax pair for the
+field elliptic CM system.
+\begin{teo}
+System \emph{(\ref{sys})} admits the zero-curvature representation,
+i.\,e.~it is equivalent to the matrix equation
+$$\coord{}\boxMath{
+\wt L_y-\wt M_x+\bigl[\wt L, \wt M \bigr]=0,
+}{dollar}{0pt}\coordE{}$$
+with the Lax matrices \myHighlight{$\wt L=\bigl(\wt L_{ij}\bigr)$}\coordHE{} and
+\myHighlight{$\wt M=\bigl(\wt M_{ij}\bigr)$}\coordHE{} of the form
+\begin{equation}\coord{}\boxEquation{\label{lax}
+\begin{aligned}
+\wt L_{ij}&=-\delta_{ij}p_i+(1-\delta_{ij})\alpha_i\alpha_j\Phi(q_i-q_j,z), \\
+\wt M_{ij}&=\delta_{ij} \bigl[ -Nh \alpha_i^2 \wp(z)+ \wt m_{i}^0 \bigr]+
+(1-\delta_{ij}) \alpha_i\alpha_j
+\bigl[ Nh\,\Phi'(q_i-q_j,z)- \wt m_{ij} \Phi(q_i-q_j,z) \bigr] ,
+\end{aligned}
+}{\begin{aligned}
+\wt L_{ij}&=-\delta_{ij}p_i+(1-\delta_{ij})\alpha_i\alpha_j\Phi(q_i-q_j,z), \\
+\wt M_{ij}&=\delta_{ij} \bigl[ -Nh \alpha_i^2 \wp(z)+ \wt m_{i}^0 \bigr]+
+(1-\delta_{ij}) \alpha_i\alpha_j
+\bigl[ Nh\,\Phi'(q_i-q_j,z)- \wt m_{ij} \Phi(q_i-q_j,z) \bigr] ,
+\end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$\alpha_i^2=q_{i\,x}-h$}\coordHE{},
+$$\coord{}\boxMath{
+\begin{aligned}
+\wt m_i^0 &=p_i^2+\frac{\alpha_{ixx}}{\alpha_i}+2\kappa p_i-
+\sum_{j\neq i} \bigl[ \alpha_j^2(2\alpha_i^4+\alpha_j^2)\wp(q_i-q_j)+
+4\alpha_i\alpha_{i\,x}\zeta(q_i-q_j) \bigr],\\
+\wt m_{ij}&=p_i+p_j+2\kappa+\frac{\alpha_{i\,x}}{\alpha_i}-
+\frac{\alpha_{j\,x}}{\alpha_j}
++\sum_{k\neq i,j}\alpha_k^2 \eta(q_i,q_k,q_j),
+\end{aligned}
+}{dollar}{0pt}\coordE{}$$
+and \myHighlight{$\kappa$}\coordHE{} is given by \emph{(\ref{kap})}.
+\end{teo}
+\begin{proof}
+If we apply to the matrices \myHighlight{$L$}\coordHE{} and \myHighlight{$M$}\coordHE{} given by
+(\ref{lij}) and (\ref{mij}) a gauge transformation
+$$\coord{}\boxMath{
+L\longmapsto g_x g^{-1}+g L g^{-1},\qquad\quad
+M\longmapsto g_y g^{-1}+g M g^{-1},
+}{dollar}{0pt}\coordE{}$$
+where~\myHighlight{$g$}\coordHE{} is a diagonal matrix,
+\myHighlight{$g=(g_{ij})$}\coordHE{}, \myHighlight{$g_{ij}=\delta_{ij}(\lambda_{i\,x})^{-1/2}$}\coordHE{},
+and then substitute
+\myHighlight{$\lambda_i=q_i-h x$}\coordHE{} and \myHighlight{$\lambda_{i\,y}/2\lambda_{i\,x}=\ell_i$}\coordHE{},
+that would give us a Lax pair for system (\ref{sys1}).
+To obtain (\ref{lax}) we apply another gauge tranformation with
+\myHighlight{$g=e^{K} I$}\coordHE{} and substitute \myHighlight{$\ell_i=p_i+\kappa$}\coordHE{}, \myHighlight{$i=1,\dots,N$}\coordHE{}.
+Here \myHighlight{$K=K(x,y)=\int^{x} \kappa(\wt x,y)\,d{\wt x}$}\coordHE{}. Note that
+\myHighlight{$K_y=-\kappa^2-c$}\coordHE{} due to (\ref{kap}) and (\ref{c}).
+\end{proof}
+
+\section{Elliptic families of solutions of the KP equation}
+
+The KP equation (\ref{kp}) is equivalent to the commutation condition
+\begin{equation}\coord{}\boxEquation{\label{lakp}
+\left[ \p_y-\cL, \p_t-\cA\right]=0,
+\qquad \p_y=\p/\p y,\quad \p_t=\p/\p t,
+}{\left[ \p_y-\cL, \p_t-\cA\right]=0,
+\qquad \p_y=\p/\p y,\quad \p_t=\p/\p t,
+}{ecuacion}\coordE{}\end{equation}
+for the auxiliary linear differential operators
+$$\coord{}\boxMath{
+\cL=\p^2_{xx}+u(x,y,t), \qquad
+\cA=\p^3_{xxx}+\frac{3}{2} u \p_x+w(x,y,t),\qquad
+\p_x=\p/\p x.
+}{dollar}{0pt}\coordE{}$$
+We use this representation in order to derive our main result.
+\begin{teo}
+Let \myHighlight{$u(x,y,t,\lambda)$}\coordHE{} be an elliptic family of solution to
+the KP equation that has a balanced set of poles
+\myHighlight{$\lambda_i(x,y,t)=q_i(x,y,t)-h x$}\coordHE{}, \myHighlight{$i=1,\dots,N$}\coordHE{}.
+Then \myHighlight{$u(x,y,t,\lambda)$}\coordHE{} has the form \emph{(\ref{ukp})} and the dynamics
+of the functions \myHighlight{$q_i(x,y,t)$}\coordHE{} with respect to~\myHighlight{$y$}\coordHE{} is described by
+the system~\emph{(\ref{qyy})}.
+\end{teo}
+\begin{proof}
+Substituting \myHighlight{$u$}\coordHE{} into (\ref{kp}) we immediately conclude that \myHighlight{$u$}\coordHE{} may have poles
+in~\myHighlight{$\lambda$}\coordHE{} of at most second order. Moreover, comparing the coefficients
+of the expansions of the left and right hand sides in (\ref{kp}) near the
+pole~\myHighlight{$\lambda_i$}\coordHE{}, we deduce that the principal part of the solution~\myHighlight{$u$}\coordHE{} coincides
+with the one given by (\ref{ukp}).
+
+Next step is to show that operator equation (\ref{lakp}) implies
+the existence of double-Bloch solutions for the equation
+\myHighlight{$(\p_y-\cL)\psi(x,y,t,\lambda)=0$}\coordHE{}.
+
+Let us define a matrix \myHighlight{$S(x,y,t,z)$}\coordHE{} to be a solution of the linear differential
+equation \myHighlight{$\p_x S=L S$}\coordHE{}, where \myHighlight{$L=(L_{ij})$}\coordHE{},
+$$\coord{}\boxMath{
+L_{ij} =\delta_{ij}\left(
+\frac{\lambda_{i\,y}+\lambda_{i\,xx}}{2\lambda_{i\,x}}
+\right)+(1-\delta_{ij}) \lambda_{i\,x}\, \Phi(\lambda_i-\lambda_j,z) ,
+}{dollar}{0pt}\coordE{}$$
+with the initial conditions \myHighlight{$S(0,y,t,z)=S_0(y,t,z)$}\coordHE{}, a non-singular matrix.
+By \myHighlight{$\Phi$}\coordHE{} we denote the row-vector
+\myHighlight{$\bigl( \Phi(\lambda-\lambda_1,z),\dots,\Phi(\lambda-\lambda_N,z) \bigr)$}\coordHE{}.
+It follows immediately that the vector \myHighlight{$(\p_y-\cL)\Phi S$}\coordHE{} has at most simple
+poles at~\myHighlight{$\lambda_i$}\coordHE{}, \myHighlight{$i=1,\dots,N$}\coordHE{}. Therefore, it is equal to \myHighlight{$\Phi D$}\coordHE{} for
+some matrix~\myHighlight{$D$}\coordHE{}. The commutation relation (\ref{lakp}) implies that
+\myHighlight{$D_x= L D$}\coordHE{}. To show this, consider the vector
+$$\coord{}\boxMath{
+(\p_t-\cA)\Phi D=(\p_t-\cA)(\p_t-\cL)\Phi S=(\p_y-\cL)(\p_t-\cA)\Phi S.
+}{dollar}{0pt}\coordE{}$$
+It has the poles of the at most third order and therefore the vector
+\myHighlight{$(\p_t-\cA)\phi S$}\coordHE{} has at most simple poles. In this case, however, the vector
+$$\coord{}\boxMath{
+(\p_t-\cA)(\p_t-\cL)\Phi S=(\p_y-\cL)(\p_t-\cA)\Phi S=(\p_t-\cA)\Phi D
+}{dollar}{0pt}\coordE{}$$
+has the poles of the at most second order. Vanishing of the poles of the third order
+in the expression \myHighlight{$(\p_t-\cA)\Phi D$}\coordHE{} is equivalent to the equation \myHighlight{$D_x=LD$}\coordHE{}.
+
+Since \myHighlight{$S$}\coordHE{} and \myHighlight{$D$}\coordHE{} are solutions to the same linear differential equation in \myHighlight{$x$}\coordHE{} they
+differ by an \myHighlight{$x$}\coordHE{}-independent matrix, namely \myHighlight{$D(x,y,t,z)=S(x,y,t,z)T(y,t,z)$}\coordHE{}.
+Let us define a matrix \myHighlight{$F(y,t,z)$}\coordHE{} from the equation \myHighlight{$\p_y F+T F=0$}\coordHE{} and the
+initial condition \myHighlight{$F(0,t,z)=I$}\coordHE{}. Here \myHighlight{$I$}\coordHE{} is the identity matrix.
+Let \myHighlight{$\wt S=S F$}\coordHE{}, then
+$$\coord{}\boxMath{
+(\p_y-\cL)\phi\wt S=(\p_y-\cL)\phi S F=\phi D F+\phi S F_y=
+\phi S\left(T F+F_y\right)=0,
+}{dollar}{0pt}\coordE{}$$
+and the components of the vector \myHighlight{$\phi\wt S$}\coordHE{} are independent double-Bloch solutions
+to (\ref{sch}).
+
+To conclude the proof it now suffices to apply Theorem~\myHighlight{$1$}\coordHE{}.
+\end{proof}
+
+\section{The algebraic-geometric solutions}
+
+According to \cite{kr}, a smooth genus \myHighlight{$g$}\coordHE{} algebraic curve
+\myHighlight{$\Gamma$}\coordHE{} with fixed local coordinate \myHighlight{$w$}\coordHE{} at a puncture \myHighlight{$P_0$}\coordHE{} defines solutions
+of the entire KP hierarchy by the formula
+$$\coord{}\boxMath{
+u(t)=2\frac{\p^2}{\p x^2} \ln \theta
+\left(\biggl. \sum\nolimits_k \vU_k t_k + \vZ\ \bigr|\ B\right)+const .
+}{dollar}{0pt}\coordE{}$$
+Here \myHighlight{$B=(B_{jk})$}\coordHE{} is a matrix of the \myHighlight{$b$}\coordHE{}-periods of normalized holomorphic
+differentials \myHighlight{$\omega^h_k$}\coordHE{}
+\begin{equation}\coord{}\boxEquation{\label{hd}
+\oint_{a_i}\omega^h_j=\delta_{ij},\qquad\qquad
+B_{ij}=\oint_{b_i}\omega^h_j,
+}{\oint_{a_i}\omega^h_j=\delta_{ij},\qquad\qquad
+B_{ij}=\oint_{b_i}\omega^h_j,
+}{ecuacion}\coordE{}\end{equation}
+while the vectors \myHighlight{$\vU_k=(\vU_k^j)$}\coordHE{} are vectors of the \myHighlight{$b$}\coordHE{}-periods
+$$\coord{}\boxMath{
+\vU_k^{j}=\frac{1}{2\pi i}\oint_{b_j}d\Omega_k,\qquad\qquad
+\oint_{a_j}d\Omega_k=0,
+}{dollar}{0pt}\coordE{}$$
+of the normalized meromorphic differentials of the second kind~\myHighlight{$d\Omega_k$}\coordHE{},
+defined by their expansions
+\begin{equation}\coord{}\boxEquation{\label{om}
+d\Omega_k=dw^{-k}+O(1)dw
+}{d\Omega_k=dw^{-k}+O(1)dw
+}{ecuacion}\coordE{}\end{equation}
+in the neighborhood of~\myHighlight{$P_0$}\coordHE{}.
+
+Let \myHighlight{$\Gamma$}\coordHE{} be a \myHighlight{$N$}\coordHE{}-fold branched cover of an elliptic curve~\myHighlight{$\cE$}\coordHE{}:
+$$\coord{}\boxMath{
+\rho\colon\Gamma\longrightarrow\cE .
+}{dollar}{0pt}\coordE{}$$
+Then the induced map of the Jacobians defines an embedding of
+\myHighlight{$\cal E$}\coordHE{} into \myHighlight{$J(\Gamma)$}\coordHE{}, i.e. \myHighlight{$\rho^*\cE\subset J(\Gamma)$}\coordHE{}.
+Therefore, any \myHighlight{$N$}\coordHE{}-fold cover of \myHighlight{$\cal E$}\coordHE{} defines an elliptic family
+of solutions of the KP equation. The following assertion shows that
+the corresponding solutions have exactly \myHighlight{$N$}\coordHE{} poles.
+Moreover, if the local coordinate~\myHighlight{$w$}\coordHE{} at
+the puncture~\myHighlight{$P_0$}\coordHE{} is \myHighlight{$\rho^*(\lambda)$}\coordHE{}, then the poles are balanced.
+Here \myHighlight{$\lambda$}\coordHE{} is a flat coordinate on \myHighlight{$\cE$}\coordHE{}.
+
+\begin{teo}
+Let \myHighlight{$\Gamma$}\coordHE{} be a smooth \myHighlight{$N$}\coordHE{}-fold branched cover of the elliptic
+curve~\myHighlight{$\cE$}\coordHE{}, and let \myHighlight{$P_0\in\Gamma$}\coordHE{} be a preimage of the point~\myHighlight{$\lambda=0$}\coordHE{}
+on~\myHighlight{$\cE$}\coordHE{}. Let \myHighlight{$d\Omega_k$}\coordHE{} be a normalized meromorphic differential
+on~\myHighlight{$\Gamma$}\coordHE{} with the only pole at~\myHighlight{$P_0$}\coordHE{} of the form \emph{(\ref{om})},
+where \myHighlight{$w=\rho^{*}(\lambda)$}\coordHE{}, and let \myHighlight{$2\pi i \vU$}\coordHE{} and \myHighlight{$2\pi i \vV$}\coordHE{} be the
+vectors of \myHighlight{$b$}\coordHE{}-periods of the differentials~\myHighlight{$d\Omega_1$}\coordHE{}
+and~\myHighlight{$d\Omega_2$}\coordHE{} respectively. Then the equation
+\begin{equation}\coord{}\boxEquation{
+\theta \bigl( \vL\lambda+\vU x+\vV y\ |\ B \bigr)=0
+}{
+\theta \bigl( \vL\lambda+\vU x+\vV y\ |\ B \bigr)=0
+}{ecuacion}\coordE{}\end{equation}
+has~\myHighlight{$N$}\coordHE{} balanced roots \myHighlight{$\lambda_i(x,y)=q_i(x,y)-x/N$}\coordHE{}, \myHighlight{$\sum_i q_i(x,y)=0$}\coordHE{},
+and the functions \myHighlight{$q_i$}\coordHE{} satisfy system~\emph{(\ref{qyy})}.
+\end{teo}
+\begin{proof}
+Let \myHighlight{$2\omega_1$}\coordHE{}, \myHighlight{$2\omega_2$}\coordHE{} be the  periods of~\myHighlight{$\cE$}\coordHE{},
+such that \myHighlight{$\Im(\tau)=\Im(\omega_2/\omega_1)>0$}\coordHE{}.
+The Jacobian \myHighlight{$J(\Gamma)$}\coordHE{} is the factor of~\myHighlight{$\comp^g$}\coordHE{} over the lattice~\myHighlight{$\cB$}\coordHE{},
+spanned by the basis vectors \myHighlight{$\Vec{e}_i\in\comp^g$}\coordHE{}, \myHighlight{$i=1,\dots,g$}\coordHE{}
+and the columns \myHighlight{$\vB_i=(B_{ij})\in\comp^g$}\coordHE{}, \myHighlight{$i=1,\dots,g$}\coordHE{}, of the matrix~\myHighlight{$B$}\coordHE{}.
+Let \myHighlight{$\vL$}\coordHE{} be a vector in \myHighlight{$\comp^g$}\coordHE{} that spans \myHighlight{$\rho^*\cE\subset J(\Gamma)$}\coordHE{}.
+Note that not only \myHighlight{$\vL\in\cB$}\coordHE{}, but also \myHighlight{$\tau\vL\in\cB$}\coordHE{}.
+
+The function
+\myHighlight{$\theta \bigl( \sum _k \vU_k t_k+\vL \lambda+\vZ\ |\ B\bigr)$}\coordHE{}
+as a function of~\myHighlight{$\lambda$}\coordHE{} has a finite number~\myHighlight{$D$}\coordHE{} of zeros.
+Its monodromy properties (\ref{thm}) imply that it can be written as
+$$\coord{}\boxMath{
+\theta \left(\sum\nolimits_k \vU_k t_k +\vL\lambda+\vZ\ \bigr|\ B\right)=
+f(t)e^{c_1\lambda+c_2\lambda^2}
+\prod_{i=1}^D \sigma \bigl( \lambda-\lambda_i(t) \bigr) ,
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$c_1$}\coordHE{}, \myHighlight{$c_2$}\coordHE{} are constants.
+
+Note, that the \myHighlight{$\lambda_i$}\coordHE{}'s are defined modulo the periods of~\myHighlight{$\cE$}\coordHE{}.
+In order to count them we integrate \myHighlight{$d\ln \theta$}\coordHE{} along the
+boundary of the fundamental domain of \myHighlight{$\rho^*\cE$}\coordHE{} in~\myHighlight{$\comp^g$}\coordHE{}.
+
+The embedding of \myHighlight{$\cE$}\coordHE{} in \myHighlight{$J(\Gamma)$}\coordHE{} is defined by equivalence classes
+of the divisors \myHighlight{$\rho^*(z)-\rho^*(0)$}\coordHE{}, where \myHighlight{$\rho^*(z)$}\coordHE{} is the divisor of
+preimages on \myHighlight{$\Gamma$}\coordHE{} of a point \myHighlight{$z\in\cE$}\coordHE{}.
+Preimages on \myHighlight{$\Gamma$}\coordHE{} of \myHighlight{$a$}\coordHE{} and \myHighlight{$b$}\coordHE{}-cycles of \myHighlight{$\cal E$}\coordHE{} are some
+linear combination of the basis cycles on \myHighlight{$\Gamma$}\coordHE{}, i.e.
+$$\coord{}\boxMath{
+\rho^* a=\sum_{k=1}^g n_ka_k + m_k b_k,\qquad
+\rho^* b=\sum_{k=1}^g n_k'a_k+ m_k'b_k .
+}{dollar}{0pt}\coordE{}$$
+Therefore, the vector \myHighlight{$\vL$}\coordHE{} equals
+$$\coord{}\boxMath{
+\vL=\sum_{k=1}^g n_k \Vec{e}_k+m_k \vB_k,\qquad
+\tau \vL=\sum_{k=1}^g n_k' \Vec{e}_k+m_k' \vB_k .
+}{dollar}{0pt}\coordE{}$$
+The usual residue arguments imply
+$$\coord{}\boxMath{
+2\pi i D=\oint_{\p (\rho^*\cE)} d\ln \theta=
+\int_{\tau \vL}\left(\int_{\vL}d\ln\theta\right)-
+\int_{\vL}\left(\int_{\tau \vL}d\ln\theta\right)
+}{dollar}{0pt}\coordE{}$$
+The monodromy properties of the theta-function imply
+$$\coord{}\boxMath{
+D=\sum_{k=1}^g \bigl( n_k m_k'-n_k' m_k \bigr).
+}{dollar}{0pt}\coordE{}$$
+The right hand side in the last formula is the intersection number of
+the cycles~\myHighlight{$\rho^{*}a$}\coordHE{} and~\myHighlight{$\rho^{*}b$}\coordHE{}, i.\,e.
+$$\coord{}\boxMath{
+D=(\rho^*a)\cap (\rho^*b)=N \left(a\cap b\right)=N,
+}{dollar}{0pt}\coordE{}$$
+so the the theta-function has exactly~\myHighlight{$N$}\coordHE{} zeros \myHighlight{$\lambda_i$}\coordHE{}, \myHighlight{$i=1,\dots,N$}\coordHE{}.
+
+Now let us show that the set of \myHighlight{$\lambda_i$}\coordHE{}'s is balanced.
+In a way similar to the residue argument above we find
+\begin{equation}\coord{}\boxEquation{\label{plpt}
+-2\pi i\sum_{j=1}^N \frac{\p \lambda_j}{\p t_k}=
+\oint_{\p (\rho^*\cE)} \left(\p_{t_k}\ln \theta\right) d\lambda=
+\int_{b}d\lambda\left(\int_{\rho^*a}d\Omega_k\right)-
+\int_{a}d\lambda\left(\int_{\rho^*b}d\Omega_k\right)
+}{-2\pi i\sum_{j=1}^N \frac{\p \lambda_j}{\p t_k}=
+\oint_{\p (\rho^*\cE)} \left(\p_{t_k}\ln \theta\right) d\lambda=
+\int_{b}d\lambda\left(\int_{\rho^*a}d\Omega_k\right)-
+\int_{a}d\lambda\left(\int_{\rho^*b}d\Omega_k\right)
+}{ecuacion}\coordE{}\end{equation}
+Let \myHighlight{$\Tr d\Omega=\rho_*(d\Omega_k)$}\coordHE{} be the sum of~\myHighlight{$d\Omega_k$}\coordHE{} on all the
+sheets of~\myHighlight{$\Gamma$}\coordHE{} over a point \myHighlight{$\lambda\in \cE$}\coordHE{}. It is a meromorphic
+differential on~\myHighlight{$\cE$}\coordHE{}. Since the local coordinate~\myHighlight{$w$}\coordHE{} near the puncture
+is defined by the projection~\myHighlight{$\rho$}\coordHE{} we have
+\begin{equation}\coord{}\boxEquation{
+\Tr d\Omega_k=\frac{(-1)^{k}}{(k-1)!} \wp^{(k-1)}(\lambda)\,d\lambda
++r_k d\lambda,
+}{
+\Tr d\Omega_k=\frac{(-1)^{k}}{(k-1)!} \wp^{(k-1)}(\lambda)\,d\lambda
++r_k d\lambda,
+}{ecuacion}\coordE{}\end{equation}
+where \myHighlight{$r_k$}\coordHE{} is a constant.
+The right hand side in (\ref{plpt}) can be written as
+\myHighlight{$2\pi i \res_{\lambda=0} (\Tr \Omega_k)\,d\lambda$}\coordHE{}.
+When \myHighlight{$k>1$}\coordHE{} it equals zero, while for \myHighlight{$k=1$}\coordHE{} we have
+$$\coord{}\boxMath{
+\res_{\lambda=0} (\Tr\Omega_1)\,d\lambda=
+\res_{\lambda=0} \zeta(\lambda)\,d\lambda=1 .
+}{dollar}{0pt}\coordE{}$$
+Therefore, we obtain
+\begin{equation}\coord{}\boxEquation{
+\sum_{i=1}^N \frac{\p\lambda_j}{\p x}=-1,\qquad\qquad
+\sum_{i=1}^N \frac{\p\lambda_j}{\p t_k}=0,\quad k>1 .
+}{
+\sum_{i=1}^N \frac{\p\lambda_j}{\p x}=-1,\qquad\qquad
+\sum_{i=1}^N \frac{\p\lambda_j}{\p t_k}=0,\quad k>1 .
+}{ecuacion}\coordE{}\end{equation}
+and consequently the set \myHighlight{$\lambda_i$}\coordHE{}, \myHighlight{$i=1,\dots, N$}\coordHE{} satisfy (\ref{bal}).
+Note, that our choice of a local coordinate near the puncture corresponds
+to \myHighlight{$h=1/N$}\coordHE{}. An arbitrary non-zero value of~\myHighlight{$h$}\coordHE{} may be obtained by setting
+\myHighlight{$w=\rho^{*}(\lambda/N h)$}\coordHE{}.
+Theorem~5 is proved.
+\end{proof}
+
+\begin{rem}
+If \myHighlight{$q_i(x,y)$}\coordHE{}, \myHighlight{$i=1,\dots,N$}\coordHE{} are periodic functions of~\myHighlight{$x$}\coordHE{},
+then the algebraic curve~\myHighlight{$\Gamma$}\coordHE{} can be identified with the spectral
+curve for the equation \myHighlight{$(\p_x- L)\vS=0$}\coordHE{} (see \cite{krvb}).
+\end{rem}
+
+\appendix
+\section{Appendix}
+\subsection{Elliptic functions}
+
+Here we list the definitions and basic properties of the classical
+elliptic functions (see \cite{bat} for details).
+Let \myHighlight{$2\omega_1,2\omega_2\in\comp$}\coordHE{}
+be a pair of periods, \myHighlight{$\Im (\omega_2/\omega_1)>0$}\coordHE{}.
+The Weierstrass sigma-function is defined by the infinite product
+$$\coord{}\boxMath{
+\sigma(z)= z \prod\nolimits_{m^2+n^2\ne 0} \left( 1-\frac{z}{\omega_{m n}}
+\right)
+\exp\left\{ \frac{z}{\omega_{m n}}+\frac{z^2}{2 \omega^2_{m n}} \right\},
+\qquad
+\omega_{m n}=2m \omega_1+2n \omega_2 .
+}{dollar}{0pt}\coordE{}$$
+The product converges for every \myHighlight{$z$}\coordHE{} to an entire function with simple
+zeros at the points \myHighlight{$z=\omega_{m n}$}\coordHE{}.
+The Weierstrass zeta-function and \myHighlight{$\wp$}\coordHE{}-function are then defined by
+$$\coord{}\boxMath{
+\zeta(z)=\frac{\sigma'(z)}{\sigma(z)},\qquad
+\wp(z)=-\zeta'(z) .
+}{dollar}{0pt}\coordE{}$$
+It follows directly from this definition that \myHighlight{$\sigma(z)$}\coordHE{} and \myHighlight{$\zeta(z)$}\coordHE{}
+are odd functions while \myHighlight{$\wp(z)$}\coordHE{} is an even function. Under shifts
+of the periods the Weierstrass functions transform as follows:
+$$\coord{}\boxMath{
+\sigma(z+2\omega_a)=e^{2\eta_a(z+\omega_a)}\sigma(z),\quad
+\zeta(z+2\omega_a)=\zeta(z)+2\eta_a,\qquad a=1,2,
+}{dollar}{0pt}\coordE{}$$
+where \myHighlight{$\eta_a=\zeta(\omega_a)$}\coordHE{} and \myHighlight{$\eta_1\omega_2-\eta_2\omega_1=\pi i/2$}\coordHE{}.
+The \myHighlight{$\wp$}\coordHE{}-function is double-periodic
+$$\coord{}\boxMath{
+\wp(z+2\omega_1)=\wp(z+2\omega_2)=\wp(z)=\wp(-z)
+}{dollar}{0pt}\coordE{}$$
+and can be regarded as a function on the elliptic curve
+\myHighlight{$\Gamma=\comp \bigl/ \inte[2\omega_1,2\omega_2] \bigr.$}\coordHE{}
+where it has the only (double) pole at \myHighlight{$z=0$}\coordHE{}.
+It is useful to write the Laurent expansions of the Weierstrass
+functions in the neighborhood of \myHighlight{$z=0$}\coordHE{}:
+$$\coord{}\boxMath{
+\sigma(z)=z+O(z^5),\qquad \zeta(z)=\frac{1}{z}+O(z^3),\qquad
+\wp(z)=\frac{1}{z^2}+O(z^2) .
+}{dollar}{0pt}\coordE{}$$
+
+\subsection{Identities with the function \myHighlight{$\Phi(\lambda,z)$}\coordHE{}}
+
+Here we collect some useful identities involving the function
+\myHighlight{$\Phi(\lambda,z)$}\coordHE{}, which is defined by (\ref{phi}).
+
+The derivative of the function \myHighlight{$\Phi(\lambda,z)$}\coordHE{} with respect to the
+variable \myHighlight{$\lambda$}\coordHE{} equals
+\begin{equation}\coord{}\boxEquation{
+\Phi'(\lambda,z) = \Phi(\lambda,z)
+\bigl[ \zeta(z)-\zeta(\lambda)-\zeta(z-\lambda) \bigr]
+}{
+\Phi'(\lambda,z) = \Phi(\lambda,z)
+\bigl[ \zeta(z)-\zeta(\lambda)-\zeta(z-\lambda) \bigr]
+}{ecuacion}\coordE{}\end{equation}
+We also have the following product identities:
+\begin{equation}\coord{}\boxEquation{\label{pp}
+\begin{aligned}
+\Phi(\lambda-\mu,z)\Phi(\mu-\lambda,z) &=\wp(z)-\wp(\lambda-\mu),\\
+\Phi(\lambda-\nu,z)\Phi(\nu-\mu,z) &= -\Phi'(\lambda-\mu,z)+
+\Phi(\lambda-\mu,z) \eta(\lambda,\nu,\mu) ,
+\end{aligned}
+}{\begin{aligned}
+\Phi(\lambda-\mu,z)\Phi(\mu-\lambda,z) &=\wp(z)-\wp(\lambda-\mu),\\
+\Phi(\lambda-\nu,z)\Phi(\nu-\mu,z) &= -\Phi'(\lambda-\mu,z)+
+\Phi(\lambda-\mu,z) \eta(\lambda,\nu,\mu) ,
+\end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+where in the second equation we use the notation
+$$\coord{}\boxMath{
+\eta(\lambda,\nu,\mu)=
+\zeta(\lambda-\nu)+\zeta(\nu-\mu)-\zeta(\lambda-\mu) .
+}{dollar}{0pt}\coordE{}$$
+Note that \myHighlight{$\eta$}\coordHE{} is a completely antisymmetric function of its
+arguments.
+To complete the list of the identities required for our
+computations we differentiate formulas (\ref{pp}) to get
+\begin{equation}\coord{}\boxEquation{\label{ppp}
+\begin{aligned}
+\Phi'(\lambda-\mu,z)\Phi(\mu-\lambda,z)-
+\Phi(\lambda-\mu,z)\Phi'(\mu-\lambda,z) &=-\wp'(\lambda-\mu),\\
+\Phi'(\lambda-\nu,z)\Phi(\nu-\mu,z)-
+\Phi(\lambda-\nu,z)\Phi'(\nu-\mu,z) &=
+-\Phi(\lambda-\mu) \bigl[ \wp(\lambda-\nu)-\wp(\nu-\mu) \bigr] .
+\end{aligned}
+}{\begin{aligned}
+\Phi'(\lambda-\mu,z)\Phi(\mu-\lambda,z)-
+\Phi(\lambda-\mu,z)\Phi'(\mu-\lambda,z) &=-\wp'(\lambda-\mu),\\
+\Phi'(\lambda-\nu,z)\Phi(\nu-\mu,z)-
+\Phi(\lambda-\nu,z)\Phi'(\nu-\mu,z) &=
+-\Phi(\lambda-\mu) \bigl[ \wp(\lambda-\nu)-\wp(\nu-\mu) \bigr] .
+\end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+
+\subsection{Riemann \myHighlight{$\theta$}\coordHE{}-function}
+
+Let \myHighlight{$\Gamma$}\coordHE{} be a genus \myHighlight{$g$}\coordHE{} algebraic curve with fixed basis of cycles
+\myHighlight{$a_i$}\coordHE{}, \myHighlight{$b_i$}\coordHE{}, \myHighlight{$i\le 1\le g$}\coordHE{} with intersections \myHighlight{$a_i\circ b_j=\delta_{ij}$}\coordHE{}.
+Let~\myHighlight{$B$}\coordHE{} be the matrix of normalized holomorphic differentials~\myHighlight{$\omega^h_i$}\coordHE{},
+see (\ref{hd}). Then~\myHighlight{$B$}\coordHE{} is a Riemann matrix, i.e. a symmetric \myHighlight{$g\times g$}\coordHE{}
+matrix with positive definite imaginary part \myHighlight{$\Im B<0$}\coordHE{}.
+
+The Riemann \myHighlight{$\theta$}\coordHE{}-function, associated with the curve \myHighlight{$\Gamma$}\coordHE{} is an
+analitic function of \myHighlight{$g$}\coordHE{} complex variables \myHighlight{$\Vec{z}=(z_1,\dots,z_g)$}\coordHE{},
+defined by its Fourier expansion
+$$\coord{}\boxMath{
+\theta(\Vec{z}\,|\,B)=\sum\nolimits_{\Vec{n}\in\inte^g}
+\ e^{2\pi i (\Vec{m},\Vec{z}) + \pi i (B\Vec{m},\Vec{m})}\ .
+}{dollar}{0pt}\coordE{}$$
+The Riemann \myHighlight{$\theta$}\coordHE{}-function has the following monodromy properties
+with respect to the lattice~\myHighlight{$\cB$}\coordHE{}, spanned by the basis vectors
+Let \myHighlight{$\Vec{e}_i\in\comp^g$}\coordHE{}, \myHighlight{$i=1,\dots,g$}\coordHE{} and the columns \myHighlight{$B_i\in\comp^g$}\coordHE{}
+of the matrix~\myHighlight{$B$}\coordHE{}:
+\begin{equation}\coord{}\boxEquation{\label{thm}
+\begin{aligned}
+\theta(\Vec{z}+\Vec{n}\,|\,B) &=\theta(\Vec{z}\,|\,B),\\
+\theta(\Vec{z}+B\Vec{n}\,|\,B) &=
+\exp\bigl[ -2\pi i(\Vec{n},\Vec{z})-\pi i (B\Vec{n},\Vec{n}) \bigr]
+\theta(\Vec{z}\,|\,B) .
+\end{aligned}
+}{\begin{aligned}
+\theta(\Vec{z}+\Vec{n}\,|\,B) &=\theta(\Vec{z}\,|\,B),\\
+\theta(\Vec{z}+B\Vec{n}\,|\,B) &=
+\exp\bigl[ -2\pi i(\Vec{n},\Vec{z})-\pi i (B\Vec{n},\Vec{n}) \bigr]
+\theta(\Vec{z}\,|\,B) .
+\end{aligned}
+}{ecuacion}\coordE{}\end{equation}
+Here \myHighlight{$\Vec{n}$}\coordHE{} is a vector with integer components.
+
+\begin{thebibliography}{9}
+
+\bibitem{amkm} H. Airault, H. McKean, and J. Moser.
+\emph{Rational and elliptic solutions of the KdV equation and
+related many-body problem},
+Commun. Pure Appl. Math., {\bf 30} (1977), 95\,--\,125.
+
+\bibitem{krbab} O. Babelon, E. Billey, I. Krichever and M. Talon.
+\emph{Spin generalisation of the Calogero\,--\,Moser system and the
+matrix KP equation}, in ``Topics in Topology and Mathematical Physics'',
+Amer. Math. Soc. Transl. Ser.\,2 {\bfseries 170},
+Amer. Math. Soc., Providence, 1995, 83\,--119.
+
+\bibitem{bat} H. Bateman, A. Erdelyi.
+\emph{Higher transcendental functions},
+vol. II, McGraw-Hill Co. 1953
+
+\bibitem{c} F. Calogero.
+\emph{Exactly solvable one-dimensional many-body systems},
+Lett. Nuovo Cimento, {\bf 13} (1975), 411\,--\,415.
+
+\bibitem{n} A. Gorsky, N. Nekrasov.
+\emph{Elliptic Calogero\,--\,Moser system from two-dimensional
+current algebra}, (1994) hep-th/9401021.
+
+\bibitem{kr1} I. Krichever,
+\emph{The algebraic-geometric construction of Zakharov\,--\,Shabat
+equation and their solutions},
+Doklady Akad. Nauk USSR {\bf 227} (1976), 291\,--\,294.
+
+\bibitem{kr} I. Krichever,
+\emph{The integration of non-linear equation with the help
+of algebraic-geometrical methods} (In Russian),
+Funct. Anal. i Pril. {\bfseries 11} (1977), no.\,1, 15\,--\,31.
+
+\bibitem{krelkp} I. Krichever.
+\emph{Elliptic solutions of Kadomtsev\,--\,Petviashvili equations and
+integrable systems of particles},
+Funct. Anal. Appl., {\bf 14} (1980), no.\,1, 282\,--\,290.
+
+\bibitem{krnest} I. Krichever.
+\emph{Elliptic solutions to difference non-linear equations and
+nested Bethe ansatz equations}, (1998), solv-int/9804016.
+
+\bibitem{kreltoda} I. Krichever.
+\emph{Elliptic analog of the Toda lattice},
+IMRN (2000), no.\,8, 383\,--\,412.
+
+\bibitem{krvb} I. Krichever.
+\emph{Vector bundles and Lax equations on algebraic curves},
+(2001) hep-th/0108110.
+
+\bibitem{krwz} I. Krichever, O. Lipan, P. Wiegmann, and A. Zabrodin.
+\emph{Quantum integrable models and discrete classical Hirota equations},
+Comm. Math. Phys., {\bfseries 188} (1997), 267\,--\,304
+
+\bibitem{krzab} I. Krichever, A. Zabrodin.
+\emph{Spin generalisation of the Ruijsenaars\,--\,Schneider model,
+the non-abelian two-dimensional Toda lattice, and representations of
+the Sklyanin algebra} (in Russian),
+Uspekhi Mat. Nauk, {\bfseries 50} (1995), no.\,6, 3\,--\,56.
+
+\bibitem{loz} A. Levin, M. Olshanetsky and A. Zotov,
+\emph{Hitchin Systems --- symplectic maps and two-dimensional version},
+(2001) arXiv:nlin.SI/0110045
+
+\end{thebibliography}
+\end{document}
+
+\bye
